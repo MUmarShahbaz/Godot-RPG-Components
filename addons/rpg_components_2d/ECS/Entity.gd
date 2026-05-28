@@ -1,9 +1,6 @@
-@tool
 extends CharacterBody2D
 
 ## Base Class for all 2D Entities. It contains character stats and meta data.
-## The values are initialized using [code]/addons/rpg_components_2d/Singletons/DB.gd[/code] with values defined inside 
-## [code]/addons/rpg_components_2d/DB/entity.cfg[/code][br]
 ## [br]
 ## Handles core logic including:[br]
 ## - [i]Gravity[/i][br]
@@ -53,19 +50,14 @@ enum attack_type {
 @export var attack : attack_type
 @export_group("Stats")
 ## Max HP that the character will have[br]
-## The default value can be changed from [code]/addons/rpg_components_2d/DB/entity.cfg[/code]
 @export var Hit_Points : float
 ## The walking speed of the character[br]
-## The default value can be changed from [code]/addons/rpg_components_2d/DB/entity.cfg[/code]
 @export var Walk_Speed : float
 ## The running speed of the character[br]
-## The default value can be changed from [code]/addons/rpg_components_2d/DB/entity.cfg[/code]
 @export var Run_Speed : float
 ## The upwards velocity at which the character jumps[br]
-## The default value can be changed from [code]/addons/rpg_components_2d/DB/entity.cfg[/code]
 @export var Jump_Velocity : float
 ## The attack range of the character[br][br]
-## The default value can be changed from [code]/addons/rpg_components_2d/DB/entity.cfg[/code][br]
 ## Useful for creating character cards
 @export var Attack_Range : float
 #endregion
@@ -89,22 +81,16 @@ signal died
 @export var collider : CollisionShape2D
 @export_group("Animation Names", "ANM_N")
 ## Animation Name for Walking[br]
-## The default value can be changed from [code]/addons/rpg_components_2d/DB/entity.cfg[/code]
 @export var ANM_N_Walk : String
 ## Anmiation Name for Running[br]
-## The default value can be changed from [code]/addons/rpg_components_2d/DB/entity.cfg[/code]
 @export var ANM_N_Run : String
 ## Animation Name for Jumping[br]
-## The default value can be changed from [code]/addons/rpg_components_2d/DB/entity.cfg[/code]
 @export var ANM_N_Jump : String
 ## Animation Name for Hurting[br]
-## The default value can be changed from [code]/addons/rpg_components_2d/DB/entity.cfg[/code]
 @export var ANM_N_Hurt : String
 ## Animation Name for Dying[br]
-## The default value can be changed from [code]/addons/rpg_components_2d/DB/entity.cfg[/code]
 @export var ANM_N_Die : String
 ## A list of names of all animations that will automatically pause the characters movement[br]
-## The default value can be changed from [code]/addons/rpg_components_2d/DB/entity.cfg[/code]
 @export var ANM_N_auto_pause_movement : Array
 @export_group("Animation Player", "ANM_P")
 ## A Reference to the [AnimatedSprite2D] of the character
@@ -154,44 +140,6 @@ func check_nodes():
 	if not SFX_Die: push_warning("%s is missing a SFX_Die" % t)
 #endregion
 
-#region Initializer
-## [color=red]DO NOT TOUCH[/color][br][br]
-## A boolean variable to ensure your overwrites are preserved[br]
-## Setting this to false may reset all attributes
-@export var is_initialized : bool
-
-## Pulls default values from the config file:
-## [code]/addons/rpg_components_2d/DB/entity.cfg[/code]
-func init_values(schema : String = "Entity") -> void:
-	is_initialized = true
-	RPG_2D_DB.refresh()
-	var group = RPG_2D_DB.edb_get(schema, "group", "")
-	if group != "": add_to_group(group)
-	set_collision_layer_value(1, false)
-	set_collision_mask_value(1, false)
-	for layer in RPG_2D_DB.edb_get(schema, "physics_layers"): set_collision_layer_value(layer, true)
-	for mask in RPG_2D_DB.edb_get(schema, "physics_masks"): set_collision_mask_value(mask, true)
-	var sfx_bus = RPG_2D_DB.edb_get(schema, "SFX_Bus", 0)
-	if sfx_bus != 0:
-		if SFX_Spawn: SFX_Spawn.bus = sfx_bus
-		if SFX_Walk: SFX_Walk.bus = sfx_bus
-		if SFX_Run: SFX_Run.bus = sfx_bus
-		if SFX_Jump: SFX_Jump.bus = sfx_bus
-		if SFX_Hurt: SFX_Hurt.bus = sfx_bus
-		if SFX_Die: SFX_Die.bus = sfx_bus
-	Hit_Points = RPG_2D_DB.edb_get(schema, "Hit_Points", 0)
-	Walk_Speed = RPG_2D_DB.edb_get(schema, "Walk_Speed", 0)
-	Run_Speed = RPG_2D_DB.edb_get(schema, "Run_Speed", 0)
-	Jump_Velocity = RPG_2D_DB.edb_get(schema, "Jump_Velocity", 0)
-	Attack_Range = RPG_2D_DB.edb_get(schema, "Attack_Range", 0)
-	ANM_N_auto_pause_movement = RPG_2D_DB.edb_get(schema, "auto_pause_movement", [])
-	ANM_N_Walk = RPG_2D_DB.edb_get(schema, "Walk_Animation", "")
-	ANM_N_Run  = RPG_2D_DB.edb_get(schema, "Run_Animation", "")
-	ANM_N_Jump = RPG_2D_DB.edb_get(schema, "Jump_Animation", "")
-	ANM_N_Hurt = RPG_2D_DB.edb_get(schema, "Hurt_Animation", "")
-	ANM_N_Die  = RPG_2D_DB.edb_get(schema, "Die_Animation", "")
-#endregion
-
 #region Core
 ## Current HP of the character
 var hp : float
@@ -202,17 +150,12 @@ var RayBox : Node2D
 var facing : int = 1
 
 func _ready() -> void:
-	if Engine.is_editor_hint():
-		set_process(false)
-		set_physics_process(false)
-		if not is_initialized: init_values()
-	else:
-		check_nodes()
-		hp = Hit_Points
-		RayBox = Node2D.new()
-		add_child.call_deferred(RayBox)
-		if SFX_Spawn: SFX_Spawn.play()
-		spawned.emit(self)
+	check_nodes()
+	hp = Hit_Points
+	RayBox = Node2D.new()
+	add_child.call_deferred(RayBox)
+	if SFX_Spawn: SFX_Spawn.play()
+	spawned.emit(self)
 
 func _physics_process(delta: float) -> void:
 	if not is_on_floor(): velocity += get_gravity() * delta

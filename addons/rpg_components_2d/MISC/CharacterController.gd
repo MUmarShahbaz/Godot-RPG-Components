@@ -1,15 +1,15 @@
 extends Node
-## A Template Class for low-level & Controller-Specific input handling to control a character[br]
-## It is best to create a child class and overwrite the Triggerable & Polling Input functions
+## A Template Class for low-level & Controller-Specific input handling to control a character.[br]
+## All methods are intended to be overwritten in a child class with your own custom settings.
 class_name CharacterController
 
 ## The Character to be controlled
 @onready var Character : Entity = get_parent()
 ## Visuals
-@onready var CAM := Camera2D.new()
+@onready var CAM := SmoothCamera.new()
 ## Audio
 @onready var EAR := AudioListener2D.new()
-## The Controller input will be accepted from
+## The Controller from which input will be accepted[br]
 ## All other input devices will be ignored
 @export var my_controller = DEFAULT_DEVICE
 
@@ -18,8 +18,7 @@ const DEFAULT_DEVICE = -1
 
 #region Core
 func _ready() -> void:
-	add_child.call_deferred(CAM)
-	add_child.call_deferred(EAR)
+	prepare_audio_and_video()
 	set_controller()
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -31,16 +30,26 @@ func _process(delta: float) -> void:
 	else: _poll_default_input(delta)
 #endregion
 
+#region Prepare Audio and Video
+## A function to set up an AudioListener2D & Camera
+func prepare_audio_and_video():
+	CAM.target = Character
+	CAM.offset_unit = Vector2(160, 90)
+	add_child.call_deferred(CAM)
+	add_child.call_deferred(EAR)
+	CAM.make_current.call_deferred()
+	EAR.make_current.call_deferred()
+#endregion
+
 #region Controller Selector
 ## A Function to select which controller will be used[br]
-## This is an empty function and should to be overwritten in child classes to use your own custom code
+## Use the RPG_2D_CONTROLLERS singleton to get all connected controllers
 func set_controller() -> void: return
 #endregion
 
 #region Triggerable Inputs
 ## A Function to handle Input Events triggered by a gamepad[br]
 ## This function is only called if the event was triggered by the selected controller[br]
-## This should be overwritten in child classes to customize
 func _gamepad_input(event: InputEvent):
 	if event is InputEventJoypadButton:
 		match event.button_index:
@@ -48,7 +57,6 @@ func _gamepad_input(event: InputEvent):
 
 ## A Function to handle Input Events triggered by the default device (e.g: KeyBoard) [br]
 ## This function is only called if the event was triggered by the selected controller[br]
-## This should be overwritten in child classes to customize
 func _default_input(event: InputEvent):
 	if event is InputEventKey:
 		match event.physical_keycode:

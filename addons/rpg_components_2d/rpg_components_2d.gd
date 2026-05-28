@@ -2,7 +2,6 @@
 extends EditorPlugin
 
 var Singletons = [
-	"DB",
 	"CONTROLLERS"
 ]
 
