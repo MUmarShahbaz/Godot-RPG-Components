@@ -75,6 +75,8 @@ signal hurt(amount: float)
 signal died
 
 @export_category("Meta")
+## A Bool to disable gravity for this character
+@export var gravity : bool = true
 ## A Bool to disable character's built-in AI
 @export var puppet : bool = false
 ## A Reference to the [CollisionShape2D] of the character
@@ -158,7 +160,7 @@ func _ready() -> void:
 	spawned.emit(self)
 
 func _physics_process(delta: float) -> void:
-	if not is_on_floor(): velocity += get_gravity() * delta
+	if not is_on_floor() and gravity: velocity += get_gravity() * delta
 	if velocity.x != 0: velocity.x = move_toward(velocity.x, 0, delta*10)
 	move_and_slide()
 
