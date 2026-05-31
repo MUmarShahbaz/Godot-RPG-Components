@@ -15,7 +15,7 @@ enum DAMAGE_MODE {
 	DISTRIBUTED
 }
 
-## Emitted when the animation for an attack begins.
+## Emitted when the attack is activated.
 signal attacked
 ## Emitted when an [Entity] gets hit by the attack.
 signal hit(entity : Entity, damage_amount : float)
@@ -31,11 +31,11 @@ signal hit(entity : Entity, damage_amount : float)
 @export var Cooldown : bool = false
 ## All Layers which will [b]block[/b] this attack.
 @export_flags_2d_physics var obstruction_layers: int = 1
-@export_group("Hit Frame", "HF")
+@export_group("Frame Sync", "FS")
 ## Name of the Animation which will automatically trigger this attack.
-@export var HF_Animation : String = ""
+@export var FS_Animation : String = ""
 ## Frame at which the damage is applied.
-@export var HF_Frame : int = 0
+@export var FS_Hit_Frame : int = 0
 @export_group("Audio", "AUX")
 ## [AudioStreamPlayer2D] to play when the attack animation begins.
 @export var AUX_On_Animation_Start : AudioStreamPlayer2D
@@ -57,12 +57,12 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	if Cooldown: return
-	if parent.check_anim(HF_Animation):
+	if parent.check_anim(FS_Animation):
 		if not attacking:
 			attacking = true
 			if AUX_On_Animation_Start: AUX_On_Animation_Start.play()
 	else: attacking = false
-	if parent.check_frame(HF_Animation, HF_Frame):
+	if parent.check_frame(FS_Animation, FS_Hit_Frame):
 		attacked.emit()
 		if AUX_On_Hit_Frame: AUX_On_Hit_Frame.play()
 		damage()
