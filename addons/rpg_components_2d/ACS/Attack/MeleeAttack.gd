@@ -1,52 +1,52 @@
 extends Area2D
 ## A Class that can cause damage to any [Entity] inside a certain area. Suited (but not limited) to close-range or Melee attacks.[br]
-## Frame-Synced
+## This node is Frame-Synced.
 class_name MeleeAttack
 
-## The available modes which can be used to modify how damage is applied
+## The available modes which can be used to modify how damage is applied.
 enum DAMAGE_MODE {
-	## Damage only the first [Entity] in the order in tree
+	## Damage only the first [Entity] in the order in tree.
 	FIRST,
-	## Damage only the [Entity] whose [b][i]center[/i][/b] is physically closest
+	## Damage only the [Entity] whose [b]center[/b] is physically closest.
 	CLOSEST,
-	## Damage all [Entity] within the area with the full [param Damage]
+	## Damage all [Entity] within the area with the full [param Damage].
 	ALL,
-	## Distributes the [param Damage] equally to all [Entity] within the area
+	## Distributes the [param Damage] equally to all [Entity] within the area.
 	DISTRIBUTED
 }
 
-## Emitted when the animation for an attack begins
+## Emitted when the animation for an attack begins.
 signal attacked
-## Emitted when an [Entity] gets hit by the attack
+## Emitted when an [Entity] gets hit by the attack.
 signal hit(entity : Entity, damage_amount : float)
 
-## The selected [enum DAMAGE_MODE]
+## The selected [enum DAMAGE_MODE].
 @export var Mode : DAMAGE_MODE
-## The default damage amount
+## The default damage amount.
 @export var Damage : float = 0
 ## A multiplier to increase applied damage exponentially.[br]
-## Useful for power-ups
+## Useful for power-ups.
 @export var Multiplier : float = 1.0
-## Cooldown to temporarily disable Frame-Sync
+## Cooldown to temporarily disable Frame-Sync.
 @export var Cooldown : bool = false
-## All Layers which will [b][i]block[/i][/b] this attack
+## All Layers which will [b]block[/b] this attack.
 @export_flags_2d_physics var obstruction_layers: int = 1
 @export_group("Hit Frame", "HF")
-## Name of the Animation which will automatically trigger this attack
+## Name of the Animation which will automatically trigger this attack.
 @export var HF_Animation : String = ""
-## Frame at which the damage is applied
+## Frame at which the damage is applied.
 @export var HF_Frame : int = 0
 @export_group("Audio", "AUX")
-## [AudioStreamPlayer2D] to play when the attack animation begins
+## [AudioStreamPlayer2D] to play when the attack animation begins.
 @export var AUX_On_Animation_Start : AudioStreamPlayer2D
-## [AudioStreamPlayer2D] to play when the hit frame is reached and damage is applied
+## [AudioStreamPlayer2D] to play when the hit frame is reached and damage is applied.
 @export var AUX_On_Hit_Frame : AudioStreamPlayer2D
 
-## The parent of this node
+## The parent of this node.
 @onready var parent : Entity = get_parent()
-## The [RayCast2D] used to check for obstructioncs
+## The [RayCast2D] used to check for obstructioncs.
 @onready var ray := RayCast2D.new()
-## A boolean to tell whether the attack is currently in progress or not
+## A boolean to tell whether the attack is currently in progress or not.
 var attacking : bool = false
 
 #region Core
@@ -67,7 +67,7 @@ func _process(delta: float) -> void:
 		if AUX_On_Hit_Frame: AUX_On_Hit_Frame.play()
 		damage()
 
-## Checks whether anything in between is blocking the attack
+## Checks whether anything in between is blocking the attack.
 func obstruction_check(target : Entity) -> bool:
 	ray.target_position = target.global_position - self.global_position
 	ray.force_raycast_update()
@@ -76,7 +76,7 @@ func obstruction_check(target : Entity) -> bool:
 #endregion
 
 #region Damager
-## Applies damage based on the selected [enum DAMAGE_MODE]
+## Applies damage based on the selected [enum DAMAGE_MODE].
 func damage(amount : float = Damage*Multiplier):
 	match Mode:
 		DAMAGE_MODE.FIRST: damage_first(amount)
@@ -84,7 +84,7 @@ func damage(amount : float = Damage*Multiplier):
 		DAMAGE_MODE.ALL: damage_all(amount)
 		DAMAGE_MODE.DISTRIBUTED: damage_distributed(amount)
 
-## Applies damage tp only the first [Entity] in the order in tree
+## Applies damage to only the first [Entity] in the order in tree.
 func damage_first(amount : float = Damage*Multiplier):
 	ray.enabled = true
 	for body in get_overlapping_bodies():
@@ -94,7 +94,7 @@ func damage_first(amount : float = Damage*Multiplier):
 		break
 	ray.enabled = false
 
-## Applies damage to only the [Entity] whose [b][i]center[/i][/b] is physically closest
+## Applies damage to only the [Entity] whose [b]center[/b] is physically closest.
 func damage_closest(amount : float = Damage*Multiplier):
 	ray.enabled = true
 	var closest : Entity = null
@@ -108,7 +108,7 @@ func damage_closest(amount : float = Damage*Multiplier):
 	hit.emit(closest, amount)
 	ray.enabled = false
 
-## Applies damage to all [Entity] within the area with the full [param Damage]
+## Applies damage to all [Entity] within the area with the full [param Damage].
 func damage_all(amount : float = Damage*Multiplier):
 	ray.enabled = true
 	for body in get_overlapping_bodies():
@@ -117,7 +117,8 @@ func damage_all(amount : float = Damage*Multiplier):
 		hit.emit(body, amount)
 	ray.enabled = false
 
-## Applies equally distributed [param Damage] to all [Entity] within the area
+## Applies equally distributed damage to all [Entity] within the area.[br]
+## The sum of all damages is equal to [param amount], which by default is [code]Damage * Multiplier[/code].
 func damage_distributed(amount : float = Damage*Multiplier):
 	ray.enabled = true
 	var victims : Array = []
