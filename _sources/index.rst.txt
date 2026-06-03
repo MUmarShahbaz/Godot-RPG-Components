@@ -1,17 +1,64 @@
-.. RPG Components 2D documentation master file, created by
-   sphinx-quickstart on Mon Jun  1 00:12:24 2026.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
+:github_url: hide
+:allow_comments: False
 
-RPG Components 2D documentation
-===============================
+.. _doc_class_reference:
 
-Add your content using ``reStructuredText`` syntax. See the
-`reStructuredText <https://www.sphinx-doc.org/en/master/usage/restructuredtext/index.html>`_
-documentation for details.
+RPG Components 2D
+===========
 
+Character
+=======
 
 .. toctree::
-   :maxdepth: 2
-   :caption: Contents:
+    :maxdepth: 1
+    :name: toc-class-ref-character
 
+    class_entity
+    class_dynamicentity
+
+Brain
+=======
+
+.. toctree::
+    :maxdepth: 1
+    :name: toc-class-ref-brain
+
+    class_charactercontroller
+
+Attacks
+=======
+
+.. toctree::
+    :maxdepth: 1
+    :name: toc-class-ref-attacks
+
+    class_meleeattack
+    class_projectileattack
+
+Objects
+=======
+
+.. toctree::
+    :maxdepth: 1
+    :name: toc-class-ref-objects
+
+    class_explosive
+    class_projectile
+
+Visuals & Audio
+=======
+
+.. toctree::
+    :maxdepth: 1
+    :name: toc-class-ref-visuals-and-audio
+
+    class_smoothcamera
+
+Singletons
+=======
+
+.. toctree::
+    :maxdepth: 1
+    :name: toc-class-ref-singletons
+
+    class_rpg_2d_controllers
