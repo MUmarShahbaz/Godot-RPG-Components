@@ -1,0 +1,137 @@
+name: Deploy Sphinx Docs
+
+on:
+    workflow_dispatch:
+    push:
+        branches:
+            - main
+            - docs
+
+jobs:
+    xml:
+        runs-on: ubuntu-latest
+        
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v4
+
+            - name: Download Godot
+              run: |
+                wget -q "https://downloads.godotengine.org/?version=4.6.1&flavor=stable&slug=linux.x86_64.zip&platform=linux.64" -O godot.zip
+                unzip -q godot.zip
+                mv Godot_v4.6.1-stable_linux.x86_64 godot
+                chmod +x godot
+                echo "$(pwd)" >> $GITHUB_PATH
+            
+            - name: Verify Godot
+              run: godot --version
+            
+            - name: Generate XML
+              run: |
+                godot --headless --path . --import
+                godot --headless --path . --doctool xml --no-docbase --gdscript-docs res://addons/rpg_components_2d
+                rm -f xml/addons--rpg_components_2d--rpg_components_2d.gd.xml
+            
+            - name: Upload generated XML
+              uses: actions/upload-artifact@v4
+              with:
+                name: xml-export
+                path: xml
+                if-no-files-found: error
+    rst:
+        runs-on: ubuntu-latest
+        needs: xml
+
+        steps:
+            - name: Download XML
+              uses: actions/download-artifact@v4
+              with:
+                name: xml-export
+                path: xml
+
+            - name: Create RST
+              id: make_rst
+              uses: MUmarShahbaz/Godot-XML-to-RST@main
+              with:
+                short_name: rpg_components_2d
+                name: RPG Components 2D
+                major: 0
+                minor: 0
+                patch: 1
+                status: beta
+                built-in: true
+                website: https://mumarshahbaz.github.io/RPG-Components
+                xml: xml
+
+            - name: Upload generated RST
+              uses: actions/upload-artifact@v4
+              with:
+                name: rst-export
+                path: ${{ steps.make_rst.outputs.path }}
+                if-no-files-found: error
+
+    sphinx:
+      runs-on: ubuntu-latest
+      needs: rst
+
+      steps:
+        - name: Checkout
+          uses: actions/checkout@v4
+          with:
+            ref: docs
+        
+        - name: Setup Python
+          uses: actions/setup-python@v5
+          with:
+            python-version: 3.14
+
+        - name: Install Dependencies
+          run: pip install sphinx sphinx_rtd_theme
+        
+        - name: Download RST
+          uses: actions/download-artifact@v4
+          with:
+            name: rst-export
+        
+        - name: Unzip RST Files and delete .zip
+          run: |
+            unzip -n converted.zip
+            rm converted.zip
+        
+        - name: Generate Documentation with Sphinx
+          run: make html
+        
+        - name: Upload generated HTML
+          uses: actions/upload-artifact@v4
+          with:
+            name: sphinx-export
+            path: _build/html
+            if-no-files-found: error
+
+    deploy:
+      runs-on: ubuntu-latest
+      needs: sphinx
+
+      steps:
+        - name: Checkout
+          uses: actions/checkout@v4
+          with:
+            ref: gh-pages
+        
+        - name: Clear All
+          run: find . -mindepth 1 -maxdepth 1 ! -name '.git' -exec rm -rf {} +
+        
+        - name: Download Latest Build
+          uses: actions/download-artifact@v4
+          with:
+            name: sphinx-export
+        
+        - name: Commit and push
+          run: |
+            echo "" > .nojekyll
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+            git add .
+            git commit -m "Updated docs" || exit 0
+            git push origin gh-pages
