@@ -1,0 +1,927 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GraphEdit &mdash; RPG Components 2D 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=d45e8c67"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            RPG Components 2D
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">GraphEdit</a><ul>
+<li><a class="reference internal" href="#description">Description</a></li>
+<li><a class="reference internal" href="#properties">Properties</a></li>
+<li><a class="reference internal" href="#methods">Methods</a></li>
+<li><a class="reference internal" href="#theme-properties">Theme Properties</a></li>
+<li><a class="reference internal" href="#signals">Signals</a></li>
+<li><a class="reference internal" href="#enumerations">Enumerations</a></li>
+<li><a class="reference internal" href="#property-descriptions">Property Descriptions</a></li>
+<li><a class="reference internal" href="#method-descriptions">Method Descriptions</a></li>
+<li><a class="reference internal" href="#theme-property-descriptions">Theme Property Descriptions</a></li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">RPG Components 2D</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">GraphEdit</li>
+      <li class="wy-breadcrumbs-aside">
+              <!-- User defined GitHub URL -->
+              <a href="hide" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="graphedit">
+<span id="class-graphedit"></span><h1>GraphEdit<a class="headerlink" href="#graphedit" title="Link to this heading"></a></h1>
+<p><strong>Inherits:</strong> <a class="reference internal" href="class_control.html#class-control"><span class="std std-ref">Control</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_canvasitem.html#class-canvasitem"><span class="std std-ref">CanvasItem</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_node.html#class-node"><span class="std std-ref">Node</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_object.html#class-object"><span class="std std-ref">Object</span></a></p>
+<p>An editor for graph-like structures, using <a class="reference internal" href="class_graphnode.html#class-graphnode"><span class="std std-ref">GraphNode</span></a>s.</p>
+<section class="classref-introduction-group" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
+<p><strong>GraphEdit</strong> provides tools for creation, manipulation, and display of various graphs. Its main purpose in the engine is to power the visual programming systems, such as visual shaders, but it is also available for use in user projects.</p>
+<p><strong>GraphEdit</strong> by itself is only an empty container, representing an infinite grid where <a class="reference internal" href="class_graphnode.html#class-graphnode"><span class="std std-ref">GraphNode</span></a>s can be placed. Each <a class="reference internal" href="class_graphnode.html#class-graphnode"><span class="std std-ref">GraphNode</span></a> represents a node in the graph, a single unit of data in the connected scheme. <strong>GraphEdit</strong>, in turn, helps to control various interactions with nodes and between nodes. When the user attempts to connect, disconnect, or delete a <a class="reference internal" href="class_graphnode.html#class-graphnode"><span class="std std-ref">GraphNode</span></a>, a signal is emitted in the <strong>GraphEdit</strong>, but no action is taken by default. It is the responsibility of the programmer utilizing this control to implement the necessary logic to determine how each request should be handled.</p>
+<p><strong>Performance:</strong> It is greatly advised to enable low-processor usage mode (see <a class="reference internal" href="class_os.html#class-os-property-low-processor-usage-mode"><span class="std std-ref">OS.low_processor_usage_mode</span></a>) when using GraphEdits.</p>
+<p><strong>Note:</strong> Keep in mind that <a class="reference internal" href="class_node.html#class-node-method-get-children"><span class="std std-ref">Node.get_children()</span></a> will also return the connection layer node named <code class="docutils literal notranslate"><span class="pre">_connection_layer</span></code> due to technical limitations. This behavior may change in future releases.</p>
+</section>
+<section class="classref-reftable-group" id="properties">
+<h2>Properties<a class="headerlink" href="#properties" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p>clip_contents</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">true</span></code> (overrides <a class="reference internal" href="class_control.html#class-control-property-clip-contents"><span class="std std-ref">Control</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-graphedit-property-connection-lines-antialiased"><span class="std std-ref">connection_lines_antialiased</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-graphedit-property-connection-lines-curvature"><span class="std std-ref">connection_lines_curvature</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0.5</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-graphedit-property-connection-lines-thickness"><span class="std std-ref">connection_lines_thickness</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">4.0</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_array.html#class-array"><span class="std std-ref">Array</span></a>[<a class="reference internal" href="class_dictionary.html#class-dictionary"><span class="std std-ref">Dictionary</span></a>]</p></td>
+<td><p><a class="reference internal" href="#class-graphedit-property-connections"><span class="std std-ref">connections</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">[]</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_control.html#enum-control-focusmode"><span class="std std-ref">FocusMode</span></a></p></td>
+<td><p>focus_mode</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">2</span></code> (overrides <a class="reference internal" href="class_control.html#class-control-property-focus-mode"><span class="std std-ref">Control</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#enum-graphedit-gridpattern"><span class="std std-ref">GridPattern</span></a></p></td>
+<td><p><a class="reference internal" href="#class-graphedit-property-grid-pattern"><span class="std std-ref">grid_pattern</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-graphedit-property-minimap-enabled"><span class="std std-ref">minimap_enabled</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-graphedit-property-minimap-opacity"><span class="std std-ref">minimap_opacity</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0.65</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a></p></td>
+<td><p><a class="reference internal" href="#class-graphedit-property-minimap-size"><span class="std std-ref">minimap_size</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Vector2(240,</span> <span class="pre">160)</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#enum-graphedit-panningscheme"><span class="std std-ref">PanningScheme</span></a></p></td>
+<td><p><a class="reference internal" href="#class-graphedit-property-panning-scheme"><span class="std std-ref">panning_scheme</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-graphedit-property-right-disconnects"><span class="std std-ref">right_disconnects</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a></p></td>
+<td><p><a class="reference internal" href="#class-graphedit-property-scroll-offset"><span class="std std-ref">scroll_offset</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Vector2(0,</span> <span class="pre">0)</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-graphedit-property-show-arrange-button"><span class="std std-ref">show_arrange_button</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-graphedit-property-show-grid"><span class="std std-ref">show_grid</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-graphedit-property-show-grid-buttons"><span class="std std-ref">show_grid_buttons</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-graphedit-property-show-menu"><span class="std std-ref">show_menu</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-graphedit-property-show-minimap-button"><span class="std std-ref">show_minimap_button</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-graphedit-property-show-zoom-buttons"><span class="std std-ref">show_zoom_buttons</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-graphedit-property-show-zoom-label"><span class="std std-ref">show_zoom_label</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-graphedit-property-snapping-distance"><span class="std std-ref">snapping_distance</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">20</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-graphedit-property-snapping-enabled"><span class="std std-ref">snapping_enabled</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_dictionary.html#class-dictionary"><span class="std std-ref">Dictionary</span></a></p></td>
+<td><p><a class="reference internal" href="#class-graphedit-property-type-names"><span class="std std-ref">type_names</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">{}</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-graphedit-property-zoom"><span class="std std-ref">zoom</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">1.0</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-graphedit-property-zoom-max"><span class="std std-ref">zoom_max</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">2.0736003</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-graphedit-property-zoom-min"><span class="std std-ref">zoom_min</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0.23256795</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-graphedit-property-zoom-step"><span class="std std-ref">zoom_step</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">1.2</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section class="classref-reftable-group" id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_packedvector2array.html#class-packedvector2array"><span class="std std-ref">PackedVector2Array</span></a></p></td>
+<td><p><a class="reference internal" href="#class-graphedit-private-method-get-connection-line"><span class="std std-ref">_get_connection_line</span></a>(from_position: <a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a>, to_position: <a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-graphedit-private-method-is-in-input-hotzone"><span class="std std-ref">_is_in_input_hotzone</span></a>(in_node: <a class="reference internal" href="class_object.html#class-object"><span class="std std-ref">Object</span></a>, in_port: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, mouse_position: <a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-graphedit-private-method-is-in-output-hotzone"><span class="std std-ref">_is_in_output_hotzone</span></a>(in_node: <a class="reference internal" href="class_object.html#class-object"><span class="std std-ref">Object</span></a>, in_port: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, mouse_position: <a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-graphedit-private-method-is-node-hover-valid"><span class="std std-ref">_is_node_hover_valid</span></a>(from_node: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>, from_port: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, to_node: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>, to_port: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-graphedit-method-add-valid-connection-type"><span class="std std-ref">add_valid_connection_type</span></a>(from_type: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, to_type: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-graphedit-method-add-valid-left-disconnect-type"><span class="std std-ref">add_valid_left_disconnect_type</span></a>(type: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-graphedit-method-add-valid-right-disconnect-type"><span class="std std-ref">add_valid_right_disconnect_type</span></a>(type: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-graphedit-method-arrange-nodes"><span class="std std-ref">arrange_nodes</span></a>()</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-graphedit-method-attach-graph-element-to-frame"><span class="std std-ref">attach_graph_element_to_frame</span></a>(element: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>, frame: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-graphedit-method-clear-connections"><span class="std std-ref">clear_connections</span></a>()</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_%40globalscope.html#enum-globalscope-error"><span class="std std-ref">Error</span></a></p></td>
+<td><p><a class="reference internal" href="#class-graphedit-method-connect-node"><span class="std std-ref">connect_node</span></a>(from_node: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>, from_port: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, to_node: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>, to_port: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, keep_alive: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = false)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-graphedit-method-detach-graph-element-from-frame"><span class="std std-ref">detach_graph_element_from_frame</span></a>(element: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-graphedit-method-disconnect-node"><span class="std std-ref">disconnect_node</span></a>(from_node: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>, from_port: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, to_node: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>, to_port: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-graphedit-method-force-connection-drag-end"><span class="std std-ref">force_connection_drag_end</span></a>()</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_array.html#class-array"><span class="std std-ref">Array</span></a>[<a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>]</p></td>
+<td><p><a class="reference internal" href="#class-graphedit-method-get-attached-nodes-of-frame"><span class="std std-ref">get_attached_nodes_of_frame</span></a>(frame: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_dictionary.html#class-dictionary"><span class="std std-ref">Dictionary</span></a></p></td>
+<td><p><a class="reference internal" href="#class-graphedit-method-get-closest-connection-at-point"><span class="std std-ref">get_closest_connection_at_point</span></a>(point: <a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a>, max_distance: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> = 4.0) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-graphedit-method-get-connection-count"><span class="std std-ref">get_connection_count</span></a>(from_node: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>, from_port: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_packedvector2array.html#class-packedvector2array"><span class="std std-ref">PackedVector2Array</span></a></p></td>
+<td><p><a class="reference internal" href="#class-graphedit-method-get-connection-line"><span class="std std-ref">get_connection_line</span></a>(from_node: <a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a>, to_node: <a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_array.html#class-array"><span class="std std-ref">Array</span></a>[<a class="reference internal" href="class_dictionary.html#class-dictionary"><span class="std std-ref">Dictionary</span></a>]</p></td>
+<td><p><a class="reference internal" href="#class-graphedit-method-get-connection-list-from-node"><span class="std std-ref">get_connection_list_from_node</span></a>(node: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_array.html#class-array"><span class="std std-ref">Array</span></a>[<a class="reference internal" href="class_dictionary.html#class-dictionary"><span class="std std-ref">Dictionary</span></a>]</p></td>
+<td><p><a class="reference internal" href="#class-graphedit-method-get-connections-intersecting-with-rect"><span class="std std-ref">get_connections_intersecting_with_rect</span></a>(rect: <a class="reference internal" href="class_rect2.html#class-rect2"><span class="std std-ref">Rect2</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_graphframe.html#class-graphframe"><span class="std std-ref">GraphFrame</span></a></p></td>
+<td><p><a class="reference internal" href="#class-graphedit-method-get-element-frame"><span class="std std-ref">get_element_frame</span></a>(element: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_hboxcontainer.html#class-hboxcontainer"><span class="std std-ref">HBoxContainer</span></a></p></td>
+<td><p><a class="reference internal" href="#class-graphedit-method-get-menu-hbox"><span class="std std-ref">get_menu_hbox</span></a>()</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-graphedit-method-is-node-connected"><span class="std std-ref">is_node_connected</span></a>(from_node: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>, from_port: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, to_node: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>, to_port: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-graphedit-method-is-valid-connection-type"><span class="std std-ref">is_valid_connection_type</span></a>(from_type: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, to_type: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-graphedit-method-remove-valid-connection-type"><span class="std std-ref">remove_valid_connection_type</span></a>(from_type: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, to_type: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-graphedit-method-remove-valid-left-disconnect-type"><span class="std std-ref">remove_valid_left_disconnect_type</span></a>(type: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-graphedit-method-remove-valid-right-disconnect-type"><span class="std std-ref">remove_valid_right_disconnect_type</span></a>(type: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-graphedit-method-set-connection-activity"><span class="std std-ref">set_connection_activity</span></a>(from_node: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>, from_port: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, to_node: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>, to_port: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, amount: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-graphedit-method-set-selected"><span class="std std-ref">set_selected</span></a>(node: <a class="reference internal" href="class_node.html#class-node"><span class="std std-ref">Node</span></a>)</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section class="classref-reftable-group" id="theme-properties">
+<h2>Theme Properties<a class="headerlink" href="#theme-properties" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_color.html#class-color"><span class="std std-ref">Color</span></a></p></td>
+<td><p><a class="reference internal" href="#class-graphedit-theme-color-activity"><span class="std std-ref">activity</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Color(1,</span> <span class="pre">1,</span> <span class="pre">1,</span> <span class="pre">1)</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_color.html#class-color"><span class="std std-ref">Color</span></a></p></td>
+<td><p><a class="reference internal" href="#class-graphedit-theme-color-connection-hover-tint-color"><span class="std std-ref">connection_hover_tint_color</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Color(0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0.3)</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_color.html#class-color"><span class="std std-ref">Color</span></a></p></td>
+<td><p><a class="reference internal" href="#class-graphedit-theme-color-connection-rim-color"><span class="std std-ref">connection_rim_color</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Color(0.1,</span> <span class="pre">0.1,</span> <span class="pre">0.1,</span> <span class="pre">0.6)</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_color.html#class-color"><span class="std std-ref">Color</span></a></p></td>
+<td><p><a class="reference internal" href="#class-graphedit-theme-color-connection-valid-target-tint-color"><span class="std std-ref">connection_valid_target_tint_color</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Color(1,</span> <span class="pre">1,</span> <span class="pre">1,</span> <span class="pre">0.4)</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_color.html#class-color"><span class="std std-ref">Color</span></a></p></td>
+<td><p><a class="reference internal" href="#class-graphedit-theme-color-grid-major"><span class="std std-ref">grid_major</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Color(1,</span> <span class="pre">1,</span> <span class="pre">1,</span> <span class="pre">0.2)</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_color.html#class-color"><span class="std std-ref">Color</span></a></p></td>
+<td><p><a class="reference internal" href="#class-graphedit-theme-color-grid-minor"><span class="std std-ref">grid_minor</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Color(1,</span> <span class="pre">1,</span> <span class="pre">1,</span> <span class="pre">0.05)</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_color.html#class-color"><span class="std std-ref">Color</span></a></p></td>
+<td><p><a class="reference internal" href="#class-graphedit-theme-color-selection-fill"><span class="std std-ref">selection_fill</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Color(1,</span> <span class="pre">1,</span> <span class="pre">1,</span> <span class="pre">0.3)</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_color.html#class-color"><span class="std std-ref">Color</span></a></p></td>
+<td><p><a class="reference internal" href="#class-graphedit-theme-color-selection-stroke"><span class="std std-ref">selection_stroke</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Color(1,</span> <span class="pre">1,</span> <span class="pre">1,</span> <span class="pre">0.8)</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-graphedit-theme-constant-connection-hover-thickness"><span class="std std-ref">connection_hover_thickness</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-graphedit-theme-constant-port-hotzone-inner-extent"><span class="std std-ref">port_hotzone_inner_extent</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">22</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-graphedit-theme-constant-port-hotzone-outer-extent"><span class="std std-ref">port_hotzone_outer_extent</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">26</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_texture2d.html#class-texture2d"><span class="std std-ref">Texture2D</span></a></p></td>
+<td><p><a class="reference internal" href="#class-graphedit-theme-icon-grid-toggle"><span class="std std-ref">grid_toggle</span></a></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_texture2d.html#class-texture2d"><span class="std std-ref">Texture2D</span></a></p></td>
+<td><p><a class="reference internal" href="#class-graphedit-theme-icon-layout"><span class="std std-ref">layout</span></a></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_texture2d.html#class-texture2d"><span class="std std-ref">Texture2D</span></a></p></td>
+<td><p><a class="reference internal" href="#class-graphedit-theme-icon-minimap-toggle"><span class="std std-ref">minimap_toggle</span></a></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_texture2d.html#class-texture2d"><span class="std std-ref">Texture2D</span></a></p></td>
+<td><p><a class="reference internal" href="#class-graphedit-theme-icon-snapping-toggle"><span class="std std-ref">snapping_toggle</span></a></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_texture2d.html#class-texture2d"><span class="std std-ref">Texture2D</span></a></p></td>
+<td><p><a class="reference internal" href="#class-graphedit-theme-icon-zoom-in"><span class="std std-ref">zoom_in</span></a></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_texture2d.html#class-texture2d"><span class="std std-ref">Texture2D</span></a></p></td>
+<td><p><a class="reference internal" href="#class-graphedit-theme-icon-zoom-out"><span class="std std-ref">zoom_out</span></a></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_texture2d.html#class-texture2d"><span class="std std-ref">Texture2D</span></a></p></td>
+<td><p><a class="reference internal" href="#class-graphedit-theme-icon-zoom-reset"><span class="std std-ref">zoom_reset</span></a></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_stylebox.html#class-stylebox"><span class="std std-ref">StyleBox</span></a></p></td>
+<td><p><a class="reference internal" href="#class-graphedit-theme-style-menu-panel"><span class="std std-ref">menu_panel</span></a></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_stylebox.html#class-stylebox"><span class="std std-ref">StyleBox</span></a></p></td>
+<td><p><a class="reference internal" href="#class-graphedit-theme-style-panel"><span class="std std-ref">panel</span></a></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_stylebox.html#class-stylebox"><span class="std std-ref">StyleBox</span></a></p></td>
+<td><p><a class="reference internal" href="#class-graphedit-theme-style-panel-focus"><span class="std std-ref">panel_focus</span></a></p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="signals">
+<h2>Signals<a class="headerlink" href="#signals" title="Link to this heading"></a></h2>
+<p class="classref-signal" id="class-graphedit-signal-begin-node-move"><strong>begin_node_move</strong>() <a class="reference internal" href="#class-graphedit-signal-begin-node-move"><span class="std std-ref">🔗</span></a></p>
+<p>Emitted at the beginning of a <a class="reference internal" href="class_graphelement.html#class-graphelement"><span class="std std-ref">GraphElement</span></a>’s movement.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-signal" id="class-graphedit-signal-connection-drag-ended"><strong>connection_drag_ended</strong>() <a class="reference internal" href="#class-graphedit-signal-connection-drag-ended"><span class="std std-ref">🔗</span></a></p>
+<p>Emitted at the end of a connection drag.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-signal" id="class-graphedit-signal-connection-drag-started"><strong>connection_drag_started</strong>(from_node: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>, from_port: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, is_output: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>) <a class="reference internal" href="#class-graphedit-signal-connection-drag-started"><span class="std std-ref">🔗</span></a></p>
+<p>Emitted at the beginning of a connection drag.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-signal" id="class-graphedit-signal-connection-from-empty"><strong>connection_from_empty</strong>(to_node: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>, to_port: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, release_position: <a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a>) <a class="reference internal" href="#class-graphedit-signal-connection-from-empty"><span class="std std-ref">🔗</span></a></p>
+<p>Emitted when user drags a connection from an input port into the empty space of the graph.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-signal" id="class-graphedit-signal-connection-request"><strong>connection_request</strong>(from_node: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>, from_port: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, to_node: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>, to_port: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <a class="reference internal" href="#class-graphedit-signal-connection-request"><span class="std std-ref">🔗</span></a></p>
+<p>Emitted to the GraphEdit when the connection between the <code class="docutils literal notranslate"><span class="pre">from_port</span></code> of the <code class="docutils literal notranslate"><span class="pre">from_node</span></code> <a class="reference internal" href="class_graphnode.html#class-graphnode"><span class="std std-ref">GraphNode</span></a> and the <code class="docutils literal notranslate"><span class="pre">to_port</span></code> of the <code class="docutils literal notranslate"><span class="pre">to_node</span></code> <a class="reference internal" href="class_graphnode.html#class-graphnode"><span class="std std-ref">GraphNode</span></a> is attempted to be created.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-signal" id="class-graphedit-signal-connection-to-empty"><strong>connection_to_empty</strong>(from_node: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>, from_port: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, release_position: <a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a>) <a class="reference internal" href="#class-graphedit-signal-connection-to-empty"><span class="std std-ref">🔗</span></a></p>
+<p>Emitted when user drags a connection from an output port into the empty space of the graph.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-signal" id="class-graphedit-signal-copy-nodes-request"><strong>copy_nodes_request</strong>() <a class="reference internal" href="#class-graphedit-signal-copy-nodes-request"><span class="std std-ref">🔗</span></a></p>
+<p>Emitted when this <strong>GraphEdit</strong> captures a <code class="docutils literal notranslate"><span class="pre">ui_copy</span></code> action (<kbd class="kbd docutils literal notranslate">Ctrl</kbd> <kbd class="kbd docutils literal notranslate"></kbd>+<kbd class="kbd docutils literal notranslate"></kbd> <kbd class="kbd docutils literal notranslate">C</kbd> by default). In general, this signal indicates that the selected <a class="reference internal" href="class_graphelement.html#class-graphelement"><span class="std std-ref">GraphElement</span></a>s should be copied.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-signal" id="class-graphedit-signal-cut-nodes-request"><strong>cut_nodes_request</strong>() <a class="reference internal" href="#class-graphedit-signal-cut-nodes-request"><span class="std std-ref">🔗</span></a></p>
+<p>Emitted when this <strong>GraphEdit</strong> captures a <code class="docutils literal notranslate"><span class="pre">ui_cut</span></code> action (<kbd class="kbd docutils literal notranslate">Ctrl</kbd> <kbd class="kbd docutils literal notranslate"></kbd>+<kbd class="kbd docutils literal notranslate"></kbd> <kbd class="kbd docutils literal notranslate">X</kbd> by default). In general, this signal indicates that the selected <a class="reference internal" href="class_graphelement.html#class-graphelement"><span class="std std-ref">GraphElement</span></a>s should be cut.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-signal" id="class-graphedit-signal-delete-nodes-request"><strong>delete_nodes_request</strong>(nodes: <a class="reference internal" href="class_array.html#class-array"><span class="std std-ref">Array</span></a>[<a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>]) <a class="reference internal" href="#class-graphedit-signal-delete-nodes-request"><span class="std std-ref">🔗</span></a></p>
+<p>Emitted when this <strong>GraphEdit</strong> captures a <code class="docutils literal notranslate"><span class="pre">ui_graph_delete</span></code> action (<kbd class="kbd docutils literal notranslate">Delete</kbd> by default).</p>
+<p><code class="docutils literal notranslate"><span class="pre">nodes</span></code> is an array of node names that should be removed. These usually include all selected nodes.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-signal" id="class-graphedit-signal-disconnection-request"><strong>disconnection_request</strong>(from_node: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>, from_port: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, to_node: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>, to_port: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <a class="reference internal" href="#class-graphedit-signal-disconnection-request"><span class="std std-ref">🔗</span></a></p>
+<p>Emitted to the GraphEdit when the connection between <code class="docutils literal notranslate"><span class="pre">from_port</span></code> of <code class="docutils literal notranslate"><span class="pre">from_node</span></code> <a class="reference internal" href="class_graphnode.html#class-graphnode"><span class="std std-ref">GraphNode</span></a> and <code class="docutils literal notranslate"><span class="pre">to_port</span></code> of <code class="docutils literal notranslate"><span class="pre">to_node</span></code> <a class="reference internal" href="class_graphnode.html#class-graphnode"><span class="std std-ref">GraphNode</span></a> is attempted to be removed.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-signal" id="class-graphedit-signal-duplicate-nodes-request"><strong>duplicate_nodes_request</strong>() <a class="reference internal" href="#class-graphedit-signal-duplicate-nodes-request"><span class="std std-ref">🔗</span></a></p>
+<p>Emitted when this <strong>GraphEdit</strong> captures a <code class="docutils literal notranslate"><span class="pre">ui_graph_duplicate</span></code> action (<kbd class="kbd docutils literal notranslate">Ctrl</kbd> <kbd class="kbd docutils literal notranslate"></kbd>+<kbd class="kbd docutils literal notranslate"></kbd> <kbd class="kbd docutils literal notranslate">D</kbd> by default). In general, this signal indicates that the selected <a class="reference internal" href="class_graphelement.html#class-graphelement"><span class="std std-ref">GraphElement</span></a>s should be duplicated.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-signal" id="class-graphedit-signal-end-node-move"><strong>end_node_move</strong>() <a class="reference internal" href="#class-graphedit-signal-end-node-move"><span class="std std-ref">🔗</span></a></p>
+<p>Emitted at the end of a <a class="reference internal" href="class_graphelement.html#class-graphelement"><span class="std std-ref">GraphElement</span></a>’s movement.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-signal" id="class-graphedit-signal-frame-rect-changed"><strong>frame_rect_changed</strong>(frame: <a class="reference internal" href="class_graphframe.html#class-graphframe"><span class="std std-ref">GraphFrame</span></a>, new_rect: <a class="reference internal" href="class_rect2.html#class-rect2"><span class="std std-ref">Rect2</span></a>) <a class="reference internal" href="#class-graphedit-signal-frame-rect-changed"><span class="std std-ref">🔗</span></a></p>
+<p>Emitted when the <a class="reference internal" href="class_graphframe.html#class-graphframe"><span class="std std-ref">GraphFrame</span></a> <code class="docutils literal notranslate"><span class="pre">frame</span></code> is resized to <code class="docutils literal notranslate"><span class="pre">new_rect</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-signal" id="class-graphedit-signal-graph-elements-linked-to-frame-request"><strong>graph_elements_linked_to_frame_request</strong>(elements: <a class="reference internal" href="class_array.html#class-array"><span class="std std-ref">Array</span></a>, frame: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>) <a class="reference internal" href="#class-graphedit-signal-graph-elements-linked-to-frame-request"><span class="std std-ref">🔗</span></a></p>
+<p>Emitted when one or more <a class="reference internal" href="class_graphelement.html#class-graphelement"><span class="std std-ref">GraphElement</span></a>s are dropped onto the <a class="reference internal" href="class_graphframe.html#class-graphframe"><span class="std std-ref">GraphFrame</span></a> named <code class="docutils literal notranslate"><span class="pre">frame</span></code>, when they were not previously attached to any other one.</p>
+<p><code class="docutils literal notranslate"><span class="pre">elements</span></code> is an array of <a class="reference internal" href="class_graphelement.html#class-graphelement"><span class="std std-ref">GraphElement</span></a>s to be attached.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-signal" id="class-graphedit-signal-node-deselected"><strong>node_deselected</strong>(node: <a class="reference internal" href="class_node.html#class-node"><span class="std std-ref">Node</span></a>) <a class="reference internal" href="#class-graphedit-signal-node-deselected"><span class="std std-ref">🔗</span></a></p>
+<p>Emitted when the given <a class="reference internal" href="class_graphelement.html#class-graphelement"><span class="std std-ref">GraphElement</span></a> node is deselected.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-signal" id="class-graphedit-signal-node-selected"><strong>node_selected</strong>(node: <a class="reference internal" href="class_node.html#class-node"><span class="std std-ref">Node</span></a>) <a class="reference internal" href="#class-graphedit-signal-node-selected"><span class="std std-ref">🔗</span></a></p>
+<p>Emitted when the given <a class="reference internal" href="class_graphelement.html#class-graphelement"><span class="std std-ref">GraphElement</span></a> node is selected.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-signal" id="class-graphedit-signal-paste-nodes-request"><strong>paste_nodes_request</strong>() <a class="reference internal" href="#class-graphedit-signal-paste-nodes-request"><span class="std std-ref">🔗</span></a></p>
+<p>Emitted when this <strong>GraphEdit</strong> captures a <code class="docutils literal notranslate"><span class="pre">ui_paste</span></code> action (<kbd class="kbd docutils literal notranslate">Ctrl</kbd> <kbd class="kbd docutils literal notranslate"></kbd>+<kbd class="kbd docutils literal notranslate"></kbd> <kbd class="kbd docutils literal notranslate">V</kbd> by default). In general, this signal indicates that previously copied <a class="reference internal" href="class_graphelement.html#class-graphelement"><span class="std std-ref">GraphElement</span></a>s should be pasted.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-signal" id="class-graphedit-signal-popup-request"><strong>popup_request</strong>(at_position: <a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a>) <a class="reference internal" href="#class-graphedit-signal-popup-request"><span class="std std-ref">🔗</span></a></p>
+<p>Emitted when a popup is requested. Happens on right-clicking in the GraphEdit. <code class="docutils literal notranslate"><span class="pre">at_position</span></code> is the position of the mouse pointer when the signal is sent.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-signal" id="class-graphedit-signal-scroll-offset-changed"><strong>scroll_offset_changed</strong>(offset: <a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a>) <a class="reference internal" href="#class-graphedit-signal-scroll-offset-changed"><span class="std std-ref">🔗</span></a></p>
+<p>Emitted when the scroll offset is changed by the user. It will not be emitted when changed in code.</p>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="enumerations">
+<h2>Enumerations<a class="headerlink" href="#enumerations" title="Link to this heading"></a></h2>
+<p class="classref-enumeration" id="enum-graphedit-panningscheme">enum <strong>PanningScheme</strong>: <a class="reference internal" href="#enum-graphedit-panningscheme"><span class="std std-ref">🔗</span></a></p>
+<p class="classref-enumeration-constant" id="class-graphedit-constant-scroll-zooms"><a class="reference internal" href="#enum-graphedit-panningscheme"><span class="std std-ref">PanningScheme</span></a> <strong>SCROLL_ZOOMS</strong> = <code class="docutils literal notranslate"><span class="pre">0</span></code></p>
+<p><kbd class="kbd docutils literal notranslate">Mouse</kbd> <kbd class="kbd docutils literal notranslate">Wheel</kbd> will zoom, <kbd class="kbd docutils literal notranslate">Ctrl</kbd> <kbd class="kbd docutils literal notranslate"></kbd>+<kbd class="kbd docutils literal notranslate"></kbd> <kbd class="kbd docutils literal notranslate">Mouse</kbd> <kbd class="kbd docutils literal notranslate">Wheel</kbd> will move the view.</p>
+<p class="classref-enumeration-constant" id="class-graphedit-constant-scroll-pans"><a class="reference internal" href="#enum-graphedit-panningscheme"><span class="std std-ref">PanningScheme</span></a> <strong>SCROLL_PANS</strong> = <code class="docutils literal notranslate"><span class="pre">1</span></code></p>
+<p><kbd class="kbd docutils literal notranslate">Mouse</kbd> <kbd class="kbd docutils literal notranslate">Wheel</kbd> will move the view, <kbd class="kbd docutils literal notranslate">Ctrl</kbd> <kbd class="kbd docutils literal notranslate"></kbd>+<kbd class="kbd docutils literal notranslate"></kbd> <kbd class="kbd docutils literal notranslate">Mouse</kbd> <kbd class="kbd docutils literal notranslate">Wheel</kbd> will zoom.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-enumeration" id="enum-graphedit-gridpattern">enum <strong>GridPattern</strong>: <a class="reference internal" href="#enum-graphedit-gridpattern"><span class="std std-ref">🔗</span></a></p>
+<p class="classref-enumeration-constant" id="class-graphedit-constant-grid-pattern-lines"><a class="reference internal" href="#enum-graphedit-gridpattern"><span class="std std-ref">GridPattern</span></a> <strong>GRID_PATTERN_LINES</strong> = <code class="docutils literal notranslate"><span class="pre">0</span></code></p>
+<p>Draw the grid using solid lines.</p>
+<p class="classref-enumeration-constant" id="class-graphedit-constant-grid-pattern-dots"><a class="reference internal" href="#enum-graphedit-gridpattern"><span class="std std-ref">GridPattern</span></a> <strong>GRID_PATTERN_DOTS</strong> = <code class="docutils literal notranslate"><span class="pre">1</span></code></p>
+<p>Draw the grid using dots.</p>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="property-descriptions">
+<h2>Property Descriptions<a class="headerlink" href="#property-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-property" id="class-graphedit-property-connection-lines-antialiased"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>connection_lines_antialiased</strong> = <code class="docutils literal notranslate"><span class="pre">true</span></code> <a class="reference internal" href="#class-graphedit-property-connection-lines-antialiased"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_connection_lines_antialiased</strong>(value: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_connection_lines_antialiased</strong>()</p></li>
+</ul>
+<p>If <code class="docutils literal notranslate"><span class="pre">true</span></code>, the lines between nodes will use antialiasing.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-graphedit-property-connection-lines-curvature"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>connection_lines_curvature</strong> = <code class="docutils literal notranslate"><span class="pre">0.5</span></code> <a class="reference internal" href="#class-graphedit-property-connection-lines-curvature"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_connection_lines_curvature</strong>(value: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>get_connection_lines_curvature</strong>()</p></li>
+</ul>
+<p>The curvature of the lines between the nodes. 0 results in straight lines.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-graphedit-property-connection-lines-thickness"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>connection_lines_thickness</strong> = <code class="docutils literal notranslate"><span class="pre">4.0</span></code> <a class="reference internal" href="#class-graphedit-property-connection-lines-thickness"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_connection_lines_thickness</strong>(value: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>get_connection_lines_thickness</strong>()</p></li>
+</ul>
+<p>The thickness of the lines between the nodes.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-graphedit-property-connections"><a class="reference internal" href="class_array.html#class-array"><span class="std std-ref">Array</span></a>[<a class="reference internal" href="class_dictionary.html#class-dictionary"><span class="std std-ref">Dictionary</span></a>] <strong>connections</strong> = <code class="docutils literal notranslate"><span class="pre">[]</span></code> <a class="reference internal" href="#class-graphedit-property-connections"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_connections</strong>(value: <a class="reference internal" href="class_array.html#class-array"><span class="std std-ref">Array</span></a>[<a class="reference internal" href="class_dictionary.html#class-dictionary"><span class="std std-ref">Dictionary</span></a>])</p></li>
+<li><p><a class="reference internal" href="class_array.html#class-array"><span class="std std-ref">Array</span></a>[<a class="reference internal" href="class_dictionary.html#class-dictionary"><span class="std std-ref">Dictionary</span></a>] <strong>get_connection_list</strong>()</p></li>
+</ul>
+<p>The connections between <a class="reference internal" href="class_graphnode.html#class-graphnode"><span class="std std-ref">GraphNode</span></a>s.</p>
+<p>A connection is represented as a <a class="reference internal" href="class_dictionary.html#class-dictionary"><span class="std std-ref">Dictionary</span></a> in the form of:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="n">from_node</span><span class="p">:</span> <span class="n">StringName</span><span class="p">,</span>
+    <span class="n">from_port</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="n">to_node</span><span class="p">:</span> <span class="n">StringName</span><span class="p">,</span>
+    <span class="n">to_port</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="n">keep_alive</span><span class="p">:</span> <span class="nb">bool</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Connections with <code class="docutils literal notranslate"><span class="pre">keep_alive</span></code> set to <code class="docutils literal notranslate"><span class="pre">false</span></code> may be deleted automatically if invalid during a redraw.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-graphedit-property-grid-pattern"><a class="reference internal" href="#enum-graphedit-gridpattern"><span class="std std-ref">GridPattern</span></a> <strong>grid_pattern</strong> = <code class="docutils literal notranslate"><span class="pre">0</span></code> <a class="reference internal" href="#class-graphedit-property-grid-pattern"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_grid_pattern</strong>(value: <a class="reference internal" href="#enum-graphedit-gridpattern"><span class="std std-ref">GridPattern</span></a>)</p></li>
+<li><p><a class="reference internal" href="#enum-graphedit-gridpattern"><span class="std std-ref">GridPattern</span></a> <strong>get_grid_pattern</strong>()</p></li>
+</ul>
+<p>The pattern used for drawing the grid.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-graphedit-property-minimap-enabled"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>minimap_enabled</strong> = <code class="docutils literal notranslate"><span class="pre">true</span></code> <a class="reference internal" href="#class-graphedit-property-minimap-enabled"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_minimap_enabled</strong>(value: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_minimap_enabled</strong>()</p></li>
+</ul>
+<p>If <code class="docutils literal notranslate"><span class="pre">true</span></code>, the minimap is visible.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-graphedit-property-minimap-opacity"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>minimap_opacity</strong> = <code class="docutils literal notranslate"><span class="pre">0.65</span></code> <a class="reference internal" href="#class-graphedit-property-minimap-opacity"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_minimap_opacity</strong>(value: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>get_minimap_opacity</strong>()</p></li>
+</ul>
+<p>The opacity of the minimap rectangle.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-graphedit-property-minimap-size"><a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a> <strong>minimap_size</strong> = <code class="docutils literal notranslate"><span class="pre">Vector2(240,</span> <span class="pre">160)</span></code> <a class="reference internal" href="#class-graphedit-property-minimap-size"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_minimap_size</strong>(value: <a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a> <strong>get_minimap_size</strong>()</p></li>
+</ul>
+<p>The size of the minimap rectangle. The map itself is based on the size of the grid area and is scaled to fit this rectangle.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-graphedit-property-panning-scheme"><a class="reference internal" href="#enum-graphedit-panningscheme"><span class="std std-ref">PanningScheme</span></a> <strong>panning_scheme</strong> = <code class="docutils literal notranslate"><span class="pre">0</span></code> <a class="reference internal" href="#class-graphedit-property-panning-scheme"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_panning_scheme</strong>(value: <a class="reference internal" href="#enum-graphedit-panningscheme"><span class="std std-ref">PanningScheme</span></a>)</p></li>
+<li><p><a class="reference internal" href="#enum-graphedit-panningscheme"><span class="std std-ref">PanningScheme</span></a> <strong>get_panning_scheme</strong>()</p></li>
+</ul>
+<p>Defines the control scheme for panning with mouse wheel.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-graphedit-property-right-disconnects"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>right_disconnects</strong> = <code class="docutils literal notranslate"><span class="pre">false</span></code> <a class="reference internal" href="#class-graphedit-property-right-disconnects"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_right_disconnects</strong>(value: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_right_disconnects_enabled</strong>()</p></li>
+</ul>
+<p>If <code class="docutils literal notranslate"><span class="pre">true</span></code>, enables disconnection of existing connections in the GraphEdit by dragging the right end.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-graphedit-property-scroll-offset"><a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a> <strong>scroll_offset</strong> = <code class="docutils literal notranslate"><span class="pre">Vector2(0,</span> <span class="pre">0)</span></code> <a class="reference internal" href="#class-graphedit-property-scroll-offset"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_scroll_offset</strong>(value: <a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a> <strong>get_scroll_offset</strong>()</p></li>
+</ul>
+<p>The scroll offset.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-graphedit-property-show-arrange-button"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>show_arrange_button</strong> = <code class="docutils literal notranslate"><span class="pre">true</span></code> <a class="reference internal" href="#class-graphedit-property-show-arrange-button"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_show_arrange_button</strong>(value: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_showing_arrange_button</strong>()</p></li>
+</ul>
+<p>If <code class="docutils literal notranslate"><span class="pre">true</span></code>, the button to automatically arrange graph nodes is visible.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-graphedit-property-show-grid"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>show_grid</strong> = <code class="docutils literal notranslate"><span class="pre">true</span></code> <a class="reference internal" href="#class-graphedit-property-show-grid"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_show_grid</strong>(value: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_showing_grid</strong>()</p></li>
+</ul>
+<p>If <code class="docutils literal notranslate"><span class="pre">true</span></code>, the grid is visible.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-graphedit-property-show-grid-buttons"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>show_grid_buttons</strong> = <code class="docutils literal notranslate"><span class="pre">true</span></code> <a class="reference internal" href="#class-graphedit-property-show-grid-buttons"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_show_grid_buttons</strong>(value: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_showing_grid_buttons</strong>()</p></li>
+</ul>
+<p>If <code class="docutils literal notranslate"><span class="pre">true</span></code>, buttons that allow to configure grid and snapping options are visible.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-graphedit-property-show-menu"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>show_menu</strong> = <code class="docutils literal notranslate"><span class="pre">true</span></code> <a class="reference internal" href="#class-graphedit-property-show-menu"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_show_menu</strong>(value: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_showing_menu</strong>()</p></li>
+</ul>
+<p>If <code class="docutils literal notranslate"><span class="pre">true</span></code>, the menu toolbar is visible.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-graphedit-property-show-minimap-button"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>show_minimap_button</strong> = <code class="docutils literal notranslate"><span class="pre">true</span></code> <a class="reference internal" href="#class-graphedit-property-show-minimap-button"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_show_minimap_button</strong>(value: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_showing_minimap_button</strong>()</p></li>
+</ul>
+<p>If <code class="docutils literal notranslate"><span class="pre">true</span></code>, the button to toggle the minimap is visible.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-graphedit-property-show-zoom-buttons"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>show_zoom_buttons</strong> = <code class="docutils literal notranslate"><span class="pre">true</span></code> <a class="reference internal" href="#class-graphedit-property-show-zoom-buttons"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_show_zoom_buttons</strong>(value: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_showing_zoom_buttons</strong>()</p></li>
+</ul>
+<p>If <code class="docutils literal notranslate"><span class="pre">true</span></code>, buttons that allow to change and reset the zoom level are visible.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-graphedit-property-show-zoom-label"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>show_zoom_label</strong> = <code class="docutils literal notranslate"><span class="pre">false</span></code> <a class="reference internal" href="#class-graphedit-property-show-zoom-label"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_show_zoom_label</strong>(value: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_showing_zoom_label</strong>()</p></li>
+</ul>
+<p>If <code class="docutils literal notranslate"><span class="pre">true</span></code>, the label with the current zoom level is visible. The zoom level is displayed in percents.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-graphedit-property-snapping-distance"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>snapping_distance</strong> = <code class="docutils literal notranslate"><span class="pre">20</span></code> <a class="reference internal" href="#class-graphedit-property-snapping-distance"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_snapping_distance</strong>(value: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>get_snapping_distance</strong>()</p></li>
+</ul>
+<p>The snapping distance in pixels, also determines the grid line distance.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-graphedit-property-snapping-enabled"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>snapping_enabled</strong> = <code class="docutils literal notranslate"><span class="pre">true</span></code> <a class="reference internal" href="#class-graphedit-property-snapping-enabled"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_snapping_enabled</strong>(value: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_snapping_enabled</strong>()</p></li>
+</ul>
+<p>If <code class="docutils literal notranslate"><span class="pre">true</span></code>, enables snapping.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-graphedit-property-type-names"><a class="reference internal" href="class_dictionary.html#class-dictionary"><span class="std std-ref">Dictionary</span></a> <strong>type_names</strong> = <code class="docutils literal notranslate"><span class="pre">{}</span></code> <a class="reference internal" href="#class-graphedit-property-type-names"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_type_names</strong>(value: <a class="reference internal" href="class_dictionary.html#class-dictionary"><span class="std std-ref">Dictionary</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_dictionary.html#class-dictionary"><span class="std std-ref">Dictionary</span></a> <strong>get_type_names</strong>()</p></li>
+</ul>
+<p><a class="reference internal" href="class_dictionary.html#class-dictionary"><span class="std std-ref">Dictionary</span></a> of human-readable port type names.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-graphedit-property-zoom"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>zoom</strong> = <code class="docutils literal notranslate"><span class="pre">1.0</span></code> <a class="reference internal" href="#class-graphedit-property-zoom"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_zoom</strong>(value: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>get_zoom</strong>()</p></li>
+</ul>
+<p>The current zoom value.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-graphedit-property-zoom-max"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>zoom_max</strong> = <code class="docutils literal notranslate"><span class="pre">2.0736003</span></code> <a class="reference internal" href="#class-graphedit-property-zoom-max"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_zoom_max</strong>(value: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>get_zoom_max</strong>()</p></li>
+</ul>
+<p>The upper zoom limit.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-graphedit-property-zoom-min"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>zoom_min</strong> = <code class="docutils literal notranslate"><span class="pre">0.23256795</span></code> <a class="reference internal" href="#class-graphedit-property-zoom-min"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_zoom_min</strong>(value: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>get_zoom_min</strong>()</p></li>
+</ul>
+<p>The lower zoom limit.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-graphedit-property-zoom-step"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>zoom_step</strong> = <code class="docutils literal notranslate"><span class="pre">1.2</span></code> <a class="reference internal" href="#class-graphedit-property-zoom-step"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_zoom_step</strong>(value: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>get_zoom_step</strong>()</p></li>
+</ul>
+<p>The step of each zoom level.</p>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="method-descriptions">
+<h2>Method Descriptions<a class="headerlink" href="#method-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-method" id="class-graphedit-private-method-get-connection-line"><a class="reference internal" href="class_packedvector2array.html#class-packedvector2array"><span class="std std-ref">PackedVector2Array</span></a> <strong>_get_connection_line</strong>(from_position: <a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a>, to_position: <a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-graphedit-private-method-get-connection-line"><span class="std std-ref">🔗</span></a></p>
+<p>Virtual method which can be overridden to customize how connections are drawn.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-graphedit-private-method-is-in-input-hotzone"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>_is_in_input_hotzone</strong>(in_node: <a class="reference internal" href="class_object.html#class-object"><span class="std std-ref">Object</span></a>, in_port: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, mouse_position: <a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <a class="reference internal" href="#class-graphedit-private-method-is-in-input-hotzone"><span class="std std-ref">🔗</span></a></p>
+<p>Returns whether the <code class="docutils literal notranslate"><span class="pre">mouse_position</span></code> is in the input hot zone.</p>
+<p>By default, a hot zone is a <a class="reference internal" href="class_rect2.html#class-rect2"><span class="std std-ref">Rect2</span></a> positioned such that its center is at <code class="docutils literal notranslate"><span class="pre">in_node</span></code>.<a class="reference internal" href="class_graphnode.html#class-graphnode-method-get-input-port-position"><span class="std std-ref">GraphNode.get_input_port_position()</span></a>(<code class="docutils literal notranslate"><span class="pre">in_port</span></code>) (For output’s case, call <a class="reference internal" href="class_graphnode.html#class-graphnode-method-get-output-port-position"><span class="std std-ref">GraphNode.get_output_port_position()</span></a> instead). The hot zone’s width is twice the Theme Property <code class="docutils literal notranslate"><span class="pre">port_grab_distance_horizontal</span></code>, and its height is twice the <code class="docutils literal notranslate"><span class="pre">port_grab_distance_vertical</span></code>.</p>
+<p>Below is a sample code to help get started:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">func</span> <span class="n">_is_in_input_hotzone</span><span class="p">(</span><span class="n">in_node</span><span class="p">,</span> <span class="n">in_port</span><span class="p">,</span> <span class="n">mouse_position</span><span class="p">):</span>
+    <span class="n">var</span> <span class="n">port_size</span> <span class="o">=</span> <span class="n">Vector2</span><span class="p">(</span><span class="n">get_theme_constant</span><span class="p">(</span><span class="s2">&quot;port_grab_distance_horizontal&quot;</span><span class="p">),</span> <span class="n">get_theme_constant</span><span class="p">(</span><span class="s2">&quot;port_grab_distance_vertical&quot;</span><span class="p">))</span>
+    <span class="n">var</span> <span class="n">port_pos</span> <span class="o">=</span> <span class="n">in_node</span><span class="o">.</span><span class="n">get_position</span><span class="p">()</span> <span class="o">+</span> <span class="n">in_node</span><span class="o">.</span><span class="n">get_input_port_position</span><span class="p">(</span><span class="n">in_port</span><span class="p">)</span> <span class="o">-</span> <span class="n">port_size</span> <span class="o">/</span> <span class="mi">2</span>
+    <span class="n">var</span> <span class="n">rect</span> <span class="o">=</span> <span class="n">Rect2</span><span class="p">(</span><span class="n">port_pos</span><span class="p">,</span> <span class="n">port_size</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">rect</span><span class="o">.</span><span class="n">has_point</span><span class="p">(</span><span class="n">mouse_position</span><span class="p">)</span>
+</pre></div>
+</div>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-graphedit-private-method-is-in-output-hotzone"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>_is_in_output_hotzone</strong>(in_node: <a class="reference internal" href="class_object.html#class-object"><span class="std std-ref">Object</span></a>, in_port: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, mouse_position: <a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <a class="reference internal" href="#class-graphedit-private-method-is-in-output-hotzone"><span class="std std-ref">🔗</span></a></p>
+<p>Returns whether the <code class="docutils literal notranslate"><span class="pre">mouse_position</span></code> is in the output hot zone. For more information on hot zones, see <a class="reference internal" href="#class-graphedit-private-method-is-in-input-hotzone"><span class="std std-ref">_is_in_input_hotzone()</span></a>.</p>
+<p>Below is a sample code to help get started:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">func</span> <span class="n">_is_in_output_hotzone</span><span class="p">(</span><span class="n">in_node</span><span class="p">,</span> <span class="n">in_port</span><span class="p">,</span> <span class="n">mouse_position</span><span class="p">):</span>
+    <span class="n">var</span> <span class="n">port_size</span> <span class="o">=</span> <span class="n">Vector2</span><span class="p">(</span><span class="n">get_theme_constant</span><span class="p">(</span><span class="s2">&quot;port_grab_distance_horizontal&quot;</span><span class="p">),</span> <span class="n">get_theme_constant</span><span class="p">(</span><span class="s2">&quot;port_grab_distance_vertical&quot;</span><span class="p">))</span>
+    <span class="n">var</span> <span class="n">port_pos</span> <span class="o">=</span> <span class="n">in_node</span><span class="o">.</span><span class="n">get_position</span><span class="p">()</span> <span class="o">+</span> <span class="n">in_node</span><span class="o">.</span><span class="n">get_output_port_position</span><span class="p">(</span><span class="n">in_port</span><span class="p">)</span> <span class="o">-</span> <span class="n">port_size</span> <span class="o">/</span> <span class="mi">2</span>
+    <span class="n">var</span> <span class="n">rect</span> <span class="o">=</span> <span class="n">Rect2</span><span class="p">(</span><span class="n">port_pos</span><span class="p">,</span> <span class="n">port_size</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">rect</span><span class="o">.</span><span class="n">has_point</span><span class="p">(</span><span class="n">mouse_position</span><span class="p">)</span>
+</pre></div>
+</div>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-graphedit-private-method-is-node-hover-valid"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>_is_node_hover_valid</strong>(from_node: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>, from_port: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, to_node: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>, to_port: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <a class="reference internal" href="#class-graphedit-private-method-is-node-hover-valid"><span class="std std-ref">🔗</span></a></p>
+<p>This virtual method can be used to insert additional error detection while the user is dragging a connection over a valid port.</p>
+<p>Return <code class="docutils literal notranslate"><span class="pre">true</span></code> if the connection is indeed valid or return <code class="docutils literal notranslate"><span class="pre">false</span></code> if the connection is impossible. If the connection is impossible, no snapping to the port and thus no connection request to that port will happen.</p>
+<p>In this example a connection to same node is suppressed:</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-graphedit-method-add-valid-connection-type"><abbr title="No return value.">void</abbr> <strong>add_valid_connection_type</strong>(from_type: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, to_type: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <a class="reference internal" href="#class-graphedit-method-add-valid-connection-type"><span class="std std-ref">🔗</span></a></p>
+<p>Allows the connection between two different port types. The port type is defined individually for the left and the right port of each slot with the <a class="reference internal" href="class_graphnode.html#class-graphnode-method-set-slot"><span class="std std-ref">GraphNode.set_slot()</span></a> method.</p>
+<p>See also <a class="reference internal" href="#class-graphedit-method-is-valid-connection-type"><span class="std std-ref">is_valid_connection_type()</span></a> and <a class="reference internal" href="#class-graphedit-method-remove-valid-connection-type"><span class="std std-ref">remove_valid_connection_type()</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-graphedit-method-add-valid-left-disconnect-type"><abbr title="No return value.">void</abbr> <strong>add_valid_left_disconnect_type</strong>(type: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <a class="reference internal" href="#class-graphedit-method-add-valid-left-disconnect-type"><span class="std std-ref">🔗</span></a></p>
+<p>Allows to disconnect nodes when dragging from the left port of the <a class="reference internal" href="class_graphnode.html#class-graphnode"><span class="std std-ref">GraphNode</span></a>’s slot if it has the specified type. See also <a class="reference internal" href="#class-graphedit-method-remove-valid-left-disconnect-type"><span class="std std-ref">remove_valid_left_disconnect_type()</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-graphedit-method-add-valid-right-disconnect-type"><abbr title="No return value.">void</abbr> <strong>add_valid_right_disconnect_type</strong>(type: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <a class="reference internal" href="#class-graphedit-method-add-valid-right-disconnect-type"><span class="std std-ref">🔗</span></a></p>
+<p>Allows to disconnect nodes when dragging from the right port of the <a class="reference internal" href="class_graphnode.html#class-graphnode"><span class="std std-ref">GraphNode</span></a>’s slot if it has the specified type. See also <a class="reference internal" href="#class-graphedit-method-remove-valid-right-disconnect-type"><span class="std std-ref">remove_valid_right_disconnect_type()</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-graphedit-method-arrange-nodes"><abbr title="No return value.">void</abbr> <strong>arrange_nodes</strong>() <a class="reference internal" href="#class-graphedit-method-arrange-nodes"><span class="std std-ref">🔗</span></a></p>
+<p>Rearranges selected nodes in a layout with minimum crossings between connections and uniform horizontal and vertical gap between nodes.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-graphedit-method-attach-graph-element-to-frame"><abbr title="No return value.">void</abbr> <strong>attach_graph_element_to_frame</strong>(element: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>, frame: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>) <a class="reference internal" href="#class-graphedit-method-attach-graph-element-to-frame"><span class="std std-ref">🔗</span></a></p>
+<p>Attaches the <code class="docutils literal notranslate"><span class="pre">element</span></code> <a class="reference internal" href="class_graphelement.html#class-graphelement"><span class="std std-ref">GraphElement</span></a> to the <code class="docutils literal notranslate"><span class="pre">frame</span></code> <a class="reference internal" href="class_graphframe.html#class-graphframe"><span class="std std-ref">GraphFrame</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-graphedit-method-clear-connections"><abbr title="No return value.">void</abbr> <strong>clear_connections</strong>() <a class="reference internal" href="#class-graphedit-method-clear-connections"><span class="std std-ref">🔗</span></a></p>
+<p>Removes all connections between nodes.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-graphedit-method-connect-node"><a class="reference internal" href="class_%40globalscope.html#enum-globalscope-error"><span class="std std-ref">Error</span></a> <strong>connect_node</strong>(from_node: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>, from_port: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, to_node: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>, to_port: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, keep_alive: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = false) <a class="reference internal" href="#class-graphedit-method-connect-node"><span class="std std-ref">🔗</span></a></p>
+<p>Create a connection between the <code class="docutils literal notranslate"><span class="pre">from_port</span></code> of the <code class="docutils literal notranslate"><span class="pre">from_node</span></code> <a class="reference internal" href="class_graphnode.html#class-graphnode"><span class="std std-ref">GraphNode</span></a> and the <code class="docutils literal notranslate"><span class="pre">to_port</span></code> of the <code class="docutils literal notranslate"><span class="pre">to_node</span></code> <a class="reference internal" href="class_graphnode.html#class-graphnode"><span class="std std-ref">GraphNode</span></a>. If the connection already exists, no connection is created.</p>
+<p>Connections with <code class="docutils literal notranslate"><span class="pre">keep_alive</span></code> set to <code class="docutils literal notranslate"><span class="pre">false</span></code> may be deleted automatically if invalid during a redraw.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-graphedit-method-detach-graph-element-from-frame"><abbr title="No return value.">void</abbr> <strong>detach_graph_element_from_frame</strong>(element: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>) <a class="reference internal" href="#class-graphedit-method-detach-graph-element-from-frame"><span class="std std-ref">🔗</span></a></p>
+<p>Detaches the <code class="docutils literal notranslate"><span class="pre">element</span></code> <a class="reference internal" href="class_graphelement.html#class-graphelement"><span class="std std-ref">GraphElement</span></a> from the <a class="reference internal" href="class_graphframe.html#class-graphframe"><span class="std std-ref">GraphFrame</span></a> it is currently attached to.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-graphedit-method-disconnect-node"><abbr title="No return value.">void</abbr> <strong>disconnect_node</strong>(from_node: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>, from_port: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, to_node: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>, to_port: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <a class="reference internal" href="#class-graphedit-method-disconnect-node"><span class="std std-ref">🔗</span></a></p>
+<p>Removes the connection between the <code class="docutils literal notranslate"><span class="pre">from_port</span></code> of the <code class="docutils literal notranslate"><span class="pre">from_node</span></code> <a class="reference internal" href="class_graphnode.html#class-graphnode"><span class="std std-ref">GraphNode</span></a> and the <code class="docutils literal notranslate"><span class="pre">to_port</span></code> of the <code class="docutils literal notranslate"><span class="pre">to_node</span></code> <a class="reference internal" href="class_graphnode.html#class-graphnode"><span class="std std-ref">GraphNode</span></a>. If the connection does not exist, no connection is removed.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-graphedit-method-force-connection-drag-end"><abbr title="No return value.">void</abbr> <strong>force_connection_drag_end</strong>() <a class="reference internal" href="#class-graphedit-method-force-connection-drag-end"><span class="std std-ref">🔗</span></a></p>
+<p>Ends the creation of the current connection. In other words, if you are dragging a connection you can use this method to abort the process and remove the line that followed your cursor.</p>
+<p>This is best used together with <a class="reference internal" href="#class-graphedit-signal-connection-drag-started"><span class="std std-ref">connection_drag_started</span></a> and <a class="reference internal" href="#class-graphedit-signal-connection-drag-ended"><span class="std std-ref">connection_drag_ended</span></a> to add custom behavior like node addition through shortcuts.</p>
+<p><strong>Note:</strong> This method suppresses any other connection request signals apart from <a class="reference internal" href="#class-graphedit-signal-connection-drag-ended"><span class="std std-ref">connection_drag_ended</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-graphedit-method-get-attached-nodes-of-frame"><a class="reference internal" href="class_array.html#class-array"><span class="std std-ref">Array</span></a>[<a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>] <strong>get_attached_nodes_of_frame</strong>(frame: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>) <a class="reference internal" href="#class-graphedit-method-get-attached-nodes-of-frame"><span class="std std-ref">🔗</span></a></p>
+<p>Returns an array of node names that are attached to the <a class="reference internal" href="class_graphframe.html#class-graphframe"><span class="std std-ref">GraphFrame</span></a> with the given name.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-graphedit-method-get-closest-connection-at-point"><a class="reference internal" href="class_dictionary.html#class-dictionary"><span class="std std-ref">Dictionary</span></a> <strong>get_closest_connection_at_point</strong>(point: <a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a>, max_distance: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> = 4.0) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-graphedit-method-get-closest-connection-at-point"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the closest connection to the given point in screen space. If no connection is found within <code class="docutils literal notranslate"><span class="pre">max_distance</span></code> pixels, an empty <a class="reference internal" href="class_dictionary.html#class-dictionary"><span class="std std-ref">Dictionary</span></a> is returned.</p>
+<p>A connection is represented as a <a class="reference internal" href="class_dictionary.html#class-dictionary"><span class="std std-ref">Dictionary</span></a> in the form of:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="n">from_node</span><span class="p">:</span> <span class="n">StringName</span><span class="p">,</span>
+    <span class="n">from_port</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="n">to_node</span><span class="p">:</span> <span class="n">StringName</span><span class="p">,</span>
+    <span class="n">to_port</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="n">keep_alive</span><span class="p">:</span> <span class="nb">bool</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>For example, getting a connection at a given mouse position can be achieved like this:</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-graphedit-method-get-connection-count"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>get_connection_count</strong>(from_node: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>, from_port: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <a class="reference internal" href="#class-graphedit-method-get-connection-count"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the number of connections from <code class="docutils literal notranslate"><span class="pre">from_port</span></code> of <code class="docutils literal notranslate"><span class="pre">from_node</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-graphedit-method-get-connection-line"><a class="reference internal" href="class_packedvector2array.html#class-packedvector2array"><span class="std std-ref">PackedVector2Array</span></a> <strong>get_connection_line</strong>(from_node: <a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a>, to_node: <a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-graphedit-method-get-connection-line"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the points which would make up a connection between <code class="docutils literal notranslate"><span class="pre">from_node</span></code> and <code class="docutils literal notranslate"><span class="pre">to_node</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-graphedit-method-get-connection-list-from-node"><a class="reference internal" href="class_array.html#class-array"><span class="std std-ref">Array</span></a>[<a class="reference internal" href="class_dictionary.html#class-dictionary"><span class="std std-ref">Dictionary</span></a>] <strong>get_connection_list_from_node</strong>(node: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-graphedit-method-get-connection-list-from-node"><span class="std std-ref">🔗</span></a></p>
+<p>Returns an <a class="reference internal" href="class_array.html#class-array"><span class="std std-ref">Array</span></a> containing a list of all connections for <code class="docutils literal notranslate"><span class="pre">node</span></code>.</p>
+<p>A connection is represented as a <a class="reference internal" href="class_dictionary.html#class-dictionary"><span class="std std-ref">Dictionary</span></a> in the form of:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="n">from_node</span><span class="p">:</span> <span class="n">StringName</span><span class="p">,</span>
+    <span class="n">from_port</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="n">to_node</span><span class="p">:</span> <span class="n">StringName</span><span class="p">,</span>
+    <span class="n">to_port</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="n">keep_alive</span><span class="p">:</span> <span class="nb">bool</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Example:</strong> Get all connections on a specific port:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">func</span> <span class="n">get_connection_list_from_port</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="n">port</span><span class="p">):</span>
+    <span class="n">var</span> <span class="n">connections</span> <span class="o">=</span> <span class="n">get_connection_list_from_node</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
+    <span class="n">var</span> <span class="n">result</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">connection</span> <span class="ow">in</span> <span class="n">connections</span><span class="p">:</span>
+        <span class="n">var</span> <span class="nb">dict</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">if</span> <span class="n">connection</span><span class="p">[</span><span class="s2">&quot;from_node&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="n">node</span> <span class="ow">and</span> <span class="n">connection</span><span class="p">[</span><span class="s2">&quot;from_port&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="n">port</span><span class="p">:</span>
+            <span class="nb">dict</span><span class="p">[</span><span class="s2">&quot;node&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">connection</span><span class="p">[</span><span class="s2">&quot;to_node&quot;</span><span class="p">]</span>
+            <span class="nb">dict</span><span class="p">[</span><span class="s2">&quot;port&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">connection</span><span class="p">[</span><span class="s2">&quot;to_port&quot;</span><span class="p">]</span>
+            <span class="nb">dict</span><span class="p">[</span><span class="s2">&quot;type&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;left&quot;</span>
+            <span class="n">result</span><span class="o">.</span><span class="n">push_back</span><span class="p">(</span><span class="nb">dict</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">connection</span><span class="p">[</span><span class="s2">&quot;to_node&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="n">node</span> <span class="ow">and</span> <span class="n">connection</span><span class="p">[</span><span class="s2">&quot;to_port&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="n">port</span><span class="p">:</span>
+            <span class="nb">dict</span><span class="p">[</span><span class="s2">&quot;node&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">connection</span><span class="p">[</span><span class="s2">&quot;from_node&quot;</span><span class="p">]</span>
+            <span class="nb">dict</span><span class="p">[</span><span class="s2">&quot;port&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">connection</span><span class="p">[</span><span class="s2">&quot;from_port&quot;</span><span class="p">]</span>
+            <span class="nb">dict</span><span class="p">[</span><span class="s2">&quot;type&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;right&quot;</span>
+            <span class="n">result</span><span class="o">.</span><span class="n">push_back</span><span class="p">(</span><span class="nb">dict</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">result</span>
+</pre></div>
+</div>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-graphedit-method-get-connections-intersecting-with-rect"><a class="reference internal" href="class_array.html#class-array"><span class="std std-ref">Array</span></a>[<a class="reference internal" href="class_dictionary.html#class-dictionary"><span class="std std-ref">Dictionary</span></a>] <strong>get_connections_intersecting_with_rect</strong>(rect: <a class="reference internal" href="class_rect2.html#class-rect2"><span class="std std-ref">Rect2</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-graphedit-method-get-connections-intersecting-with-rect"><span class="std std-ref">🔗</span></a></p>
+<p>Returns an <a class="reference internal" href="class_array.html#class-array"><span class="std std-ref">Array</span></a> containing the list of connections that intersect with the given <a class="reference internal" href="class_rect2.html#class-rect2"><span class="std std-ref">Rect2</span></a>.</p>
+<p>A connection is represented as a <a class="reference internal" href="class_dictionary.html#class-dictionary"><span class="std std-ref">Dictionary</span></a> in the form of:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="n">from_node</span><span class="p">:</span> <span class="n">StringName</span><span class="p">,</span>
+    <span class="n">from_port</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="n">to_node</span><span class="p">:</span> <span class="n">StringName</span><span class="p">,</span>
+    <span class="n">to_port</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="n">keep_alive</span><span class="p">:</span> <span class="nb">bool</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-graphedit-method-get-element-frame"><a class="reference internal" href="class_graphframe.html#class-graphframe"><span class="std std-ref">GraphFrame</span></a> <strong>get_element_frame</strong>(element: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>) <a class="reference internal" href="#class-graphedit-method-get-element-frame"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the <a class="reference internal" href="class_graphframe.html#class-graphframe"><span class="std std-ref">GraphFrame</span></a> that contains the <a class="reference internal" href="class_graphelement.html#class-graphelement"><span class="std std-ref">GraphElement</span></a> with the given name.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-graphedit-method-get-menu-hbox"><a class="reference internal" href="class_hboxcontainer.html#class-hboxcontainer"><span class="std std-ref">HBoxContainer</span></a> <strong>get_menu_hbox</strong>() <a class="reference internal" href="#class-graphedit-method-get-menu-hbox"><span class="std std-ref">🔗</span></a></p>
+<p>Gets the <a class="reference internal" href="class_hboxcontainer.html#class-hboxcontainer"><span class="std std-ref">HBoxContainer</span></a> that contains the zooming and grid snap controls in the top left of the graph. You can use this method to reposition the toolbar or to add your own custom controls to it.</p>
+<p><strong>Warning:</strong> This is a required internal node, removing and freeing it may cause a crash. If you wish to hide it or any of its children, use their <a class="reference internal" href="class_canvasitem.html#class-canvasitem-property-visible"><span class="std std-ref">CanvasItem.visible</span></a> property.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-graphedit-method-is-node-connected"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_node_connected</strong>(from_node: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>, from_port: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, to_node: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>, to_port: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <a class="reference internal" href="#class-graphedit-method-is-node-connected"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if the <code class="docutils literal notranslate"><span class="pre">from_port</span></code> of the <code class="docutils literal notranslate"><span class="pre">from_node</span></code> <a class="reference internal" href="class_graphnode.html#class-graphnode"><span class="std std-ref">GraphNode</span></a> is connected to the <code class="docutils literal notranslate"><span class="pre">to_port</span></code> of the <code class="docutils literal notranslate"><span class="pre">to_node</span></code> <a class="reference internal" href="class_graphnode.html#class-graphnode"><span class="std std-ref">GraphNode</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-graphedit-method-is-valid-connection-type"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_valid_connection_type</strong>(from_type: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, to_type: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-graphedit-method-is-valid-connection-type"><span class="std std-ref">🔗</span></a></p>
+<p>Returns whether it’s possible to make a connection between two different port types. The port type is defined individually for the left and the right port of each slot with the <a class="reference internal" href="class_graphnode.html#class-graphnode-method-set-slot"><span class="std std-ref">GraphNode.set_slot()</span></a> method.</p>
+<p>See also <a class="reference internal" href="#class-graphedit-method-add-valid-connection-type"><span class="std std-ref">add_valid_connection_type()</span></a> and <a class="reference internal" href="#class-graphedit-method-remove-valid-connection-type"><span class="std std-ref">remove_valid_connection_type()</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-graphedit-method-remove-valid-connection-type"><abbr title="No return value.">void</abbr> <strong>remove_valid_connection_type</strong>(from_type: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, to_type: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <a class="reference internal" href="#class-graphedit-method-remove-valid-connection-type"><span class="std std-ref">🔗</span></a></p>
+<p>Disallows the connection between two different port types previously allowed by <a class="reference internal" href="#class-graphedit-method-add-valid-connection-type"><span class="std std-ref">add_valid_connection_type()</span></a>. The port type is defined individually for the left and the right port of each slot with the <a class="reference internal" href="class_graphnode.html#class-graphnode-method-set-slot"><span class="std std-ref">GraphNode.set_slot()</span></a> method.</p>
+<p>See also <a class="reference internal" href="#class-graphedit-method-is-valid-connection-type"><span class="std std-ref">is_valid_connection_type()</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-graphedit-method-remove-valid-left-disconnect-type"><abbr title="No return value.">void</abbr> <strong>remove_valid_left_disconnect_type</strong>(type: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <a class="reference internal" href="#class-graphedit-method-remove-valid-left-disconnect-type"><span class="std std-ref">🔗</span></a></p>
+<p>Disallows to disconnect nodes when dragging from the left port of the <a class="reference internal" href="class_graphnode.html#class-graphnode"><span class="std std-ref">GraphNode</span></a>’s slot if it has the specified type. Use this to disable a disconnection previously allowed with <a class="reference internal" href="#class-graphedit-method-add-valid-left-disconnect-type"><span class="std std-ref">add_valid_left_disconnect_type()</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-graphedit-method-remove-valid-right-disconnect-type"><abbr title="No return value.">void</abbr> <strong>remove_valid_right_disconnect_type</strong>(type: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <a class="reference internal" href="#class-graphedit-method-remove-valid-right-disconnect-type"><span class="std std-ref">🔗</span></a></p>
+<p>Disallows to disconnect nodes when dragging from the right port of the <a class="reference internal" href="class_graphnode.html#class-graphnode"><span class="std std-ref">GraphNode</span></a>’s slot if it has the specified type. Use this to disable a disconnection previously allowed with <a class="reference internal" href="#class-graphedit-method-add-valid-right-disconnect-type"><span class="std std-ref">add_valid_right_disconnect_type()</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-graphedit-method-set-connection-activity"><abbr title="No return value.">void</abbr> <strong>set_connection_activity</strong>(from_node: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>, from_port: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, to_node: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>, to_port: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, amount: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>) <a class="reference internal" href="#class-graphedit-method-set-connection-activity"><span class="std std-ref">🔗</span></a></p>
+<p>Sets the coloration of the connection between <code class="docutils literal notranslate"><span class="pre">from_node</span></code>’s <code class="docutils literal notranslate"><span class="pre">from_port</span></code> and <code class="docutils literal notranslate"><span class="pre">to_node</span></code>’s <code class="docutils literal notranslate"><span class="pre">to_port</span></code> with the color provided in the <a class="reference internal" href="#class-graphedit-theme-color-activity"><span class="std std-ref">activity</span></a> theme property. The color is linearly interpolated between the connection color and the activity color using <code class="docutils literal notranslate"><span class="pre">amount</span></code> as weight.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-graphedit-method-set-selected"><abbr title="No return value.">void</abbr> <strong>set_selected</strong>(node: <a class="reference internal" href="class_node.html#class-node"><span class="std std-ref">Node</span></a>) <a class="reference internal" href="#class-graphedit-method-set-selected"><span class="std std-ref">🔗</span></a></p>
+<p>Sets the specified <code class="docutils literal notranslate"><span class="pre">node</span></code> as the one selected.</p>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="theme-property-descriptions">
+<h2>Theme Property Descriptions<a class="headerlink" href="#theme-property-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-themeproperty" id="class-graphedit-theme-color-activity"><a class="reference internal" href="class_color.html#class-color"><span class="std std-ref">Color</span></a> <strong>activity</strong> = <code class="docutils literal notranslate"><span class="pre">Color(1,</span> <span class="pre">1,</span> <span class="pre">1,</span> <span class="pre">1)</span></code> <a class="reference internal" href="#class-graphedit-theme-color-activity"><span class="std std-ref">🔗</span></a></p>
+<p>Color the connection line is interpolated to based on the activity value of a connection (see <a class="reference internal" href="#class-graphedit-method-set-connection-activity"><span class="std std-ref">set_connection_activity()</span></a>).</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-themeproperty" id="class-graphedit-theme-color-connection-hover-tint-color"><a class="reference internal" href="class_color.html#class-color"><span class="std std-ref">Color</span></a> <strong>connection_hover_tint_color</strong> = <code class="docutils literal notranslate"><span class="pre">Color(0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0.3)</span></code> <a class="reference internal" href="#class-graphedit-theme-color-connection-hover-tint-color"><span class="std std-ref">🔗</span></a></p>
+<p>Color which is blended with the connection line when the mouse is hovering over it.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-themeproperty" id="class-graphedit-theme-color-connection-rim-color"><a class="reference internal" href="class_color.html#class-color"><span class="std std-ref">Color</span></a> <strong>connection_rim_color</strong> = <code class="docutils literal notranslate"><span class="pre">Color(0.1,</span> <span class="pre">0.1,</span> <span class="pre">0.1,</span> <span class="pre">0.6)</span></code> <a class="reference internal" href="#class-graphedit-theme-color-connection-rim-color"><span class="std std-ref">🔗</span></a></p>
+<p>Color of the rim around each connection line used for making intersecting lines more distinguishable.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-themeproperty" id="class-graphedit-theme-color-connection-valid-target-tint-color"><a class="reference internal" href="class_color.html#class-color"><span class="std std-ref">Color</span></a> <strong>connection_valid_target_tint_color</strong> = <code class="docutils literal notranslate"><span class="pre">Color(1,</span> <span class="pre">1,</span> <span class="pre">1,</span> <span class="pre">0.4)</span></code> <a class="reference internal" href="#class-graphedit-theme-color-connection-valid-target-tint-color"><span class="std std-ref">🔗</span></a></p>
+<p>Color which is blended with the connection line when the currently dragged connection is hovering over a valid target port.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-themeproperty" id="class-graphedit-theme-color-grid-major"><a class="reference internal" href="class_color.html#class-color"><span class="std std-ref">Color</span></a> <strong>grid_major</strong> = <code class="docutils literal notranslate"><span class="pre">Color(1,</span> <span class="pre">1,</span> <span class="pre">1,</span> <span class="pre">0.2)</span></code> <a class="reference internal" href="#class-graphedit-theme-color-grid-major"><span class="std std-ref">🔗</span></a></p>
+<p>Color of major grid lines/dots.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-themeproperty" id="class-graphedit-theme-color-grid-minor"><a class="reference internal" href="class_color.html#class-color"><span class="std std-ref">Color</span></a> <strong>grid_minor</strong> = <code class="docutils literal notranslate"><span class="pre">Color(1,</span> <span class="pre">1,</span> <span class="pre">1,</span> <span class="pre">0.05)</span></code> <a class="reference internal" href="#class-graphedit-theme-color-grid-minor"><span class="std std-ref">🔗</span></a></p>
+<p>Color of minor grid lines/dots.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-themeproperty" id="class-graphedit-theme-color-selection-fill"><a class="reference internal" href="class_color.html#class-color"><span class="std std-ref">Color</span></a> <strong>selection_fill</strong> = <code class="docutils literal notranslate"><span class="pre">Color(1,</span> <span class="pre">1,</span> <span class="pre">1,</span> <span class="pre">0.3)</span></code> <a class="reference internal" href="#class-graphedit-theme-color-selection-fill"><span class="std std-ref">🔗</span></a></p>
+<p>The fill color of the selection rectangle.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-themeproperty" id="class-graphedit-theme-color-selection-stroke"><a class="reference internal" href="class_color.html#class-color"><span class="std std-ref">Color</span></a> <strong>selection_stroke</strong> = <code class="docutils literal notranslate"><span class="pre">Color(1,</span> <span class="pre">1,</span> <span class="pre">1,</span> <span class="pre">0.8)</span></code> <a class="reference internal" href="#class-graphedit-theme-color-selection-stroke"><span class="std std-ref">🔗</span></a></p>
+<p>The outline color of the selection rectangle.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-themeproperty" id="class-graphedit-theme-constant-connection-hover-thickness"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>connection_hover_thickness</strong> = <code class="docutils literal notranslate"><span class="pre">0</span></code> <a class="reference internal" href="#class-graphedit-theme-constant-connection-hover-thickness"><span class="std std-ref">🔗</span></a></p>
+<p>Widens the line of a connection when the mouse is hovering over it by a percentage factor. A value of <code class="docutils literal notranslate"><span class="pre">0</span></code> disables the highlight. A value of <code class="docutils literal notranslate"><span class="pre">100</span></code> doubles the line width.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-themeproperty" id="class-graphedit-theme-constant-port-hotzone-inner-extent"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>port_hotzone_inner_extent</strong> = <code class="docutils literal notranslate"><span class="pre">22</span></code> <a class="reference internal" href="#class-graphedit-theme-constant-port-hotzone-inner-extent"><span class="std std-ref">🔗</span></a></p>
+<p>The horizontal range within which a port can be grabbed (inner side).</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-themeproperty" id="class-graphedit-theme-constant-port-hotzone-outer-extent"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>port_hotzone_outer_extent</strong> = <code class="docutils literal notranslate"><span class="pre">26</span></code> <a class="reference internal" href="#class-graphedit-theme-constant-port-hotzone-outer-extent"><span class="std std-ref">🔗</span></a></p>
+<p>The horizontal range within which a port can be grabbed (outer side).</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-themeproperty" id="class-graphedit-theme-icon-grid-toggle"><a class="reference internal" href="class_texture2d.html#class-texture2d"><span class="std std-ref">Texture2D</span></a> <strong>grid_toggle</strong> <a class="reference internal" href="#class-graphedit-theme-icon-grid-toggle"><span class="std std-ref">🔗</span></a></p>
+<p>The icon for the grid toggle button.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-themeproperty" id="class-graphedit-theme-icon-layout"><a class="reference internal" href="class_texture2d.html#class-texture2d"><span class="std std-ref">Texture2D</span></a> <strong>layout</strong> <a class="reference internal" href="#class-graphedit-theme-icon-layout"><span class="std std-ref">🔗</span></a></p>
+<p>The icon for the layout button for auto-arranging the graph.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-themeproperty" id="class-graphedit-theme-icon-minimap-toggle"><a class="reference internal" href="class_texture2d.html#class-texture2d"><span class="std std-ref">Texture2D</span></a> <strong>minimap_toggle</strong> <a class="reference internal" href="#class-graphedit-theme-icon-minimap-toggle"><span class="std std-ref">🔗</span></a></p>
+<p>The icon for the minimap toggle button.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-themeproperty" id="class-graphedit-theme-icon-snapping-toggle"><a class="reference internal" href="class_texture2d.html#class-texture2d"><span class="std std-ref">Texture2D</span></a> <strong>snapping_toggle</strong> <a class="reference internal" href="#class-graphedit-theme-icon-snapping-toggle"><span class="std std-ref">🔗</span></a></p>
+<p>The icon for the snapping toggle button.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-themeproperty" id="class-graphedit-theme-icon-zoom-in"><a class="reference internal" href="class_texture2d.html#class-texture2d"><span class="std std-ref">Texture2D</span></a> <strong>zoom_in</strong> <a class="reference internal" href="#class-graphedit-theme-icon-zoom-in"><span class="std std-ref">🔗</span></a></p>
+<p>The icon for the zoom in button.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-themeproperty" id="class-graphedit-theme-icon-zoom-out"><a class="reference internal" href="class_texture2d.html#class-texture2d"><span class="std std-ref">Texture2D</span></a> <strong>zoom_out</strong> <a class="reference internal" href="#class-graphedit-theme-icon-zoom-out"><span class="std std-ref">🔗</span></a></p>
+<p>The icon for the zoom out button.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-themeproperty" id="class-graphedit-theme-icon-zoom-reset"><a class="reference internal" href="class_texture2d.html#class-texture2d"><span class="std std-ref">Texture2D</span></a> <strong>zoom_reset</strong> <a class="reference internal" href="#class-graphedit-theme-icon-zoom-reset"><span class="std std-ref">🔗</span></a></p>
+<p>The icon for the zoom reset button.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-themeproperty" id="class-graphedit-theme-style-menu-panel"><a class="reference internal" href="class_stylebox.html#class-stylebox"><span class="std std-ref">StyleBox</span></a> <strong>menu_panel</strong> <a class="reference internal" href="#class-graphedit-theme-style-menu-panel"><span class="std std-ref">🔗</span></a></p>
+<div class="contribute docutils container">
+<p>There is currently no description for this theme property. Please help us by <a class="reference external" href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+</div>
+<hr class="classref-item-separator docutils" />
+<p class="classref-themeproperty" id="class-graphedit-theme-style-panel"><a class="reference internal" href="class_stylebox.html#class-stylebox"><span class="std std-ref">StyleBox</span></a> <strong>panel</strong> <a class="reference internal" href="#class-graphedit-theme-style-panel"><span class="std std-ref">🔗</span></a></p>
+<p>The background drawn under the grid.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-themeproperty" id="class-graphedit-theme-style-panel-focus"><a class="reference internal" href="class_stylebox.html#class-stylebox"><span class="std std-ref">StyleBox</span></a> <strong>panel_focus</strong> <a class="reference internal" href="#class-graphedit-theme-style-panel-focus"><span class="std std-ref">🔗</span></a></p>
+<p><a class="reference internal" href="class_stylebox.html#class-stylebox"><span class="std std-ref">StyleBox</span></a> used when the <strong>GraphEdit</strong> is focused (when used with assistive apps).</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, MUmarShahbaz.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

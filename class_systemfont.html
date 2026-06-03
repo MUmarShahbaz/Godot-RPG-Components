@@ -1,0 +1,318 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SystemFont &mdash; RPG Components 2D 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=d45e8c67"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            RPG Components 2D
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">SystemFont</a><ul>
+<li><a class="reference internal" href="#description">Description</a></li>
+<li><a class="reference internal" href="#properties">Properties</a></li>
+<li><a class="reference internal" href="#property-descriptions">Property Descriptions</a></li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">RPG Components 2D</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">SystemFont</li>
+      <li class="wy-breadcrumbs-aside">
+              <!-- User defined GitHub URL -->
+              <a href="hide" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="systemfont">
+<span id="class-systemfont"></span><h1>SystemFont<a class="headerlink" href="#systemfont" title="Link to this heading"></a></h1>
+<p><strong>Inherits:</strong> <a class="reference internal" href="class_font.html#class-font"><span class="std std-ref">Font</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_resource.html#class-resource"><span class="std std-ref">Resource</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_refcounted.html#class-refcounted"><span class="std std-ref">RefCounted</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_object.html#class-object"><span class="std std-ref">Object</span></a></p>
+<p>A font loaded from a system font. Falls back to a default theme font if not implemented on the host OS.</p>
+<section class="classref-introduction-group" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
+<p><strong>SystemFont</strong> loads a font from a system font with the first matching name from <a class="reference internal" href="#class-systemfont-property-font-names"><span class="std std-ref">font_names</span></a>.</p>
+<p>It will attempt to match font style, but it’s not guaranteed.</p>
+<p>The returned font might be part of a font collection or be a variable font with OpenType “weight”, “width” and/or “italic” features set.</p>
+<p>You can create <a class="reference internal" href="class_fontvariation.html#class-fontvariation"><span class="std std-ref">FontVariation</span></a> of the system font for precise control over its features.</p>
+<p><strong>Note:</strong> This class is implemented on iOS, Linux, macOS and Windows, on other platforms it will fallback to default theme font.</p>
+</section>
+<section class="classref-reftable-group" id="properties">
+<h2>Properties<a class="headerlink" href="#properties" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-systemfont-property-allow-system-fallback"><span class="std std-ref">allow_system_fallback</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_textserver.html#enum-textserver-fontantialiasing"><span class="std std-ref">FontAntialiasing</span></a></p></td>
+<td><p><a class="reference internal" href="#class-systemfont-property-antialiasing"><span class="std std-ref">antialiasing</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">1</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-systemfont-property-disable-embedded-bitmaps"><span class="std std-ref">disable_embedded_bitmaps</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-systemfont-property-font-italic"><span class="std std-ref">font_italic</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_packedstringarray.html#class-packedstringarray"><span class="std std-ref">PackedStringArray</span></a></p></td>
+<td><p><a class="reference internal" href="#class-systemfont-property-font-names"><span class="std std-ref">font_names</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">PackedStringArray()</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-systemfont-property-font-stretch"><span class="std std-ref">font_stretch</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">100</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-systemfont-property-font-weight"><span class="std std-ref">font_weight</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">400</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-systemfont-property-force-autohinter"><span class="std std-ref">force_autohinter</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-systemfont-property-generate-mipmaps"><span class="std std-ref">generate_mipmaps</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_textserver.html#enum-textserver-hinting"><span class="std std-ref">Hinting</span></a></p></td>
+<td><p><a class="reference internal" href="#class-systemfont-property-hinting"><span class="std std-ref">hinting</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">1</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-systemfont-property-keep-rounding-remainders"><span class="std std-ref">keep_rounding_remainders</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-systemfont-property-modulate-color-glyphs"><span class="std std-ref">modulate_color_glyphs</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-systemfont-property-msdf-pixel-range"><span class="std std-ref">msdf_pixel_range</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">16</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-systemfont-property-msdf-size"><span class="std std-ref">msdf_size</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">48</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-systemfont-property-multichannel-signed-distance-field"><span class="std std-ref">multichannel_signed_distance_field</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-systemfont-property-oversampling"><span class="std std-ref">oversampling</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0.0</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_textserver.html#enum-textserver-subpixelpositioning"><span class="std std-ref">SubpixelPositioning</span></a></p></td>
+<td><p><a class="reference internal" href="#class-systemfont-property-subpixel-positioning"><span class="std std-ref">subpixel_positioning</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">1</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="property-descriptions">
+<h2>Property Descriptions<a class="headerlink" href="#property-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-property" id="class-systemfont-property-allow-system-fallback"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>allow_system_fallback</strong> = <code class="docutils literal notranslate"><span class="pre">true</span></code> <a class="reference internal" href="#class-systemfont-property-allow-system-fallback"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_allow_system_fallback</strong>(value: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_allow_system_fallback</strong>()</p></li>
+</ul>
+<p>If set to <code class="docutils literal notranslate"><span class="pre">true</span></code>, system fonts can be automatically used as fallbacks.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-systemfont-property-antialiasing"><a class="reference internal" href="class_textserver.html#enum-textserver-fontantialiasing"><span class="std std-ref">FontAntialiasing</span></a> <strong>antialiasing</strong> = <code class="docutils literal notranslate"><span class="pre">1</span></code> <a class="reference internal" href="#class-systemfont-property-antialiasing"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_antialiasing</strong>(value: <a class="reference internal" href="class_textserver.html#enum-textserver-fontantialiasing"><span class="std std-ref">FontAntialiasing</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_textserver.html#enum-textserver-fontantialiasing"><span class="std std-ref">FontAntialiasing</span></a> <strong>get_antialiasing</strong>()</p></li>
+</ul>
+<p>Font anti-aliasing mode.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-systemfont-property-disable-embedded-bitmaps"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>disable_embedded_bitmaps</strong> = <code class="docutils literal notranslate"><span class="pre">true</span></code> <a class="reference internal" href="#class-systemfont-property-disable-embedded-bitmaps"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_disable_embedded_bitmaps</strong>(value: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>get_disable_embedded_bitmaps</strong>()</p></li>
+</ul>
+<p>If set to <code class="docutils literal notranslate"><span class="pre">true</span></code>, embedded font bitmap loading is disabled (bitmap-only and color fonts ignore this property).</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-systemfont-property-font-italic"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>font_italic</strong> = <code class="docutils literal notranslate"><span class="pre">false</span></code> <a class="reference internal" href="#class-systemfont-property-font-italic"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_font_italic</strong>(value: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>get_font_italic</strong>()</p></li>
+</ul>
+<p>If set to <code class="docutils literal notranslate"><span class="pre">true</span></code>, italic or oblique font is preferred.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-systemfont-property-font-names"><a class="reference internal" href="class_packedstringarray.html#class-packedstringarray"><span class="std std-ref">PackedStringArray</span></a> <strong>font_names</strong> = <code class="docutils literal notranslate"><span class="pre">PackedStringArray()</span></code> <a class="reference internal" href="#class-systemfont-property-font-names"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_font_names</strong>(value: <a class="reference internal" href="class_packedstringarray.html#class-packedstringarray"><span class="std std-ref">PackedStringArray</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_packedstringarray.html#class-packedstringarray"><span class="std std-ref">PackedStringArray</span></a> <strong>get_font_names</strong>()</p></li>
+</ul>
+<p>Array of font family names to search, first matching font found is used.</p>
+<p><strong>Note:</strong> The returned array is <em>copied</em> and any changes to it will not update the original property value. See <a class="reference internal" href="class_packedstringarray.html#class-packedstringarray"><span class="std std-ref">PackedStringArray</span></a> for more details.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-systemfont-property-font-stretch"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>font_stretch</strong> = <code class="docutils literal notranslate"><span class="pre">100</span></code> <a class="reference internal" href="#class-systemfont-property-font-stretch"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_font_stretch</strong>(value: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>get_font_stretch</strong>()</p></li>
+</ul>
+<p>Preferred font stretch amount, compared to a normal width. A percentage value between <code class="docutils literal notranslate"><span class="pre">50%</span></code> and <code class="docutils literal notranslate"><span class="pre">200%</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-systemfont-property-font-weight"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>font_weight</strong> = <code class="docutils literal notranslate"><span class="pre">400</span></code> <a class="reference internal" href="#class-systemfont-property-font-weight"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_font_weight</strong>(value: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>get_font_weight</strong>()</p></li>
+</ul>
+<p>Preferred weight (boldness) of the font. A value in the <code class="docutils literal notranslate"><span class="pre">100...999</span></code> range, normal font weight is <code class="docutils literal notranslate"><span class="pre">400</span></code>, bold font weight is <code class="docutils literal notranslate"><span class="pre">700</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-systemfont-property-force-autohinter"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>force_autohinter</strong> = <code class="docutils literal notranslate"><span class="pre">false</span></code> <a class="reference internal" href="#class-systemfont-property-force-autohinter"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_force_autohinter</strong>(value: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_force_autohinter</strong>()</p></li>
+</ul>
+<p>If set to <code class="docutils literal notranslate"><span class="pre">true</span></code>, auto-hinting is supported and preferred over font built-in hinting.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-systemfont-property-generate-mipmaps"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>generate_mipmaps</strong> = <code class="docutils literal notranslate"><span class="pre">false</span></code> <a class="reference internal" href="#class-systemfont-property-generate-mipmaps"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_generate_mipmaps</strong>(value: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>get_generate_mipmaps</strong>()</p></li>
+</ul>
+<p>If set to <code class="docutils literal notranslate"><span class="pre">true</span></code>, generate mipmaps for the font textures.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-systemfont-property-hinting"><a class="reference internal" href="class_textserver.html#enum-textserver-hinting"><span class="std std-ref">Hinting</span></a> <strong>hinting</strong> = <code class="docutils literal notranslate"><span class="pre">1</span></code> <a class="reference internal" href="#class-systemfont-property-hinting"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_hinting</strong>(value: <a class="reference internal" href="class_textserver.html#enum-textserver-hinting"><span class="std std-ref">Hinting</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_textserver.html#enum-textserver-hinting"><span class="std std-ref">Hinting</span></a> <strong>get_hinting</strong>()</p></li>
+</ul>
+<p>Font hinting mode.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-systemfont-property-keep-rounding-remainders"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>keep_rounding_remainders</strong> = <code class="docutils literal notranslate"><span class="pre">true</span></code> <a class="reference internal" href="#class-systemfont-property-keep-rounding-remainders"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_keep_rounding_remainders</strong>(value: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>get_keep_rounding_remainders</strong>()</p></li>
+</ul>
+<p>If set to <code class="docutils literal notranslate"><span class="pre">true</span></code>, when aligning glyphs to the pixel boundaries rounding remainders are accumulated to ensure more uniform glyph distribution. This setting has no effect if subpixel positioning is enabled.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-systemfont-property-modulate-color-glyphs"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>modulate_color_glyphs</strong> = <code class="docutils literal notranslate"><span class="pre">false</span></code> <a class="reference internal" href="#class-systemfont-property-modulate-color-glyphs"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_modulate_color_glyphs</strong>(value: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_modulate_color_glyphs</strong>()</p></li>
+</ul>
+<p>If set to <code class="docutils literal notranslate"><span class="pre">true</span></code>, color modulation is applied when drawing colored glyphs, otherwise it’s applied to the monochrome glyphs only.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-systemfont-property-msdf-pixel-range"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>msdf_pixel_range</strong> = <code class="docutils literal notranslate"><span class="pre">16</span></code> <a class="reference internal" href="#class-systemfont-property-msdf-pixel-range"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_msdf_pixel_range</strong>(value: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>get_msdf_pixel_range</strong>()</p></li>
+</ul>
+<p>The width of the range around the shape between the minimum and maximum representable signed distance. If using font outlines, <a class="reference internal" href="#class-systemfont-property-msdf-pixel-range"><span class="std std-ref">msdf_pixel_range</span></a> must be set to at least <em>twice</em> the size of the largest font outline. The default <a class="reference internal" href="#class-systemfont-property-msdf-pixel-range"><span class="std std-ref">msdf_pixel_range</span></a> value of <code class="docutils literal notranslate"><span class="pre">16</span></code> allows outline sizes up to <code class="docutils literal notranslate"><span class="pre">8</span></code> to look correct.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-systemfont-property-msdf-size"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>msdf_size</strong> = <code class="docutils literal notranslate"><span class="pre">48</span></code> <a class="reference internal" href="#class-systemfont-property-msdf-size"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_msdf_size</strong>(value: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>get_msdf_size</strong>()</p></li>
+</ul>
+<p>Source font size used to generate MSDF textures. Higher values allow for more precision, but are slower to render and require more memory. Only increase this value if you notice a visible lack of precision in glyph rendering.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-systemfont-property-multichannel-signed-distance-field"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>multichannel_signed_distance_field</strong> = <code class="docutils literal notranslate"><span class="pre">false</span></code> <a class="reference internal" href="#class-systemfont-property-multichannel-signed-distance-field"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_multichannel_signed_distance_field</strong>(value: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_multichannel_signed_distance_field</strong>()</p></li>
+</ul>
+<p>If set to <code class="docutils literal notranslate"><span class="pre">true</span></code>, glyphs of all sizes are rendered using single multichannel signed distance field generated from the dynamic font vector data.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-systemfont-property-oversampling"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>oversampling</strong> = <code class="docutils literal notranslate"><span class="pre">0.0</span></code> <a class="reference internal" href="#class-systemfont-property-oversampling"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_oversampling</strong>(value: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>get_oversampling</strong>()</p></li>
+</ul>
+<p>If set to a positive value, overrides the oversampling factor of the viewport this font is used in. See <a class="reference internal" href="class_viewport.html#class-viewport-property-oversampling"><span class="std std-ref">Viewport.oversampling</span></a>. This value doesn’t override the <code class="docutils literal notranslate"><span class="pre">oversampling</span></code> parameter of <code class="docutils literal notranslate"><span class="pre">draw_*</span></code> methods.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-systemfont-property-subpixel-positioning"><a class="reference internal" href="class_textserver.html#enum-textserver-subpixelpositioning"><span class="std std-ref">SubpixelPositioning</span></a> <strong>subpixel_positioning</strong> = <code class="docutils literal notranslate"><span class="pre">1</span></code> <a class="reference internal" href="#class-systemfont-property-subpixel-positioning"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_subpixel_positioning</strong>(value: <a class="reference internal" href="class_textserver.html#enum-textserver-subpixelpositioning"><span class="std std-ref">SubpixelPositioning</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_textserver.html#enum-textserver-subpixelpositioning"><span class="std std-ref">SubpixelPositioning</span></a> <strong>get_subpixel_positioning</strong>()</p></li>
+</ul>
+<p>Font glyph subpixel positioning mode. Subpixel positioning provides shaper text and better kerning for smaller font sizes, at the cost of memory usage and font rasterization speed. Use <a class="reference internal" href="class_textserver.html#class-textserver-constant-subpixel-positioning-auto"><span class="std std-ref">TextServer.SUBPIXEL_POSITIONING_AUTO</span></a> to automatically enable it based on the font size.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, MUmarShahbaz.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

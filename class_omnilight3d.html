@@ -1,0 +1,194 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta content="point" name="keywords" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OmniLight3D &mdash; RPG Components 2D 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=d45e8c67"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            RPG Components 2D
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">OmniLight3D</a><ul>
+<li><a class="reference internal" href="#description">Description</a></li>
+<li><a class="reference internal" href="#tutorials">Tutorials</a></li>
+<li><a class="reference internal" href="#properties">Properties</a></li>
+<li><a class="reference internal" href="#enumerations">Enumerations</a></li>
+<li><a class="reference internal" href="#property-descriptions">Property Descriptions</a></li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">RPG Components 2D</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">OmniLight3D</li>
+      <li class="wy-breadcrumbs-aside">
+              <!-- User defined GitHub URL -->
+              <a href="hide" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="omnilight3d">
+<span id="class-omnilight3d"></span><h1>OmniLight3D<a class="headerlink" href="#omnilight3d" title="Link to this heading"></a></h1>
+<p><strong>Inherits:</strong> <a class="reference internal" href="class_light3d.html#class-light3d"><span class="std std-ref">Light3D</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_visualinstance3d.html#class-visualinstance3d"><span class="std std-ref">VisualInstance3D</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_node3d.html#class-node3d"><span class="std std-ref">Node3D</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_node.html#class-node"><span class="std std-ref">Node</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_object.html#class-object"><span class="std std-ref">Object</span></a></p>
+<p>Omnidirectional light, such as a light bulb or a candle.</p>
+<section class="classref-introduction-group" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
+<p>An Omnidirectional light is a type of <a class="reference internal" href="class_light3d.html#class-light3d"><span class="std std-ref">Light3D</span></a> that emits light in all directions. The light is attenuated by distance and this attenuation can be configured by changing its energy, radius, and attenuation parameters.</p>
+<p><strong>Note:</strong> When using the Mobile rendering method, only 8 omni lights can be displayed on each mesh resource. Attempting to display more than 8 omni lights on a single mesh resource will result in omni lights flickering in and out as the camera moves. When using the Compatibility rendering method, only 8 omni lights can be displayed on each mesh resource by default, but this can be increased by adjusting <a class="reference internal" href="class_projectsettings.html#class-projectsettings-property-rendering-limits-opengl-max-lights-per-object"><span class="std std-ref">ProjectSettings.rendering/limits/opengl/max_lights_per_object</span></a>.</p>
+<p><strong>Note:</strong> When using the Mobile or Compatibility rendering methods, omni lights will only correctly affect meshes whose visibility AABB intersects with the light’s AABB. If using a shader to deform the mesh in a way that makes it go outside its AABB, <a class="reference internal" href="class_geometryinstance3d.html#class-geometryinstance3d-property-extra-cull-margin"><span class="std std-ref">GeometryInstance3D.extra_cull_margin</span></a> must be increased on the mesh. Otherwise, the light may not be visible on the mesh.</p>
+</section>
+<section class="classref-introduction-group" id="tutorials">
+<h2>Tutorials<a class="headerlink" href="#tutorials" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><span class="xref std std-doc">3D lights and shadows</span></p></li>
+<li><p><span class="xref std std-doc">Faking global illumination</span></p></li>
+</ul>
+</section>
+<section class="classref-reftable-group" id="properties">
+<h2>Properties<a class="headerlink" href="#properties" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p>light_specular</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0.5</span></code> (overrides <a class="reference internal" href="class_light3d.html#class-light3d-property-light-specular"><span class="std std-ref">Light3D</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-omnilight3d-property-omni-attenuation"><span class="std std-ref">omni_attenuation</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">1.0</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-omnilight3d-property-omni-range"><span class="std std-ref">omni_range</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">5.0</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#enum-omnilight3d-shadowmode"><span class="std std-ref">ShadowMode</span></a></p></td>
+<td><p><a class="reference internal" href="#class-omnilight3d-property-omni-shadow-mode"><span class="std std-ref">omni_shadow_mode</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">1</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p>shadow_normal_bias</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">1.0</span></code> (overrides <a class="reference internal" href="class_light3d.html#class-light3d-property-shadow-normal-bias"><span class="std std-ref">Light3D</span></a>)</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="enumerations">
+<h2>Enumerations<a class="headerlink" href="#enumerations" title="Link to this heading"></a></h2>
+<p class="classref-enumeration" id="enum-omnilight3d-shadowmode">enum <strong>ShadowMode</strong>: <a class="reference internal" href="#enum-omnilight3d-shadowmode"><span class="std std-ref">🔗</span></a></p>
+<p class="classref-enumeration-constant" id="class-omnilight3d-constant-shadow-dual-paraboloid"><a class="reference internal" href="#enum-omnilight3d-shadowmode"><span class="std std-ref">ShadowMode</span></a> <strong>SHADOW_DUAL_PARABOLOID</strong> = <code class="docutils literal notranslate"><span class="pre">0</span></code></p>
+<p>Shadows are rendered to a dual-paraboloid texture. Faster than <a class="reference internal" href="#class-omnilight3d-constant-shadow-cube"><span class="std std-ref">SHADOW_CUBE</span></a>, but lower-quality.</p>
+<p class="classref-enumeration-constant" id="class-omnilight3d-constant-shadow-cube"><a class="reference internal" href="#enum-omnilight3d-shadowmode"><span class="std std-ref">ShadowMode</span></a> <strong>SHADOW_CUBE</strong> = <code class="docutils literal notranslate"><span class="pre">1</span></code></p>
+<p>Shadows are rendered to a cubemap. Slower than <a class="reference internal" href="#class-omnilight3d-constant-shadow-dual-paraboloid"><span class="std std-ref">SHADOW_DUAL_PARABOLOID</span></a>, but higher-quality.</p>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="property-descriptions">
+<h2>Property Descriptions<a class="headerlink" href="#property-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-property" id="class-omnilight3d-property-omni-attenuation"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>omni_attenuation</strong> = <code class="docutils literal notranslate"><span class="pre">1.0</span></code> <a class="reference internal" href="#class-omnilight3d-property-omni-attenuation"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_param</strong>(value: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>get_param</strong>()</p></li>
+</ul>
+<p>Controls the distance attenuation function for omnilights.</p>
+<p>A value of <code class="docutils literal notranslate"><span class="pre">0.0</span></code> will maintain a constant brightness through most of the range, but smoothly attenuate the light at the edge of the range. Use a value of <code class="docutils literal notranslate"><span class="pre">2.0</span></code> for physically accurate lights as it results in the proper inverse square attenutation.</p>
+<p><strong>Note:</strong> Setting attenuation to <code class="docutils literal notranslate"><span class="pre">2.0</span></code> or higher may result in distant objects receiving minimal light, even within range. For example, with a range of <code class="docutils literal notranslate"><span class="pre">4096</span></code>, an object at <code class="docutils literal notranslate"><span class="pre">100</span></code> units is attenuated by a factor of <code class="docutils literal notranslate"><span class="pre">0.0001</span></code>. With a default brightness of <code class="docutils literal notranslate"><span class="pre">1</span></code>, the light would not be visible at that distance.</p>
+<p><strong>Note:</strong> Using negative or values higher than <code class="docutils literal notranslate"><span class="pre">10.0</span></code> may lead to unexpected results.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-omnilight3d-property-omni-range"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>omni_range</strong> = <code class="docutils literal notranslate"><span class="pre">5.0</span></code> <a class="reference internal" href="#class-omnilight3d-property-omni-range"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_param</strong>(value: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>get_param</strong>()</p></li>
+</ul>
+<p>The light’s radius. Note that the effectively lit area may appear to be smaller depending on the <a class="reference internal" href="#class-omnilight3d-property-omni-attenuation"><span class="std std-ref">omni_attenuation</span></a> in use. No matter the <a class="reference internal" href="#class-omnilight3d-property-omni-attenuation"><span class="std std-ref">omni_attenuation</span></a> in use, the light will never reach anything outside this radius.</p>
+<p><strong>Note:</strong> <a class="reference internal" href="#class-omnilight3d-property-omni-range"><span class="std std-ref">omni_range</span></a> is not affected by <a class="reference internal" href="class_node3d.html#class-node3d-property-scale"><span class="std std-ref">Node3D.scale</span></a> (the light’s scale or its parent’s scale).</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-omnilight3d-property-omni-shadow-mode"><a class="reference internal" href="#enum-omnilight3d-shadowmode"><span class="std std-ref">ShadowMode</span></a> <strong>omni_shadow_mode</strong> = <code class="docutils literal notranslate"><span class="pre">1</span></code> <a class="reference internal" href="#class-omnilight3d-property-omni-shadow-mode"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_shadow_mode</strong>(value: <a class="reference internal" href="#enum-omnilight3d-shadowmode"><span class="std std-ref">ShadowMode</span></a>)</p></li>
+<li><p><a class="reference internal" href="#enum-omnilight3d-shadowmode"><span class="std std-ref">ShadowMode</span></a> <strong>get_shadow_mode</strong>()</p></li>
+</ul>
+<div class="contribute docutils container">
+<p>There is currently no description for this property. Please help us by <a class="reference external" href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, MUmarShahbaz.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

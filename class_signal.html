@@ -1,0 +1,274 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Signal &mdash; RPG Components 2D 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=d45e8c67"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            RPG Components 2D
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">Signal</a><ul>
+<li><a class="reference internal" href="#description">Description</a></li>
+<li><a class="reference internal" href="#tutorials">Tutorials</a></li>
+<li><a class="reference internal" href="#constructors">Constructors</a></li>
+<li><a class="reference internal" href="#methods">Methods</a></li>
+<li><a class="reference internal" href="#operators">Operators</a></li>
+<li><a class="reference internal" href="#constructor-descriptions">Constructor Descriptions</a></li>
+<li><a class="reference internal" href="#method-descriptions">Method Descriptions</a></li>
+<li><a class="reference internal" href="#operator-descriptions">Operator Descriptions</a></li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">RPG Components 2D</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Signal</li>
+      <li class="wy-breadcrumbs-aside">
+              <!-- User defined GitHub URL -->
+              <a href="hide" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="signal">
+<span id="class-signal"></span><h1>Signal<a class="headerlink" href="#signal" title="Link to this heading"></a></h1>
+<p>A built-in type representing a signal of an <a class="reference internal" href="class_object.html#class-object"><span class="std std-ref">Object</span></a>.</p>
+<section class="classref-introduction-group" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
+<p><strong>Signal</strong> is a built-in <a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a> type that represents a signal of an <a class="reference internal" href="class_object.html#class-object"><span class="std std-ref">Object</span></a> instance. Like all <a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a> types, it can be stored in variables and passed to functions. Signals allow all connected <a class="reference internal" href="class_callable.html#class-callable"><span class="std std-ref">Callable</span></a>s (and by extension their respective objects) to listen and react to events, without directly referencing one another. This keeps the code flexible and easier to manage. You can check whether an <a class="reference internal" href="class_object.html#class-object"><span class="std std-ref">Object</span></a> has a given signal name using <a class="reference internal" href="class_object.html#class-object-method-has-signal"><span class="std std-ref">Object.has_signal()</span></a>.</p>
+<p>In GDScript, signals can be declared with the <code class="docutils literal notranslate"><span class="pre">signal</span></code> keyword. In C#, you may use the <code class="docutils literal notranslate"><span class="pre">[Signal]</span></code> attribute on a delegate.</p>
+<p>Connecting signals is one of the most common operations in Godot and the API gives many options to do so, which are described further down. The code block below shows the recommended approach.</p>
+<p><code class="docutils literal notranslate"><span class="pre">Object.connect()</span></code> <strong>or</strong> <code class="docutils literal notranslate"><span class="pre">Signal.connect()</span></code><strong>?</strong></p>
+<p>As seen above, the recommended method to connect signals is not <a class="reference internal" href="class_object.html#class-object-method-connect"><span class="std std-ref">Object.connect()</span></a>. The code block below shows the four options for connecting signals, using either this legacy method or the recommended <a class="reference internal" href="#class-signal-method-connect"><span class="std std-ref">connect()</span></a>, and using either an implicit <a class="reference internal" href="class_callable.html#class-callable"><span class="std std-ref">Callable</span></a> or a manually defined one.</p>
+<p>While all options have the same outcome (<code class="docutils literal notranslate"><span class="pre">button</span></code>’s <a class="reference internal" href="class_basebutton.html#class-basebutton-signal-button-down"><span class="std std-ref">BaseButton.button_down</span></a> signal will be connected to <code class="docutils literal notranslate"><span class="pre">_on_button_down</span></code>), <strong>option 3</strong> offers the best validation: it will print a compile-time error if either the <code class="docutils literal notranslate"><span class="pre">button_down</span></code> <strong>Signal</strong> or the <code class="docutils literal notranslate"><span class="pre">_on_button_down</span></code> <a class="reference internal" href="class_callable.html#class-callable"><span class="std std-ref">Callable</span></a> are not defined. On the other hand, <strong>option 2</strong> only relies on string names and will only be able to validate either names at runtime: it will generate an error at runtime if <code class="docutils literal notranslate"><span class="pre">&quot;button_down&quot;</span></code> is not a signal, or if <code class="docutils literal notranslate"><span class="pre">&quot;_on_button_down&quot;</span></code> is not a method in the object <code class="docutils literal notranslate"><span class="pre">self</span></code>. The main reason for using options 1, 2, or 4 would be if you actually need to use strings (e.g. to connect signals programmatically based on strings read from a configuration file). Otherwise, option 3 is the recommended (and fastest) method.</p>
+<p><strong>Binding and passing parameters:</strong></p>
+<p>The syntax to bind parameters is through <a class="reference internal" href="class_callable.html#class-callable-method-bind"><span class="std std-ref">Callable.bind()</span></a>, which returns a copy of the <a class="reference internal" href="class_callable.html#class-callable"><span class="std std-ref">Callable</span></a> with its parameters bound.</p>
+<p>When calling <a class="reference internal" href="#class-signal-method-emit"><span class="std std-ref">emit()</span></a> or <a class="reference internal" href="class_object.html#class-object-method-emit-signal"><span class="std std-ref">Object.emit_signal()</span></a>, the signal parameters can be also passed. The examples below show the relationship between these signal parameters and bound parameters.</p>
+<p><strong>Note:</strong> In a boolean context, a signal will evaluate to <code class="docutils literal notranslate"><span class="pre">false</span></code> if it’s null (see <a class="reference internal" href="#class-signal-method-is-null"><span class="std std-ref">is_null()</span></a>). Otherwise, a signal will always evaluate to <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>There are notable differences when using this API with C#. See <span class="xref std std-ref">doc_c_sharp_differences</span> for more information.</p>
+</div>
+</section>
+<section class="classref-introduction-group" id="tutorials">
+<h2>Tutorials<a class="headerlink" href="#tutorials" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><span class="xref std std-doc">Using Signals</span></p></li>
+<li><p><a class="reference external" href="../tutorials/scripting/gdscript/gdscript_basics.html#signals">GDScript Basics</a></p></li>
+</ul>
+</section>
+<section class="classref-reftable-group" id="constructors">
+<h2>Constructors<a class="headerlink" href="#constructors" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#class-signal"><span class="std std-ref">Signal</span></a></p></td>
+<td><p><a class="reference internal" href="#class-signal-constructor-signal"><span class="std std-ref">Signal</span></a>()</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#class-signal"><span class="std std-ref">Signal</span></a></p></td>
+<td><p><a class="reference internal" href="#class-signal-constructor-signal"><span class="std std-ref">Signal</span></a>(from: <a class="reference internal" href="#class-signal"><span class="std std-ref">Signal</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#class-signal"><span class="std std-ref">Signal</span></a></p></td>
+<td><p><a class="reference internal" href="#class-signal-constructor-signal"><span class="std std-ref">Signal</span></a>(object: <a class="reference internal" href="class_object.html#class-object"><span class="std std-ref">Object</span></a>, signal: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>)</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section class="classref-reftable-group" id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-signal-method-connect"><span class="std std-ref">connect</span></a>(callable: <a class="reference internal" href="class_callable.html#class-callable"><span class="std std-ref">Callable</span></a>, flags: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> = 0)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-signal-method-disconnect"><span class="std std-ref">disconnect</span></a>(callable: <a class="reference internal" href="class_callable.html#class-callable"><span class="std std-ref">Callable</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-signal-method-emit"><span class="std std-ref">emit</span></a>(…) <abbr title="This method accepts any number of arguments after the ones described here.">vararg</abbr> <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_array.html#class-array"><span class="std std-ref">Array</span></a></p></td>
+<td><p><a class="reference internal" href="#class-signal-method-get-connections"><span class="std std-ref">get_connections</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a></p></td>
+<td><p><a class="reference internal" href="#class-signal-method-get-name"><span class="std std-ref">get_name</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_object.html#class-object"><span class="std std-ref">Object</span></a></p></td>
+<td><p><a class="reference internal" href="#class-signal-method-get-object"><span class="std std-ref">get_object</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-signal-method-get-object-id"><span class="std std-ref">get_object_id</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-signal-method-has-connections"><span class="std std-ref">has_connections</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-signal-method-is-connected"><span class="std std-ref">is_connected</span></a>(callable: <a class="reference internal" href="class_callable.html#class-callable"><span class="std std-ref">Callable</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-signal-method-is-null"><span class="std std-ref">is_null</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section class="classref-reftable-group" id="operators">
+<h2>Operators<a class="headerlink" href="#operators" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-signal-operator-neq-signal"><span class="std std-ref">operator !=</span></a>(right: <a class="reference internal" href="#class-signal"><span class="std std-ref">Signal</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-signal-operator-eq-signal"><span class="std std-ref">operator ==</span></a>(right: <a class="reference internal" href="#class-signal"><span class="std std-ref">Signal</span></a>)</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="constructor-descriptions">
+<h2>Constructor Descriptions<a class="headerlink" href="#constructor-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-constructor" id="class-signal-constructor-signal"><a class="reference internal" href="#class-signal"><span class="std std-ref">Signal</span></a> <strong>Signal</strong>() <a class="reference internal" href="#class-signal-constructor-signal"><span class="std std-ref">🔗</span></a></p>
+<p>Constructs an empty <strong>Signal</strong> with no object nor signal name bound.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-constructor"><a class="reference internal" href="#class-signal"><span class="std std-ref">Signal</span></a> <strong>Signal</strong>(from: <a class="reference internal" href="#class-signal"><span class="std std-ref">Signal</span></a>)</p>
+<p>Constructs a <strong>Signal</strong> as a copy of the given <strong>Signal</strong>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-constructor"><a class="reference internal" href="#class-signal"><span class="std std-ref">Signal</span></a> <strong>Signal</strong>(object: <a class="reference internal" href="class_object.html#class-object"><span class="std std-ref">Object</span></a>, signal: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>)</p>
+<p>Creates a <strong>Signal</strong> object referencing a signal named <code class="docutils literal notranslate"><span class="pre">signal</span></code> in the specified <code class="docutils literal notranslate"><span class="pre">object</span></code>.</p>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="method-descriptions">
+<h2>Method Descriptions<a class="headerlink" href="#method-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-method" id="class-signal-method-connect"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>connect</strong>(callable: <a class="reference internal" href="class_callable.html#class-callable"><span class="std std-ref">Callable</span></a>, flags: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> = 0) <a class="reference internal" href="#class-signal-method-connect"><span class="std std-ref">🔗</span></a></p>
+<p>Connects this signal to the specified <code class="docutils literal notranslate"><span class="pre">callable</span></code>. Optional <code class="docutils literal notranslate"><span class="pre">flags</span></code> can be also added to configure the connection’s behavior (see <a class="reference internal" href="class_object.html#enum-object-connectflags"><span class="std std-ref">ConnectFlags</span></a> constants). You can provide additional arguments to the connected <code class="docutils literal notranslate"><span class="pre">callable</span></code> by using <a class="reference internal" href="class_callable.html#class-callable-method-bind"><span class="std std-ref">Callable.bind()</span></a>.</p>
+<p>A signal can only be connected once to the same <a class="reference internal" href="class_callable.html#class-callable"><span class="std std-ref">Callable</span></a>. If the signal is already connected, this method returns <a class="reference internal" href="class_%40globalscope.html#class-globalscope-constant-err-invalid-parameter"><span class="std std-ref">&#64;GlobalScope.ERR_INVALID_PARAMETER</span></a> and generates an error, unless the signal is connected with <a class="reference internal" href="class_object.html#class-object-constant-connect-reference-counted"><span class="std std-ref">Object.CONNECT_REFERENCE_COUNTED</span></a>. To prevent this, use <a class="reference internal" href="#class-signal-method-is-connected"><span class="std std-ref">is_connected()</span></a> first to check for existing connections.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>for button in $Buttons.get_children():
+    button.pressed.connect(_on_pressed.bind(button))
+
+func _on_pressed(button):
+    print(button.name, &quot; was pressed&quot;)
+</pre></div>
+</div>
+<p><strong>Note:</strong> If the <code class="docutils literal notranslate"><span class="pre">callable</span></code>’s object is freed, the connection will be lost.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-signal-method-disconnect"><abbr title="No return value.">void</abbr> <strong>disconnect</strong>(callable: <a class="reference internal" href="class_callable.html#class-callable"><span class="std std-ref">Callable</span></a>) <a class="reference internal" href="#class-signal-method-disconnect"><span class="std std-ref">🔗</span></a></p>
+<p>Disconnects this signal from the specified <a class="reference internal" href="class_callable.html#class-callable"><span class="std std-ref">Callable</span></a>. If the connection does not exist, generates an error. Use <a class="reference internal" href="#class-signal-method-is-connected"><span class="std std-ref">is_connected()</span></a> to make sure that the connection exists.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-signal-method-emit"><abbr title="No return value.">void</abbr> <strong>emit</strong>(…) <abbr title="This method accepts any number of arguments after the ones described here.">vararg</abbr> <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-signal-method-emit"><span class="std std-ref">🔗</span></a></p>
+<p>Emits this signal. All <a class="reference internal" href="class_callable.html#class-callable"><span class="std std-ref">Callable</span></a>s connected to this signal will be triggered. This method supports a variable number of arguments, so parameters can be passed as a comma separated list.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-signal-method-get-connections"><a class="reference internal" href="class_array.html#class-array"><span class="std std-ref">Array</span></a> <strong>get_connections</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-signal-method-get-connections"><span class="std std-ref">🔗</span></a></p>
+<p>Returns an <a class="reference internal" href="class_array.html#class-array"><span class="std std-ref">Array</span></a> of connections for this signal. Each connection is represented as a <a class="reference internal" href="class_dictionary.html#class-dictionary"><span class="std std-ref">Dictionary</span></a> that contains three entries:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">signal</span></code> is a reference to this signal;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">callable</span></code> is a reference to the connected <a class="reference internal" href="class_callable.html#class-callable"><span class="std std-ref">Callable</span></a>;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">flags</span></code> is a combination of <a class="reference internal" href="class_object.html#enum-object-connectflags"><span class="std std-ref">ConnectFlags</span></a>.</p></li>
+</ul>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-signal-method-get-name"><a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a> <strong>get_name</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-signal-method-get-name"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the name of this signal.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-signal-method-get-object"><a class="reference internal" href="class_object.html#class-object"><span class="std std-ref">Object</span></a> <strong>get_object</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-signal-method-get-object"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the object emitting this signal.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-signal-method-get-object-id"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>get_object_id</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-signal-method-get-object-id"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the ID of the object emitting this signal (see <a class="reference internal" href="class_object.html#class-object-method-get-instance-id"><span class="std std-ref">Object.get_instance_id()</span></a>).</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-signal-method-has-connections"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>has_connections</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-signal-method-has-connections"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if any <a class="reference internal" href="class_callable.html#class-callable"><span class="std std-ref">Callable</span></a> is connected to this signal.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-signal-method-is-connected"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_connected</strong>(callable: <a class="reference internal" href="class_callable.html#class-callable"><span class="std std-ref">Callable</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-signal-method-is-connected"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if the specified <a class="reference internal" href="class_callable.html#class-callable"><span class="std std-ref">Callable</span></a> is connected to this signal.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-signal-method-is-null"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_null</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-signal-method-is-null"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if this <strong>Signal</strong> has no object and the signal name is empty. Equivalent to <code class="docutils literal notranslate"><span class="pre">signal</span> <span class="pre">==</span> <span class="pre">Signal()</span></code>.</p>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="operator-descriptions">
+<h2>Operator Descriptions<a class="headerlink" href="#operator-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-operator" id="class-signal-operator-neq-signal"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>operator !=</strong>(right: <a class="reference internal" href="#class-signal"><span class="std std-ref">Signal</span></a>) <a class="reference internal" href="#class-signal-operator-neq-signal"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if the signals do not share the same object and name.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-operator" id="class-signal-operator-eq-signal"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>operator ==</strong>(right: <a class="reference internal" href="#class-signal"><span class="std std-ref">Signal</span></a>) <a class="reference internal" href="#class-signal-operator-eq-signal"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if both signals share the same object and name.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, MUmarShahbaz.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

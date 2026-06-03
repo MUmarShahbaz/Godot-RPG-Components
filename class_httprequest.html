@@ -1,0 +1,336 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HTTPRequest &mdash; RPG Components 2D 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=d45e8c67"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            RPG Components 2D
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">HTTPRequest</a><ul>
+<li><a class="reference internal" href="#description">Description</a></li>
+<li><a class="reference internal" href="#tutorials">Tutorials</a></li>
+<li><a class="reference internal" href="#properties">Properties</a></li>
+<li><a class="reference internal" href="#methods">Methods</a></li>
+<li><a class="reference internal" href="#signals">Signals</a></li>
+<li><a class="reference internal" href="#enumerations">Enumerations</a></li>
+<li><a class="reference internal" href="#property-descriptions">Property Descriptions</a></li>
+<li><a class="reference internal" href="#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">RPG Components 2D</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">HTTPRequest</li>
+      <li class="wy-breadcrumbs-aside">
+              <!-- User defined GitHub URL -->
+              <a href="hide" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="httprequest">
+<span id="class-httprequest"></span><h1>HTTPRequest<a class="headerlink" href="#httprequest" title="Link to this heading"></a></h1>
+<p><strong>Inherits:</strong> <a class="reference internal" href="class_node.html#class-node"><span class="std std-ref">Node</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_object.html#class-object"><span class="std std-ref">Object</span></a></p>
+<p>A node with the ability to send HTTP(S) requests.</p>
+<section class="classref-introduction-group" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
+<p>A node with the ability to send HTTP requests. Uses <a class="reference internal" href="class_httpclient.html#class-httpclient"><span class="std std-ref">HTTPClient</span></a> internally.</p>
+<p>Can be used to make HTTP requests, i.e. download or upload files or web content via HTTP.</p>
+<p><strong>Warning:</strong> See the notes and warnings on <a class="reference internal" href="class_httpclient.html#class-httpclient"><span class="std std-ref">HTTPClient</span></a> for limitations, especially regarding TLS security.</p>
+<p><strong>Note:</strong> When exporting to Android, make sure to enable the <code class="docutils literal notranslate"><span class="pre">INTERNET</span></code> permission in the Android export preset before exporting the project or using one-click deploy. Otherwise, network communication of any kind will be blocked by Android.</p>
+<p><strong>Example:</strong> Contact a REST API and print one of its returned fields:</p>
+<p><strong>Example:</strong> Load an image using <strong>HTTPRequest</strong> and display it:</p>
+<p><strong>Note:</strong> <strong>HTTPRequest</strong> nodes will automatically handle decompression of response bodies. An <code class="docutils literal notranslate"><span class="pre">Accept-Encoding</span></code> header will be automatically added to each of your requests, unless one is already specified. Any response with a <code class="docutils literal notranslate"><span class="pre">Content-Encoding:</span> <span class="pre">gzip</span></code> header will automatically be decompressed and delivered to you as uncompressed bytes.</p>
+</section>
+<section class="classref-introduction-group" id="tutorials">
+<h2>Tutorials<a class="headerlink" href="#tutorials" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><span class="xref std std-doc">Making HTTP requests</span></p></li>
+<li><p><span class="xref std std-doc">TLS certificates</span></p></li>
+</ul>
+</section>
+<section class="classref-reftable-group" id="properties">
+<h2>Properties<a class="headerlink" href="#properties" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-httprequest-property-accept-gzip"><span class="std std-ref">accept_gzip</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-httprequest-property-body-size-limit"><span class="std std-ref">body_size_limit</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">-1</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-httprequest-property-download-chunk-size"><span class="std std-ref">download_chunk_size</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">65536</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a></p></td>
+<td><p><a class="reference internal" href="#class-httprequest-property-download-file"><span class="std std-ref">download_file</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&quot;&quot;</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-httprequest-property-max-redirects"><span class="std std-ref">max_redirects</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">8</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-httprequest-property-timeout"><span class="std std-ref">timeout</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0.0</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-httprequest-property-use-threads"><span class="std std-ref">use_threads</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section class="classref-reftable-group" id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-httprequest-method-cancel-request"><span class="std std-ref">cancel_request</span></a>()</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-httprequest-method-get-body-size"><span class="std std-ref">get_body_size</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-httprequest-method-get-downloaded-bytes"><span class="std std-ref">get_downloaded_bytes</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_httpclient.html#enum-httpclient-status"><span class="std std-ref">Status</span></a></p></td>
+<td><p><a class="reference internal" href="#class-httprequest-method-get-http-client-status"><span class="std std-ref">get_http_client_status</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_%40globalscope.html#enum-globalscope-error"><span class="std std-ref">Error</span></a></p></td>
+<td><p><a class="reference internal" href="#class-httprequest-method-request"><span class="std std-ref">request</span></a>(url: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, custom_headers: <a class="reference internal" href="class_packedstringarray.html#class-packedstringarray"><span class="std std-ref">PackedStringArray</span></a> = PackedStringArray(), method: <a class="reference internal" href="class_httpclient.html#enum-httpclient-method"><span class="std std-ref">Method</span></a> = 0, request_data: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a> = “”)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_%40globalscope.html#enum-globalscope-error"><span class="std std-ref">Error</span></a></p></td>
+<td><p><a class="reference internal" href="#class-httprequest-method-request-raw"><span class="std std-ref">request_raw</span></a>(url: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, custom_headers: <a class="reference internal" href="class_packedstringarray.html#class-packedstringarray"><span class="std std-ref">PackedStringArray</span></a> = PackedStringArray(), method: <a class="reference internal" href="class_httpclient.html#enum-httpclient-method"><span class="std std-ref">Method</span></a> = 0, request_data_raw: <a class="reference internal" href="class_packedbytearray.html#class-packedbytearray"><span class="std std-ref">PackedByteArray</span></a> = PackedByteArray())</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-httprequest-method-set-http-proxy"><span class="std std-ref">set_http_proxy</span></a>(host: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, port: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-httprequest-method-set-https-proxy"><span class="std std-ref">set_https_proxy</span></a>(host: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, port: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-httprequest-method-set-tls-options"><span class="std std-ref">set_tls_options</span></a>(client_options: <a class="reference internal" href="class_tlsoptions.html#class-tlsoptions"><span class="std std-ref">TLSOptions</span></a>)</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="signals">
+<h2>Signals<a class="headerlink" href="#signals" title="Link to this heading"></a></h2>
+<p class="classref-signal" id="class-httprequest-signal-request-completed"><strong>request_completed</strong>(result: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, response_code: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, headers: <a class="reference internal" href="class_packedstringarray.html#class-packedstringarray"><span class="std std-ref">PackedStringArray</span></a>, body: <a class="reference internal" href="class_packedbytearray.html#class-packedbytearray"><span class="std std-ref">PackedByteArray</span></a>) <a class="reference internal" href="#class-httprequest-signal-request-completed"><span class="std std-ref">🔗</span></a></p>
+<p>Emitted when a request is completed.</p>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="enumerations">
+<h2>Enumerations<a class="headerlink" href="#enumerations" title="Link to this heading"></a></h2>
+<p class="classref-enumeration" id="enum-httprequest-result">enum <strong>Result</strong>: <a class="reference internal" href="#enum-httprequest-result"><span class="std std-ref">🔗</span></a></p>
+<p class="classref-enumeration-constant" id="class-httprequest-constant-result-success"><a class="reference internal" href="#enum-httprequest-result"><span class="std std-ref">Result</span></a> <strong>RESULT_SUCCESS</strong> = <code class="docutils literal notranslate"><span class="pre">0</span></code></p>
+<p>Request successful.</p>
+<p class="classref-enumeration-constant" id="class-httprequest-constant-result-chunked-body-size-mismatch"><a class="reference internal" href="#enum-httprequest-result"><span class="std std-ref">Result</span></a> <strong>RESULT_CHUNKED_BODY_SIZE_MISMATCH</strong> = <code class="docutils literal notranslate"><span class="pre">1</span></code></p>
+<p>Request failed due to a mismatch between the expected and actual chunked body size during transfer. Possible causes include network errors, server misconfiguration, or issues with chunked encoding.</p>
+<p class="classref-enumeration-constant" id="class-httprequest-constant-result-cant-connect"><a class="reference internal" href="#enum-httprequest-result"><span class="std std-ref">Result</span></a> <strong>RESULT_CANT_CONNECT</strong> = <code class="docutils literal notranslate"><span class="pre">2</span></code></p>
+<p>Request failed while connecting.</p>
+<p class="classref-enumeration-constant" id="class-httprequest-constant-result-cant-resolve"><a class="reference internal" href="#enum-httprequest-result"><span class="std std-ref">Result</span></a> <strong>RESULT_CANT_RESOLVE</strong> = <code class="docutils literal notranslate"><span class="pre">3</span></code></p>
+<p>Request failed while resolving.</p>
+<p class="classref-enumeration-constant" id="class-httprequest-constant-result-connection-error"><a class="reference internal" href="#enum-httprequest-result"><span class="std std-ref">Result</span></a> <strong>RESULT_CONNECTION_ERROR</strong> = <code class="docutils literal notranslate"><span class="pre">4</span></code></p>
+<p>Request failed due to connection (read/write) error.</p>
+<p class="classref-enumeration-constant" id="class-httprequest-constant-result-tls-handshake-error"><a class="reference internal" href="#enum-httprequest-result"><span class="std std-ref">Result</span></a> <strong>RESULT_TLS_HANDSHAKE_ERROR</strong> = <code class="docutils literal notranslate"><span class="pre">5</span></code></p>
+<p>Request failed on TLS handshake.</p>
+<p class="classref-enumeration-constant" id="class-httprequest-constant-result-no-response"><a class="reference internal" href="#enum-httprequest-result"><span class="std std-ref">Result</span></a> <strong>RESULT_NO_RESPONSE</strong> = <code class="docutils literal notranslate"><span class="pre">6</span></code></p>
+<p>Request does not have a response (yet).</p>
+<p class="classref-enumeration-constant" id="class-httprequest-constant-result-body-size-limit-exceeded"><a class="reference internal" href="#enum-httprequest-result"><span class="std std-ref">Result</span></a> <strong>RESULT_BODY_SIZE_LIMIT_EXCEEDED</strong> = <code class="docutils literal notranslate"><span class="pre">7</span></code></p>
+<p>Request exceeded its maximum size limit, see <a class="reference internal" href="#class-httprequest-property-body-size-limit"><span class="std std-ref">body_size_limit</span></a>.</p>
+<p class="classref-enumeration-constant" id="class-httprequest-constant-result-body-decompress-failed"><a class="reference internal" href="#enum-httprequest-result"><span class="std std-ref">Result</span></a> <strong>RESULT_BODY_DECOMPRESS_FAILED</strong> = <code class="docutils literal notranslate"><span class="pre">8</span></code></p>
+<p>Request failed due to an error while decompressing the response body. Possible causes include unsupported or incorrect compression format, corrupted data, or incomplete transfer.</p>
+<p class="classref-enumeration-constant" id="class-httprequest-constant-result-request-failed"><a class="reference internal" href="#enum-httprequest-result"><span class="std std-ref">Result</span></a> <strong>RESULT_REQUEST_FAILED</strong> = <code class="docutils literal notranslate"><span class="pre">9</span></code></p>
+<p>Request failed (currently unused).</p>
+<p class="classref-enumeration-constant" id="class-httprequest-constant-result-download-file-cant-open"><a class="reference internal" href="#enum-httprequest-result"><span class="std std-ref">Result</span></a> <strong>RESULT_DOWNLOAD_FILE_CANT_OPEN</strong> = <code class="docutils literal notranslate"><span class="pre">10</span></code></p>
+<p>HTTPRequest couldn’t open the download file.</p>
+<p class="classref-enumeration-constant" id="class-httprequest-constant-result-download-file-write-error"><a class="reference internal" href="#enum-httprequest-result"><span class="std std-ref">Result</span></a> <strong>RESULT_DOWNLOAD_FILE_WRITE_ERROR</strong> = <code class="docutils literal notranslate"><span class="pre">11</span></code></p>
+<p>HTTPRequest couldn’t write to the download file.</p>
+<p class="classref-enumeration-constant" id="class-httprequest-constant-result-redirect-limit-reached"><a class="reference internal" href="#enum-httprequest-result"><span class="std std-ref">Result</span></a> <strong>RESULT_REDIRECT_LIMIT_REACHED</strong> = <code class="docutils literal notranslate"><span class="pre">12</span></code></p>
+<p>Request reached its maximum redirect limit, see <a class="reference internal" href="#class-httprequest-property-max-redirects"><span class="std std-ref">max_redirects</span></a>.</p>
+<p class="classref-enumeration-constant" id="class-httprequest-constant-result-timeout"><a class="reference internal" href="#enum-httprequest-result"><span class="std std-ref">Result</span></a> <strong>RESULT_TIMEOUT</strong> = <code class="docutils literal notranslate"><span class="pre">13</span></code></p>
+<p>Request failed due to a timeout. If you expect requests to take a long time, try increasing the value of <a class="reference internal" href="#class-httprequest-property-timeout"><span class="std std-ref">timeout</span></a> or setting it to <code class="docutils literal notranslate"><span class="pre">0.0</span></code> to remove the timeout completely.</p>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="property-descriptions">
+<h2>Property Descriptions<a class="headerlink" href="#property-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-property" id="class-httprequest-property-accept-gzip"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>accept_gzip</strong> = <code class="docutils literal notranslate"><span class="pre">true</span></code> <a class="reference internal" href="#class-httprequest-property-accept-gzip"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_accept_gzip</strong>(value: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_accepting_gzip</strong>()</p></li>
+</ul>
+<p>If <code class="docutils literal notranslate"><span class="pre">true</span></code>, this header will be added to each request: <code class="docutils literal notranslate"><span class="pre">Accept-Encoding:</span> <span class="pre">gzip,</span> <span class="pre">deflate</span></code> telling servers that it’s okay to compress response bodies.</p>
+<p>Any Response body declaring a <code class="docutils literal notranslate"><span class="pre">Content-Encoding</span></code> of either <code class="docutils literal notranslate"><span class="pre">gzip</span></code> or <code class="docutils literal notranslate"><span class="pre">deflate</span></code> will then be automatically decompressed, and the uncompressed bytes will be delivered via <a class="reference internal" href="#class-httprequest-signal-request-completed"><span class="std std-ref">request_completed</span></a>.</p>
+<p>If the user has specified their own <code class="docutils literal notranslate"><span class="pre">Accept-Encoding</span></code> header, then no header will be added regardless of <a class="reference internal" href="#class-httprequest-property-accept-gzip"><span class="std std-ref">accept_gzip</span></a>.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">false</span></code> no header will be added, and no decompression will be performed on response bodies. The raw bytes of the response body will be returned via <a class="reference internal" href="#class-httprequest-signal-request-completed"><span class="std std-ref">request_completed</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-httprequest-property-body-size-limit"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>body_size_limit</strong> = <code class="docutils literal notranslate"><span class="pre">-1</span></code> <a class="reference internal" href="#class-httprequest-property-body-size-limit"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_body_size_limit</strong>(value: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>get_body_size_limit</strong>()</p></li>
+</ul>
+<p>Maximum allowed size for response bodies. If the response body is compressed, this will be used as the maximum allowed size for the decompressed body.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-httprequest-property-download-chunk-size"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>download_chunk_size</strong> = <code class="docutils literal notranslate"><span class="pre">65536</span></code> <a class="reference internal" href="#class-httprequest-property-download-chunk-size"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_download_chunk_size</strong>(value: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>get_download_chunk_size</strong>()</p></li>
+</ul>
+<p>The size of the buffer used and maximum bytes to read per iteration. See <a class="reference internal" href="class_httpclient.html#class-httpclient-property-read-chunk-size"><span class="std std-ref">HTTPClient.read_chunk_size</span></a>.</p>
+<p>Set this to a lower value (e.g. 4096 for 4 KiB) when downloading small files to decrease memory usage at the cost of download speeds.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-httprequest-property-download-file"><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a> <strong>download_file</strong> = <code class="docutils literal notranslate"><span class="pre">&quot;&quot;</span></code> <a class="reference internal" href="#class-httprequest-property-download-file"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_download_file</strong>(value: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a> <strong>get_download_file</strong>()</p></li>
+</ul>
+<p>The file to download into. Will output any received file into it.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-httprequest-property-max-redirects"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>max_redirects</strong> = <code class="docutils literal notranslate"><span class="pre">8</span></code> <a class="reference internal" href="#class-httprequest-property-max-redirects"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_max_redirects</strong>(value: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>get_max_redirects</strong>()</p></li>
+</ul>
+<p>Maximum number of allowed redirects.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-httprequest-property-timeout"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>timeout</strong> = <code class="docutils literal notranslate"><span class="pre">0.0</span></code> <a class="reference internal" href="#class-httprequest-property-timeout"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_timeout</strong>(value: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>get_timeout</strong>()</p></li>
+</ul>
+<p>The duration to wait before a request times out, in seconds (independent of <a class="reference internal" href="class_engine.html#class-engine-property-time-scale"><span class="std std-ref">Engine.time_scale</span></a>). If <a class="reference internal" href="#class-httprequest-property-timeout"><span class="std std-ref">timeout</span></a> is set to <code class="docutils literal notranslate"><span class="pre">0.0</span></code>, the request will never time out.</p>
+<p>For simple requests, such as communication with a REST API, it is recommended to set <a class="reference internal" href="#class-httprequest-property-timeout"><span class="std std-ref">timeout</span></a> to a value suitable for the server response time (commonly between <code class="docutils literal notranslate"><span class="pre">1.0</span></code> and <code class="docutils literal notranslate"><span class="pre">10.0</span></code>). This will help prevent unwanted timeouts caused by variation in response times while still allowing the application to detect when a request has timed out. For larger requests such as file downloads, it is recommended to set <a class="reference internal" href="#class-httprequest-property-timeout"><span class="std std-ref">timeout</span></a> to <code class="docutils literal notranslate"><span class="pre">0.0</span></code>, disabling the timeout functionality. This will help prevent large transfers from failing due to exceeding the timeout value.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-httprequest-property-use-threads"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>use_threads</strong> = <code class="docutils literal notranslate"><span class="pre">false</span></code> <a class="reference internal" href="#class-httprequest-property-use-threads"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_use_threads</strong>(value: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_using_threads</strong>()</p></li>
+</ul>
+<p>If <code class="docutils literal notranslate"><span class="pre">true</span></code>, multithreading is used to improve performance.</p>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="method-descriptions">
+<h2>Method Descriptions<a class="headerlink" href="#method-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-method" id="class-httprequest-method-cancel-request"><abbr title="No return value.">void</abbr> <strong>cancel_request</strong>() <a class="reference internal" href="#class-httprequest-method-cancel-request"><span class="std std-ref">🔗</span></a></p>
+<p>Cancels the current request.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-httprequest-method-get-body-size"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>get_body_size</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-httprequest-method-get-body-size"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the response body length.</p>
+<p><strong>Note:</strong> Some Web servers may not send a body length. In this case, the value returned will be <code class="docutils literal notranslate"><span class="pre">-1</span></code>. If using chunked transfer encoding, the body length will also be <code class="docutils literal notranslate"><span class="pre">-1</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-httprequest-method-get-downloaded-bytes"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>get_downloaded_bytes</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-httprequest-method-get-downloaded-bytes"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the number of bytes this HTTPRequest downloaded.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-httprequest-method-get-http-client-status"><a class="reference internal" href="class_httpclient.html#enum-httpclient-status"><span class="std std-ref">Status</span></a> <strong>get_http_client_status</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-httprequest-method-get-http-client-status"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the current status of the underlying <a class="reference internal" href="class_httpclient.html#class-httpclient"><span class="std std-ref">HTTPClient</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-httprequest-method-request"><a class="reference internal" href="class_%40globalscope.html#enum-globalscope-error"><span class="std std-ref">Error</span></a> <strong>request</strong>(url: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, custom_headers: <a class="reference internal" href="class_packedstringarray.html#class-packedstringarray"><span class="std std-ref">PackedStringArray</span></a> = PackedStringArray(), method: <a class="reference internal" href="class_httpclient.html#enum-httpclient-method"><span class="std std-ref">Method</span></a> = 0, request_data: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a> = “”) <a class="reference internal" href="#class-httprequest-method-request"><span class="std std-ref">🔗</span></a></p>
+<p>Creates request on the underlying <a class="reference internal" href="class_httpclient.html#class-httpclient"><span class="std std-ref">HTTPClient</span></a>. If there is no configuration errors, it tries to connect using <a class="reference internal" href="class_httpclient.html#class-httpclient-method-connect-to-host"><span class="std std-ref">HTTPClient.connect_to_host()</span></a> and passes parameters onto <a class="reference internal" href="class_httpclient.html#class-httpclient-method-request"><span class="std std-ref">HTTPClient.request()</span></a>.</p>
+<p>Returns <a class="reference internal" href="class_%40globalscope.html#class-globalscope-constant-ok"><span class="std std-ref">&#64;GlobalScope.OK</span></a> if request is successfully created. (Does not imply that the server has responded), <a class="reference internal" href="class_%40globalscope.html#class-globalscope-constant-err-unconfigured"><span class="std std-ref">&#64;GlobalScope.ERR_UNCONFIGURED</span></a> if not in the tree, <a class="reference internal" href="class_%40globalscope.html#class-globalscope-constant-err-busy"><span class="std std-ref">&#64;GlobalScope.ERR_BUSY</span></a> if still processing previous request, <a class="reference internal" href="class_%40globalscope.html#class-globalscope-constant-err-invalid-parameter"><span class="std std-ref">&#64;GlobalScope.ERR_INVALID_PARAMETER</span></a> if given string is not a valid URL format, or <a class="reference internal" href="class_%40globalscope.html#class-globalscope-constant-err-cant-connect"><span class="std std-ref">&#64;GlobalScope.ERR_CANT_CONNECT</span></a> if not using thread and the <a class="reference internal" href="class_httpclient.html#class-httpclient"><span class="std std-ref">HTTPClient</span></a> cannot connect to host.</p>
+<p><strong>Note:</strong> When <code class="docutils literal notranslate"><span class="pre">method</span></code> is <a class="reference internal" href="class_httpclient.html#class-httpclient-constant-method-get"><span class="std std-ref">HTTPClient.METHOD_GET</span></a>, the payload sent via <code class="docutils literal notranslate"><span class="pre">request_data</span></code> might be ignored by the server or even cause the server to reject the request (check <a class="reference external" href="https://datatracker.ietf.org/doc/html/rfc7231#section-4.3.1">RFC 7231 section 4.3.1</a> for more details). As a workaround, you can send data as a query string in the URL (see <a class="reference internal" href="class_string.html#class-string-method-uri-encode"><span class="std std-ref">String.uri_encode()</span></a> for an example).</p>
+<p><strong>Note:</strong> It’s recommended to use transport encryption (TLS) and to avoid sending sensitive information (such as login credentials) in HTTP GET URL parameters. Consider using HTTP POST requests or HTTP headers for such information instead.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-httprequest-method-request-raw"><a class="reference internal" href="class_%40globalscope.html#enum-globalscope-error"><span class="std std-ref">Error</span></a> <strong>request_raw</strong>(url: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, custom_headers: <a class="reference internal" href="class_packedstringarray.html#class-packedstringarray"><span class="std std-ref">PackedStringArray</span></a> = PackedStringArray(), method: <a class="reference internal" href="class_httpclient.html#enum-httpclient-method"><span class="std std-ref">Method</span></a> = 0, request_data_raw: <a class="reference internal" href="class_packedbytearray.html#class-packedbytearray"><span class="std std-ref">PackedByteArray</span></a> = PackedByteArray()) <a class="reference internal" href="#class-httprequest-method-request-raw"><span class="std std-ref">🔗</span></a></p>
+<p>Creates request on the underlying <a class="reference internal" href="class_httpclient.html#class-httpclient"><span class="std std-ref">HTTPClient</span></a> using a raw array of bytes for the request body. If there is no configuration errors, it tries to connect using <a class="reference internal" href="class_httpclient.html#class-httpclient-method-connect-to-host"><span class="std std-ref">HTTPClient.connect_to_host()</span></a> and passes parameters onto <a class="reference internal" href="class_httpclient.html#class-httpclient-method-request"><span class="std std-ref">HTTPClient.request()</span></a>.</p>
+<p>Returns <a class="reference internal" href="class_%40globalscope.html#class-globalscope-constant-ok"><span class="std std-ref">&#64;GlobalScope.OK</span></a> if request is successfully created. (Does not imply that the server has responded), <a class="reference internal" href="class_%40globalscope.html#class-globalscope-constant-err-unconfigured"><span class="std std-ref">&#64;GlobalScope.ERR_UNCONFIGURED</span></a> if not in the tree, <a class="reference internal" href="class_%40globalscope.html#class-globalscope-constant-err-busy"><span class="std std-ref">&#64;GlobalScope.ERR_BUSY</span></a> if still processing previous request, <a class="reference internal" href="class_%40globalscope.html#class-globalscope-constant-err-invalid-parameter"><span class="std std-ref">&#64;GlobalScope.ERR_INVALID_PARAMETER</span></a> if given string is not a valid URL format, or <a class="reference internal" href="class_%40globalscope.html#class-globalscope-constant-err-cant-connect"><span class="std std-ref">&#64;GlobalScope.ERR_CANT_CONNECT</span></a> if not using thread and the <a class="reference internal" href="class_httpclient.html#class-httpclient"><span class="std std-ref">HTTPClient</span></a> cannot connect to host.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-httprequest-method-set-http-proxy"><abbr title="No return value.">void</abbr> <strong>set_http_proxy</strong>(host: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, port: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <a class="reference internal" href="#class-httprequest-method-set-http-proxy"><span class="std std-ref">🔗</span></a></p>
+<p>Sets the proxy server for HTTP requests.</p>
+<p>The proxy server is unset if <code class="docutils literal notranslate"><span class="pre">host</span></code> is empty or <code class="docutils literal notranslate"><span class="pre">port</span></code> is -1.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-httprequest-method-set-https-proxy"><abbr title="No return value.">void</abbr> <strong>set_https_proxy</strong>(host: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, port: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <a class="reference internal" href="#class-httprequest-method-set-https-proxy"><span class="std std-ref">🔗</span></a></p>
+<p>Sets the proxy server for HTTPS requests.</p>
+<p>The proxy server is unset if <code class="docutils literal notranslate"><span class="pre">host</span></code> is empty or <code class="docutils literal notranslate"><span class="pre">port</span></code> is -1.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-httprequest-method-set-tls-options"><abbr title="No return value.">void</abbr> <strong>set_tls_options</strong>(client_options: <a class="reference internal" href="class_tlsoptions.html#class-tlsoptions"><span class="std std-ref">TLSOptions</span></a>) <a class="reference internal" href="#class-httprequest-method-set-tls-options"><span class="std std-ref">🔗</span></a></p>
+<p>Sets the <a class="reference internal" href="class_tlsoptions.html#class-tlsoptions"><span class="std std-ref">TLSOptions</span></a> to be used when connecting to an HTTPS server. See <a class="reference internal" href="class_tlsoptions.html#class-tlsoptions-method-client"><span class="std std-ref">TLSOptions.client()</span></a>.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, MUmarShahbaz.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

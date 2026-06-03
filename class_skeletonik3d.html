@@ -1,0 +1,293 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SkeletonIK3D &mdash; RPG Components 2D 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=d45e8c67"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            RPG Components 2D
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">SkeletonIK3D</a><ul>
+<li><a class="reference internal" href="#description">Description</a></li>
+<li><a class="reference internal" href="#properties">Properties</a></li>
+<li><a class="reference internal" href="#methods">Methods</a></li>
+<li><a class="reference internal" href="#property-descriptions">Property Descriptions</a></li>
+<li><a class="reference internal" href="#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">RPG Components 2D</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">SkeletonIK3D</li>
+      <li class="wy-breadcrumbs-aside">
+              <!-- User defined GitHub URL -->
+              <a href="hide" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="skeletonik3d">
+<span id="class-skeletonik3d"></span><h1>SkeletonIK3D<a class="headerlink" href="#skeletonik3d" title="Link to this heading"></a></h1>
+<p><strong>Deprecated:</strong> This class may be changed or removed in future versions.</p>
+<p><strong>Inherits:</strong> <a class="reference internal" href="class_skeletonmodifier3d.html#class-skeletonmodifier3d"><span class="std std-ref">SkeletonModifier3D</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_node3d.html#class-node3d"><span class="std std-ref">Node3D</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_node.html#class-node"><span class="std std-ref">Node</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_object.html#class-object"><span class="std std-ref">Object</span></a></p>
+<p>A node used to rotate all bones of a <a class="reference internal" href="class_skeleton3d.html#class-skeleton3d"><span class="std std-ref">Skeleton3D</span></a> bone chain a way that places the end bone at a desired 3D position.</p>
+<section class="classref-introduction-group" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
+<p>SkeletonIK3D is used to rotate all bones of a <a class="reference internal" href="class_skeleton3d.html#class-skeleton3d"><span class="std std-ref">Skeleton3D</span></a> bone chain a way that places the end bone at a desired 3D position. A typical scenario for IK in games is to place a character’s feet on the ground or a character’s hands on a currently held object. SkeletonIK uses FabrikInverseKinematic internally to solve the bone chain and applies the results to the <a class="reference internal" href="class_skeleton3d.html#class-skeleton3d"><span class="std std-ref">Skeleton3D</span></a> <code class="docutils literal notranslate"><span class="pre">bones_global_pose_override</span></code> property for all affected bones in the chain. If fully applied, this overwrites any bone transform from <a class="reference internal" href="class_animation.html#class-animation"><span class="std std-ref">Animation</span></a>s or bone custom poses set by users. The applied amount can be controlled with the <a class="reference internal" href="class_skeletonmodifier3d.html#class-skeletonmodifier3d-property-influence"><span class="std std-ref">SkeletonModifier3D.influence</span></a> property.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Apply IK effect automatically on every new frame (not the current)</span>
+<span class="n">skeleton_ik_node</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+
+<span class="c1"># Apply IK effect only on the current frame</span>
+<span class="n">skeleton_ik_node</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="n">true</span><span class="p">)</span>
+
+<span class="c1"># Stop IK effect and reset bones_global_pose_override on Skeleton</span>
+<span class="n">skeleton_ik_node</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
+
+<span class="c1"># Apply full IK effect</span>
+<span class="n">skeleton_ik_node</span><span class="o">.</span><span class="n">set_influence</span><span class="p">(</span><span class="mf">1.0</span><span class="p">)</span>
+
+<span class="c1"># Apply half IK effect</span>
+<span class="n">skeleton_ik_node</span><span class="o">.</span><span class="n">set_influence</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
+
+<span class="c1"># Apply zero IK effect (a value at or below 0.01 also removes bones_global_pose_override on Skeleton)</span>
+<span class="n">skeleton_ik_node</span><span class="o">.</span><span class="n">set_influence</span><span class="p">(</span><span class="mf">0.0</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section class="classref-reftable-group" id="properties">
+<h2>Properties<a class="headerlink" href="#properties" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-skeletonik3d-property-interpolation"><span class="std std-ref">interpolation</span></a></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a></p></td>
+<td><p><a class="reference internal" href="#class-skeletonik3d-property-magnet"><span class="std std-ref">magnet</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Vector3(0,</span> <span class="pre">0,</span> <span class="pre">0)</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-skeletonik3d-property-max-iterations"><span class="std std-ref">max_iterations</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">10</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-skeletonik3d-property-min-distance"><span class="std std-ref">min_distance</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0.01</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-skeletonik3d-property-override-tip-basis"><span class="std std-ref">override_tip_basis</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a></p></td>
+<td><p><a class="reference internal" href="#class-skeletonik3d-property-root-bone"><span class="std std-ref">root_bone</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&amp;&quot;&quot;</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_transform3d.html#class-transform3d"><span class="std std-ref">Transform3D</span></a></p></td>
+<td><p><a class="reference internal" href="#class-skeletonik3d-property-target"><span class="std std-ref">target</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Transform3D(1,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">1,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">1,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0)</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_nodepath.html#class-nodepath"><span class="std std-ref">NodePath</span></a></p></td>
+<td><p><a class="reference internal" href="#class-skeletonik3d-property-target-node"><span class="std std-ref">target_node</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">NodePath(&quot;&quot;)</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a></p></td>
+<td><p><a class="reference internal" href="#class-skeletonik3d-property-tip-bone"><span class="std std-ref">tip_bone</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&amp;&quot;&quot;</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-skeletonik3d-property-use-magnet"><span class="std std-ref">use_magnet</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section class="classref-reftable-group" id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_skeleton3d.html#class-skeleton3d"><span class="std std-ref">Skeleton3D</span></a></p></td>
+<td><p><a class="reference internal" href="#class-skeletonik3d-method-get-parent-skeleton"><span class="std std-ref">get_parent_skeleton</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-skeletonik3d-method-is-running"><span class="std std-ref">is_running</span></a>()</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-skeletonik3d-method-start"><span class="std std-ref">start</span></a>(one_time: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = false)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-skeletonik3d-method-stop"><span class="std std-ref">stop</span></a>()</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="property-descriptions">
+<h2>Property Descriptions<a class="headerlink" href="#property-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-property" id="class-skeletonik3d-property-interpolation"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>interpolation</strong> <a class="reference internal" href="#class-skeletonik3d-property-interpolation"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_interpolation</strong>(value: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>get_interpolation</strong>()</p></li>
+</ul>
+<p><strong>Deprecated:</strong> Use <a class="reference internal" href="class_skeletonmodifier3d.html#class-skeletonmodifier3d-property-influence"><span class="std std-ref">SkeletonModifier3D.influence</span></a> instead.</p>
+<p>Interpolation value for how much the IK results are applied to the current skeleton bone chain. A value of <code class="docutils literal notranslate"><span class="pre">1.0</span></code> will overwrite all skeleton bone transforms completely while a value of <code class="docutils literal notranslate"><span class="pre">0.0</span></code> will visually disable the SkeletonIK.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-skeletonik3d-property-magnet"><a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a> <strong>magnet</strong> = <code class="docutils literal notranslate"><span class="pre">Vector3(0,</span> <span class="pre">0,</span> <span class="pre">0)</span></code> <a class="reference internal" href="#class-skeletonik3d-property-magnet"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_magnet_position</strong>(value: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a> <strong>get_magnet_position</strong>()</p></li>
+</ul>
+<p>Secondary target position (first is <a class="reference internal" href="#class-skeletonik3d-property-target"><span class="std std-ref">target</span></a> property or <a class="reference internal" href="#class-skeletonik3d-property-target-node"><span class="std std-ref">target_node</span></a>) for the IK chain. Use magnet position (pole target) to control the bending of the IK chain. Only works if the bone chain has more than 2 bones. The middle chain bone position will be linearly interpolated with the magnet position.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-skeletonik3d-property-max-iterations"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>max_iterations</strong> = <code class="docutils literal notranslate"><span class="pre">10</span></code> <a class="reference internal" href="#class-skeletonik3d-property-max-iterations"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_max_iterations</strong>(value: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>get_max_iterations</strong>()</p></li>
+</ul>
+<p>Number of iteration loops used by the IK solver to produce more accurate (and elegant) bone chain results.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-skeletonik3d-property-min-distance"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>min_distance</strong> = <code class="docutils literal notranslate"><span class="pre">0.01</span></code> <a class="reference internal" href="#class-skeletonik3d-property-min-distance"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_min_distance</strong>(value: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>get_min_distance</strong>()</p></li>
+</ul>
+<p>The minimum distance between bone and goal target. If the distance is below this value, the IK solver stops further iterations.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-skeletonik3d-property-override-tip-basis"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>override_tip_basis</strong> = <code class="docutils literal notranslate"><span class="pre">true</span></code> <a class="reference internal" href="#class-skeletonik3d-property-override-tip-basis"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_override_tip_basis</strong>(value: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_override_tip_basis</strong>()</p></li>
+</ul>
+<p>If <code class="docutils literal notranslate"><span class="pre">true</span></code> overwrites the rotation of the tip bone with the rotation of the <a class="reference internal" href="#class-skeletonik3d-property-target"><span class="std std-ref">target</span></a> (or <a class="reference internal" href="#class-skeletonik3d-property-target-node"><span class="std std-ref">target_node</span></a> if defined).</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-skeletonik3d-property-root-bone"><a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a> <strong>root_bone</strong> = <code class="docutils literal notranslate"><span class="pre">&amp;&quot;&quot;</span></code> <a class="reference internal" href="#class-skeletonik3d-property-root-bone"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_root_bone</strong>(value: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a> <strong>get_root_bone</strong>()</p></li>
+</ul>
+<p>The name of the current root bone, the first bone in the IK chain.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-skeletonik3d-property-target"><a class="reference internal" href="class_transform3d.html#class-transform3d"><span class="std std-ref">Transform3D</span></a> <strong>target</strong> = <code class="docutils literal notranslate"><span class="pre">Transform3D(1,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">1,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">1,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0)</span></code> <a class="reference internal" href="#class-skeletonik3d-property-target"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_target_transform</strong>(value: <a class="reference internal" href="class_transform3d.html#class-transform3d"><span class="std std-ref">Transform3D</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_transform3d.html#class-transform3d"><span class="std std-ref">Transform3D</span></a> <strong>get_target_transform</strong>()</p></li>
+</ul>
+<p>First target of the IK chain where the tip bone is placed and, if <a class="reference internal" href="#class-skeletonik3d-property-override-tip-basis"><span class="std std-ref">override_tip_basis</span></a> is <code class="docutils literal notranslate"><span class="pre">true</span></code>, how the tip bone is rotated. If a <a class="reference internal" href="#class-skeletonik3d-property-target-node"><span class="std std-ref">target_node</span></a> path is available the nodes transform is used instead and this property is ignored.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-skeletonik3d-property-target-node"><a class="reference internal" href="class_nodepath.html#class-nodepath"><span class="std std-ref">NodePath</span></a> <strong>target_node</strong> = <code class="docutils literal notranslate"><span class="pre">NodePath(&quot;&quot;)</span></code> <a class="reference internal" href="#class-skeletonik3d-property-target-node"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_target_node</strong>(value: <a class="reference internal" href="class_nodepath.html#class-nodepath"><span class="std std-ref">NodePath</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_nodepath.html#class-nodepath"><span class="std std-ref">NodePath</span></a> <strong>get_target_node</strong>()</p></li>
+</ul>
+<p>Target node <a class="reference internal" href="class_nodepath.html#class-nodepath"><span class="std std-ref">NodePath</span></a> for the IK chain. If available, the node’s current <a class="reference internal" href="class_transform3d.html#class-transform3d"><span class="std std-ref">Transform3D</span></a> is used instead of the <a class="reference internal" href="#class-skeletonik3d-property-target"><span class="std std-ref">target</span></a> property.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-skeletonik3d-property-tip-bone"><a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a> <strong>tip_bone</strong> = <code class="docutils literal notranslate"><span class="pre">&amp;&quot;&quot;</span></code> <a class="reference internal" href="#class-skeletonik3d-property-tip-bone"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_tip_bone</strong>(value: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a> <strong>get_tip_bone</strong>()</p></li>
+</ul>
+<p>The name of the current tip bone, the last bone in the IK chain placed at the <a class="reference internal" href="#class-skeletonik3d-property-target"><span class="std std-ref">target</span></a> transform (or <a class="reference internal" href="#class-skeletonik3d-property-target-node"><span class="std std-ref">target_node</span></a> if defined).</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-skeletonik3d-property-use-magnet"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>use_magnet</strong> = <code class="docutils literal notranslate"><span class="pre">false</span></code> <a class="reference internal" href="#class-skeletonik3d-property-use-magnet"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_use_magnet</strong>(value: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_using_magnet</strong>()</p></li>
+</ul>
+<p>If <code class="docutils literal notranslate"><span class="pre">true</span></code>, instructs the IK solver to consider the secondary magnet target (pole target) when calculating the bone chain. Use the magnet position (pole target) to control the bending of the IK chain.</p>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="method-descriptions">
+<h2>Method Descriptions<a class="headerlink" href="#method-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-method" id="class-skeletonik3d-method-get-parent-skeleton"><a class="reference internal" href="class_skeleton3d.html#class-skeleton3d"><span class="std std-ref">Skeleton3D</span></a> <strong>get_parent_skeleton</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-skeletonik3d-method-get-parent-skeleton"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the parent <a class="reference internal" href="class_skeleton3d.html#class-skeleton3d"><span class="std std-ref">Skeleton3D</span></a> node that was present when SkeletonIK entered the scene tree. Returns <code class="docutils literal notranslate"><span class="pre">null</span></code> if the parent node was not a <a class="reference internal" href="class_skeleton3d.html#class-skeleton3d"><span class="std std-ref">Skeleton3D</span></a> node when SkeletonIK3D entered the scene tree.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-skeletonik3d-method-is-running"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_running</strong>() <a class="reference internal" href="#class-skeletonik3d-method-is-running"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if SkeletonIK is applying IK effects on continues frames to the <a class="reference internal" href="class_skeleton3d.html#class-skeleton3d"><span class="std std-ref">Skeleton3D</span></a> bones. Returns <code class="docutils literal notranslate"><span class="pre">false</span></code> if SkeletonIK is stopped or <a class="reference internal" href="#class-skeletonik3d-method-start"><span class="std std-ref">start()</span></a> was used with the <code class="docutils literal notranslate"><span class="pre">one_time</span></code> parameter set to <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-skeletonik3d-method-start"><abbr title="No return value.">void</abbr> <strong>start</strong>(one_time: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = false) <a class="reference internal" href="#class-skeletonik3d-method-start"><span class="std std-ref">🔗</span></a></p>
+<p>Starts applying IK effects on each frame to the <a class="reference internal" href="class_skeleton3d.html#class-skeleton3d"><span class="std std-ref">Skeleton3D</span></a> bones but will only take effect starting on the next frame. If <code class="docutils literal notranslate"><span class="pre">one_time</span></code> is <code class="docutils literal notranslate"><span class="pre">true</span></code>, this will take effect immediately but also reset on the next frame.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-skeletonik3d-method-stop"><abbr title="No return value.">void</abbr> <strong>stop</strong>() <a class="reference internal" href="#class-skeletonik3d-method-stop"><span class="std std-ref">🔗</span></a></p>
+<p>Stops applying IK effects on each frame to the <a class="reference internal" href="class_skeleton3d.html#class-skeleton3d"><span class="std std-ref">Skeleton3D</span></a> bones and also calls <a class="reference internal" href="class_skeleton3d.html#class-skeleton3d-method-clear-bones-global-pose-override"><span class="std std-ref">Skeleton3D.clear_bones_global_pose_override()</span></a> to remove existing overrides on all bones.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, MUmarShahbaz.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

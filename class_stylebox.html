@@ -1,0 +1,276 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>StyleBox &mdash; RPG Components 2D 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=d45e8c67"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            RPG Components 2D
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">StyleBox</a><ul>
+<li><a class="reference internal" href="#description">Description</a></li>
+<li><a class="reference internal" href="#properties">Properties</a></li>
+<li><a class="reference internal" href="#methods">Methods</a></li>
+<li><a class="reference internal" href="#property-descriptions">Property Descriptions</a></li>
+<li><a class="reference internal" href="#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">RPG Components 2D</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">StyleBox</li>
+      <li class="wy-breadcrumbs-aside">
+              <!-- User defined GitHub URL -->
+              <a href="hide" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="stylebox">
+<span id="class-stylebox"></span><h1>StyleBox<a class="headerlink" href="#stylebox" title="Link to this heading"></a></h1>
+<p><strong>Inherits:</strong> <a class="reference internal" href="class_resource.html#class-resource"><span class="std std-ref">Resource</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_refcounted.html#class-refcounted"><span class="std std-ref">RefCounted</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_object.html#class-object"><span class="std std-ref">Object</span></a></p>
+<p><strong>Inherited By:</strong> <a class="reference internal" href="class_styleboxempty.html#class-styleboxempty"><span class="std std-ref">StyleBoxEmpty</span></a>, <a class="reference internal" href="class_styleboxflat.html#class-styleboxflat"><span class="std std-ref">StyleBoxFlat</span></a>, <a class="reference internal" href="class_styleboxline.html#class-styleboxline"><span class="std std-ref">StyleBoxLine</span></a>, <a class="reference internal" href="class_styleboxtexture.html#class-styleboxtexture"><span class="std std-ref">StyleBoxTexture</span></a></p>
+<p>Abstract base class for defining stylized boxes for UI elements.</p>
+<section class="classref-introduction-group" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
+<p><strong>StyleBox</strong> is an abstract base class for drawing stylized boxes for UI elements. It is used for panels, buttons, <a class="reference internal" href="class_lineedit.html#class-lineedit"><span class="std std-ref">LineEdit</span></a> backgrounds, <a class="reference internal" href="class_tree.html#class-tree"><span class="std std-ref">Tree</span></a> backgrounds, etc. and also for testing a transparency mask for pointer signals. If mask test fails on a <strong>StyleBox</strong> assigned as mask to a control, clicks and motion signals will go through it to the one below.</p>
+<p><strong>Note:</strong> For control nodes that have <em>Theme Properties</em>, the <code class="docutils literal notranslate"><span class="pre">focus</span></code> <strong>StyleBox</strong> is displayed over the <code class="docutils literal notranslate"><span class="pre">normal</span></code>, <code class="docutils literal notranslate"><span class="pre">hover</span></code> or <code class="docutils literal notranslate"><span class="pre">pressed</span></code> <strong>StyleBox</strong>. This makes the <code class="docutils literal notranslate"><span class="pre">focus</span></code> <strong>StyleBox</strong> more reusable across different nodes.</p>
+</section>
+<section class="classref-reftable-group" id="properties">
+<h2>Properties<a class="headerlink" href="#properties" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-stylebox-property-content-margin-bottom"><span class="std std-ref">content_margin_bottom</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">-1.0</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-stylebox-property-content-margin-left"><span class="std std-ref">content_margin_left</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">-1.0</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-stylebox-property-content-margin-right"><span class="std std-ref">content_margin_right</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">-1.0</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-stylebox-property-content-margin-top"><span class="std std-ref">content_margin_top</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">-1.0</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section class="classref-reftable-group" id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-stylebox-private-method-draw"><span class="std std-ref">_draw</span></a>(to_canvas_item: <a class="reference internal" href="class_rid.html#class-rid"><span class="std std-ref">RID</span></a>, rect: <a class="reference internal" href="class_rect2.html#class-rect2"><span class="std std-ref">Rect2</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method is required to be overridden when extending its base class.">required</abbr> <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_rect2.html#class-rect2"><span class="std std-ref">Rect2</span></a></p></td>
+<td><p><a class="reference internal" href="#class-stylebox-private-method-get-draw-rect"><span class="std std-ref">_get_draw_rect</span></a>(rect: <a class="reference internal" href="class_rect2.html#class-rect2"><span class="std std-ref">Rect2</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a></p></td>
+<td><p><a class="reference internal" href="#class-stylebox-private-method-get-minimum-size"><span class="std std-ref">_get_minimum_size</span></a>() <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-stylebox-private-method-test-mask"><span class="std std-ref">_test_mask</span></a>(point: <a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a>, rect: <a class="reference internal" href="class_rect2.html#class-rect2"><span class="std std-ref">Rect2</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-stylebox-method-draw"><span class="std std-ref">draw</span></a>(canvas_item: <a class="reference internal" href="class_rid.html#class-rid"><span class="std std-ref">RID</span></a>, rect: <a class="reference internal" href="class_rect2.html#class-rect2"><span class="std std-ref">Rect2</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-stylebox-method-get-content-margin"><span class="std std-ref">get_content_margin</span></a>(margin: <a class="reference internal" href="class_%40globalscope.html#enum-globalscope-side"><span class="std std-ref">Side</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_canvasitem.html#class-canvasitem"><span class="std std-ref">CanvasItem</span></a></p></td>
+<td><p><a class="reference internal" href="#class-stylebox-method-get-current-item-drawn"><span class="std std-ref">get_current_item_drawn</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-stylebox-method-get-margin"><span class="std std-ref">get_margin</span></a>(margin: <a class="reference internal" href="class_%40globalscope.html#enum-globalscope-side"><span class="std std-ref">Side</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a></p></td>
+<td><p><a class="reference internal" href="#class-stylebox-method-get-minimum-size"><span class="std std-ref">get_minimum_size</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a></p></td>
+<td><p><a class="reference internal" href="#class-stylebox-method-get-offset"><span class="std std-ref">get_offset</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-stylebox-method-set-content-margin"><span class="std std-ref">set_content_margin</span></a>(margin: <a class="reference internal" href="class_%40globalscope.html#enum-globalscope-side"><span class="std std-ref">Side</span></a>, offset: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-stylebox-method-set-content-margin-all"><span class="std std-ref">set_content_margin_all</span></a>(offset: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-stylebox-method-test-mask"><span class="std std-ref">test_mask</span></a>(point: <a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a>, rect: <a class="reference internal" href="class_rect2.html#class-rect2"><span class="std std-ref">Rect2</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="property-descriptions">
+<h2>Property Descriptions<a class="headerlink" href="#property-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-property" id="class-stylebox-property-content-margin-bottom"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>content_margin_bottom</strong> = <code class="docutils literal notranslate"><span class="pre">-1.0</span></code> <a class="reference internal" href="#class-stylebox-property-content-margin-bottom"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_content_margin</strong>(margin: <a class="reference internal" href="class_%40globalscope.html#enum-globalscope-side"><span class="std std-ref">Side</span></a>, offset: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>get_content_margin</strong>(margin: <a class="reference internal" href="class_%40globalscope.html#enum-globalscope-side"><span class="std std-ref">Side</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></li>
+</ul>
+<p>The bottom margin for the contents of this style box. Increasing this value reduces the space available to the contents from the bottom.</p>
+<p>If this value is negative, it is ignored and a child-specific margin is used instead. For example, for <a class="reference internal" href="class_styleboxflat.html#class-styleboxflat"><span class="std std-ref">StyleBoxFlat</span></a>, the border thickness (if any) is used instead.</p>
+<p>It is up to the code using this style box to decide what these contents are: for example, a <a class="reference internal" href="class_button.html#class-button"><span class="std std-ref">Button</span></a> respects this content margin for the textual contents of the button.</p>
+<p><a class="reference internal" href="#class-stylebox-method-get-margin"><span class="std std-ref">get_margin()</span></a> should be used to fetch this value as consumer instead of reading these properties directly. This is because it correctly respects negative values and the fallback mentioned above.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-stylebox-property-content-margin-left"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>content_margin_left</strong> = <code class="docutils literal notranslate"><span class="pre">-1.0</span></code> <a class="reference internal" href="#class-stylebox-property-content-margin-left"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_content_margin</strong>(margin: <a class="reference internal" href="class_%40globalscope.html#enum-globalscope-side"><span class="std std-ref">Side</span></a>, offset: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>get_content_margin</strong>(margin: <a class="reference internal" href="class_%40globalscope.html#enum-globalscope-side"><span class="std std-ref">Side</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></li>
+</ul>
+<p>The left margin for the contents of this style box. Increasing this value reduces the space available to the contents from the left.</p>
+<p>Refer to <a class="reference internal" href="#class-stylebox-property-content-margin-bottom"><span class="std std-ref">content_margin_bottom</span></a> for extra considerations.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-stylebox-property-content-margin-right"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>content_margin_right</strong> = <code class="docutils literal notranslate"><span class="pre">-1.0</span></code> <a class="reference internal" href="#class-stylebox-property-content-margin-right"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_content_margin</strong>(margin: <a class="reference internal" href="class_%40globalscope.html#enum-globalscope-side"><span class="std std-ref">Side</span></a>, offset: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>get_content_margin</strong>(margin: <a class="reference internal" href="class_%40globalscope.html#enum-globalscope-side"><span class="std std-ref">Side</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></li>
+</ul>
+<p>The right margin for the contents of this style box. Increasing this value reduces the space available to the contents from the right.</p>
+<p>Refer to <a class="reference internal" href="#class-stylebox-property-content-margin-bottom"><span class="std std-ref">content_margin_bottom</span></a> for extra considerations.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-stylebox-property-content-margin-top"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>content_margin_top</strong> = <code class="docutils literal notranslate"><span class="pre">-1.0</span></code> <a class="reference internal" href="#class-stylebox-property-content-margin-top"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_content_margin</strong>(margin: <a class="reference internal" href="class_%40globalscope.html#enum-globalscope-side"><span class="std std-ref">Side</span></a>, offset: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>get_content_margin</strong>(margin: <a class="reference internal" href="class_%40globalscope.html#enum-globalscope-side"><span class="std std-ref">Side</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></li>
+</ul>
+<p>The top margin for the contents of this style box. Increasing this value reduces the space available to the contents from the top.</p>
+<p>Refer to <a class="reference internal" href="#class-stylebox-property-content-margin-bottom"><span class="std std-ref">content_margin_bottom</span></a> for extra considerations.</p>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="method-descriptions">
+<h2>Method Descriptions<a class="headerlink" href="#method-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-method" id="class-stylebox-private-method-draw"><abbr title="No return value.">void</abbr> <strong>_draw</strong>(to_canvas_item: <a class="reference internal" href="class_rid.html#class-rid"><span class="std std-ref">RID</span></a>, rect: <a class="reference internal" href="class_rect2.html#class-rect2"><span class="std std-ref">Rect2</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method is required to be overridden when extending its base class.">required</abbr> <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-stylebox-private-method-draw"><span class="std std-ref">🔗</span></a></p>
+<div class="contribute docutils container">
+<p>There is currently no description for this method. Please help us by <a class="reference external" href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+</div>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-stylebox-private-method-get-draw-rect"><a class="reference internal" href="class_rect2.html#class-rect2"><span class="std std-ref">Rect2</span></a> <strong>_get_draw_rect</strong>(rect: <a class="reference internal" href="class_rect2.html#class-rect2"><span class="std std-ref">Rect2</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-stylebox-private-method-get-draw-rect"><span class="std std-ref">🔗</span></a></p>
+<div class="contribute docutils container">
+<p>There is currently no description for this method. Please help us by <a class="reference external" href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+</div>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-stylebox-private-method-get-minimum-size"><a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a> <strong>_get_minimum_size</strong>() <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-stylebox-private-method-get-minimum-size"><span class="std std-ref">🔗</span></a></p>
+<p>Virtual method to be implemented by the user. Returns a custom minimum size that the stylebox must respect when drawing. By default <a class="reference internal" href="#class-stylebox-method-get-minimum-size"><span class="std std-ref">get_minimum_size()</span></a> only takes content margins into account. This method can be overridden to add another size restriction. A combination of the default behavior and the output of this method will be used, to account for both sizes.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-stylebox-private-method-test-mask"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>_test_mask</strong>(point: <a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a>, rect: <a class="reference internal" href="class_rect2.html#class-rect2"><span class="std std-ref">Rect2</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-stylebox-private-method-test-mask"><span class="std std-ref">🔗</span></a></p>
+<div class="contribute docutils container">
+<p>There is currently no description for this method. Please help us by <a class="reference external" href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+</div>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-stylebox-method-draw"><abbr title="No return value.">void</abbr> <strong>draw</strong>(canvas_item: <a class="reference internal" href="class_rid.html#class-rid"><span class="std std-ref">RID</span></a>, rect: <a class="reference internal" href="class_rect2.html#class-rect2"><span class="std std-ref">Rect2</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-stylebox-method-draw"><span class="std std-ref">🔗</span></a></p>
+<p>Draws this stylebox using a canvas item identified by the given <a class="reference internal" href="class_rid.html#class-rid"><span class="std std-ref">RID</span></a>.</p>
+<p>The <a class="reference internal" href="class_rid.html#class-rid"><span class="std std-ref">RID</span></a> value can either be the result of <a class="reference internal" href="class_canvasitem.html#class-canvasitem-method-get-canvas-item"><span class="std std-ref">CanvasItem.get_canvas_item()</span></a> called on an existing <a class="reference internal" href="class_canvasitem.html#class-canvasitem"><span class="std std-ref">CanvasItem</span></a>-derived node, or directly from creating a canvas item in the <a class="reference internal" href="class_renderingserver.html#class-renderingserver"><span class="std std-ref">RenderingServer</span></a> with <a class="reference internal" href="class_renderingserver.html#class-renderingserver-method-canvas-item-create"><span class="std std-ref">RenderingServer.canvas_item_create()</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-stylebox-method-get-content-margin"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>get_content_margin</strong>(margin: <a class="reference internal" href="class_%40globalscope.html#enum-globalscope-side"><span class="std std-ref">Side</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-stylebox-method-get-content-margin"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the default margin of the specified <a class="reference internal" href="class_%40globalscope.html#enum-globalscope-side"><span class="std std-ref">Side</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-stylebox-method-get-current-item-drawn"><a class="reference internal" href="class_canvasitem.html#class-canvasitem"><span class="std std-ref">CanvasItem</span></a> <strong>get_current_item_drawn</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-stylebox-method-get-current-item-drawn"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the <a class="reference internal" href="class_canvasitem.html#class-canvasitem"><span class="std std-ref">CanvasItem</span></a> that handles its <a class="reference internal" href="class_canvasitem.html#class-canvasitem-constant-notification-draw"><span class="std std-ref">CanvasItem.NOTIFICATION_DRAW</span></a> or <a class="reference internal" href="class_canvasitem.html#class-canvasitem-private-method-draw"><span class="std std-ref">CanvasItem._draw()</span></a> callback at this moment.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-stylebox-method-get-margin"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>get_margin</strong>(margin: <a class="reference internal" href="class_%40globalscope.html#enum-globalscope-side"><span class="std std-ref">Side</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-stylebox-method-get-margin"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the content margin offset for the specified <a class="reference internal" href="class_%40globalscope.html#enum-globalscope-side"><span class="std std-ref">Side</span></a>.</p>
+<p>Positive values reduce size inwards, unlike <a class="reference internal" href="class_control.html#class-control"><span class="std std-ref">Control</span></a>’s margin values.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-stylebox-method-get-minimum-size"><a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a> <strong>get_minimum_size</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-stylebox-method-get-minimum-size"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the minimum size that this stylebox can be shrunk to.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-stylebox-method-get-offset"><a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a> <strong>get_offset</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-stylebox-method-get-offset"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the “offset” of a stylebox. This helper function returns a value equivalent to <code class="docutils literal notranslate"><span class="pre">Vector2(style.get_margin(MARGIN_LEFT),</span> <span class="pre">style.get_margin(MARGIN_TOP))</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-stylebox-method-set-content-margin"><abbr title="No return value.">void</abbr> <strong>set_content_margin</strong>(margin: <a class="reference internal" href="class_%40globalscope.html#enum-globalscope-side"><span class="std std-ref">Side</span></a>, offset: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>) <a class="reference internal" href="#class-stylebox-method-set-content-margin"><span class="std std-ref">🔗</span></a></p>
+<p>Sets the default value of the specified <a class="reference internal" href="class_%40globalscope.html#enum-globalscope-side"><span class="std std-ref">Side</span></a> to <code class="docutils literal notranslate"><span class="pre">offset</span></code> pixels.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-stylebox-method-set-content-margin-all"><abbr title="No return value.">void</abbr> <strong>set_content_margin_all</strong>(offset: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>) <a class="reference internal" href="#class-stylebox-method-set-content-margin-all"><span class="std std-ref">🔗</span></a></p>
+<p>Sets the default margin to <code class="docutils literal notranslate"><span class="pre">offset</span></code> pixels for all sides.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-stylebox-method-test-mask"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>test_mask</strong>(point: <a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a>, rect: <a class="reference internal" href="class_rect2.html#class-rect2"><span class="std std-ref">Rect2</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-stylebox-method-test-mask"><span class="std std-ref">🔗</span></a></p>
+<p>Test a position in a rectangle, return whether it passes the mask test.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, MUmarShahbaz.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

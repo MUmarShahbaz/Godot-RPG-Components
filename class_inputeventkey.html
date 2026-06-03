@@ -1,0 +1,287 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>InputEventKey &mdash; RPG Components 2D 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=d45e8c67"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            RPG Components 2D
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">InputEventKey</a><ul>
+<li><a class="reference internal" href="#description">Description</a></li>
+<li><a class="reference internal" href="#tutorials">Tutorials</a></li>
+<li><a class="reference internal" href="#properties">Properties</a></li>
+<li><a class="reference internal" href="#methods">Methods</a></li>
+<li><a class="reference internal" href="#property-descriptions">Property Descriptions</a></li>
+<li><a class="reference internal" href="#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">RPG Components 2D</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">InputEventKey</li>
+      <li class="wy-breadcrumbs-aside">
+              <!-- User defined GitHub URL -->
+              <a href="hide" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="inputeventkey">
+<span id="class-inputeventkey"></span><h1>InputEventKey<a class="headerlink" href="#inputeventkey" title="Link to this heading"></a></h1>
+<p><strong>Inherits:</strong> <a class="reference internal" href="class_inputeventwithmodifiers.html#class-inputeventwithmodifiers"><span class="std std-ref">InputEventWithModifiers</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_inputeventfromwindow.html#class-inputeventfromwindow"><span class="std std-ref">InputEventFromWindow</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_inputevent.html#class-inputevent"><span class="std std-ref">InputEvent</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_resource.html#class-resource"><span class="std std-ref">Resource</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_refcounted.html#class-refcounted"><span class="std std-ref">RefCounted</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_object.html#class-object"><span class="std std-ref">Object</span></a></p>
+<p>Represents a key on a keyboard being pressed or released.</p>
+<section class="classref-introduction-group" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
+<p>An input event for keys on a keyboard. Supports key presses, key releases and <a class="reference internal" href="#class-inputeventkey-property-echo"><span class="std std-ref">echo</span></a> events. It can also be received in <a class="reference internal" href="class_node.html#class-node-private-method-unhandled-key-input"><span class="std std-ref">Node._unhandled_key_input()</span></a>.</p>
+<p><strong>Note:</strong> Events received from the keyboard usually have all properties set. Event mappings should have only one of the <a class="reference internal" href="#class-inputeventkey-property-keycode"><span class="std std-ref">keycode</span></a>, <a class="reference internal" href="#class-inputeventkey-property-physical-keycode"><span class="std std-ref">physical_keycode</span></a> or <a class="reference internal" href="#class-inputeventkey-property-unicode"><span class="std std-ref">unicode</span></a> set.</p>
+<p>When events are compared, properties are checked in the following priority - <a class="reference internal" href="#class-inputeventkey-property-keycode"><span class="std std-ref">keycode</span></a>, <a class="reference internal" href="#class-inputeventkey-property-physical-keycode"><span class="std std-ref">physical_keycode</span></a> and <a class="reference internal" href="#class-inputeventkey-property-unicode"><span class="std std-ref">unicode</span></a>. Events with the first matching value will be considered equal.</p>
+</section>
+<section class="classref-introduction-group" id="tutorials">
+<h2>Tutorials<a class="headerlink" href="#tutorials" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><span class="xref std std-doc">Using InputEvent</span></p></li>
+</ul>
+</section>
+<section class="classref-reftable-group" id="properties">
+<h2>Properties<a class="headerlink" href="#properties" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-inputeventkey-property-echo"><span class="std std-ref">echo</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_%40globalscope.html#enum-globalscope-key"><span class="std std-ref">Key</span></a></p></td>
+<td><p><a class="reference internal" href="#class-inputeventkey-property-key-label"><span class="std std-ref">key_label</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_%40globalscope.html#enum-globalscope-key"><span class="std std-ref">Key</span></a></p></td>
+<td><p><a class="reference internal" href="#class-inputeventkey-property-keycode"><span class="std std-ref">keycode</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_%40globalscope.html#enum-globalscope-keylocation"><span class="std std-ref">KeyLocation</span></a></p></td>
+<td><p><a class="reference internal" href="#class-inputeventkey-property-location"><span class="std std-ref">location</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_%40globalscope.html#enum-globalscope-key"><span class="std std-ref">Key</span></a></p></td>
+<td><p><a class="reference internal" href="#class-inputeventkey-property-physical-keycode"><span class="std std-ref">physical_keycode</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-inputeventkey-property-pressed"><span class="std std-ref">pressed</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-inputeventkey-property-unicode"><span class="std std-ref">unicode</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section class="classref-reftable-group" id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a></p></td>
+<td><p><a class="reference internal" href="#class-inputeventkey-method-as-text-key-label"><span class="std std-ref">as_text_key_label</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a></p></td>
+<td><p><a class="reference internal" href="#class-inputeventkey-method-as-text-keycode"><span class="std std-ref">as_text_keycode</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a></p></td>
+<td><p><a class="reference internal" href="#class-inputeventkey-method-as-text-location"><span class="std std-ref">as_text_location</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a></p></td>
+<td><p><a class="reference internal" href="#class-inputeventkey-method-as-text-physical-keycode"><span class="std std-ref">as_text_physical_keycode</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_%40globalscope.html#enum-globalscope-key"><span class="std std-ref">Key</span></a></p></td>
+<td><p><a class="reference internal" href="#class-inputeventkey-method-get-key-label-with-modifiers"><span class="std std-ref">get_key_label_with_modifiers</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_%40globalscope.html#enum-globalscope-key"><span class="std std-ref">Key</span></a></p></td>
+<td><p><a class="reference internal" href="#class-inputeventkey-method-get-keycode-with-modifiers"><span class="std std-ref">get_keycode_with_modifiers</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_%40globalscope.html#enum-globalscope-key"><span class="std std-ref">Key</span></a></p></td>
+<td><p><a class="reference internal" href="#class-inputeventkey-method-get-physical-keycode-with-modifiers"><span class="std std-ref">get_physical_keycode_with_modifiers</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="property-descriptions">
+<h2>Property Descriptions<a class="headerlink" href="#property-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-property" id="class-inputeventkey-property-echo"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>echo</strong> = <code class="docutils literal notranslate"><span class="pre">false</span></code> <a class="reference internal" href="#class-inputeventkey-property-echo"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_echo</strong>(value: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_echo</strong>()</p></li>
+</ul>
+<p>If <code class="docutils literal notranslate"><span class="pre">true</span></code>, the key was already pressed before this event. An echo event is a repeated key event sent when the user is holding down the key.</p>
+<p><strong>Note:</strong> The rate at which echo events are sent is typically around 20 events per second (after holding down the key for roughly half a second). However, the key repeat delay/speed can be changed by the user or disabled entirely in the operating system settings. To ensure your project works correctly on all configurations, do not assume the user has a specific key repeat configuration in your project’s behavior.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-inputeventkey-property-key-label"><a class="reference internal" href="class_%40globalscope.html#enum-globalscope-key"><span class="std std-ref">Key</span></a> <strong>key_label</strong> = <code class="docutils literal notranslate"><span class="pre">0</span></code> <a class="reference internal" href="#class-inputeventkey-property-key-label"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_key_label</strong>(value: <a class="reference internal" href="class_%40globalscope.html#enum-globalscope-key"><span class="std std-ref">Key</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_%40globalscope.html#enum-globalscope-key"><span class="std std-ref">Key</span></a> <strong>get_key_label</strong>()</p></li>
+</ul>
+<p>Represents the localized label printed on the key in the current keyboard layout, which corresponds to one of the <a class="reference internal" href="class_%40globalscope.html#enum-globalscope-key"><span class="std std-ref">Key</span></a> constants or any valid Unicode character. Key labels are meant for key prompts.</p>
+<p>For keyboard layouts with a single label on the key, it is equivalent to <a class="reference internal" href="#class-inputeventkey-property-keycode"><span class="std std-ref">keycode</span></a>.</p>
+<p>To get a human-readable representation of the <strong>InputEventKey</strong>, use <code class="docutils literal notranslate"><span class="pre">OS.get_keycode_string(event.key_label)</span></code> where <code class="docutils literal notranslate"><span class="pre">event</span></code> is the <strong>InputEventKey</strong>.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>+-----+ +-----+
+| Q   | | Q   | - &quot;Q&quot; - keycode
+|   Й | |  ض | - &quot;Й&quot; and &quot;ض&quot; - key_label
++-----+ +-----+
+</pre></div>
+</div>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-inputeventkey-property-keycode"><a class="reference internal" href="class_%40globalscope.html#enum-globalscope-key"><span class="std std-ref">Key</span></a> <strong>keycode</strong> = <code class="docutils literal notranslate"><span class="pre">0</span></code> <a class="reference internal" href="#class-inputeventkey-property-keycode"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_keycode</strong>(value: <a class="reference internal" href="class_%40globalscope.html#enum-globalscope-key"><span class="std std-ref">Key</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_%40globalscope.html#enum-globalscope-key"><span class="std std-ref">Key</span></a> <strong>get_keycode</strong>()</p></li>
+</ul>
+<p>Latin label printed on the key in the current keyboard layout, which corresponds to one of the <a class="reference internal" href="class_%40globalscope.html#enum-globalscope-key"><span class="std std-ref">Key</span></a> constants. Key codes are meant for shortcuts expressed with a standard Latin keyboard, such as <kbd class="kbd docutils literal notranslate">Ctrl</kbd> <kbd class="kbd docutils literal notranslate"></kbd>+<kbd class="kbd docutils literal notranslate"></kbd> <kbd class="kbd docutils literal notranslate">S</kbd> for a “Save” shortcut.</p>
+<p>To get a human-readable representation of the <strong>InputEventKey</strong>, use <code class="docutils literal notranslate"><span class="pre">OS.get_keycode_string(event.keycode)</span></code> where <code class="docutils literal notranslate"><span class="pre">event</span></code> is the <strong>InputEventKey</strong>.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>+-----+ +-----+
+| Q   | | Q   | - &quot;Q&quot; - keycode
+|   Й | |  ض | - &quot;Й&quot; and &quot;ض&quot; - key_label
++-----+ +-----+
+</pre></div>
+</div>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-inputeventkey-property-location"><a class="reference internal" href="class_%40globalscope.html#enum-globalscope-keylocation"><span class="std std-ref">KeyLocation</span></a> <strong>location</strong> = <code class="docutils literal notranslate"><span class="pre">0</span></code> <a class="reference internal" href="#class-inputeventkey-property-location"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_location</strong>(value: <a class="reference internal" href="class_%40globalscope.html#enum-globalscope-keylocation"><span class="std std-ref">KeyLocation</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_%40globalscope.html#enum-globalscope-keylocation"><span class="std std-ref">KeyLocation</span></a> <strong>get_location</strong>()</p></li>
+</ul>
+<p>Represents the location of a key which has both left and right versions, such as <kbd class="kbd docutils literal notranslate">Shift</kbd> or <kbd class="kbd docutils literal notranslate">Alt</kbd>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-inputeventkey-property-physical-keycode"><a class="reference internal" href="class_%40globalscope.html#enum-globalscope-key"><span class="std std-ref">Key</span></a> <strong>physical_keycode</strong> = <code class="docutils literal notranslate"><span class="pre">0</span></code> <a class="reference internal" href="#class-inputeventkey-property-physical-keycode"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_physical_keycode</strong>(value: <a class="reference internal" href="class_%40globalscope.html#enum-globalscope-key"><span class="std std-ref">Key</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_%40globalscope.html#enum-globalscope-key"><span class="std std-ref">Key</span></a> <strong>get_physical_keycode</strong>()</p></li>
+</ul>
+<p>Represents the physical location of a key on the 101/102-key US QWERTY keyboard, which corresponds to one of the <a class="reference internal" href="class_%40globalscope.html#enum-globalscope-key"><span class="std std-ref">Key</span></a> constants. Physical key codes meant for game input, such as WASD movement, where only the location of the keys is important.</p>
+<p>To get a human-readable representation of the <strong>InputEventKey</strong>, use <a class="reference internal" href="class_os.html#class-os-method-get-keycode-string"><span class="std std-ref">OS.get_keycode_string()</span></a> in combination with <a class="reference internal" href="class_displayserver.html#class-displayserver-method-keyboard-get-keycode-from-physical"><span class="std std-ref">DisplayServer.keyboard_get_keycode_from_physical()</span></a> or <a class="reference internal" href="class_displayserver.html#class-displayserver-method-keyboard-get-label-from-physical"><span class="std std-ref">DisplayServer.keyboard_get_label_from_physical()</span></a>:</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-inputeventkey-property-pressed"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>pressed</strong> = <code class="docutils literal notranslate"><span class="pre">false</span></code> <a class="reference internal" href="#class-inputeventkey-property-pressed"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_pressed</strong>(value: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_pressed</strong>()</p></li>
+</ul>
+<p>If <code class="docutils literal notranslate"><span class="pre">true</span></code>, the key’s state is pressed. If <code class="docutils literal notranslate"><span class="pre">false</span></code>, the key’s state is released.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-inputeventkey-property-unicode"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>unicode</strong> = <code class="docutils literal notranslate"><span class="pre">0</span></code> <a class="reference internal" href="#class-inputeventkey-property-unicode"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_unicode</strong>(value: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>get_unicode</strong>()</p></li>
+</ul>
+<p>The key Unicode character code (when relevant), shifted by modifier keys. Unicode character codes for composite characters and complex scripts may not be available unless IME input mode is active. See <a class="reference internal" href="class_window.html#class-window-method-set-ime-active"><span class="std std-ref">Window.set_ime_active()</span></a> for more information. Unicode character codes are meant for text input.</p>
+<p><strong>Note:</strong> This property is set by the engine only for a pressed event. If the event is sent by an IME or a virtual keyboard, no corresponding key released event is sent.</p>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="method-descriptions">
+<h2>Method Descriptions<a class="headerlink" href="#method-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-method" id="class-inputeventkey-method-as-text-key-label"><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a> <strong>as_text_key_label</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-inputeventkey-method-as-text-key-label"><span class="std std-ref">🔗</span></a></p>
+<p>Returns a <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a> representation of the event’s <a class="reference internal" href="#class-inputeventkey-property-key-label"><span class="std std-ref">key_label</span></a> and modifiers.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-inputeventkey-method-as-text-keycode"><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a> <strong>as_text_keycode</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-inputeventkey-method-as-text-keycode"><span class="std std-ref">🔗</span></a></p>
+<p>Returns a <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a> representation of the event’s <a class="reference internal" href="#class-inputeventkey-property-keycode"><span class="std std-ref">keycode</span></a> and modifiers.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-inputeventkey-method-as-text-location"><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a> <strong>as_text_location</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-inputeventkey-method-as-text-location"><span class="std std-ref">🔗</span></a></p>
+<p>Returns a <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a> representation of the event’s <a class="reference internal" href="#class-inputeventkey-property-location"><span class="std std-ref">location</span></a>. This will be a blank string if the event is not specific to a location.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-inputeventkey-method-as-text-physical-keycode"><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a> <strong>as_text_physical_keycode</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-inputeventkey-method-as-text-physical-keycode"><span class="std std-ref">🔗</span></a></p>
+<p>Returns a <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a> representation of the event’s <a class="reference internal" href="#class-inputeventkey-property-physical-keycode"><span class="std std-ref">physical_keycode</span></a> and modifiers.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-inputeventkey-method-get-key-label-with-modifiers"><a class="reference internal" href="class_%40globalscope.html#enum-globalscope-key"><span class="std std-ref">Key</span></a> <strong>get_key_label_with_modifiers</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-inputeventkey-method-get-key-label-with-modifiers"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the localized key label combined with modifier keys such as <kbd class="kbd docutils literal notranslate">Shift</kbd> or <kbd class="kbd docutils literal notranslate">Alt</kbd>. See also <a class="reference internal" href="class_inputeventwithmodifiers.html#class-inputeventwithmodifiers"><span class="std std-ref">InputEventWithModifiers</span></a>.</p>
+<p>To get a human-readable representation of the <strong>InputEventKey</strong> with modifiers, use <code class="docutils literal notranslate"><span class="pre">OS.get_keycode_string(event.get_key_label_with_modifiers())</span></code> where <code class="docutils literal notranslate"><span class="pre">event</span></code> is the <strong>InputEventKey</strong>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-inputeventkey-method-get-keycode-with-modifiers"><a class="reference internal" href="class_%40globalscope.html#enum-globalscope-key"><span class="std std-ref">Key</span></a> <strong>get_keycode_with_modifiers</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-inputeventkey-method-get-keycode-with-modifiers"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the Latin keycode combined with modifier keys such as <kbd class="kbd docutils literal notranslate">Shift</kbd> or <kbd class="kbd docutils literal notranslate">Alt</kbd>. See also <a class="reference internal" href="class_inputeventwithmodifiers.html#class-inputeventwithmodifiers"><span class="std std-ref">InputEventWithModifiers</span></a>.</p>
+<p>To get a human-readable representation of the <strong>InputEventKey</strong> with modifiers, use <code class="docutils literal notranslate"><span class="pre">OS.get_keycode_string(event.get_keycode_with_modifiers())</span></code> where <code class="docutils literal notranslate"><span class="pre">event</span></code> is the <strong>InputEventKey</strong>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-inputeventkey-method-get-physical-keycode-with-modifiers"><a class="reference internal" href="class_%40globalscope.html#enum-globalscope-key"><span class="std std-ref">Key</span></a> <strong>get_physical_keycode_with_modifiers</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-inputeventkey-method-get-physical-keycode-with-modifiers"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the physical keycode combined with modifier keys such as <kbd class="kbd docutils literal notranslate">Shift</kbd> or <kbd class="kbd docutils literal notranslate">Alt</kbd>. See also <a class="reference internal" href="class_inputeventwithmodifiers.html#class-inputeventwithmodifiers"><span class="std std-ref">InputEventWithModifiers</span></a>.</p>
+<p>To get a human-readable representation of the <strong>InputEventKey</strong> with modifiers, use <code class="docutils literal notranslate"><span class="pre">OS.get_keycode_string(event.get_physical_keycode_with_modifiers())</span></code> where <code class="docutils literal notranslate"><span class="pre">event</span></code> is the <strong>InputEventKey</strong>.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, MUmarShahbaz.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

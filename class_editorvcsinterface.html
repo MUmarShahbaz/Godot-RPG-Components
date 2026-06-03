@@ -1,0 +1,351 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EditorVCSInterface &mdash; RPG Components 2D 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=d45e8c67"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            RPG Components 2D
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">EditorVCSInterface</a><ul>
+<li><a class="reference internal" href="#description">Description</a></li>
+<li><a class="reference internal" href="#tutorials">Tutorials</a></li>
+<li><a class="reference internal" href="#methods">Methods</a></li>
+<li><a class="reference internal" href="#enumerations">Enumerations</a></li>
+<li><a class="reference internal" href="#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">RPG Components 2D</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">EditorVCSInterface</li>
+      <li class="wy-breadcrumbs-aside">
+              <!-- User defined GitHub URL -->
+              <a href="hide" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="editorvcsinterface">
+<span id="class-editorvcsinterface"></span><h1>EditorVCSInterface<a class="headerlink" href="#editorvcsinterface" title="Link to this heading"></a></h1>
+<p><strong>Inherits:</strong> <a class="reference internal" href="class_object.html#class-object"><span class="std std-ref">Object</span></a></p>
+<p>Version Control System (VCS) interface, which reads and writes to the local VCS in use.</p>
+<section class="classref-introduction-group" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
+<p>Defines the API that the editor uses to extract information from the underlying VCS. The implementation of this API is included in VCS plugins, which are GDExtension plugins that inherit <strong>EditorVCSInterface</strong> and are attached (on demand) to the singleton instance of <strong>EditorVCSInterface</strong>. Instead of performing the task themselves, all the virtual functions listed below are calling the internally overridden functions in the VCS plugins to provide a plug-n-play experience. A custom VCS plugin is supposed to inherit from <strong>EditorVCSInterface</strong> and override each of these virtual functions.</p>
+</section>
+<section class="classref-introduction-group" id="tutorials">
+<h2>Tutorials<a class="headerlink" href="#tutorials" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><span class="xref std std-doc">Version control systems</span></p></li>
+</ul>
+</section>
+<section class="classref-reftable-group" id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-editorvcsinterface-private-method-allow-amends"><span class="std std-ref">_allow_amends</span></a>() <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-editorvcsinterface-private-method-checkout-branch"><span class="std std-ref">_checkout_branch</span></a>(branch_name: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method is required to be overridden when extending its base class.">required</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-editorvcsinterface-private-method-commit"><span class="std std-ref">_commit</span></a>(msg: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, amend: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-editorvcsinterface-private-method-create-branch"><span class="std std-ref">_create_branch</span></a>(branch_name: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method is required to be overridden when extending its base class.">required</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-editorvcsinterface-private-method-create-remote"><span class="std std-ref">_create_remote</span></a>(remote_name: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, remote_url: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method is required to be overridden when extending its base class.">required</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-editorvcsinterface-private-method-discard-file"><span class="std std-ref">_discard_file</span></a>(file_path: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method is required to be overridden when extending its base class.">required</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-editorvcsinterface-private-method-fetch"><span class="std std-ref">_fetch</span></a>(remote: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method is required to be overridden when extending its base class.">required</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_array.html#class-array"><span class="std std-ref">Array</span></a>[<a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>]</p></td>
+<td><p><a class="reference internal" href="#class-editorvcsinterface-private-method-get-branch-list"><span class="std std-ref">_get_branch_list</span></a>() <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method is required to be overridden when extending its base class.">required</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a></p></td>
+<td><p><a class="reference internal" href="#class-editorvcsinterface-private-method-get-current-branch-name"><span class="std std-ref">_get_current_branch_name</span></a>() <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method is required to be overridden when extending its base class.">required</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_array.html#class-array"><span class="std std-ref">Array</span></a>[<a class="reference internal" href="class_dictionary.html#class-dictionary"><span class="std std-ref">Dictionary</span></a>]</p></td>
+<td><p><a class="reference internal" href="#class-editorvcsinterface-private-method-get-diff"><span class="std std-ref">_get_diff</span></a>(identifier: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, area: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method is required to be overridden when extending its base class.">required</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_array.html#class-array"><span class="std std-ref">Array</span></a>[<a class="reference internal" href="class_dictionary.html#class-dictionary"><span class="std std-ref">Dictionary</span></a>]</p></td>
+<td><p><a class="reference internal" href="#class-editorvcsinterface-private-method-get-line-diff"><span class="std std-ref">_get_line_diff</span></a>(file_path: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, text: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method is required to be overridden when extending its base class.">required</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_array.html#class-array"><span class="std std-ref">Array</span></a>[<a class="reference internal" href="class_dictionary.html#class-dictionary"><span class="std std-ref">Dictionary</span></a>]</p></td>
+<td><p><a class="reference internal" href="#class-editorvcsinterface-private-method-get-modified-files-data"><span class="std std-ref">_get_modified_files_data</span></a>() <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method is required to be overridden when extending its base class.">required</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_array.html#class-array"><span class="std std-ref">Array</span></a>[<a class="reference internal" href="class_dictionary.html#class-dictionary"><span class="std std-ref">Dictionary</span></a>]</p></td>
+<td><p><a class="reference internal" href="#class-editorvcsinterface-private-method-get-previous-commits"><span class="std std-ref">_get_previous_commits</span></a>(max_commits: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method is required to be overridden when extending its base class.">required</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_array.html#class-array"><span class="std std-ref">Array</span></a>[<a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>]</p></td>
+<td><p><a class="reference internal" href="#class-editorvcsinterface-private-method-get-remotes"><span class="std std-ref">_get_remotes</span></a>() <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method is required to be overridden when extending its base class.">required</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a></p></td>
+<td><p><a class="reference internal" href="#class-editorvcsinterface-private-method-get-vcs-name"><span class="std std-ref">_get_vcs_name</span></a>() <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method is required to be overridden when extending its base class.">required</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-editorvcsinterface-private-method-initialize"><span class="std std-ref">_initialize</span></a>(project_path: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method is required to be overridden when extending its base class.">required</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-editorvcsinterface-private-method-pull"><span class="std std-ref">_pull</span></a>(remote: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method is required to be overridden when extending its base class.">required</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-editorvcsinterface-private-method-push"><span class="std std-ref">_push</span></a>(remote: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, force: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method is required to be overridden when extending its base class.">required</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-editorvcsinterface-private-method-remove-branch"><span class="std std-ref">_remove_branch</span></a>(branch_name: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method is required to be overridden when extending its base class.">required</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-editorvcsinterface-private-method-remove-remote"><span class="std std-ref">_remove_remote</span></a>(remote_name: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method is required to be overridden when extending its base class.">required</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-editorvcsinterface-private-method-set-credentials"><span class="std std-ref">_set_credentials</span></a>(username: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, password: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, ssh_public_key_path: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, ssh_private_key_path: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, ssh_passphrase: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method is required to be overridden when extending its base class.">required</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-editorvcsinterface-private-method-shut-down"><span class="std std-ref">_shut_down</span></a>() <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method is required to be overridden when extending its base class.">required</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-editorvcsinterface-private-method-stage-file"><span class="std std-ref">_stage_file</span></a>(file_path: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method is required to be overridden when extending its base class.">required</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-editorvcsinterface-private-method-unstage-file"><span class="std std-ref">_unstage_file</span></a>(file_path: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method is required to be overridden when extending its base class.">required</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_dictionary.html#class-dictionary"><span class="std std-ref">Dictionary</span></a></p></td>
+<td><p><a class="reference internal" href="#class-editorvcsinterface-method-add-diff-hunks-into-diff-file"><span class="std std-ref">add_diff_hunks_into_diff_file</span></a>(diff_file: <a class="reference internal" href="class_dictionary.html#class-dictionary"><span class="std std-ref">Dictionary</span></a>, diff_hunks: <a class="reference internal" href="class_array.html#class-array"><span class="std std-ref">Array</span></a>[<a class="reference internal" href="class_dictionary.html#class-dictionary"><span class="std std-ref">Dictionary</span></a>])</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_dictionary.html#class-dictionary"><span class="std std-ref">Dictionary</span></a></p></td>
+<td><p><a class="reference internal" href="#class-editorvcsinterface-method-add-line-diffs-into-diff-hunk"><span class="std std-ref">add_line_diffs_into_diff_hunk</span></a>(diff_hunk: <a class="reference internal" href="class_dictionary.html#class-dictionary"><span class="std std-ref">Dictionary</span></a>, line_diffs: <a class="reference internal" href="class_array.html#class-array"><span class="std std-ref">Array</span></a>[<a class="reference internal" href="class_dictionary.html#class-dictionary"><span class="std std-ref">Dictionary</span></a>])</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_dictionary.html#class-dictionary"><span class="std std-ref">Dictionary</span></a></p></td>
+<td><p><a class="reference internal" href="#class-editorvcsinterface-method-create-commit"><span class="std std-ref">create_commit</span></a>(msg: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, author: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, id: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, unix_timestamp: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, offset_minutes: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_dictionary.html#class-dictionary"><span class="std std-ref">Dictionary</span></a></p></td>
+<td><p><a class="reference internal" href="#class-editorvcsinterface-method-create-diff-file"><span class="std std-ref">create_diff_file</span></a>(new_file: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, old_file: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_dictionary.html#class-dictionary"><span class="std std-ref">Dictionary</span></a></p></td>
+<td><p><a class="reference internal" href="#class-editorvcsinterface-method-create-diff-hunk"><span class="std std-ref">create_diff_hunk</span></a>(old_start: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, new_start: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, old_lines: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, new_lines: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_dictionary.html#class-dictionary"><span class="std std-ref">Dictionary</span></a></p></td>
+<td><p><a class="reference internal" href="#class-editorvcsinterface-method-create-diff-line"><span class="std std-ref">create_diff_line</span></a>(new_line_no: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, old_line_no: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, content: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, status: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_dictionary.html#class-dictionary"><span class="std std-ref">Dictionary</span></a></p></td>
+<td><p><a class="reference internal" href="#class-editorvcsinterface-method-create-status-file"><span class="std std-ref">create_status_file</span></a>(file_path: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, change_type: <a class="reference internal" href="#enum-editorvcsinterface-changetype"><span class="std std-ref">ChangeType</span></a>, area: <a class="reference internal" href="#enum-editorvcsinterface-treearea"><span class="std std-ref">TreeArea</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-editorvcsinterface-method-popup-error"><span class="std std-ref">popup_error</span></a>(msg: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>)</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="enumerations">
+<h2>Enumerations<a class="headerlink" href="#enumerations" title="Link to this heading"></a></h2>
+<p class="classref-enumeration" id="enum-editorvcsinterface-changetype">enum <strong>ChangeType</strong>: <a class="reference internal" href="#enum-editorvcsinterface-changetype"><span class="std std-ref">🔗</span></a></p>
+<p class="classref-enumeration-constant" id="class-editorvcsinterface-constant-change-type-new"><a class="reference internal" href="#enum-editorvcsinterface-changetype"><span class="std std-ref">ChangeType</span></a> <strong>CHANGE_TYPE_NEW</strong> = <code class="docutils literal notranslate"><span class="pre">0</span></code></p>
+<p>A new file has been added.</p>
+<p class="classref-enumeration-constant" id="class-editorvcsinterface-constant-change-type-modified"><a class="reference internal" href="#enum-editorvcsinterface-changetype"><span class="std std-ref">ChangeType</span></a> <strong>CHANGE_TYPE_MODIFIED</strong> = <code class="docutils literal notranslate"><span class="pre">1</span></code></p>
+<p>An earlier added file has been modified.</p>
+<p class="classref-enumeration-constant" id="class-editorvcsinterface-constant-change-type-renamed"><a class="reference internal" href="#enum-editorvcsinterface-changetype"><span class="std std-ref">ChangeType</span></a> <strong>CHANGE_TYPE_RENAMED</strong> = <code class="docutils literal notranslate"><span class="pre">2</span></code></p>
+<p>An earlier added file has been renamed.</p>
+<p class="classref-enumeration-constant" id="class-editorvcsinterface-constant-change-type-deleted"><a class="reference internal" href="#enum-editorvcsinterface-changetype"><span class="std std-ref">ChangeType</span></a> <strong>CHANGE_TYPE_DELETED</strong> = <code class="docutils literal notranslate"><span class="pre">3</span></code></p>
+<p>An earlier added file has been deleted.</p>
+<p class="classref-enumeration-constant" id="class-editorvcsinterface-constant-change-type-typechange"><a class="reference internal" href="#enum-editorvcsinterface-changetype"><span class="std std-ref">ChangeType</span></a> <strong>CHANGE_TYPE_TYPECHANGE</strong> = <code class="docutils literal notranslate"><span class="pre">4</span></code></p>
+<p>An earlier added file has been typechanged.</p>
+<p class="classref-enumeration-constant" id="class-editorvcsinterface-constant-change-type-unmerged"><a class="reference internal" href="#enum-editorvcsinterface-changetype"><span class="std std-ref">ChangeType</span></a> <strong>CHANGE_TYPE_UNMERGED</strong> = <code class="docutils literal notranslate"><span class="pre">5</span></code></p>
+<p>A file is left unmerged.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-enumeration" id="enum-editorvcsinterface-treearea">enum <strong>TreeArea</strong>: <a class="reference internal" href="#enum-editorvcsinterface-treearea"><span class="std std-ref">🔗</span></a></p>
+<p class="classref-enumeration-constant" id="class-editorvcsinterface-constant-tree-area-commit"><a class="reference internal" href="#enum-editorvcsinterface-treearea"><span class="std std-ref">TreeArea</span></a> <strong>TREE_AREA_COMMIT</strong> = <code class="docutils literal notranslate"><span class="pre">0</span></code></p>
+<p>A commit is encountered from the commit area.</p>
+<p class="classref-enumeration-constant" id="class-editorvcsinterface-constant-tree-area-staged"><a class="reference internal" href="#enum-editorvcsinterface-treearea"><span class="std std-ref">TreeArea</span></a> <strong>TREE_AREA_STAGED</strong> = <code class="docutils literal notranslate"><span class="pre">1</span></code></p>
+<p>A file is encountered from the staged area.</p>
+<p class="classref-enumeration-constant" id="class-editorvcsinterface-constant-tree-area-unstaged"><a class="reference internal" href="#enum-editorvcsinterface-treearea"><span class="std std-ref">TreeArea</span></a> <strong>TREE_AREA_UNSTAGED</strong> = <code class="docutils literal notranslate"><span class="pre">2</span></code></p>
+<p>A file is encountered from the unstaged area.</p>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="method-descriptions">
+<h2>Method Descriptions<a class="headerlink" href="#method-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-method" id="class-editorvcsinterface-private-method-allow-amends"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>_allow_amends</strong>() <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <a class="reference internal" href="#class-editorvcsinterface-private-method-allow-amends"><span class="std std-ref">🔗</span></a></p>
+<p>Returns whether or not the plugin allows commit amends.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-editorvcsinterface-private-method-checkout-branch"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>_checkout_branch</strong>(branch_name: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method is required to be overridden when extending its base class.">required</abbr> <a class="reference internal" href="#class-editorvcsinterface-private-method-checkout-branch"><span class="std std-ref">🔗</span></a></p>
+<p>Checks out a <code class="docutils literal notranslate"><span class="pre">branch_name</span></code> in the VCS.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-editorvcsinterface-private-method-commit"><abbr title="No return value.">void</abbr> <strong>_commit</strong>(msg: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, amend: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <a class="reference internal" href="#class-editorvcsinterface-private-method-commit"><span class="std std-ref">🔗</span></a></p>
+<p>Commits the currently staged changes and applies the commit <code class="docutils literal notranslate"><span class="pre">msg</span></code> to the resulting commit. If <code class="docutils literal notranslate"><span class="pre">amend</span></code> is <code class="docutils literal notranslate"><span class="pre">true</span></code> the commit will modify the most recent commit instead.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-editorvcsinterface-private-method-create-branch"><abbr title="No return value.">void</abbr> <strong>_create_branch</strong>(branch_name: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method is required to be overridden when extending its base class.">required</abbr> <a class="reference internal" href="#class-editorvcsinterface-private-method-create-branch"><span class="std std-ref">🔗</span></a></p>
+<p>Creates a new branch named <code class="docutils literal notranslate"><span class="pre">branch_name</span></code> in the VCS.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-editorvcsinterface-private-method-create-remote"><abbr title="No return value.">void</abbr> <strong>_create_remote</strong>(remote_name: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, remote_url: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method is required to be overridden when extending its base class.">required</abbr> <a class="reference internal" href="#class-editorvcsinterface-private-method-create-remote"><span class="std std-ref">🔗</span></a></p>
+<p>Creates a new remote destination with name <code class="docutils literal notranslate"><span class="pre">remote_name</span></code> and points it to <code class="docutils literal notranslate"><span class="pre">remote_url</span></code>. This can be an HTTPS remote or an SSH remote.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-editorvcsinterface-private-method-discard-file"><abbr title="No return value.">void</abbr> <strong>_discard_file</strong>(file_path: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method is required to be overridden when extending its base class.">required</abbr> <a class="reference internal" href="#class-editorvcsinterface-private-method-discard-file"><span class="std std-ref">🔗</span></a></p>
+<p>Discards the changes made in a file present at <code class="docutils literal notranslate"><span class="pre">file_path</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-editorvcsinterface-private-method-fetch"><abbr title="No return value.">void</abbr> <strong>_fetch</strong>(remote: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method is required to be overridden when extending its base class.">required</abbr> <a class="reference internal" href="#class-editorvcsinterface-private-method-fetch"><span class="std std-ref">🔗</span></a></p>
+<p>Fetches new changes from the <code class="docutils literal notranslate"><span class="pre">remote</span></code>, but doesn’t write changes to the current working directory. Equivalent to <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">fetch</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-editorvcsinterface-private-method-get-branch-list"><a class="reference internal" href="class_array.html#class-array"><span class="std std-ref">Array</span></a>[<a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>] <strong>_get_branch_list</strong>() <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method is required to be overridden when extending its base class.">required</abbr> <a class="reference internal" href="#class-editorvcsinterface-private-method-get-branch-list"><span class="std std-ref">🔗</span></a></p>
+<p>Gets an instance of an <a class="reference internal" href="class_array.html#class-array"><span class="std std-ref">Array</span></a> of <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>s containing available branch names in the VCS.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-editorvcsinterface-private-method-get-current-branch-name"><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a> <strong>_get_current_branch_name</strong>() <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method is required to be overridden when extending its base class.">required</abbr> <a class="reference internal" href="#class-editorvcsinterface-private-method-get-current-branch-name"><span class="std std-ref">🔗</span></a></p>
+<p>Gets the current branch name defined in the VCS.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-editorvcsinterface-private-method-get-diff"><a class="reference internal" href="class_array.html#class-array"><span class="std std-ref">Array</span></a>[<a class="reference internal" href="class_dictionary.html#class-dictionary"><span class="std std-ref">Dictionary</span></a>] <strong>_get_diff</strong>(identifier: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, area: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method is required to be overridden when extending its base class.">required</abbr> <a class="reference internal" href="#class-editorvcsinterface-private-method-get-diff"><span class="std std-ref">🔗</span></a></p>
+<p>Returns an array of <a class="reference internal" href="class_dictionary.html#class-dictionary"><span class="std std-ref">Dictionary</span></a> items (see <a class="reference internal" href="#class-editorvcsinterface-method-create-diff-file"><span class="std std-ref">create_diff_file()</span></a>, <a class="reference internal" href="#class-editorvcsinterface-method-create-diff-hunk"><span class="std std-ref">create_diff_hunk()</span></a>, <a class="reference internal" href="#class-editorvcsinterface-method-create-diff-line"><span class="std std-ref">create_diff_line()</span></a>, <a class="reference internal" href="#class-editorvcsinterface-method-add-line-diffs-into-diff-hunk"><span class="std std-ref">add_line_diffs_into_diff_hunk()</span></a> and <a class="reference internal" href="#class-editorvcsinterface-method-add-diff-hunks-into-diff-file"><span class="std std-ref">add_diff_hunks_into_diff_file()</span></a>), each containing information about a diff. If <code class="docutils literal notranslate"><span class="pre">identifier</span></code> is a file path, returns a file diff, and if it is a commit identifier, then returns a commit diff.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-editorvcsinterface-private-method-get-line-diff"><a class="reference internal" href="class_array.html#class-array"><span class="std std-ref">Array</span></a>[<a class="reference internal" href="class_dictionary.html#class-dictionary"><span class="std std-ref">Dictionary</span></a>] <strong>_get_line_diff</strong>(file_path: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, text: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method is required to be overridden when extending its base class.">required</abbr> <a class="reference internal" href="#class-editorvcsinterface-private-method-get-line-diff"><span class="std std-ref">🔗</span></a></p>
+<p>Returns an <a class="reference internal" href="class_array.html#class-array"><span class="std std-ref">Array</span></a> of <a class="reference internal" href="class_dictionary.html#class-dictionary"><span class="std std-ref">Dictionary</span></a> items (see <a class="reference internal" href="#class-editorvcsinterface-method-create-diff-hunk"><span class="std std-ref">create_diff_hunk()</span></a>), each containing a line diff between a file at <code class="docutils literal notranslate"><span class="pre">file_path</span></code> and the <code class="docutils literal notranslate"><span class="pre">text</span></code> which is passed in.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-editorvcsinterface-private-method-get-modified-files-data"><a class="reference internal" href="class_array.html#class-array"><span class="std std-ref">Array</span></a>[<a class="reference internal" href="class_dictionary.html#class-dictionary"><span class="std std-ref">Dictionary</span></a>] <strong>_get_modified_files_data</strong>() <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method is required to be overridden when extending its base class.">required</abbr> <a class="reference internal" href="#class-editorvcsinterface-private-method-get-modified-files-data"><span class="std std-ref">🔗</span></a></p>
+<p>Returns an <a class="reference internal" href="class_array.html#class-array"><span class="std std-ref">Array</span></a> of <a class="reference internal" href="class_dictionary.html#class-dictionary"><span class="std std-ref">Dictionary</span></a> items (see <a class="reference internal" href="#class-editorvcsinterface-method-create-status-file"><span class="std std-ref">create_status_file()</span></a>), each containing the status data of every modified file in the project folder.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-editorvcsinterface-private-method-get-previous-commits"><a class="reference internal" href="class_array.html#class-array"><span class="std std-ref">Array</span></a>[<a class="reference internal" href="class_dictionary.html#class-dictionary"><span class="std std-ref">Dictionary</span></a>] <strong>_get_previous_commits</strong>(max_commits: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method is required to be overridden when extending its base class.">required</abbr> <a class="reference internal" href="#class-editorvcsinterface-private-method-get-previous-commits"><span class="std std-ref">🔗</span></a></p>
+<p>Returns an <a class="reference internal" href="class_array.html#class-array"><span class="std std-ref">Array</span></a> of <a class="reference internal" href="class_dictionary.html#class-dictionary"><span class="std std-ref">Dictionary</span></a> items (see <a class="reference internal" href="#class-editorvcsinterface-method-create-commit"><span class="std std-ref">create_commit()</span></a>), each containing the data for a past commit.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-editorvcsinterface-private-method-get-remotes"><a class="reference internal" href="class_array.html#class-array"><span class="std std-ref">Array</span></a>[<a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>] <strong>_get_remotes</strong>() <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method is required to be overridden when extending its base class.">required</abbr> <a class="reference internal" href="#class-editorvcsinterface-private-method-get-remotes"><span class="std std-ref">🔗</span></a></p>
+<p>Returns an <a class="reference internal" href="class_array.html#class-array"><span class="std std-ref">Array</span></a> of <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>s, each containing the name of a remote configured in the VCS.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-editorvcsinterface-private-method-get-vcs-name"><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a> <strong>_get_vcs_name</strong>() <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method is required to be overridden when extending its base class.">required</abbr> <a class="reference internal" href="#class-editorvcsinterface-private-method-get-vcs-name"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the name of the underlying VCS provider.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-editorvcsinterface-private-method-initialize"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>_initialize</strong>(project_path: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method is required to be overridden when extending its base class.">required</abbr> <a class="reference internal" href="#class-editorvcsinterface-private-method-initialize"><span class="std std-ref">🔗</span></a></p>
+<p>Initializes the VCS plugin when called from the editor. Returns whether or not the plugin was successfully initialized. A VCS project is initialized at <code class="docutils literal notranslate"><span class="pre">project_path</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-editorvcsinterface-private-method-pull"><abbr title="No return value.">void</abbr> <strong>_pull</strong>(remote: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method is required to be overridden when extending its base class.">required</abbr> <a class="reference internal" href="#class-editorvcsinterface-private-method-pull"><span class="std std-ref">🔗</span></a></p>
+<p>Pulls changes from the remote. This can give rise to merge conflicts.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-editorvcsinterface-private-method-push"><abbr title="No return value.">void</abbr> <strong>_push</strong>(remote: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, force: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method is required to be overridden when extending its base class.">required</abbr> <a class="reference internal" href="#class-editorvcsinterface-private-method-push"><span class="std std-ref">🔗</span></a></p>
+<p>Pushes changes to the <code class="docutils literal notranslate"><span class="pre">remote</span></code>. If <code class="docutils literal notranslate"><span class="pre">force</span></code> is <code class="docutils literal notranslate"><span class="pre">true</span></code>, a force push will override the change history already present on the remote.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-editorvcsinterface-private-method-remove-branch"><abbr title="No return value.">void</abbr> <strong>_remove_branch</strong>(branch_name: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method is required to be overridden when extending its base class.">required</abbr> <a class="reference internal" href="#class-editorvcsinterface-private-method-remove-branch"><span class="std std-ref">🔗</span></a></p>
+<p>Remove a branch from the local VCS.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-editorvcsinterface-private-method-remove-remote"><abbr title="No return value.">void</abbr> <strong>_remove_remote</strong>(remote_name: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method is required to be overridden when extending its base class.">required</abbr> <a class="reference internal" href="#class-editorvcsinterface-private-method-remove-remote"><span class="std std-ref">🔗</span></a></p>
+<p>Remove a remote from the local VCS.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-editorvcsinterface-private-method-set-credentials"><abbr title="No return value.">void</abbr> <strong>_set_credentials</strong>(username: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, password: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, ssh_public_key_path: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, ssh_private_key_path: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, ssh_passphrase: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method is required to be overridden when extending its base class.">required</abbr> <a class="reference internal" href="#class-editorvcsinterface-private-method-set-credentials"><span class="std std-ref">🔗</span></a></p>
+<p>Set user credentials in the underlying VCS. <code class="docutils literal notranslate"><span class="pre">username</span></code> and <code class="docutils literal notranslate"><span class="pre">password</span></code> are used only during HTTPS authentication unless not already mentioned in the remote URL. <code class="docutils literal notranslate"><span class="pre">ssh_public_key_path</span></code>, <code class="docutils literal notranslate"><span class="pre">ssh_private_key_path</span></code>, and <code class="docutils literal notranslate"><span class="pre">ssh_passphrase</span></code> are only used during SSH authentication.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-editorvcsinterface-private-method-shut-down"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>_shut_down</strong>() <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method is required to be overridden when extending its base class.">required</abbr> <a class="reference internal" href="#class-editorvcsinterface-private-method-shut-down"><span class="std std-ref">🔗</span></a></p>
+<p>Shuts down VCS plugin instance. Called when the user either closes the editor or shuts down the VCS plugin through the editor UI.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-editorvcsinterface-private-method-stage-file"><abbr title="No return value.">void</abbr> <strong>_stage_file</strong>(file_path: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method is required to be overridden when extending its base class.">required</abbr> <a class="reference internal" href="#class-editorvcsinterface-private-method-stage-file"><span class="std std-ref">🔗</span></a></p>
+<p>Stages the file present at <code class="docutils literal notranslate"><span class="pre">file_path</span></code> to the staged area.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-editorvcsinterface-private-method-unstage-file"><abbr title="No return value.">void</abbr> <strong>_unstage_file</strong>(file_path: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method is required to be overridden when extending its base class.">required</abbr> <a class="reference internal" href="#class-editorvcsinterface-private-method-unstage-file"><span class="std std-ref">🔗</span></a></p>
+<p>Unstages the file present at <code class="docutils literal notranslate"><span class="pre">file_path</span></code> from the staged area to the unstaged area.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-editorvcsinterface-method-add-diff-hunks-into-diff-file"><a class="reference internal" href="class_dictionary.html#class-dictionary"><span class="std std-ref">Dictionary</span></a> <strong>add_diff_hunks_into_diff_file</strong>(diff_file: <a class="reference internal" href="class_dictionary.html#class-dictionary"><span class="std std-ref">Dictionary</span></a>, diff_hunks: <a class="reference internal" href="class_array.html#class-array"><span class="std std-ref">Array</span></a>[<a class="reference internal" href="class_dictionary.html#class-dictionary"><span class="std std-ref">Dictionary</span></a>]) <a class="reference internal" href="#class-editorvcsinterface-method-add-diff-hunks-into-diff-file"><span class="std std-ref">🔗</span></a></p>
+<p>Helper function to add an array of <code class="docutils literal notranslate"><span class="pre">diff_hunks</span></code> into a <code class="docutils literal notranslate"><span class="pre">diff_file</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-editorvcsinterface-method-add-line-diffs-into-diff-hunk"><a class="reference internal" href="class_dictionary.html#class-dictionary"><span class="std std-ref">Dictionary</span></a> <strong>add_line_diffs_into_diff_hunk</strong>(diff_hunk: <a class="reference internal" href="class_dictionary.html#class-dictionary"><span class="std std-ref">Dictionary</span></a>, line_diffs: <a class="reference internal" href="class_array.html#class-array"><span class="std std-ref">Array</span></a>[<a class="reference internal" href="class_dictionary.html#class-dictionary"><span class="std std-ref">Dictionary</span></a>]) <a class="reference internal" href="#class-editorvcsinterface-method-add-line-diffs-into-diff-hunk"><span class="std std-ref">🔗</span></a></p>
+<p>Helper function to add an array of <code class="docutils literal notranslate"><span class="pre">line_diffs</span></code> into a <code class="docutils literal notranslate"><span class="pre">diff_hunk</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-editorvcsinterface-method-create-commit"><a class="reference internal" href="class_dictionary.html#class-dictionary"><span class="std std-ref">Dictionary</span></a> <strong>create_commit</strong>(msg: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, author: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, id: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, unix_timestamp: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, offset_minutes: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <a class="reference internal" href="#class-editorvcsinterface-method-create-commit"><span class="std std-ref">🔗</span></a></p>
+<p>Helper function to create a commit <a class="reference internal" href="class_dictionary.html#class-dictionary"><span class="std std-ref">Dictionary</span></a> item. <code class="docutils literal notranslate"><span class="pre">msg</span></code> is the commit message of the commit. <code class="docutils literal notranslate"><span class="pre">author</span></code> is a single human-readable string containing all the author’s details, e.g. the email and name configured in the VCS. <code class="docutils literal notranslate"><span class="pre">id</span></code> is the identifier of the commit, in whichever format your VCS may provide an identifier to commits. <code class="docutils literal notranslate"><span class="pre">unix_timestamp</span></code> is the UTC Unix timestamp of when the commit was created. <code class="docutils literal notranslate"><span class="pre">offset_minutes</span></code> is the timezone offset in minutes, recorded from the system timezone where the commit was created.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-editorvcsinterface-method-create-diff-file"><a class="reference internal" href="class_dictionary.html#class-dictionary"><span class="std std-ref">Dictionary</span></a> <strong>create_diff_file</strong>(new_file: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, old_file: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <a class="reference internal" href="#class-editorvcsinterface-method-create-diff-file"><span class="std std-ref">🔗</span></a></p>
+<p>Helper function to create a <a class="reference internal" href="class_dictionary.html#class-dictionary"><span class="std std-ref">Dictionary</span></a> for storing old and new diff file paths.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-editorvcsinterface-method-create-diff-hunk"><a class="reference internal" href="class_dictionary.html#class-dictionary"><span class="std std-ref">Dictionary</span></a> <strong>create_diff_hunk</strong>(old_start: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, new_start: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, old_lines: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, new_lines: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <a class="reference internal" href="#class-editorvcsinterface-method-create-diff-hunk"><span class="std std-ref">🔗</span></a></p>
+<p>Helper function to create a <a class="reference internal" href="class_dictionary.html#class-dictionary"><span class="std std-ref">Dictionary</span></a> for storing diff hunk data. <code class="docutils literal notranslate"><span class="pre">old_start</span></code> is the starting line number in old file. <code class="docutils literal notranslate"><span class="pre">new_start</span></code> is the starting line number in new file. <code class="docutils literal notranslate"><span class="pre">old_lines</span></code> is the number of lines in the old file. <code class="docutils literal notranslate"><span class="pre">new_lines</span></code> is the number of lines in the new file.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-editorvcsinterface-method-create-diff-line"><a class="reference internal" href="class_dictionary.html#class-dictionary"><span class="std std-ref">Dictionary</span></a> <strong>create_diff_line</strong>(new_line_no: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, old_line_no: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, content: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, status: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <a class="reference internal" href="#class-editorvcsinterface-method-create-diff-line"><span class="std std-ref">🔗</span></a></p>
+<p>Helper function to create a <a class="reference internal" href="class_dictionary.html#class-dictionary"><span class="std std-ref">Dictionary</span></a> for storing a line diff. <code class="docutils literal notranslate"><span class="pre">new_line_no</span></code> is the line number in the new file (can be <code class="docutils literal notranslate"><span class="pre">-1</span></code> if the line is deleted). <code class="docutils literal notranslate"><span class="pre">old_line_no</span></code> is the line number in the old file (can be <code class="docutils literal notranslate"><span class="pre">-1</span></code> if the line is added). <code class="docutils literal notranslate"><span class="pre">content</span></code> is the diff text. <code class="docutils literal notranslate"><span class="pre">status</span></code> is a single character string which stores the line origin.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-editorvcsinterface-method-create-status-file"><a class="reference internal" href="class_dictionary.html#class-dictionary"><span class="std std-ref">Dictionary</span></a> <strong>create_status_file</strong>(file_path: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, change_type: <a class="reference internal" href="#enum-editorvcsinterface-changetype"><span class="std std-ref">ChangeType</span></a>, area: <a class="reference internal" href="#enum-editorvcsinterface-treearea"><span class="std std-ref">TreeArea</span></a>) <a class="reference internal" href="#class-editorvcsinterface-method-create-status-file"><span class="std std-ref">🔗</span></a></p>
+<p>Helper function to create a <a class="reference internal" href="class_dictionary.html#class-dictionary"><span class="std std-ref">Dictionary</span></a> used by editor to read the status of a file.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-editorvcsinterface-method-popup-error"><abbr title="No return value.">void</abbr> <strong>popup_error</strong>(msg: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <a class="reference internal" href="#class-editorvcsinterface-method-popup-error"><span class="std std-ref">🔗</span></a></p>
+<p>Pops up an error message in the editor which is shown as coming from the underlying VCS. Use this to show VCS specific error messages.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, MUmarShahbaz.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,210 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JSONRPC &mdash; RPG Components 2D 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=d45e8c67"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            RPG Components 2D
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">JSONRPC</a><ul>
+<li><a class="reference internal" href="#description">Description</a></li>
+<li><a class="reference internal" href="#methods">Methods</a></li>
+<li><a class="reference internal" href="#enumerations">Enumerations</a></li>
+<li><a class="reference internal" href="#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">RPG Components 2D</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">JSONRPC</li>
+      <li class="wy-breadcrumbs-aside">
+              <!-- User defined GitHub URL -->
+              <a href="hide" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="jsonrpc">
+<span id="class-jsonrpc"></span><h1>JSONRPC<a class="headerlink" href="#jsonrpc" title="Link to this heading"></a></h1>
+<p><strong>Inherits:</strong> <a class="reference internal" href="class_object.html#class-object"><span class="std std-ref">Object</span></a></p>
+<p>A helper to handle dictionaries which look like JSONRPC documents.</p>
+<section class="classref-introduction-group" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
+<p><a class="reference external" href="https://www.jsonrpc.org/">JSON-RPC</a> is a standard which wraps a method call in a <a class="reference internal" href="class_json.html#class-json"><span class="std std-ref">JSON</span></a> object. The object has a particular structure and identifies which method is called, the parameters to that function, and carries an ID to keep track of responses. This class implements that standard on top of <a class="reference internal" href="class_dictionary.html#class-dictionary"><span class="std std-ref">Dictionary</span></a>; you will have to convert between a <a class="reference internal" href="class_dictionary.html#class-dictionary"><span class="std std-ref">Dictionary</span></a> and <a class="reference internal" href="class_json.html#class-json"><span class="std std-ref">JSON</span></a> with other functions.</p>
+</section>
+<section class="classref-reftable-group" id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_dictionary.html#class-dictionary"><span class="std std-ref">Dictionary</span></a></p></td>
+<td><p><a class="reference internal" href="#class-jsonrpc-method-make-notification"><span class="std std-ref">make_notification</span></a>(method: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, params: <a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_dictionary.html#class-dictionary"><span class="std std-ref">Dictionary</span></a></p></td>
+<td><p><a class="reference internal" href="#class-jsonrpc-method-make-request"><span class="std std-ref">make_request</span></a>(method: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, params: <a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a>, id: <a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_dictionary.html#class-dictionary"><span class="std std-ref">Dictionary</span></a></p></td>
+<td><p><a class="reference internal" href="#class-jsonrpc-method-make-response"><span class="std std-ref">make_response</span></a>(result: <a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a>, id: <a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_dictionary.html#class-dictionary"><span class="std std-ref">Dictionary</span></a></p></td>
+<td><p><a class="reference internal" href="#class-jsonrpc-method-make-response-error"><span class="std std-ref">make_response_error</span></a>(code: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, message: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, id: <a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a> = null) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a></p></td>
+<td><p><a class="reference internal" href="#class-jsonrpc-method-process-action"><span class="std std-ref">process_action</span></a>(action: <a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a>, recurse: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = false)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a></p></td>
+<td><p><a class="reference internal" href="#class-jsonrpc-method-process-string"><span class="std std-ref">process_string</span></a>(action: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-jsonrpc-method-set-method"><span class="std std-ref">set_method</span></a>(name: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, callback: <a class="reference internal" href="class_callable.html#class-callable"><span class="std std-ref">Callable</span></a>)</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="enumerations">
+<h2>Enumerations<a class="headerlink" href="#enumerations" title="Link to this heading"></a></h2>
+<p class="classref-enumeration" id="enum-jsonrpc-errorcode">enum <strong>ErrorCode</strong>: <a class="reference internal" href="#enum-jsonrpc-errorcode"><span class="std std-ref">🔗</span></a></p>
+<p class="classref-enumeration-constant" id="class-jsonrpc-constant-parse-error"><a class="reference internal" href="#enum-jsonrpc-errorcode"><span class="std std-ref">ErrorCode</span></a> <strong>PARSE_ERROR</strong> = <code class="docutils literal notranslate"><span class="pre">-32700</span></code></p>
+<p>The request could not be parsed as it was not valid by JSON standard (<a class="reference internal" href="class_json.html#class-json-method-parse"><span class="std std-ref">JSON.parse()</span></a> failed).</p>
+<p class="classref-enumeration-constant" id="class-jsonrpc-constant-invalid-request"><a class="reference internal" href="#enum-jsonrpc-errorcode"><span class="std std-ref">ErrorCode</span></a> <strong>INVALID_REQUEST</strong> = <code class="docutils literal notranslate"><span class="pre">-32600</span></code></p>
+<p>A method call was requested but the request’s format is not valid.</p>
+<p class="classref-enumeration-constant" id="class-jsonrpc-constant-method-not-found"><a class="reference internal" href="#enum-jsonrpc-errorcode"><span class="std std-ref">ErrorCode</span></a> <strong>METHOD_NOT_FOUND</strong> = <code class="docutils literal notranslate"><span class="pre">-32601</span></code></p>
+<p>A method call was requested but no function of that name existed in the JSONRPC subclass.</p>
+<p class="classref-enumeration-constant" id="class-jsonrpc-constant-invalid-params"><a class="reference internal" href="#enum-jsonrpc-errorcode"><span class="std std-ref">ErrorCode</span></a> <strong>INVALID_PARAMS</strong> = <code class="docutils literal notranslate"><span class="pre">-32602</span></code></p>
+<p>A method call was requested but the given method parameters are not valid. Not used by the built-in JSONRPC.</p>
+<p class="classref-enumeration-constant" id="class-jsonrpc-constant-internal-error"><a class="reference internal" href="#enum-jsonrpc-errorcode"><span class="std std-ref">ErrorCode</span></a> <strong>INTERNAL_ERROR</strong> = <code class="docutils literal notranslate"><span class="pre">-32603</span></code></p>
+<p>An internal error occurred while processing the request. Not used by the built-in JSONRPC.</p>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="method-descriptions">
+<h2>Method Descriptions<a class="headerlink" href="#method-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-method" id="class-jsonrpc-method-make-notification"><a class="reference internal" href="class_dictionary.html#class-dictionary"><span class="std std-ref">Dictionary</span></a> <strong>make_notification</strong>(method: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, params: <a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a>) <a class="reference internal" href="#class-jsonrpc-method-make-notification"><span class="std std-ref">🔗</span></a></p>
+<p>Returns a dictionary in the form of a JSON-RPC notification. Notifications are one-shot messages which do not expect a response.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">method</span></code>: Name of the method being called.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">params</span></code>: An array or dictionary of parameters being passed to the method.</p></li>
+</ul>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-jsonrpc-method-make-request"><a class="reference internal" href="class_dictionary.html#class-dictionary"><span class="std std-ref">Dictionary</span></a> <strong>make_request</strong>(method: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, params: <a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a>, id: <a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a>) <a class="reference internal" href="#class-jsonrpc-method-make-request"><span class="std std-ref">🔗</span></a></p>
+<p>Returns a dictionary in the form of a JSON-RPC request. Requests are sent to a server with the expectation of a response. The ID field is used for the server to specify which exact request it is responding to.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">method</span></code>: Name of the method being called.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">params</span></code>: An array or dictionary of parameters being passed to the method.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">id</span></code>: Uniquely identifies this request. The server is expected to send a response with the same ID.</p></li>
+</ul>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-jsonrpc-method-make-response"><a class="reference internal" href="class_dictionary.html#class-dictionary"><span class="std std-ref">Dictionary</span></a> <strong>make_response</strong>(result: <a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a>, id: <a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a>) <a class="reference internal" href="#class-jsonrpc-method-make-response"><span class="std std-ref">🔗</span></a></p>
+<p>When a server has received and processed a request, it is expected to send a response. If you did not want a response then you need to have sent a Notification instead.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">result</span></code>: The return value of the function which was called.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">id</span></code>: The ID of the request this response is targeted to.</p></li>
+</ul>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-jsonrpc-method-make-response-error"><a class="reference internal" href="class_dictionary.html#class-dictionary"><span class="std std-ref">Dictionary</span></a> <strong>make_response_error</strong>(code: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, message: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, id: <a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a> = null) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-jsonrpc-method-make-response-error"><span class="std std-ref">🔗</span></a></p>
+<p>Creates a response which indicates a previous reply has failed in some way.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">code</span></code>: The error code corresponding to what kind of error this is. See the <a class="reference internal" href="#enum-jsonrpc-errorcode"><span class="std std-ref">ErrorCode</span></a> constants.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">message</span></code>: A custom message about this error.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">id</span></code>: The request this error is a response to.</p></li>
+</ul>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-jsonrpc-method-process-action"><a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a> <strong>process_action</strong>(action: <a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a>, recurse: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = false) <a class="reference internal" href="#class-jsonrpc-method-process-action"><span class="std std-ref">🔗</span></a></p>
+<p>Given a Dictionary which takes the form of a JSON-RPC request: unpack the request and run it. Methods are resolved by looking at the field called “method” and looking for an equivalently named function in the JSONRPC object. If one is found that method is called.</p>
+<p>To add new supported methods extend the JSONRPC class and call <a class="reference internal" href="#class-jsonrpc-method-process-action"><span class="std std-ref">process_action()</span></a> on your subclass.</p>
+<p><code class="docutils literal notranslate"><span class="pre">action</span></code>: The action to be run, as a Dictionary in the form of a JSON-RPC request or notification.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-jsonrpc-method-process-string"><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a> <strong>process_string</strong>(action: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <a class="reference internal" href="#class-jsonrpc-method-process-string"><span class="std std-ref">🔗</span></a></p>
+<div class="contribute docutils container">
+<p>There is currently no description for this method. Please help us by <a class="reference external" href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+</div>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-jsonrpc-method-set-method"><abbr title="No return value.">void</abbr> <strong>set_method</strong>(name: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, callback: <a class="reference internal" href="class_callable.html#class-callable"><span class="std std-ref">Callable</span></a>) <a class="reference internal" href="#class-jsonrpc-method-set-method"><span class="std std-ref">🔗</span></a></p>
+<p>Registers a callback for the given method name.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">name</span></code>: The name that clients can use to access the callback.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">callback</span></code>: The callback which will handle the specified method.</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, MUmarShahbaz.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

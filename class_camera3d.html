@@ -1,0 +1,473 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Camera3D &mdash; RPG Components 2D 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=d45e8c67"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            RPG Components 2D
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">Camera3D</a><ul>
+<li><a class="reference internal" href="#description">Description</a></li>
+<li><a class="reference internal" href="#tutorials">Tutorials</a></li>
+<li><a class="reference internal" href="#properties">Properties</a></li>
+<li><a class="reference internal" href="#methods">Methods</a></li>
+<li><a class="reference internal" href="#enumerations">Enumerations</a></li>
+<li><a class="reference internal" href="#property-descriptions">Property Descriptions</a></li>
+<li><a class="reference internal" href="#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">RPG Components 2D</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Camera3D</li>
+      <li class="wy-breadcrumbs-aside">
+              <!-- User defined GitHub URL -->
+              <a href="hide" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="camera3d">
+<span id="class-camera3d"></span><h1>Camera3D<a class="headerlink" href="#camera3d" title="Link to this heading"></a></h1>
+<p><strong>Inherits:</strong> <a class="reference internal" href="class_node3d.html#class-node3d"><span class="std std-ref">Node3D</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_node.html#class-node"><span class="std std-ref">Node</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_object.html#class-object"><span class="std std-ref">Object</span></a></p>
+<p><strong>Inherited By:</strong> <a class="reference internal" href="class_xrcamera3d.html#class-xrcamera3d"><span class="std std-ref">XRCamera3D</span></a></p>
+<p>Camera node, displays from a point of view.</p>
+<section class="classref-introduction-group" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
+<p><strong>Camera3D</strong> is a special node that displays what is visible from its current location. Cameras register themselves in the nearest <a class="reference internal" href="class_viewport.html#class-viewport"><span class="std std-ref">Viewport</span></a> node (when ascending the tree). Only one camera can be active per viewport. If no viewport is available ascending the tree, the camera will register in the global viewport. In other words, a camera just provides 3D display capabilities to a <a class="reference internal" href="class_viewport.html#class-viewport"><span class="std std-ref">Viewport</span></a>, and, without one, a scene registered in that <a class="reference internal" href="class_viewport.html#class-viewport"><span class="std std-ref">Viewport</span></a> (or higher viewports) can’t be displayed.</p>
+</section>
+<section class="classref-introduction-group" id="tutorials">
+<h2>Tutorials<a class="headerlink" href="#tutorials" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://godotengine.org/asset-library/asset/2710">Third Person Shooter (TPS) Demo</a></p></li>
+</ul>
+</section>
+<section class="classref-reftable-group" id="properties">
+<h2>Properties<a class="headerlink" href="#properties" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_cameraattributes.html#class-cameraattributes"><span class="std std-ref">CameraAttributes</span></a></p></td>
+<td><p><a class="reference internal" href="#class-camera3d-property-attributes"><span class="std std-ref">attributes</span></a></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_compositor.html#class-compositor"><span class="std std-ref">Compositor</span></a></p></td>
+<td><p><a class="reference internal" href="#class-camera3d-property-compositor"><span class="std std-ref">compositor</span></a></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-camera3d-property-cull-mask"><span class="std std-ref">cull_mask</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">1048575</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-camera3d-property-current"><span class="std std-ref">current</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#enum-camera3d-dopplertracking"><span class="std std-ref">DopplerTracking</span></a></p></td>
+<td><p><a class="reference internal" href="#class-camera3d-property-doppler-tracking"><span class="std std-ref">doppler_tracking</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_environment.html#class-environment"><span class="std std-ref">Environment</span></a></p></td>
+<td><p><a class="reference internal" href="#class-camera3d-property-environment"><span class="std std-ref">environment</span></a></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-camera3d-property-far"><span class="std std-ref">far</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">4000.0</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-camera3d-property-fov"><span class="std std-ref">fov</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">75.0</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a></p></td>
+<td><p><a class="reference internal" href="#class-camera3d-property-frustum-offset"><span class="std std-ref">frustum_offset</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Vector2(0,</span> <span class="pre">0)</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-camera3d-property-h-offset"><span class="std std-ref">h_offset</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0.0</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#enum-camera3d-keepaspect"><span class="std std-ref">KeepAspect</span></a></p></td>
+<td><p><a class="reference internal" href="#class-camera3d-property-keep-aspect"><span class="std std-ref">keep_aspect</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">1</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-camera3d-property-near"><span class="std std-ref">near</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0.05</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#enum-camera3d-projectiontype"><span class="std std-ref">ProjectionType</span></a></p></td>
+<td><p><a class="reference internal" href="#class-camera3d-property-projection"><span class="std std-ref">projection</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-camera3d-property-size"><span class="std std-ref">size</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">1.0</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-camera3d-property-v-offset"><span class="std std-ref">v_offset</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0.0</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section class="classref-reftable-group" id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-camera3d-method-clear-current"><span class="std std-ref">clear_current</span></a>(enable_next: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = true)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_projection.html#class-projection"><span class="std std-ref">Projection</span></a></p></td>
+<td><p><a class="reference internal" href="#class-camera3d-method-get-camera-projection"><span class="std std-ref">get_camera_projection</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_rid.html#class-rid"><span class="std std-ref">RID</span></a></p></td>
+<td><p><a class="reference internal" href="#class-camera3d-method-get-camera-rid"><span class="std std-ref">get_camera_rid</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_transform3d.html#class-transform3d"><span class="std std-ref">Transform3D</span></a></p></td>
+<td><p><a class="reference internal" href="#class-camera3d-method-get-camera-transform"><span class="std std-ref">get_camera_transform</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-camera3d-method-get-cull-mask-value"><span class="std std-ref">get_cull_mask_value</span></a>(layer_number: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_array.html#class-array"><span class="std std-ref">Array</span></a>[<a class="reference internal" href="class_plane.html#class-plane"><span class="std std-ref">Plane</span></a>]</p></td>
+<td><p><a class="reference internal" href="#class-camera3d-method-get-frustum"><span class="std std-ref">get_frustum</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_rid.html#class-rid"><span class="std std-ref">RID</span></a></p></td>
+<td><p><a class="reference internal" href="#class-camera3d-method-get-pyramid-shape-rid"><span class="std std-ref">get_pyramid_shape_rid</span></a>()</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-camera3d-method-is-position-behind"><span class="std std-ref">is_position_behind</span></a>(world_point: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-camera3d-method-is-position-in-frustum"><span class="std std-ref">is_position_in_frustum</span></a>(world_point: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-camera3d-method-make-current"><span class="std std-ref">make_current</span></a>()</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a></p></td>
+<td><p><a class="reference internal" href="#class-camera3d-method-project-local-ray-normal"><span class="std std-ref">project_local_ray_normal</span></a>(screen_point: <a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a></p></td>
+<td><p><a class="reference internal" href="#class-camera3d-method-project-position"><span class="std std-ref">project_position</span></a>(screen_point: <a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a>, z_depth: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a></p></td>
+<td><p><a class="reference internal" href="#class-camera3d-method-project-ray-normal"><span class="std std-ref">project_ray_normal</span></a>(screen_point: <a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a></p></td>
+<td><p><a class="reference internal" href="#class-camera3d-method-project-ray-origin"><span class="std std-ref">project_ray_origin</span></a>(screen_point: <a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-camera3d-method-set-cull-mask-value"><span class="std std-ref">set_cull_mask_value</span></a>(layer_number: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, value: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-camera3d-method-set-frustum"><span class="std std-ref">set_frustum</span></a>(size: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, offset: <a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a>, z_near: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, z_far: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-camera3d-method-set-orthogonal"><span class="std std-ref">set_orthogonal</span></a>(size: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, z_near: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, z_far: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-camera3d-method-set-perspective"><span class="std std-ref">set_perspective</span></a>(fov: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, z_near: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, z_far: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a></p></td>
+<td><p><a class="reference internal" href="#class-camera3d-method-unproject-position"><span class="std std-ref">unproject_position</span></a>(world_point: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="enumerations">
+<h2>Enumerations<a class="headerlink" href="#enumerations" title="Link to this heading"></a></h2>
+<p class="classref-enumeration" id="enum-camera3d-projectiontype">enum <strong>ProjectionType</strong>: <a class="reference internal" href="#enum-camera3d-projectiontype"><span class="std std-ref">🔗</span></a></p>
+<p class="classref-enumeration-constant" id="class-camera3d-constant-projection-perspective"><a class="reference internal" href="#enum-camera3d-projectiontype"><span class="std std-ref">ProjectionType</span></a> <strong>PROJECTION_PERSPECTIVE</strong> = <code class="docutils literal notranslate"><span class="pre">0</span></code></p>
+<p>Perspective projection. Objects on the screen becomes smaller when they are far away.</p>
+<p class="classref-enumeration-constant" id="class-camera3d-constant-projection-orthogonal"><a class="reference internal" href="#enum-camera3d-projectiontype"><span class="std std-ref">ProjectionType</span></a> <strong>PROJECTION_ORTHOGONAL</strong> = <code class="docutils literal notranslate"><span class="pre">1</span></code></p>
+<p>Orthogonal projection, also known as orthographic projection. Objects remain the same size on the screen no matter how far away they are.</p>
+<p class="classref-enumeration-constant" id="class-camera3d-constant-projection-frustum"><a class="reference internal" href="#enum-camera3d-projectiontype"><span class="std std-ref">ProjectionType</span></a> <strong>PROJECTION_FRUSTUM</strong> = <code class="docutils literal notranslate"><span class="pre">2</span></code></p>
+<p>Frustum projection. This mode allows adjusting <a class="reference internal" href="#class-camera3d-property-frustum-offset"><span class="std std-ref">frustum_offset</span></a> to create “tilted frustum” effects.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-enumeration" id="enum-camera3d-keepaspect">enum <strong>KeepAspect</strong>: <a class="reference internal" href="#enum-camera3d-keepaspect"><span class="std std-ref">🔗</span></a></p>
+<p class="classref-enumeration-constant" id="class-camera3d-constant-keep-width"><a class="reference internal" href="#enum-camera3d-keepaspect"><span class="std std-ref">KeepAspect</span></a> <strong>KEEP_WIDTH</strong> = <code class="docutils literal notranslate"><span class="pre">0</span></code></p>
+<p>Preserves the horizontal aspect ratio; also known as Vert- scaling. This is usually the best option for projects running in portrait mode, as taller aspect ratios will benefit from a wider vertical FOV.</p>
+<p class="classref-enumeration-constant" id="class-camera3d-constant-keep-height"><a class="reference internal" href="#enum-camera3d-keepaspect"><span class="std std-ref">KeepAspect</span></a> <strong>KEEP_HEIGHT</strong> = <code class="docutils literal notranslate"><span class="pre">1</span></code></p>
+<p>Preserves the vertical aspect ratio; also known as Hor+ scaling. This is usually the best option for projects running in landscape mode, as wider aspect ratios will automatically benefit from a wider horizontal FOV.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-enumeration" id="enum-camera3d-dopplertracking">enum <strong>DopplerTracking</strong>: <a class="reference internal" href="#enum-camera3d-dopplertracking"><span class="std std-ref">🔗</span></a></p>
+<p class="classref-enumeration-constant" id="class-camera3d-constant-doppler-tracking-disabled"><a class="reference internal" href="#enum-camera3d-dopplertracking"><span class="std std-ref">DopplerTracking</span></a> <strong>DOPPLER_TRACKING_DISABLED</strong> = <code class="docutils literal notranslate"><span class="pre">0</span></code></p>
+<p>Disables <a class="reference external" href="https://en.wikipedia.org/wiki/Doppler_effect">Doppler effect</a> simulation (default).</p>
+<p class="classref-enumeration-constant" id="class-camera3d-constant-doppler-tracking-idle-step"><a class="reference internal" href="#enum-camera3d-dopplertracking"><span class="std std-ref">DopplerTracking</span></a> <strong>DOPPLER_TRACKING_IDLE_STEP</strong> = <code class="docutils literal notranslate"><span class="pre">1</span></code></p>
+<p>Simulate <a class="reference external" href="https://en.wikipedia.org/wiki/Doppler_effect">Doppler effect</a> by tracking positions of objects that are changed in <code class="docutils literal notranslate"><span class="pre">_process</span></code>. Changes in the relative velocity of this camera compared to those objects affect how audio is perceived (changing the audio’s <a class="reference internal" href="class_audiostreamplayer3d.html#class-audiostreamplayer3d-property-pitch-scale"><span class="std std-ref">AudioStreamPlayer3D.pitch_scale</span></a>).</p>
+<p class="classref-enumeration-constant" id="class-camera3d-constant-doppler-tracking-physics-step"><a class="reference internal" href="#enum-camera3d-dopplertracking"><span class="std std-ref">DopplerTracking</span></a> <strong>DOPPLER_TRACKING_PHYSICS_STEP</strong> = <code class="docutils literal notranslate"><span class="pre">2</span></code></p>
+<p>Simulate <a class="reference external" href="https://en.wikipedia.org/wiki/Doppler_effect">Doppler effect</a> by tracking positions of objects that are changed in <code class="docutils literal notranslate"><span class="pre">_physics_process</span></code>. Changes in the relative velocity of this camera compared to those objects affect how audio is perceived (changing the audio’s <a class="reference internal" href="class_audiostreamplayer3d.html#class-audiostreamplayer3d-property-pitch-scale"><span class="std std-ref">AudioStreamPlayer3D.pitch_scale</span></a>).</p>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="property-descriptions">
+<h2>Property Descriptions<a class="headerlink" href="#property-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-property" id="class-camera3d-property-attributes"><a class="reference internal" href="class_cameraattributes.html#class-cameraattributes"><span class="std std-ref">CameraAttributes</span></a> <strong>attributes</strong> <a class="reference internal" href="#class-camera3d-property-attributes"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_attributes</strong>(value: <a class="reference internal" href="class_cameraattributes.html#class-cameraattributes"><span class="std std-ref">CameraAttributes</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_cameraattributes.html#class-cameraattributes"><span class="std std-ref">CameraAttributes</span></a> <strong>get_attributes</strong>()</p></li>
+</ul>
+<p>The <a class="reference internal" href="class_cameraattributes.html#class-cameraattributes"><span class="std std-ref">CameraAttributes</span></a> to use for this camera.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-camera3d-property-compositor"><a class="reference internal" href="class_compositor.html#class-compositor"><span class="std std-ref">Compositor</span></a> <strong>compositor</strong> <a class="reference internal" href="#class-camera3d-property-compositor"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_compositor</strong>(value: <a class="reference internal" href="class_compositor.html#class-compositor"><span class="std std-ref">Compositor</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_compositor.html#class-compositor"><span class="std std-ref">Compositor</span></a> <strong>get_compositor</strong>()</p></li>
+</ul>
+<p>The <a class="reference internal" href="class_compositor.html#class-compositor"><span class="std std-ref">Compositor</span></a> to use for this camera.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-camera3d-property-cull-mask"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>cull_mask</strong> = <code class="docutils literal notranslate"><span class="pre">1048575</span></code> <a class="reference internal" href="#class-camera3d-property-cull-mask"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_cull_mask</strong>(value: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>get_cull_mask</strong>()</p></li>
+</ul>
+<p>The culling mask that describes which <a class="reference internal" href="class_visualinstance3d.html#class-visualinstance3d-property-layers"><span class="std std-ref">VisualInstance3D.layers</span></a> are rendered by this camera. By default, all 20 user-visible layers are rendered.</p>
+<p><strong>Note:</strong> Since the <a class="reference internal" href="#class-camera3d-property-cull-mask"><span class="std std-ref">cull_mask</span></a> allows for 32 layers to be stored in total, there are an additional 12 layers that are only used internally by the engine and aren’t exposed in the editor. Setting <a class="reference internal" href="#class-camera3d-property-cull-mask"><span class="std std-ref">cull_mask</span></a> using a script allows you to toggle those reserved layers, which can be useful for editor plugins.</p>
+<p>To adjust <a class="reference internal" href="#class-camera3d-property-cull-mask"><span class="std std-ref">cull_mask</span></a> more easily using a script, use <a class="reference internal" href="#class-camera3d-method-get-cull-mask-value"><span class="std std-ref">get_cull_mask_value()</span></a> and <a class="reference internal" href="#class-camera3d-method-set-cull-mask-value"><span class="std std-ref">set_cull_mask_value()</span></a>.</p>
+<p><strong>Note:</strong> <a class="reference internal" href="class_voxelgi.html#class-voxelgi"><span class="std std-ref">VoxelGI</span></a>, SDFGI and <a class="reference internal" href="class_lightmapgi.html#class-lightmapgi"><span class="std std-ref">LightmapGI</span></a> will always take all layers into account to determine what contributes to global illumination. If this is an issue, set <a class="reference internal" href="class_geometryinstance3d.html#class-geometryinstance3d-property-gi-mode"><span class="std std-ref">GeometryInstance3D.gi_mode</span></a> to <a class="reference internal" href="class_geometryinstance3d.html#class-geometryinstance3d-constant-gi-mode-disabled"><span class="std std-ref">GeometryInstance3D.GI_MODE_DISABLED</span></a> for meshes and <a class="reference internal" href="class_light3d.html#class-light3d-property-light-bake-mode"><span class="std std-ref">Light3D.light_bake_mode</span></a> to <a class="reference internal" href="class_light3d.html#class-light3d-constant-bake-disabled"><span class="std std-ref">Light3D.BAKE_DISABLED</span></a> for lights to exclude them from global illumination.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-camera3d-property-current"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>current</strong> = <code class="docutils literal notranslate"><span class="pre">false</span></code> <a class="reference internal" href="#class-camera3d-property-current"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_current</strong>(value: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_current</strong>()</p></li>
+</ul>
+<p>If <code class="docutils literal notranslate"><span class="pre">true</span></code>, the ancestor <a class="reference internal" href="class_viewport.html#class-viewport"><span class="std std-ref">Viewport</span></a> is currently using this camera.</p>
+<p>If multiple cameras are in the scene, one will always be made current. For example, if two <strong>Camera3D</strong> nodes are present in the scene and only one is current, setting one camera’s <a class="reference internal" href="#class-camera3d-property-current"><span class="std std-ref">current</span></a> to <code class="docutils literal notranslate"><span class="pre">false</span></code> will cause the other camera to be made current.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-camera3d-property-doppler-tracking"><a class="reference internal" href="#enum-camera3d-dopplertracking"><span class="std std-ref">DopplerTracking</span></a> <strong>doppler_tracking</strong> = <code class="docutils literal notranslate"><span class="pre">0</span></code> <a class="reference internal" href="#class-camera3d-property-doppler-tracking"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_doppler_tracking</strong>(value: <a class="reference internal" href="#enum-camera3d-dopplertracking"><span class="std std-ref">DopplerTracking</span></a>)</p></li>
+<li><p><a class="reference internal" href="#enum-camera3d-dopplertracking"><span class="std std-ref">DopplerTracking</span></a> <strong>get_doppler_tracking</strong>()</p></li>
+</ul>
+<p>If not <a class="reference internal" href="#class-camera3d-constant-doppler-tracking-disabled"><span class="std std-ref">DOPPLER_TRACKING_DISABLED</span></a>, this camera will simulate the <a class="reference external" href="https://en.wikipedia.org/wiki/Doppler_effect">Doppler effect</a> for objects changed in particular <code class="docutils literal notranslate"><span class="pre">_process</span></code> methods.</p>
+<p><strong>Note:</strong> The Doppler effect will only be heard on <a class="reference internal" href="class_audiostreamplayer3d.html#class-audiostreamplayer3d"><span class="std std-ref">AudioStreamPlayer3D</span></a>s if <a class="reference internal" href="class_audiostreamplayer3d.html#class-audiostreamplayer3d-property-doppler-tracking"><span class="std std-ref">AudioStreamPlayer3D.doppler_tracking</span></a> is not set to <a class="reference internal" href="class_audiostreamplayer3d.html#class-audiostreamplayer3d-constant-doppler-tracking-disabled"><span class="std std-ref">AudioStreamPlayer3D.DOPPLER_TRACKING_DISABLED</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-camera3d-property-environment"><a class="reference internal" href="class_environment.html#class-environment"><span class="std std-ref">Environment</span></a> <strong>environment</strong> <a class="reference internal" href="#class-camera3d-property-environment"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_environment</strong>(value: <a class="reference internal" href="class_environment.html#class-environment"><span class="std std-ref">Environment</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_environment.html#class-environment"><span class="std std-ref">Environment</span></a> <strong>get_environment</strong>()</p></li>
+</ul>
+<p>The <a class="reference internal" href="class_environment.html#class-environment"><span class="std std-ref">Environment</span></a> to use for this camera.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-camera3d-property-far"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>far</strong> = <code class="docutils literal notranslate"><span class="pre">4000.0</span></code> <a class="reference internal" href="#class-camera3d-property-far"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_far</strong>(value: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>get_far</strong>()</p></li>
+</ul>
+<p>The distance to the far culling boundary for this camera relative to its local Z axis. Higher values allow the camera to see further away, while decreasing <a class="reference internal" href="#class-camera3d-property-far"><span class="std std-ref">far</span></a> can improve performance if it results in objects being partially or fully culled.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-camera3d-property-fov"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>fov</strong> = <code class="docutils literal notranslate"><span class="pre">75.0</span></code> <a class="reference internal" href="#class-camera3d-property-fov"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_fov</strong>(value: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>get_fov</strong>()</p></li>
+</ul>
+<p>The camera’s field of view angle (in degrees). Only applicable in perspective mode. Since <a class="reference internal" href="#class-camera3d-property-keep-aspect"><span class="std std-ref">keep_aspect</span></a> locks one axis, <a class="reference internal" href="#class-camera3d-property-fov"><span class="std std-ref">fov</span></a> sets the other axis’ field of view angle.</p>
+<p>For reference, the default vertical field of view value (<code class="docutils literal notranslate"><span class="pre">75.0</span></code>) is equivalent to a horizontal FOV of:</p>
+<ul class="simple">
+<li><p>~91.31 degrees in a 4:3 viewport</p></li>
+<li><p>~101.67 degrees in a 16:10 viewport</p></li>
+<li><p>~107.51 degrees in a 16:9 viewport</p></li>
+<li><p>~121.63 degrees in a 21:9 viewport</p></li>
+</ul>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-camera3d-property-frustum-offset"><a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a> <strong>frustum_offset</strong> = <code class="docutils literal notranslate"><span class="pre">Vector2(0,</span> <span class="pre">0)</span></code> <a class="reference internal" href="#class-camera3d-property-frustum-offset"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_frustum_offset</strong>(value: <a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a> <strong>get_frustum_offset</strong>()</p></li>
+</ul>
+<p>The camera’s frustum offset. This can be changed from the default to create “tilted frustum” effects such as <a class="reference external" href="https://zdoom.org/wiki/Y-shearing">Y-shearing</a>.</p>
+<p><strong>Note:</strong> Only effective if <a class="reference internal" href="#class-camera3d-property-projection"><span class="std std-ref">projection</span></a> is <a class="reference internal" href="#class-camera3d-constant-projection-frustum"><span class="std std-ref">PROJECTION_FRUSTUM</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-camera3d-property-h-offset"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>h_offset</strong> = <code class="docutils literal notranslate"><span class="pre">0.0</span></code> <a class="reference internal" href="#class-camera3d-property-h-offset"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_h_offset</strong>(value: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>get_h_offset</strong>()</p></li>
+</ul>
+<p>The horizontal (X) offset of the camera viewport.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-camera3d-property-keep-aspect"><a class="reference internal" href="#enum-camera3d-keepaspect"><span class="std std-ref">KeepAspect</span></a> <strong>keep_aspect</strong> = <code class="docutils literal notranslate"><span class="pre">1</span></code> <a class="reference internal" href="#class-camera3d-property-keep-aspect"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_keep_aspect_mode</strong>(value: <a class="reference internal" href="#enum-camera3d-keepaspect"><span class="std std-ref">KeepAspect</span></a>)</p></li>
+<li><p><a class="reference internal" href="#enum-camera3d-keepaspect"><span class="std std-ref">KeepAspect</span></a> <strong>get_keep_aspect_mode</strong>()</p></li>
+</ul>
+<p>The axis to lock during <a class="reference internal" href="#class-camera3d-property-fov"><span class="std std-ref">fov</span></a>/<a class="reference internal" href="#class-camera3d-property-size"><span class="std std-ref">size</span></a> adjustments. Can be either <a class="reference internal" href="#class-camera3d-constant-keep-width"><span class="std std-ref">KEEP_WIDTH</span></a> or <a class="reference internal" href="#class-camera3d-constant-keep-height"><span class="std std-ref">KEEP_HEIGHT</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-camera3d-property-near"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>near</strong> = <code class="docutils literal notranslate"><span class="pre">0.05</span></code> <a class="reference internal" href="#class-camera3d-property-near"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_near</strong>(value: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>get_near</strong>()</p></li>
+</ul>
+<p>The distance to the near culling boundary for this camera relative to its local Z axis. Lower values allow the camera to see objects more up close to its origin, at the cost of lower precision across the <em>entire</em> range. Values lower than the default can lead to increased Z-fighting.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-camera3d-property-projection"><a class="reference internal" href="#enum-camera3d-projectiontype"><span class="std std-ref">ProjectionType</span></a> <strong>projection</strong> = <code class="docutils literal notranslate"><span class="pre">0</span></code> <a class="reference internal" href="#class-camera3d-property-projection"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_projection</strong>(value: <a class="reference internal" href="#enum-camera3d-projectiontype"><span class="std std-ref">ProjectionType</span></a>)</p></li>
+<li><p><a class="reference internal" href="#enum-camera3d-projectiontype"><span class="std std-ref">ProjectionType</span></a> <strong>get_projection</strong>()</p></li>
+</ul>
+<p>The camera’s projection mode. In <a class="reference internal" href="#class-camera3d-constant-projection-perspective"><span class="std std-ref">PROJECTION_PERSPECTIVE</span></a> mode, objects’ Z distance from the camera’s local space scales their perceived size.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-camera3d-property-size"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>size</strong> = <code class="docutils literal notranslate"><span class="pre">1.0</span></code> <a class="reference internal" href="#class-camera3d-property-size"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_size</strong>(value: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>get_size</strong>()</p></li>
+</ul>
+<p>The camera’s size in meters measured as the diameter of the width or height, depending on <a class="reference internal" href="#class-camera3d-property-keep-aspect"><span class="std std-ref">keep_aspect</span></a>. Only applicable in orthogonal and frustum modes.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-camera3d-property-v-offset"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>v_offset</strong> = <code class="docutils literal notranslate"><span class="pre">0.0</span></code> <a class="reference internal" href="#class-camera3d-property-v-offset"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_v_offset</strong>(value: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>get_v_offset</strong>()</p></li>
+</ul>
+<p>The vertical (Y) offset of the camera viewport.</p>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="method-descriptions">
+<h2>Method Descriptions<a class="headerlink" href="#method-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-method" id="class-camera3d-method-clear-current"><abbr title="No return value.">void</abbr> <strong>clear_current</strong>(enable_next: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = true) <a class="reference internal" href="#class-camera3d-method-clear-current"><span class="std std-ref">🔗</span></a></p>
+<p>If this is the current camera, remove it from being current. If <code class="docutils literal notranslate"><span class="pre">enable_next</span></code> is <code class="docutils literal notranslate"><span class="pre">true</span></code>, request to make the next camera current, if any.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-camera3d-method-get-camera-projection"><a class="reference internal" href="class_projection.html#class-projection"><span class="std std-ref">Projection</span></a> <strong>get_camera_projection</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-camera3d-method-get-camera-projection"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the projection matrix that this camera uses to render to its associated viewport. The camera must be part of the scene tree to function.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-camera3d-method-get-camera-rid"><a class="reference internal" href="class_rid.html#class-rid"><span class="std std-ref">RID</span></a> <strong>get_camera_rid</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-camera3d-method-get-camera-rid"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the camera’s RID from the <a class="reference internal" href="class_renderingserver.html#class-renderingserver"><span class="std std-ref">RenderingServer</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-camera3d-method-get-camera-transform"><a class="reference internal" href="class_transform3d.html#class-transform3d"><span class="std std-ref">Transform3D</span></a> <strong>get_camera_transform</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-camera3d-method-get-camera-transform"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the transform of the camera plus the vertical (<a class="reference internal" href="#class-camera3d-property-v-offset"><span class="std std-ref">v_offset</span></a>) and horizontal (<a class="reference internal" href="#class-camera3d-property-h-offset"><span class="std std-ref">h_offset</span></a>) offsets; and any other adjustments made to the position and orientation of the camera by subclassed cameras such as <a class="reference internal" href="class_xrcamera3d.html#class-xrcamera3d"><span class="std std-ref">XRCamera3D</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-camera3d-method-get-cull-mask-value"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>get_cull_mask_value</strong>(layer_number: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-camera3d-method-get-cull-mask-value"><span class="std std-ref">🔗</span></a></p>
+<p>Returns whether or not the specified layer of the <a class="reference internal" href="#class-camera3d-property-cull-mask"><span class="std std-ref">cull_mask</span></a> is enabled, given a <code class="docutils literal notranslate"><span class="pre">layer_number</span></code> between 1 and 20.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-camera3d-method-get-frustum"><a class="reference internal" href="class_array.html#class-array"><span class="std std-ref">Array</span></a>[<a class="reference internal" href="class_plane.html#class-plane"><span class="std std-ref">Plane</span></a>] <strong>get_frustum</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-camera3d-method-get-frustum"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the camera’s frustum planes in world space units as an array of <a class="reference internal" href="class_plane.html#class-plane"><span class="std std-ref">Plane</span></a>s in the following order: near, far, left, top, right, bottom. Not to be confused with <a class="reference internal" href="#class-camera3d-property-frustum-offset"><span class="std std-ref">frustum_offset</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-camera3d-method-get-pyramid-shape-rid"><a class="reference internal" href="class_rid.html#class-rid"><span class="std std-ref">RID</span></a> <strong>get_pyramid_shape_rid</strong>() <a class="reference internal" href="#class-camera3d-method-get-pyramid-shape-rid"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the RID of a pyramid shape encompassing the camera’s view frustum, ignoring the camera’s near plane. The tip of the pyramid represents the position of the camera.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-camera3d-method-is-position-behind"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_position_behind</strong>(world_point: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-camera3d-method-is-position-behind"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if the given position is behind the camera (the blue part of the linked diagram). <a class="reference external" href="https://raw.githubusercontent.com/godotengine/godot-docs/master/img/camera3d_position_frustum.png">See this diagram</a> for an overview of position query methods.</p>
+<p><strong>Note:</strong> A position which returns <code class="docutils literal notranslate"><span class="pre">false</span></code> may still be outside the camera’s field of view.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-camera3d-method-is-position-in-frustum"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_position_in_frustum</strong>(world_point: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-camera3d-method-is-position-in-frustum"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if the given position is inside the camera’s frustum (the green part of the linked diagram). <a class="reference external" href="https://raw.githubusercontent.com/godotengine/godot-docs/master/img/camera3d_position_frustum.png">See this diagram</a> for an overview of position query methods.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-camera3d-method-make-current"><abbr title="No return value.">void</abbr> <strong>make_current</strong>() <a class="reference internal" href="#class-camera3d-method-make-current"><span class="std std-ref">🔗</span></a></p>
+<p>Makes this camera the current camera for the <a class="reference internal" href="class_viewport.html#class-viewport"><span class="std std-ref">Viewport</span></a> (see class description). If the camera node is outside the scene tree, it will attempt to become current once it’s added.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-camera3d-method-project-local-ray-normal"><a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a> <strong>project_local_ray_normal</strong>(screen_point: <a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-camera3d-method-project-local-ray-normal"><span class="std std-ref">🔗</span></a></p>
+<p>Returns a normal vector from the screen point location directed along the camera. Orthogonal cameras are normalized. Perspective cameras account for perspective, screen width/height, etc.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-camera3d-method-project-position"><a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a> <strong>project_position</strong>(screen_point: <a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a>, z_depth: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-camera3d-method-project-position"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the 3D point in world space that maps to the given 2D coordinate in the <a class="reference internal" href="class_viewport.html#class-viewport"><span class="std std-ref">Viewport</span></a> rectangle on a plane that is the given <code class="docutils literal notranslate"><span class="pre">z_depth</span></code> distance into the scene away from the camera.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-camera3d-method-project-ray-normal"><a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a> <strong>project_ray_normal</strong>(screen_point: <a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-camera3d-method-project-ray-normal"><span class="std std-ref">🔗</span></a></p>
+<p>Returns a normal vector in world space, that is the result of projecting a point on the <a class="reference internal" href="class_viewport.html#class-viewport"><span class="std std-ref">Viewport</span></a> rectangle by the inverse camera projection. This is useful for casting rays in the form of (origin, normal) for object intersection or picking.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-camera3d-method-project-ray-origin"><a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a> <strong>project_ray_origin</strong>(screen_point: <a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-camera3d-method-project-ray-origin"><span class="std std-ref">🔗</span></a></p>
+<p>Returns a 3D position in world space, that is the result of projecting a point on the <a class="reference internal" href="class_viewport.html#class-viewport"><span class="std std-ref">Viewport</span></a> rectangle by the inverse camera projection. This is useful for casting rays in the form of (origin, normal) for object intersection or picking.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-camera3d-method-set-cull-mask-value"><abbr title="No return value.">void</abbr> <strong>set_cull_mask_value</strong>(layer_number: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, value: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>) <a class="reference internal" href="#class-camera3d-method-set-cull-mask-value"><span class="std std-ref">🔗</span></a></p>
+<p>Based on <code class="docutils literal notranslate"><span class="pre">value</span></code>, enables or disables the specified layer in the <a class="reference internal" href="#class-camera3d-property-cull-mask"><span class="std std-ref">cull_mask</span></a>, given a <code class="docutils literal notranslate"><span class="pre">layer_number</span></code> between 1 and 20.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-camera3d-method-set-frustum"><abbr title="No return value.">void</abbr> <strong>set_frustum</strong>(size: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, offset: <a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a>, z_near: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, z_far: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>) <a class="reference internal" href="#class-camera3d-method-set-frustum"><span class="std std-ref">🔗</span></a></p>
+<p>Sets the camera projection to frustum mode (see <a class="reference internal" href="#class-camera3d-constant-projection-frustum"><span class="std std-ref">PROJECTION_FRUSTUM</span></a>), by specifying a <code class="docutils literal notranslate"><span class="pre">size</span></code>, an <code class="docutils literal notranslate"><span class="pre">offset</span></code>, and the <code class="docutils literal notranslate"><span class="pre">z_near</span></code> and <code class="docutils literal notranslate"><span class="pre">z_far</span></code> clip planes in world space units. The <code class="docutils literal notranslate"><span class="pre">size</span></code> parameter represents the size of the near plane, either its width or height depending on the value of <a class="reference internal" href="#class-camera3d-property-keep-aspect"><span class="std std-ref">keep_aspect</span></a>. See also <a class="reference internal" href="#class-camera3d-property-frustum-offset"><span class="std std-ref">frustum_offset</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-camera3d-method-set-orthogonal"><abbr title="No return value.">void</abbr> <strong>set_orthogonal</strong>(size: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, z_near: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, z_far: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>) <a class="reference internal" href="#class-camera3d-method-set-orthogonal"><span class="std std-ref">🔗</span></a></p>
+<p>Sets the camera projection to orthogonal mode (see <a class="reference internal" href="#class-camera3d-constant-projection-orthogonal"><span class="std std-ref">PROJECTION_ORTHOGONAL</span></a>), by specifying a <code class="docutils literal notranslate"><span class="pre">size</span></code>, and the <code class="docutils literal notranslate"><span class="pre">z_near</span></code> and <code class="docutils literal notranslate"><span class="pre">z_far</span></code> clip planes in world space units.</p>
+<p>As a hint, 3D games that look 2D often use this projection, with <code class="docutils literal notranslate"><span class="pre">size</span></code> specified in pixels.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-camera3d-method-set-perspective"><abbr title="No return value.">void</abbr> <strong>set_perspective</strong>(fov: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, z_near: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, z_far: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>) <a class="reference internal" href="#class-camera3d-method-set-perspective"><span class="std std-ref">🔗</span></a></p>
+<p>Sets the camera projection to perspective mode (see <a class="reference internal" href="#class-camera3d-constant-projection-perspective"><span class="std std-ref">PROJECTION_PERSPECTIVE</span></a>), by specifying a <code class="docutils literal notranslate"><span class="pre">fov</span></code> (field of view) angle in degrees, and the <code class="docutils literal notranslate"><span class="pre">z_near</span></code> and <code class="docutils literal notranslate"><span class="pre">z_far</span></code> clip planes in world space units.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-camera3d-method-unproject-position"><a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a> <strong>unproject_position</strong>(world_point: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-camera3d-method-unproject-position"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the 2D coordinate in the <a class="reference internal" href="class_viewport.html#class-viewport"><span class="std std-ref">Viewport</span></a> rectangle that maps to the given 3D point in world space.</p>
+<p><strong>Note:</strong> When using this to position GUI elements over a 3D viewport, use <a class="reference internal" href="#class-camera3d-method-is-position-behind"><span class="std std-ref">is_position_behind()</span></a> to prevent them from appearing if the 3D point is behind the camera:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># This code block is part of a script that inherits from Node3D.</span>
+<span class="c1"># `control` is a reference to a node inheriting from Control.</span>
+<span class="n">control</span><span class="o">.</span><span class="n">visible</span> <span class="o">=</span> <span class="ow">not</span> <span class="n">get_viewport</span><span class="p">()</span><span class="o">.</span><span class="n">get_camera_3d</span><span class="p">()</span><span class="o">.</span><span class="n">is_position_behind</span><span class="p">(</span><span class="n">global_transform</span><span class="o">.</span><span class="n">origin</span><span class="p">)</span>
+<span class="n">control</span><span class="o">.</span><span class="n">position</span> <span class="o">=</span> <span class="n">get_viewport</span><span class="p">()</span><span class="o">.</span><span class="n">get_camera_3d</span><span class="p">()</span><span class="o">.</span><span class="n">unproject_position</span><span class="p">(</span><span class="n">global_transform</span><span class="o">.</span><span class="n">origin</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, MUmarShahbaz.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

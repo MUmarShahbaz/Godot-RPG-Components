@@ -1,0 +1,177 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CanvasGroup &mdash; RPG Components 2D 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=d45e8c67"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            RPG Components 2D
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">CanvasGroup</a><ul>
+<li><a class="reference internal" href="#description">Description</a></li>
+<li><a class="reference internal" href="#properties">Properties</a></li>
+<li><a class="reference internal" href="#property-descriptions">Property Descriptions</a></li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">RPG Components 2D</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">CanvasGroup</li>
+      <li class="wy-breadcrumbs-aside">
+              <!-- User defined GitHub URL -->
+              <a href="hide" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="canvasgroup">
+<span id="class-canvasgroup"></span><h1>CanvasGroup<a class="headerlink" href="#canvasgroup" title="Link to this heading"></a></h1>
+<p><strong>Inherits:</strong> <a class="reference internal" href="class_node2d.html#class-node2d"><span class="std std-ref">Node2D</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_canvasitem.html#class-canvasitem"><span class="std std-ref">CanvasItem</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_node.html#class-node"><span class="std std-ref">Node</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_object.html#class-object"><span class="std std-ref">Object</span></a></p>
+<p>Merges several 2D nodes into a single draw operation.</p>
+<section class="classref-introduction-group" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
+<p>Child <a class="reference internal" href="class_canvasitem.html#class-canvasitem"><span class="std std-ref">CanvasItem</span></a> nodes of a <strong>CanvasGroup</strong> are drawn as a single object. It allows to e.g. draw overlapping translucent 2D nodes without causing the overlapping sections to be more opaque than intended (set the <a class="reference internal" href="class_canvasitem.html#class-canvasitem-property-self-modulate"><span class="std std-ref">CanvasItem.self_modulate</span></a> property on the <strong>CanvasGroup</strong> to achieve this effect).</p>
+<p><strong>Note:</strong> The <strong>CanvasGroup</strong> uses a custom shader to read from the backbuffer to draw its children. Assigning a <a class="reference internal" href="class_material.html#class-material"><span class="std std-ref">Material</span></a> to the <strong>CanvasGroup</strong> overrides the built-in shader. To duplicate the behavior of the built-in shader in a custom <a class="reference internal" href="class_shader.html#class-shader"><span class="std std-ref">Shader</span></a>, use the following:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">shader_type</span> <span class="n">canvas_item</span><span class="p">;</span>
+<span class="n">render_mode</span> <span class="n">unshaded</span><span class="p">;</span>
+
+<span class="n">uniform</span> <span class="n">sampler2D</span> <span class="n">screen_texture</span> <span class="p">:</span> <span class="n">hint_screen_texture</span><span class="p">,</span> <span class="n">repeat_disable</span><span class="p">,</span> <span class="n">filter_nearest</span><span class="p">;</span>
+
+<span class="n">void</span> <span class="n">fragment</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">vec4</span> <span class="n">c</span> <span class="o">=</span> <span class="n">textureLod</span><span class="p">(</span><span class="n">screen_texture</span><span class="p">,</span> <span class="n">SCREEN_UV</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">);</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">a</span> <span class="o">&gt;</span> <span class="mf">0.0001</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">c</span><span class="o">.</span><span class="n">rgb</span> <span class="o">/=</span> <span class="n">c</span><span class="o">.</span><span class="n">a</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="n">COLOR</span> <span class="o">*=</span> <span class="n">c</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Note:</strong> Since <strong>CanvasGroup</strong> and <a class="reference internal" href="class_canvasitem.html#class-canvasitem-property-clip-children"><span class="std std-ref">CanvasItem.clip_children</span></a> both utilize the backbuffer, children of a <strong>CanvasGroup</strong> who have their <a class="reference internal" href="class_canvasitem.html#class-canvasitem-property-clip-children"><span class="std std-ref">CanvasItem.clip_children</span></a> set to anything other than <a class="reference internal" href="class_canvasitem.html#class-canvasitem-constant-clip-children-disabled"><span class="std std-ref">CanvasItem.CLIP_CHILDREN_DISABLED</span></a> will not function correctly.</p>
+</section>
+<section class="classref-reftable-group" id="properties">
+<h2>Properties<a class="headerlink" href="#properties" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-canvasgroup-property-clear-margin"><span class="std std-ref">clear_margin</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">10.0</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-canvasgroup-property-fit-margin"><span class="std std-ref">fit_margin</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">10.0</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-canvasgroup-property-use-mipmaps"><span class="std std-ref">use_mipmaps</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="property-descriptions">
+<h2>Property Descriptions<a class="headerlink" href="#property-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-property" id="class-canvasgroup-property-clear-margin"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>clear_margin</strong> = <code class="docutils literal notranslate"><span class="pre">10.0</span></code> <a class="reference internal" href="#class-canvasgroup-property-clear-margin"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_clear_margin</strong>(value: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>get_clear_margin</strong>()</p></li>
+</ul>
+<p>Sets the size of the margin used to expand the clearing rect of this <strong>CanvasGroup</strong>. This expands the area of the backbuffer that will be used by the <strong>CanvasGroup</strong>. A smaller margin will reduce the area of the backbuffer used which can increase performance, however if <a class="reference internal" href="#class-canvasgroup-property-use-mipmaps"><span class="std std-ref">use_mipmaps</span></a> is enabled, a small margin may result in mipmap errors at the edge of the <strong>CanvasGroup</strong>. Accordingly, this should be left as small as possible, but should be increased if artifacts appear along the edges of the canvas group.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-canvasgroup-property-fit-margin"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>fit_margin</strong> = <code class="docutils literal notranslate"><span class="pre">10.0</span></code> <a class="reference internal" href="#class-canvasgroup-property-fit-margin"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_fit_margin</strong>(value: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>get_fit_margin</strong>()</p></li>
+</ul>
+<p>Sets the size of a margin used to expand the drawable rect of this <strong>CanvasGroup</strong>. The size of the <strong>CanvasGroup</strong> is determined by fitting a rect around its children then expanding that rect by <a class="reference internal" href="#class-canvasgroup-property-fit-margin"><span class="std std-ref">fit_margin</span></a>. This increases both the backbuffer area used and the area covered by the <strong>CanvasGroup</strong> both of which can reduce performance. This should be kept as small as possible and should only be expanded when an increased size is needed (e.g. for custom shader effects).</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-canvasgroup-property-use-mipmaps"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>use_mipmaps</strong> = <code class="docutils literal notranslate"><span class="pre">false</span></code> <a class="reference internal" href="#class-canvasgroup-property-use-mipmaps"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_use_mipmaps</strong>(value: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_using_mipmaps</strong>()</p></li>
+</ul>
+<p>If <code class="docutils literal notranslate"><span class="pre">true</span></code>, calculates mipmaps for the backbuffer before drawing the <strong>CanvasGroup</strong> so that mipmaps can be used in a custom <a class="reference internal" href="class_shadermaterial.html#class-shadermaterial"><span class="std std-ref">ShaderMaterial</span></a> attached to the <strong>CanvasGroup</strong>. Generating mipmaps has a performance cost so this should not be enabled unless required.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, MUmarShahbaz.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

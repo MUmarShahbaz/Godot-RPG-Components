@@ -1,0 +1,701 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FileAccess &mdash; RPG Components 2D 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=d45e8c67"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            RPG Components 2D
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">FileAccess</a><ul>
+<li><a class="reference internal" href="#description">Description</a></li>
+<li><a class="reference internal" href="#tutorials">Tutorials</a></li>
+<li><a class="reference internal" href="#properties">Properties</a></li>
+<li><a class="reference internal" href="#methods">Methods</a></li>
+<li><a class="reference internal" href="#enumerations">Enumerations</a></li>
+<li><a class="reference internal" href="#property-descriptions">Property Descriptions</a></li>
+<li><a class="reference internal" href="#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">RPG Components 2D</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">FileAccess</li>
+      <li class="wy-breadcrumbs-aside">
+              <!-- User defined GitHub URL -->
+              <a href="hide" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="fileaccess">
+<span id="class-fileaccess"></span><h1>FileAccess<a class="headerlink" href="#fileaccess" title="Link to this heading"></a></h1>
+<p><strong>Inherits:</strong> <a class="reference internal" href="class_refcounted.html#class-refcounted"><span class="std std-ref">RefCounted</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_object.html#class-object"><span class="std std-ref">Object</span></a></p>
+<p>Provides methods for file reading and writing operations.</p>
+<section class="classref-introduction-group" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
+<p>This class can be used to permanently store data in the user device’s file system and to read from it. This is useful for storing game save data or player configuration files.</p>
+<p><strong>Example:</strong> How to write and read from a file. The file named <code class="docutils literal notranslate"><span class="pre">&quot;save_game.dat&quot;</span></code> will be stored in the user data folder, as specified in the <span class="xref std std-doc">Data paths</span> documentation:</p>
+<p>A <strong>FileAccess</strong> instance has its own file cursor, which is the position in bytes in the file where the next read/write operation will occur. Functions such as <a class="reference internal" href="#class-fileaccess-method-get-8"><span class="std std-ref">get_8()</span></a>, <a class="reference internal" href="#class-fileaccess-method-get-16"><span class="std std-ref">get_16()</span></a>, <a class="reference internal" href="#class-fileaccess-method-store-8"><span class="std std-ref">store_8()</span></a>, and <a class="reference internal" href="#class-fileaccess-method-store-16"><span class="std std-ref">store_16()</span></a> will move the file cursor forward by the number of bytes read/written. The file cursor can be moved to a specific position using <a class="reference internal" href="#class-fileaccess-method-seek"><span class="std std-ref">seek()</span></a> or <a class="reference internal" href="#class-fileaccess-method-seek-end"><span class="std std-ref">seek_end()</span></a>, and its position can be retrieved using <a class="reference internal" href="#class-fileaccess-method-get-position"><span class="std std-ref">get_position()</span></a>.</p>
+<p>A <strong>FileAccess</strong> instance will close its file when the instance is freed. Since it inherits <a class="reference internal" href="class_refcounted.html#class-refcounted"><span class="std std-ref">RefCounted</span></a>, this happens automatically when it is no longer in use. <a class="reference internal" href="#class-fileaccess-method-close"><span class="std std-ref">close()</span></a> can be called to close it earlier. In C#, the reference must be disposed manually, which can be done with the <code class="docutils literal notranslate"><span class="pre">using</span></code> statement or by calling the <code class="docutils literal notranslate"><span class="pre">Dispose</span></code> method directly.</p>
+<p><strong>Note:</strong> To access project resources once exported, it is recommended to use <a class="reference internal" href="class_resourceloader.html#class-resourceloader"><span class="std std-ref">ResourceLoader</span></a> instead of <strong>FileAccess</strong>, as some files are converted to engine-specific formats and their original source files might not be present in the exported PCK package. If using <strong>FileAccess</strong>, make sure the file is included in the export by changing its import mode to <strong>Keep File (exported as is)</strong> in the Import dock, or, for files where this option is not available, change the non-resource export filter in the Export dialog to include the file’s extension (e.g. <code class="docutils literal notranslate"><span class="pre">*.txt</span></code>).</p>
+<p><strong>Note:</strong> Files are automatically closed only if the process exits “normally” (such as by clicking the window manager’s close button or pressing <kbd class="kbd docutils literal notranslate">Alt</kbd> <kbd class="kbd docutils literal notranslate"></kbd>+<kbd class="kbd docutils literal notranslate"></kbd> <kbd class="kbd docutils literal notranslate">F4</kbd>). If you stop the project execution by pressing <kbd class="kbd docutils literal notranslate">F8</kbd> while the project is running, the file won’t be closed as the game process will be killed. You can work around this by calling <a class="reference internal" href="#class-fileaccess-method-flush"><span class="std std-ref">flush()</span></a> at regular intervals.</p>
+</section>
+<section class="classref-introduction-group" id="tutorials">
+<h2>Tutorials<a class="headerlink" href="#tutorials" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><span class="xref std std-doc">File system</span></p></li>
+<li><p><span class="xref std std-doc">Runtime file loading and saving</span></p></li>
+<li><p><span class="xref std std-doc">Binary serialization API</span></p></li>
+<li><p><a class="reference external" href="https://godotengine.org/asset-library/asset/2755">3D Voxel Demo</a></p></li>
+</ul>
+</section>
+<section class="classref-reftable-group" id="properties">
+<h2>Properties<a class="headerlink" href="#properties" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-fileaccess-property-big-endian"><span class="std std-ref">big_endian</span></a></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section class="classref-reftable-group" id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-fileaccess-method-close"><span class="std std-ref">close</span></a>()</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#class-fileaccess"><span class="std std-ref">FileAccess</span></a></p></td>
+<td><p><a class="reference internal" href="#class-fileaccess-method-create-temp"><span class="std std-ref">create_temp</span></a>(mode_flags: <a class="reference internal" href="#enum-fileaccess-modeflags"><span class="std std-ref">ModeFlags</span></a>, prefix: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a> = “”, extension: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a> = “”, keep: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = false) <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-fileaccess-method-eof-reached"><span class="std std-ref">eof_reached</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-fileaccess-method-file-exists"><span class="std std-ref">file_exists</span></a>(path: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-fileaccess-method-flush"><span class="std std-ref">flush</span></a>()</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-fileaccess-method-get-8"><span class="std std-ref">get_8</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-fileaccess-method-get-16"><span class="std std-ref">get_16</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-fileaccess-method-get-32"><span class="std std-ref">get_32</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-fileaccess-method-get-64"><span class="std std-ref">get_64</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-fileaccess-method-get-access-time"><span class="std std-ref">get_access_time</span></a>(file: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a></p></td>
+<td><p><a class="reference internal" href="#class-fileaccess-method-get-as-text"><span class="std std-ref">get_as_text</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_packedbytearray.html#class-packedbytearray"><span class="std std-ref">PackedByteArray</span></a></p></td>
+<td><p><a class="reference internal" href="#class-fileaccess-method-get-buffer"><span class="std std-ref">get_buffer</span></a>(length: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_packedstringarray.html#class-packedstringarray"><span class="std std-ref">PackedStringArray</span></a></p></td>
+<td><p><a class="reference internal" href="#class-fileaccess-method-get-csv-line"><span class="std std-ref">get_csv_line</span></a>(delim: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a> = “,”) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-fileaccess-method-get-double"><span class="std std-ref">get_double</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_%40globalscope.html#enum-globalscope-error"><span class="std std-ref">Error</span></a></p></td>
+<td><p><a class="reference internal" href="#class-fileaccess-method-get-error"><span class="std std-ref">get_error</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_packedbytearray.html#class-packedbytearray"><span class="std std-ref">PackedByteArray</span></a></p></td>
+<td><p><a class="reference internal" href="#class-fileaccess-method-get-extended-attribute"><span class="std std-ref">get_extended_attribute</span></a>(file: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, attribute_name: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a></p></td>
+<td><p><a class="reference internal" href="#class-fileaccess-method-get-extended-attribute-string"><span class="std std-ref">get_extended_attribute_string</span></a>(file: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, attribute_name: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_packedstringarray.html#class-packedstringarray"><span class="std std-ref">PackedStringArray</span></a></p></td>
+<td><p><a class="reference internal" href="#class-fileaccess-method-get-extended-attributes-list"><span class="std std-ref">get_extended_attributes_list</span></a>(file: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_packedbytearray.html#class-packedbytearray"><span class="std std-ref">PackedByteArray</span></a></p></td>
+<td><p><a class="reference internal" href="#class-fileaccess-method-get-file-as-bytes"><span class="std std-ref">get_file_as_bytes</span></a>(path: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a></p></td>
+<td><p><a class="reference internal" href="#class-fileaccess-method-get-file-as-string"><span class="std std-ref">get_file_as_string</span></a>(path: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-fileaccess-method-get-float"><span class="std std-ref">get_float</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-fileaccess-method-get-half"><span class="std std-ref">get_half</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-fileaccess-method-get-hidden-attribute"><span class="std std-ref">get_hidden_attribute</span></a>(file: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-fileaccess-method-get-length"><span class="std std-ref">get_length</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a></p></td>
+<td><p><a class="reference internal" href="#class-fileaccess-method-get-line"><span class="std std-ref">get_line</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a></p></td>
+<td><p><a class="reference internal" href="#class-fileaccess-method-get-md5"><span class="std std-ref">get_md5</span></a>(path: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-fileaccess-method-get-modified-time"><span class="std std-ref">get_modified_time</span></a>(file: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_%40globalscope.html#enum-globalscope-error"><span class="std std-ref">Error</span></a></p></td>
+<td><p><a class="reference internal" href="#class-fileaccess-method-get-open-error"><span class="std std-ref">get_open_error</span></a>() <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a></p></td>
+<td><p><a class="reference internal" href="#class-fileaccess-method-get-pascal-string"><span class="std std-ref">get_pascal_string</span></a>()</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a></p></td>
+<td><p><a class="reference internal" href="#class-fileaccess-method-get-path"><span class="std std-ref">get_path</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a></p></td>
+<td><p><a class="reference internal" href="#class-fileaccess-method-get-path-absolute"><span class="std std-ref">get_path_absolute</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-fileaccess-method-get-position"><span class="std std-ref">get_position</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-fileaccess-method-get-read-only-attribute"><span class="std std-ref">get_read_only_attribute</span></a>(file: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-fileaccess-method-get-real"><span class="std std-ref">get_real</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a></p></td>
+<td><p><a class="reference internal" href="#class-fileaccess-method-get-sha256"><span class="std std-ref">get_sha256</span></a>(path: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-fileaccess-method-get-size"><span class="std std-ref">get_size</span></a>(file: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="This value is an integer composed as a bitmask of the following flags.">BitField</abbr>[<a class="reference internal" href="#enum-fileaccess-unixpermissionflags"><span class="std std-ref">UnixPermissionFlags</span></a>]</p></td>
+<td><p><a class="reference internal" href="#class-fileaccess-method-get-unix-permissions"><span class="std std-ref">get_unix_permissions</span></a>(file: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a></p></td>
+<td><p><a class="reference internal" href="#class-fileaccess-method-get-var"><span class="std std-ref">get_var</span></a>(allow_objects: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = false) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-fileaccess-method-is-open"><span class="std std-ref">is_open</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#class-fileaccess"><span class="std std-ref">FileAccess</span></a></p></td>
+<td><p><a class="reference internal" href="#class-fileaccess-method-open"><span class="std std-ref">open</span></a>(path: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, flags: <a class="reference internal" href="#enum-fileaccess-modeflags"><span class="std std-ref">ModeFlags</span></a>) <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#class-fileaccess"><span class="std std-ref">FileAccess</span></a></p></td>
+<td><p><a class="reference internal" href="#class-fileaccess-method-open-compressed"><span class="std std-ref">open_compressed</span></a>(path: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, mode_flags: <a class="reference internal" href="#enum-fileaccess-modeflags"><span class="std std-ref">ModeFlags</span></a>, compression_mode: <a class="reference internal" href="#enum-fileaccess-compressionmode"><span class="std std-ref">CompressionMode</span></a> = 0) <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#class-fileaccess"><span class="std std-ref">FileAccess</span></a></p></td>
+<td><p><a class="reference internal" href="#class-fileaccess-method-open-encrypted"><span class="std std-ref">open_encrypted</span></a>(path: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, mode_flags: <a class="reference internal" href="#enum-fileaccess-modeflags"><span class="std std-ref">ModeFlags</span></a>, key: <a class="reference internal" href="class_packedbytearray.html#class-packedbytearray"><span class="std std-ref">PackedByteArray</span></a>, iv: <a class="reference internal" href="class_packedbytearray.html#class-packedbytearray"><span class="std std-ref">PackedByteArray</span></a> = PackedByteArray()) <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#class-fileaccess"><span class="std std-ref">FileAccess</span></a></p></td>
+<td><p><a class="reference internal" href="#class-fileaccess-method-open-encrypted-with-pass"><span class="std std-ref">open_encrypted_with_pass</span></a>(path: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, mode_flags: <a class="reference internal" href="#enum-fileaccess-modeflags"><span class="std std-ref">ModeFlags</span></a>, pass: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_%40globalscope.html#enum-globalscope-error"><span class="std std-ref">Error</span></a></p></td>
+<td><p><a class="reference internal" href="#class-fileaccess-method-remove-extended-attribute"><span class="std std-ref">remove_extended_attribute</span></a>(file: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, attribute_name: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_%40globalscope.html#enum-globalscope-error"><span class="std std-ref">Error</span></a></p></td>
+<td><p><a class="reference internal" href="#class-fileaccess-method-resize"><span class="std std-ref">resize</span></a>(length: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-fileaccess-method-seek"><span class="std std-ref">seek</span></a>(position: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-fileaccess-method-seek-end"><span class="std std-ref">seek_end</span></a>(position: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> = 0)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_%40globalscope.html#enum-globalscope-error"><span class="std std-ref">Error</span></a></p></td>
+<td><p><a class="reference internal" href="#class-fileaccess-method-set-extended-attribute"><span class="std std-ref">set_extended_attribute</span></a>(file: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, attribute_name: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, data: <a class="reference internal" href="class_packedbytearray.html#class-packedbytearray"><span class="std std-ref">PackedByteArray</span></a>) <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_%40globalscope.html#enum-globalscope-error"><span class="std std-ref">Error</span></a></p></td>
+<td><p><a class="reference internal" href="#class-fileaccess-method-set-extended-attribute-string"><span class="std std-ref">set_extended_attribute_string</span></a>(file: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, attribute_name: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, data: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_%40globalscope.html#enum-globalscope-error"><span class="std std-ref">Error</span></a></p></td>
+<td><p><a class="reference internal" href="#class-fileaccess-method-set-hidden-attribute"><span class="std std-ref">set_hidden_attribute</span></a>(file: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, hidden: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>) <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_%40globalscope.html#enum-globalscope-error"><span class="std std-ref">Error</span></a></p></td>
+<td><p><a class="reference internal" href="#class-fileaccess-method-set-read-only-attribute"><span class="std std-ref">set_read_only_attribute</span></a>(file: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, ro: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>) <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_%40globalscope.html#enum-globalscope-error"><span class="std std-ref">Error</span></a></p></td>
+<td><p><a class="reference internal" href="#class-fileaccess-method-set-unix-permissions"><span class="std std-ref">set_unix_permissions</span></a>(file: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, permissions: <abbr title="This value is an integer composed as a bitmask of the following flags.">BitField</abbr>[<a class="reference internal" href="#enum-fileaccess-unixpermissionflags"><span class="std std-ref">UnixPermissionFlags</span></a>]) <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-fileaccess-method-store-8"><span class="std std-ref">store_8</span></a>(value: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-fileaccess-method-store-16"><span class="std std-ref">store_16</span></a>(value: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-fileaccess-method-store-32"><span class="std std-ref">store_32</span></a>(value: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-fileaccess-method-store-64"><span class="std std-ref">store_64</span></a>(value: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-fileaccess-method-store-buffer"><span class="std std-ref">store_buffer</span></a>(buffer: <a class="reference internal" href="class_packedbytearray.html#class-packedbytearray"><span class="std std-ref">PackedByteArray</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-fileaccess-method-store-csv-line"><span class="std std-ref">store_csv_line</span></a>(values: <a class="reference internal" href="class_packedstringarray.html#class-packedstringarray"><span class="std std-ref">PackedStringArray</span></a>, delim: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a> = “,”)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-fileaccess-method-store-double"><span class="std std-ref">store_double</span></a>(value: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-fileaccess-method-store-float"><span class="std std-ref">store_float</span></a>(value: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-fileaccess-method-store-half"><span class="std std-ref">store_half</span></a>(value: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-fileaccess-method-store-line"><span class="std std-ref">store_line</span></a>(line: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-fileaccess-method-store-pascal-string"><span class="std std-ref">store_pascal_string</span></a>(string: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-fileaccess-method-store-real"><span class="std std-ref">store_real</span></a>(value: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-fileaccess-method-store-string"><span class="std std-ref">store_string</span></a>(string: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-fileaccess-method-store-var"><span class="std std-ref">store_var</span></a>(value: <a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a>, full_objects: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = false)</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="enumerations">
+<h2>Enumerations<a class="headerlink" href="#enumerations" title="Link to this heading"></a></h2>
+<p class="classref-enumeration" id="enum-fileaccess-modeflags">enum <strong>ModeFlags</strong>: <a class="reference internal" href="#enum-fileaccess-modeflags"><span class="std std-ref">🔗</span></a></p>
+<p class="classref-enumeration-constant" id="class-fileaccess-constant-read"><a class="reference internal" href="#enum-fileaccess-modeflags"><span class="std std-ref">ModeFlags</span></a> <strong>READ</strong> = <code class="docutils literal notranslate"><span class="pre">1</span></code></p>
+<p>Opens the file for read operations. The file cursor is positioned at the beginning of the file.</p>
+<p class="classref-enumeration-constant" id="class-fileaccess-constant-write"><a class="reference internal" href="#enum-fileaccess-modeflags"><span class="std std-ref">ModeFlags</span></a> <strong>WRITE</strong> = <code class="docutils literal notranslate"><span class="pre">2</span></code></p>
+<p>Opens the file for write operations. If the file exists, it is truncated to zero length and its contents are cleared. Otherwise, it is created.</p>
+<p><strong>Note:</strong> When creating a file it must be in an already existing directory. To recursively create directories for a file path, see <a class="reference internal" href="class_diraccess.html#class-diraccess-method-make-dir-recursive"><span class="std std-ref">DirAccess.make_dir_recursive()</span></a>.</p>
+<p class="classref-enumeration-constant" id="class-fileaccess-constant-read-write"><a class="reference internal" href="#enum-fileaccess-modeflags"><span class="std std-ref">ModeFlags</span></a> <strong>READ_WRITE</strong> = <code class="docutils literal notranslate"><span class="pre">3</span></code></p>
+<p>Opens the file for read and write operations. Does not truncate the file. The file cursor is positioned at the beginning of the file.</p>
+<p class="classref-enumeration-constant" id="class-fileaccess-constant-write-read"><a class="reference internal" href="#enum-fileaccess-modeflags"><span class="std std-ref">ModeFlags</span></a> <strong>WRITE_READ</strong> = <code class="docutils literal notranslate"><span class="pre">7</span></code></p>
+<p>Opens the file for read and write operations. If the file exists, it is truncated to zero length and its contents are cleared. Otherwise, it is created. The file cursor is positioned at the beginning of the file.</p>
+<p><strong>Note:</strong> When creating a file it must be in an already existing directory. To recursively create directories for a file path, see <a class="reference internal" href="class_diraccess.html#class-diraccess-method-make-dir-recursive"><span class="std std-ref">DirAccess.make_dir_recursive()</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-enumeration" id="enum-fileaccess-compressionmode">enum <strong>CompressionMode</strong>: <a class="reference internal" href="#enum-fileaccess-compressionmode"><span class="std std-ref">🔗</span></a></p>
+<p class="classref-enumeration-constant" id="class-fileaccess-constant-compression-fastlz"><a class="reference internal" href="#enum-fileaccess-compressionmode"><span class="std std-ref">CompressionMode</span></a> <strong>COMPRESSION_FASTLZ</strong> = <code class="docutils literal notranslate"><span class="pre">0</span></code></p>
+<p>Uses the <a class="reference external" href="https://fastlz.org/">FastLZ</a> compression method.</p>
+<p class="classref-enumeration-constant" id="class-fileaccess-constant-compression-deflate"><a class="reference internal" href="#enum-fileaccess-compressionmode"><span class="std std-ref">CompressionMode</span></a> <strong>COMPRESSION_DEFLATE</strong> = <code class="docutils literal notranslate"><span class="pre">1</span></code></p>
+<p>Uses the <a class="reference external" href="https://en.wikipedia.org/wiki/DEFLATE">DEFLATE</a> compression method.</p>
+<p class="classref-enumeration-constant" id="class-fileaccess-constant-compression-zstd"><a class="reference internal" href="#enum-fileaccess-compressionmode"><span class="std std-ref">CompressionMode</span></a> <strong>COMPRESSION_ZSTD</strong> = <code class="docutils literal notranslate"><span class="pre">2</span></code></p>
+<p>Uses the <a class="reference external" href="https://facebook.github.io/zstd/">Zstandard</a> compression method.</p>
+<p class="classref-enumeration-constant" id="class-fileaccess-constant-compression-gzip"><a class="reference internal" href="#enum-fileaccess-compressionmode"><span class="std std-ref">CompressionMode</span></a> <strong>COMPRESSION_GZIP</strong> = <code class="docutils literal notranslate"><span class="pre">3</span></code></p>
+<p>Uses the <a class="reference external" href="https://www.gzip.org/">gzip</a> compression method.</p>
+<p class="classref-enumeration-constant" id="class-fileaccess-constant-compression-brotli"><a class="reference internal" href="#enum-fileaccess-compressionmode"><span class="std std-ref">CompressionMode</span></a> <strong>COMPRESSION_BROTLI</strong> = <code class="docutils literal notranslate"><span class="pre">4</span></code></p>
+<p>Uses the <a class="reference external" href="https://github.com/google/brotli">brotli</a> compression method (only decompression is supported).</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-enumeration" id="enum-fileaccess-unixpermissionflags">flags <strong>UnixPermissionFlags</strong>: <a class="reference internal" href="#enum-fileaccess-unixpermissionflags"><span class="std std-ref">🔗</span></a></p>
+<p class="classref-enumeration-constant" id="class-fileaccess-constant-unix-read-owner"><a class="reference internal" href="#enum-fileaccess-unixpermissionflags"><span class="std std-ref">UnixPermissionFlags</span></a> <strong>UNIX_READ_OWNER</strong> = <code class="docutils literal notranslate"><span class="pre">256</span></code></p>
+<p>Read for owner bit.</p>
+<p class="classref-enumeration-constant" id="class-fileaccess-constant-unix-write-owner"><a class="reference internal" href="#enum-fileaccess-unixpermissionflags"><span class="std std-ref">UnixPermissionFlags</span></a> <strong>UNIX_WRITE_OWNER</strong> = <code class="docutils literal notranslate"><span class="pre">128</span></code></p>
+<p>Write for owner bit.</p>
+<p class="classref-enumeration-constant" id="class-fileaccess-constant-unix-execute-owner"><a class="reference internal" href="#enum-fileaccess-unixpermissionflags"><span class="std std-ref">UnixPermissionFlags</span></a> <strong>UNIX_EXECUTE_OWNER</strong> = <code class="docutils literal notranslate"><span class="pre">64</span></code></p>
+<p>Execute for owner bit.</p>
+<p class="classref-enumeration-constant" id="class-fileaccess-constant-unix-read-group"><a class="reference internal" href="#enum-fileaccess-unixpermissionflags"><span class="std std-ref">UnixPermissionFlags</span></a> <strong>UNIX_READ_GROUP</strong> = <code class="docutils literal notranslate"><span class="pre">32</span></code></p>
+<p>Read for group bit.</p>
+<p class="classref-enumeration-constant" id="class-fileaccess-constant-unix-write-group"><a class="reference internal" href="#enum-fileaccess-unixpermissionflags"><span class="std std-ref">UnixPermissionFlags</span></a> <strong>UNIX_WRITE_GROUP</strong> = <code class="docutils literal notranslate"><span class="pre">16</span></code></p>
+<p>Write for group bit.</p>
+<p class="classref-enumeration-constant" id="class-fileaccess-constant-unix-execute-group"><a class="reference internal" href="#enum-fileaccess-unixpermissionflags"><span class="std std-ref">UnixPermissionFlags</span></a> <strong>UNIX_EXECUTE_GROUP</strong> = <code class="docutils literal notranslate"><span class="pre">8</span></code></p>
+<p>Execute for group bit.</p>
+<p class="classref-enumeration-constant" id="class-fileaccess-constant-unix-read-other"><a class="reference internal" href="#enum-fileaccess-unixpermissionflags"><span class="std std-ref">UnixPermissionFlags</span></a> <strong>UNIX_READ_OTHER</strong> = <code class="docutils literal notranslate"><span class="pre">4</span></code></p>
+<p>Read for other bit.</p>
+<p class="classref-enumeration-constant" id="class-fileaccess-constant-unix-write-other"><a class="reference internal" href="#enum-fileaccess-unixpermissionflags"><span class="std std-ref">UnixPermissionFlags</span></a> <strong>UNIX_WRITE_OTHER</strong> = <code class="docutils literal notranslate"><span class="pre">2</span></code></p>
+<p>Write for other bit.</p>
+<p class="classref-enumeration-constant" id="class-fileaccess-constant-unix-execute-other"><a class="reference internal" href="#enum-fileaccess-unixpermissionflags"><span class="std std-ref">UnixPermissionFlags</span></a> <strong>UNIX_EXECUTE_OTHER</strong> = <code class="docutils literal notranslate"><span class="pre">1</span></code></p>
+<p>Execute for other bit.</p>
+<p class="classref-enumeration-constant" id="class-fileaccess-constant-unix-set-user-id"><a class="reference internal" href="#enum-fileaccess-unixpermissionflags"><span class="std std-ref">UnixPermissionFlags</span></a> <strong>UNIX_SET_USER_ID</strong> = <code class="docutils literal notranslate"><span class="pre">2048</span></code></p>
+<p>Set user id on execution bit.</p>
+<p class="classref-enumeration-constant" id="class-fileaccess-constant-unix-set-group-id"><a class="reference internal" href="#enum-fileaccess-unixpermissionflags"><span class="std std-ref">UnixPermissionFlags</span></a> <strong>UNIX_SET_GROUP_ID</strong> = <code class="docutils literal notranslate"><span class="pre">1024</span></code></p>
+<p>Set group id on execution bit.</p>
+<p class="classref-enumeration-constant" id="class-fileaccess-constant-unix-restricted-delete"><a class="reference internal" href="#enum-fileaccess-unixpermissionflags"><span class="std std-ref">UnixPermissionFlags</span></a> <strong>UNIX_RESTRICTED_DELETE</strong> = <code class="docutils literal notranslate"><span class="pre">512</span></code></p>
+<p>Restricted deletion (sticky) bit.</p>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="property-descriptions">
+<h2>Property Descriptions<a class="headerlink" href="#property-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-property" id="class-fileaccess-property-big-endian"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>big_endian</strong> <a class="reference internal" href="#class-fileaccess-property-big-endian"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_big_endian</strong>(value: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_big_endian</strong>()</p></li>
+</ul>
+<p>If <code class="docutils literal notranslate"><span class="pre">true</span></code>, the file is read with big-endian <a class="reference external" href="https://en.wikipedia.org/wiki/Endianness">endianness</a>. If <code class="docutils literal notranslate"><span class="pre">false</span></code>, the file is read with little-endian endianness. If in doubt, leave this to <code class="docutils literal notranslate"><span class="pre">false</span></code> as most files are written with little-endian endianness.</p>
+<p><strong>Note:</strong> This is always reset to system endianness, which is little-endian on all supported platforms, whenever you open the file. Therefore, you must set <a class="reference internal" href="#class-fileaccess-property-big-endian"><span class="std std-ref">big_endian</span></a> <em>after</em> opening the file, not before.</p>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="method-descriptions">
+<h2>Method Descriptions<a class="headerlink" href="#method-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-method" id="class-fileaccess-method-close"><abbr title="No return value.">void</abbr> <strong>close</strong>() <a class="reference internal" href="#class-fileaccess-method-close"><span class="std std-ref">🔗</span></a></p>
+<p>Closes the currently opened file and prevents subsequent read/write operations. Use <a class="reference internal" href="#class-fileaccess-method-flush"><span class="std std-ref">flush()</span></a> to persist the data to disk without closing the file.</p>
+<p><strong>Note:</strong> <strong>FileAccess</strong> will automatically close when it’s freed, which happens when it goes out of scope or when it gets assigned with <code class="docutils literal notranslate"><span class="pre">null</span></code>. In C# the reference must be disposed after we are done using it, this can be done with the <code class="docutils literal notranslate"><span class="pre">using</span></code> statement or calling the <code class="docutils literal notranslate"><span class="pre">Dispose</span></code> method directly.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-fileaccess-method-create-temp"><a class="reference internal" href="#class-fileaccess"><span class="std std-ref">FileAccess</span></a> <strong>create_temp</strong>(mode_flags: <a class="reference internal" href="#enum-fileaccess-modeflags"><span class="std std-ref">ModeFlags</span></a>, prefix: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a> = “”, extension: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a> = “”, keep: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = false) <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr> <a class="reference internal" href="#class-fileaccess-method-create-temp"><span class="std std-ref">🔗</span></a></p>
+<p>Creates a temporary file. This file will be freed when the returned <strong>FileAccess</strong> is freed.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">prefix</span></code> is not empty, it will be prefixed to the file name, separated by a <code class="docutils literal notranslate"><span class="pre">-</span></code>.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">extension</span></code> is not empty, it will be appended to the temporary file name.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">keep</span></code> is <code class="docutils literal notranslate"><span class="pre">true</span></code>, the file is not deleted when the returned <strong>FileAccess</strong> is freed.</p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">null</span></code> if opening the file failed. You can use <a class="reference internal" href="#class-fileaccess-method-get-open-error"><span class="std std-ref">get_open_error()</span></a> to check the error that occurred.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-fileaccess-method-eof-reached"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>eof_reached</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-fileaccess-method-eof-reached"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if the file cursor has already read past the end of the file.</p>
+<p><strong>Note:</strong> <code class="docutils literal notranslate"><span class="pre">eof_reached()</span> <span class="pre">==</span> <span class="pre">false</span></code> cannot be used to check whether there is more data available. To loop while there is more data available, use:</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-fileaccess-method-file-exists"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>file_exists</strong>(path: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr> <a class="reference internal" href="#class-fileaccess-method-file-exists"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if the file exists in the given path.</p>
+<p><strong>Note:</strong> Many resources types are imported (e.g. textures or sound files), and their source asset will not be included in the exported game, as only the imported version is used. See <a class="reference internal" href="class_resourceloader.html#class-resourceloader-method-exists"><span class="std std-ref">ResourceLoader.exists()</span></a> for an alternative approach that takes resource remapping into account.</p>
+<p>For a non-static, relative equivalent, use <a class="reference internal" href="class_diraccess.html#class-diraccess-method-file-exists"><span class="std std-ref">DirAccess.file_exists()</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-fileaccess-method-flush"><abbr title="No return value.">void</abbr> <strong>flush</strong>() <a class="reference internal" href="#class-fileaccess-method-flush"><span class="std std-ref">🔗</span></a></p>
+<p>Writes the file’s buffer to disk. Flushing is automatically performed when the file is closed. This means you don’t need to call <a class="reference internal" href="#class-fileaccess-method-flush"><span class="std std-ref">flush()</span></a> manually before closing a file. Still, calling <a class="reference internal" href="#class-fileaccess-method-flush"><span class="std std-ref">flush()</span></a> can be used to ensure the data is safe even if the project crashes instead of being closed gracefully.</p>
+<p><strong>Note:</strong> Only call <a class="reference internal" href="#class-fileaccess-method-flush"><span class="std std-ref">flush()</span></a> when you actually need it. Otherwise, it will decrease performance due to constant disk writes.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-fileaccess-method-get-8"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>get_8</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-fileaccess-method-get-8"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the next 8 bits from the file as an integer. This advances the file cursor by 1 byte. See <a class="reference internal" href="#class-fileaccess-method-store-8"><span class="std std-ref">store_8()</span></a> for details on what values can be stored and retrieved this way.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-fileaccess-method-get-16"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>get_16</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-fileaccess-method-get-16"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the next 16 bits from the file as an integer. This advances the file cursor by 2 bytes. See <a class="reference internal" href="#class-fileaccess-method-store-16"><span class="std std-ref">store_16()</span></a> for details on what values can be stored and retrieved this way.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-fileaccess-method-get-32"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>get_32</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-fileaccess-method-get-32"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the next 32 bits from the file as an integer. This advances the file cursor by 4 bytes. See <a class="reference internal" href="#class-fileaccess-method-store-32"><span class="std std-ref">store_32()</span></a> for details on what values can be stored and retrieved this way.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-fileaccess-method-get-64"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>get_64</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-fileaccess-method-get-64"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the next 64 bits from the file as an integer. This advances the file cursor by 8 bytes. See <a class="reference internal" href="#class-fileaccess-method-store-64"><span class="std std-ref">store_64()</span></a> for details on what values can be stored and retrieved this way.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-fileaccess-method-get-access-time"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>get_access_time</strong>(file: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr> <a class="reference internal" href="#class-fileaccess-method-get-access-time"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the last time the <code class="docutils literal notranslate"><span class="pre">file</span></code> was accessed in Unix timestamp format, or <code class="docutils literal notranslate"><span class="pre">0</span></code> on error. This Unix timestamp can be converted to another format using the <a class="reference internal" href="class_time.html#class-time"><span class="std std-ref">Time</span></a> singleton.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-fileaccess-method-get-as-text"><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a> <strong>get_as_text</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-fileaccess-method-get-as-text"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the whole file as a <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>. Text is interpreted as being UTF-8 encoded. This ignores the file cursor and does not affect it.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-fileaccess-method-get-buffer"><a class="reference internal" href="class_packedbytearray.html#class-packedbytearray"><span class="std std-ref">PackedByteArray</span></a> <strong>get_buffer</strong>(length: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-fileaccess-method-get-buffer"><span class="std std-ref">🔗</span></a></p>
+<p>Returns next <code class="docutils literal notranslate"><span class="pre">length</span></code> bytes of the file as a <a class="reference internal" href="class_packedbytearray.html#class-packedbytearray"><span class="std std-ref">PackedByteArray</span></a>. This advances the file cursor by <code class="docutils literal notranslate"><span class="pre">length</span></code> bytes.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-fileaccess-method-get-csv-line"><a class="reference internal" href="class_packedstringarray.html#class-packedstringarray"><span class="std std-ref">PackedStringArray</span></a> <strong>get_csv_line</strong>(delim: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a> = “,”) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-fileaccess-method-get-csv-line"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the next value of the file in CSV (Comma-Separated Values) format. You can pass a different delimiter <code class="docutils literal notranslate"><span class="pre">delim</span></code> to use other than the default <code class="docutils literal notranslate"><span class="pre">&quot;,&quot;</span></code> (comma). This delimiter must be one-character long, and cannot be a double quotation mark.</p>
+<p>Text is interpreted as being UTF-8 encoded. Text values must be enclosed in double quotes if they include the delimiter character. Double quotes within a text value can be escaped by doubling their occurrence. This advances the file cursor to after the newline character at the end of the line.</p>
+<p>For example, the following CSV lines are valid and will be properly parsed as two strings each:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Alice,&quot;Hello, Bob!&quot;
+Bob,Alice! What a surprise!
+Alice,&quot;I thought you&#39;d reply with &quot;&quot;Hello, world&quot;&quot;.&quot;
+</pre></div>
+</div>
+<p>Note how the second line can omit the enclosing quotes as it does not include the delimiter. However it <em>could</em> very well use quotes, it was only written without for demonstration purposes. The third line must use <code class="docutils literal notranslate"><span class="pre">&quot;&quot;</span></code> for each quotation mark that needs to be interpreted as such instead of the end of a text value.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-fileaccess-method-get-double"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>get_double</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-fileaccess-method-get-double"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the next 64 bits from the file as a floating-point number. This advances the file cursor by 8 bytes.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-fileaccess-method-get-error"><a class="reference internal" href="class_%40globalscope.html#enum-globalscope-error"><span class="std std-ref">Error</span></a> <strong>get_error</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-fileaccess-method-get-error"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the last error that happened when trying to perform operations. Compare with the <code class="docutils literal notranslate"><span class="pre">ERR_FILE_*</span></code> constants from <a class="reference internal" href="class_%40globalscope.html#enum-globalscope-error"><span class="std std-ref">Error</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-fileaccess-method-get-extended-attribute"><a class="reference internal" href="class_packedbytearray.html#class-packedbytearray"><span class="std std-ref">PackedByteArray</span></a> <strong>get_extended_attribute</strong>(file: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, attribute_name: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr> <a class="reference internal" href="#class-fileaccess-method-get-extended-attribute"><span class="std std-ref">🔗</span></a></p>
+<p>Reads the file extended attribute with name <code class="docutils literal notranslate"><span class="pre">attribute_name</span></code> as a byte array.</p>
+<p><strong>Note:</strong> This method is implemented on Linux, macOS, and Windows.</p>
+<p><strong>Note:</strong> Extended attributes support depends on the file system. Attributes will be lost when the file is moved between incompatible file systems.</p>
+<p><strong>Note:</strong> On Linux, only “user” namespace attributes are accessible, namespace prefix should not be included.</p>
+<p><strong>Note:</strong> On Windows, alternate data streams are used to store extended attributes.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-fileaccess-method-get-extended-attribute-string"><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a> <strong>get_extended_attribute_string</strong>(file: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, attribute_name: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr> <a class="reference internal" href="#class-fileaccess-method-get-extended-attribute-string"><span class="std std-ref">🔗</span></a></p>
+<p>Reads the file extended attribute with name <code class="docutils literal notranslate"><span class="pre">attribute_name</span></code> as a UTF-8 encoded string.</p>
+<p><strong>Note:</strong> This method is implemented on Linux, macOS, and Windows.</p>
+<p><strong>Note:</strong> Extended attributes support depends on the file system. Attributes will be lost when the file is moved between incompatible file systems.</p>
+<p><strong>Note:</strong> On Linux, only “user” namespace attributes are accessible, namespace prefix should not be included.</p>
+<p><strong>Note:</strong> On Windows, alternate data streams are used to store extended attributes.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-fileaccess-method-get-extended-attributes-list"><a class="reference internal" href="class_packedstringarray.html#class-packedstringarray"><span class="std std-ref">PackedStringArray</span></a> <strong>get_extended_attributes_list</strong>(file: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr> <a class="reference internal" href="#class-fileaccess-method-get-extended-attributes-list"><span class="std std-ref">🔗</span></a></p>
+<p>Returns a list of file extended attributes.</p>
+<p><strong>Note:</strong> This method is implemented on Linux, macOS, and Windows.</p>
+<p><strong>Note:</strong> Extended attributes support depends on the file system. Attributes will be lost when the file is moved between incompatible file systems.</p>
+<p><strong>Note:</strong> On Linux, only “user” namespace attributes are accessible, namespace prefix should not be included.</p>
+<p><strong>Note:</strong> On Windows, alternate data streams are used to store extended attributes.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-fileaccess-method-get-file-as-bytes"><a class="reference internal" href="class_packedbytearray.html#class-packedbytearray"><span class="std std-ref">PackedByteArray</span></a> <strong>get_file_as_bytes</strong>(path: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr> <a class="reference internal" href="#class-fileaccess-method-get-file-as-bytes"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the whole <code class="docutils literal notranslate"><span class="pre">path</span></code> file contents as a <a class="reference internal" href="class_packedbytearray.html#class-packedbytearray"><span class="std std-ref">PackedByteArray</span></a> without any decoding.</p>
+<p>Returns an empty <a class="reference internal" href="class_packedbytearray.html#class-packedbytearray"><span class="std std-ref">PackedByteArray</span></a> if an error occurred while opening the file. You can use <a class="reference internal" href="#class-fileaccess-method-get-open-error"><span class="std std-ref">get_open_error()</span></a> to check the error that occurred.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-fileaccess-method-get-file-as-string"><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a> <strong>get_file_as_string</strong>(path: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr> <a class="reference internal" href="#class-fileaccess-method-get-file-as-string"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the whole <code class="docutils literal notranslate"><span class="pre">path</span></code> file contents as a <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>. Text is interpreted as being UTF-8 encoded.</p>
+<p>Returns an empty <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a> if an error occurred while opening the file. You can use <a class="reference internal" href="#class-fileaccess-method-get-open-error"><span class="std std-ref">get_open_error()</span></a> to check the error that occurred.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-fileaccess-method-get-float"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>get_float</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-fileaccess-method-get-float"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the next 32 bits from the file as a floating-point number. This advances the file cursor by 4 bytes.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-fileaccess-method-get-half"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>get_half</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-fileaccess-method-get-half"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the next 16 bits from the file as a half-precision floating-point number. This advances the file cursor by 2 bytes.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-fileaccess-method-get-hidden-attribute"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>get_hidden_attribute</strong>(file: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr> <a class="reference internal" href="#class-fileaccess-method-get-hidden-attribute"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if the <strong>hidden</strong> attribute is set on the file at the given path.</p>
+<p><strong>Note:</strong> This method is implemented on iOS, BSD, macOS, and Windows.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-fileaccess-method-get-length"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>get_length</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-fileaccess-method-get-length"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the size of the file in bytes. For a pipe, returns the number of bytes available for reading from the pipe.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-fileaccess-method-get-line"><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a> <strong>get_line</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-fileaccess-method-get-line"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the next line of the file as a <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>. The returned string doesn’t include newline (<code class="docutils literal notranslate"><span class="pre">\n</span></code>) or carriage return (<code class="docutils literal notranslate"><span class="pre">\r</span></code>) characters, but does include any other leading or trailing whitespace. This advances the file cursor to after the newline character at the end of the line.</p>
+<p>Text is interpreted as being UTF-8 encoded.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-fileaccess-method-get-md5"><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a> <strong>get_md5</strong>(path: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr> <a class="reference internal" href="#class-fileaccess-method-get-md5"><span class="std std-ref">🔗</span></a></p>
+<p>Returns an MD5 String representing the file at the given path or an empty <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a> on failure.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-fileaccess-method-get-modified-time"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>get_modified_time</strong>(file: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr> <a class="reference internal" href="#class-fileaccess-method-get-modified-time"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the last time the <code class="docutils literal notranslate"><span class="pre">file</span></code> was modified in Unix timestamp format, or <code class="docutils literal notranslate"><span class="pre">0</span></code> on error. This Unix timestamp can be converted to another format using the <a class="reference internal" href="class_time.html#class-time"><span class="std std-ref">Time</span></a> singleton.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-fileaccess-method-get-open-error"><a class="reference internal" href="class_%40globalscope.html#enum-globalscope-error"><span class="std std-ref">Error</span></a> <strong>get_open_error</strong>() <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr> <a class="reference internal" href="#class-fileaccess-method-get-open-error"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the result of the last <a class="reference internal" href="#class-fileaccess-method-open"><span class="std std-ref">open()</span></a> call in the current thread.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-fileaccess-method-get-pascal-string"><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a> <strong>get_pascal_string</strong>() <a class="reference internal" href="#class-fileaccess-method-get-pascal-string"><span class="std std-ref">🔗</span></a></p>
+<p>Returns a <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a> saved in Pascal format from the file, meaning that the length of the string is explicitly stored at the start. See <a class="reference internal" href="#class-fileaccess-method-store-pascal-string"><span class="std std-ref">store_pascal_string()</span></a>. This may include newline characters. The file cursor is advanced after the bytes read.</p>
+<p>Text is interpreted as being UTF-8 encoded.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-fileaccess-method-get-path"><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a> <strong>get_path</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-fileaccess-method-get-path"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the path as a <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a> for the current open file.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-fileaccess-method-get-path-absolute"><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a> <strong>get_path_absolute</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-fileaccess-method-get-path-absolute"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the absolute path as a <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a> for the current open file.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-fileaccess-method-get-position"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>get_position</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-fileaccess-method-get-position"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the file cursor’s position in bytes from the beginning of the file. This is the file reading/writing cursor set by <a class="reference internal" href="#class-fileaccess-method-seek"><span class="std std-ref">seek()</span></a> or <a class="reference internal" href="#class-fileaccess-method-seek-end"><span class="std std-ref">seek_end()</span></a> and advanced by read/write operations.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-fileaccess-method-get-read-only-attribute"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>get_read_only_attribute</strong>(file: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr> <a class="reference internal" href="#class-fileaccess-method-get-read-only-attribute"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if the <strong>read only</strong> attribute is set on the file at the given path.</p>
+<p><strong>Note:</strong> This method is implemented on iOS, BSD, macOS, and Windows.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-fileaccess-method-get-real"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>get_real</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-fileaccess-method-get-real"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the next bits from the file as a floating-point number. This advances the file cursor by either 4 or 8 bytes, depending on the precision used by the Godot build that saved the file.</p>
+<p>If the file was saved by a Godot build compiled with the <code class="docutils literal notranslate"><span class="pre">precision=single</span></code> option (the default), the number of read bits for that file is 32. Otherwise, if compiled with the <code class="docutils literal notranslate"><span class="pre">precision=double</span></code> option, the number of read bits is 64.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-fileaccess-method-get-sha256"><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a> <strong>get_sha256</strong>(path: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr> <a class="reference internal" href="#class-fileaccess-method-get-sha256"><span class="std std-ref">🔗</span></a></p>
+<p>Returns an SHA-256 <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a> representing the file at the given path or an empty <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a> on failure.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-fileaccess-method-get-size"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>get_size</strong>(file: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr> <a class="reference internal" href="#class-fileaccess-method-get-size"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the size of the file at the given path, in bytes, or <code class="docutils literal notranslate"><span class="pre">-1</span></code> on error.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-fileaccess-method-get-unix-permissions"><abbr title="This value is an integer composed as a bitmask of the following flags.">BitField</abbr>[<a class="reference internal" href="#enum-fileaccess-unixpermissionflags"><span class="std std-ref">UnixPermissionFlags</span></a>] <strong>get_unix_permissions</strong>(file: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr> <a class="reference internal" href="#class-fileaccess-method-get-unix-permissions"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the UNIX permissions of the file at the given path.</p>
+<p><strong>Note:</strong> This method is implemented on iOS, Linux/BSD, and macOS.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-fileaccess-method-get-var"><a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a> <strong>get_var</strong>(allow_objects: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = false) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-fileaccess-method-get-var"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the next <a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a> value from the file. If <code class="docutils literal notranslate"><span class="pre">allow_objects</span></code> is <code class="docutils literal notranslate"><span class="pre">true</span></code>, decoding objects is allowed. This advances the file cursor by the number of bytes read.</p>
+<p>Internally, this uses the same decoding mechanism as the <a class="reference internal" href="class_%40globalscope.html#class-globalscope-method-bytes-to-var"><span class="std std-ref">&#64;GlobalScope.bytes_to_var()</span></a> method, as described in the <span class="xref std std-doc">Binary serialization API</span> documentation.</p>
+<p><strong>Warning:</strong> Deserialized objects can contain code which gets executed. Do not use this option if the serialized object comes from untrusted sources to avoid potential security threats such as remote code execution.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-fileaccess-method-is-open"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_open</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-fileaccess-method-is-open"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if the file is currently opened.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-fileaccess-method-open"><a class="reference internal" href="#class-fileaccess"><span class="std std-ref">FileAccess</span></a> <strong>open</strong>(path: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, flags: <a class="reference internal" href="#enum-fileaccess-modeflags"><span class="std std-ref">ModeFlags</span></a>) <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr> <a class="reference internal" href="#class-fileaccess-method-open"><span class="std std-ref">🔗</span></a></p>
+<p>Creates a new <strong>FileAccess</strong> object and opens the file for writing or reading, depending on the flags.</p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">null</span></code> if opening the file failed. You can use <a class="reference internal" href="#class-fileaccess-method-get-open-error"><span class="std std-ref">get_open_error()</span></a> to check the error that occurred.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-fileaccess-method-open-compressed"><a class="reference internal" href="#class-fileaccess"><span class="std std-ref">FileAccess</span></a> <strong>open_compressed</strong>(path: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, mode_flags: <a class="reference internal" href="#enum-fileaccess-modeflags"><span class="std std-ref">ModeFlags</span></a>, compression_mode: <a class="reference internal" href="#enum-fileaccess-compressionmode"><span class="std std-ref">CompressionMode</span></a> = 0) <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr> <a class="reference internal" href="#class-fileaccess-method-open-compressed"><span class="std std-ref">🔗</span></a></p>
+<p>Creates a new <strong>FileAccess</strong> object and opens a compressed file for reading or writing.</p>
+<p><strong>Note:</strong> <a class="reference internal" href="#class-fileaccess-method-open-compressed"><span class="std std-ref">open_compressed()</span></a> can only read files that were saved by Godot, not third-party compression formats. See <a class="reference external" href="https://github.com/godotengine/godot/issues/28999">GitHub issue #28999</a> for a workaround.</p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">null</span></code> if opening the file failed. You can use <a class="reference internal" href="#class-fileaccess-method-get-open-error"><span class="std std-ref">get_open_error()</span></a> to check the error that occurred.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-fileaccess-method-open-encrypted"><a class="reference internal" href="#class-fileaccess"><span class="std std-ref">FileAccess</span></a> <strong>open_encrypted</strong>(path: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, mode_flags: <a class="reference internal" href="#enum-fileaccess-modeflags"><span class="std std-ref">ModeFlags</span></a>, key: <a class="reference internal" href="class_packedbytearray.html#class-packedbytearray"><span class="std std-ref">PackedByteArray</span></a>, iv: <a class="reference internal" href="class_packedbytearray.html#class-packedbytearray"><span class="std std-ref">PackedByteArray</span></a> = PackedByteArray()) <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr> <a class="reference internal" href="#class-fileaccess-method-open-encrypted"><span class="std std-ref">🔗</span></a></p>
+<p>Creates a new <strong>FileAccess</strong> object and opens an encrypted file in write or read mode. You need to pass a binary key to encrypt/decrypt it.</p>
+<p><strong>Note:</strong> The provided key must be 32 bytes long.</p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">null</span></code> if opening the file failed. You can use <a class="reference internal" href="#class-fileaccess-method-get-open-error"><span class="std std-ref">get_open_error()</span></a> to check the error that occurred.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-fileaccess-method-open-encrypted-with-pass"><a class="reference internal" href="#class-fileaccess"><span class="std std-ref">FileAccess</span></a> <strong>open_encrypted_with_pass</strong>(path: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, mode_flags: <a class="reference internal" href="#enum-fileaccess-modeflags"><span class="std std-ref">ModeFlags</span></a>, pass: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr> <a class="reference internal" href="#class-fileaccess-method-open-encrypted-with-pass"><span class="std std-ref">🔗</span></a></p>
+<p>Creates a new <strong>FileAccess</strong> object and opens an encrypted file in write or read mode. You need to pass a password to encrypt/decrypt it.</p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">null</span></code> if opening the file failed. You can use <a class="reference internal" href="#class-fileaccess-method-get-open-error"><span class="std std-ref">get_open_error()</span></a> to check the error that occurred.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-fileaccess-method-remove-extended-attribute"><a class="reference internal" href="class_%40globalscope.html#enum-globalscope-error"><span class="std std-ref">Error</span></a> <strong>remove_extended_attribute</strong>(file: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, attribute_name: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr> <a class="reference internal" href="#class-fileaccess-method-remove-extended-attribute"><span class="std std-ref">🔗</span></a></p>
+<p>Removes file extended attribute with name <code class="docutils literal notranslate"><span class="pre">attribute_name</span></code>.</p>
+<p><strong>Note:</strong> This method is implemented on Linux, macOS, and Windows.</p>
+<p><strong>Note:</strong> Extended attributes support depends on the file system. Attributes will be lost when the file is moved between incompatible file systems.</p>
+<p><strong>Note:</strong> On Linux, only “user” namespace attributes are accessible, namespace prefix should not be included.</p>
+<p><strong>Note:</strong> On Windows, alternate data streams are used to store extended attributes.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-fileaccess-method-resize"><a class="reference internal" href="class_%40globalscope.html#enum-globalscope-error"><span class="std std-ref">Error</span></a> <strong>resize</strong>(length: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <a class="reference internal" href="#class-fileaccess-method-resize"><span class="std std-ref">🔗</span></a></p>
+<p>Resizes the file to a specified length. The file must be open in a mode that permits writing. If the file is extended, NUL characters are appended. If the file is truncated, all data from the end file to the original length of the file is lost.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-fileaccess-method-seek"><abbr title="No return value.">void</abbr> <strong>seek</strong>(position: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <a class="reference internal" href="#class-fileaccess-method-seek"><span class="std std-ref">🔗</span></a></p>
+<p>Sets the file cursor to the specified position in bytes, from the beginning of the file. This changes the value returned by <a class="reference internal" href="#class-fileaccess-method-get-position"><span class="std std-ref">get_position()</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-fileaccess-method-seek-end"><abbr title="No return value.">void</abbr> <strong>seek_end</strong>(position: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> = 0) <a class="reference internal" href="#class-fileaccess-method-seek-end"><span class="std std-ref">🔗</span></a></p>
+<p>Sets the file cursor to the specified position in bytes, from the end of the file. This changes the value returned by <a class="reference internal" href="#class-fileaccess-method-get-position"><span class="std std-ref">get_position()</span></a>.</p>
+<p><strong>Note:</strong> This is an offset, so you should use negative numbers otherwise the file cursor will move past the end of the file.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-fileaccess-method-set-extended-attribute"><a class="reference internal" href="class_%40globalscope.html#enum-globalscope-error"><span class="std std-ref">Error</span></a> <strong>set_extended_attribute</strong>(file: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, attribute_name: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, data: <a class="reference internal" href="class_packedbytearray.html#class-packedbytearray"><span class="std std-ref">PackedByteArray</span></a>) <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr> <a class="reference internal" href="#class-fileaccess-method-set-extended-attribute"><span class="std std-ref">🔗</span></a></p>
+<p>Writes file extended attribute with name <code class="docutils literal notranslate"><span class="pre">attribute_name</span></code> as a byte array.</p>
+<p><strong>Note:</strong> This method is implemented on Linux, macOS, and Windows.</p>
+<p><strong>Note:</strong> Extended attributes support depends on the file system. Attributes will be lost when the file is moved between incompatible file systems.</p>
+<p><strong>Note:</strong> On Linux, only “user” namespace attributes are accessible, namespace prefix should not be included.</p>
+<p><strong>Note:</strong> On Windows, alternate data streams are used to store extended attributes.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-fileaccess-method-set-extended-attribute-string"><a class="reference internal" href="class_%40globalscope.html#enum-globalscope-error"><span class="std std-ref">Error</span></a> <strong>set_extended_attribute_string</strong>(file: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, attribute_name: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, data: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr> <a class="reference internal" href="#class-fileaccess-method-set-extended-attribute-string"><span class="std std-ref">🔗</span></a></p>
+<p>Writes file extended attribute with name <code class="docutils literal notranslate"><span class="pre">attribute_name</span></code> as a UTF-8 encoded string.</p>
+<p><strong>Note:</strong> This method is implemented on Linux, macOS, and Windows.</p>
+<p><strong>Note:</strong> Extended attributes support depends on the file system. Attributes will be lost when the file is moved between incompatible file systems.</p>
+<p><strong>Note:</strong> On Linux, only “user” namespace attributes are accessible, namespace prefix should not be included.</p>
+<p><strong>Note:</strong> On Windows, alternate data streams are used to store extended attributes.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-fileaccess-method-set-hidden-attribute"><a class="reference internal" href="class_%40globalscope.html#enum-globalscope-error"><span class="std std-ref">Error</span></a> <strong>set_hidden_attribute</strong>(file: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, hidden: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>) <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr> <a class="reference internal" href="#class-fileaccess-method-set-hidden-attribute"><span class="std std-ref">🔗</span></a></p>
+<p>Sets file <strong>hidden</strong> attribute.</p>
+<p><strong>Note:</strong> This method is implemented on iOS, BSD, macOS, and Windows.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-fileaccess-method-set-read-only-attribute"><a class="reference internal" href="class_%40globalscope.html#enum-globalscope-error"><span class="std std-ref">Error</span></a> <strong>set_read_only_attribute</strong>(file: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, ro: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>) <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr> <a class="reference internal" href="#class-fileaccess-method-set-read-only-attribute"><span class="std std-ref">🔗</span></a></p>
+<p>Sets file <strong>read only</strong> attribute.</p>
+<p><strong>Note:</strong> This method is implemented on iOS, BSD, macOS, and Windows.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-fileaccess-method-set-unix-permissions"><a class="reference internal" href="class_%40globalscope.html#enum-globalscope-error"><span class="std std-ref">Error</span></a> <strong>set_unix_permissions</strong>(file: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, permissions: <abbr title="This value is an integer composed as a bitmask of the following flags.">BitField</abbr>[<a class="reference internal" href="#enum-fileaccess-unixpermissionflags"><span class="std std-ref">UnixPermissionFlags</span></a>]) <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr> <a class="reference internal" href="#class-fileaccess-method-set-unix-permissions"><span class="std std-ref">🔗</span></a></p>
+<p>Sets file UNIX permissions.</p>
+<p><strong>Note:</strong> This method is implemented on iOS, Linux/BSD, and macOS.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-fileaccess-method-store-8"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>store_8</strong>(value: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <a class="reference internal" href="#class-fileaccess-method-store-8"><span class="std std-ref">🔗</span></a></p>
+<p>Stores an integer as 8 bits in the file. This advances the file cursor by 1 byte. Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if the operation is successful.</p>
+<p><strong>Note:</strong> The <code class="docutils literal notranslate"><span class="pre">value</span></code> should lie in the interval <code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">255]</span></code>. Any other value will overflow and wrap around.</p>
+<p><strong>Note:</strong> If an error occurs, the resulting value of the file position indicator is indeterminate.</p>
+<p>To store a signed integer, use <a class="reference internal" href="#class-fileaccess-method-store-64"><span class="std std-ref">store_64()</span></a>, or convert it manually (see <a class="reference internal" href="#class-fileaccess-method-store-16"><span class="std std-ref">store_16()</span></a> for an example).</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-fileaccess-method-store-16"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>store_16</strong>(value: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <a class="reference internal" href="#class-fileaccess-method-store-16"><span class="std std-ref">🔗</span></a></p>
+<p>Stores an integer as 16 bits in the file. This advances the file cursor by 2 bytes. Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if the operation is successful.</p>
+<p><strong>Note:</strong> The <code class="docutils literal notranslate"><span class="pre">value</span></code> should lie in the interval <code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">2^16</span> <span class="pre">-</span> <span class="pre">1]</span></code>. Any other value will overflow and wrap around.</p>
+<p><strong>Note:</strong> If an error occurs, the resulting value of the file position indicator is indeterminate.</p>
+<p>To store a signed integer, use <a class="reference internal" href="#class-fileaccess-method-store-64"><span class="std std-ref">store_64()</span></a> or store a signed integer from the interval <code class="docutils literal notranslate"><span class="pre">[-2^15,</span> <span class="pre">2^15</span> <span class="pre">-</span> <span class="pre">1]</span></code> (i.e. keeping one bit for the signedness) and compute its sign manually when reading. For example:</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-fileaccess-method-store-32"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>store_32</strong>(value: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <a class="reference internal" href="#class-fileaccess-method-store-32"><span class="std std-ref">🔗</span></a></p>
+<p>Stores an integer as 32 bits in the file. This advances the file cursor by 4 bytes. Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if the operation is successful.</p>
+<p><strong>Note:</strong> The <code class="docutils literal notranslate"><span class="pre">value</span></code> should lie in the interval <code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">2^32</span> <span class="pre">-</span> <span class="pre">1]</span></code>. Any other value will overflow and wrap around.</p>
+<p><strong>Note:</strong> If an error occurs, the resulting value of the file position indicator is indeterminate.</p>
+<p>To store a signed integer, use <a class="reference internal" href="#class-fileaccess-method-store-64"><span class="std std-ref">store_64()</span></a>, or convert it manually (see <a class="reference internal" href="#class-fileaccess-method-store-16"><span class="std std-ref">store_16()</span></a> for an example).</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-fileaccess-method-store-64"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>store_64</strong>(value: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <a class="reference internal" href="#class-fileaccess-method-store-64"><span class="std std-ref">🔗</span></a></p>
+<p>Stores an integer as 64 bits in the file. This advances the file cursor by 8 bytes. Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if the operation is successful.</p>
+<p><strong>Note:</strong> The <code class="docutils literal notranslate"><span class="pre">value</span></code> must lie in the interval <code class="docutils literal notranslate"><span class="pre">[-2^63,</span> <span class="pre">2^63</span> <span class="pre">-</span> <span class="pre">1]</span></code> (i.e. be a valid <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> value).</p>
+<p><strong>Note:</strong> If an error occurs, the resulting value of the file position indicator is indeterminate.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-fileaccess-method-store-buffer"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>store_buffer</strong>(buffer: <a class="reference internal" href="class_packedbytearray.html#class-packedbytearray"><span class="std std-ref">PackedByteArray</span></a>) <a class="reference internal" href="#class-fileaccess-method-store-buffer"><span class="std std-ref">🔗</span></a></p>
+<p>Stores the given array of bytes in the file. This advances the file cursor by the number of bytes written. Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if the operation is successful.</p>
+<p><strong>Note:</strong> If an error occurs, the resulting value of the file position indicator is indeterminate.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-fileaccess-method-store-csv-line"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>store_csv_line</strong>(values: <a class="reference internal" href="class_packedstringarray.html#class-packedstringarray"><span class="std std-ref">PackedStringArray</span></a>, delim: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a> = “,”) <a class="reference internal" href="#class-fileaccess-method-store-csv-line"><span class="std std-ref">🔗</span></a></p>
+<p>Stores the given <a class="reference internal" href="class_packedstringarray.html#class-packedstringarray"><span class="std std-ref">PackedStringArray</span></a> in the file as a line formatted in the CSV (Comma-Separated Values) format. You can pass a different delimiter <code class="docutils literal notranslate"><span class="pre">delim</span></code> to use other than the default <code class="docutils literal notranslate"><span class="pre">&quot;,&quot;</span></code> (comma). This delimiter must be one-character long.</p>
+<p>Text will be encoded as UTF-8. Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if the operation is successful.</p>
+<p><strong>Note:</strong> If an error occurs, the resulting value of the file position indicator is indeterminate.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-fileaccess-method-store-double"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>store_double</strong>(value: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>) <a class="reference internal" href="#class-fileaccess-method-store-double"><span class="std std-ref">🔗</span></a></p>
+<p>Stores a floating-point number as 64 bits in the file. This advances the file cursor by 8 bytes. Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if the operation is successful.</p>
+<p><strong>Note:</strong> If an error occurs, the resulting value of the file position indicator is indeterminate.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-fileaccess-method-store-float"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>store_float</strong>(value: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>) <a class="reference internal" href="#class-fileaccess-method-store-float"><span class="std std-ref">🔗</span></a></p>
+<p>Stores a floating-point number as 32 bits in the file. This advances the file cursor by 4 bytes. Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if the operation is successful.</p>
+<p><strong>Note:</strong> If an error occurs, the resulting value of the file position indicator is indeterminate.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-fileaccess-method-store-half"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>store_half</strong>(value: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>) <a class="reference internal" href="#class-fileaccess-method-store-half"><span class="std std-ref">🔗</span></a></p>
+<p>Stores a half-precision floating-point number as 16 bits in the file. This advances the file cursor by 2 bytes. Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if the operation is successful.</p>
+<p><strong>Note:</strong> If an error occurs, the resulting value of the file position indicator is indeterminate.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-fileaccess-method-store-line"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>store_line</strong>(line: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <a class="reference internal" href="#class-fileaccess-method-store-line"><span class="std std-ref">🔗</span></a></p>
+<p>Stores <code class="docutils literal notranslate"><span class="pre">line</span></code> in the file followed by a newline character (<code class="docutils literal notranslate"><span class="pre">\n</span></code>), encoding the text as UTF-8. This advances the file cursor by the length of the line, after the newline character. The amount of bytes written depends on the UTF-8 encoded bytes, which may be different from <a class="reference internal" href="class_string.html#class-string-method-length"><span class="std std-ref">String.length()</span></a> which counts the number of UTF-32 codepoints. Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if the operation is successful.</p>
+<p><strong>Note:</strong> If an error occurs, the resulting value of the file position indicator is indeterminate.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-fileaccess-method-store-pascal-string"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>store_pascal_string</strong>(string: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <a class="reference internal" href="#class-fileaccess-method-store-pascal-string"><span class="std std-ref">🔗</span></a></p>
+<p>Stores the given <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a> as a line in the file in Pascal format (i.e. also store the length of the string). Text will be encoded as UTF-8. This advances the file cursor by the number of bytes written depending on the UTF-8 encoded bytes, which may be different from <a class="reference internal" href="class_string.html#class-string-method-length"><span class="std std-ref">String.length()</span></a> which counts the number of UTF-32 codepoints. Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if the operation is successful.</p>
+<p><strong>Note:</strong> If an error occurs, the resulting value of the file position indicator is indeterminate.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-fileaccess-method-store-real"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>store_real</strong>(value: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>) <a class="reference internal" href="#class-fileaccess-method-store-real"><span class="std std-ref">🔗</span></a></p>
+<p>Stores a floating-point number in the file. This advances the file cursor by either 4 or 8 bytes, depending on the precision used by the current Godot build.</p>
+<p>If using a Godot build compiled with the <code class="docutils literal notranslate"><span class="pre">precision=single</span></code> option (the default), this method will save a 32-bit float. Otherwise, if compiled with the <code class="docutils literal notranslate"><span class="pre">precision=double</span></code> option, this will save a 64-bit float. Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if the operation is successful.</p>
+<p><strong>Note:</strong> If an error occurs, the resulting value of the file position indicator is indeterminate.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-fileaccess-method-store-string"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>store_string</strong>(string: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <a class="reference internal" href="#class-fileaccess-method-store-string"><span class="std std-ref">🔗</span></a></p>
+<p>Stores <code class="docutils literal notranslate"><span class="pre">string</span></code> in the file without a newline character (<code class="docutils literal notranslate"><span class="pre">\n</span></code>), encoding the text as UTF-8. This advances the file cursor by the length of the string in UTF-8 encoded bytes, which may be different from <a class="reference internal" href="class_string.html#class-string-method-length"><span class="std std-ref">String.length()</span></a> which counts the number of UTF-32 codepoints. Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if the operation is successful.</p>
+<p><strong>Note:</strong> This method is intended to be used to write text files. The string is stored as a UTF-8 encoded buffer without string length or terminating zero, which means that it can’t be loaded back easily. If you want to store a retrievable string in a binary file, consider using <a class="reference internal" href="#class-fileaccess-method-store-pascal-string"><span class="std std-ref">store_pascal_string()</span></a> instead. For retrieving strings from a text file, you can use <code class="docutils literal notranslate"><span class="pre">get_buffer(length).get_string_from_utf8()</span></code> (if you know the length) or <a class="reference internal" href="#class-fileaccess-method-get-as-text"><span class="std std-ref">get_as_text()</span></a>.</p>
+<p><strong>Note:</strong> If an error occurs, the resulting value of the file position indicator is indeterminate.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-fileaccess-method-store-var"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>store_var</strong>(value: <a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a>, full_objects: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = false) <a class="reference internal" href="#class-fileaccess-method-store-var"><span class="std std-ref">🔗</span></a></p>
+<p>Stores any Variant value in the file. If <code class="docutils literal notranslate"><span class="pre">full_objects</span></code> is <code class="docutils literal notranslate"><span class="pre">true</span></code>, encoding objects is allowed (and can potentially include code). This advances the file cursor by the number of bytes written. Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if the operation is successful.</p>
+<p>Internally, this uses the same encoding mechanism as the <a class="reference internal" href="class_%40globalscope.html#class-globalscope-method-var-to-bytes"><span class="std std-ref">&#64;GlobalScope.var_to_bytes()</span></a> method, as described in the <span class="xref std std-doc">Binary serialization API</span> documentation.</p>
+<p><strong>Note:</strong> Not all properties are included. Only properties that are configured with the <a class="reference internal" href="class_%40globalscope.html#class-globalscope-constant-property-usage-storage"><span class="std std-ref">&#64;GlobalScope.PROPERTY_USAGE_STORAGE</span></a> flag set will be serialized. You can add a new usage flag to a property by overriding the <a class="reference internal" href="class_object.html#class-object-private-method-get-property-list"><span class="std std-ref">Object._get_property_list()</span></a> method in your class. You can also check how property usage is configured by calling <a class="reference internal" href="class_object.html#class-object-private-method-get-property-list"><span class="std std-ref">Object._get_property_list()</span></a>. See <a class="reference internal" href="class_%40globalscope.html#enum-globalscope-propertyusageflags"><span class="std std-ref">PropertyUsageFlags</span></a> for the possible usage flags.</p>
+<p><strong>Note:</strong> If an error occurs, the resulting value of the file position indicator is indeterminate.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, MUmarShahbaz.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

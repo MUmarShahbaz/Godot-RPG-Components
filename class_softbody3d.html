@@ -1,0 +1,386 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SoftBody3D &mdash; RPG Components 2D 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=d45e8c67"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            RPG Components 2D
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">SoftBody3D</a><ul>
+<li><a class="reference internal" href="#description">Description</a></li>
+<li><a class="reference internal" href="#tutorials">Tutorials</a></li>
+<li><a class="reference internal" href="#properties">Properties</a></li>
+<li><a class="reference internal" href="#methods">Methods</a></li>
+<li><a class="reference internal" href="#enumerations">Enumerations</a></li>
+<li><a class="reference internal" href="#property-descriptions">Property Descriptions</a></li>
+<li><a class="reference internal" href="#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">RPG Components 2D</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">SoftBody3D</li>
+      <li class="wy-breadcrumbs-aside">
+              <!-- User defined GitHub URL -->
+              <a href="hide" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="softbody3d">
+<span id="class-softbody3d"></span><h1>SoftBody3D<a class="headerlink" href="#softbody3d" title="Link to this heading"></a></h1>
+<p><strong>Inherits:</strong> <a class="reference internal" href="class_meshinstance3d.html#class-meshinstance3d"><span class="std std-ref">MeshInstance3D</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_geometryinstance3d.html#class-geometryinstance3d"><span class="std std-ref">GeometryInstance3D</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_visualinstance3d.html#class-visualinstance3d"><span class="std std-ref">VisualInstance3D</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_node3d.html#class-node3d"><span class="std std-ref">Node3D</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_node.html#class-node"><span class="std std-ref">Node</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_object.html#class-object"><span class="std std-ref">Object</span></a></p>
+<p>A deformable 3D physics mesh.</p>
+<section class="classref-introduction-group" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
+<p>A deformable 3D physics mesh. Used to create elastic or deformable objects such as cloth, rubber, or other flexible materials.</p>
+<p>Additionally, <strong>SoftBody3D</strong> is subject to wind forces defined in <a class="reference internal" href="class_area3d.html#class-area3d"><span class="std std-ref">Area3D</span></a> (see <a class="reference internal" href="class_area3d.html#class-area3d-property-wind-source-path"><span class="std std-ref">Area3D.wind_source_path</span></a>, <a class="reference internal" href="class_area3d.html#class-area3d-property-wind-force-magnitude"><span class="std std-ref">Area3D.wind_force_magnitude</span></a>, and <a class="reference internal" href="class_area3d.html#class-area3d-property-wind-attenuation-factor"><span class="std std-ref">Area3D.wind_attenuation_factor</span></a>).</p>
+<p><strong>Note:</strong> It’s recommended to use Jolt Physics when using <strong>SoftBody3D</strong> instead of the default GodotPhysics3D, as Jolt Physics’ soft body implementation is faster and more reliable. You can switch the physics engine using the <a class="reference internal" href="class_projectsettings.html#class-projectsettings-property-physics-3d-physics-engine"><span class="std std-ref">ProjectSettings.physics/3d/physics_engine</span></a> project setting.</p>
+</section>
+<section class="classref-introduction-group" id="tutorials">
+<h2>Tutorials<a class="headerlink" href="#tutorials" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><span class="xref std std-doc">SoftBody</span></p></li>
+</ul>
+</section>
+<section class="classref-reftable-group" id="properties">
+<h2>Properties<a class="headerlink" href="#properties" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-softbody3d-property-collision-layer"><span class="std std-ref">collision_layer</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">1</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-softbody3d-property-collision-mask"><span class="std std-ref">collision_mask</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">1</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-softbody3d-property-damping-coefficient"><span class="std std-ref">damping_coefficient</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0.01</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#enum-softbody3d-disablemode"><span class="std std-ref">DisableMode</span></a></p></td>
+<td><p><a class="reference internal" href="#class-softbody3d-property-disable-mode"><span class="std std-ref">disable_mode</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-softbody3d-property-drag-coefficient"><span class="std std-ref">drag_coefficient</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0.0</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-softbody3d-property-linear-stiffness"><span class="std std-ref">linear_stiffness</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0.5</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_nodepath.html#class-nodepath"><span class="std std-ref">NodePath</span></a></p></td>
+<td><p><a class="reference internal" href="#class-softbody3d-property-parent-collision-ignore"><span class="std std-ref">parent_collision_ignore</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">NodePath(&quot;&quot;)</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-softbody3d-property-pressure-coefficient"><span class="std std-ref">pressure_coefficient</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0.0</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-softbody3d-property-ray-pickable"><span class="std std-ref">ray_pickable</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-softbody3d-property-shrinking-factor"><span class="std std-ref">shrinking_factor</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0.0</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-softbody3d-property-simulation-precision"><span class="std std-ref">simulation_precision</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">5</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-softbody3d-property-total-mass"><span class="std std-ref">total_mass</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">1.0</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section class="classref-reftable-group" id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-softbody3d-method-add-collision-exception-with"><span class="std std-ref">add_collision_exception_with</span></a>(body: <a class="reference internal" href="class_node.html#class-node"><span class="std std-ref">Node</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-softbody3d-method-apply-central-force"><span class="std std-ref">apply_central_force</span></a>(force: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-softbody3d-method-apply-central-impulse"><span class="std std-ref">apply_central_impulse</span></a>(impulse: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-softbody3d-method-apply-force"><span class="std std-ref">apply_force</span></a>(point_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, force: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-softbody3d-method-apply-impulse"><span class="std std-ref">apply_impulse</span></a>(point_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, impulse: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_array.html#class-array"><span class="std std-ref">Array</span></a>[<a class="reference internal" href="class_physicsbody3d.html#class-physicsbody3d"><span class="std std-ref">PhysicsBody3D</span></a>]</p></td>
+<td><p><a class="reference internal" href="#class-softbody3d-method-get-collision-exceptions"><span class="std std-ref">get_collision_exceptions</span></a>()</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-softbody3d-method-get-collision-layer-value"><span class="std std-ref">get_collision_layer_value</span></a>(layer_number: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-softbody3d-method-get-collision-mask-value"><span class="std std-ref">get_collision_mask_value</span></a>(layer_number: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_rid.html#class-rid"><span class="std std-ref">RID</span></a></p></td>
+<td><p><a class="reference internal" href="#class-softbody3d-method-get-physics-rid"><span class="std std-ref">get_physics_rid</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a></p></td>
+<td><p><a class="reference internal" href="#class-softbody3d-method-get-point-transform"><span class="std std-ref">get_point_transform</span></a>(point_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-softbody3d-method-is-point-pinned"><span class="std std-ref">is_point_pinned</span></a>(point_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-softbody3d-method-remove-collision-exception-with"><span class="std std-ref">remove_collision_exception_with</span></a>(body: <a class="reference internal" href="class_node.html#class-node"><span class="std std-ref">Node</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-softbody3d-method-set-collision-layer-value"><span class="std std-ref">set_collision_layer_value</span></a>(layer_number: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, value: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-softbody3d-method-set-collision-mask-value"><span class="std std-ref">set_collision_mask_value</span></a>(layer_number: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, value: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-softbody3d-method-set-point-pinned"><span class="std std-ref">set_point_pinned</span></a>(point_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, pinned: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>, attachment_path: <a class="reference internal" href="class_nodepath.html#class-nodepath"><span class="std std-ref">NodePath</span></a> = NodePath(“”), insert_at: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> = -1)</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="enumerations">
+<h2>Enumerations<a class="headerlink" href="#enumerations" title="Link to this heading"></a></h2>
+<p class="classref-enumeration" id="enum-softbody3d-disablemode">enum <strong>DisableMode</strong>: <a class="reference internal" href="#enum-softbody3d-disablemode"><span class="std std-ref">🔗</span></a></p>
+<p class="classref-enumeration-constant" id="class-softbody3d-constant-disable-mode-remove"><a class="reference internal" href="#enum-softbody3d-disablemode"><span class="std std-ref">DisableMode</span></a> <strong>DISABLE_MODE_REMOVE</strong> = <code class="docutils literal notranslate"><span class="pre">0</span></code></p>
+<p>When <a class="reference internal" href="class_node.html#class-node-property-process-mode"><span class="std std-ref">Node.process_mode</span></a> is set to <a class="reference internal" href="class_node.html#class-node-constant-process-mode-disabled"><span class="std std-ref">Node.PROCESS_MODE_DISABLED</span></a>, remove from the physics simulation to stop all physics interactions with this <strong>SoftBody3D</strong>.</p>
+<p>Automatically re-added to the physics simulation when the <a class="reference internal" href="class_node.html#class-node"><span class="std std-ref">Node</span></a> is processed again.</p>
+<p class="classref-enumeration-constant" id="class-softbody3d-constant-disable-mode-keep-active"><a class="reference internal" href="#enum-softbody3d-disablemode"><span class="std std-ref">DisableMode</span></a> <strong>DISABLE_MODE_KEEP_ACTIVE</strong> = <code class="docutils literal notranslate"><span class="pre">1</span></code></p>
+<p>When <a class="reference internal" href="class_node.html#class-node-property-process-mode"><span class="std std-ref">Node.process_mode</span></a> is set to <a class="reference internal" href="class_node.html#class-node-constant-process-mode-disabled"><span class="std std-ref">Node.PROCESS_MODE_DISABLED</span></a>, do not affect the physics simulation.</p>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="property-descriptions">
+<h2>Property Descriptions<a class="headerlink" href="#property-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-property" id="class-softbody3d-property-collision-layer"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>collision_layer</strong> = <code class="docutils literal notranslate"><span class="pre">1</span></code> <a class="reference internal" href="#class-softbody3d-property-collision-layer"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_collision_layer</strong>(value: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>get_collision_layer</strong>()</p></li>
+</ul>
+<p>The physics layers this SoftBody3D <strong>is in</strong>. Collision objects can exist in one or more of 32 different layers. See also <a class="reference internal" href="#class-softbody3d-property-collision-mask"><span class="std std-ref">collision_mask</span></a>.</p>
+<p><strong>Note:</strong> Object A can detect a contact with object B only if object B is in any of the layers that object A scans. See <a class="reference external" href="../tutorials/physics/physics_introduction.html#collision-layers-and-masks">Collision layers and masks</a> in the documentation for more information.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-softbody3d-property-collision-mask"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>collision_mask</strong> = <code class="docutils literal notranslate"><span class="pre">1</span></code> <a class="reference internal" href="#class-softbody3d-property-collision-mask"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_collision_mask</strong>(value: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>get_collision_mask</strong>()</p></li>
+</ul>
+<p>The physics layers this SoftBody3D <strong>scans</strong>. Collision objects can scan one or more of 32 different layers. See also <a class="reference internal" href="#class-softbody3d-property-collision-layer"><span class="std std-ref">collision_layer</span></a>.</p>
+<p><strong>Note:</strong> Object A can detect a contact with object B only if object B is in any of the layers that object A scans. See <a class="reference external" href="../tutorials/physics/physics_introduction.html#collision-layers-and-masks">Collision layers and masks</a> in the documentation for more information.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-softbody3d-property-damping-coefficient"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>damping_coefficient</strong> = <code class="docutils literal notranslate"><span class="pre">0.01</span></code> <a class="reference internal" href="#class-softbody3d-property-damping-coefficient"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_damping_coefficient</strong>(value: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>get_damping_coefficient</strong>()</p></li>
+</ul>
+<p>The body’s damping coefficient. Higher values will slow down the body more noticeably when forces are applied.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-softbody3d-property-disable-mode"><a class="reference internal" href="#enum-softbody3d-disablemode"><span class="std std-ref">DisableMode</span></a> <strong>disable_mode</strong> = <code class="docutils literal notranslate"><span class="pre">0</span></code> <a class="reference internal" href="#class-softbody3d-property-disable-mode"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_disable_mode</strong>(value: <a class="reference internal" href="#enum-softbody3d-disablemode"><span class="std std-ref">DisableMode</span></a>)</p></li>
+<li><p><a class="reference internal" href="#enum-softbody3d-disablemode"><span class="std std-ref">DisableMode</span></a> <strong>get_disable_mode</strong>()</p></li>
+</ul>
+<p>Defines the behavior in physics when <a class="reference internal" href="class_node.html#class-node-property-process-mode"><span class="std std-ref">Node.process_mode</span></a> is set to <a class="reference internal" href="class_node.html#class-node-constant-process-mode-disabled"><span class="std std-ref">Node.PROCESS_MODE_DISABLED</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-softbody3d-property-drag-coefficient"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>drag_coefficient</strong> = <code class="docutils literal notranslate"><span class="pre">0.0</span></code> <a class="reference internal" href="#class-softbody3d-property-drag-coefficient"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_drag_coefficient</strong>(value: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>get_drag_coefficient</strong>()</p></li>
+</ul>
+<p>The body’s drag coefficient. Higher values increase this body’s air resistance.</p>
+<p><strong>Note:</strong> This value is currently unused by Godot’s default physics implementation.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-softbody3d-property-linear-stiffness"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>linear_stiffness</strong> = <code class="docutils literal notranslate"><span class="pre">0.5</span></code> <a class="reference internal" href="#class-softbody3d-property-linear-stiffness"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_linear_stiffness</strong>(value: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>get_linear_stiffness</strong>()</p></li>
+</ul>
+<p>Higher values will result in a stiffer body, while lower values will increase the body’s ability to bend. The value can be between <code class="docutils literal notranslate"><span class="pre">0.0</span></code> and <code class="docutils literal notranslate"><span class="pre">1.0</span></code> (inclusive).</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-softbody3d-property-parent-collision-ignore"><a class="reference internal" href="class_nodepath.html#class-nodepath"><span class="std std-ref">NodePath</span></a> <strong>parent_collision_ignore</strong> = <code class="docutils literal notranslate"><span class="pre">NodePath(&quot;&quot;)</span></code> <a class="reference internal" href="#class-softbody3d-property-parent-collision-ignore"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_parent_collision_ignore</strong>(value: <a class="reference internal" href="class_nodepath.html#class-nodepath"><span class="std std-ref">NodePath</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_nodepath.html#class-nodepath"><span class="std std-ref">NodePath</span></a> <strong>get_parent_collision_ignore</strong>()</p></li>
+</ul>
+<p><a class="reference internal" href="class_nodepath.html#class-nodepath"><span class="std std-ref">NodePath</span></a> to a <a class="reference internal" href="class_collisionobject3d.html#class-collisionobject3d"><span class="std std-ref">CollisionObject3D</span></a> this SoftBody3D should avoid clipping.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-softbody3d-property-pressure-coefficient"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>pressure_coefficient</strong> = <code class="docutils literal notranslate"><span class="pre">0.0</span></code> <a class="reference internal" href="#class-softbody3d-property-pressure-coefficient"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_pressure_coefficient</strong>(value: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>get_pressure_coefficient</strong>()</p></li>
+</ul>
+<p>The pressure coefficient of this soft body. Simulate pressure build-up from inside this body. Higher values increase the strength of this effect.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-softbody3d-property-ray-pickable"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>ray_pickable</strong> = <code class="docutils literal notranslate"><span class="pre">true</span></code> <a class="reference internal" href="#class-softbody3d-property-ray-pickable"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_ray_pickable</strong>(value: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_ray_pickable</strong>()</p></li>
+</ul>
+<p>If <code class="docutils literal notranslate"><span class="pre">true</span></code>, the <strong>SoftBody3D</strong> will respond to <a class="reference internal" href="class_raycast3d.html#class-raycast3d"><span class="std std-ref">RayCast3D</span></a>s.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-softbody3d-property-shrinking-factor"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>shrinking_factor</strong> = <code class="docutils literal notranslate"><span class="pre">0.0</span></code> <a class="reference internal" href="#class-softbody3d-property-shrinking-factor"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_shrinking_factor</strong>(value: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>get_shrinking_factor</strong>()</p></li>
+</ul>
+<p>Scales the rest lengths of <strong>SoftBody3D</strong>’s edge constraints. Positive values shrink the mesh, while negative values expand it. For example, a value of <code class="docutils literal notranslate"><span class="pre">0.1</span></code> shortens the edges of the mesh by 10%, while <code class="docutils literal notranslate"><span class="pre">-0.1</span></code> expands the edges by 10%.</p>
+<p><strong>Note:</strong> <a class="reference internal" href="#class-softbody3d-property-shrinking-factor"><span class="std std-ref">shrinking_factor</span></a> is best used on surface meshes with pinned points.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-softbody3d-property-simulation-precision"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>simulation_precision</strong> = <code class="docutils literal notranslate"><span class="pre">5</span></code> <a class="reference internal" href="#class-softbody3d-property-simulation-precision"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_simulation_precision</strong>(value: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>get_simulation_precision</strong>()</p></li>
+</ul>
+<p>Increasing this value will improve the resulting simulation, but can affect performance. Use with care.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-softbody3d-property-total-mass"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>total_mass</strong> = <code class="docutils literal notranslate"><span class="pre">1.0</span></code> <a class="reference internal" href="#class-softbody3d-property-total-mass"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_total_mass</strong>(value: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>get_total_mass</strong>()</p></li>
+</ul>
+<p>The SoftBody3D’s mass.</p>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="method-descriptions">
+<h2>Method Descriptions<a class="headerlink" href="#method-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-method" id="class-softbody3d-method-add-collision-exception-with"><abbr title="No return value.">void</abbr> <strong>add_collision_exception_with</strong>(body: <a class="reference internal" href="class_node.html#class-node"><span class="std std-ref">Node</span></a>) <a class="reference internal" href="#class-softbody3d-method-add-collision-exception-with"><span class="std std-ref">🔗</span></a></p>
+<p>Adds a body to the list of bodies that this body can’t collide with.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-softbody3d-method-apply-central-force"><abbr title="No return value.">void</abbr> <strong>apply_central_force</strong>(force: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>) <a class="reference internal" href="#class-softbody3d-method-apply-central-force"><span class="std std-ref">🔗</span></a></p>
+<p>Distributes and applies a force to all points. A force is time dependent and meant to be applied every physics update.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-softbody3d-method-apply-central-impulse"><abbr title="No return value.">void</abbr> <strong>apply_central_impulse</strong>(impulse: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>) <a class="reference internal" href="#class-softbody3d-method-apply-central-impulse"><span class="std std-ref">🔗</span></a></p>
+<p>Distributes and applies an impulse to all points.</p>
+<p>An impulse is time-independent! Applying an impulse every frame would result in a framerate-dependent force. For this reason, it should only be used when simulating one-time impacts (use the “_force” functions otherwise).</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-softbody3d-method-apply-force"><abbr title="No return value.">void</abbr> <strong>apply_force</strong>(point_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, force: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>) <a class="reference internal" href="#class-softbody3d-method-apply-force"><span class="std std-ref">🔗</span></a></p>
+<p>Applies a force to a point. A force is time dependent and meant to be applied every physics update.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-softbody3d-method-apply-impulse"><abbr title="No return value.">void</abbr> <strong>apply_impulse</strong>(point_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, impulse: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>) <a class="reference internal" href="#class-softbody3d-method-apply-impulse"><span class="std std-ref">🔗</span></a></p>
+<p>Applies an impulse to a point.</p>
+<p>An impulse is time-independent! Applying an impulse every frame would result in a framerate-dependent force. For this reason, it should only be used when simulating one-time impacts (use the “_force” functions otherwise).</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-softbody3d-method-get-collision-exceptions"><a class="reference internal" href="class_array.html#class-array"><span class="std std-ref">Array</span></a>[<a class="reference internal" href="class_physicsbody3d.html#class-physicsbody3d"><span class="std std-ref">PhysicsBody3D</span></a>] <strong>get_collision_exceptions</strong>() <a class="reference internal" href="#class-softbody3d-method-get-collision-exceptions"><span class="std std-ref">🔗</span></a></p>
+<p>Returns an array of nodes that were added as collision exceptions for this body.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-softbody3d-method-get-collision-layer-value"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>get_collision_layer_value</strong>(layer_number: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-softbody3d-method-get-collision-layer-value"><span class="std std-ref">🔗</span></a></p>
+<p>Returns whether or not the specified layer of the <a class="reference internal" href="#class-softbody3d-property-collision-layer"><span class="std std-ref">collision_layer</span></a> is enabled, given a <code class="docutils literal notranslate"><span class="pre">layer_number</span></code> between 1 and 32.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-softbody3d-method-get-collision-mask-value"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>get_collision_mask_value</strong>(layer_number: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-softbody3d-method-get-collision-mask-value"><span class="std std-ref">🔗</span></a></p>
+<p>Returns whether or not the specified layer of the <a class="reference internal" href="#class-softbody3d-property-collision-mask"><span class="std std-ref">collision_mask</span></a> is enabled, given a <code class="docutils literal notranslate"><span class="pre">layer_number</span></code> between 1 and 32.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-softbody3d-method-get-physics-rid"><a class="reference internal" href="class_rid.html#class-rid"><span class="std std-ref">RID</span></a> <strong>get_physics_rid</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-softbody3d-method-get-physics-rid"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the internal <a class="reference internal" href="class_rid.html#class-rid"><span class="std std-ref">RID</span></a> used by the <a class="reference internal" href="class_physicsserver3d.html#class-physicsserver3d"><span class="std std-ref">PhysicsServer3D</span></a> for this body.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-softbody3d-method-get-point-transform"><a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a> <strong>get_point_transform</strong>(point_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <a class="reference internal" href="#class-softbody3d-method-get-point-transform"><span class="std std-ref">🔗</span></a></p>
+<p>Returns local translation of a vertex in the surface array.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-softbody3d-method-is-point-pinned"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_point_pinned</strong>(point_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-softbody3d-method-is-point-pinned"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if vertex is set to pinned.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-softbody3d-method-remove-collision-exception-with"><abbr title="No return value.">void</abbr> <strong>remove_collision_exception_with</strong>(body: <a class="reference internal" href="class_node.html#class-node"><span class="std std-ref">Node</span></a>) <a class="reference internal" href="#class-softbody3d-method-remove-collision-exception-with"><span class="std std-ref">🔗</span></a></p>
+<p>Removes a body from the list of bodies that this body can’t collide with.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-softbody3d-method-set-collision-layer-value"><abbr title="No return value.">void</abbr> <strong>set_collision_layer_value</strong>(layer_number: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, value: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>) <a class="reference internal" href="#class-softbody3d-method-set-collision-layer-value"><span class="std std-ref">🔗</span></a></p>
+<p>Based on <code class="docutils literal notranslate"><span class="pre">value</span></code>, enables or disables the specified layer in the <a class="reference internal" href="#class-softbody3d-property-collision-layer"><span class="std std-ref">collision_layer</span></a>, given a <code class="docutils literal notranslate"><span class="pre">layer_number</span></code> between 1 and 32.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-softbody3d-method-set-collision-mask-value"><abbr title="No return value.">void</abbr> <strong>set_collision_mask_value</strong>(layer_number: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, value: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>) <a class="reference internal" href="#class-softbody3d-method-set-collision-mask-value"><span class="std std-ref">🔗</span></a></p>
+<p>Based on <code class="docutils literal notranslate"><span class="pre">value</span></code>, enables or disables the specified layer in the <a class="reference internal" href="#class-softbody3d-property-collision-mask"><span class="std std-ref">collision_mask</span></a>, given a <code class="docutils literal notranslate"><span class="pre">layer_number</span></code> between 1 and 32.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-softbody3d-method-set-point-pinned"><abbr title="No return value.">void</abbr> <strong>set_point_pinned</strong>(point_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, pinned: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>, attachment_path: <a class="reference internal" href="class_nodepath.html#class-nodepath"><span class="std std-ref">NodePath</span></a> = NodePath(“”), insert_at: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> = -1) <a class="reference internal" href="#class-softbody3d-method-set-point-pinned"><span class="std std-ref">🔗</span></a></p>
+<p>Sets the pinned state of a surface vertex. When set to <code class="docutils literal notranslate"><span class="pre">true</span></code>, the optional <code class="docutils literal notranslate"><span class="pre">attachment_path</span></code> can define a <a class="reference internal" href="class_node3d.html#class-node3d"><span class="std std-ref">Node3D</span></a> the pinned vertex will be attached to.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, MUmarShahbaz.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

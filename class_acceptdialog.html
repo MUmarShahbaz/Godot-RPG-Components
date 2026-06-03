@@ -1,0 +1,323 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AcceptDialog &mdash; RPG Components 2D 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=d45e8c67"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            RPG Components 2D
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">AcceptDialog</a><ul>
+<li><a class="reference internal" href="#description">Description</a></li>
+<li><a class="reference internal" href="#properties">Properties</a></li>
+<li><a class="reference internal" href="#methods">Methods</a></li>
+<li><a class="reference internal" href="#theme-properties">Theme Properties</a></li>
+<li><a class="reference internal" href="#signals">Signals</a></li>
+<li><a class="reference internal" href="#property-descriptions">Property Descriptions</a></li>
+<li><a class="reference internal" href="#method-descriptions">Method Descriptions</a></li>
+<li><a class="reference internal" href="#theme-property-descriptions">Theme Property Descriptions</a></li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">RPG Components 2D</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">AcceptDialog</li>
+      <li class="wy-breadcrumbs-aside">
+              <!-- User defined GitHub URL -->
+              <a href="hide" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="acceptdialog">
+<span id="class-acceptdialog"></span><h1>AcceptDialog<a class="headerlink" href="#acceptdialog" title="Link to this heading"></a></h1>
+<p><strong>Inherits:</strong> <a class="reference internal" href="class_window.html#class-window"><span class="std std-ref">Window</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_viewport.html#class-viewport"><span class="std std-ref">Viewport</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_node.html#class-node"><span class="std std-ref">Node</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_object.html#class-object"><span class="std std-ref">Object</span></a></p>
+<p><strong>Inherited By:</strong> <a class="reference internal" href="class_confirmationdialog.html#class-confirmationdialog"><span class="std std-ref">ConfirmationDialog</span></a></p>
+<p>A base dialog used for user notification.</p>
+<section class="classref-introduction-group" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
+<p>The default use of <strong>AcceptDialog</strong> is to allow it to only be accepted or closed, with the same result. However, the <a class="reference internal" href="#class-acceptdialog-signal-confirmed"><span class="std std-ref">confirmed</span></a> and <a class="reference internal" href="#class-acceptdialog-signal-canceled"><span class="std std-ref">canceled</span></a> signals allow to make the two actions different, and the <a class="reference internal" href="#class-acceptdialog-method-add-button"><span class="std std-ref">add_button()</span></a> method allows to add custom buttons and actions.</p>
+<p><strong>Note:</strong> <strong>AcceptDialog</strong> is invisible by default. To make it visible, call one of the <code class="docutils literal notranslate"><span class="pre">popup_*</span></code> methods from <a class="reference internal" href="class_window.html#class-window"><span class="std std-ref">Window</span></a> on the node, such as <a class="reference internal" href="class_window.html#class-window-method-popup-centered-clamped"><span class="std std-ref">Window.popup_centered_clamped()</span></a>.</p>
+</section>
+<section class="classref-reftable-group" id="properties">
+<h2>Properties<a class="headerlink" href="#properties" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-acceptdialog-property-dialog-autowrap"><span class="std std-ref">dialog_autowrap</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-acceptdialog-property-dialog-close-on-escape"><span class="std std-ref">dialog_close_on_escape</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-acceptdialog-property-dialog-hide-on-ok"><span class="std std-ref">dialog_hide_on_ok</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a></p></td>
+<td><p><a class="reference internal" href="#class-acceptdialog-property-dialog-text"><span class="std std-ref">dialog_text</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&quot;&quot;</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p>exclusive</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">true</span></code> (overrides <a class="reference internal" href="class_window.html#class-window-property-exclusive"><span class="std std-ref">Window</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p>keep_title_visible</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">true</span></code> (overrides <a class="reference internal" href="class_window.html#class-window-property-keep-title-visible"><span class="std std-ref">Window</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p>maximize_disabled</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">true</span></code> (overrides <a class="reference internal" href="class_window.html#class-window-property-maximize-disabled"><span class="std std-ref">Window</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p>minimize_disabled</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">true</span></code> (overrides <a class="reference internal" href="class_window.html#class-window-property-minimize-disabled"><span class="std std-ref">Window</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a></p></td>
+<td><p><a class="reference internal" href="#class-acceptdialog-property-ok-button-text"><span class="std std-ref">ok_button_text</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&quot;&quot;</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a></p></td>
+<td><p>title</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&quot;Alert!&quot;</span></code> (overrides <a class="reference internal" href="class_window.html#class-window-property-title"><span class="std std-ref">Window</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p>transient</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">true</span></code> (overrides <a class="reference internal" href="class_window.html#class-window-property-transient"><span class="std std-ref">Window</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p>visible</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">false</span></code> (overrides <a class="reference internal" href="class_window.html#class-window-property-visible"><span class="std std-ref">Window</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p>wrap_controls</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">true</span></code> (overrides <a class="reference internal" href="class_window.html#class-window-property-wrap-controls"><span class="std std-ref">Window</span></a>)</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section class="classref-reftable-group" id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_button.html#class-button"><span class="std std-ref">Button</span></a></p></td>
+<td><p><a class="reference internal" href="#class-acceptdialog-method-add-button"><span class="std std-ref">add_button</span></a>(text: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, right: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = false, action: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a> = “”)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_button.html#class-button"><span class="std std-ref">Button</span></a></p></td>
+<td><p><a class="reference internal" href="#class-acceptdialog-method-add-cancel-button"><span class="std std-ref">add_cancel_button</span></a>(name: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_label.html#class-label"><span class="std std-ref">Label</span></a></p></td>
+<td><p><a class="reference internal" href="#class-acceptdialog-method-get-label"><span class="std std-ref">get_label</span></a>()</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_button.html#class-button"><span class="std std-ref">Button</span></a></p></td>
+<td><p><a class="reference internal" href="#class-acceptdialog-method-get-ok-button"><span class="std std-ref">get_ok_button</span></a>()</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-acceptdialog-method-register-text-enter"><span class="std std-ref">register_text_enter</span></a>(line_edit: <a class="reference internal" href="class_lineedit.html#class-lineedit"><span class="std std-ref">LineEdit</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-acceptdialog-method-remove-button"><span class="std std-ref">remove_button</span></a>(button: <a class="reference internal" href="class_button.html#class-button"><span class="std std-ref">Button</span></a>)</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section class="classref-reftable-group" id="theme-properties">
+<h2>Theme Properties<a class="headerlink" href="#theme-properties" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-acceptdialog-theme-constant-buttons-min-height"><span class="std std-ref">buttons_min_height</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-acceptdialog-theme-constant-buttons-min-width"><span class="std std-ref">buttons_min_width</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-acceptdialog-theme-constant-buttons-separation"><span class="std std-ref">buttons_separation</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">10</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_stylebox.html#class-stylebox"><span class="std std-ref">StyleBox</span></a></p></td>
+<td><p><a class="reference internal" href="#class-acceptdialog-theme-style-panel"><span class="std std-ref">panel</span></a></p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="signals">
+<h2>Signals<a class="headerlink" href="#signals" title="Link to this heading"></a></h2>
+<p class="classref-signal" id="class-acceptdialog-signal-canceled"><strong>canceled</strong>() <a class="reference internal" href="#class-acceptdialog-signal-canceled"><span class="std std-ref">🔗</span></a></p>
+<p>Emitted when the dialog is closed or the button created with <a class="reference internal" href="#class-acceptdialog-method-add-cancel-button"><span class="std std-ref">add_cancel_button()</span></a> is pressed.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-signal" id="class-acceptdialog-signal-confirmed"><strong>confirmed</strong>() <a class="reference internal" href="#class-acceptdialog-signal-confirmed"><span class="std std-ref">🔗</span></a></p>
+<p>Emitted when the dialog is accepted, i.e. the OK button is pressed.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-signal" id="class-acceptdialog-signal-custom-action"><strong>custom_action</strong>(action: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>) <a class="reference internal" href="#class-acceptdialog-signal-custom-action"><span class="std std-ref">🔗</span></a></p>
+<p>Emitted when a custom button with an action is pressed. See <a class="reference internal" href="#class-acceptdialog-method-add-button"><span class="std std-ref">add_button()</span></a>.</p>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="property-descriptions">
+<h2>Property Descriptions<a class="headerlink" href="#property-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-property" id="class-acceptdialog-property-dialog-autowrap"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>dialog_autowrap</strong> = <code class="docutils literal notranslate"><span class="pre">false</span></code> <a class="reference internal" href="#class-acceptdialog-property-dialog-autowrap"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_autowrap</strong>(value: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>has_autowrap</strong>()</p></li>
+</ul>
+<p>Sets autowrapping for the text in the dialog.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-acceptdialog-property-dialog-close-on-escape"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>dialog_close_on_escape</strong> = <code class="docutils literal notranslate"><span class="pre">true</span></code> <a class="reference internal" href="#class-acceptdialog-property-dialog-close-on-escape"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_close_on_escape</strong>(value: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>get_close_on_escape</strong>()</p></li>
+</ul>
+<p>If <code class="docutils literal notranslate"><span class="pre">true</span></code>, the dialog will be hidden when the <code class="docutils literal notranslate"><span class="pre">ui_close_dialog</span></code> action is pressed (by default, this action is bound to <kbd class="kbd docutils literal notranslate">Escape</kbd>, or <kbd class="kbd docutils literal notranslate">Cmd</kbd> <kbd class="kbd docutils literal notranslate"></kbd>+<kbd class="kbd docutils literal notranslate"></kbd> <kbd class="kbd docutils literal notranslate">W</kbd> on macOS).</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-acceptdialog-property-dialog-hide-on-ok"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>dialog_hide_on_ok</strong> = <code class="docutils literal notranslate"><span class="pre">true</span></code> <a class="reference internal" href="#class-acceptdialog-property-dialog-hide-on-ok"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_hide_on_ok</strong>(value: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>get_hide_on_ok</strong>()</p></li>
+</ul>
+<p>If <code class="docutils literal notranslate"><span class="pre">true</span></code>, the dialog is hidden when the OK button is pressed. You can set it to <code class="docutils literal notranslate"><span class="pre">false</span></code> if you want to do e.g. input validation when receiving the <a class="reference internal" href="#class-acceptdialog-signal-confirmed"><span class="std std-ref">confirmed</span></a> signal, and handle hiding the dialog in your own logic.</p>
+<p><strong>Note:</strong> Some nodes derived from this class can have a different default value, and potentially their own built-in logic overriding this setting. For example <a class="reference internal" href="class_filedialog.html#class-filedialog"><span class="std std-ref">FileDialog</span></a> defaults to <code class="docutils literal notranslate"><span class="pre">false</span></code>, and has its own input validation code that is called when you press OK, which eventually hides the dialog if the input is valid. As such, this property can’t be used in <a class="reference internal" href="class_filedialog.html#class-filedialog"><span class="std std-ref">FileDialog</span></a> to disable hiding the dialog when pressing OK.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-acceptdialog-property-dialog-text"><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a> <strong>dialog_text</strong> = <code class="docutils literal notranslate"><span class="pre">&quot;&quot;</span></code> <a class="reference internal" href="#class-acceptdialog-property-dialog-text"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_text</strong>(value: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a> <strong>get_text</strong>()</p></li>
+</ul>
+<p>The text displayed by the dialog.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-acceptdialog-property-ok-button-text"><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a> <strong>ok_button_text</strong> = <code class="docutils literal notranslate"><span class="pre">&quot;&quot;</span></code> <a class="reference internal" href="#class-acceptdialog-property-ok-button-text"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_ok_button_text</strong>(value: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a> <strong>get_ok_button_text</strong>()</p></li>
+</ul>
+<p>The text displayed by the OK button (see <a class="reference internal" href="#class-acceptdialog-method-get-ok-button"><span class="std std-ref">get_ok_button()</span></a>). If empty, a default text will be used.</p>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="method-descriptions">
+<h2>Method Descriptions<a class="headerlink" href="#method-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-method" id="class-acceptdialog-method-add-button"><a class="reference internal" href="class_button.html#class-button"><span class="std std-ref">Button</span></a> <strong>add_button</strong>(text: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, right: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = false, action: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a> = “”) <a class="reference internal" href="#class-acceptdialog-method-add-button"><span class="std std-ref">🔗</span></a></p>
+<p>Adds a button with label <code class="docutils literal notranslate"><span class="pre">text</span></code> and a custom <code class="docutils literal notranslate"><span class="pre">action</span></code> to the dialog and returns the created button.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">action</span></code> is not empty, pressing the button will emit the <a class="reference internal" href="#class-acceptdialog-signal-custom-action"><span class="std std-ref">custom_action</span></a> signal with the specified action string.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">true</span></code>, <code class="docutils literal notranslate"><span class="pre">right</span></code> will place the button to the right of any sibling buttons.</p>
+<p>You can use <a class="reference internal" href="#class-acceptdialog-method-remove-button"><span class="std std-ref">remove_button()</span></a> method to remove a button created with this method from the dialog.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-acceptdialog-method-add-cancel-button"><a class="reference internal" href="class_button.html#class-button"><span class="std std-ref">Button</span></a> <strong>add_cancel_button</strong>(name: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <a class="reference internal" href="#class-acceptdialog-method-add-cancel-button"><span class="std std-ref">🔗</span></a></p>
+<p>Adds a button with label <code class="docutils literal notranslate"><span class="pre">name</span></code> and a cancel action to the dialog and returns the created button.</p>
+<p>You can use <a class="reference internal" href="#class-acceptdialog-method-remove-button"><span class="std std-ref">remove_button()</span></a> method to remove a button created with this method from the dialog.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-acceptdialog-method-get-label"><a class="reference internal" href="class_label.html#class-label"><span class="std std-ref">Label</span></a> <strong>get_label</strong>() <a class="reference internal" href="#class-acceptdialog-method-get-label"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the label used for built-in text.</p>
+<p><strong>Warning:</strong> This is a required internal node, removing and freeing it may cause a crash. If you wish to hide it or any of its children, use their <a class="reference internal" href="class_canvasitem.html#class-canvasitem-property-visible"><span class="std std-ref">CanvasItem.visible</span></a> property.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-acceptdialog-method-get-ok-button"><a class="reference internal" href="class_button.html#class-button"><span class="std std-ref">Button</span></a> <strong>get_ok_button</strong>() <a class="reference internal" href="#class-acceptdialog-method-get-ok-button"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the OK <a class="reference internal" href="class_button.html#class-button"><span class="std std-ref">Button</span></a> instance.</p>
+<p><strong>Warning:</strong> This is a required internal node, removing and freeing it may cause a crash. If you wish to hide it or any of its children, use their <a class="reference internal" href="class_canvasitem.html#class-canvasitem-property-visible"><span class="std std-ref">CanvasItem.visible</span></a> property.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-acceptdialog-method-register-text-enter"><abbr title="No return value.">void</abbr> <strong>register_text_enter</strong>(line_edit: <a class="reference internal" href="class_lineedit.html#class-lineedit"><span class="std std-ref">LineEdit</span></a>) <a class="reference internal" href="#class-acceptdialog-method-register-text-enter"><span class="std std-ref">🔗</span></a></p>
+<p>Registers a <a class="reference internal" href="class_lineedit.html#class-lineedit"><span class="std std-ref">LineEdit</span></a> in the dialog. When the enter key is pressed, the dialog will be accepted.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-acceptdialog-method-remove-button"><abbr title="No return value.">void</abbr> <strong>remove_button</strong>(button: <a class="reference internal" href="class_button.html#class-button"><span class="std std-ref">Button</span></a>) <a class="reference internal" href="#class-acceptdialog-method-remove-button"><span class="std std-ref">🔗</span></a></p>
+<p>Removes the <code class="docutils literal notranslate"><span class="pre">button</span></code> from the dialog. Does NOT free the <code class="docutils literal notranslate"><span class="pre">button</span></code>. The <code class="docutils literal notranslate"><span class="pre">button</span></code> must be a <a class="reference internal" href="class_button.html#class-button"><span class="std std-ref">Button</span></a> added with <a class="reference internal" href="#class-acceptdialog-method-add-button"><span class="std std-ref">add_button()</span></a> or <a class="reference internal" href="#class-acceptdialog-method-add-cancel-button"><span class="std std-ref">add_cancel_button()</span></a> method. After removal, pressing the <code class="docutils literal notranslate"><span class="pre">button</span></code> will no longer emit this dialog’s <a class="reference internal" href="#class-acceptdialog-signal-custom-action"><span class="std std-ref">custom_action</span></a> or <a class="reference internal" href="#class-acceptdialog-signal-canceled"><span class="std std-ref">canceled</span></a> signals.</p>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="theme-property-descriptions">
+<h2>Theme Property Descriptions<a class="headerlink" href="#theme-property-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-themeproperty" id="class-acceptdialog-theme-constant-buttons-min-height"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>buttons_min_height</strong> = <code class="docutils literal notranslate"><span class="pre">0</span></code> <a class="reference internal" href="#class-acceptdialog-theme-constant-buttons-min-height"><span class="std std-ref">🔗</span></a></p>
+<p>The minimum height of each button in the bottom row (such as OK/Cancel) in pixels. This can be increased to make buttons with short texts easier to click/tap.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-themeproperty" id="class-acceptdialog-theme-constant-buttons-min-width"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>buttons_min_width</strong> = <code class="docutils literal notranslate"><span class="pre">0</span></code> <a class="reference internal" href="#class-acceptdialog-theme-constant-buttons-min-width"><span class="std std-ref">🔗</span></a></p>
+<p>The minimum width of each button in the bottom row (such as OK/Cancel) in pixels. This can be increased to make buttons with short texts easier to click/tap.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-themeproperty" id="class-acceptdialog-theme-constant-buttons-separation"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>buttons_separation</strong> = <code class="docutils literal notranslate"><span class="pre">10</span></code> <a class="reference internal" href="#class-acceptdialog-theme-constant-buttons-separation"><span class="std std-ref">🔗</span></a></p>
+<p>The size of the vertical space between the dialog’s content and the button row.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-themeproperty" id="class-acceptdialog-theme-style-panel"><a class="reference internal" href="class_stylebox.html#class-stylebox"><span class="std std-ref">StyleBox</span></a> <strong>panel</strong> <a class="reference internal" href="#class-acceptdialog-theme-style-panel"><span class="std std-ref">🔗</span></a></p>
+<p>The panel that fills the background of the window.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, MUmarShahbaz.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

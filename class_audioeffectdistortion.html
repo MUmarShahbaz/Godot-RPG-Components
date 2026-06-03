@@ -1,0 +1,211 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AudioEffectDistortion &mdash; RPG Components 2D 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=d45e8c67"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            RPG Components 2D
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">AudioEffectDistortion</a><ul>
+<li><a class="reference internal" href="#description">Description</a></li>
+<li><a class="reference internal" href="#tutorials">Tutorials</a></li>
+<li><a class="reference internal" href="#properties">Properties</a></li>
+<li><a class="reference internal" href="#enumerations">Enumerations</a></li>
+<li><a class="reference internal" href="#property-descriptions">Property Descriptions</a></li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">RPG Components 2D</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">AudioEffectDistortion</li>
+      <li class="wy-breadcrumbs-aside">
+              <!-- User defined GitHub URL -->
+              <a href="hide" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="audioeffectdistortion">
+<span id="class-audioeffectdistortion"></span><h1>AudioEffectDistortion<a class="headerlink" href="#audioeffectdistortion" title="Link to this heading"></a></h1>
+<p><strong>Inherits:</strong> <a class="reference internal" href="class_audioeffect.html#class-audioeffect"><span class="std std-ref">AudioEffect</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_resource.html#class-resource"><span class="std std-ref">Resource</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_refcounted.html#class-refcounted"><span class="std std-ref">RefCounted</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_object.html#class-object"><span class="std std-ref">Object</span></a></p>
+<p>Adds a distortion audio effect to an audio bus.</p>
+<p>Remaps audio samples using a nonlinear function to achieve a distorted sound.</p>
+<section class="classref-introduction-group" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
+<p>A “distortion” effect modifies the waveform via a nonlinear mathematical function (see available ones in <a class="reference internal" href="#enum-audioeffectdistortion-mode"><span class="std std-ref">Mode</span></a>), based on the amplitude of the waveform’s samples.</p>
+<p><strong>Note:</strong> In a nonlinear function, an input sample at <em>x</em> amplitude value, will either have its amplitude increased or decreased to a <em>y</em> value, based on the function value at <em>x</em>, which is why even at the same <a class="reference internal" href="#class-audioeffectdistortion-property-drive"><span class="std std-ref">drive</span></a>, the output sound will vary depending on the input’s volume. To change the volume while maintaining the output waveform, use <a class="reference internal" href="#class-audioeffectdistortion-property-post-gain"><span class="std std-ref">post_gain</span></a>.</p>
+<p>In this effect, each type is a different nonlinear function. The different types available are: clip, atan, lofi (bitcrush), overdrive, and waveshape. Every distortion type available here is symmetric: negative amplitude values are affected the same way as positive ones.</p>
+<p>Although distortion will always change frequency content, usually by introducing high harmonics, different distortion types offer a range of sound qualities; from “soft” and “warm”, to “crunchy” and “abrasive”.</p>
+<p>For games, it can help simulate sound coming from some saturated device or speaker very efficiently. It can also help the audio stand out in a mix, by introducing higher frequencies and increasing the volume.</p>
+<p><strong>Note:</strong> Although usually imperceptible, an enabled distortion effect still changes the sound even when <a class="reference internal" href="#class-audioeffectdistortion-property-drive"><span class="std std-ref">drive</span></a> is set to 0. This is not a bug. If this behavior is undesirable, consider disabling the effect using <a class="reference internal" href="class_audioserver.html#class-audioserver-method-set-bus-effect-enabled"><span class="std std-ref">AudioServer.set_bus_effect_enabled()</span></a>.</p>
+</section>
+<section class="classref-introduction-group" id="tutorials">
+<h2>Tutorials<a class="headerlink" href="#tutorials" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><span class="xref std std-doc">Audio buses</span></p></li>
+<li><p><span class="xref std std-doc">Audio effects</span></p></li>
+</ul>
+</section>
+<section class="classref-reftable-group" id="properties">
+<h2>Properties<a class="headerlink" href="#properties" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-audioeffectdistortion-property-drive"><span class="std std-ref">drive</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0.0</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-audioeffectdistortion-property-keep-hf-hz"><span class="std std-ref">keep_hf_hz</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">16000.0</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#enum-audioeffectdistortion-mode"><span class="std std-ref">Mode</span></a></p></td>
+<td><p><a class="reference internal" href="#class-audioeffectdistortion-property-mode"><span class="std std-ref">mode</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-audioeffectdistortion-property-post-gain"><span class="std std-ref">post_gain</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0.0</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-audioeffectdistortion-property-pre-gain"><span class="std std-ref">pre_gain</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0.0</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="enumerations">
+<h2>Enumerations<a class="headerlink" href="#enumerations" title="Link to this heading"></a></h2>
+<p class="classref-enumeration" id="enum-audioeffectdistortion-mode">enum <strong>Mode</strong>: <a class="reference internal" href="#enum-audioeffectdistortion-mode"><span class="std std-ref">🔗</span></a></p>
+<p class="classref-enumeration-constant" id="class-audioeffectdistortion-constant-mode-clip"><a class="reference internal" href="#enum-audioeffectdistortion-mode"><span class="std std-ref">Mode</span></a> <strong>MODE_CLIP</strong> = <code class="docutils literal notranslate"><span class="pre">0</span></code></p>
+<p>Flattens the waveform at 0 dB in a sharp manner. <a class="reference internal" href="#class-audioeffectdistortion-property-drive"><span class="std std-ref">drive</span></a> increases amplitude of samples exponentially. This mode functions as a hard clipper if <a class="reference internal" href="#class-audioeffectdistortion-property-drive"><span class="std std-ref">drive</span></a> is set to 0, and is the only mode that clips audio signals at 0 dB.</p>
+<p class="classref-enumeration-constant" id="class-audioeffectdistortion-constant-mode-atan"><a class="reference internal" href="#enum-audioeffectdistortion-mode"><span class="std std-ref">Mode</span></a> <strong>MODE_ATAN</strong> = <code class="docutils literal notranslate"><span class="pre">1</span></code></p>
+<p>Flattens the waveform in a smooth manner, following an arctangent curve. The audio decreases in volume, before flattening peaks to <code class="docutils literal notranslate"><span class="pre">PI</span> <span class="pre">*</span> <span class="pre">4.0</span></code> (linear value), if it was normalized beforehand.</p>
+<p class="classref-enumeration-constant" id="class-audioeffectdistortion-constant-mode-lofi"><a class="reference internal" href="#enum-audioeffectdistortion-mode"><span class="std std-ref">Mode</span></a> <strong>MODE_LOFI</strong> = <code class="docutils literal notranslate"><span class="pre">2</span></code></p>
+<p>Decreases audio bit depth to achieve a low-resolution audio signal, going from 16-bit to 2-bit. Can be used to emulate the sound of early digital audio devices.</p>
+<p class="classref-enumeration-constant" id="class-audioeffectdistortion-constant-mode-overdrive"><a class="reference internal" href="#enum-audioeffectdistortion-mode"><span class="std std-ref">Mode</span></a> <strong>MODE_OVERDRIVE</strong> = <code class="docutils literal notranslate"><span class="pre">3</span></code></p>
+<p>Emulates the warm distortion produced by a field effect transistor, which is commonly used in solid-state musical instrument amplifiers. <a class="reference internal" href="#class-audioeffectdistortion-property-drive"><span class="std std-ref">drive</span></a> has no effect in this mode.</p>
+<p class="classref-enumeration-constant" id="class-audioeffectdistortion-constant-mode-waveshape"><a class="reference internal" href="#enum-audioeffectdistortion-mode"><span class="std std-ref">Mode</span></a> <strong>MODE_WAVESHAPE</strong> = <code class="docutils literal notranslate"><span class="pre">4</span></code></p>
+<p>Flattens the waveform in a smooth manner, until it reaches a sharp peak at <code class="docutils literal notranslate"><span class="pre">drive</span> <span class="pre">=</span> <span class="pre">1</span></code>, following a generic absolute sigmoid function.</p>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="property-descriptions">
+<h2>Property Descriptions<a class="headerlink" href="#property-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-property" id="class-audioeffectdistortion-property-drive"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>drive</strong> = <code class="docutils literal notranslate"><span class="pre">0.0</span></code> <a class="reference internal" href="#class-audioeffectdistortion-property-drive"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_drive</strong>(value: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>get_drive</strong>()</p></li>
+</ul>
+<p>Distortion intensity. Controls how much of the input audio is affected by the distortion curve by moving from a linear function to a nonlinear one. Value can range from 0 to 1.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-audioeffectdistortion-property-keep-hf-hz"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>keep_hf_hz</strong> = <code class="docutils literal notranslate"><span class="pre">16000.0</span></code> <a class="reference internal" href="#class-audioeffectdistortion-property-keep-hf-hz"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_keep_hf_hz</strong>(value: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>get_keep_hf_hz</strong>()</p></li>
+</ul>
+<p>High-pass filter, in Hz. Frequencies higher than this value will not be affected by the distortion. Value can range from 1 to 20000.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-audioeffectdistortion-property-mode"><a class="reference internal" href="#enum-audioeffectdistortion-mode"><span class="std std-ref">Mode</span></a> <strong>mode</strong> = <code class="docutils literal notranslate"><span class="pre">0</span></code> <a class="reference internal" href="#class-audioeffectdistortion-property-mode"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_mode</strong>(value: <a class="reference internal" href="#enum-audioeffectdistortion-mode"><span class="std std-ref">Mode</span></a>)</p></li>
+<li><p><a class="reference internal" href="#enum-audioeffectdistortion-mode"><span class="std std-ref">Mode</span></a> <strong>get_mode</strong>()</p></li>
+</ul>
+<p>Distortion type. Changes the nonlinear function used to distort the waveform. See <a class="reference internal" href="#enum-audioeffectdistortion-mode"><span class="std std-ref">Mode</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-audioeffectdistortion-property-post-gain"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>post_gain</strong> = <code class="docutils literal notranslate"><span class="pre">0.0</span></code> <a class="reference internal" href="#class-audioeffectdistortion-property-post-gain"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_post_gain</strong>(value: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>get_post_gain</strong>()</p></li>
+</ul>
+<p>Gain after the effect, in dB. Value can range from -80 to 24.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-audioeffectdistortion-property-pre-gain"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>pre_gain</strong> = <code class="docutils literal notranslate"><span class="pre">0.0</span></code> <a class="reference internal" href="#class-audioeffectdistortion-property-pre-gain"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_pre_gain</strong>(value: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>get_pre_gain</strong>()</p></li>
+</ul>
+<p>Gain before the effect, in dB. Value can range from -60 to 60.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, MUmarShahbaz.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

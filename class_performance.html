@@ -1,0 +1,318 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Performance &mdash; RPG Components 2D 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=d45e8c67"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            RPG Components 2D
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">Performance</a><ul>
+<li><a class="reference internal" href="#description">Description</a></li>
+<li><a class="reference internal" href="#methods">Methods</a></li>
+<li><a class="reference internal" href="#enumerations">Enumerations</a></li>
+<li><a class="reference internal" href="#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">RPG Components 2D</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Performance</li>
+      <li class="wy-breadcrumbs-aside">
+              <!-- User defined GitHub URL -->
+              <a href="hide" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="performance">
+<span id="class-performance"></span><h1>Performance<a class="headerlink" href="#performance" title="Link to this heading"></a></h1>
+<p><strong>Inherits:</strong> <a class="reference internal" href="class_object.html#class-object"><span class="std std-ref">Object</span></a></p>
+<p>Exposes performance-related data.</p>
+<section class="classref-introduction-group" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
+<p>This class provides access to a number of different monitors related to performance, such as memory usage, draw calls, and FPS. These are the same as the values displayed in the <strong>Monitor</strong> tab in the editor’s <strong>Debugger</strong> panel. By using the <a class="reference internal" href="#class-performance-method-get-monitor"><span class="std std-ref">get_monitor()</span></a> method of this class, you can access this data from your code.</p>
+<p>You can add custom monitors using the <a class="reference internal" href="#class-performance-method-add-custom-monitor"><span class="std std-ref">add_custom_monitor()</span></a> method. Custom monitors are available in <strong>Monitor</strong> tab in the editor’s <strong>Debugger</strong> panel together with built-in monitors.</p>
+<p><strong>Note:</strong> Some of the built-in monitors are only available in debug mode and will always return <code class="docutils literal notranslate"><span class="pre">0</span></code> when used in a project exported in release mode.</p>
+<p><strong>Note:</strong> Some of the built-in monitors are not updated in real-time for performance reasons, so there may be a delay of up to 1 second between changes.</p>
+<p><strong>Note:</strong> Custom monitors do not support negative values. Negative values are clamped to 0.</p>
+</section>
+<section class="classref-reftable-group" id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-performance-method-add-custom-monitor"><span class="std std-ref">add_custom_monitor</span></a>(id: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>, callable: <a class="reference internal" href="class_callable.html#class-callable"><span class="std std-ref">Callable</span></a>, arguments: <a class="reference internal" href="class_array.html#class-array"><span class="std std-ref">Array</span></a> = [], type: <a class="reference internal" href="#enum-performance-monitortype"><span class="std std-ref">MonitorType</span></a> = 0)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a></p></td>
+<td><p><a class="reference internal" href="#class-performance-method-get-custom-monitor"><span class="std std-ref">get_custom_monitor</span></a>(id: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_array.html#class-array"><span class="std std-ref">Array</span></a>[<a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>]</p></td>
+<td><p><a class="reference internal" href="#class-performance-method-get-custom-monitor-names"><span class="std std-ref">get_custom_monitor_names</span></a>()</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_packedint32array.html#class-packedint32array"><span class="std std-ref">PackedInt32Array</span></a></p></td>
+<td><p><a class="reference internal" href="#class-performance-method-get-custom-monitor-types"><span class="std std-ref">get_custom_monitor_types</span></a>()</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-performance-method-get-monitor"><span class="std std-ref">get_monitor</span></a>(monitor: <a class="reference internal" href="#enum-performance-monitor"><span class="std std-ref">Monitor</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-performance-method-get-monitor-modification-time"><span class="std std-ref">get_monitor_modification_time</span></a>()</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-performance-method-has-custom-monitor"><span class="std std-ref">has_custom_monitor</span></a>(id: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-performance-method-remove-custom-monitor"><span class="std std-ref">remove_custom_monitor</span></a>(id: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>)</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="enumerations">
+<h2>Enumerations<a class="headerlink" href="#enumerations" title="Link to this heading"></a></h2>
+<p class="classref-enumeration" id="enum-performance-monitor">enum <strong>Monitor</strong>: <a class="reference internal" href="#enum-performance-monitor"><span class="std std-ref">🔗</span></a></p>
+<p class="classref-enumeration-constant" id="class-performance-constant-time-fps"><a class="reference internal" href="#enum-performance-monitor"><span class="std std-ref">Monitor</span></a> <strong>TIME_FPS</strong> = <code class="docutils literal notranslate"><span class="pre">0</span></code></p>
+<p>The number of frames rendered in the last second. This metric is only updated once per second, even if queried more often. <em>Higher is better.</em></p>
+<p class="classref-enumeration-constant" id="class-performance-constant-time-process"><a class="reference internal" href="#enum-performance-monitor"><span class="std std-ref">Monitor</span></a> <strong>TIME_PROCESS</strong> = <code class="docutils literal notranslate"><span class="pre">1</span></code></p>
+<p>Time it took to complete one frame, in seconds. <em>Lower is better.</em></p>
+<p class="classref-enumeration-constant" id="class-performance-constant-time-physics-process"><a class="reference internal" href="#enum-performance-monitor"><span class="std std-ref">Monitor</span></a> <strong>TIME_PHYSICS_PROCESS</strong> = <code class="docutils literal notranslate"><span class="pre">2</span></code></p>
+<p>Time it took to complete one physics frame, in seconds. <em>Lower is better.</em></p>
+<p class="classref-enumeration-constant" id="class-performance-constant-time-navigation-process"><a class="reference internal" href="#enum-performance-monitor"><span class="std std-ref">Monitor</span></a> <strong>TIME_NAVIGATION_PROCESS</strong> = <code class="docutils literal notranslate"><span class="pre">3</span></code></p>
+<p>Time it took to complete one navigation step, in seconds. This includes navigation map updates as well as agent avoidance calculations. <em>Lower is better.</em></p>
+<p class="classref-enumeration-constant" id="class-performance-constant-memory-static"><a class="reference internal" href="#enum-performance-monitor"><span class="std std-ref">Monitor</span></a> <strong>MEMORY_STATIC</strong> = <code class="docutils literal notranslate"><span class="pre">4</span></code></p>
+<p>Static memory currently used, in bytes. Not available in release builds. <em>Lower is better.</em></p>
+<p class="classref-enumeration-constant" id="class-performance-constant-memory-static-max"><a class="reference internal" href="#enum-performance-monitor"><span class="std std-ref">Monitor</span></a> <strong>MEMORY_STATIC_MAX</strong> = <code class="docutils literal notranslate"><span class="pre">5</span></code></p>
+<p>Available static memory. Not available in release builds. <em>Lower is better.</em></p>
+<p class="classref-enumeration-constant" id="class-performance-constant-memory-message-buffer-max"><a class="reference internal" href="#enum-performance-monitor"><span class="std std-ref">Monitor</span></a> <strong>MEMORY_MESSAGE_BUFFER_MAX</strong> = <code class="docutils literal notranslate"><span class="pre">6</span></code></p>
+<p>Largest amount of memory the message queue buffer has used, in bytes. The message queue is used for deferred functions calls and notifications. <em>Lower is better.</em></p>
+<p class="classref-enumeration-constant" id="class-performance-constant-object-count"><a class="reference internal" href="#enum-performance-monitor"><span class="std std-ref">Monitor</span></a> <strong>OBJECT_COUNT</strong> = <code class="docutils literal notranslate"><span class="pre">7</span></code></p>
+<p>Number of objects currently instantiated (including nodes). <em>Lower is better.</em></p>
+<p class="classref-enumeration-constant" id="class-performance-constant-object-resource-count"><a class="reference internal" href="#enum-performance-monitor"><span class="std std-ref">Monitor</span></a> <strong>OBJECT_RESOURCE_COUNT</strong> = <code class="docutils literal notranslate"><span class="pre">8</span></code></p>
+<p>Number of resources currently used. <em>Lower is better.</em></p>
+<p class="classref-enumeration-constant" id="class-performance-constant-object-node-count"><a class="reference internal" href="#enum-performance-monitor"><span class="std std-ref">Monitor</span></a> <strong>OBJECT_NODE_COUNT</strong> = <code class="docutils literal notranslate"><span class="pre">9</span></code></p>
+<p>Number of nodes currently instantiated in the scene tree. This also includes the root node. <em>Lower is better.</em></p>
+<p class="classref-enumeration-constant" id="class-performance-constant-object-orphan-node-count"><a class="reference internal" href="#enum-performance-monitor"><span class="std std-ref">Monitor</span></a> <strong>OBJECT_ORPHAN_NODE_COUNT</strong> = <code class="docutils literal notranslate"><span class="pre">10</span></code></p>
+<p>Number of orphan nodes, i.e. nodes which are not parented to a node of the scene tree. <em>Lower is better.</em></p>
+<p><strong>Note:</strong> This is only available in debug mode and will always return <code class="docutils literal notranslate"><span class="pre">0</span></code> when used in a project exported in release mode.</p>
+<p class="classref-enumeration-constant" id="class-performance-constant-render-total-objects-in-frame"><a class="reference internal" href="#enum-performance-monitor"><span class="std std-ref">Monitor</span></a> <strong>RENDER_TOTAL_OBJECTS_IN_FRAME</strong> = <code class="docutils literal notranslate"><span class="pre">11</span></code></p>
+<p>The total number of objects in the last rendered frame. This metric doesn’t include culled objects (either via hiding nodes, frustum culling or occlusion culling). <em>Lower is better.</em></p>
+<p class="classref-enumeration-constant" id="class-performance-constant-render-total-primitives-in-frame"><a class="reference internal" href="#enum-performance-monitor"><span class="std std-ref">Monitor</span></a> <strong>RENDER_TOTAL_PRIMITIVES_IN_FRAME</strong> = <code class="docutils literal notranslate"><span class="pre">12</span></code></p>
+<p>The total number of vertices or indices rendered in the last rendered frame. This metric doesn’t include primitives from culled objects (either via hiding nodes, frustum culling or occlusion culling). Due to the depth prepass and shadow passes, the number of primitives is always higher than the actual number of vertices in the scene (typically double or triple the original vertex count). <em>Lower is better.</em></p>
+<p class="classref-enumeration-constant" id="class-performance-constant-render-total-draw-calls-in-frame"><a class="reference internal" href="#enum-performance-monitor"><span class="std std-ref">Monitor</span></a> <strong>RENDER_TOTAL_DRAW_CALLS_IN_FRAME</strong> = <code class="docutils literal notranslate"><span class="pre">13</span></code></p>
+<p>The total number of draw calls performed in the last rendered frame. This metric doesn’t include culled objects (either via hiding nodes, frustum culling or occlusion culling), since they do not result in draw calls. <em>Lower is better.</em></p>
+<p class="classref-enumeration-constant" id="class-performance-constant-render-video-mem-used"><a class="reference internal" href="#enum-performance-monitor"><span class="std std-ref">Monitor</span></a> <strong>RENDER_VIDEO_MEM_USED</strong> = <code class="docutils literal notranslate"><span class="pre">14</span></code></p>
+<p>The amount of video memory used (texture and vertex memory combined, in bytes). Since this metric also includes miscellaneous allocations, this value is always greater than the sum of <a class="reference internal" href="#class-performance-constant-render-texture-mem-used"><span class="std std-ref">RENDER_TEXTURE_MEM_USED</span></a> and <a class="reference internal" href="#class-performance-constant-render-buffer-mem-used"><span class="std std-ref">RENDER_BUFFER_MEM_USED</span></a>. <em>Lower is better.</em></p>
+<p class="classref-enumeration-constant" id="class-performance-constant-render-texture-mem-used"><a class="reference internal" href="#enum-performance-monitor"><span class="std std-ref">Monitor</span></a> <strong>RENDER_TEXTURE_MEM_USED</strong> = <code class="docutils literal notranslate"><span class="pre">15</span></code></p>
+<p>The amount of texture memory used (in bytes). <em>Lower is better.</em></p>
+<p class="classref-enumeration-constant" id="class-performance-constant-render-buffer-mem-used"><a class="reference internal" href="#enum-performance-monitor"><span class="std std-ref">Monitor</span></a> <strong>RENDER_BUFFER_MEM_USED</strong> = <code class="docutils literal notranslate"><span class="pre">16</span></code></p>
+<p>The amount of render buffer memory used (in bytes). <em>Lower is better.</em></p>
+<p class="classref-enumeration-constant" id="class-performance-constant-physics-2d-active-objects"><a class="reference internal" href="#enum-performance-monitor"><span class="std std-ref">Monitor</span></a> <strong>PHYSICS_2D_ACTIVE_OBJECTS</strong> = <code class="docutils literal notranslate"><span class="pre">17</span></code></p>
+<p>Number of active <a class="reference internal" href="class_rigidbody2d.html#class-rigidbody2d"><span class="std std-ref">RigidBody2D</span></a> nodes in the game. <em>Lower is better.</em></p>
+<p class="classref-enumeration-constant" id="class-performance-constant-physics-2d-collision-pairs"><a class="reference internal" href="#enum-performance-monitor"><span class="std std-ref">Monitor</span></a> <strong>PHYSICS_2D_COLLISION_PAIRS</strong> = <code class="docutils literal notranslate"><span class="pre">18</span></code></p>
+<p>Number of collision pairs in the 2D physics engine. <em>Lower is better.</em></p>
+<p class="classref-enumeration-constant" id="class-performance-constant-physics-2d-island-count"><a class="reference internal" href="#enum-performance-monitor"><span class="std std-ref">Monitor</span></a> <strong>PHYSICS_2D_ISLAND_COUNT</strong> = <code class="docutils literal notranslate"><span class="pre">19</span></code></p>
+<p>Number of islands in the 2D physics engine. <em>Lower is better.</em></p>
+<p class="classref-enumeration-constant" id="class-performance-constant-physics-3d-active-objects"><a class="reference internal" href="#enum-performance-monitor"><span class="std std-ref">Monitor</span></a> <strong>PHYSICS_3D_ACTIVE_OBJECTS</strong> = <code class="docutils literal notranslate"><span class="pre">20</span></code></p>
+<p>Number of active <a class="reference internal" href="class_rigidbody3d.html#class-rigidbody3d"><span class="std std-ref">RigidBody3D</span></a> and <a class="reference internal" href="class_vehiclebody3d.html#class-vehiclebody3d"><span class="std std-ref">VehicleBody3D</span></a> nodes in the game. <em>Lower is better.</em></p>
+<p class="classref-enumeration-constant" id="class-performance-constant-physics-3d-collision-pairs"><a class="reference internal" href="#enum-performance-monitor"><span class="std std-ref">Monitor</span></a> <strong>PHYSICS_3D_COLLISION_PAIRS</strong> = <code class="docutils literal notranslate"><span class="pre">21</span></code></p>
+<p>Number of collision pairs in the 3D physics engine. <em>Lower is better.</em></p>
+<p class="classref-enumeration-constant" id="class-performance-constant-physics-3d-island-count"><a class="reference internal" href="#enum-performance-monitor"><span class="std std-ref">Monitor</span></a> <strong>PHYSICS_3D_ISLAND_COUNT</strong> = <code class="docutils literal notranslate"><span class="pre">22</span></code></p>
+<p>Number of islands in the 3D physics engine. <em>Lower is better.</em></p>
+<p class="classref-enumeration-constant" id="class-performance-constant-audio-output-latency"><a class="reference internal" href="#enum-performance-monitor"><span class="std std-ref">Monitor</span></a> <strong>AUDIO_OUTPUT_LATENCY</strong> = <code class="docutils literal notranslate"><span class="pre">23</span></code></p>
+<p>Output latency of the <a class="reference internal" href="class_audioserver.html#class-audioserver"><span class="std std-ref">AudioServer</span></a>. Equivalent to calling <a class="reference internal" href="class_audioserver.html#class-audioserver-method-get-output-latency"><span class="std std-ref">AudioServer.get_output_latency()</span></a>, it is not recommended to call this every frame.</p>
+<p class="classref-enumeration-constant" id="class-performance-constant-navigation-active-maps"><a class="reference internal" href="#enum-performance-monitor"><span class="std std-ref">Monitor</span></a> <strong>NAVIGATION_ACTIVE_MAPS</strong> = <code class="docutils literal notranslate"><span class="pre">24</span></code></p>
+<p>Number of active navigation maps in <a class="reference internal" href="class_navigationserver2d.html#class-navigationserver2d"><span class="std std-ref">NavigationServer2D</span></a> and <a class="reference internal" href="class_navigationserver3d.html#class-navigationserver3d"><span class="std std-ref">NavigationServer3D</span></a>. This also includes the empty default navigation maps created by <a class="reference internal" href="class_world2d.html#class-world2d"><span class="std std-ref">World2D</span></a> and <a class="reference internal" href="class_world3d.html#class-world3d"><span class="std std-ref">World3D</span></a> instances.</p>
+<p class="classref-enumeration-constant" id="class-performance-constant-navigation-region-count"><a class="reference internal" href="#enum-performance-monitor"><span class="std std-ref">Monitor</span></a> <strong>NAVIGATION_REGION_COUNT</strong> = <code class="docutils literal notranslate"><span class="pre">25</span></code></p>
+<p>Number of active navigation regions in <a class="reference internal" href="class_navigationserver2d.html#class-navigationserver2d"><span class="std std-ref">NavigationServer2D</span></a> and <a class="reference internal" href="class_navigationserver3d.html#class-navigationserver3d"><span class="std std-ref">NavigationServer3D</span></a>.</p>
+<p class="classref-enumeration-constant" id="class-performance-constant-navigation-agent-count"><a class="reference internal" href="#enum-performance-monitor"><span class="std std-ref">Monitor</span></a> <strong>NAVIGATION_AGENT_COUNT</strong> = <code class="docutils literal notranslate"><span class="pre">26</span></code></p>
+<p>Number of active navigation agents processing avoidance in <a class="reference internal" href="class_navigationserver2d.html#class-navigationserver2d"><span class="std std-ref">NavigationServer2D</span></a> and <a class="reference internal" href="class_navigationserver3d.html#class-navigationserver3d"><span class="std std-ref">NavigationServer3D</span></a>.</p>
+<p class="classref-enumeration-constant" id="class-performance-constant-navigation-link-count"><a class="reference internal" href="#enum-performance-monitor"><span class="std std-ref">Monitor</span></a> <strong>NAVIGATION_LINK_COUNT</strong> = <code class="docutils literal notranslate"><span class="pre">27</span></code></p>
+<p>Number of active navigation links in <a class="reference internal" href="class_navigationserver2d.html#class-navigationserver2d"><span class="std std-ref">NavigationServer2D</span></a> and <a class="reference internal" href="class_navigationserver3d.html#class-navigationserver3d"><span class="std std-ref">NavigationServer3D</span></a>.</p>
+<p class="classref-enumeration-constant" id="class-performance-constant-navigation-polygon-count"><a class="reference internal" href="#enum-performance-monitor"><span class="std std-ref">Monitor</span></a> <strong>NAVIGATION_POLYGON_COUNT</strong> = <code class="docutils literal notranslate"><span class="pre">28</span></code></p>
+<p>Number of navigation mesh polygons in <a class="reference internal" href="class_navigationserver2d.html#class-navigationserver2d"><span class="std std-ref">NavigationServer2D</span></a> and <a class="reference internal" href="class_navigationserver3d.html#class-navigationserver3d"><span class="std std-ref">NavigationServer3D</span></a>.</p>
+<p class="classref-enumeration-constant" id="class-performance-constant-navigation-edge-count"><a class="reference internal" href="#enum-performance-monitor"><span class="std std-ref">Monitor</span></a> <strong>NAVIGATION_EDGE_COUNT</strong> = <code class="docutils literal notranslate"><span class="pre">29</span></code></p>
+<p>Number of navigation mesh polygon edges in <a class="reference internal" href="class_navigationserver2d.html#class-navigationserver2d"><span class="std std-ref">NavigationServer2D</span></a> and <a class="reference internal" href="class_navigationserver3d.html#class-navigationserver3d"><span class="std std-ref">NavigationServer3D</span></a>.</p>
+<p class="classref-enumeration-constant" id="class-performance-constant-navigation-edge-merge-count"><a class="reference internal" href="#enum-performance-monitor"><span class="std std-ref">Monitor</span></a> <strong>NAVIGATION_EDGE_MERGE_COUNT</strong> = <code class="docutils literal notranslate"><span class="pre">30</span></code></p>
+<p>Number of navigation mesh polygon edges that were merged due to edge key overlap in <a class="reference internal" href="class_navigationserver2d.html#class-navigationserver2d"><span class="std std-ref">NavigationServer2D</span></a> and <a class="reference internal" href="class_navigationserver3d.html#class-navigationserver3d"><span class="std std-ref">NavigationServer3D</span></a>.</p>
+<p class="classref-enumeration-constant" id="class-performance-constant-navigation-edge-connection-count"><a class="reference internal" href="#enum-performance-monitor"><span class="std std-ref">Monitor</span></a> <strong>NAVIGATION_EDGE_CONNECTION_COUNT</strong> = <code class="docutils literal notranslate"><span class="pre">31</span></code></p>
+<p>Number of polygon edges that are considered connected by edge proximity <a class="reference internal" href="class_navigationserver2d.html#class-navigationserver2d"><span class="std std-ref">NavigationServer2D</span></a> and <a class="reference internal" href="class_navigationserver3d.html#class-navigationserver3d"><span class="std std-ref">NavigationServer3D</span></a>.</p>
+<p class="classref-enumeration-constant" id="class-performance-constant-navigation-edge-free-count"><a class="reference internal" href="#enum-performance-monitor"><span class="std std-ref">Monitor</span></a> <strong>NAVIGATION_EDGE_FREE_COUNT</strong> = <code class="docutils literal notranslate"><span class="pre">32</span></code></p>
+<p>Number of navigation mesh polygon edges that could not be merged in <a class="reference internal" href="class_navigationserver2d.html#class-navigationserver2d"><span class="std std-ref">NavigationServer2D</span></a> and <a class="reference internal" href="class_navigationserver3d.html#class-navigationserver3d"><span class="std std-ref">NavigationServer3D</span></a>. The edges still may be connected by edge proximity or with links.</p>
+<p class="classref-enumeration-constant" id="class-performance-constant-navigation-obstacle-count"><a class="reference internal" href="#enum-performance-monitor"><span class="std std-ref">Monitor</span></a> <strong>NAVIGATION_OBSTACLE_COUNT</strong> = <code class="docutils literal notranslate"><span class="pre">33</span></code></p>
+<p>Number of active navigation obstacles in the <a class="reference internal" href="class_navigationserver2d.html#class-navigationserver2d"><span class="std std-ref">NavigationServer2D</span></a> and <a class="reference internal" href="class_navigationserver3d.html#class-navigationserver3d"><span class="std std-ref">NavigationServer3D</span></a>.</p>
+<p class="classref-enumeration-constant" id="class-performance-constant-pipeline-compilations-canvas"><a class="reference internal" href="#enum-performance-monitor"><span class="std std-ref">Monitor</span></a> <strong>PIPELINE_COMPILATIONS_CANVAS</strong> = <code class="docutils literal notranslate"><span class="pre">34</span></code></p>
+<p>Number of pipeline compilations that were triggered by the 2D canvas renderer.</p>
+<p class="classref-enumeration-constant" id="class-performance-constant-pipeline-compilations-mesh"><a class="reference internal" href="#enum-performance-monitor"><span class="std std-ref">Monitor</span></a> <strong>PIPELINE_COMPILATIONS_MESH</strong> = <code class="docutils literal notranslate"><span class="pre">35</span></code></p>
+<p>Number of pipeline compilations that were triggered by loading meshes. These compilations will show up as longer loading times the first time a user runs the game and the pipeline is required.</p>
+<p class="classref-enumeration-constant" id="class-performance-constant-pipeline-compilations-surface"><a class="reference internal" href="#enum-performance-monitor"><span class="std std-ref">Monitor</span></a> <strong>PIPELINE_COMPILATIONS_SURFACE</strong> = <code class="docutils literal notranslate"><span class="pre">36</span></code></p>
+<p>Number of pipeline compilations that were triggered by building the surface cache before rendering the scene. These compilations will show up as a stutter when loading a scene the first time a user runs the game and the pipeline is required.</p>
+<p class="classref-enumeration-constant" id="class-performance-constant-pipeline-compilations-draw"><a class="reference internal" href="#enum-performance-monitor"><span class="std std-ref">Monitor</span></a> <strong>PIPELINE_COMPILATIONS_DRAW</strong> = <code class="docutils literal notranslate"><span class="pre">37</span></code></p>
+<p>Number of pipeline compilations that were triggered while drawing the scene. These compilations will show up as stutters during gameplay the first time a user runs the game and the pipeline is required.</p>
+<p class="classref-enumeration-constant" id="class-performance-constant-pipeline-compilations-specialization"><a class="reference internal" href="#enum-performance-monitor"><span class="std std-ref">Monitor</span></a> <strong>PIPELINE_COMPILATIONS_SPECIALIZATION</strong> = <code class="docutils literal notranslate"><span class="pre">38</span></code></p>
+<p>Number of pipeline compilations that were triggered to optimize the current scene. These compilations are done in the background and should not cause any stutters whatsoever.</p>
+<p class="classref-enumeration-constant" id="class-performance-constant-navigation-2d-active-maps"><a class="reference internal" href="#enum-performance-monitor"><span class="std std-ref">Monitor</span></a> <strong>NAVIGATION_2D_ACTIVE_MAPS</strong> = <code class="docutils literal notranslate"><span class="pre">39</span></code></p>
+<p>Number of active navigation maps in the <a class="reference internal" href="class_navigationserver2d.html#class-navigationserver2d"><span class="std std-ref">NavigationServer2D</span></a>. This also includes the empty default navigation maps created by <a class="reference internal" href="class_world2d.html#class-world2d"><span class="std std-ref">World2D</span></a> instances.</p>
+<p class="classref-enumeration-constant" id="class-performance-constant-navigation-2d-region-count"><a class="reference internal" href="#enum-performance-monitor"><span class="std std-ref">Monitor</span></a> <strong>NAVIGATION_2D_REGION_COUNT</strong> = <code class="docutils literal notranslate"><span class="pre">40</span></code></p>
+<p>Number of active navigation regions in the <a class="reference internal" href="class_navigationserver2d.html#class-navigationserver2d"><span class="std std-ref">NavigationServer2D</span></a>.</p>
+<p class="classref-enumeration-constant" id="class-performance-constant-navigation-2d-agent-count"><a class="reference internal" href="#enum-performance-monitor"><span class="std std-ref">Monitor</span></a> <strong>NAVIGATION_2D_AGENT_COUNT</strong> = <code class="docutils literal notranslate"><span class="pre">41</span></code></p>
+<p>Number of active navigation agents processing avoidance in the <a class="reference internal" href="class_navigationserver2d.html#class-navigationserver2d"><span class="std std-ref">NavigationServer2D</span></a>.</p>
+<p class="classref-enumeration-constant" id="class-performance-constant-navigation-2d-link-count"><a class="reference internal" href="#enum-performance-monitor"><span class="std std-ref">Monitor</span></a> <strong>NAVIGATION_2D_LINK_COUNT</strong> = <code class="docutils literal notranslate"><span class="pre">42</span></code></p>
+<p>Number of active navigation links in the <a class="reference internal" href="class_navigationserver2d.html#class-navigationserver2d"><span class="std std-ref">NavigationServer2D</span></a>.</p>
+<p class="classref-enumeration-constant" id="class-performance-constant-navigation-2d-polygon-count"><a class="reference internal" href="#enum-performance-monitor"><span class="std std-ref">Monitor</span></a> <strong>NAVIGATION_2D_POLYGON_COUNT</strong> = <code class="docutils literal notranslate"><span class="pre">43</span></code></p>
+<p>Number of navigation mesh polygons in the <a class="reference internal" href="class_navigationserver2d.html#class-navigationserver2d"><span class="std std-ref">NavigationServer2D</span></a>.</p>
+<p class="classref-enumeration-constant" id="class-performance-constant-navigation-2d-edge-count"><a class="reference internal" href="#enum-performance-monitor"><span class="std std-ref">Monitor</span></a> <strong>NAVIGATION_2D_EDGE_COUNT</strong> = <code class="docutils literal notranslate"><span class="pre">44</span></code></p>
+<p>Number of navigation mesh polygon edges in the <a class="reference internal" href="class_navigationserver2d.html#class-navigationserver2d"><span class="std std-ref">NavigationServer2D</span></a>.</p>
+<p class="classref-enumeration-constant" id="class-performance-constant-navigation-2d-edge-merge-count"><a class="reference internal" href="#enum-performance-monitor"><span class="std std-ref">Monitor</span></a> <strong>NAVIGATION_2D_EDGE_MERGE_COUNT</strong> = <code class="docutils literal notranslate"><span class="pre">45</span></code></p>
+<p>Number of navigation mesh polygon edges that were merged due to edge key overlap in the <a class="reference internal" href="class_navigationserver2d.html#class-navigationserver2d"><span class="std std-ref">NavigationServer2D</span></a>.</p>
+<p class="classref-enumeration-constant" id="class-performance-constant-navigation-2d-edge-connection-count"><a class="reference internal" href="#enum-performance-monitor"><span class="std std-ref">Monitor</span></a> <strong>NAVIGATION_2D_EDGE_CONNECTION_COUNT</strong> = <code class="docutils literal notranslate"><span class="pre">46</span></code></p>
+<p>Number of polygon edges that are considered connected by edge proximity <a class="reference internal" href="class_navigationserver2d.html#class-navigationserver2d"><span class="std std-ref">NavigationServer2D</span></a>.</p>
+<p class="classref-enumeration-constant" id="class-performance-constant-navigation-2d-edge-free-count"><a class="reference internal" href="#enum-performance-monitor"><span class="std std-ref">Monitor</span></a> <strong>NAVIGATION_2D_EDGE_FREE_COUNT</strong> = <code class="docutils literal notranslate"><span class="pre">47</span></code></p>
+<p>Number of navigation mesh polygon edges that could not be merged in the <a class="reference internal" href="class_navigationserver2d.html#class-navigationserver2d"><span class="std std-ref">NavigationServer2D</span></a>. The edges still may be connected by edge proximity or with links.</p>
+<p class="classref-enumeration-constant" id="class-performance-constant-navigation-2d-obstacle-count"><a class="reference internal" href="#enum-performance-monitor"><span class="std std-ref">Monitor</span></a> <strong>NAVIGATION_2D_OBSTACLE_COUNT</strong> = <code class="docutils literal notranslate"><span class="pre">48</span></code></p>
+<p>Number of active navigation obstacles in the <a class="reference internal" href="class_navigationserver2d.html#class-navigationserver2d"><span class="std std-ref">NavigationServer2D</span></a>.</p>
+<p class="classref-enumeration-constant" id="class-performance-constant-navigation-3d-active-maps"><a class="reference internal" href="#enum-performance-monitor"><span class="std std-ref">Monitor</span></a> <strong>NAVIGATION_3D_ACTIVE_MAPS</strong> = <code class="docutils literal notranslate"><span class="pre">49</span></code></p>
+<p>Number of active navigation maps in the <a class="reference internal" href="class_navigationserver3d.html#class-navigationserver3d"><span class="std std-ref">NavigationServer3D</span></a>. This also includes the empty default navigation maps created by <a class="reference internal" href="class_world3d.html#class-world3d"><span class="std std-ref">World3D</span></a> instances.</p>
+<p class="classref-enumeration-constant" id="class-performance-constant-navigation-3d-region-count"><a class="reference internal" href="#enum-performance-monitor"><span class="std std-ref">Monitor</span></a> <strong>NAVIGATION_3D_REGION_COUNT</strong> = <code class="docutils literal notranslate"><span class="pre">50</span></code></p>
+<p>Number of active navigation regions in the <a class="reference internal" href="class_navigationserver3d.html#class-navigationserver3d"><span class="std std-ref">NavigationServer3D</span></a>.</p>
+<p class="classref-enumeration-constant" id="class-performance-constant-navigation-3d-agent-count"><a class="reference internal" href="#enum-performance-monitor"><span class="std std-ref">Monitor</span></a> <strong>NAVIGATION_3D_AGENT_COUNT</strong> = <code class="docutils literal notranslate"><span class="pre">51</span></code></p>
+<p>Number of active navigation agents processing avoidance in the <a class="reference internal" href="class_navigationserver3d.html#class-navigationserver3d"><span class="std std-ref">NavigationServer3D</span></a>.</p>
+<p class="classref-enumeration-constant" id="class-performance-constant-navigation-3d-link-count"><a class="reference internal" href="#enum-performance-monitor"><span class="std std-ref">Monitor</span></a> <strong>NAVIGATION_3D_LINK_COUNT</strong> = <code class="docutils literal notranslate"><span class="pre">52</span></code></p>
+<p>Number of active navigation links in the <a class="reference internal" href="class_navigationserver3d.html#class-navigationserver3d"><span class="std std-ref">NavigationServer3D</span></a>.</p>
+<p class="classref-enumeration-constant" id="class-performance-constant-navigation-3d-polygon-count"><a class="reference internal" href="#enum-performance-monitor"><span class="std std-ref">Monitor</span></a> <strong>NAVIGATION_3D_POLYGON_COUNT</strong> = <code class="docutils literal notranslate"><span class="pre">53</span></code></p>
+<p>Number of navigation mesh polygons in the <a class="reference internal" href="class_navigationserver3d.html#class-navigationserver3d"><span class="std std-ref">NavigationServer3D</span></a>.</p>
+<p class="classref-enumeration-constant" id="class-performance-constant-navigation-3d-edge-count"><a class="reference internal" href="#enum-performance-monitor"><span class="std std-ref">Monitor</span></a> <strong>NAVIGATION_3D_EDGE_COUNT</strong> = <code class="docutils literal notranslate"><span class="pre">54</span></code></p>
+<p>Number of navigation mesh polygon edges in the <a class="reference internal" href="class_navigationserver3d.html#class-navigationserver3d"><span class="std std-ref">NavigationServer3D</span></a>.</p>
+<p class="classref-enumeration-constant" id="class-performance-constant-navigation-3d-edge-merge-count"><a class="reference internal" href="#enum-performance-monitor"><span class="std std-ref">Monitor</span></a> <strong>NAVIGATION_3D_EDGE_MERGE_COUNT</strong> = <code class="docutils literal notranslate"><span class="pre">55</span></code></p>
+<p>Number of navigation mesh polygon edges that were merged due to edge key overlap in the <a class="reference internal" href="class_navigationserver3d.html#class-navigationserver3d"><span class="std std-ref">NavigationServer3D</span></a>.</p>
+<p class="classref-enumeration-constant" id="class-performance-constant-navigation-3d-edge-connection-count"><a class="reference internal" href="#enum-performance-monitor"><span class="std std-ref">Monitor</span></a> <strong>NAVIGATION_3D_EDGE_CONNECTION_COUNT</strong> = <code class="docutils literal notranslate"><span class="pre">56</span></code></p>
+<p>Number of polygon edges that are considered connected by edge proximity <a class="reference internal" href="class_navigationserver3d.html#class-navigationserver3d"><span class="std std-ref">NavigationServer3D</span></a>.</p>
+<p class="classref-enumeration-constant" id="class-performance-constant-navigation-3d-edge-free-count"><a class="reference internal" href="#enum-performance-monitor"><span class="std std-ref">Monitor</span></a> <strong>NAVIGATION_3D_EDGE_FREE_COUNT</strong> = <code class="docutils literal notranslate"><span class="pre">57</span></code></p>
+<p>Number of navigation mesh polygon edges that could not be merged in the <a class="reference internal" href="class_navigationserver3d.html#class-navigationserver3d"><span class="std std-ref">NavigationServer3D</span></a>. The edges still may be connected by edge proximity or with links.</p>
+<p class="classref-enumeration-constant" id="class-performance-constant-navigation-3d-obstacle-count"><a class="reference internal" href="#enum-performance-monitor"><span class="std std-ref">Monitor</span></a> <strong>NAVIGATION_3D_OBSTACLE_COUNT</strong> = <code class="docutils literal notranslate"><span class="pre">58</span></code></p>
+<p>Number of active navigation obstacles in the <a class="reference internal" href="class_navigationserver3d.html#class-navigationserver3d"><span class="std std-ref">NavigationServer3D</span></a>.</p>
+<p class="classref-enumeration-constant" id="class-performance-constant-monitor-max"><a class="reference internal" href="#enum-performance-monitor"><span class="std std-ref">Monitor</span></a> <strong>MONITOR_MAX</strong> = <code class="docutils literal notranslate"><span class="pre">59</span></code></p>
+<p>Represents the size of the <a class="reference internal" href="#enum-performance-monitor"><span class="std std-ref">Monitor</span></a> enum.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-enumeration" id="enum-performance-monitortype">enum <strong>MonitorType</strong>: <a class="reference internal" href="#enum-performance-monitortype"><span class="std std-ref">🔗</span></a></p>
+<p class="classref-enumeration-constant" id="class-performance-constant-monitor-type-quantity"><a class="reference internal" href="#enum-performance-monitortype"><span class="std std-ref">MonitorType</span></a> <strong>MONITOR_TYPE_QUANTITY</strong> = <code class="docutils literal notranslate"><span class="pre">0</span></code></p>
+<p>Monitor output is formatted as an integer value.</p>
+<p class="classref-enumeration-constant" id="class-performance-constant-monitor-type-memory"><a class="reference internal" href="#enum-performance-monitortype"><span class="std std-ref">MonitorType</span></a> <strong>MONITOR_TYPE_MEMORY</strong> = <code class="docutils literal notranslate"><span class="pre">1</span></code></p>
+<p>Monitor output is formatted as computer memory. Submitted values should represent a number of bytes.</p>
+<p class="classref-enumeration-constant" id="class-performance-constant-monitor-type-time"><a class="reference internal" href="#enum-performance-monitortype"><span class="std std-ref">MonitorType</span></a> <strong>MONITOR_TYPE_TIME</strong> = <code class="docutils literal notranslate"><span class="pre">2</span></code></p>
+<p>Monitor output is formatted as time in milliseconds. Submitted values should represent a time in seconds (not milliseconds).</p>
+<p class="classref-enumeration-constant" id="class-performance-constant-monitor-type-percentage"><a class="reference internal" href="#enum-performance-monitortype"><span class="std std-ref">MonitorType</span></a> <strong>MONITOR_TYPE_PERCENTAGE</strong> = <code class="docutils literal notranslate"><span class="pre">3</span></code></p>
+<p>Monitor output is formatted as a percentage. Submitted values should represent a fractional value rather than the percentage directly, e.g. <code class="docutils literal notranslate"><span class="pre">0.5</span></code> for <code class="docutils literal notranslate"><span class="pre">50.00%</span></code>.</p>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="method-descriptions">
+<h2>Method Descriptions<a class="headerlink" href="#method-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-method" id="class-performance-method-add-custom-monitor"><abbr title="No return value.">void</abbr> <strong>add_custom_monitor</strong>(id: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>, callable: <a class="reference internal" href="class_callable.html#class-callable"><span class="std std-ref">Callable</span></a>, arguments: <a class="reference internal" href="class_array.html#class-array"><span class="std std-ref">Array</span></a> = [], type: <a class="reference internal" href="#enum-performance-monitortype"><span class="std std-ref">MonitorType</span></a> = 0) <a class="reference internal" href="#class-performance-method-add-custom-monitor"><span class="std std-ref">🔗</span></a></p>
+<p>Adds a custom monitor with the name <code class="docutils literal notranslate"><span class="pre">id</span></code>. You can specify the category of the monitor using slash delimiters in <code class="docutils literal notranslate"><span class="pre">id</span></code> (for example: <code class="docutils literal notranslate"><span class="pre">&quot;Game/NumberOfNPCs&quot;</span></code>). If there is more than one slash delimiter, then the default category is used. The default category is <code class="docutils literal notranslate"><span class="pre">&quot;Custom&quot;</span></code>. Prints an error if given <code class="docutils literal notranslate"><span class="pre">id</span></code> is already present.</p>
+<p>The debugger calls the callable to get the value of custom monitor. The callable must return a zero or positive integer or floating-point number.</p>
+<p>Callables are called with arguments supplied in argument array.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-performance-method-get-custom-monitor"><a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a> <strong>get_custom_monitor</strong>(id: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>) <a class="reference internal" href="#class-performance-method-get-custom-monitor"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the value of custom monitor with given <code class="docutils literal notranslate"><span class="pre">id</span></code>. The callable is called to get the value of custom monitor. See also <a class="reference internal" href="#class-performance-method-has-custom-monitor"><span class="std std-ref">has_custom_monitor()</span></a>. Prints an error if the given <code class="docutils literal notranslate"><span class="pre">id</span></code> is absent.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-performance-method-get-custom-monitor-names"><a class="reference internal" href="class_array.html#class-array"><span class="std std-ref">Array</span></a>[<a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>] <strong>get_custom_monitor_names</strong>() <a class="reference internal" href="#class-performance-method-get-custom-monitor-names"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the names of active custom monitors in an <a class="reference internal" href="class_array.html#class-array"><span class="std std-ref">Array</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-performance-method-get-custom-monitor-types"><a class="reference internal" href="class_packedint32array.html#class-packedint32array"><span class="std std-ref">PackedInt32Array</span></a> <strong>get_custom_monitor_types</strong>() <a class="reference internal" href="#class-performance-method-get-custom-monitor-types"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the <a class="reference internal" href="#enum-performance-monitortype"><span class="std std-ref">MonitorType</span></a> values of active custom monitors in an <a class="reference internal" href="class_array.html#class-array"><span class="std std-ref">Array</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-performance-method-get-monitor"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>get_monitor</strong>(monitor: <a class="reference internal" href="#enum-performance-monitor"><span class="std std-ref">Monitor</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-performance-method-get-monitor"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the value of one of the available built-in monitors. You should provide one of the <a class="reference internal" href="#enum-performance-monitor"><span class="std std-ref">Monitor</span></a> constants as the argument, like this:</p>
+<p>See <a class="reference internal" href="#class-performance-method-get-custom-monitor"><span class="std std-ref">get_custom_monitor()</span></a> to query custom performance monitors’ values.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-performance-method-get-monitor-modification-time"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>get_monitor_modification_time</strong>() <a class="reference internal" href="#class-performance-method-get-monitor-modification-time"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the last tick in which custom monitor was added/removed (in microseconds since the engine started). This is set to <a class="reference internal" href="class_time.html#class-time-method-get-ticks-usec"><span class="std std-ref">Time.get_ticks_usec()</span></a> when the monitor is updated.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-performance-method-has-custom-monitor"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>has_custom_monitor</strong>(id: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>) <a class="reference internal" href="#class-performance-method-has-custom-monitor"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if custom monitor with the given <code class="docutils literal notranslate"><span class="pre">id</span></code> is present, <code class="docutils literal notranslate"><span class="pre">false</span></code> otherwise.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-performance-method-remove-custom-monitor"><abbr title="No return value.">void</abbr> <strong>remove_custom_monitor</strong>(id: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>) <a class="reference internal" href="#class-performance-method-remove-custom-monitor"><span class="std std-ref">🔗</span></a></p>
+<p>Removes the custom monitor with given <code class="docutils literal notranslate"><span class="pre">id</span></code>. Prints an error if the given <code class="docutils literal notranslate"><span class="pre">id</span></code> is already absent.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, MUmarShahbaz.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,819 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Input &mdash; RPG Components 2D 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=d45e8c67"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            RPG Components 2D
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">Input</a><ul>
+<li><a class="reference internal" href="#description">Description</a></li>
+<li><a class="reference internal" href="#tutorials">Tutorials</a></li>
+<li><a class="reference internal" href="#properties">Properties</a></li>
+<li><a class="reference internal" href="#methods">Methods</a></li>
+<li><a class="reference internal" href="#signals">Signals</a></li>
+<li><a class="reference internal" href="#enumerations">Enumerations</a></li>
+<li><a class="reference internal" href="#property-descriptions">Property Descriptions</a></li>
+<li><a class="reference internal" href="#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">RPG Components 2D</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Input</li>
+      <li class="wy-breadcrumbs-aside">
+              <!-- User defined GitHub URL -->
+              <a href="hide" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="input">
+<span id="class-input"></span><h1>Input<a class="headerlink" href="#input" title="Link to this heading"></a></h1>
+<p><strong>Inherits:</strong> <a class="reference internal" href="class_object.html#class-object"><span class="std std-ref">Object</span></a></p>
+<p>A singleton for handling inputs.</p>
+<section class="classref-introduction-group" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
+<p>The <strong>Input</strong> singleton handles key presses, mouse buttons and movement, gamepads, and input actions. Actions and their events can be set in the <strong>Input Map</strong> tab in <strong>Project &gt; Project Settings</strong>, or with the <a class="reference internal" href="class_inputmap.html#class-inputmap"><span class="std std-ref">InputMap</span></a> class.</p>
+<p><strong>Note:</strong> <strong>Input</strong>’s methods reflect the global input state and are not affected by <a class="reference internal" href="class_control.html#class-control-method-accept-event"><span class="std std-ref">Control.accept_event()</span></a> or <a class="reference internal" href="class_viewport.html#class-viewport-method-set-input-as-handled"><span class="std std-ref">Viewport.set_input_as_handled()</span></a>, as those methods only deal with the way input is propagated in the <a class="reference internal" href="class_scenetree.html#class-scenetree"><span class="std std-ref">SceneTree</span></a>.</p>
+</section>
+<section class="classref-introduction-group" id="tutorials">
+<h2>Tutorials<a class="headerlink" href="#tutorials" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><span class="xref std std-doc">Inputs documentation index</span></p></li>
+<li><p><a class="reference external" href="https://godotengine.org/asset-library/asset/2712">2D Dodge The Creeps Demo</a></p></li>
+<li><p><a class="reference external" href="https://godotengine.org/asset-library/asset/2755">3D Voxel Demo</a></p></li>
+</ul>
+</section>
+<section class="classref-reftable-group" id="properties">
+<h2>Properties<a class="headerlink" href="#properties" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-input-property-emulate-mouse-from-touch"><span class="std std-ref">emulate_mouse_from_touch</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-input-property-emulate-touch-from-mouse"><span class="std std-ref">emulate_touch_from_mouse</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-input-property-ignore-joypad-on-unfocused-application"><span class="std std-ref">ignore_joypad_on_unfocused_application</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#enum-input-mousemode"><span class="std std-ref">MouseMode</span></a></p></td>
+<td><p><a class="reference internal" href="#class-input-property-mouse-mode"><span class="std std-ref">mouse_mode</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-input-property-use-accumulated-input"><span class="std std-ref">use_accumulated_input</span></a></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section class="classref-reftable-group" id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-input-method-action-press"><span class="std std-ref">action_press</span></a>(action: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>, strength: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> = 1.0)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-input-method-action-release"><span class="std std-ref">action_release</span></a>(action: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-input-method-add-joy-mapping"><span class="std std-ref">add_joy_mapping</span></a>(mapping: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, update_existing: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = false)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-input-method-clear-joy-motion-sensors-calibration"><span class="std std-ref">clear_joy_motion_sensors_calibration</span></a>(device: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-input-method-flush-buffered-events"><span class="std std-ref">flush_buffered_events</span></a>()</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a></p></td>
+<td><p><a class="reference internal" href="#class-input-method-get-accelerometer"><span class="std std-ref">get_accelerometer</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-input-method-get-action-raw-strength"><span class="std std-ref">get_action_raw_strength</span></a>(action: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>, exact_match: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = false) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-input-method-get-action-strength"><span class="std std-ref">get_action_strength</span></a>(action: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>, exact_match: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = false) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-input-method-get-axis"><span class="std std-ref">get_axis</span></a>(negative_action: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>, positive_action: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_array.html#class-array"><span class="std std-ref">Array</span></a>[<a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>]</p></td>
+<td><p><a class="reference internal" href="#class-input-method-get-connected-joypads"><span class="std std-ref">get_connected_joypads</span></a>()</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#enum-input-cursorshape"><span class="std std-ref">CursorShape</span></a></p></td>
+<td><p><a class="reference internal" href="#class-input-method-get-current-cursor-shape"><span class="std std-ref">get_current_cursor_shape</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a></p></td>
+<td><p><a class="reference internal" href="#class-input-method-get-gravity"><span class="std std-ref">get_gravity</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a></p></td>
+<td><p><a class="reference internal" href="#class-input-method-get-gyroscope"><span class="std std-ref">get_gyroscope</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a></p></td>
+<td><p><a class="reference internal" href="#class-input-method-get-joy-accelerometer"><span class="std std-ref">get_joy_accelerometer</span></a>(device: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-input-method-get-joy-axis"><span class="std std-ref">get_joy_axis</span></a>(device: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, axis: <a class="reference internal" href="class_%40globalscope.html#enum-globalscope-joyaxis"><span class="std std-ref">JoyAxis</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a></p></td>
+<td><p><a class="reference internal" href="#class-input-method-get-joy-gravity"><span class="std std-ref">get_joy_gravity</span></a>(device: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a></p></td>
+<td><p><a class="reference internal" href="#class-input-method-get-joy-guid"><span class="std std-ref">get_joy_guid</span></a>(device: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a></p></td>
+<td><p><a class="reference internal" href="#class-input-method-get-joy-gyroscope"><span class="std std-ref">get_joy_gyroscope</span></a>(device: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_dictionary.html#class-dictionary"><span class="std std-ref">Dictionary</span></a></p></td>
+<td><p><a class="reference internal" href="#class-input-method-get-joy-info"><span class="std std-ref">get_joy_info</span></a>(device: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_dictionary.html#class-dictionary"><span class="std std-ref">Dictionary</span></a></p></td>
+<td><p><a class="reference internal" href="#class-input-method-get-joy-motion-sensors-calibration"><span class="std std-ref">get_joy_motion_sensors_calibration</span></a>(device: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-input-method-get-joy-motion-sensors-rate"><span class="std std-ref">get_joy_motion_sensors_rate</span></a>(device: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a></p></td>
+<td><p><a class="reference internal" href="#class-input-method-get-joy-name"><span class="std std-ref">get_joy_name</span></a>(device: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-input-method-get-joy-vibration-duration"><span class="std std-ref">get_joy_vibration_duration</span></a>(device: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-input-method-get-joy-vibration-remaining-duration"><span class="std std-ref">get_joy_vibration_remaining_duration</span></a>(device: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a></p></td>
+<td><p><a class="reference internal" href="#class-input-method-get-joy-vibration-strength"><span class="std std-ref">get_joy_vibration_strength</span></a>(device: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a></p></td>
+<td><p><a class="reference internal" href="#class-input-method-get-last-mouse-screen-velocity"><span class="std std-ref">get_last_mouse_screen_velocity</span></a>()</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a></p></td>
+<td><p><a class="reference internal" href="#class-input-method-get-last-mouse-velocity"><span class="std std-ref">get_last_mouse_velocity</span></a>()</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a></p></td>
+<td><p><a class="reference internal" href="#class-input-method-get-magnetometer"><span class="std std-ref">get_magnetometer</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="This value is an integer composed as a bitmask of the following flags.">BitField</abbr>[<a class="reference internal" href="class_%40globalscope.html#enum-globalscope-mousebuttonmask"><span class="std std-ref">MouseButtonMask</span></a>]</p></td>
+<td><p><a class="reference internal" href="#class-input-method-get-mouse-button-mask"><span class="std std-ref">get_mouse_button_mask</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a></p></td>
+<td><p><a class="reference internal" href="#class-input-method-get-vector"><span class="std std-ref">get_vector</span></a>(negative_x: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>, positive_x: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>, negative_y: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>, positive_y: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>, deadzone: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> = -1.0) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-input-method-has-joy-light"><span class="std std-ref">has_joy_light</span></a>(device: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-input-method-has-joy-motion-sensors"><span class="std std-ref">has_joy_motion_sensors</span></a>(device: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-input-method-has-joy-vibration"><span class="std std-ref">has_joy_vibration</span></a>(device: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-input-method-is-action-just-pressed"><span class="std std-ref">is_action_just_pressed</span></a>(action: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>, exact_match: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = false) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-input-method-is-action-just-pressed-by-event"><span class="std std-ref">is_action_just_pressed_by_event</span></a>(action: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>, event: <a class="reference internal" href="class_inputevent.html#class-inputevent"><span class="std std-ref">InputEvent</span></a>, exact_match: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = false) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-input-method-is-action-just-released"><span class="std std-ref">is_action_just_released</span></a>(action: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>, exact_match: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = false) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-input-method-is-action-just-released-by-event"><span class="std std-ref">is_action_just_released_by_event</span></a>(action: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>, event: <a class="reference internal" href="class_inputevent.html#class-inputevent"><span class="std std-ref">InputEvent</span></a>, exact_match: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = false) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-input-method-is-action-pressed"><span class="std std-ref">is_action_pressed</span></a>(action: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>, exact_match: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = false) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-input-method-is-anything-pressed"><span class="std std-ref">is_anything_pressed</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-input-method-is-joy-button-pressed"><span class="std std-ref">is_joy_button_pressed</span></a>(device: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, button: <a class="reference internal" href="class_%40globalscope.html#enum-globalscope-joybutton"><span class="std std-ref">JoyButton</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-input-method-is-joy-known"><span class="std std-ref">is_joy_known</span></a>(device: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-input-method-is-joy-motion-sensors-calibrated"><span class="std std-ref">is_joy_motion_sensors_calibrated</span></a>(device: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-input-method-is-joy-motion-sensors-calibrating"><span class="std std-ref">is_joy_motion_sensors_calibrating</span></a>(device: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-input-method-is-joy-motion-sensors-enabled"><span class="std std-ref">is_joy_motion_sensors_enabled</span></a>(device: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-input-method-is-joy-vibrating"><span class="std std-ref">is_joy_vibrating</span></a>(device: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-input-method-is-key-label-pressed"><span class="std std-ref">is_key_label_pressed</span></a>(keycode: <a class="reference internal" href="class_%40globalscope.html#enum-globalscope-key"><span class="std std-ref">Key</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-input-method-is-key-pressed"><span class="std std-ref">is_key_pressed</span></a>(keycode: <a class="reference internal" href="class_%40globalscope.html#enum-globalscope-key"><span class="std std-ref">Key</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-input-method-is-mouse-button-pressed"><span class="std std-ref">is_mouse_button_pressed</span></a>(button: <a class="reference internal" href="class_%40globalscope.html#enum-globalscope-mousebutton"><span class="std std-ref">MouseButton</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-input-method-is-physical-key-pressed"><span class="std std-ref">is_physical_key_pressed</span></a>(keycode: <a class="reference internal" href="class_%40globalscope.html#enum-globalscope-key"><span class="std std-ref">Key</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-input-method-parse-input-event"><span class="std std-ref">parse_input_event</span></a>(event: <a class="reference internal" href="class_inputevent.html#class-inputevent"><span class="std std-ref">InputEvent</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-input-method-remove-joy-mapping"><span class="std std-ref">remove_joy_mapping</span></a>(guid: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-input-method-set-accelerometer"><span class="std std-ref">set_accelerometer</span></a>(value: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-input-method-set-custom-mouse-cursor"><span class="std std-ref">set_custom_mouse_cursor</span></a>(image: <a class="reference internal" href="class_resource.html#class-resource"><span class="std std-ref">Resource</span></a>, shape: <a class="reference internal" href="#enum-input-cursorshape"><span class="std std-ref">CursorShape</span></a> = 0, hotspot: <a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a> = Vector2(0, 0))</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-input-method-set-default-cursor-shape"><span class="std std-ref">set_default_cursor_shape</span></a>(shape: <a class="reference internal" href="#enum-input-cursorshape"><span class="std std-ref">CursorShape</span></a> = 0)</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-input-method-set-gravity"><span class="std std-ref">set_gravity</span></a>(value: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-input-method-set-gyroscope"><span class="std std-ref">set_gyroscope</span></a>(value: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-input-method-set-joy-light"><span class="std std-ref">set_joy_light</span></a>(device: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, color: <a class="reference internal" href="class_color.html#class-color"><span class="std std-ref">Color</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-input-method-set-joy-motion-sensors-calibration"><span class="std std-ref">set_joy_motion_sensors_calibration</span></a>(device: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, calibration_info: <a class="reference internal" href="class_dictionary.html#class-dictionary"><span class="std std-ref">Dictionary</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-input-method-set-joy-motion-sensors-enabled"><span class="std std-ref">set_joy_motion_sensors_enabled</span></a>(device: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, enable: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-input-method-set-magnetometer"><span class="std std-ref">set_magnetometer</span></a>(value: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-input-method-should-ignore-device"><span class="std std-ref">should_ignore_device</span></a>(vendor_id: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, product_id: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-input-method-start-joy-motion-sensors-calibration"><span class="std std-ref">start_joy_motion_sensors_calibration</span></a>(device: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-input-method-start-joy-vibration"><span class="std std-ref">start_joy_vibration</span></a>(device: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, weak_magnitude: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, strong_magnitude: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, duration: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> = 0)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-input-method-stop-joy-motion-sensors-calibration"><span class="std std-ref">stop_joy_motion_sensors_calibration</span></a>(device: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-input-method-stop-joy-vibration"><span class="std std-ref">stop_joy_vibration</span></a>(device: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-input-method-vibrate-handheld"><span class="std std-ref">vibrate_handheld</span></a>(duration_ms: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> = 500, amplitude: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> = -1.0)</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-input-method-warp-mouse"><span class="std std-ref">warp_mouse</span></a>(position: <a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a>)</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="signals">
+<h2>Signals<a class="headerlink" href="#signals" title="Link to this heading"></a></h2>
+<p class="classref-signal" id="class-input-signal-joy-connection-changed"><strong>joy_connection_changed</strong>(device: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, connected: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>) <a class="reference internal" href="#class-input-signal-joy-connection-changed"><span class="std std-ref">🔗</span></a></p>
+<p>Emitted when a joypad device has been connected or disconnected.</p>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="enumerations">
+<h2>Enumerations<a class="headerlink" href="#enumerations" title="Link to this heading"></a></h2>
+<p class="classref-enumeration" id="enum-input-mousemode">enum <strong>MouseMode</strong>: <a class="reference internal" href="#enum-input-mousemode"><span class="std std-ref">🔗</span></a></p>
+<p class="classref-enumeration-constant" id="class-input-constant-mouse-mode-visible"><a class="reference internal" href="#enum-input-mousemode"><span class="std std-ref">MouseMode</span></a> <strong>MOUSE_MODE_VISIBLE</strong> = <code class="docutils literal notranslate"><span class="pre">0</span></code></p>
+<p>Makes the mouse cursor visible if it is hidden.</p>
+<p class="classref-enumeration-constant" id="class-input-constant-mouse-mode-hidden"><a class="reference internal" href="#enum-input-mousemode"><span class="std std-ref">MouseMode</span></a> <strong>MOUSE_MODE_HIDDEN</strong> = <code class="docutils literal notranslate"><span class="pre">1</span></code></p>
+<p>Makes the mouse cursor hidden if it is visible.</p>
+<p class="classref-enumeration-constant" id="class-input-constant-mouse-mode-captured"><a class="reference internal" href="#enum-input-mousemode"><span class="std std-ref">MouseMode</span></a> <strong>MOUSE_MODE_CAPTURED</strong> = <code class="docutils literal notranslate"><span class="pre">2</span></code></p>
+<p>Captures the mouse. The mouse will be hidden and its position locked at the center of the window manager’s window.</p>
+<p><strong>Note:</strong> If you want to process the mouse’s movement in this mode, you need to use <a class="reference internal" href="class_inputeventmousemotion.html#class-inputeventmousemotion-property-relative"><span class="std std-ref">InputEventMouseMotion.relative</span></a>.</p>
+<p class="classref-enumeration-constant" id="class-input-constant-mouse-mode-confined"><a class="reference internal" href="#enum-input-mousemode"><span class="std std-ref">MouseMode</span></a> <strong>MOUSE_MODE_CONFINED</strong> = <code class="docutils literal notranslate"><span class="pre">3</span></code></p>
+<p>Confines the mouse cursor to the game window, and make it visible.</p>
+<p class="classref-enumeration-constant" id="class-input-constant-mouse-mode-confined-hidden"><a class="reference internal" href="#enum-input-mousemode"><span class="std std-ref">MouseMode</span></a> <strong>MOUSE_MODE_CONFINED_HIDDEN</strong> = <code class="docutils literal notranslate"><span class="pre">4</span></code></p>
+<p>Confines the mouse cursor to the game window, and make it hidden.</p>
+<p class="classref-enumeration-constant" id="class-input-constant-mouse-mode-max"><a class="reference internal" href="#enum-input-mousemode"><span class="std std-ref">MouseMode</span></a> <strong>MOUSE_MODE_MAX</strong> = <code class="docutils literal notranslate"><span class="pre">5</span></code></p>
+<p>Max value of the <a class="reference internal" href="#enum-input-mousemode"><span class="std std-ref">MouseMode</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-enumeration" id="enum-input-cursorshape">enum <strong>CursorShape</strong>: <a class="reference internal" href="#enum-input-cursorshape"><span class="std std-ref">🔗</span></a></p>
+<p class="classref-enumeration-constant" id="class-input-constant-cursor-arrow"><a class="reference internal" href="#enum-input-cursorshape"><span class="std std-ref">CursorShape</span></a> <strong>CURSOR_ARROW</strong> = <code class="docutils literal notranslate"><span class="pre">0</span></code></p>
+<p>Arrow cursor. Standard, default pointing cursor.</p>
+<p class="classref-enumeration-constant" id="class-input-constant-cursor-ibeam"><a class="reference internal" href="#enum-input-cursorshape"><span class="std std-ref">CursorShape</span></a> <strong>CURSOR_IBEAM</strong> = <code class="docutils literal notranslate"><span class="pre">1</span></code></p>
+<p>I-beam cursor. Usually used to show where the text cursor will appear when the mouse is clicked.</p>
+<p class="classref-enumeration-constant" id="class-input-constant-cursor-pointing-hand"><a class="reference internal" href="#enum-input-cursorshape"><span class="std std-ref">CursorShape</span></a> <strong>CURSOR_POINTING_HAND</strong> = <code class="docutils literal notranslate"><span class="pre">2</span></code></p>
+<p>Pointing hand cursor. Usually used to indicate the pointer is over a link or other interactable item.</p>
+<p class="classref-enumeration-constant" id="class-input-constant-cursor-cross"><a class="reference internal" href="#enum-input-cursorshape"><span class="std std-ref">CursorShape</span></a> <strong>CURSOR_CROSS</strong> = <code class="docutils literal notranslate"><span class="pre">3</span></code></p>
+<p>Cross cursor. Typically appears over regions in which a drawing operation can be performed or for selections.</p>
+<p class="classref-enumeration-constant" id="class-input-constant-cursor-wait"><a class="reference internal" href="#enum-input-cursorshape"><span class="std std-ref">CursorShape</span></a> <strong>CURSOR_WAIT</strong> = <code class="docutils literal notranslate"><span class="pre">4</span></code></p>
+<p>Wait cursor. Indicates that the application is busy performing an operation, and that it cannot be used during the operation (e.g. something is blocking its main thread).</p>
+<p class="classref-enumeration-constant" id="class-input-constant-cursor-busy"><a class="reference internal" href="#enum-input-cursorshape"><span class="std std-ref">CursorShape</span></a> <strong>CURSOR_BUSY</strong> = <code class="docutils literal notranslate"><span class="pre">5</span></code></p>
+<p>Busy cursor. Indicates that the application is busy performing an operation, and that it is still usable during the operation.</p>
+<p class="classref-enumeration-constant" id="class-input-constant-cursor-drag"><a class="reference internal" href="#enum-input-cursorshape"><span class="std std-ref">CursorShape</span></a> <strong>CURSOR_DRAG</strong> = <code class="docutils literal notranslate"><span class="pre">6</span></code></p>
+<p>Drag cursor. Usually displayed when dragging something.</p>
+<p><strong>Note:</strong> Windows lacks a dragging cursor, so <a class="reference internal" href="#class-input-constant-cursor-drag"><span class="std std-ref">CURSOR_DRAG</span></a> is the same as <a class="reference internal" href="#class-input-constant-cursor-move"><span class="std std-ref">CURSOR_MOVE</span></a> for this platform.</p>
+<p class="classref-enumeration-constant" id="class-input-constant-cursor-can-drop"><a class="reference internal" href="#enum-input-cursorshape"><span class="std std-ref">CursorShape</span></a> <strong>CURSOR_CAN_DROP</strong> = <code class="docutils literal notranslate"><span class="pre">7</span></code></p>
+<p>Can drop cursor. Usually displayed when dragging something to indicate that it can be dropped at the current position.</p>
+<p class="classref-enumeration-constant" id="class-input-constant-cursor-forbidden"><a class="reference internal" href="#enum-input-cursorshape"><span class="std std-ref">CursorShape</span></a> <strong>CURSOR_FORBIDDEN</strong> = <code class="docutils literal notranslate"><span class="pre">8</span></code></p>
+<p>Forbidden cursor. Indicates that the current action is forbidden (for example, when dragging something) or that the control at a position is disabled.</p>
+<p class="classref-enumeration-constant" id="class-input-constant-cursor-vsize"><a class="reference internal" href="#enum-input-cursorshape"><span class="std std-ref">CursorShape</span></a> <strong>CURSOR_VSIZE</strong> = <code class="docutils literal notranslate"><span class="pre">9</span></code></p>
+<p>Vertical resize mouse cursor. A double-headed vertical arrow. It tells the user they can resize the window or the panel vertically.</p>
+<p class="classref-enumeration-constant" id="class-input-constant-cursor-hsize"><a class="reference internal" href="#enum-input-cursorshape"><span class="std std-ref">CursorShape</span></a> <strong>CURSOR_HSIZE</strong> = <code class="docutils literal notranslate"><span class="pre">10</span></code></p>
+<p>Horizontal resize mouse cursor. A double-headed horizontal arrow. It tells the user they can resize the window or the panel horizontally.</p>
+<p class="classref-enumeration-constant" id="class-input-constant-cursor-bdiagsize"><a class="reference internal" href="#enum-input-cursorshape"><span class="std std-ref">CursorShape</span></a> <strong>CURSOR_BDIAGSIZE</strong> = <code class="docutils literal notranslate"><span class="pre">11</span></code></p>
+<p>Window resize mouse cursor. The cursor is a double-headed arrow that goes from the bottom left to the top right. It tells the user they can resize the window or the panel both horizontally and vertically.</p>
+<p class="classref-enumeration-constant" id="class-input-constant-cursor-fdiagsize"><a class="reference internal" href="#enum-input-cursorshape"><span class="std std-ref">CursorShape</span></a> <strong>CURSOR_FDIAGSIZE</strong> = <code class="docutils literal notranslate"><span class="pre">12</span></code></p>
+<p>Window resize mouse cursor. The cursor is a double-headed arrow that goes from the top left to the bottom right, the opposite of <a class="reference internal" href="#class-input-constant-cursor-bdiagsize"><span class="std std-ref">CURSOR_BDIAGSIZE</span></a>. It tells the user they can resize the window or the panel both horizontally and vertically.</p>
+<p class="classref-enumeration-constant" id="class-input-constant-cursor-move"><a class="reference internal" href="#enum-input-cursorshape"><span class="std std-ref">CursorShape</span></a> <strong>CURSOR_MOVE</strong> = <code class="docutils literal notranslate"><span class="pre">13</span></code></p>
+<p>Move cursor. Indicates that something can be moved.</p>
+<p class="classref-enumeration-constant" id="class-input-constant-cursor-vsplit"><a class="reference internal" href="#enum-input-cursorshape"><span class="std std-ref">CursorShape</span></a> <strong>CURSOR_VSPLIT</strong> = <code class="docutils literal notranslate"><span class="pre">14</span></code></p>
+<p>Vertical split mouse cursor. On Windows, it’s the same as <a class="reference internal" href="#class-input-constant-cursor-vsize"><span class="std std-ref">CURSOR_VSIZE</span></a>.</p>
+<p class="classref-enumeration-constant" id="class-input-constant-cursor-hsplit"><a class="reference internal" href="#enum-input-cursorshape"><span class="std std-ref">CursorShape</span></a> <strong>CURSOR_HSPLIT</strong> = <code class="docutils literal notranslate"><span class="pre">15</span></code></p>
+<p>Horizontal split mouse cursor. On Windows, it’s the same as <a class="reference internal" href="#class-input-constant-cursor-hsize"><span class="std std-ref">CURSOR_HSIZE</span></a>.</p>
+<p class="classref-enumeration-constant" id="class-input-constant-cursor-help"><a class="reference internal" href="#enum-input-cursorshape"><span class="std std-ref">CursorShape</span></a> <strong>CURSOR_HELP</strong> = <code class="docutils literal notranslate"><span class="pre">16</span></code></p>
+<p>Help cursor. Usually a question mark.</p>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="property-descriptions">
+<h2>Property Descriptions<a class="headerlink" href="#property-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-property" id="class-input-property-emulate-mouse-from-touch"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>emulate_mouse_from_touch</strong> <a class="reference internal" href="#class-input-property-emulate-mouse-from-touch"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_emulate_mouse_from_touch</strong>(value: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_emulating_mouse_from_touch</strong>()</p></li>
+</ul>
+<p>If <code class="docutils literal notranslate"><span class="pre">true</span></code>, sends mouse input events when tapping or swiping on the touchscreen. See also <a class="reference internal" href="class_projectsettings.html#class-projectsettings-property-input-devices-pointing-emulate-mouse-from-touch"><span class="std std-ref">ProjectSettings.input_devices/pointing/emulate_mouse_from_touch</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-input-property-emulate-touch-from-mouse"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>emulate_touch_from_mouse</strong> <a class="reference internal" href="#class-input-property-emulate-touch-from-mouse"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_emulate_touch_from_mouse</strong>(value: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_emulating_touch_from_mouse</strong>()</p></li>
+</ul>
+<p>If <code class="docutils literal notranslate"><span class="pre">true</span></code>, sends touch input events when clicking or dragging the mouse. See also <a class="reference internal" href="class_projectsettings.html#class-projectsettings-property-input-devices-pointing-emulate-touch-from-mouse"><span class="std std-ref">ProjectSettings.input_devices/pointing/emulate_touch_from_mouse</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-input-property-ignore-joypad-on-unfocused-application"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>ignore_joypad_on_unfocused_application</strong> <a class="reference internal" href="#class-input-property-ignore-joypad-on-unfocused-application"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_ignore_joypad_on_unfocused_application</strong>(value: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_ignoring_joypad_on_unfocused_application</strong>()</p></li>
+</ul>
+<p>If <code class="docutils literal notranslate"><span class="pre">true</span></code>, joypad input (including motion sensors) and LED light changes will be ignored and joypad vibration will be stopped when the application is not focused.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-input-property-mouse-mode"><a class="reference internal" href="#enum-input-mousemode"><span class="std std-ref">MouseMode</span></a> <strong>mouse_mode</strong> <a class="reference internal" href="#class-input-property-mouse-mode"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_mouse_mode</strong>(value: <a class="reference internal" href="#enum-input-mousemode"><span class="std std-ref">MouseMode</span></a>)</p></li>
+<li><p><a class="reference internal" href="#enum-input-mousemode"><span class="std std-ref">MouseMode</span></a> <strong>get_mouse_mode</strong>()</p></li>
+</ul>
+<p>Controls the mouse mode.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-input-property-use-accumulated-input"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>use_accumulated_input</strong> <a class="reference internal" href="#class-input-property-use-accumulated-input"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_use_accumulated_input</strong>(value: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_using_accumulated_input</strong>()</p></li>
+</ul>
+<p>If <code class="docutils literal notranslate"><span class="pre">true</span></code>, similar input events sent by the operating system are accumulated. When input accumulation is enabled, all input events generated during a frame will be merged and emitted when the frame is done rendering. Therefore, this limits the number of input method calls per second to the rendering FPS.</p>
+<p>Input accumulation can be disabled to get slightly more precise/reactive input at the cost of increased CPU usage. In applications where drawing freehand lines is required, input accumulation should generally be disabled while the user is drawing the line to get results that closely follow the actual input.</p>
+<p><strong>Note:</strong> Input accumulation is <em>enabled</em> by default.</p>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="method-descriptions">
+<h2>Method Descriptions<a class="headerlink" href="#method-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-method" id="class-input-method-action-press"><abbr title="No return value.">void</abbr> <strong>action_press</strong>(action: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>, strength: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> = 1.0) <a class="reference internal" href="#class-input-method-action-press"><span class="std std-ref">🔗</span></a></p>
+<p>This will simulate pressing the specified action.</p>
+<p>The strength can be used for non-boolean actions, it’s ranged between 0 and 1 representing the intensity of the given action.</p>
+<p><strong>Note:</strong> This method will not cause any <a class="reference internal" href="class_node.html#class-node-private-method-input"><span class="std std-ref">Node._input()</span></a> calls. It is intended to be used with <a class="reference internal" href="#class-input-method-is-action-pressed"><span class="std std-ref">is_action_pressed()</span></a> and <a class="reference internal" href="#class-input-method-is-action-just-pressed"><span class="std std-ref">is_action_just_pressed()</span></a>. If you want to simulate <code class="docutils literal notranslate"><span class="pre">_input</span></code>, use <a class="reference internal" href="#class-input-method-parse-input-event"><span class="std std-ref">parse_input_event()</span></a> instead.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-input-method-action-release"><abbr title="No return value.">void</abbr> <strong>action_release</strong>(action: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>) <a class="reference internal" href="#class-input-method-action-release"><span class="std std-ref">🔗</span></a></p>
+<p>If the specified action is already pressed, this will release it.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-input-method-add-joy-mapping"><abbr title="No return value.">void</abbr> <strong>add_joy_mapping</strong>(mapping: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, update_existing: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = false) <a class="reference internal" href="#class-input-method-add-joy-mapping"><span class="std std-ref">🔗</span></a></p>
+<p>Adds a new mapping entry (in SDL2 format) to the mapping database. Optionally update already connected devices.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-input-method-clear-joy-motion-sensors-calibration"><abbr title="No return value.">void</abbr> <strong>clear_joy_motion_sensors_calibration</strong>(device: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <a class="reference internal" href="#class-input-method-clear-joy-motion-sensors-calibration"><span class="std std-ref">🔗</span></a></p>
+<p><strong>Experimental:</strong> This method may be changed or removed in future versions.</p>
+<p>Clears the calibration information for the specified joypad’s motion sensors, if it has any and if they were calibrated.</p>
+<p>See <a class="reference internal" href="#class-input-method-start-joy-motion-sensors-calibration"><span class="std std-ref">start_joy_motion_sensors_calibration()</span></a> for an example on how to use joypad motion sensors and calibration in your games.</p>
+<p><strong>Note:</strong> This feature is only supported on Windows, Linux, macOS, and iOS.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-input-method-flush-buffered-events"><abbr title="No return value.">void</abbr> <strong>flush_buffered_events</strong>() <a class="reference internal" href="#class-input-method-flush-buffered-events"><span class="std std-ref">🔗</span></a></p>
+<p>Sends all input events which are in the current buffer to the game loop. These events may have been buffered as a result of accumulated input (<a class="reference internal" href="#class-input-property-use-accumulated-input"><span class="std std-ref">use_accumulated_input</span></a>) or agile input flushing (<a class="reference internal" href="class_projectsettings.html#class-projectsettings-property-input-devices-buffering-agile-event-flushing"><span class="std std-ref">ProjectSettings.input_devices/buffering/agile_event_flushing</span></a>).</p>
+<p>The engine will already do this itself at key execution points (at least once per frame). However, this can be useful in advanced cases where you want precise control over the timing of event handling.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-input-method-get-accelerometer"><a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a> <strong>get_accelerometer</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-input-method-get-accelerometer"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the acceleration in m/s² of the device’s accelerometer sensor, if the device has one. Otherwise, the method returns <a class="reference internal" href="class_vector3.html#class-vector3-constant-zero"><span class="std std-ref">Vector3.ZERO</span></a>.</p>
+<p>Note this method returns an empty <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a> when running from the editor even when your device has an accelerometer. You must export your project to a supported device to read values from the accelerometer.</p>
+<p><strong>Note:</strong> This method only works on Android and iOS. On other platforms, it always returns <a class="reference internal" href="class_vector3.html#class-vector3-constant-zero"><span class="std std-ref">Vector3.ZERO</span></a>.</p>
+<p><strong>Note:</strong> For Android, <a class="reference internal" href="class_projectsettings.html#class-projectsettings-property-input-devices-sensors-enable-accelerometer"><span class="std std-ref">ProjectSettings.input_devices/sensors/enable_accelerometer</span></a> must be enabled.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-input-method-get-action-raw-strength"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>get_action_raw_strength</strong>(action: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>, exact_match: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = false) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-input-method-get-action-raw-strength"><span class="std std-ref">🔗</span></a></p>
+<p>Returns a value between 0 and 1 representing the raw intensity of the given action, ignoring the action’s deadzone. In most cases, you should use <a class="reference internal" href="#class-input-method-get-action-strength"><span class="std std-ref">get_action_strength()</span></a> instead.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">exact_match</span></code> is <code class="docutils literal notranslate"><span class="pre">false</span></code>, it ignores additional input modifiers for <a class="reference internal" href="class_inputeventkey.html#class-inputeventkey"><span class="std std-ref">InputEventKey</span></a> and <a class="reference internal" href="class_inputeventmousebutton.html#class-inputeventmousebutton"><span class="std std-ref">InputEventMouseButton</span></a> events, and the direction for <a class="reference internal" href="class_inputeventjoypadmotion.html#class-inputeventjoypadmotion"><span class="std std-ref">InputEventJoypadMotion</span></a> events.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-input-method-get-action-strength"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>get_action_strength</strong>(action: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>, exact_match: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = false) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-input-method-get-action-strength"><span class="std std-ref">🔗</span></a></p>
+<p>Returns a value between 0 and 1 representing the intensity of the given action. In a joypad, for example, the further away the axis (analog sticks or L2, R2 triggers) is from the dead zone, the closer the value will be to 1. If the action is mapped to a control that has no axis such as the keyboard, the value returned will be 0 or 1.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">exact_match</span></code> is <code class="docutils literal notranslate"><span class="pre">false</span></code>, it ignores additional input modifiers for <a class="reference internal" href="class_inputeventkey.html#class-inputeventkey"><span class="std std-ref">InputEventKey</span></a> and <a class="reference internal" href="class_inputeventmousebutton.html#class-inputeventmousebutton"><span class="std std-ref">InputEventMouseButton</span></a> events, and the direction for <a class="reference internal" href="class_inputeventjoypadmotion.html#class-inputeventjoypadmotion"><span class="std std-ref">InputEventJoypadMotion</span></a> events.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-input-method-get-axis"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>get_axis</strong>(negative_action: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>, positive_action: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-input-method-get-axis"><span class="std std-ref">🔗</span></a></p>
+<p>Get axis input by specifying two actions, one negative and one positive.</p>
+<p>This is a shorthand for writing <code class="docutils literal notranslate"><span class="pre">Input.get_action_strength(&quot;positive_action&quot;)</span> <span class="pre">-</span> <span class="pre">Input.get_action_strength(&quot;negative_action&quot;)</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-input-method-get-connected-joypads"><a class="reference internal" href="class_array.html#class-array"><span class="std std-ref">Array</span></a>[<a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>] <strong>get_connected_joypads</strong>() <a class="reference internal" href="#class-input-method-get-connected-joypads"><span class="std std-ref">🔗</span></a></p>
+<p>Returns an <a class="reference internal" href="class_array.html#class-array"><span class="std std-ref">Array</span></a> containing the device IDs of all currently connected joypads.</p>
+<p><strong>Note:</strong> The order of connected joypads can not be guaranteed to be the same after a project and/or the editor is restarted, because Godot doesn’t save the order of joypad connections. Joypads are registered in the order they are discovered by Godot.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-input-method-get-current-cursor-shape"><a class="reference internal" href="#enum-input-cursorshape"><span class="std std-ref">CursorShape</span></a> <strong>get_current_cursor_shape</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-input-method-get-current-cursor-shape"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the currently assigned cursor shape.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-input-method-get-gravity"><a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a> <strong>get_gravity</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-input-method-get-gravity"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the gravity in m/s² of the device’s accelerometer sensor, if the device has one. Otherwise, the method returns <a class="reference internal" href="class_vector3.html#class-vector3-constant-zero"><span class="std std-ref">Vector3.ZERO</span></a>.</p>
+<p><strong>Note:</strong> This method only works on Android and iOS. On other platforms, it always returns <a class="reference internal" href="class_vector3.html#class-vector3-constant-zero"><span class="std std-ref">Vector3.ZERO</span></a>.</p>
+<p><strong>Note:</strong> For Android, <a class="reference internal" href="class_projectsettings.html#class-projectsettings-property-input-devices-sensors-enable-gravity"><span class="std std-ref">ProjectSettings.input_devices/sensors/enable_gravity</span></a> must be enabled.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-input-method-get-gyroscope"><a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a> <strong>get_gyroscope</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-input-method-get-gyroscope"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the rotation rate in rad/s around a device’s X, Y, and Z axes of the gyroscope sensor, if the device has one. Otherwise, the method returns <a class="reference internal" href="class_vector3.html#class-vector3-constant-zero"><span class="std std-ref">Vector3.ZERO</span></a>.</p>
+<p><strong>Note:</strong> This method only works on Android and iOS. On other platforms, it always returns <a class="reference internal" href="class_vector3.html#class-vector3-constant-zero"><span class="std std-ref">Vector3.ZERO</span></a>.</p>
+<p><strong>Note:</strong> For Android, <a class="reference internal" href="class_projectsettings.html#class-projectsettings-property-input-devices-sensors-enable-gyroscope"><span class="std std-ref">ProjectSettings.input_devices/sensors/enable_gyroscope</span></a> must be enabled.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-input-method-get-joy-accelerometer"><a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a> <strong>get_joy_accelerometer</strong>(device: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-input-method-get-joy-accelerometer"><span class="std std-ref">🔗</span></a></p>
+<p><strong>Experimental:</strong> This method may be changed or removed in future versions.</p>
+<p>Returns the acceleration, including the force of gravity, in m/s² of the joypad’s accelerometer sensor, if the joypad has one and it’s currently enabled. Otherwise, the method returns <a class="reference internal" href="class_vector3.html#class-vector3-constant-zero"><span class="std std-ref">Vector3.ZERO</span></a>. See also <a class="reference internal" href="#class-input-method-get-joy-gravity"><span class="std std-ref">get_joy_gravity()</span></a> and <a class="reference internal" href="#class-input-method-set-joy-motion-sensors-enabled"><span class="std std-ref">set_joy_motion_sensors_enabled()</span></a>.</p>
+<p>For a joypad held in front of you, the returned axes are defined as follows:</p>
+<p>+X … -X: left … right;</p>
+<p>+Y … -Y: bottom … top;</p>
+<p>+Z … -Z: farther … closer.</p>
+<p>The gravity part value is measured as a vector with length of <code class="docutils literal notranslate"><span class="pre">9.8</span></code> away from the center of the Earth, which is a negative Y value.</p>
+<p><strong>Note:</strong> This feature is only supported on Windows, Linux, and macOS. On iOS, joypad accelerometer sensor reading is not supported due to OS limitations.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-input-method-get-joy-axis"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>get_joy_axis</strong>(device: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, axis: <a class="reference internal" href="class_%40globalscope.html#enum-globalscope-joyaxis"><span class="std std-ref">JoyAxis</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-input-method-get-joy-axis"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the current value of the joypad axis at index <code class="docutils literal notranslate"><span class="pre">axis</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-input-method-get-joy-gravity"><a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a> <strong>get_joy_gravity</strong>(device: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-input-method-get-joy-gravity"><span class="std std-ref">🔗</span></a></p>
+<p><strong>Experimental:</strong> This method may be changed or removed in future versions.</p>
+<p>Returns the gravity in m/s² of the joypad’s accelerometer sensor, if the joypad has one and it’s currently enabled. Otherwise, the method returns <a class="reference internal" href="class_vector3.html#class-vector3-constant-zero"><span class="std std-ref">Vector3.ZERO</span></a>. See also <a class="reference internal" href="#class-input-method-get-joy-accelerometer"><span class="std std-ref">get_joy_accelerometer()</span></a> and <a class="reference internal" href="#class-input-method-set-joy-motion-sensors-enabled"><span class="std std-ref">set_joy_motion_sensors_enabled()</span></a>.</p>
+<p>For a joypad held in front of you, the returned axes are defined as follows:</p>
+<p>+X … -X: left … right;</p>
+<p>+Y … -Y: bottom … top;</p>
+<p>+Z … -Z: farther … closer.</p>
+<p>The gravity part value is measured as a vector with length of <code class="docutils literal notranslate"><span class="pre">9.8</span></code> away from the center of the Earth, which is a negative Y value.</p>
+<p><strong>Note:</strong> This feature is only supported on Windows, Linux, and macOS. On iOS, joypad accelerometer sensor reading is not supported due to OS limitations.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-input-method-get-joy-guid"><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a> <strong>get_joy_guid</strong>(device: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-input-method-get-joy-guid"><span class="std std-ref">🔗</span></a></p>
+<p>Returns an SDL-compatible device GUID on platforms that use gamepad remapping, e.g. <code class="docutils literal notranslate"><span class="pre">030000004c050000c405000000010000</span></code>. Returns an empty string if it cannot be found. Godot uses SDL’s internal mappings, supplemented by community-contributed mappings, to determine gamepad names and mappings based on this GUID.</p>
+<p>On Windows, all XInput joypad GUIDs will be overridden by Godot to <code class="docutils literal notranslate"><span class="pre">__XINPUT_DEVICE__</span></code>, because their mappings are the same.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-input-method-get-joy-gyroscope"><a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a> <strong>get_joy_gyroscope</strong>(device: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-input-method-get-joy-gyroscope"><span class="std std-ref">🔗</span></a></p>
+<p><strong>Experimental:</strong> This method may be changed or removed in future versions.</p>
+<p>Returns the rotation rate in rad/s around a joypad’s X, Y, and Z axes of the gyroscope sensor, if the joypad has one and it’s currently enabled. Otherwise, the method returns <a class="reference internal" href="class_vector3.html#class-vector3-constant-zero"><span class="std std-ref">Vector3.ZERO</span></a>. See also <a class="reference internal" href="#class-input-method-set-joy-motion-sensors-enabled"><span class="std std-ref">set_joy_motion_sensors_enabled()</span></a>.</p>
+<p>The rotation is positive in the counter-clockwise direction.</p>
+<p>For a joypad held in front of you, the returned axes are defined as follows:</p>
+<p>X: Angular speed around the X axis (pitch);</p>
+<p>Y: Angular speed around the Y axis (yaw);</p>
+<p>Z: Angular speed around the Z axis (roll).</p>
+<p>See <a class="reference internal" href="#class-input-method-start-joy-motion-sensors-calibration"><span class="std std-ref">start_joy_motion_sensors_calibration()</span></a> for an example on how to use joypad gyroscope and gyroscope calibration in your games.</p>
+<p><strong>Note:</strong> This feature is only supported on Windows, Linux, macOS, and iOS.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-input-method-get-joy-info"><a class="reference internal" href="class_dictionary.html#class-dictionary"><span class="std std-ref">Dictionary</span></a> <strong>get_joy_info</strong>(device: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-input-method-get-joy-info"><span class="std std-ref">🔗</span></a></p>
+<p>Returns a dictionary with extra platform-specific information about the device, e.g. the raw gamepad name from the OS or the Steam Input index.</p>
+<p>On Windows, Linux, macOS, and iOS, the dictionary contains the following fields:</p>
+<p><code class="docutils literal notranslate"><span class="pre">raw_name</span></code>: The name of the controller as it came from the OS, before getting renamed by the controller database.</p>
+<p><code class="docutils literal notranslate"><span class="pre">vendor_id</span></code>: The USB vendor ID of the device.</p>
+<p><code class="docutils literal notranslate"><span class="pre">product_id</span></code>: The USB product ID of the device.</p>
+<p><code class="docutils literal notranslate"><span class="pre">serial_number</span></code>: The serial number of the device. This key won’t be present if the serial number is unavailable.</p>
+<p>The dictionary can also include the following fields under selected platforms:</p>
+<p><code class="docutils literal notranslate"><span class="pre">steam_input_index</span></code>: The Steam Input gamepad index (Windows, Linux, and macOS only). If the device is not a Steam Input device this key won’t be present.</p>
+<p><code class="docutils literal notranslate"><span class="pre">xinput_index</span></code>: The index of the controller in the XInput system (Windows only). This key won’t be present for devices not handled by XInput.</p>
+<p><strong>Note:</strong> The returned dictionary is always empty on Android and Web.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-input-method-get-joy-motion-sensors-calibration"><a class="reference internal" href="class_dictionary.html#class-dictionary"><span class="std std-ref">Dictionary</span></a> <strong>get_joy_motion_sensors_calibration</strong>(device: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-input-method-get-joy-motion-sensors-calibration"><span class="std std-ref">🔗</span></a></p>
+<p><strong>Experimental:</strong> This method may be changed or removed in future versions.</p>
+<p>Returns the calibration information about the specified joypad’s motion sensors in the form of a <a class="reference internal" href="class_dictionary.html#class-dictionary"><span class="std std-ref">Dictionary</span></a>, if it has any and if they have been calibrated, otherwise returns an empty <a class="reference internal" href="class_dictionary.html#class-dictionary"><span class="std std-ref">Dictionary</span></a>.</p>
+<p>The dictionary contains the following fields:</p>
+<p><code class="docutils literal notranslate"><span class="pre">gyroscope_offset</span></code>: average offset in gyroscope values from <a class="reference internal" href="class_vector2.html#class-vector2-constant-zero"><span class="std std-ref">Vector2.ZERO</span></a> in rad/s.</p>
+<p>See <a class="reference internal" href="#class-input-method-start-joy-motion-sensors-calibration"><span class="std std-ref">start_joy_motion_sensors_calibration()</span></a> for an example on how to use joypad motion sensors and calibration in your games.</p>
+<p><strong>Note:</strong> This feature is only supported on Windows, Linux, macOS, and iOS.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-input-method-get-joy-motion-sensors-rate"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>get_joy_motion_sensors_rate</strong>(device: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-input-method-get-joy-motion-sensors-rate"><span class="std std-ref">🔗</span></a></p>
+<p><strong>Experimental:</strong> This method may be changed or removed in future versions.</p>
+<p>Returns the joypad’s motion sensor rate in Hz, if the joypad has motion sensors and they’re currently enabled. See also <a class="reference internal" href="#class-input-method-set-joy-motion-sensors-enabled"><span class="std std-ref">set_joy_motion_sensors_enabled()</span></a>.</p>
+<p><strong>Note:</strong> This feature is only supported on Windows, Linux, macOS, and iOS.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-input-method-get-joy-name"><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a> <strong>get_joy_name</strong>(device: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <a class="reference internal" href="#class-input-method-get-joy-name"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the name of the joypad at the specified device index, e.g. <code class="docutils literal notranslate"><span class="pre">PS4</span> <span class="pre">Controller</span></code>. Godot uses the <a class="reference external" href="https://github.com/gabomdq/SDL_GameControllerDB">SDL2 game controller database</a> to determine gamepad names.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-input-method-get-joy-vibration-duration"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>get_joy_vibration_duration</strong>(device: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <a class="reference internal" href="#class-input-method-get-joy-vibration-duration"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the duration of the current vibration effect in seconds.</p>
+<p><strong>Note:</strong> This method returns the same value that was passed to <a class="reference internal" href="#class-input-method-start-joy-vibration"><span class="std std-ref">start_joy_vibration()</span></a>, and this value does <strong>not</strong> change when the joypad’s vibration runs out, it only gets reset after a call to <a class="reference internal" href="#class-input-method-stop-joy-vibration"><span class="std std-ref">stop_joy_vibration()</span></a>.</p>
+<p>If you want to check if a joypad is still vibrating, use <a class="reference internal" href="#class-input-method-is-joy-vibrating"><span class="std std-ref">is_joy_vibrating()</span></a> instead.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-input-method-get-joy-vibration-remaining-duration"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>get_joy_vibration_remaining_duration</strong>(device: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <a class="reference internal" href="#class-input-method-get-joy-vibration-remaining-duration"><span class="std std-ref">🔗</span></a></p>
+<p><strong>Experimental:</strong> This method may be changed or removed in future versions.</p>
+<p>Returns the remaining duration of the current vibration effect in seconds.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-input-method-get-joy-vibration-strength"><a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a> <strong>get_joy_vibration_strength</strong>(device: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <a class="reference internal" href="#class-input-method-get-joy-vibration-strength"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the strength of the joypad vibration: x is the strength of the weak motor, and y is the strength of the strong motor.</p>
+<p><strong>Note:</strong> This method returns the same values that were passed to <a class="reference internal" href="#class-input-method-start-joy-vibration"><span class="std std-ref">start_joy_vibration()</span></a>, and these values do <strong>not</strong> change when the joypad’s vibration runs out, they only get reset after a call to <a class="reference internal" href="#class-input-method-stop-joy-vibration"><span class="std std-ref">stop_joy_vibration()</span></a>.</p>
+<p>If you want to check if a joypad is still vibrating, use <a class="reference internal" href="#class-input-method-is-joy-vibrating"><span class="std std-ref">is_joy_vibrating()</span></a> instead.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-input-method-get-last-mouse-screen-velocity"><a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a> <strong>get_last_mouse_screen_velocity</strong>() <a class="reference internal" href="#class-input-method-get-last-mouse-screen-velocity"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the last mouse velocity in screen coordinates. To provide a precise and jitter-free velocity, mouse velocity is only calculated every 0.1s. Therefore, mouse velocity will lag mouse movements.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-input-method-get-last-mouse-velocity"><a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a> <strong>get_last_mouse_velocity</strong>() <a class="reference internal" href="#class-input-method-get-last-mouse-velocity"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the last mouse velocity. To provide a precise and jitter-free velocity, mouse velocity is only calculated every 0.1s. Therefore, mouse velocity will lag mouse movements.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-input-method-get-magnetometer"><a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a> <strong>get_magnetometer</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-input-method-get-magnetometer"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the magnetic field strength in micro-Tesla for all axes of the device’s magnetometer sensor, if the device has one. Otherwise, the method returns <a class="reference internal" href="class_vector3.html#class-vector3-constant-zero"><span class="std std-ref">Vector3.ZERO</span></a>.</p>
+<p><strong>Note:</strong> This method only works on Android and iOS. On other platforms, it always returns <a class="reference internal" href="class_vector3.html#class-vector3-constant-zero"><span class="std std-ref">Vector3.ZERO</span></a>.</p>
+<p><strong>Note:</strong> For Android, <a class="reference internal" href="class_projectsettings.html#class-projectsettings-property-input-devices-sensors-enable-magnetometer"><span class="std std-ref">ProjectSettings.input_devices/sensors/enable_magnetometer</span></a> must be enabled.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-input-method-get-mouse-button-mask"><abbr title="This value is an integer composed as a bitmask of the following flags.">BitField</abbr>[<a class="reference internal" href="class_%40globalscope.html#enum-globalscope-mousebuttonmask"><span class="std std-ref">MouseButtonMask</span></a>] <strong>get_mouse_button_mask</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-input-method-get-mouse-button-mask"><span class="std std-ref">🔗</span></a></p>
+<p>Returns mouse buttons as a bitmask. If multiple mouse buttons are pressed at the same time, the bits are added together. Equivalent to <a class="reference internal" href="class_displayserver.html#class-displayserver-method-mouse-get-button-state"><span class="std std-ref">DisplayServer.mouse_get_button_state()</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-input-method-get-vector"><a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a> <strong>get_vector</strong>(negative_x: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>, positive_x: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>, negative_y: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>, positive_y: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>, deadzone: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> = -1.0) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-input-method-get-vector"><span class="std std-ref">🔗</span></a></p>
+<p>Gets an input vector by specifying four actions for the positive and negative X and Y axes.</p>
+<p>This method is useful when getting vector input, such as from a joystick, directional pad, arrows, or WASD. The vector has its length limited to 1 and has a circular deadzone, which is useful for using vector input as movement.</p>
+<p>By default, the deadzone is automatically calculated from the average of the action deadzones. However, you can override the deadzone to be whatever you want (on the range of 0 to 1).</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-input-method-has-joy-light"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>has_joy_light</strong>(device: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-input-method-has-joy-light"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if the joypad has an LED light that can change colors and/or brightness. See also <a class="reference internal" href="#class-input-method-set-joy-light"><span class="std std-ref">set_joy_light()</span></a>.</p>
+<p><strong>Note:</strong> This feature is only supported on Windows, Linux, macOS, and iOS.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-input-method-has-joy-motion-sensors"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>has_joy_motion_sensors</strong>(device: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-input-method-has-joy-motion-sensors"><span class="std std-ref">🔗</span></a></p>
+<p><strong>Experimental:</strong> This method may be changed or removed in future versions.</p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if the joypad has motion sensors (accelerometer and gyroscope).</p>
+<p><strong>Note:</strong> On iOS, joypad accelerometer sensor reading is not supported due to OS limitations.</p>
+<p><strong>Note:</strong> This feature is only supported on Windows, Linux, macOS, and iOS.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-input-method-has-joy-vibration"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>has_joy_vibration</strong>(device: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-input-method-has-joy-vibration"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if the joypad supports vibration. See also <a class="reference internal" href="#class-input-method-start-joy-vibration"><span class="std std-ref">start_joy_vibration()</span></a>.</p>
+<p><strong>Note:</strong> For macOS, vibration is only supported in macOS 11 and later. When connected via USB, vibration is only supported for major brand controllers (except Xbox One and Xbox Series X/S controllers) due to macOS limitations.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-input-method-is-action-just-pressed"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_action_just_pressed</strong>(action: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>, exact_match: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = false) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-input-method-is-action-just-pressed"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> when the user has <em>started</em> pressing the action event in the current frame or physics tick. It will only return <code class="docutils literal notranslate"><span class="pre">true</span></code> on the frame or tick that the user pressed down the button.</p>
+<p>This is useful for code that needs to run only once when an action is pressed, instead of every frame while it’s pressed.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">exact_match</span></code> is <code class="docutils literal notranslate"><span class="pre">false</span></code>, it ignores additional input modifiers for <a class="reference internal" href="class_inputeventkey.html#class-inputeventkey"><span class="std std-ref">InputEventKey</span></a> and <a class="reference internal" href="class_inputeventmousebutton.html#class-inputeventmousebutton"><span class="std std-ref">InputEventMouseButton</span></a> events, and the direction for <a class="reference internal" href="class_inputeventjoypadmotion.html#class-inputeventjoypadmotion"><span class="std std-ref">InputEventJoypadMotion</span></a> events.</p>
+<p><strong>Note:</strong> Returning <code class="docutils literal notranslate"><span class="pre">true</span></code> does not imply that the action is <em>still</em> pressed. An action can be pressed and released again rapidly, and <code class="docutils literal notranslate"><span class="pre">true</span></code> will still be returned so as not to miss input.</p>
+<p><strong>Note:</strong> Due to keyboard ghosting, <a class="reference internal" href="#class-input-method-is-action-just-pressed"><span class="std std-ref">is_action_just_pressed()</span></a> may return <code class="docutils literal notranslate"><span class="pre">false</span></code> even if one of the action’s keys is pressed. See <a class="reference external" href="../tutorials/inputs/input_examples.html#keyboard-events">Input examples</a> in the documentation for more information.</p>
+<p><strong>Note:</strong> During input handling (e.g. <a class="reference internal" href="class_node.html#class-node-private-method-input"><span class="std std-ref">Node._input()</span></a>), use <a class="reference internal" href="class_inputevent.html#class-inputevent-method-is-action-pressed"><span class="std std-ref">InputEvent.is_action_pressed()</span></a> instead to query the action state of the current event. See also <a class="reference internal" href="#class-input-method-is-action-just-pressed-by-event"><span class="std std-ref">is_action_just_pressed_by_event()</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-input-method-is-action-just-pressed-by-event"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_action_just_pressed_by_event</strong>(action: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>, event: <a class="reference internal" href="class_inputevent.html#class-inputevent"><span class="std std-ref">InputEvent</span></a>, exact_match: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = false) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-input-method-is-action-just-pressed-by-event"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> when the user has <em>started</em> pressing the action event in the current frame or physics tick, and the first event that triggered action press in the current frame/physics tick was <code class="docutils literal notranslate"><span class="pre">event</span></code>. It will only return <code class="docutils literal notranslate"><span class="pre">true</span></code> on the frame or tick that the user pressed down the button.</p>
+<p>This is useful for code that needs to run only once when an action is pressed, and the action is processed during input handling (e.g. <a class="reference internal" href="class_node.html#class-node-private-method-input"><span class="std std-ref">Node._input()</span></a>).</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">exact_match</span></code> is <code class="docutils literal notranslate"><span class="pre">false</span></code>, it ignores additional input modifiers for <a class="reference internal" href="class_inputeventkey.html#class-inputeventkey"><span class="std std-ref">InputEventKey</span></a> and <a class="reference internal" href="class_inputeventmousebutton.html#class-inputeventmousebutton"><span class="std std-ref">InputEventMouseButton</span></a> events, and the direction for <a class="reference internal" href="class_inputeventjoypadmotion.html#class-inputeventjoypadmotion"><span class="std std-ref">InputEventJoypadMotion</span></a> events.</p>
+<p><strong>Note:</strong> Returning <code class="docutils literal notranslate"><span class="pre">true</span></code> does not imply that the action is <em>still</em> pressed. An action can be pressed and released again rapidly, and <code class="docutils literal notranslate"><span class="pre">true</span></code> will still be returned so as not to miss input.</p>
+<p><strong>Note:</strong> Due to keyboard ghosting, <a class="reference internal" href="#class-input-method-is-action-just-pressed"><span class="std std-ref">is_action_just_pressed()</span></a> may return <code class="docutils literal notranslate"><span class="pre">false</span></code> even if one of the action’s keys is pressed. See <a class="reference external" href="../tutorials/inputs/input_examples.html#keyboard-events">Input examples</a> in the documentation for more information.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-input-method-is-action-just-released"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_action_just_released</strong>(action: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>, exact_match: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = false) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-input-method-is-action-just-released"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> when the user <em>stops</em> pressing the action event in the current frame or physics tick. It will only return <code class="docutils literal notranslate"><span class="pre">true</span></code> on the frame or tick that the user releases the button.</p>
+<p><strong>Note:</strong> Returning <code class="docutils literal notranslate"><span class="pre">true</span></code> does not imply that the action is <em>still</em> not pressed. An action can be released and pressed again rapidly, and <code class="docutils literal notranslate"><span class="pre">true</span></code> will still be returned so as not to miss input.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">exact_match</span></code> is <code class="docutils literal notranslate"><span class="pre">false</span></code>, it ignores additional input modifiers for <a class="reference internal" href="class_inputeventkey.html#class-inputeventkey"><span class="std std-ref">InputEventKey</span></a> and <a class="reference internal" href="class_inputeventmousebutton.html#class-inputeventmousebutton"><span class="std std-ref">InputEventMouseButton</span></a> events, and the direction for <a class="reference internal" href="class_inputeventjoypadmotion.html#class-inputeventjoypadmotion"><span class="std std-ref">InputEventJoypadMotion</span></a> events.</p>
+<p><strong>Note:</strong> During input handling (e.g. <a class="reference internal" href="class_node.html#class-node-private-method-input"><span class="std std-ref">Node._input()</span></a>), use <a class="reference internal" href="class_inputevent.html#class-inputevent-method-is-action-released"><span class="std std-ref">InputEvent.is_action_released()</span></a> instead to query the action state of the current event. See also <a class="reference internal" href="#class-input-method-is-action-just-released-by-event"><span class="std std-ref">is_action_just_released_by_event()</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-input-method-is-action-just-released-by-event"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_action_just_released_by_event</strong>(action: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>, event: <a class="reference internal" href="class_inputevent.html#class-inputevent"><span class="std std-ref">InputEvent</span></a>, exact_match: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = false) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-input-method-is-action-just-released-by-event"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> when the user <em>stops</em> pressing the action event in the current frame or physics tick, and the first event that triggered action release in the current frame/physics tick was <code class="docutils literal notranslate"><span class="pre">event</span></code>. It will only return <code class="docutils literal notranslate"><span class="pre">true</span></code> on the frame or tick that the user releases the button.</p>
+<p>This is useful when an action is processed during input handling (e.g. <a class="reference internal" href="class_node.html#class-node-private-method-input"><span class="std std-ref">Node._input()</span></a>).</p>
+<p><strong>Note:</strong> Returning <code class="docutils literal notranslate"><span class="pre">true</span></code> does not imply that the action is <em>still</em> not pressed. An action can be released and pressed again rapidly, and <code class="docutils literal notranslate"><span class="pre">true</span></code> will still be returned so as not to miss input.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">exact_match</span></code> is <code class="docutils literal notranslate"><span class="pre">false</span></code>, it ignores additional input modifiers for <a class="reference internal" href="class_inputeventkey.html#class-inputeventkey"><span class="std std-ref">InputEventKey</span></a> and <a class="reference internal" href="class_inputeventmousebutton.html#class-inputeventmousebutton"><span class="std std-ref">InputEventMouseButton</span></a> events, and the direction for <a class="reference internal" href="class_inputeventjoypadmotion.html#class-inputeventjoypadmotion"><span class="std std-ref">InputEventJoypadMotion</span></a> events.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-input-method-is-action-pressed"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_action_pressed</strong>(action: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>, exact_match: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = false) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-input-method-is-action-pressed"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if you are pressing the action event.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">exact_match</span></code> is <code class="docutils literal notranslate"><span class="pre">false</span></code>, it ignores additional input modifiers for <a class="reference internal" href="class_inputeventkey.html#class-inputeventkey"><span class="std std-ref">InputEventKey</span></a> and <a class="reference internal" href="class_inputeventmousebutton.html#class-inputeventmousebutton"><span class="std std-ref">InputEventMouseButton</span></a> events, and the direction for <a class="reference internal" href="class_inputeventjoypadmotion.html#class-inputeventjoypadmotion"><span class="std std-ref">InputEventJoypadMotion</span></a> events.</p>
+<p><strong>Note:</strong> Due to keyboard ghosting, <a class="reference internal" href="#class-input-method-is-action-pressed"><span class="std std-ref">is_action_pressed()</span></a> may return <code class="docutils literal notranslate"><span class="pre">false</span></code> even if one of the action’s keys is pressed. See <a class="reference external" href="../tutorials/inputs/input_examples.html#keyboard-events">Input examples</a> in the documentation for more information.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-input-method-is-anything-pressed"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_anything_pressed</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-input-method-is-anything-pressed"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if any action, key, joypad button, or mouse button is being pressed. This will also return <code class="docutils literal notranslate"><span class="pre">true</span></code> if any action is simulated via code by calling <a class="reference internal" href="#class-input-method-action-press"><span class="std std-ref">action_press()</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-input-method-is-joy-button-pressed"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_joy_button_pressed</strong>(device: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, button: <a class="reference internal" href="class_%40globalscope.html#enum-globalscope-joybutton"><span class="std std-ref">JoyButton</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-input-method-is-joy-button-pressed"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if you are pressing the joypad button at index <code class="docutils literal notranslate"><span class="pre">button</span></code>.</p>
+<p><strong>Note:</strong> If you want to check if a joypad button was just pressed, use Godot’s input action system with <a class="reference internal" href="#class-input-method-is-action-just-pressed"><span class="std std-ref">is_action_just_pressed()</span></a> or use the <a class="reference internal" href="class_node.html#class-node-private-method-input"><span class="std std-ref">Node._input()</span></a> method like this instead:</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-input-method-is-joy-known"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_joy_known</strong>(device: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <a class="reference internal" href="#class-input-method-is-joy-known"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if the system knows the specified device. This means that it sets all button and axis indices. Unknown joypads are not expected to match these constants, but you can still retrieve events from them.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-input-method-is-joy-motion-sensors-calibrated"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_joy_motion_sensors_calibrated</strong>(device: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-input-method-is-joy-motion-sensors-calibrated"><span class="std std-ref">🔗</span></a></p>
+<p><strong>Experimental:</strong> This method may be changed or removed in future versions.</p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if the joypad’s motion sensors have been calibrated.</p>
+<p>See <a class="reference internal" href="#class-input-method-start-joy-motion-sensors-calibration"><span class="std std-ref">start_joy_motion_sensors_calibration()</span></a> for an example on how to use joypad motion sensors and calibration in your games.</p>
+<p><strong>Note:</strong> This feature is only supported on Windows, Linux, macOS, and iOS.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-input-method-is-joy-motion-sensors-calibrating"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_joy_motion_sensors_calibrating</strong>(device: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-input-method-is-joy-motion-sensors-calibrating"><span class="std std-ref">🔗</span></a></p>
+<p><strong>Experimental:</strong> This method may be changed or removed in future versions.</p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if the joypad’s motion sensors are currently being calibrated.</p>
+<p>See <a class="reference internal" href="#class-input-method-start-joy-motion-sensors-calibration"><span class="std std-ref">start_joy_motion_sensors_calibration()</span></a> for an example on how to use joypad motion sensors and calibration in your games.</p>
+<p><strong>Note:</strong> This feature is only supported on Windows, Linux, macOS, and iOS.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-input-method-is-joy-motion-sensors-enabled"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_joy_motion_sensors_enabled</strong>(device: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-input-method-is-joy-motion-sensors-enabled"><span class="std std-ref">🔗</span></a></p>
+<p><strong>Experimental:</strong> This method may be changed or removed in future versions.</p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if the requested joypad has motion sensors (accelerometer and gyroscope) and they are currently enabled. See also <a class="reference internal" href="#class-input-method-set-joy-motion-sensors-enabled"><span class="std std-ref">set_joy_motion_sensors_enabled()</span></a> and <a class="reference internal" href="#class-input-method-has-joy-motion-sensors"><span class="std std-ref">has_joy_motion_sensors()</span></a>.</p>
+<p>See <a class="reference internal" href="#class-input-method-start-joy-motion-sensors-calibration"><span class="std std-ref">start_joy_motion_sensors_calibration()</span></a> for an example on how to use joypad motion sensors and calibration in your games.</p>
+<p><strong>Note:</strong> This feature is only supported on Windows, Linux, macOS, and iOS.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-input-method-is-joy-vibrating"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_joy_vibrating</strong>(device: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <a class="reference internal" href="#class-input-method-is-joy-vibrating"><span class="std std-ref">🔗</span></a></p>
+<p><strong>Experimental:</strong> This method may be changed or removed in future versions.</p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if the joypad is still vibrating after a call to <a class="reference internal" href="#class-input-method-start-joy-vibration"><span class="std std-ref">start_joy_vibration()</span></a>.</p>
+<p>Unlike <a class="reference internal" href="#class-input-method-get-joy-vibration-strength"><span class="std std-ref">get_joy_vibration_strength()</span></a> and <a class="reference internal" href="#class-input-method-get-joy-vibration-duration"><span class="std std-ref">get_joy_vibration_duration()</span></a>, this method returns <code class="docutils literal notranslate"><span class="pre">false</span></code> after the joypad’s vibration runs out.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-input-method-is-key-label-pressed"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_key_label_pressed</strong>(keycode: <a class="reference internal" href="class_%40globalscope.html#enum-globalscope-key"><span class="std std-ref">Key</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-input-method-is-key-label-pressed"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if you are pressing the key with the <code class="docutils literal notranslate"><span class="pre">keycode</span></code> printed on it. You can pass a <a class="reference internal" href="class_%40globalscope.html#enum-globalscope-key"><span class="std std-ref">Key</span></a> constant or any Unicode character code.</p>
+<p><strong>Note:</strong> If you want to check if a key was just pressed by using its label, use Godot’s input action system with <a class="reference internal" href="#class-input-method-is-action-just-pressed"><span class="std std-ref">is_action_just_pressed()</span></a> or use the <a class="reference internal" href="class_node.html#class-node-private-method-input"><span class="std std-ref">Node._input()</span></a> method like this instead:</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-input-method-is-key-pressed"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_key_pressed</strong>(keycode: <a class="reference internal" href="class_%40globalscope.html#enum-globalscope-key"><span class="std std-ref">Key</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-input-method-is-key-pressed"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if you are pressing the Latin key in the current keyboard layout. You can pass a <a class="reference internal" href="class_%40globalscope.html#enum-globalscope-key"><span class="std std-ref">Key</span></a> constant.</p>
+<p><a class="reference internal" href="#class-input-method-is-key-pressed"><span class="std std-ref">is_key_pressed()</span></a> is only recommended over <a class="reference internal" href="#class-input-method-is-physical-key-pressed"><span class="std std-ref">is_physical_key_pressed()</span></a> in non-game applications. This ensures that shortcut keys behave as expected depending on the user’s keyboard layout, as keyboard shortcuts are generally dependent on the keyboard layout in non-game applications. If in doubt, use <a class="reference internal" href="#class-input-method-is-physical-key-pressed"><span class="std std-ref">is_physical_key_pressed()</span></a>.</p>
+<p><strong>Note:</strong> Due to keyboard ghosting, <a class="reference internal" href="#class-input-method-is-key-pressed"><span class="std std-ref">is_key_pressed()</span></a> may return <code class="docutils literal notranslate"><span class="pre">false</span></code> even if one of the action’s keys is pressed. See <a class="reference external" href="../tutorials/inputs/input_examples.html#keyboard-events">Input examples</a> in the documentation for more information.</p>
+<p><strong>Note:</strong> If you want to check if a key was just pressed by using its keycode, use Godot’s input action system with <a class="reference internal" href="#class-input-method-is-action-just-pressed"><span class="std std-ref">is_action_just_pressed()</span></a> or use the <a class="reference internal" href="class_node.html#class-node-private-method-input"><span class="std std-ref">Node._input()</span></a> method like this instead:</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-input-method-is-mouse-button-pressed"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_mouse_button_pressed</strong>(button: <a class="reference internal" href="class_%40globalscope.html#enum-globalscope-mousebutton"><span class="std std-ref">MouseButton</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-input-method-is-mouse-button-pressed"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if you are pressing the mouse button specified with <a class="reference internal" href="class_%40globalscope.html#enum-globalscope-mousebutton"><span class="std std-ref">MouseButton</span></a>.</p>
+<p><strong>Note:</strong> If you want to check if a mouse button was just pressed, use Godot’s input action system with <a class="reference internal" href="#class-input-method-is-action-just-pressed"><span class="std std-ref">is_action_just_pressed()</span></a> or use the <a class="reference internal" href="class_node.html#class-node-private-method-input"><span class="std std-ref">Node._input()</span></a> method like this instead:</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-input-method-is-physical-key-pressed"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_physical_key_pressed</strong>(keycode: <a class="reference internal" href="class_%40globalscope.html#enum-globalscope-key"><span class="std std-ref">Key</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-input-method-is-physical-key-pressed"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if you are pressing the key in the physical location on the 101/102-key US QWERTY keyboard. You can pass a <a class="reference internal" href="class_%40globalscope.html#enum-globalscope-key"><span class="std std-ref">Key</span></a> constant.</p>
+<p><a class="reference internal" href="#class-input-method-is-physical-key-pressed"><span class="std std-ref">is_physical_key_pressed()</span></a> is recommended over <a class="reference internal" href="#class-input-method-is-key-pressed"><span class="std std-ref">is_key_pressed()</span></a> for in-game actions, as it will make <kbd class="kbd docutils literal notranslate">W</kbd>/<kbd class="kbd docutils literal notranslate">A</kbd>/<kbd class="kbd docutils literal notranslate">S</kbd>/<kbd class="kbd docutils literal notranslate">D</kbd> layouts work regardless of the user’s keyboard layout. <a class="reference internal" href="#class-input-method-is-physical-key-pressed"><span class="std std-ref">is_physical_key_pressed()</span></a> will also ensure that the top row number keys work on any keyboard layout. If in doubt, use <a class="reference internal" href="#class-input-method-is-physical-key-pressed"><span class="std std-ref">is_physical_key_pressed()</span></a>.</p>
+<p><strong>Note:</strong> Due to keyboard ghosting, <a class="reference internal" href="#class-input-method-is-physical-key-pressed"><span class="std std-ref">is_physical_key_pressed()</span></a> may return <code class="docutils literal notranslate"><span class="pre">false</span></code> even if one of the action’s keys is pressed. See <a class="reference external" href="../tutorials/inputs/input_examples.html#keyboard-events">Input examples</a> in the documentation for more information.</p>
+<p><strong>Note:</strong> If you want to check if a key was just pressed by using its physical keycode, use Godot’s input action system with <a class="reference internal" href="#class-input-method-is-action-just-pressed"><span class="std std-ref">is_action_just_pressed()</span></a> or use the <a class="reference internal" href="class_node.html#class-node-private-method-input"><span class="std std-ref">Node._input()</span></a> method like this instead:</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-input-method-parse-input-event"><abbr title="No return value.">void</abbr> <strong>parse_input_event</strong>(event: <a class="reference internal" href="class_inputevent.html#class-inputevent"><span class="std std-ref">InputEvent</span></a>) <a class="reference internal" href="#class-input-method-parse-input-event"><span class="std std-ref">🔗</span></a></p>
+<p>Feeds an <a class="reference internal" href="class_inputevent.html#class-inputevent"><span class="std std-ref">InputEvent</span></a> to the game. Can be used to artificially trigger input events from code. Also generates <a class="reference internal" href="class_node.html#class-node-private-method-input"><span class="std std-ref">Node._input()</span></a> calls.</p>
+<p><strong>Note:</strong> Calling this function has no influence on the operating system. So for example sending an <a class="reference internal" href="class_inputeventmousemotion.html#class-inputeventmousemotion"><span class="std std-ref">InputEventMouseMotion</span></a> will not move the OS mouse cursor to the specified position (use <a class="reference internal" href="#class-input-method-warp-mouse"><span class="std std-ref">warp_mouse()</span></a> instead) and sending <kbd class="kbd docutils literal notranslate">Alt/Cmd</kbd> <kbd class="kbd docutils literal notranslate"></kbd>+<kbd class="kbd docutils literal notranslate"></kbd> <kbd class="kbd docutils literal notranslate">Tab</kbd> as <a class="reference internal" href="class_inputeventkey.html#class-inputeventkey"><span class="std std-ref">InputEventKey</span></a> won’t toggle between active windows.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-input-method-remove-joy-mapping"><abbr title="No return value.">void</abbr> <strong>remove_joy_mapping</strong>(guid: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <a class="reference internal" href="#class-input-method-remove-joy-mapping"><span class="std std-ref">🔗</span></a></p>
+<p>Removes all mappings from the internal database that match the given GUID. All currently connected joypads that use this GUID will become unmapped.</p>
+<p>On Android, Godot will map to an internal fallback mapping.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-input-method-set-accelerometer"><abbr title="No return value.">void</abbr> <strong>set_accelerometer</strong>(value: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>) <a class="reference internal" href="#class-input-method-set-accelerometer"><span class="std std-ref">🔗</span></a></p>
+<p>Sets the acceleration value of the accelerometer sensor. Can be used for debugging on devices without a hardware sensor, for example in an editor on a PC.</p>
+<p><strong>Note:</strong> This value can be immediately overwritten by the hardware sensor value on Android and iOS.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-input-method-set-custom-mouse-cursor"><abbr title="No return value.">void</abbr> <strong>set_custom_mouse_cursor</strong>(image: <a class="reference internal" href="class_resource.html#class-resource"><span class="std std-ref">Resource</span></a>, shape: <a class="reference internal" href="#enum-input-cursorshape"><span class="std std-ref">CursorShape</span></a> = 0, hotspot: <a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a> = Vector2(0, 0)) <a class="reference internal" href="#class-input-method-set-custom-mouse-cursor"><span class="std std-ref">🔗</span></a></p>
+<p>Sets a custom mouse cursor image, which is only visible inside the game window, for the given mouse <code class="docutils literal notranslate"><span class="pre">shape</span></code>. The hotspot can also be specified. Passing <code class="docutils literal notranslate"><span class="pre">null</span></code> to the image parameter resets to the system cursor.</p>
+<p><code class="docutils literal notranslate"><span class="pre">image</span></code> can be either <a class="reference internal" href="class_texture2d.html#class-texture2d"><span class="std std-ref">Texture2D</span></a> or <a class="reference internal" href="class_image.html#class-image"><span class="std std-ref">Image</span></a> and its size must be lower than or equal to 256×256. To avoid rendering issues, sizes lower than or equal to 128×128 are recommended.</p>
+<p><code class="docutils literal notranslate"><span class="pre">hotspot</span></code> must be within <code class="docutils literal notranslate"><span class="pre">image</span></code>’s size.</p>
+<p><strong>Note:</strong> <a class="reference internal" href="class_animatedtexture.html#class-animatedtexture"><span class="std std-ref">AnimatedTexture</span></a>s aren’t supported as custom mouse cursors. If using an <a class="reference internal" href="class_animatedtexture.html#class-animatedtexture"><span class="std std-ref">AnimatedTexture</span></a>, only the first frame will be displayed.</p>
+<p><strong>Note:</strong> The <strong>Lossless</strong>, <strong>Lossy</strong> or <strong>Uncompressed</strong> compression modes are recommended. The <strong>Video RAM</strong> compression mode can be used, but it will be decompressed on the CPU, which means loading times are slowed down and no memory is saved compared to lossless modes.</p>
+<p><strong>Note:</strong> On the web platform, the maximum allowed cursor image size is 128×128. Cursor images larger than 32×32 will also only be displayed if the mouse cursor image is entirely located within the page for <a class="reference external" href="https://chromestatus.com/feature/5825971391299584">security reasons</a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-input-method-set-default-cursor-shape"><abbr title="No return value.">void</abbr> <strong>set_default_cursor_shape</strong>(shape: <a class="reference internal" href="#enum-input-cursorshape"><span class="std std-ref">CursorShape</span></a> = 0) <a class="reference internal" href="#class-input-method-set-default-cursor-shape"><span class="std std-ref">🔗</span></a></p>
+<p>Sets the default cursor shape to be used in the viewport instead of <a class="reference internal" href="#class-input-constant-cursor-arrow"><span class="std std-ref">CURSOR_ARROW</span></a>.</p>
+<p><strong>Note:</strong> If you want to change the default cursor shape for <a class="reference internal" href="class_control.html#class-control"><span class="std std-ref">Control</span></a>’s nodes, use <a class="reference internal" href="class_control.html#class-control-property-mouse-default-cursor-shape"><span class="std std-ref">Control.mouse_default_cursor_shape</span></a> instead.</p>
+<p><strong>Note:</strong> This method generates an <a class="reference internal" href="class_inputeventmousemotion.html#class-inputeventmousemotion"><span class="std std-ref">InputEventMouseMotion</span></a> to update cursor immediately.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-input-method-set-gravity"><abbr title="No return value.">void</abbr> <strong>set_gravity</strong>(value: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>) <a class="reference internal" href="#class-input-method-set-gravity"><span class="std std-ref">🔗</span></a></p>
+<p>Sets the gravity value of the accelerometer sensor. Can be used for debugging on devices without a hardware sensor, for example in an editor on a PC.</p>
+<p><strong>Note:</strong> This value can be immediately overwritten by the hardware sensor value on Android and iOS.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-input-method-set-gyroscope"><abbr title="No return value.">void</abbr> <strong>set_gyroscope</strong>(value: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>) <a class="reference internal" href="#class-input-method-set-gyroscope"><span class="std std-ref">🔗</span></a></p>
+<p>Sets the value of the rotation rate of the gyroscope sensor. Can be used for debugging on devices without a hardware sensor, for example in an editor on a PC.</p>
+<p><strong>Note:</strong> This value can be immediately overwritten by the hardware sensor value on Android and iOS.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-input-method-set-joy-light"><abbr title="No return value.">void</abbr> <strong>set_joy_light</strong>(device: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, color: <a class="reference internal" href="class_color.html#class-color"><span class="std std-ref">Color</span></a>) <a class="reference internal" href="#class-input-method-set-joy-light"><span class="std std-ref">🔗</span></a></p>
+<p>Sets the joypad’s LED light, if available, to the specified color. See also <a class="reference internal" href="#class-input-method-has-joy-light"><span class="std std-ref">has_joy_light()</span></a>.</p>
+<p><strong>Note:</strong> There is no way to get the color of the light from a joypad. If you need to know the assigned color, store it separately.</p>
+<p><strong>Note:</strong> This feature is only supported on Windows, Linux, macOS, and iOS.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-input-method-set-joy-motion-sensors-calibration"><abbr title="No return value.">void</abbr> <strong>set_joy_motion_sensors_calibration</strong>(device: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, calibration_info: <a class="reference internal" href="class_dictionary.html#class-dictionary"><span class="std std-ref">Dictionary</span></a>) <a class="reference internal" href="#class-input-method-set-joy-motion-sensors-calibration"><span class="std std-ref">🔗</span></a></p>
+<p><strong>Experimental:</strong> This method may be changed or removed in future versions.</p>
+<p>Sets the specified joypad’s calibration information. See also <a class="reference internal" href="#class-input-method-get-joy-motion-sensors-calibration"><span class="std std-ref">get_joy_motion_sensors_calibration()</span></a>.</p>
+<p>See <a class="reference internal" href="#class-input-method-start-joy-motion-sensors-calibration"><span class="std std-ref">start_joy_motion_sensors_calibration()</span></a> for an example on how to use joypad motion sensors and calibration in your games.</p>
+<p><strong>Note:</strong> This feature is only supported on Windows, Linux, macOS, and iOS.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-input-method-set-joy-motion-sensors-enabled"><abbr title="No return value.">void</abbr> <strong>set_joy_motion_sensors_enabled</strong>(device: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, enable: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>) <a class="reference internal" href="#class-input-method-set-joy-motion-sensors-enabled"><span class="std std-ref">🔗</span></a></p>
+<p><strong>Experimental:</strong> This method may be changed or removed in future versions.</p>
+<p>Enables or disables the motion sensors (accelerometer and gyroscope), if available, on the specified joypad.</p>
+<p>See <a class="reference internal" href="#class-input-method-start-joy-motion-sensors-calibration"><span class="std std-ref">start_joy_motion_sensors_calibration()</span></a> for an example on how to use joypad motion sensors and calibration in your games.</p>
+<p>It’s recommended to disable the motion sensors when they’re no longer being used, because otherwise it might drain the controller battery faster.</p>
+<p><strong>Note:</strong> This feature is only supported on Windows, Linux, macOS, and iOS.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-input-method-set-magnetometer"><abbr title="No return value.">void</abbr> <strong>set_magnetometer</strong>(value: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>) <a class="reference internal" href="#class-input-method-set-magnetometer"><span class="std std-ref">🔗</span></a></p>
+<p>Sets the value of the magnetic field of the magnetometer sensor. Can be used for debugging on devices without a hardware sensor, for example in an editor on a PC.</p>
+<p><strong>Note:</strong> This value can be immediately overwritten by the hardware sensor value on Android and iOS.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-input-method-should-ignore-device"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>should_ignore_device</strong>(vendor_id: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, product_id: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-input-method-should-ignore-device"><span class="std std-ref">🔗</span></a></p>
+<p>Queries whether an input device should be ignored or not. Devices can be ignored by setting the environment variable <code class="docutils literal notranslate"><span class="pre">SDL_GAMECONTROLLER_IGNORE_DEVICES</span></code>. Read the <a class="reference external" href="https://wiki.libsdl.org/SDL2">SDL documentation</a> for more information.</p>
+<p><strong>Note:</strong> Some 3rd party tools can contribute to the list of ignored devices. For example, <em>SteamInput</em> creates virtual devices from physical devices for remapping purposes. To avoid handling the same input device twice, the original device is added to the ignore list.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-input-method-start-joy-motion-sensors-calibration"><abbr title="No return value.">void</abbr> <strong>start_joy_motion_sensors_calibration</strong>(device: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <a class="reference internal" href="#class-input-method-start-joy-motion-sensors-calibration"><span class="std std-ref">🔗</span></a></p>
+<p><strong>Experimental:</strong> This method may be changed or removed in future versions.</p>
+<p>Starts the process of calibrating the specified joypad’s gyroscope, if it has one.</p>
+<p>Once a joypad’s gyroscope has been calibrated correctly (e.g. laying still on a table without being rotated), <a class="reference internal" href="#class-input-method-get-joy-gyroscope"><span class="std std-ref">get_joy_gyroscope()</span></a> will return values close or equal to <a class="reference internal" href="class_vector3.html#class-vector3-constant-zero"><span class="std std-ref">Vector3.ZERO</span></a> when the joypad is not being rotated.</p>
+<p>Here’s an example of how to use joypad gyroscope and gyroscope calibration in your games:</p>
+<p><strong>Note:</strong> Accelerometer sensor doesn’t usually require calibration.</p>
+<p><strong>Note:</strong> This feature is only supported on Windows, Linux, macOS, and iOS.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-input-method-start-joy-vibration"><abbr title="No return value.">void</abbr> <strong>start_joy_vibration</strong>(device: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, weak_magnitude: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, strong_magnitude: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, duration: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> = 0) <a class="reference internal" href="#class-input-method-start-joy-vibration"><span class="std std-ref">🔗</span></a></p>
+<p>Starts to vibrate the joypad. See also <a class="reference internal" href="#class-input-method-has-joy-vibration"><span class="std std-ref">has_joy_vibration()</span></a> and <a class="reference internal" href="#class-input-method-is-joy-vibrating"><span class="std std-ref">is_joy_vibrating()</span></a>.</p>
+<p>Joypads usually come with two rumble motors, a strong and a weak one.</p>
+<p><code class="docutils literal notranslate"><span class="pre">weak_magnitude</span></code> is the strength of the weak motor (between <code class="docutils literal notranslate"><span class="pre">0.0</span></code> and <code class="docutils literal notranslate"><span class="pre">1.0</span></code>).</p>
+<p><code class="docutils literal notranslate"><span class="pre">strong_magnitude</span></code> is the strength of the strong motor (between <code class="docutils literal notranslate"><span class="pre">0.0</span></code> and <code class="docutils literal notranslate"><span class="pre">1.0</span></code>).</p>
+<p><code class="docutils literal notranslate"><span class="pre">duration</span></code> is the duration of the effect in seconds (a duration of <code class="docutils literal notranslate"><span class="pre">0.0</span></code> will try to play the vibration as long as possible, which is about 65 seconds).</p>
+<p>The vibration can be stopped early by calling <a class="reference internal" href="#class-input-method-stop-joy-vibration"><span class="std std-ref">stop_joy_vibration()</span></a>.</p>
+<p>See also <a class="reference internal" href="#class-input-method-get-joy-vibration-strength"><span class="std std-ref">get_joy_vibration_strength()</span></a> and <a class="reference internal" href="#class-input-method-get-joy-vibration-duration"><span class="std std-ref">get_joy_vibration_duration()</span></a>.</p>
+<p><strong>Note:</strong> For macOS, vibration is only supported in macOS 11 and later. When connected via USB, vibration is only supported for major brand controllers (except Xbox One and Xbox Series X/S controllers) due to macOS limitations.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-input-method-stop-joy-motion-sensors-calibration"><abbr title="No return value.">void</abbr> <strong>stop_joy_motion_sensors_calibration</strong>(device: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <a class="reference internal" href="#class-input-method-stop-joy-motion-sensors-calibration"><span class="std std-ref">🔗</span></a></p>
+<p><strong>Experimental:</strong> This method may be changed or removed in future versions.</p>
+<p>Stops the calibration process of the specified joypad’s motion sensors.</p>
+<p>See <a class="reference internal" href="#class-input-method-start-joy-motion-sensors-calibration"><span class="std std-ref">start_joy_motion_sensors_calibration()</span></a> for an example on how to use joypad motion sensors and calibration in your games.</p>
+<p><strong>Note:</strong> This feature is only supported on Windows, Linux, macOS, and iOS.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-input-method-stop-joy-vibration"><abbr title="No return value.">void</abbr> <strong>stop_joy_vibration</strong>(device: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <a class="reference internal" href="#class-input-method-stop-joy-vibration"><span class="std std-ref">🔗</span></a></p>
+<p>Stops the vibration of the joypad started with <a class="reference internal" href="#class-input-method-start-joy-vibration"><span class="std std-ref">start_joy_vibration()</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-input-method-vibrate-handheld"><abbr title="No return value.">void</abbr> <strong>vibrate_handheld</strong>(duration_ms: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> = 500, amplitude: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> = -1.0) <a class="reference internal" href="#class-input-method-vibrate-handheld"><span class="std std-ref">🔗</span></a></p>
+<p>Vibrate the handheld device for the specified duration in milliseconds.</p>
+<p><code class="docutils literal notranslate"><span class="pre">amplitude</span></code> is the strength of the vibration, as a value between <code class="docutils literal notranslate"><span class="pre">0.0</span></code> and <code class="docutils literal notranslate"><span class="pre">1.0</span></code>. If set to <code class="docutils literal notranslate"><span class="pre">-1.0</span></code>, the default vibration strength of the device is used.</p>
+<p><strong>Note:</strong> This method is implemented on Android, iOS, and Web. It has no effect on other platforms.</p>
+<p><strong>Note:</strong> For Android, <a class="reference internal" href="#class-input-method-vibrate-handheld"><span class="std std-ref">vibrate_handheld()</span></a> requires enabling the <code class="docutils literal notranslate"><span class="pre">VIBRATE</span></code> permission in the export preset. Otherwise, <a class="reference internal" href="#class-input-method-vibrate-handheld"><span class="std std-ref">vibrate_handheld()</span></a> will have no effect.</p>
+<p><strong>Note:</strong> For iOS, specifying the duration is only supported in iOS 13 and later.</p>
+<p><strong>Note:</strong> For Web, the amplitude cannot be changed.</p>
+<p><strong>Note:</strong> Some web browsers such as Safari and Firefox for Android do not support <a class="reference internal" href="#class-input-method-vibrate-handheld"><span class="std std-ref">vibrate_handheld()</span></a>.</p>
+<p><strong>Note:</strong> Device settings such as vibration on/off, “do not disturb” mode or specific haptic feedback on/off may prevent <a class="reference internal" href="#class-input-method-vibrate-handheld"><span class="std std-ref">vibrate_handheld()</span></a> effects.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-input-method-warp-mouse"><abbr title="No return value.">void</abbr> <strong>warp_mouse</strong>(position: <a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a>) <a class="reference internal" href="#class-input-method-warp-mouse"><span class="std std-ref">🔗</span></a></p>
+<p>Sets the mouse position to the specified vector, provided in pixels and relative to an origin at the upper left corner of the currently focused Window Manager game window.</p>
+<p>Mouse position is clipped to the limits of the screen resolution, or to the limits of the game window if <a class="reference internal" href="#enum-input-mousemode"><span class="std std-ref">MouseMode</span></a> is set to <a class="reference internal" href="#class-input-constant-mouse-mode-confined"><span class="std std-ref">MOUSE_MODE_CONFINED</span></a> or <a class="reference internal" href="#class-input-constant-mouse-mode-confined-hidden"><span class="std std-ref">MOUSE_MODE_CONFINED_HIDDEN</span></a>.</p>
+<p><strong>Note:</strong> <a class="reference internal" href="#class-input-method-warp-mouse"><span class="std std-ref">warp_mouse()</span></a> is only supported on Windows, macOS and Linux. It has no effect on Android, iOS and Web.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, MUmarShahbaz.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,350 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta content="stain" name="keywords" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Decal &mdash; RPG Components 2D 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=d45e8c67"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            RPG Components 2D
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">Decal</a><ul>
+<li><a class="reference internal" href="#description">Description</a></li>
+<li><a class="reference internal" href="#properties">Properties</a></li>
+<li><a class="reference internal" href="#methods">Methods</a></li>
+<li><a class="reference internal" href="#enumerations">Enumerations</a></li>
+<li><a class="reference internal" href="#property-descriptions">Property Descriptions</a></li>
+<li><a class="reference internal" href="#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">RPG Components 2D</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Decal</li>
+      <li class="wy-breadcrumbs-aside">
+              <!-- User defined GitHub URL -->
+              <a href="hide" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="decal">
+<span id="class-decal"></span><h1>Decal<a class="headerlink" href="#decal" title="Link to this heading"></a></h1>
+<p><strong>Inherits:</strong> <a class="reference internal" href="class_visualinstance3d.html#class-visualinstance3d"><span class="std std-ref">VisualInstance3D</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_node3d.html#class-node3d"><span class="std std-ref">Node3D</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_node.html#class-node"><span class="std std-ref">Node</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_object.html#class-object"><span class="std std-ref">Object</span></a></p>
+<p>Node that projects a texture onto a <a class="reference internal" href="class_meshinstance3d.html#class-meshinstance3d"><span class="std std-ref">MeshInstance3D</span></a>.</p>
+<section class="classref-introduction-group" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
+<p><strong>Decal</strong>s are used to project a texture onto a <a class="reference internal" href="class_mesh.html#class-mesh"><span class="std std-ref">Mesh</span></a> in the scene. Use Decals to add detail to a scene without affecting the underlying <a class="reference internal" href="class_mesh.html#class-mesh"><span class="std std-ref">Mesh</span></a>. They are often used to add weathering to building, add dirt or mud to the ground, or add variety to props. Decals can be moved at any time, making them suitable for things like blob shadows or laser sight dots.</p>
+<p>They are made of an <a class="reference internal" href="class_aabb.html#class-aabb"><span class="std std-ref">AABB</span></a> and a group of <a class="reference internal" href="class_texture2d.html#class-texture2d"><span class="std std-ref">Texture2D</span></a>s specifying <a class="reference internal" href="class_color.html#class-color"><span class="std std-ref">Color</span></a>, normal, ORM (ambient occlusion, roughness, metallic), and emission. Decals are projected within their <a class="reference internal" href="class_aabb.html#class-aabb"><span class="std std-ref">AABB</span></a> so altering the orientation of the Decal affects the direction in which they are projected. By default, Decals are projected down (i.e. from positive Y to negative Y).</p>
+<p>The <a class="reference internal" href="class_texture2d.html#class-texture2d"><span class="std std-ref">Texture2D</span></a>s associated with the Decal are automatically stored in a texture atlas which is used for drawing the decals so all decals can be drawn at once. Godot uses clustered decals, meaning they are stored in cluster data and drawn when the mesh is drawn, they are not drawn as a post-processing effect after.</p>
+<p><strong>Note:</strong> Decals cannot affect an underlying material’s transparency, regardless of its transparency mode (alpha blend, alpha scissor, alpha hash, opaque pre-pass). This means translucent or transparent areas of a material will remain translucent or transparent even if an opaque decal is applied on them.</p>
+<p><strong>Note:</strong> Decals are only supported in the Forward+ and Mobile rendering methods, not Compatibility. When using the Mobile rendering method, only 8 decals can be displayed on each mesh resource. Attempting to display more than 8 decals on a single mesh resource will result in decals flickering in and out as the camera moves.</p>
+<p><strong>Note:</strong> When using the Mobile rendering method, decals will only correctly affect meshes whose visibility AABB intersects with the decal’s AABB. If using a shader to deform the mesh in a way that makes it go outside its AABB, <a class="reference internal" href="class_geometryinstance3d.html#class-geometryinstance3d-property-extra-cull-margin"><span class="std std-ref">GeometryInstance3D.extra_cull_margin</span></a> must be increased on the mesh. Otherwise, the decal may not be visible on the mesh.</p>
+</section>
+<section class="classref-reftable-group" id="properties">
+<h2>Properties<a class="headerlink" href="#properties" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-decal-property-albedo-mix"><span class="std std-ref">albedo_mix</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">1.0</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-decal-property-cull-mask"><span class="std std-ref">cull_mask</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">1048575</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-decal-property-distance-fade-begin"><span class="std std-ref">distance_fade_begin</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">40.0</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-decal-property-distance-fade-enabled"><span class="std std-ref">distance_fade_enabled</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-decal-property-distance-fade-length"><span class="std std-ref">distance_fade_length</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">10.0</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-decal-property-emission-energy"><span class="std std-ref">emission_energy</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">1.0</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-decal-property-lower-fade"><span class="std std-ref">lower_fade</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0.3</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_color.html#class-color"><span class="std std-ref">Color</span></a></p></td>
+<td><p><a class="reference internal" href="#class-decal-property-modulate"><span class="std std-ref">modulate</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Color(1,</span> <span class="pre">1,</span> <span class="pre">1,</span> <span class="pre">1)</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-decal-property-normal-fade"><span class="std std-ref">normal_fade</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0.0</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a></p></td>
+<td><p><a class="reference internal" href="#class-decal-property-size"><span class="std std-ref">size</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Vector3(2,</span> <span class="pre">2,</span> <span class="pre">2)</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_texture2d.html#class-texture2d"><span class="std std-ref">Texture2D</span></a></p></td>
+<td><p><a class="reference internal" href="#class-decal-property-texture-albedo"><span class="std std-ref">texture_albedo</span></a></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_texture2d.html#class-texture2d"><span class="std std-ref">Texture2D</span></a></p></td>
+<td><p><a class="reference internal" href="#class-decal-property-texture-emission"><span class="std std-ref">texture_emission</span></a></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_texture2d.html#class-texture2d"><span class="std std-ref">Texture2D</span></a></p></td>
+<td><p><a class="reference internal" href="#class-decal-property-texture-normal"><span class="std std-ref">texture_normal</span></a></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_texture2d.html#class-texture2d"><span class="std std-ref">Texture2D</span></a></p></td>
+<td><p><a class="reference internal" href="#class-decal-property-texture-orm"><span class="std std-ref">texture_orm</span></a></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-decal-property-upper-fade"><span class="std std-ref">upper_fade</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0.3</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section class="classref-reftable-group" id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_texture2d.html#class-texture2d"><span class="std std-ref">Texture2D</span></a></p></td>
+<td><p><a class="reference internal" href="#class-decal-method-get-texture"><span class="std std-ref">get_texture</span></a>(type: <a class="reference internal" href="#enum-decal-decaltexture"><span class="std std-ref">DecalTexture</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-decal-method-set-texture"><span class="std std-ref">set_texture</span></a>(type: <a class="reference internal" href="#enum-decal-decaltexture"><span class="std std-ref">DecalTexture</span></a>, texture: <a class="reference internal" href="class_texture2d.html#class-texture2d"><span class="std std-ref">Texture2D</span></a>)</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="enumerations">
+<h2>Enumerations<a class="headerlink" href="#enumerations" title="Link to this heading"></a></h2>
+<p class="classref-enumeration" id="enum-decal-decaltexture">enum <strong>DecalTexture</strong>: <a class="reference internal" href="#enum-decal-decaltexture"><span class="std std-ref">🔗</span></a></p>
+<p class="classref-enumeration-constant" id="class-decal-constant-texture-albedo"><a class="reference internal" href="#enum-decal-decaltexture"><span class="std std-ref">DecalTexture</span></a> <strong>TEXTURE_ALBEDO</strong> = <code class="docutils literal notranslate"><span class="pre">0</span></code></p>
+<p><a class="reference internal" href="class_texture2d.html#class-texture2d"><span class="std std-ref">Texture2D</span></a> corresponding to <a class="reference internal" href="#class-decal-property-texture-albedo"><span class="std std-ref">texture_albedo</span></a>.</p>
+<p class="classref-enumeration-constant" id="class-decal-constant-texture-normal"><a class="reference internal" href="#enum-decal-decaltexture"><span class="std std-ref">DecalTexture</span></a> <strong>TEXTURE_NORMAL</strong> = <code class="docutils literal notranslate"><span class="pre">1</span></code></p>
+<p><a class="reference internal" href="class_texture2d.html#class-texture2d"><span class="std std-ref">Texture2D</span></a> corresponding to <a class="reference internal" href="#class-decal-property-texture-normal"><span class="std std-ref">texture_normal</span></a>.</p>
+<p class="classref-enumeration-constant" id="class-decal-constant-texture-orm"><a class="reference internal" href="#enum-decal-decaltexture"><span class="std std-ref">DecalTexture</span></a> <strong>TEXTURE_ORM</strong> = <code class="docutils literal notranslate"><span class="pre">2</span></code></p>
+<p><a class="reference internal" href="class_texture2d.html#class-texture2d"><span class="std std-ref">Texture2D</span></a> corresponding to <a class="reference internal" href="#class-decal-property-texture-orm"><span class="std std-ref">texture_orm</span></a>.</p>
+<p class="classref-enumeration-constant" id="class-decal-constant-texture-emission"><a class="reference internal" href="#enum-decal-decaltexture"><span class="std std-ref">DecalTexture</span></a> <strong>TEXTURE_EMISSION</strong> = <code class="docutils literal notranslate"><span class="pre">3</span></code></p>
+<p><a class="reference internal" href="class_texture2d.html#class-texture2d"><span class="std std-ref">Texture2D</span></a> corresponding to <a class="reference internal" href="#class-decal-property-texture-emission"><span class="std std-ref">texture_emission</span></a>.</p>
+<p class="classref-enumeration-constant" id="class-decal-constant-texture-max"><a class="reference internal" href="#enum-decal-decaltexture"><span class="std std-ref">DecalTexture</span></a> <strong>TEXTURE_MAX</strong> = <code class="docutils literal notranslate"><span class="pre">4</span></code></p>
+<p>Max size of <a class="reference internal" href="#enum-decal-decaltexture"><span class="std std-ref">DecalTexture</span></a> enum.</p>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="property-descriptions">
+<h2>Property Descriptions<a class="headerlink" href="#property-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-property" id="class-decal-property-albedo-mix"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>albedo_mix</strong> = <code class="docutils literal notranslate"><span class="pre">1.0</span></code> <a class="reference internal" href="#class-decal-property-albedo-mix"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_albedo_mix</strong>(value: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>get_albedo_mix</strong>()</p></li>
+</ul>
+<p>Blends the albedo <a class="reference internal" href="class_color.html#class-color"><span class="std std-ref">Color</span></a> of the decal with albedo <a class="reference internal" href="class_color.html#class-color"><span class="std std-ref">Color</span></a> of the underlying mesh. This can be set to <code class="docutils literal notranslate"><span class="pre">0.0</span></code> to create a decal that only affects normal or ORM. In this case, an albedo texture is still required as its alpha channel will determine where the normal and ORM will be overridden. See also <a class="reference internal" href="#class-decal-property-modulate"><span class="std std-ref">modulate</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-decal-property-cull-mask"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>cull_mask</strong> = <code class="docutils literal notranslate"><span class="pre">1048575</span></code> <a class="reference internal" href="#class-decal-property-cull-mask"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_cull_mask</strong>(value: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>get_cull_mask</strong>()</p></li>
+</ul>
+<p>Specifies which <a class="reference internal" href="class_visualinstance3d.html#class-visualinstance3d-property-layers"><span class="std std-ref">VisualInstance3D.layers</span></a> this decal will project on. By default, Decals affect all layers. This is used so you can specify which types of objects receive the Decal and which do not. This is especially useful so you can ensure that dynamic objects don’t accidentally receive a Decal intended for the terrain under them.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-decal-property-distance-fade-begin"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>distance_fade_begin</strong> = <code class="docutils literal notranslate"><span class="pre">40.0</span></code> <a class="reference internal" href="#class-decal-property-distance-fade-begin"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_distance_fade_begin</strong>(value: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>get_distance_fade_begin</strong>()</p></li>
+</ul>
+<p>The distance from the camera at which the Decal begins to fade away (in 3D units).</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-decal-property-distance-fade-enabled"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>distance_fade_enabled</strong> = <code class="docutils literal notranslate"><span class="pre">false</span></code> <a class="reference internal" href="#class-decal-property-distance-fade-enabled"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_enable_distance_fade</strong>(value: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_distance_fade_enabled</strong>()</p></li>
+</ul>
+<p>If <code class="docutils literal notranslate"><span class="pre">true</span></code>, decals will smoothly fade away when far from the active <a class="reference internal" href="class_camera3d.html#class-camera3d"><span class="std std-ref">Camera3D</span></a> starting at <a class="reference internal" href="#class-decal-property-distance-fade-begin"><span class="std std-ref">distance_fade_begin</span></a>. The Decal will fade out over <a class="reference internal" href="#class-decal-property-distance-fade-begin"><span class="std std-ref">distance_fade_begin</span></a> + <a class="reference internal" href="#class-decal-property-distance-fade-length"><span class="std std-ref">distance_fade_length</span></a>, after which it will be culled and not sent to the shader at all. Use this to reduce the number of active Decals in a scene and thus improve performance.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-decal-property-distance-fade-length"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>distance_fade_length</strong> = <code class="docutils literal notranslate"><span class="pre">10.0</span></code> <a class="reference internal" href="#class-decal-property-distance-fade-length"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_distance_fade_length</strong>(value: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>get_distance_fade_length</strong>()</p></li>
+</ul>
+<p>The distance over which the Decal fades (in 3D units). The Decal becomes slowly more transparent over this distance and is completely invisible at the end. Higher values result in a smoother fade-out transition, which is more suited when the camera moves fast.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-decal-property-emission-energy"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>emission_energy</strong> = <code class="docutils literal notranslate"><span class="pre">1.0</span></code> <a class="reference internal" href="#class-decal-property-emission-energy"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_emission_energy</strong>(value: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>get_emission_energy</strong>()</p></li>
+</ul>
+<p>Energy multiplier for the emission texture. This will make the decal emit light at a higher or lower intensity, independently of the albedo color. See also <a class="reference internal" href="#class-decal-property-modulate"><span class="std std-ref">modulate</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-decal-property-lower-fade"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>lower_fade</strong> = <code class="docutils literal notranslate"><span class="pre">0.3</span></code> <a class="reference internal" href="#class-decal-property-lower-fade"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_lower_fade</strong>(value: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>get_lower_fade</strong>()</p></li>
+</ul>
+<p>Sets the curve over which the decal will fade as the surface gets further from the center of the <a class="reference internal" href="class_aabb.html#class-aabb"><span class="std std-ref">AABB</span></a>. Only positive values are valid (negative values will be clamped to <code class="docutils literal notranslate"><span class="pre">0.0</span></code>). See also <a class="reference internal" href="#class-decal-property-upper-fade"><span class="std std-ref">upper_fade</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-decal-property-modulate"><a class="reference internal" href="class_color.html#class-color"><span class="std std-ref">Color</span></a> <strong>modulate</strong> = <code class="docutils literal notranslate"><span class="pre">Color(1,</span> <span class="pre">1,</span> <span class="pre">1,</span> <span class="pre">1)</span></code> <a class="reference internal" href="#class-decal-property-modulate"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_modulate</strong>(value: <a class="reference internal" href="class_color.html#class-color"><span class="std std-ref">Color</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_color.html#class-color"><span class="std std-ref">Color</span></a> <strong>get_modulate</strong>()</p></li>
+</ul>
+<p>Changes the <a class="reference internal" href="class_color.html#class-color"><span class="std std-ref">Color</span></a> of the Decal by multiplying the albedo and emission colors with this value. The alpha component is only taken into account when multiplying the albedo color, not the emission color. See also <a class="reference internal" href="#class-decal-property-emission-energy"><span class="std std-ref">emission_energy</span></a> and <a class="reference internal" href="#class-decal-property-albedo-mix"><span class="std std-ref">albedo_mix</span></a> to change the emission and albedo intensity independently of each other.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-decal-property-normal-fade"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>normal_fade</strong> = <code class="docutils literal notranslate"><span class="pre">0.0</span></code> <a class="reference internal" href="#class-decal-property-normal-fade"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_normal_fade</strong>(value: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>get_normal_fade</strong>()</p></li>
+</ul>
+<p>Fades the Decal if the angle between the Decal’s <a class="reference internal" href="class_aabb.html#class-aabb"><span class="std std-ref">AABB</span></a> and the target surface becomes too large. A value of <code class="docutils literal notranslate"><span class="pre">0</span></code> projects the Decal regardless of angle, a value of <code class="docutils literal notranslate"><span class="pre">1</span></code> limits the Decal to surfaces that are nearly perpendicular.</p>
+<p><strong>Note:</strong> Setting <a class="reference internal" href="#class-decal-property-normal-fade"><span class="std std-ref">normal_fade</span></a> to a value greater than <code class="docutils literal notranslate"><span class="pre">0.0</span></code> has a small performance cost due to the added normal angle computations.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-decal-property-size"><a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a> <strong>size</strong> = <code class="docutils literal notranslate"><span class="pre">Vector3(2,</span> <span class="pre">2,</span> <span class="pre">2)</span></code> <a class="reference internal" href="#class-decal-property-size"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_size</strong>(value: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a> <strong>get_size</strong>()</p></li>
+</ul>
+<p>Sets the size of the <a class="reference internal" href="class_aabb.html#class-aabb"><span class="std std-ref">AABB</span></a> used by the decal. All dimensions must be set to a value greater than zero (they will be clamped to <code class="docutils literal notranslate"><span class="pre">0.001</span></code> if this is not the case). The AABB goes from <code class="docutils literal notranslate"><span class="pre">-size/2</span></code> to <code class="docutils literal notranslate"><span class="pre">size/2</span></code>.</p>
+<p><strong>Note:</strong> To improve culling efficiency of “hard surface” decals, set their <a class="reference internal" href="#class-decal-property-upper-fade"><span class="std std-ref">upper_fade</span></a> and <a class="reference internal" href="#class-decal-property-lower-fade"><span class="std std-ref">lower_fade</span></a> to <code class="docutils literal notranslate"><span class="pre">0.0</span></code> and set the Y component of the <a class="reference internal" href="#class-decal-property-size"><span class="std std-ref">size</span></a> as low as possible. This will reduce the decals’ AABB size without affecting their appearance.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-decal-property-texture-albedo"><a class="reference internal" href="class_texture2d.html#class-texture2d"><span class="std std-ref">Texture2D</span></a> <strong>texture_albedo</strong> <a class="reference internal" href="#class-decal-property-texture-albedo"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_texture</strong>(type: <a class="reference internal" href="#enum-decal-decaltexture"><span class="std std-ref">DecalTexture</span></a>, texture: <a class="reference internal" href="class_texture2d.html#class-texture2d"><span class="std std-ref">Texture2D</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_texture2d.html#class-texture2d"><span class="std std-ref">Texture2D</span></a> <strong>get_texture</strong>(type: <a class="reference internal" href="#enum-decal-decaltexture"><span class="std std-ref">DecalTexture</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></li>
+</ul>
+<p><a class="reference internal" href="class_texture2d.html#class-texture2d"><span class="std std-ref">Texture2D</span></a> with the base <a class="reference internal" href="class_color.html#class-color"><span class="std std-ref">Color</span></a> of the Decal. Either this or the <a class="reference internal" href="#class-decal-property-texture-emission"><span class="std std-ref">texture_emission</span></a> must be set for the Decal to be visible. Use the alpha channel like a mask to smoothly blend the edges of the decal with the underlying object.</p>
+<p><strong>Note:</strong> Unlike <a class="reference internal" href="class_basematerial3d.html#class-basematerial3d"><span class="std std-ref">BaseMaterial3D</span></a> whose filter mode can be adjusted on a per-material basis, the filter mode for <strong>Decal</strong> textures is set globally with <a class="reference internal" href="class_projectsettings.html#class-projectsettings-property-rendering-textures-decals-filter"><span class="std std-ref">ProjectSettings.rendering/textures/decals/filter</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-decal-property-texture-emission"><a class="reference internal" href="class_texture2d.html#class-texture2d"><span class="std std-ref">Texture2D</span></a> <strong>texture_emission</strong> <a class="reference internal" href="#class-decal-property-texture-emission"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_texture</strong>(type: <a class="reference internal" href="#enum-decal-decaltexture"><span class="std std-ref">DecalTexture</span></a>, texture: <a class="reference internal" href="class_texture2d.html#class-texture2d"><span class="std std-ref">Texture2D</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_texture2d.html#class-texture2d"><span class="std std-ref">Texture2D</span></a> <strong>get_texture</strong>(type: <a class="reference internal" href="#enum-decal-decaltexture"><span class="std std-ref">DecalTexture</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></li>
+</ul>
+<p><a class="reference internal" href="class_texture2d.html#class-texture2d"><span class="std std-ref">Texture2D</span></a> with the emission <a class="reference internal" href="class_color.html#class-color"><span class="std std-ref">Color</span></a> of the Decal. Either this or the <a class="reference internal" href="#class-decal-property-texture-albedo"><span class="std std-ref">texture_albedo</span></a> must be set for the Decal to be visible. Use the alpha channel like a mask to smoothly blend the edges of the decal with the underlying object.</p>
+<p><strong>Note:</strong> Unlike <a class="reference internal" href="class_basematerial3d.html#class-basematerial3d"><span class="std std-ref">BaseMaterial3D</span></a> whose filter mode can be adjusted on a per-material basis, the filter mode for <strong>Decal</strong> textures is set globally with <a class="reference internal" href="class_projectsettings.html#class-projectsettings-property-rendering-textures-decals-filter"><span class="std std-ref">ProjectSettings.rendering/textures/decals/filter</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-decal-property-texture-normal"><a class="reference internal" href="class_texture2d.html#class-texture2d"><span class="std std-ref">Texture2D</span></a> <strong>texture_normal</strong> <a class="reference internal" href="#class-decal-property-texture-normal"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_texture</strong>(type: <a class="reference internal" href="#enum-decal-decaltexture"><span class="std std-ref">DecalTexture</span></a>, texture: <a class="reference internal" href="class_texture2d.html#class-texture2d"><span class="std std-ref">Texture2D</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_texture2d.html#class-texture2d"><span class="std std-ref">Texture2D</span></a> <strong>get_texture</strong>(type: <a class="reference internal" href="#enum-decal-decaltexture"><span class="std std-ref">DecalTexture</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></li>
+</ul>
+<p><a class="reference internal" href="class_texture2d.html#class-texture2d"><span class="std std-ref">Texture2D</span></a> with the per-pixel normal map for the decal. Use this to add extra detail to decals.</p>
+<p><strong>Note:</strong> Unlike <a class="reference internal" href="class_basematerial3d.html#class-basematerial3d"><span class="std std-ref">BaseMaterial3D</span></a> whose filter mode can be adjusted on a per-material basis, the filter mode for <strong>Decal</strong> textures is set globally with <a class="reference internal" href="class_projectsettings.html#class-projectsettings-property-rendering-textures-decals-filter"><span class="std std-ref">ProjectSettings.rendering/textures/decals/filter</span></a>.</p>
+<p><strong>Note:</strong> Setting this texture alone will not result in a visible decal, as <a class="reference internal" href="#class-decal-property-texture-albedo"><span class="std std-ref">texture_albedo</span></a> must also be set. To create a normal-only decal, load an albedo texture into <a class="reference internal" href="#class-decal-property-texture-albedo"><span class="std std-ref">texture_albedo</span></a> and set <a class="reference internal" href="#class-decal-property-albedo-mix"><span class="std std-ref">albedo_mix</span></a> to <code class="docutils literal notranslate"><span class="pre">0.0</span></code>. The albedo texture’s alpha channel will be used to determine where the underlying surface’s normal map should be overridden (and its intensity).</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-decal-property-texture-orm"><a class="reference internal" href="class_texture2d.html#class-texture2d"><span class="std std-ref">Texture2D</span></a> <strong>texture_orm</strong> <a class="reference internal" href="#class-decal-property-texture-orm"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_texture</strong>(type: <a class="reference internal" href="#enum-decal-decaltexture"><span class="std std-ref">DecalTexture</span></a>, texture: <a class="reference internal" href="class_texture2d.html#class-texture2d"><span class="std std-ref">Texture2D</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_texture2d.html#class-texture2d"><span class="std std-ref">Texture2D</span></a> <strong>get_texture</strong>(type: <a class="reference internal" href="#enum-decal-decaltexture"><span class="std std-ref">DecalTexture</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></li>
+</ul>
+<p><a class="reference internal" href="class_texture2d.html#class-texture2d"><span class="std std-ref">Texture2D</span></a> storing ambient occlusion, roughness, and metallic for the decal. Use this to add extra detail to decals.</p>
+<p><strong>Note:</strong> Unlike <a class="reference internal" href="class_basematerial3d.html#class-basematerial3d"><span class="std std-ref">BaseMaterial3D</span></a> whose filter mode can be adjusted on a per-material basis, the filter mode for <strong>Decal</strong> textures is set globally with <a class="reference internal" href="class_projectsettings.html#class-projectsettings-property-rendering-textures-decals-filter"><span class="std std-ref">ProjectSettings.rendering/textures/decals/filter</span></a>.</p>
+<p><strong>Note:</strong> Setting this texture alone will not result in a visible decal, as <a class="reference internal" href="#class-decal-property-texture-albedo"><span class="std std-ref">texture_albedo</span></a> must also be set. To create an ORM-only decal, load an albedo texture into <a class="reference internal" href="#class-decal-property-texture-albedo"><span class="std std-ref">texture_albedo</span></a> and set <a class="reference internal" href="#class-decal-property-albedo-mix"><span class="std std-ref">albedo_mix</span></a> to <code class="docutils literal notranslate"><span class="pre">0.0</span></code>. The albedo texture’s alpha channel will be used to determine where the underlying surface’s ORM map should be overridden (and its intensity).</p>
+<p><strong>Note:</strong> Due to technical limitations, modifying the underlying surface’s roughness using <a class="reference internal" href="#class-decal-property-texture-orm"><span class="std std-ref">texture_orm</span></a> does <em>not</em> affect screen-space reflections (<a class="reference internal" href="class_environment.html#class-environment-property-ssr-enabled"><span class="std std-ref">Environment.ssr_enabled</span></a>), reflections from <a class="reference internal" href="class_voxelgi.html#class-voxelgi"><span class="std std-ref">VoxelGI</span></a>, and reflections from SDFGI (<a class="reference internal" href="class_environment.html#class-environment-property-sdfgi-enabled"><span class="std std-ref">Environment.sdfgi_enabled</span></a>). Only reflections from <a class="reference internal" href="class_reflectionprobe.html#class-reflectionprobe"><span class="std std-ref">ReflectionProbe</span></a>s are affected.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-decal-property-upper-fade"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>upper_fade</strong> = <code class="docutils literal notranslate"><span class="pre">0.3</span></code> <a class="reference internal" href="#class-decal-property-upper-fade"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_upper_fade</strong>(value: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>get_upper_fade</strong>()</p></li>
+</ul>
+<p>Sets the curve over which the decal will fade as the surface gets further from the center of the <a class="reference internal" href="class_aabb.html#class-aabb"><span class="std std-ref">AABB</span></a>. Only positive values are valid (negative values will be clamped to <code class="docutils literal notranslate"><span class="pre">0.0</span></code>). See also <a class="reference internal" href="#class-decal-property-lower-fade"><span class="std std-ref">lower_fade</span></a>.</p>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="method-descriptions">
+<h2>Method Descriptions<a class="headerlink" href="#method-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-method" id="class-decal-method-get-texture"><a class="reference internal" href="class_texture2d.html#class-texture2d"><span class="std std-ref">Texture2D</span></a> <strong>get_texture</strong>(type: <a class="reference internal" href="#enum-decal-decaltexture"><span class="std std-ref">DecalTexture</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-decal-method-get-texture"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the <a class="reference internal" href="class_texture2d.html#class-texture2d"><span class="std std-ref">Texture2D</span></a> associated with the specified <a class="reference internal" href="#enum-decal-decaltexture"><span class="std std-ref">DecalTexture</span></a>. This is a convenience method, in most cases you should access the texture directly.</p>
+<p>For example, instead of <code class="docutils literal notranslate"><span class="pre">albedo_tex</span> <span class="pre">=</span> <span class="pre">$Decal.get_texture(Decal.TEXTURE_ALBEDO)</span></code>, use <code class="docutils literal notranslate"><span class="pre">albedo_tex</span> <span class="pre">=</span> <span class="pre">$Decal.texture_albedo</span></code>.</p>
+<p>One case where this is better than accessing the texture directly is when you want to copy one Decal’s textures to another. For example:</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-decal-method-set-texture"><abbr title="No return value.">void</abbr> <strong>set_texture</strong>(type: <a class="reference internal" href="#enum-decal-decaltexture"><span class="std std-ref">DecalTexture</span></a>, texture: <a class="reference internal" href="class_texture2d.html#class-texture2d"><span class="std std-ref">Texture2D</span></a>) <a class="reference internal" href="#class-decal-method-set-texture"><span class="std std-ref">🔗</span></a></p>
+<p>Sets the <a class="reference internal" href="class_texture2d.html#class-texture2d"><span class="std std-ref">Texture2D</span></a> associated with the specified <a class="reference internal" href="#enum-decal-decaltexture"><span class="std std-ref">DecalTexture</span></a>. This is a convenience method, in most cases you should access the texture directly.</p>
+<p>For example, instead of <code class="docutils literal notranslate"><span class="pre">$Decal.set_texture(Decal.TEXTURE_ALBEDO,</span> <span class="pre">albedo_tex)</span></code>, use <code class="docutils literal notranslate"><span class="pre">$Decal.texture_albedo</span> <span class="pre">=</span> <span class="pre">albedo_tex</span></code>.</p>
+<p>One case where this is better than accessing the texture directly is when you want to copy one Decal’s textures to another. For example:</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, MUmarShahbaz.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

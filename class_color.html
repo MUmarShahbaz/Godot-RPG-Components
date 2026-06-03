@@ -1,0 +1,870 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Color &mdash; RPG Components 2D 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=d45e8c67"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            RPG Components 2D
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">Color</a><ul>
+<li><a class="reference internal" href="#description">Description</a></li>
+<li><a class="reference internal" href="#tutorials">Tutorials</a></li>
+<li><a class="reference internal" href="#properties">Properties</a></li>
+<li><a class="reference internal" href="#constructors">Constructors</a></li>
+<li><a class="reference internal" href="#methods">Methods</a></li>
+<li><a class="reference internal" href="#operators">Operators</a></li>
+<li><a class="reference internal" href="#constants">Constants</a></li>
+<li><a class="reference internal" href="#property-descriptions">Property Descriptions</a></li>
+<li><a class="reference internal" href="#constructor-descriptions">Constructor Descriptions</a></li>
+<li><a class="reference internal" href="#method-descriptions">Method Descriptions</a></li>
+<li><a class="reference internal" href="#operator-descriptions">Operator Descriptions</a></li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">RPG Components 2D</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Color</li>
+      <li class="wy-breadcrumbs-aside">
+              <!-- User defined GitHub URL -->
+              <a href="hide" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="color">
+<span id="class-color"></span><h1>Color<a class="headerlink" href="#color" title="Link to this heading"></a></h1>
+<p>A color represented in RGBA format.</p>
+<section class="classref-introduction-group" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
+<p>A color represented in RGBA format by a red (<a class="reference internal" href="#class-color-property-r"><span class="std std-ref">r</span></a>), green (<a class="reference internal" href="#class-color-property-g"><span class="std std-ref">g</span></a>), blue (<a class="reference internal" href="#class-color-property-b"><span class="std std-ref">b</span></a>), and alpha (<a class="reference internal" href="#class-color-property-a"><span class="std std-ref">a</span></a>) component. Each component is a 32-bit floating-point value, usually ranging from <code class="docutils literal notranslate"><span class="pre">0.0</span></code> to <code class="docutils literal notranslate"><span class="pre">1.0</span></code>. Some properties (such as <a class="reference internal" href="class_canvasitem.html#class-canvasitem-property-modulate"><span class="std std-ref">CanvasItem.modulate</span></a>) may support values greater than <code class="docutils literal notranslate"><span class="pre">1.0</span></code>, for overbright or HDR (High Dynamic Range) colors.</p>
+<p>Colors can be created in a number of ways: By the various <strong>Color</strong> constructors, by static methods such as <a class="reference internal" href="#class-color-method-from-hsv"><span class="std std-ref">from_hsv()</span></a>, and by using a name from the set of standardized colors based on <a class="reference external" href="https://en.wikipedia.org/wiki/X11_color_names">X11 color names</a> with the addition of <a class="reference internal" href="#class-color-constant-transparent"><span class="std std-ref">TRANSPARENT</span></a>.</p>
+<p><a class="reference external" href="https://raw.githubusercontent.com/godotengine/godot-docs/master/img/color_constants.png">Color constants cheatsheet</a></p>
+<p>Although <strong>Color</strong> may be used to store values of any encoding, the red (<a class="reference internal" href="#class-color-property-r"><span class="std std-ref">r</span></a>), green (<a class="reference internal" href="#class-color-property-g"><span class="std std-ref">g</span></a>), and blue (<a class="reference internal" href="#class-color-property-b"><span class="std std-ref">b</span></a>) properties of <strong>Color</strong> are expected by Godot to be encoded using the <a class="reference external" href="https://en.wikipedia.org/wiki/SRGB#Transfer_function_(%22gamma%22)">nonlinear sRGB transfer function</a> unless otherwise stated. This color encoding is used by many traditional art and web tools, making it easy to match colors between Godot and these tools. Godot uses <a class="reference external" href="https://en.wikipedia.org/wiki/Rec._709">Rec. ITU-R BT.709</a> color primaries, which are used by the sRGB standard.</p>
+<p>All physical simulation, such as lighting calculations, and colorimetry transformations, such as <a class="reference internal" href="#class-color-method-get-luminance"><span class="std std-ref">get_luminance()</span></a>, must be performed on linearly encoded values to produce correct results. When performing these calculations, convert <strong>Color</strong> to and from linear encoding using <a class="reference internal" href="#class-color-method-srgb-to-linear"><span class="std std-ref">srgb_to_linear()</span></a> and <a class="reference internal" href="#class-color-method-linear-to-srgb"><span class="std std-ref">linear_to_srgb()</span></a>.</p>
+<p><strong>Note:</strong> In a boolean context, a Color will evaluate to <code class="docutils literal notranslate"><span class="pre">false</span></code> if it is equal to <code class="docutils literal notranslate"><span class="pre">Color(0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">1)</span></code> (opaque black). Otherwise, a Color will always evaluate to <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p>
+<p><strong>Note:</strong> In C#, color constants are defined in the <code class="docutils literal notranslate"><span class="pre">Colors</span></code> static class instead of <code class="docutils literal notranslate"><span class="pre">Color</span></code>. Additionally, named colors use <code class="docutils literal notranslate"><span class="pre">PascalCase</span></code> syntax instead of <code class="docutils literal notranslate"><span class="pre">UPPER_SNAKE_CASE</span></code>. For example, <code class="docutils literal notranslate"><span class="pre">Color.ALICE_BLUE</span></code> in GDScript is <code class="docutils literal notranslate"><span class="pre">Colors.AliceBlue</span></code> in C#.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>There are notable differences when using this API with C#. See <span class="xref std std-ref">doc_c_sharp_differences</span> for more information.</p>
+</div>
+</section>
+<section class="classref-introduction-group" id="tutorials">
+<h2>Tutorials<a class="headerlink" href="#tutorials" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://godotengine.org/asset-library/asset/2768">2D GD Paint Demo</a></p></li>
+<li><p><a class="reference external" href="https://godotengine.org/asset-library/asset/2733">Tween Interpolation Demo</a></p></li>
+<li><p><a class="reference external" href="https://godotengine.org/asset-library/asset/2767">GUI Drag And Drop Demo</a></p></li>
+</ul>
+</section>
+<section class="classref-reftable-group" id="properties">
+<h2>Properties<a class="headerlink" href="#properties" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-color-property-a"><span class="std std-ref">a</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">1.0</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-color-property-a8"><span class="std std-ref">a8</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">255</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-color-property-b"><span class="std std-ref">b</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0.0</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-color-property-b8"><span class="std std-ref">b8</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-color-property-g"><span class="std std-ref">g</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0.0</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-color-property-g8"><span class="std std-ref">g8</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-color-property-h"><span class="std std-ref">h</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0.0</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-color-property-ok-hsl-h"><span class="std std-ref">ok_hsl_h</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0.0</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-color-property-ok-hsl-l"><span class="std std-ref">ok_hsl_l</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0.0</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-color-property-ok-hsl-s"><span class="std std-ref">ok_hsl_s</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0.0</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-color-property-r"><span class="std std-ref">r</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0.0</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-color-property-r8"><span class="std std-ref">r8</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-color-property-s"><span class="std std-ref">s</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0.0</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-color-property-v"><span class="std std-ref">v</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0.0</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section class="classref-reftable-group" id="constructors">
+<h2>Constructors<a class="headerlink" href="#constructors" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#class-color"><span class="std std-ref">Color</span></a></p></td>
+<td><p><a class="reference internal" href="#class-color-constructor-color"><span class="std std-ref">Color</span></a>()</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#class-color"><span class="std std-ref">Color</span></a></p></td>
+<td><p><a class="reference internal" href="#class-color-constructor-color"><span class="std std-ref">Color</span></a>(from: <a class="reference internal" href="#class-color"><span class="std std-ref">Color</span></a>, alpha: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#class-color"><span class="std std-ref">Color</span></a></p></td>
+<td><p><a class="reference internal" href="#class-color-constructor-color"><span class="std std-ref">Color</span></a>(from: <a class="reference internal" href="#class-color"><span class="std std-ref">Color</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#class-color"><span class="std std-ref">Color</span></a></p></td>
+<td><p><a class="reference internal" href="#class-color-constructor-color"><span class="std std-ref">Color</span></a>(code: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#class-color"><span class="std std-ref">Color</span></a></p></td>
+<td><p><a class="reference internal" href="#class-color-constructor-color"><span class="std std-ref">Color</span></a>(code: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, alpha: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#class-color"><span class="std std-ref">Color</span></a></p></td>
+<td><p><a class="reference internal" href="#class-color-constructor-color"><span class="std std-ref">Color</span></a>(r: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, g: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, b: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#class-color"><span class="std std-ref">Color</span></a></p></td>
+<td><p><a class="reference internal" href="#class-color-constructor-color"><span class="std std-ref">Color</span></a>(r: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, g: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, b: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, a: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section class="classref-reftable-group" id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#class-color"><span class="std std-ref">Color</span></a></p></td>
+<td><p><a class="reference internal" href="#class-color-method-blend"><span class="std std-ref">blend</span></a>(over: <a class="reference internal" href="#class-color"><span class="std std-ref">Color</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#class-color"><span class="std std-ref">Color</span></a></p></td>
+<td><p><a class="reference internal" href="#class-color-method-clamp"><span class="std std-ref">clamp</span></a>(min: <a class="reference internal" href="#class-color"><span class="std std-ref">Color</span></a> = Color(0, 0, 0, 0), max: <a class="reference internal" href="#class-color"><span class="std std-ref">Color</span></a> = Color(1, 1, 1, 1)) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#class-color"><span class="std std-ref">Color</span></a></p></td>
+<td><p><a class="reference internal" href="#class-color-method-darkened"><span class="std std-ref">darkened</span></a>(amount: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#class-color"><span class="std std-ref">Color</span></a></p></td>
+<td><p><a class="reference internal" href="#class-color-method-from-hsv"><span class="std std-ref">from_hsv</span></a>(h: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, s: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, v: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, alpha: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> = 1.0) <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#class-color"><span class="std std-ref">Color</span></a></p></td>
+<td><p><a class="reference internal" href="#class-color-method-from-ok-hsl"><span class="std std-ref">from_ok_hsl</span></a>(h: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, s: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, l: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, alpha: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> = 1.0) <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#class-color"><span class="std std-ref">Color</span></a></p></td>
+<td><p><a class="reference internal" href="#class-color-method-from-rgba8"><span class="std std-ref">from_rgba8</span></a>(r8: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, g8: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, b8: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, a8: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> = 255) <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#class-color"><span class="std std-ref">Color</span></a></p></td>
+<td><p><a class="reference internal" href="#class-color-method-from-rgbe9995"><span class="std std-ref">from_rgbe9995</span></a>(rgbe: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#class-color"><span class="std std-ref">Color</span></a></p></td>
+<td><p><a class="reference internal" href="#class-color-method-from-string"><span class="std std-ref">from_string</span></a>(str: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, default: <a class="reference internal" href="#class-color"><span class="std std-ref">Color</span></a>) <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-color-method-get-luminance"><span class="std std-ref">get_luminance</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#class-color"><span class="std std-ref">Color</span></a></p></td>
+<td><p><a class="reference internal" href="#class-color-method-hex"><span class="std std-ref">hex</span></a>(hex: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#class-color"><span class="std std-ref">Color</span></a></p></td>
+<td><p><a class="reference internal" href="#class-color-method-hex64"><span class="std std-ref">hex64</span></a>(hex: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#class-color"><span class="std std-ref">Color</span></a></p></td>
+<td><p><a class="reference internal" href="#class-color-method-html"><span class="std std-ref">html</span></a>(rgba: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-color-method-html-is-valid"><span class="std std-ref">html_is_valid</span></a>(color: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#class-color"><span class="std std-ref">Color</span></a></p></td>
+<td><p><a class="reference internal" href="#class-color-method-inverted"><span class="std std-ref">inverted</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-color-method-is-equal-approx"><span class="std std-ref">is_equal_approx</span></a>(to: <a class="reference internal" href="#class-color"><span class="std std-ref">Color</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#class-color"><span class="std std-ref">Color</span></a></p></td>
+<td><p><a class="reference internal" href="#class-color-method-lerp"><span class="std std-ref">lerp</span></a>(to: <a class="reference internal" href="#class-color"><span class="std std-ref">Color</span></a>, weight: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#class-color"><span class="std std-ref">Color</span></a></p></td>
+<td><p><a class="reference internal" href="#class-color-method-lightened"><span class="std std-ref">lightened</span></a>(amount: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#class-color"><span class="std std-ref">Color</span></a></p></td>
+<td><p><a class="reference internal" href="#class-color-method-linear-to-srgb"><span class="std std-ref">linear_to_srgb</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#class-color"><span class="std std-ref">Color</span></a></p></td>
+<td><p><a class="reference internal" href="#class-color-method-srgb-to-linear"><span class="std std-ref">srgb_to_linear</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-color-method-to-abgr32"><span class="std std-ref">to_abgr32</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-color-method-to-abgr64"><span class="std std-ref">to_abgr64</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-color-method-to-argb32"><span class="std std-ref">to_argb32</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-color-method-to-argb64"><span class="std std-ref">to_argb64</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a></p></td>
+<td><p><a class="reference internal" href="#class-color-method-to-html"><span class="std std-ref">to_html</span></a>(with_alpha: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = true) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-color-method-to-rgba32"><span class="std std-ref">to_rgba32</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-color-method-to-rgba64"><span class="std std-ref">to_rgba64</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section class="classref-reftable-group" id="operators">
+<h2>Operators<a class="headerlink" href="#operators" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-color-operator-neq-color"><span class="std std-ref">operator !=</span></a>(right: <a class="reference internal" href="#class-color"><span class="std std-ref">Color</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#class-color"><span class="std std-ref">Color</span></a></p></td>
+<td><p><a class="reference internal" href="#class-color-operator-mul-color"><span class="std std-ref">operator *</span></a>(right: <a class="reference internal" href="#class-color"><span class="std std-ref">Color</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#class-color"><span class="std std-ref">Color</span></a></p></td>
+<td><p><a class="reference internal" href="#class-color-operator-mul-float"><span class="std std-ref">operator *</span></a>(right: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#class-color"><span class="std std-ref">Color</span></a></p></td>
+<td><p><a class="reference internal" href="#class-color-operator-mul-int"><span class="std std-ref">operator *</span></a>(right: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#class-color"><span class="std std-ref">Color</span></a></p></td>
+<td><p><a class="reference internal" href="#class-color-operator-sum-color"><span class="std std-ref">operator +</span></a>(right: <a class="reference internal" href="#class-color"><span class="std std-ref">Color</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#class-color"><span class="std std-ref">Color</span></a></p></td>
+<td><p><a class="reference internal" href="#class-color-operator-dif-color"><span class="std std-ref">operator -</span></a>(right: <a class="reference internal" href="#class-color"><span class="std std-ref">Color</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#class-color"><span class="std std-ref">Color</span></a></p></td>
+<td><p><a class="reference internal" href="#class-color-operator-div-color"><span class="std std-ref">operator /</span></a>(right: <a class="reference internal" href="#class-color"><span class="std std-ref">Color</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#class-color"><span class="std std-ref">Color</span></a></p></td>
+<td><p><a class="reference internal" href="#class-color-operator-div-float"><span class="std std-ref">operator /</span></a>(right: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#class-color"><span class="std std-ref">Color</span></a></p></td>
+<td><p><a class="reference internal" href="#class-color-operator-div-int"><span class="std std-ref">operator /</span></a>(right: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-color-operator-eq-color"><span class="std std-ref">operator ==</span></a>(right: <a class="reference internal" href="#class-color"><span class="std std-ref">Color</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-color-operator-idx-int"><span class="std std-ref">operator []</span></a>(index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#class-color"><span class="std std-ref">Color</span></a></p></td>
+<td><p><a class="reference internal" href="#class-color-operator-unplus"><span class="std std-ref">operator unary+</span></a>()</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#class-color"><span class="std std-ref">Color</span></a></p></td>
+<td><p><a class="reference internal" href="#class-color-operator-unminus"><span class="std std-ref">operator unary-</span></a>()</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="constants">
+<h2>Constants<a class="headerlink" href="#constants" title="Link to this heading"></a></h2>
+<p class="classref-constant" id="class-color-constant-alice-blue"><strong>ALICE_BLUE</strong> = <code class="docutils literal notranslate"><span class="pre">Color(0.9411765,</span> <span class="pre">0.972549,</span> <span class="pre">1,</span> <span class="pre">1)</span></code> <a class="reference internal" href="#class-color-constant-alice-blue"><span class="std std-ref">🔗</span></a></p>
+<p>Alice blue color.</p>
+<p class="classref-constant" id="class-color-constant-antique-white"><strong>ANTIQUE_WHITE</strong> = <code class="docutils literal notranslate"><span class="pre">Color(0.98039216,</span> <span class="pre">0.92156863,</span> <span class="pre">0.84313726,</span> <span class="pre">1)</span></code> <a class="reference internal" href="#class-color-constant-antique-white"><span class="std std-ref">🔗</span></a></p>
+<p>Antique white color.</p>
+<p class="classref-constant" id="class-color-constant-aqua"><strong>AQUA</strong> = <code class="docutils literal notranslate"><span class="pre">Color(0,</span> <span class="pre">1,</span> <span class="pre">1,</span> <span class="pre">1)</span></code> <a class="reference internal" href="#class-color-constant-aqua"><span class="std std-ref">🔗</span></a></p>
+<p>Aqua color.</p>
+<p class="classref-constant" id="class-color-constant-aquamarine"><strong>AQUAMARINE</strong> = <code class="docutils literal notranslate"><span class="pre">Color(0.49803922,</span> <span class="pre">1,</span> <span class="pre">0.83137256,</span> <span class="pre">1)</span></code> <a class="reference internal" href="#class-color-constant-aquamarine"><span class="std std-ref">🔗</span></a></p>
+<p>Aquamarine color.</p>
+<p class="classref-constant" id="class-color-constant-azure"><strong>AZURE</strong> = <code class="docutils literal notranslate"><span class="pre">Color(0.9411765,</span> <span class="pre">1,</span> <span class="pre">1,</span> <span class="pre">1)</span></code> <a class="reference internal" href="#class-color-constant-azure"><span class="std std-ref">🔗</span></a></p>
+<p>Azure color.</p>
+<p class="classref-constant" id="class-color-constant-beige"><strong>BEIGE</strong> = <code class="docutils literal notranslate"><span class="pre">Color(0.9607843,</span> <span class="pre">0.9607843,</span> <span class="pre">0.8627451,</span> <span class="pre">1)</span></code> <a class="reference internal" href="#class-color-constant-beige"><span class="std std-ref">🔗</span></a></p>
+<p>Beige color.</p>
+<p class="classref-constant" id="class-color-constant-bisque"><strong>BISQUE</strong> = <code class="docutils literal notranslate"><span class="pre">Color(1,</span> <span class="pre">0.89411765,</span> <span class="pre">0.76862746,</span> <span class="pre">1)</span></code> <a class="reference internal" href="#class-color-constant-bisque"><span class="std std-ref">🔗</span></a></p>
+<p>Bisque color.</p>
+<p class="classref-constant" id="class-color-constant-black"><strong>BLACK</strong> = <code class="docutils literal notranslate"><span class="pre">Color(0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">1)</span></code> <a class="reference internal" href="#class-color-constant-black"><span class="std std-ref">🔗</span></a></p>
+<p>Black color. In GDScript, this is the default value of any color.</p>
+<p class="classref-constant" id="class-color-constant-blanched-almond"><strong>BLANCHED_ALMOND</strong> = <code class="docutils literal notranslate"><span class="pre">Color(1,</span> <span class="pre">0.92156863,</span> <span class="pre">0.8039216,</span> <span class="pre">1)</span></code> <a class="reference internal" href="#class-color-constant-blanched-almond"><span class="std std-ref">🔗</span></a></p>
+<p>Blanched almond color.</p>
+<p class="classref-constant" id="class-color-constant-blue"><strong>BLUE</strong> = <code class="docutils literal notranslate"><span class="pre">Color(0,</span> <span class="pre">0,</span> <span class="pre">1,</span> <span class="pre">1)</span></code> <a class="reference internal" href="#class-color-constant-blue"><span class="std std-ref">🔗</span></a></p>
+<p>Blue color.</p>
+<p class="classref-constant" id="class-color-constant-blue-violet"><strong>BLUE_VIOLET</strong> = <code class="docutils literal notranslate"><span class="pre">Color(0.5411765,</span> <span class="pre">0.16862746,</span> <span class="pre">0.8862745,</span> <span class="pre">1)</span></code> <a class="reference internal" href="#class-color-constant-blue-violet"><span class="std std-ref">🔗</span></a></p>
+<p>Blue violet color.</p>
+<p class="classref-constant" id="class-color-constant-brown"><strong>BROWN</strong> = <code class="docutils literal notranslate"><span class="pre">Color(0.64705884,</span> <span class="pre">0.16470589,</span> <span class="pre">0.16470589,</span> <span class="pre">1)</span></code> <a class="reference internal" href="#class-color-constant-brown"><span class="std std-ref">🔗</span></a></p>
+<p>Brown color.</p>
+<p class="classref-constant" id="class-color-constant-burlywood"><strong>BURLYWOOD</strong> = <code class="docutils literal notranslate"><span class="pre">Color(0.87058824,</span> <span class="pre">0.72156864,</span> <span class="pre">0.5294118,</span> <span class="pre">1)</span></code> <a class="reference internal" href="#class-color-constant-burlywood"><span class="std std-ref">🔗</span></a></p>
+<p>Burlywood color.</p>
+<p class="classref-constant" id="class-color-constant-cadet-blue"><strong>CADET_BLUE</strong> = <code class="docutils literal notranslate"><span class="pre">Color(0.37254903,</span> <span class="pre">0.61960787,</span> <span class="pre">0.627451,</span> <span class="pre">1)</span></code> <a class="reference internal" href="#class-color-constant-cadet-blue"><span class="std std-ref">🔗</span></a></p>
+<p>Cadet blue color.</p>
+<p class="classref-constant" id="class-color-constant-chartreuse"><strong>CHARTREUSE</strong> = <code class="docutils literal notranslate"><span class="pre">Color(0.49803922,</span> <span class="pre">1,</span> <span class="pre">0,</span> <span class="pre">1)</span></code> <a class="reference internal" href="#class-color-constant-chartreuse"><span class="std std-ref">🔗</span></a></p>
+<p>Chartreuse color.</p>
+<p class="classref-constant" id="class-color-constant-chocolate"><strong>CHOCOLATE</strong> = <code class="docutils literal notranslate"><span class="pre">Color(0.8235294,</span> <span class="pre">0.4117647,</span> <span class="pre">0.11764706,</span> <span class="pre">1)</span></code> <a class="reference internal" href="#class-color-constant-chocolate"><span class="std std-ref">🔗</span></a></p>
+<p>Chocolate color.</p>
+<p class="classref-constant" id="class-color-constant-coral"><strong>CORAL</strong> = <code class="docutils literal notranslate"><span class="pre">Color(1,</span> <span class="pre">0.49803922,</span> <span class="pre">0.3137255,</span> <span class="pre">1)</span></code> <a class="reference internal" href="#class-color-constant-coral"><span class="std std-ref">🔗</span></a></p>
+<p>Coral color.</p>
+<p class="classref-constant" id="class-color-constant-cornflower-blue"><strong>CORNFLOWER_BLUE</strong> = <code class="docutils literal notranslate"><span class="pre">Color(0.39215687,</span> <span class="pre">0.58431375,</span> <span class="pre">0.92941177,</span> <span class="pre">1)</span></code> <a class="reference internal" href="#class-color-constant-cornflower-blue"><span class="std std-ref">🔗</span></a></p>
+<p>Cornflower blue color.</p>
+<p class="classref-constant" id="class-color-constant-cornsilk"><strong>CORNSILK</strong> = <code class="docutils literal notranslate"><span class="pre">Color(1,</span> <span class="pre">0.972549,</span> <span class="pre">0.8627451,</span> <span class="pre">1)</span></code> <a class="reference internal" href="#class-color-constant-cornsilk"><span class="std std-ref">🔗</span></a></p>
+<p>Cornsilk color.</p>
+<p class="classref-constant" id="class-color-constant-crimson"><strong>CRIMSON</strong> = <code class="docutils literal notranslate"><span class="pre">Color(0.8627451,</span> <span class="pre">0.078431375,</span> <span class="pre">0.23529412,</span> <span class="pre">1)</span></code> <a class="reference internal" href="#class-color-constant-crimson"><span class="std std-ref">🔗</span></a></p>
+<p>Crimson color.</p>
+<p class="classref-constant" id="class-color-constant-cyan"><strong>CYAN</strong> = <code class="docutils literal notranslate"><span class="pre">Color(0,</span> <span class="pre">1,</span> <span class="pre">1,</span> <span class="pre">1)</span></code> <a class="reference internal" href="#class-color-constant-cyan"><span class="std std-ref">🔗</span></a></p>
+<p>Cyan color.</p>
+<p class="classref-constant" id="class-color-constant-dark-blue"><strong>DARK_BLUE</strong> = <code class="docutils literal notranslate"><span class="pre">Color(0,</span> <span class="pre">0,</span> <span class="pre">0.54509807,</span> <span class="pre">1)</span></code> <a class="reference internal" href="#class-color-constant-dark-blue"><span class="std std-ref">🔗</span></a></p>
+<p>Dark blue color.</p>
+<p class="classref-constant" id="class-color-constant-dark-cyan"><strong>DARK_CYAN</strong> = <code class="docutils literal notranslate"><span class="pre">Color(0,</span> <span class="pre">0.54509807,</span> <span class="pre">0.54509807,</span> <span class="pre">1)</span></code> <a class="reference internal" href="#class-color-constant-dark-cyan"><span class="std std-ref">🔗</span></a></p>
+<p>Dark cyan color.</p>
+<p class="classref-constant" id="class-color-constant-dark-goldenrod"><strong>DARK_GOLDENROD</strong> = <code class="docutils literal notranslate"><span class="pre">Color(0.72156864,</span> <span class="pre">0.5254902,</span> <span class="pre">0.043137256,</span> <span class="pre">1)</span></code> <a class="reference internal" href="#class-color-constant-dark-goldenrod"><span class="std std-ref">🔗</span></a></p>
+<p>Dark goldenrod color.</p>
+<p class="classref-constant" id="class-color-constant-dark-gray"><strong>DARK_GRAY</strong> = <code class="docutils literal notranslate"><span class="pre">Color(0.6627451,</span> <span class="pre">0.6627451,</span> <span class="pre">0.6627451,</span> <span class="pre">1)</span></code> <a class="reference internal" href="#class-color-constant-dark-gray"><span class="std std-ref">🔗</span></a></p>
+<p>Dark gray color.</p>
+<p class="classref-constant" id="class-color-constant-dark-green"><strong>DARK_GREEN</strong> = <code class="docutils literal notranslate"><span class="pre">Color(0,</span> <span class="pre">0.39215687,</span> <span class="pre">0,</span> <span class="pre">1)</span></code> <a class="reference internal" href="#class-color-constant-dark-green"><span class="std std-ref">🔗</span></a></p>
+<p>Dark green color.</p>
+<p class="classref-constant" id="class-color-constant-dark-khaki"><strong>DARK_KHAKI</strong> = <code class="docutils literal notranslate"><span class="pre">Color(0.7411765,</span> <span class="pre">0.7176471,</span> <span class="pre">0.41960785,</span> <span class="pre">1)</span></code> <a class="reference internal" href="#class-color-constant-dark-khaki"><span class="std std-ref">🔗</span></a></p>
+<p>Dark khaki color.</p>
+<p class="classref-constant" id="class-color-constant-dark-magenta"><strong>DARK_MAGENTA</strong> = <code class="docutils literal notranslate"><span class="pre">Color(0.54509807,</span> <span class="pre">0,</span> <span class="pre">0.54509807,</span> <span class="pre">1)</span></code> <a class="reference internal" href="#class-color-constant-dark-magenta"><span class="std std-ref">🔗</span></a></p>
+<p>Dark magenta color.</p>
+<p class="classref-constant" id="class-color-constant-dark-olive-green"><strong>DARK_OLIVE_GREEN</strong> = <code class="docutils literal notranslate"><span class="pre">Color(0.33333334,</span> <span class="pre">0.41960785,</span> <span class="pre">0.18431373,</span> <span class="pre">1)</span></code> <a class="reference internal" href="#class-color-constant-dark-olive-green"><span class="std std-ref">🔗</span></a></p>
+<p>Dark olive green color.</p>
+<p class="classref-constant" id="class-color-constant-dark-orange"><strong>DARK_ORANGE</strong> = <code class="docutils literal notranslate"><span class="pre">Color(1,</span> <span class="pre">0.54901963,</span> <span class="pre">0,</span> <span class="pre">1)</span></code> <a class="reference internal" href="#class-color-constant-dark-orange"><span class="std std-ref">🔗</span></a></p>
+<p>Dark orange color.</p>
+<p class="classref-constant" id="class-color-constant-dark-orchid"><strong>DARK_ORCHID</strong> = <code class="docutils literal notranslate"><span class="pre">Color(0.6,</span> <span class="pre">0.19607843,</span> <span class="pre">0.8,</span> <span class="pre">1)</span></code> <a class="reference internal" href="#class-color-constant-dark-orchid"><span class="std std-ref">🔗</span></a></p>
+<p>Dark orchid color.</p>
+<p class="classref-constant" id="class-color-constant-dark-red"><strong>DARK_RED</strong> = <code class="docutils literal notranslate"><span class="pre">Color(0.54509807,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">1)</span></code> <a class="reference internal" href="#class-color-constant-dark-red"><span class="std std-ref">🔗</span></a></p>
+<p>Dark red color.</p>
+<p class="classref-constant" id="class-color-constant-dark-salmon"><strong>DARK_SALMON</strong> = <code class="docutils literal notranslate"><span class="pre">Color(0.9137255,</span> <span class="pre">0.5882353,</span> <span class="pre">0.47843137,</span> <span class="pre">1)</span></code> <a class="reference internal" href="#class-color-constant-dark-salmon"><span class="std std-ref">🔗</span></a></p>
+<p>Dark salmon color.</p>
+<p class="classref-constant" id="class-color-constant-dark-sea-green"><strong>DARK_SEA_GREEN</strong> = <code class="docutils literal notranslate"><span class="pre">Color(0.56078434,</span> <span class="pre">0.7372549,</span> <span class="pre">0.56078434,</span> <span class="pre">1)</span></code> <a class="reference internal" href="#class-color-constant-dark-sea-green"><span class="std std-ref">🔗</span></a></p>
+<p>Dark sea green color.</p>
+<p class="classref-constant" id="class-color-constant-dark-slate-blue"><strong>DARK_SLATE_BLUE</strong> = <code class="docutils literal notranslate"><span class="pre">Color(0.28235295,</span> <span class="pre">0.23921569,</span> <span class="pre">0.54509807,</span> <span class="pre">1)</span></code> <a class="reference internal" href="#class-color-constant-dark-slate-blue"><span class="std std-ref">🔗</span></a></p>
+<p>Dark slate blue color.</p>
+<p class="classref-constant" id="class-color-constant-dark-slate-gray"><strong>DARK_SLATE_GRAY</strong> = <code class="docutils literal notranslate"><span class="pre">Color(0.18431373,</span> <span class="pre">0.30980393,</span> <span class="pre">0.30980393,</span> <span class="pre">1)</span></code> <a class="reference internal" href="#class-color-constant-dark-slate-gray"><span class="std std-ref">🔗</span></a></p>
+<p>Dark slate gray color.</p>
+<p class="classref-constant" id="class-color-constant-dark-turquoise"><strong>DARK_TURQUOISE</strong> = <code class="docutils literal notranslate"><span class="pre">Color(0,</span> <span class="pre">0.80784315,</span> <span class="pre">0.81960785,</span> <span class="pre">1)</span></code> <a class="reference internal" href="#class-color-constant-dark-turquoise"><span class="std std-ref">🔗</span></a></p>
+<p>Dark turquoise color.</p>
+<p class="classref-constant" id="class-color-constant-dark-violet"><strong>DARK_VIOLET</strong> = <code class="docutils literal notranslate"><span class="pre">Color(0.5803922,</span> <span class="pre">0,</span> <span class="pre">0.827451,</span> <span class="pre">1)</span></code> <a class="reference internal" href="#class-color-constant-dark-violet"><span class="std std-ref">🔗</span></a></p>
+<p>Dark violet color.</p>
+<p class="classref-constant" id="class-color-constant-deep-pink"><strong>DEEP_PINK</strong> = <code class="docutils literal notranslate"><span class="pre">Color(1,</span> <span class="pre">0.078431375,</span> <span class="pre">0.5764706,</span> <span class="pre">1)</span></code> <a class="reference internal" href="#class-color-constant-deep-pink"><span class="std std-ref">🔗</span></a></p>
+<p>Deep pink color.</p>
+<p class="classref-constant" id="class-color-constant-deep-sky-blue"><strong>DEEP_SKY_BLUE</strong> = <code class="docutils literal notranslate"><span class="pre">Color(0,</span> <span class="pre">0.7490196,</span> <span class="pre">1,</span> <span class="pre">1)</span></code> <a class="reference internal" href="#class-color-constant-deep-sky-blue"><span class="std std-ref">🔗</span></a></p>
+<p>Deep sky blue color.</p>
+<p class="classref-constant" id="class-color-constant-dim-gray"><strong>DIM_GRAY</strong> = <code class="docutils literal notranslate"><span class="pre">Color(0.4117647,</span> <span class="pre">0.4117647,</span> <span class="pre">0.4117647,</span> <span class="pre">1)</span></code> <a class="reference internal" href="#class-color-constant-dim-gray"><span class="std std-ref">🔗</span></a></p>
+<p>Dim gray color.</p>
+<p class="classref-constant" id="class-color-constant-dodger-blue"><strong>DODGER_BLUE</strong> = <code class="docutils literal notranslate"><span class="pre">Color(0.11764706,</span> <span class="pre">0.5647059,</span> <span class="pre">1,</span> <span class="pre">1)</span></code> <a class="reference internal" href="#class-color-constant-dodger-blue"><span class="std std-ref">🔗</span></a></p>
+<p>Dodger blue color.</p>
+<p class="classref-constant" id="class-color-constant-firebrick"><strong>FIREBRICK</strong> = <code class="docutils literal notranslate"><span class="pre">Color(0.69803923,</span> <span class="pre">0.13333334,</span> <span class="pre">0.13333334,</span> <span class="pre">1)</span></code> <a class="reference internal" href="#class-color-constant-firebrick"><span class="std std-ref">🔗</span></a></p>
+<p>Firebrick color.</p>
+<p class="classref-constant" id="class-color-constant-floral-white"><strong>FLORAL_WHITE</strong> = <code class="docutils literal notranslate"><span class="pre">Color(1,</span> <span class="pre">0.98039216,</span> <span class="pre">0.9411765,</span> <span class="pre">1)</span></code> <a class="reference internal" href="#class-color-constant-floral-white"><span class="std std-ref">🔗</span></a></p>
+<p>Floral white color.</p>
+<p class="classref-constant" id="class-color-constant-forest-green"><strong>FOREST_GREEN</strong> = <code class="docutils literal notranslate"><span class="pre">Color(0.13333334,</span> <span class="pre">0.54509807,</span> <span class="pre">0.13333334,</span> <span class="pre">1)</span></code> <a class="reference internal" href="#class-color-constant-forest-green"><span class="std std-ref">🔗</span></a></p>
+<p>Forest green color.</p>
+<p class="classref-constant" id="class-color-constant-fuchsia"><strong>FUCHSIA</strong> = <code class="docutils literal notranslate"><span class="pre">Color(1,</span> <span class="pre">0,</span> <span class="pre">1,</span> <span class="pre">1)</span></code> <a class="reference internal" href="#class-color-constant-fuchsia"><span class="std std-ref">🔗</span></a></p>
+<p>Fuchsia color.</p>
+<p class="classref-constant" id="class-color-constant-gainsboro"><strong>GAINSBORO</strong> = <code class="docutils literal notranslate"><span class="pre">Color(0.8627451,</span> <span class="pre">0.8627451,</span> <span class="pre">0.8627451,</span> <span class="pre">1)</span></code> <a class="reference internal" href="#class-color-constant-gainsboro"><span class="std std-ref">🔗</span></a></p>
+<p>Gainsboro color.</p>
+<p class="classref-constant" id="class-color-constant-ghost-white"><strong>GHOST_WHITE</strong> = <code class="docutils literal notranslate"><span class="pre">Color(0.972549,</span> <span class="pre">0.972549,</span> <span class="pre">1,</span> <span class="pre">1)</span></code> <a class="reference internal" href="#class-color-constant-ghost-white"><span class="std std-ref">🔗</span></a></p>
+<p>Ghost white color.</p>
+<p class="classref-constant" id="class-color-constant-gold"><strong>GOLD</strong> = <code class="docutils literal notranslate"><span class="pre">Color(1,</span> <span class="pre">0.84313726,</span> <span class="pre">0,</span> <span class="pre">1)</span></code> <a class="reference internal" href="#class-color-constant-gold"><span class="std std-ref">🔗</span></a></p>
+<p>Gold color.</p>
+<p class="classref-constant" id="class-color-constant-goldenrod"><strong>GOLDENROD</strong> = <code class="docutils literal notranslate"><span class="pre">Color(0.85490197,</span> <span class="pre">0.64705884,</span> <span class="pre">0.1254902,</span> <span class="pre">1)</span></code> <a class="reference internal" href="#class-color-constant-goldenrod"><span class="std std-ref">🔗</span></a></p>
+<p>Goldenrod color.</p>
+<p class="classref-constant" id="class-color-constant-gray"><strong>GRAY</strong> = <code class="docutils literal notranslate"><span class="pre">Color(0.74509805,</span> <span class="pre">0.74509805,</span> <span class="pre">0.74509805,</span> <span class="pre">1)</span></code> <a class="reference internal" href="#class-color-constant-gray"><span class="std std-ref">🔗</span></a></p>
+<p>Gray color.</p>
+<p class="classref-constant" id="class-color-constant-green"><strong>GREEN</strong> = <code class="docutils literal notranslate"><span class="pre">Color(0,</span> <span class="pre">1,</span> <span class="pre">0,</span> <span class="pre">1)</span></code> <a class="reference internal" href="#class-color-constant-green"><span class="std std-ref">🔗</span></a></p>
+<p>Green color.</p>
+<p class="classref-constant" id="class-color-constant-green-yellow"><strong>GREEN_YELLOW</strong> = <code class="docutils literal notranslate"><span class="pre">Color(0.6784314,</span> <span class="pre">1,</span> <span class="pre">0.18431373,</span> <span class="pre">1)</span></code> <a class="reference internal" href="#class-color-constant-green-yellow"><span class="std std-ref">🔗</span></a></p>
+<p>Green yellow color.</p>
+<p class="classref-constant" id="class-color-constant-honeydew"><strong>HONEYDEW</strong> = <code class="docutils literal notranslate"><span class="pre">Color(0.9411765,</span> <span class="pre">1,</span> <span class="pre">0.9411765,</span> <span class="pre">1)</span></code> <a class="reference internal" href="#class-color-constant-honeydew"><span class="std std-ref">🔗</span></a></p>
+<p>Honeydew color.</p>
+<p class="classref-constant" id="class-color-constant-hot-pink"><strong>HOT_PINK</strong> = <code class="docutils literal notranslate"><span class="pre">Color(1,</span> <span class="pre">0.4117647,</span> <span class="pre">0.7058824,</span> <span class="pre">1)</span></code> <a class="reference internal" href="#class-color-constant-hot-pink"><span class="std std-ref">🔗</span></a></p>
+<p>Hot pink color.</p>
+<p class="classref-constant" id="class-color-constant-indian-red"><strong>INDIAN_RED</strong> = <code class="docutils literal notranslate"><span class="pre">Color(0.8039216,</span> <span class="pre">0.36078432,</span> <span class="pre">0.36078432,</span> <span class="pre">1)</span></code> <a class="reference internal" href="#class-color-constant-indian-red"><span class="std std-ref">🔗</span></a></p>
+<p>Indian red color.</p>
+<p class="classref-constant" id="class-color-constant-indigo"><strong>INDIGO</strong> = <code class="docutils literal notranslate"><span class="pre">Color(0.29411766,</span> <span class="pre">0,</span> <span class="pre">0.50980395,</span> <span class="pre">1)</span></code> <a class="reference internal" href="#class-color-constant-indigo"><span class="std std-ref">🔗</span></a></p>
+<p>Indigo color.</p>
+<p class="classref-constant" id="class-color-constant-ivory"><strong>IVORY</strong> = <code class="docutils literal notranslate"><span class="pre">Color(1,</span> <span class="pre">1,</span> <span class="pre">0.9411765,</span> <span class="pre">1)</span></code> <a class="reference internal" href="#class-color-constant-ivory"><span class="std std-ref">🔗</span></a></p>
+<p>Ivory color.</p>
+<p class="classref-constant" id="class-color-constant-khaki"><strong>KHAKI</strong> = <code class="docutils literal notranslate"><span class="pre">Color(0.9411765,</span> <span class="pre">0.9019608,</span> <span class="pre">0.54901963,</span> <span class="pre">1)</span></code> <a class="reference internal" href="#class-color-constant-khaki"><span class="std std-ref">🔗</span></a></p>
+<p>Khaki color.</p>
+<p class="classref-constant" id="class-color-constant-lavender"><strong>LAVENDER</strong> = <code class="docutils literal notranslate"><span class="pre">Color(0.9019608,</span> <span class="pre">0.9019608,</span> <span class="pre">0.98039216,</span> <span class="pre">1)</span></code> <a class="reference internal" href="#class-color-constant-lavender"><span class="std std-ref">🔗</span></a></p>
+<p>Lavender color.</p>
+<p class="classref-constant" id="class-color-constant-lavender-blush"><strong>LAVENDER_BLUSH</strong> = <code class="docutils literal notranslate"><span class="pre">Color(1,</span> <span class="pre">0.9411765,</span> <span class="pre">0.9607843,</span> <span class="pre">1)</span></code> <a class="reference internal" href="#class-color-constant-lavender-blush"><span class="std std-ref">🔗</span></a></p>
+<p>Lavender blush color.</p>
+<p class="classref-constant" id="class-color-constant-lawn-green"><strong>LAWN_GREEN</strong> = <code class="docutils literal notranslate"><span class="pre">Color(0.4862745,</span> <span class="pre">0.9882353,</span> <span class="pre">0,</span> <span class="pre">1)</span></code> <a class="reference internal" href="#class-color-constant-lawn-green"><span class="std std-ref">🔗</span></a></p>
+<p>Lawn green color.</p>
+<p class="classref-constant" id="class-color-constant-lemon-chiffon"><strong>LEMON_CHIFFON</strong> = <code class="docutils literal notranslate"><span class="pre">Color(1,</span> <span class="pre">0.98039216,</span> <span class="pre">0.8039216,</span> <span class="pre">1)</span></code> <a class="reference internal" href="#class-color-constant-lemon-chiffon"><span class="std std-ref">🔗</span></a></p>
+<p>Lemon chiffon color.</p>
+<p class="classref-constant" id="class-color-constant-light-blue"><strong>LIGHT_BLUE</strong> = <code class="docutils literal notranslate"><span class="pre">Color(0.6784314,</span> <span class="pre">0.84705883,</span> <span class="pre">0.9019608,</span> <span class="pre">1)</span></code> <a class="reference internal" href="#class-color-constant-light-blue"><span class="std std-ref">🔗</span></a></p>
+<p>Light blue color.</p>
+<p class="classref-constant" id="class-color-constant-light-coral"><strong>LIGHT_CORAL</strong> = <code class="docutils literal notranslate"><span class="pre">Color(0.9411765,</span> <span class="pre">0.5019608,</span> <span class="pre">0.5019608,</span> <span class="pre">1)</span></code> <a class="reference internal" href="#class-color-constant-light-coral"><span class="std std-ref">🔗</span></a></p>
+<p>Light coral color.</p>
+<p class="classref-constant" id="class-color-constant-light-cyan"><strong>LIGHT_CYAN</strong> = <code class="docutils literal notranslate"><span class="pre">Color(0.8784314,</span> <span class="pre">1,</span> <span class="pre">1,</span> <span class="pre">1)</span></code> <a class="reference internal" href="#class-color-constant-light-cyan"><span class="std std-ref">🔗</span></a></p>
+<p>Light cyan color.</p>
+<p class="classref-constant" id="class-color-constant-light-goldenrod"><strong>LIGHT_GOLDENROD</strong> = <code class="docutils literal notranslate"><span class="pre">Color(0.98039216,</span> <span class="pre">0.98039216,</span> <span class="pre">0.8235294,</span> <span class="pre">1)</span></code> <a class="reference internal" href="#class-color-constant-light-goldenrod"><span class="std std-ref">🔗</span></a></p>
+<p>Light goldenrod color.</p>
+<p class="classref-constant" id="class-color-constant-light-gray"><strong>LIGHT_GRAY</strong> = <code class="docutils literal notranslate"><span class="pre">Color(0.827451,</span> <span class="pre">0.827451,</span> <span class="pre">0.827451,</span> <span class="pre">1)</span></code> <a class="reference internal" href="#class-color-constant-light-gray"><span class="std std-ref">🔗</span></a></p>
+<p>Light gray color.</p>
+<p class="classref-constant" id="class-color-constant-light-green"><strong>LIGHT_GREEN</strong> = <code class="docutils literal notranslate"><span class="pre">Color(0.5647059,</span> <span class="pre">0.93333334,</span> <span class="pre">0.5647059,</span> <span class="pre">1)</span></code> <a class="reference internal" href="#class-color-constant-light-green"><span class="std std-ref">🔗</span></a></p>
+<p>Light green color.</p>
+<p class="classref-constant" id="class-color-constant-light-pink"><strong>LIGHT_PINK</strong> = <code class="docutils literal notranslate"><span class="pre">Color(1,</span> <span class="pre">0.7137255,</span> <span class="pre">0.75686276,</span> <span class="pre">1)</span></code> <a class="reference internal" href="#class-color-constant-light-pink"><span class="std std-ref">🔗</span></a></p>
+<p>Light pink color.</p>
+<p class="classref-constant" id="class-color-constant-light-salmon"><strong>LIGHT_SALMON</strong> = <code class="docutils literal notranslate"><span class="pre">Color(1,</span> <span class="pre">0.627451,</span> <span class="pre">0.47843137,</span> <span class="pre">1)</span></code> <a class="reference internal" href="#class-color-constant-light-salmon"><span class="std std-ref">🔗</span></a></p>
+<p>Light salmon color.</p>
+<p class="classref-constant" id="class-color-constant-light-sea-green"><strong>LIGHT_SEA_GREEN</strong> = <code class="docutils literal notranslate"><span class="pre">Color(0.1254902,</span> <span class="pre">0.69803923,</span> <span class="pre">0.6666667,</span> <span class="pre">1)</span></code> <a class="reference internal" href="#class-color-constant-light-sea-green"><span class="std std-ref">🔗</span></a></p>
+<p>Light sea green color.</p>
+<p class="classref-constant" id="class-color-constant-light-sky-blue"><strong>LIGHT_SKY_BLUE</strong> = <code class="docutils literal notranslate"><span class="pre">Color(0.5294118,</span> <span class="pre">0.80784315,</span> <span class="pre">0.98039216,</span> <span class="pre">1)</span></code> <a class="reference internal" href="#class-color-constant-light-sky-blue"><span class="std std-ref">🔗</span></a></p>
+<p>Light sky blue color.</p>
+<p class="classref-constant" id="class-color-constant-light-slate-gray"><strong>LIGHT_SLATE_GRAY</strong> = <code class="docutils literal notranslate"><span class="pre">Color(0.46666667,</span> <span class="pre">0.53333336,</span> <span class="pre">0.6,</span> <span class="pre">1)</span></code> <a class="reference internal" href="#class-color-constant-light-slate-gray"><span class="std std-ref">🔗</span></a></p>
+<p>Light slate gray color.</p>
+<p class="classref-constant" id="class-color-constant-light-steel-blue"><strong>LIGHT_STEEL_BLUE</strong> = <code class="docutils literal notranslate"><span class="pre">Color(0.6901961,</span> <span class="pre">0.76862746,</span> <span class="pre">0.87058824,</span> <span class="pre">1)</span></code> <a class="reference internal" href="#class-color-constant-light-steel-blue"><span class="std std-ref">🔗</span></a></p>
+<p>Light steel blue color.</p>
+<p class="classref-constant" id="class-color-constant-light-yellow"><strong>LIGHT_YELLOW</strong> = <code class="docutils literal notranslate"><span class="pre">Color(1,</span> <span class="pre">1,</span> <span class="pre">0.8784314,</span> <span class="pre">1)</span></code> <a class="reference internal" href="#class-color-constant-light-yellow"><span class="std std-ref">🔗</span></a></p>
+<p>Light yellow color.</p>
+<p class="classref-constant" id="class-color-constant-lime"><strong>LIME</strong> = <code class="docutils literal notranslate"><span class="pre">Color(0,</span> <span class="pre">1,</span> <span class="pre">0,</span> <span class="pre">1)</span></code> <a class="reference internal" href="#class-color-constant-lime"><span class="std std-ref">🔗</span></a></p>
+<p>Lime color.</p>
+<p class="classref-constant" id="class-color-constant-lime-green"><strong>LIME_GREEN</strong> = <code class="docutils literal notranslate"><span class="pre">Color(0.19607843,</span> <span class="pre">0.8039216,</span> <span class="pre">0.19607843,</span> <span class="pre">1)</span></code> <a class="reference internal" href="#class-color-constant-lime-green"><span class="std std-ref">🔗</span></a></p>
+<p>Lime green color.</p>
+<p class="classref-constant" id="class-color-constant-linen"><strong>LINEN</strong> = <code class="docutils literal notranslate"><span class="pre">Color(0.98039216,</span> <span class="pre">0.9411765,</span> <span class="pre">0.9019608,</span> <span class="pre">1)</span></code> <a class="reference internal" href="#class-color-constant-linen"><span class="std std-ref">🔗</span></a></p>
+<p>Linen color.</p>
+<p class="classref-constant" id="class-color-constant-magenta"><strong>MAGENTA</strong> = <code class="docutils literal notranslate"><span class="pre">Color(1,</span> <span class="pre">0,</span> <span class="pre">1,</span> <span class="pre">1)</span></code> <a class="reference internal" href="#class-color-constant-magenta"><span class="std std-ref">🔗</span></a></p>
+<p>Magenta color.</p>
+<p class="classref-constant" id="class-color-constant-maroon"><strong>MAROON</strong> = <code class="docutils literal notranslate"><span class="pre">Color(0.6901961,</span> <span class="pre">0.1882353,</span> <span class="pre">0.3764706,</span> <span class="pre">1)</span></code> <a class="reference internal" href="#class-color-constant-maroon"><span class="std std-ref">🔗</span></a></p>
+<p>Maroon color.</p>
+<p class="classref-constant" id="class-color-constant-medium-aquamarine"><strong>MEDIUM_AQUAMARINE</strong> = <code class="docutils literal notranslate"><span class="pre">Color(0.4,</span> <span class="pre">0.8039216,</span> <span class="pre">0.6666667,</span> <span class="pre">1)</span></code> <a class="reference internal" href="#class-color-constant-medium-aquamarine"><span class="std std-ref">🔗</span></a></p>
+<p>Medium aquamarine color.</p>
+<p class="classref-constant" id="class-color-constant-medium-blue"><strong>MEDIUM_BLUE</strong> = <code class="docutils literal notranslate"><span class="pre">Color(0,</span> <span class="pre">0,</span> <span class="pre">0.8039216,</span> <span class="pre">1)</span></code> <a class="reference internal" href="#class-color-constant-medium-blue"><span class="std std-ref">🔗</span></a></p>
+<p>Medium blue color.</p>
+<p class="classref-constant" id="class-color-constant-medium-orchid"><strong>MEDIUM_ORCHID</strong> = <code class="docutils literal notranslate"><span class="pre">Color(0.7294118,</span> <span class="pre">0.33333334,</span> <span class="pre">0.827451,</span> <span class="pre">1)</span></code> <a class="reference internal" href="#class-color-constant-medium-orchid"><span class="std std-ref">🔗</span></a></p>
+<p>Medium orchid color.</p>
+<p class="classref-constant" id="class-color-constant-medium-purple"><strong>MEDIUM_PURPLE</strong> = <code class="docutils literal notranslate"><span class="pre">Color(0.5764706,</span> <span class="pre">0.4392157,</span> <span class="pre">0.85882354,</span> <span class="pre">1)</span></code> <a class="reference internal" href="#class-color-constant-medium-purple"><span class="std std-ref">🔗</span></a></p>
+<p>Medium purple color.</p>
+<p class="classref-constant" id="class-color-constant-medium-sea-green"><strong>MEDIUM_SEA_GREEN</strong> = <code class="docutils literal notranslate"><span class="pre">Color(0.23529412,</span> <span class="pre">0.7019608,</span> <span class="pre">0.44313726,</span> <span class="pre">1)</span></code> <a class="reference internal" href="#class-color-constant-medium-sea-green"><span class="std std-ref">🔗</span></a></p>
+<p>Medium sea green color.</p>
+<p class="classref-constant" id="class-color-constant-medium-slate-blue"><strong>MEDIUM_SLATE_BLUE</strong> = <code class="docutils literal notranslate"><span class="pre">Color(0.48235294,</span> <span class="pre">0.40784314,</span> <span class="pre">0.93333334,</span> <span class="pre">1)</span></code> <a class="reference internal" href="#class-color-constant-medium-slate-blue"><span class="std std-ref">🔗</span></a></p>
+<p>Medium slate blue color.</p>
+<p class="classref-constant" id="class-color-constant-medium-spring-green"><strong>MEDIUM_SPRING_GREEN</strong> = <code class="docutils literal notranslate"><span class="pre">Color(0,</span> <span class="pre">0.98039216,</span> <span class="pre">0.6039216,</span> <span class="pre">1)</span></code> <a class="reference internal" href="#class-color-constant-medium-spring-green"><span class="std std-ref">🔗</span></a></p>
+<p>Medium spring green color.</p>
+<p class="classref-constant" id="class-color-constant-medium-turquoise"><strong>MEDIUM_TURQUOISE</strong> = <code class="docutils literal notranslate"><span class="pre">Color(0.28235295,</span> <span class="pre">0.81960785,</span> <span class="pre">0.8,</span> <span class="pre">1)</span></code> <a class="reference internal" href="#class-color-constant-medium-turquoise"><span class="std std-ref">🔗</span></a></p>
+<p>Medium turquoise color.</p>
+<p class="classref-constant" id="class-color-constant-medium-violet-red"><strong>MEDIUM_VIOLET_RED</strong> = <code class="docutils literal notranslate"><span class="pre">Color(0.78039217,</span> <span class="pre">0.08235294,</span> <span class="pre">0.52156866,</span> <span class="pre">1)</span></code> <a class="reference internal" href="#class-color-constant-medium-violet-red"><span class="std std-ref">🔗</span></a></p>
+<p>Medium violet red color.</p>
+<p class="classref-constant" id="class-color-constant-midnight-blue"><strong>MIDNIGHT_BLUE</strong> = <code class="docutils literal notranslate"><span class="pre">Color(0.09803922,</span> <span class="pre">0.09803922,</span> <span class="pre">0.4392157,</span> <span class="pre">1)</span></code> <a class="reference internal" href="#class-color-constant-midnight-blue"><span class="std std-ref">🔗</span></a></p>
+<p>Midnight blue color.</p>
+<p class="classref-constant" id="class-color-constant-mint-cream"><strong>MINT_CREAM</strong> = <code class="docutils literal notranslate"><span class="pre">Color(0.9607843,</span> <span class="pre">1,</span> <span class="pre">0.98039216,</span> <span class="pre">1)</span></code> <a class="reference internal" href="#class-color-constant-mint-cream"><span class="std std-ref">🔗</span></a></p>
+<p>Mint cream color.</p>
+<p class="classref-constant" id="class-color-constant-misty-rose"><strong>MISTY_ROSE</strong> = <code class="docutils literal notranslate"><span class="pre">Color(1,</span> <span class="pre">0.89411765,</span> <span class="pre">0.88235295,</span> <span class="pre">1)</span></code> <a class="reference internal" href="#class-color-constant-misty-rose"><span class="std std-ref">🔗</span></a></p>
+<p>Misty rose color.</p>
+<p class="classref-constant" id="class-color-constant-moccasin"><strong>MOCCASIN</strong> = <code class="docutils literal notranslate"><span class="pre">Color(1,</span> <span class="pre">0.89411765,</span> <span class="pre">0.70980394,</span> <span class="pre">1)</span></code> <a class="reference internal" href="#class-color-constant-moccasin"><span class="std std-ref">🔗</span></a></p>
+<p>Moccasin color.</p>
+<p class="classref-constant" id="class-color-constant-navajo-white"><strong>NAVAJO_WHITE</strong> = <code class="docutils literal notranslate"><span class="pre">Color(1,</span> <span class="pre">0.87058824,</span> <span class="pre">0.6784314,</span> <span class="pre">1)</span></code> <a class="reference internal" href="#class-color-constant-navajo-white"><span class="std std-ref">🔗</span></a></p>
+<p>Navajo white color.</p>
+<p class="classref-constant" id="class-color-constant-navy-blue"><strong>NAVY_BLUE</strong> = <code class="docutils literal notranslate"><span class="pre">Color(0,</span> <span class="pre">0,</span> <span class="pre">0.5019608,</span> <span class="pre">1)</span></code> <a class="reference internal" href="#class-color-constant-navy-blue"><span class="std std-ref">🔗</span></a></p>
+<p>Navy blue color.</p>
+<p class="classref-constant" id="class-color-constant-old-lace"><strong>OLD_LACE</strong> = <code class="docutils literal notranslate"><span class="pre">Color(0.99215686,</span> <span class="pre">0.9607843,</span> <span class="pre">0.9019608,</span> <span class="pre">1)</span></code> <a class="reference internal" href="#class-color-constant-old-lace"><span class="std std-ref">🔗</span></a></p>
+<p>Old lace color.</p>
+<p class="classref-constant" id="class-color-constant-olive"><strong>OLIVE</strong> = <code class="docutils literal notranslate"><span class="pre">Color(0.5019608,</span> <span class="pre">0.5019608,</span> <span class="pre">0,</span> <span class="pre">1)</span></code> <a class="reference internal" href="#class-color-constant-olive"><span class="std std-ref">🔗</span></a></p>
+<p>Olive color.</p>
+<p class="classref-constant" id="class-color-constant-olive-drab"><strong>OLIVE_DRAB</strong> = <code class="docutils literal notranslate"><span class="pre">Color(0.41960785,</span> <span class="pre">0.5568628,</span> <span class="pre">0.13725491,</span> <span class="pre">1)</span></code> <a class="reference internal" href="#class-color-constant-olive-drab"><span class="std std-ref">🔗</span></a></p>
+<p>Olive drab color.</p>
+<p class="classref-constant" id="class-color-constant-orange"><strong>ORANGE</strong> = <code class="docutils literal notranslate"><span class="pre">Color(1,</span> <span class="pre">0.64705884,</span> <span class="pre">0,</span> <span class="pre">1)</span></code> <a class="reference internal" href="#class-color-constant-orange"><span class="std std-ref">🔗</span></a></p>
+<p>Orange color.</p>
+<p class="classref-constant" id="class-color-constant-orange-red"><strong>ORANGE_RED</strong> = <code class="docutils literal notranslate"><span class="pre">Color(1,</span> <span class="pre">0.27058825,</span> <span class="pre">0,</span> <span class="pre">1)</span></code> <a class="reference internal" href="#class-color-constant-orange-red"><span class="std std-ref">🔗</span></a></p>
+<p>Orange red color.</p>
+<p class="classref-constant" id="class-color-constant-orchid"><strong>ORCHID</strong> = <code class="docutils literal notranslate"><span class="pre">Color(0.85490197,</span> <span class="pre">0.4392157,</span> <span class="pre">0.8392157,</span> <span class="pre">1)</span></code> <a class="reference internal" href="#class-color-constant-orchid"><span class="std std-ref">🔗</span></a></p>
+<p>Orchid color.</p>
+<p class="classref-constant" id="class-color-constant-pale-goldenrod"><strong>PALE_GOLDENROD</strong> = <code class="docutils literal notranslate"><span class="pre">Color(0.93333334,</span> <span class="pre">0.9098039,</span> <span class="pre">0.6666667,</span> <span class="pre">1)</span></code> <a class="reference internal" href="#class-color-constant-pale-goldenrod"><span class="std std-ref">🔗</span></a></p>
+<p>Pale goldenrod color.</p>
+<p class="classref-constant" id="class-color-constant-pale-green"><strong>PALE_GREEN</strong> = <code class="docutils literal notranslate"><span class="pre">Color(0.59607846,</span> <span class="pre">0.9843137,</span> <span class="pre">0.59607846,</span> <span class="pre">1)</span></code> <a class="reference internal" href="#class-color-constant-pale-green"><span class="std std-ref">🔗</span></a></p>
+<p>Pale green color.</p>
+<p class="classref-constant" id="class-color-constant-pale-turquoise"><strong>PALE_TURQUOISE</strong> = <code class="docutils literal notranslate"><span class="pre">Color(0.6862745,</span> <span class="pre">0.93333334,</span> <span class="pre">0.93333334,</span> <span class="pre">1)</span></code> <a class="reference internal" href="#class-color-constant-pale-turquoise"><span class="std std-ref">🔗</span></a></p>
+<p>Pale turquoise color.</p>
+<p class="classref-constant" id="class-color-constant-pale-violet-red"><strong>PALE_VIOLET_RED</strong> = <code class="docutils literal notranslate"><span class="pre">Color(0.85882354,</span> <span class="pre">0.4392157,</span> <span class="pre">0.5764706,</span> <span class="pre">1)</span></code> <a class="reference internal" href="#class-color-constant-pale-violet-red"><span class="std std-ref">🔗</span></a></p>
+<p>Pale violet red color.</p>
+<p class="classref-constant" id="class-color-constant-papaya-whip"><strong>PAPAYA_WHIP</strong> = <code class="docutils literal notranslate"><span class="pre">Color(1,</span> <span class="pre">0.9372549,</span> <span class="pre">0.8352941,</span> <span class="pre">1)</span></code> <a class="reference internal" href="#class-color-constant-papaya-whip"><span class="std std-ref">🔗</span></a></p>
+<p>Papaya whip color.</p>
+<p class="classref-constant" id="class-color-constant-peach-puff"><strong>PEACH_PUFF</strong> = <code class="docutils literal notranslate"><span class="pre">Color(1,</span> <span class="pre">0.85490197,</span> <span class="pre">0.7254902,</span> <span class="pre">1)</span></code> <a class="reference internal" href="#class-color-constant-peach-puff"><span class="std std-ref">🔗</span></a></p>
+<p>Peach puff color.</p>
+<p class="classref-constant" id="class-color-constant-peru"><strong>PERU</strong> = <code class="docutils literal notranslate"><span class="pre">Color(0.8039216,</span> <span class="pre">0.52156866,</span> <span class="pre">0.24705882,</span> <span class="pre">1)</span></code> <a class="reference internal" href="#class-color-constant-peru"><span class="std std-ref">🔗</span></a></p>
+<p>Peru color.</p>
+<p class="classref-constant" id="class-color-constant-pink"><strong>PINK</strong> = <code class="docutils literal notranslate"><span class="pre">Color(1,</span> <span class="pre">0.7529412,</span> <span class="pre">0.79607844,</span> <span class="pre">1)</span></code> <a class="reference internal" href="#class-color-constant-pink"><span class="std std-ref">🔗</span></a></p>
+<p>Pink color.</p>
+<p class="classref-constant" id="class-color-constant-plum"><strong>PLUM</strong> = <code class="docutils literal notranslate"><span class="pre">Color(0.8666667,</span> <span class="pre">0.627451,</span> <span class="pre">0.8666667,</span> <span class="pre">1)</span></code> <a class="reference internal" href="#class-color-constant-plum"><span class="std std-ref">🔗</span></a></p>
+<p>Plum color.</p>
+<p class="classref-constant" id="class-color-constant-powder-blue"><strong>POWDER_BLUE</strong> = <code class="docutils literal notranslate"><span class="pre">Color(0.6901961,</span> <span class="pre">0.8784314,</span> <span class="pre">0.9019608,</span> <span class="pre">1)</span></code> <a class="reference internal" href="#class-color-constant-powder-blue"><span class="std std-ref">🔗</span></a></p>
+<p>Powder blue color.</p>
+<p class="classref-constant" id="class-color-constant-purple"><strong>PURPLE</strong> = <code class="docutils literal notranslate"><span class="pre">Color(0.627451,</span> <span class="pre">0.1254902,</span> <span class="pre">0.9411765,</span> <span class="pre">1)</span></code> <a class="reference internal" href="#class-color-constant-purple"><span class="std std-ref">🔗</span></a></p>
+<p>Purple color.</p>
+<p class="classref-constant" id="class-color-constant-rebecca-purple"><strong>REBECCA_PURPLE</strong> = <code class="docutils literal notranslate"><span class="pre">Color(0.4,</span> <span class="pre">0.2,</span> <span class="pre">0.6,</span> <span class="pre">1)</span></code> <a class="reference internal" href="#class-color-constant-rebecca-purple"><span class="std std-ref">🔗</span></a></p>
+<p>Rebecca purple color.</p>
+<p class="classref-constant" id="class-color-constant-red"><strong>RED</strong> = <code class="docutils literal notranslate"><span class="pre">Color(1,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">1)</span></code> <a class="reference internal" href="#class-color-constant-red"><span class="std std-ref">🔗</span></a></p>
+<p>Red color.</p>
+<p class="classref-constant" id="class-color-constant-rosy-brown"><strong>ROSY_BROWN</strong> = <code class="docutils literal notranslate"><span class="pre">Color(0.7372549,</span> <span class="pre">0.56078434,</span> <span class="pre">0.56078434,</span> <span class="pre">1)</span></code> <a class="reference internal" href="#class-color-constant-rosy-brown"><span class="std std-ref">🔗</span></a></p>
+<p>Rosy brown color.</p>
+<p class="classref-constant" id="class-color-constant-royal-blue"><strong>ROYAL_BLUE</strong> = <code class="docutils literal notranslate"><span class="pre">Color(0.25490198,</span> <span class="pre">0.4117647,</span> <span class="pre">0.88235295,</span> <span class="pre">1)</span></code> <a class="reference internal" href="#class-color-constant-royal-blue"><span class="std std-ref">🔗</span></a></p>
+<p>Royal blue color.</p>
+<p class="classref-constant" id="class-color-constant-saddle-brown"><strong>SADDLE_BROWN</strong> = <code class="docutils literal notranslate"><span class="pre">Color(0.54509807,</span> <span class="pre">0.27058825,</span> <span class="pre">0.07450981,</span> <span class="pre">1)</span></code> <a class="reference internal" href="#class-color-constant-saddle-brown"><span class="std std-ref">🔗</span></a></p>
+<p>Saddle brown color.</p>
+<p class="classref-constant" id="class-color-constant-salmon"><strong>SALMON</strong> = <code class="docutils literal notranslate"><span class="pre">Color(0.98039216,</span> <span class="pre">0.5019608,</span> <span class="pre">0.44705883,</span> <span class="pre">1)</span></code> <a class="reference internal" href="#class-color-constant-salmon"><span class="std std-ref">🔗</span></a></p>
+<p>Salmon color.</p>
+<p class="classref-constant" id="class-color-constant-sandy-brown"><strong>SANDY_BROWN</strong> = <code class="docutils literal notranslate"><span class="pre">Color(0.95686275,</span> <span class="pre">0.6431373,</span> <span class="pre">0.3764706,</span> <span class="pre">1)</span></code> <a class="reference internal" href="#class-color-constant-sandy-brown"><span class="std std-ref">🔗</span></a></p>
+<p>Sandy brown color.</p>
+<p class="classref-constant" id="class-color-constant-sea-green"><strong>SEA_GREEN</strong> = <code class="docutils literal notranslate"><span class="pre">Color(0.18039216,</span> <span class="pre">0.54509807,</span> <span class="pre">0.34117648,</span> <span class="pre">1)</span></code> <a class="reference internal" href="#class-color-constant-sea-green"><span class="std std-ref">🔗</span></a></p>
+<p>Sea green color.</p>
+<p class="classref-constant" id="class-color-constant-seashell"><strong>SEASHELL</strong> = <code class="docutils literal notranslate"><span class="pre">Color(1,</span> <span class="pre">0.9607843,</span> <span class="pre">0.93333334,</span> <span class="pre">1)</span></code> <a class="reference internal" href="#class-color-constant-seashell"><span class="std std-ref">🔗</span></a></p>
+<p>Seashell color.</p>
+<p class="classref-constant" id="class-color-constant-sienna"><strong>SIENNA</strong> = <code class="docutils literal notranslate"><span class="pre">Color(0.627451,</span> <span class="pre">0.32156864,</span> <span class="pre">0.1764706,</span> <span class="pre">1)</span></code> <a class="reference internal" href="#class-color-constant-sienna"><span class="std std-ref">🔗</span></a></p>
+<p>Sienna color.</p>
+<p class="classref-constant" id="class-color-constant-silver"><strong>SILVER</strong> = <code class="docutils literal notranslate"><span class="pre">Color(0.7529412,</span> <span class="pre">0.7529412,</span> <span class="pre">0.7529412,</span> <span class="pre">1)</span></code> <a class="reference internal" href="#class-color-constant-silver"><span class="std std-ref">🔗</span></a></p>
+<p>Silver color.</p>
+<p class="classref-constant" id="class-color-constant-sky-blue"><strong>SKY_BLUE</strong> = <code class="docutils literal notranslate"><span class="pre">Color(0.5294118,</span> <span class="pre">0.80784315,</span> <span class="pre">0.92156863,</span> <span class="pre">1)</span></code> <a class="reference internal" href="#class-color-constant-sky-blue"><span class="std std-ref">🔗</span></a></p>
+<p>Sky blue color.</p>
+<p class="classref-constant" id="class-color-constant-slate-blue"><strong>SLATE_BLUE</strong> = <code class="docutils literal notranslate"><span class="pre">Color(0.41568628,</span> <span class="pre">0.3529412,</span> <span class="pre">0.8039216,</span> <span class="pre">1)</span></code> <a class="reference internal" href="#class-color-constant-slate-blue"><span class="std std-ref">🔗</span></a></p>
+<p>Slate blue color.</p>
+<p class="classref-constant" id="class-color-constant-slate-gray"><strong>SLATE_GRAY</strong> = <code class="docutils literal notranslate"><span class="pre">Color(0.4392157,</span> <span class="pre">0.5019608,</span> <span class="pre">0.5647059,</span> <span class="pre">1)</span></code> <a class="reference internal" href="#class-color-constant-slate-gray"><span class="std std-ref">🔗</span></a></p>
+<p>Slate gray color.</p>
+<p class="classref-constant" id="class-color-constant-snow"><strong>SNOW</strong> = <code class="docutils literal notranslate"><span class="pre">Color(1,</span> <span class="pre">0.98039216,</span> <span class="pre">0.98039216,</span> <span class="pre">1)</span></code> <a class="reference internal" href="#class-color-constant-snow"><span class="std std-ref">🔗</span></a></p>
+<p>Snow color.</p>
+<p class="classref-constant" id="class-color-constant-spring-green"><strong>SPRING_GREEN</strong> = <code class="docutils literal notranslate"><span class="pre">Color(0,</span> <span class="pre">1,</span> <span class="pre">0.49803922,</span> <span class="pre">1)</span></code> <a class="reference internal" href="#class-color-constant-spring-green"><span class="std std-ref">🔗</span></a></p>
+<p>Spring green color.</p>
+<p class="classref-constant" id="class-color-constant-steel-blue"><strong>STEEL_BLUE</strong> = <code class="docutils literal notranslate"><span class="pre">Color(0.27450982,</span> <span class="pre">0.50980395,</span> <span class="pre">0.7058824,</span> <span class="pre">1)</span></code> <a class="reference internal" href="#class-color-constant-steel-blue"><span class="std std-ref">🔗</span></a></p>
+<p>Steel blue color.</p>
+<p class="classref-constant" id="class-color-constant-tan"><strong>TAN</strong> = <code class="docutils literal notranslate"><span class="pre">Color(0.8235294,</span> <span class="pre">0.7058824,</span> <span class="pre">0.54901963,</span> <span class="pre">1)</span></code> <a class="reference internal" href="#class-color-constant-tan"><span class="std std-ref">🔗</span></a></p>
+<p>Tan color.</p>
+<p class="classref-constant" id="class-color-constant-teal"><strong>TEAL</strong> = <code class="docutils literal notranslate"><span class="pre">Color(0,</span> <span class="pre">0.5019608,</span> <span class="pre">0.5019608,</span> <span class="pre">1)</span></code> <a class="reference internal" href="#class-color-constant-teal"><span class="std std-ref">🔗</span></a></p>
+<p>Teal color.</p>
+<p class="classref-constant" id="class-color-constant-thistle"><strong>THISTLE</strong> = <code class="docutils literal notranslate"><span class="pre">Color(0.84705883,</span> <span class="pre">0.7490196,</span> <span class="pre">0.84705883,</span> <span class="pre">1)</span></code> <a class="reference internal" href="#class-color-constant-thistle"><span class="std std-ref">🔗</span></a></p>
+<p>Thistle color.</p>
+<p class="classref-constant" id="class-color-constant-tomato"><strong>TOMATO</strong> = <code class="docutils literal notranslate"><span class="pre">Color(1,</span> <span class="pre">0.3882353,</span> <span class="pre">0.2784314,</span> <span class="pre">1)</span></code> <a class="reference internal" href="#class-color-constant-tomato"><span class="std std-ref">🔗</span></a></p>
+<p>Tomato color.</p>
+<p class="classref-constant" id="class-color-constant-transparent"><strong>TRANSPARENT</strong> = <code class="docutils literal notranslate"><span class="pre">Color(1,</span> <span class="pre">1,</span> <span class="pre">1,</span> <span class="pre">0)</span></code> <a class="reference internal" href="#class-color-constant-transparent"><span class="std std-ref">🔗</span></a></p>
+<p>Transparent color (white with zero alpha).</p>
+<p class="classref-constant" id="class-color-constant-turquoise"><strong>TURQUOISE</strong> = <code class="docutils literal notranslate"><span class="pre">Color(0.2509804,</span> <span class="pre">0.8784314,</span> <span class="pre">0.8156863,</span> <span class="pre">1)</span></code> <a class="reference internal" href="#class-color-constant-turquoise"><span class="std std-ref">🔗</span></a></p>
+<p>Turquoise color.</p>
+<p class="classref-constant" id="class-color-constant-violet"><strong>VIOLET</strong> = <code class="docutils literal notranslate"><span class="pre">Color(0.93333334,</span> <span class="pre">0.50980395,</span> <span class="pre">0.93333334,</span> <span class="pre">1)</span></code> <a class="reference internal" href="#class-color-constant-violet"><span class="std std-ref">🔗</span></a></p>
+<p>Violet color.</p>
+<p class="classref-constant" id="class-color-constant-web-gray"><strong>WEB_GRAY</strong> = <code class="docutils literal notranslate"><span class="pre">Color(0.5019608,</span> <span class="pre">0.5019608,</span> <span class="pre">0.5019608,</span> <span class="pre">1)</span></code> <a class="reference internal" href="#class-color-constant-web-gray"><span class="std std-ref">🔗</span></a></p>
+<p>Web gray color.</p>
+<p class="classref-constant" id="class-color-constant-web-green"><strong>WEB_GREEN</strong> = <code class="docutils literal notranslate"><span class="pre">Color(0,</span> <span class="pre">0.5019608,</span> <span class="pre">0,</span> <span class="pre">1)</span></code> <a class="reference internal" href="#class-color-constant-web-green"><span class="std std-ref">🔗</span></a></p>
+<p>Web green color.</p>
+<p class="classref-constant" id="class-color-constant-web-maroon"><strong>WEB_MAROON</strong> = <code class="docutils literal notranslate"><span class="pre">Color(0.5019608,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">1)</span></code> <a class="reference internal" href="#class-color-constant-web-maroon"><span class="std std-ref">🔗</span></a></p>
+<p>Web maroon color.</p>
+<p class="classref-constant" id="class-color-constant-web-purple"><strong>WEB_PURPLE</strong> = <code class="docutils literal notranslate"><span class="pre">Color(0.5019608,</span> <span class="pre">0,</span> <span class="pre">0.5019608,</span> <span class="pre">1)</span></code> <a class="reference internal" href="#class-color-constant-web-purple"><span class="std std-ref">🔗</span></a></p>
+<p>Web purple color.</p>
+<p class="classref-constant" id="class-color-constant-wheat"><strong>WHEAT</strong> = <code class="docutils literal notranslate"><span class="pre">Color(0.9607843,</span> <span class="pre">0.87058824,</span> <span class="pre">0.7019608,</span> <span class="pre">1)</span></code> <a class="reference internal" href="#class-color-constant-wheat"><span class="std std-ref">🔗</span></a></p>
+<p>Wheat color.</p>
+<p class="classref-constant" id="class-color-constant-white"><strong>WHITE</strong> = <code class="docutils literal notranslate"><span class="pre">Color(1,</span> <span class="pre">1,</span> <span class="pre">1,</span> <span class="pre">1)</span></code> <a class="reference internal" href="#class-color-constant-white"><span class="std std-ref">🔗</span></a></p>
+<p>White color.</p>
+<p class="classref-constant" id="class-color-constant-white-smoke"><strong>WHITE_SMOKE</strong> = <code class="docutils literal notranslate"><span class="pre">Color(0.9607843,</span> <span class="pre">0.9607843,</span> <span class="pre">0.9607843,</span> <span class="pre">1)</span></code> <a class="reference internal" href="#class-color-constant-white-smoke"><span class="std std-ref">🔗</span></a></p>
+<p>White smoke color.</p>
+<p class="classref-constant" id="class-color-constant-yellow"><strong>YELLOW</strong> = <code class="docutils literal notranslate"><span class="pre">Color(1,</span> <span class="pre">1,</span> <span class="pre">0,</span> <span class="pre">1)</span></code> <a class="reference internal" href="#class-color-constant-yellow"><span class="std std-ref">🔗</span></a></p>
+<p>Yellow color.</p>
+<p class="classref-constant" id="class-color-constant-yellow-green"><strong>YELLOW_GREEN</strong> = <code class="docutils literal notranslate"><span class="pre">Color(0.6039216,</span> <span class="pre">0.8039216,</span> <span class="pre">0.19607843,</span> <span class="pre">1)</span></code> <a class="reference internal" href="#class-color-constant-yellow-green"><span class="std std-ref">🔗</span></a></p>
+<p>Yellow green color.</p>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="property-descriptions">
+<h2>Property Descriptions<a class="headerlink" href="#property-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-property" id="class-color-property-a"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>a</strong> = <code class="docutils literal notranslate"><span class="pre">1.0</span></code> <a class="reference internal" href="#class-color-property-a"><span class="std std-ref">🔗</span></a></p>
+<p>The color’s alpha component, typically on the range of 0 to 1. A value of 0 means that the color is fully transparent. A value of 1 means that the color is fully opaque.</p>
+<p><strong>Note:</strong> The alpha channel is always stored with linear encoding, regardless of the encoding of the other color channels. The <a class="reference internal" href="#class-color-method-linear-to-srgb"><span class="std std-ref">linear_to_srgb()</span></a> and <a class="reference internal" href="#class-color-method-srgb-to-linear"><span class="std std-ref">srgb_to_linear()</span></a> methods do not affect the alpha channel.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-color-property-a8"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>a8</strong> = <code class="docutils literal notranslate"><span class="pre">255</span></code> <a class="reference internal" href="#class-color-property-a8"><span class="std std-ref">🔗</span></a></p>
+<p>Wrapper for <a class="reference internal" href="#class-color-property-a"><span class="std std-ref">a</span></a> that uses the range 0 to 255, instead of 0 to 1.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-color-property-b"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>b</strong> = <code class="docutils literal notranslate"><span class="pre">0.0</span></code> <a class="reference internal" href="#class-color-property-b"><span class="std std-ref">🔗</span></a></p>
+<p>The color’s blue component, typically on the range of 0 to 1.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-color-property-b8"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>b8</strong> = <code class="docutils literal notranslate"><span class="pre">0</span></code> <a class="reference internal" href="#class-color-property-b8"><span class="std std-ref">🔗</span></a></p>
+<p>Wrapper for <a class="reference internal" href="#class-color-property-b"><span class="std std-ref">b</span></a> that uses the range 0 to 255, instead of 0 to 1.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-color-property-g"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>g</strong> = <code class="docutils literal notranslate"><span class="pre">0.0</span></code> <a class="reference internal" href="#class-color-property-g"><span class="std std-ref">🔗</span></a></p>
+<p>The color’s green component, typically on the range of 0 to 1.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-color-property-g8"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>g8</strong> = <code class="docutils literal notranslate"><span class="pre">0</span></code> <a class="reference internal" href="#class-color-property-g8"><span class="std std-ref">🔗</span></a></p>
+<p>Wrapper for <a class="reference internal" href="#class-color-property-g"><span class="std std-ref">g</span></a> that uses the range 0 to 255, instead of 0 to 1.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-color-property-h"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>h</strong> = <code class="docutils literal notranslate"><span class="pre">0.0</span></code> <a class="reference internal" href="#class-color-property-h"><span class="std std-ref">🔗</span></a></p>
+<p>The HSV hue of this color, on the range 0 to 1.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-color-property-ok-hsl-h"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>ok_hsl_h</strong> = <code class="docutils literal notranslate"><span class="pre">0.0</span></code> <a class="reference internal" href="#class-color-property-ok-hsl-h"><span class="std std-ref">🔗</span></a></p>
+<p>The OKHSL hue of this color, on the range 0 to 1.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-color-property-ok-hsl-l"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>ok_hsl_l</strong> = <code class="docutils literal notranslate"><span class="pre">0.0</span></code> <a class="reference internal" href="#class-color-property-ok-hsl-l"><span class="std std-ref">🔗</span></a></p>
+<p>The OKHSL lightness of this color, on the range 0 to 1.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-color-property-ok-hsl-s"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>ok_hsl_s</strong> = <code class="docutils literal notranslate"><span class="pre">0.0</span></code> <a class="reference internal" href="#class-color-property-ok-hsl-s"><span class="std std-ref">🔗</span></a></p>
+<p>The OKHSL saturation of this color, on the range 0 to 1.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-color-property-r"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>r</strong> = <code class="docutils literal notranslate"><span class="pre">0.0</span></code> <a class="reference internal" href="#class-color-property-r"><span class="std std-ref">🔗</span></a></p>
+<p>The color’s red component, typically on the range of 0 to 1.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-color-property-r8"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>r8</strong> = <code class="docutils literal notranslate"><span class="pre">0</span></code> <a class="reference internal" href="#class-color-property-r8"><span class="std std-ref">🔗</span></a></p>
+<p>Wrapper for <a class="reference internal" href="#class-color-property-r"><span class="std std-ref">r</span></a> that uses the range 0 to 255, instead of 0 to 1.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-color-property-s"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>s</strong> = <code class="docutils literal notranslate"><span class="pre">0.0</span></code> <a class="reference internal" href="#class-color-property-s"><span class="std std-ref">🔗</span></a></p>
+<p>The HSV saturation of this color, on the range 0 to 1.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-color-property-v"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>v</strong> = <code class="docutils literal notranslate"><span class="pre">0.0</span></code> <a class="reference internal" href="#class-color-property-v"><span class="std std-ref">🔗</span></a></p>
+<p>The HSV value (brightness) of this color, on the range 0 to 1.</p>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="constructor-descriptions">
+<h2>Constructor Descriptions<a class="headerlink" href="#constructor-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-constructor" id="class-color-constructor-color"><a class="reference internal" href="#class-color"><span class="std std-ref">Color</span></a> <strong>Color</strong>() <a class="reference internal" href="#class-color-constructor-color"><span class="std std-ref">🔗</span></a></p>
+<p>Constructs a default <strong>Color</strong> from opaque black. This is the same as <a class="reference internal" href="#class-color-constant-black"><span class="std std-ref">BLACK</span></a>.</p>
+<p><strong>Note:</strong> In C#, this constructs a <strong>Color</strong> with all of its components set to <code class="docutils literal notranslate"><span class="pre">0.0</span></code> (transparent black).</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-constructor"><a class="reference internal" href="#class-color"><span class="std std-ref">Color</span></a> <strong>Color</strong>(from: <a class="reference internal" href="#class-color"><span class="std std-ref">Color</span></a>, alpha: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p>
+<p>Constructs a <strong>Color</strong> from the existing color, with <a class="reference internal" href="#class-color-property-a"><span class="std std-ref">a</span></a> set to the given <code class="docutils literal notranslate"><span class="pre">alpha</span></code> value.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-constructor"><a class="reference internal" href="#class-color"><span class="std std-ref">Color</span></a> <strong>Color</strong>(from: <a class="reference internal" href="#class-color"><span class="std std-ref">Color</span></a>)</p>
+<p>Constructs a <strong>Color</strong> as a copy of the given <strong>Color</strong>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-constructor"><a class="reference internal" href="#class-color"><span class="std std-ref">Color</span></a> <strong>Color</strong>(code: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>)</p>
+<p>Constructs a <strong>Color</strong> either from an HTML color code or from a standardized color name. The supported color names are the same as the constants.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-constructor"><a class="reference internal" href="#class-color"><span class="std std-ref">Color</span></a> <strong>Color</strong>(code: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, alpha: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p>
+<p>Constructs a <strong>Color</strong> either from an HTML color code or from a standardized color name, with <code class="docutils literal notranslate"><span class="pre">alpha</span></code> on the range of 0.0 to 1.0. The supported color names are the same as the constants.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-constructor"><a class="reference internal" href="#class-color"><span class="std std-ref">Color</span></a> <strong>Color</strong>(r: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, g: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, b: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p>
+<p>Constructs a <strong>Color</strong> from RGB values, typically between 0.0 and 1.0. <a class="reference internal" href="#class-color-property-a"><span class="std std-ref">a</span></a> is set to 1.0.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-constructor"><a class="reference internal" href="#class-color"><span class="std std-ref">Color</span></a> <strong>Color</strong>(r: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, g: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, b: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, a: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p>
+<p>Constructs a <strong>Color</strong> from RGBA values, typically between 0.0 and 1.0.</p>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="method-descriptions">
+<h2>Method Descriptions<a class="headerlink" href="#method-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-method" id="class-color-method-blend"><a class="reference internal" href="#class-color"><span class="std std-ref">Color</span></a> <strong>blend</strong>(over: <a class="reference internal" href="#class-color"><span class="std std-ref">Color</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-color-method-blend"><span class="std std-ref">🔗</span></a></p>
+<p>Returns a new color resulting from overlaying this color over the given color. In a painting program, you can imagine it as the <code class="docutils literal notranslate"><span class="pre">over</span></code> color painted over this color (including alpha).</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-color-method-clamp"><a class="reference internal" href="#class-color"><span class="std std-ref">Color</span></a> <strong>clamp</strong>(min: <a class="reference internal" href="#class-color"><span class="std std-ref">Color</span></a> = Color(0, 0, 0, 0), max: <a class="reference internal" href="#class-color"><span class="std std-ref">Color</span></a> = Color(1, 1, 1, 1)) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-color-method-clamp"><span class="std std-ref">🔗</span></a></p>
+<p>Returns a new color with all components clamped between the components of <code class="docutils literal notranslate"><span class="pre">min</span></code> and <code class="docutils literal notranslate"><span class="pre">max</span></code>, by running <a class="reference internal" href="class_%40globalscope.html#class-globalscope-method-clamp"><span class="std std-ref">&#64;GlobalScope.clamp()</span></a> on each component.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-color-method-darkened"><a class="reference internal" href="#class-color"><span class="std std-ref">Color</span></a> <strong>darkened</strong>(amount: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-color-method-darkened"><span class="std std-ref">🔗</span></a></p>
+<p>Returns a new color resulting from making this color darker by the specified <code class="docutils literal notranslate"><span class="pre">amount</span></code> (ratio from 0.0 to 1.0). See also <a class="reference internal" href="#class-color-method-lightened"><span class="std std-ref">lightened()</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-color-method-from-hsv"><a class="reference internal" href="#class-color"><span class="std std-ref">Color</span></a> <strong>from_hsv</strong>(h: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, s: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, v: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, alpha: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> = 1.0) <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr> <a class="reference internal" href="#class-color-method-from-hsv"><span class="std std-ref">🔗</span></a></p>
+<p>Constructs a color from an <a class="reference external" href="https://en.wikipedia.org/wiki/HSL_and_HSV">HSV profile</a>. The hue (<code class="docutils literal notranslate"><span class="pre">h</span></code>), saturation (<code class="docutils literal notranslate"><span class="pre">s</span></code>), and value (<code class="docutils literal notranslate"><span class="pre">v</span></code>) are typically between 0.0 and 1.0.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-color-method-from-ok-hsl"><a class="reference internal" href="#class-color"><span class="std std-ref">Color</span></a> <strong>from_ok_hsl</strong>(h: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, s: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, l: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, alpha: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> = 1.0) <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr> <a class="reference internal" href="#class-color-method-from-ok-hsl"><span class="std std-ref">🔗</span></a></p>
+<p>Constructs a color from an <a class="reference external" href="https://bottosson.github.io/posts/colorpicker/">OK HSL profile</a>. The hue (<code class="docutils literal notranslate"><span class="pre">h</span></code>), saturation (<code class="docutils literal notranslate"><span class="pre">s</span></code>), and lightness (<code class="docutils literal notranslate"><span class="pre">l</span></code>) are typically between 0.0 and 1.0.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-color-method-from-rgba8"><a class="reference internal" href="#class-color"><span class="std std-ref">Color</span></a> <strong>from_rgba8</strong>(r8: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, g8: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, b8: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, a8: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> = 255) <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr> <a class="reference internal" href="#class-color-method-from-rgba8"><span class="std std-ref">🔗</span></a></p>
+<p>Returns a <strong>Color</strong> constructed from red (<code class="docutils literal notranslate"><span class="pre">r8</span></code>), green (<code class="docutils literal notranslate"><span class="pre">g8</span></code>), blue (<code class="docutils literal notranslate"><span class="pre">b8</span></code>), and optionally alpha (<code class="docutils literal notranslate"><span class="pre">a8</span></code>) integer channels, each divided by <code class="docutils literal notranslate"><span class="pre">255.0</span></code> for their final value.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">red</span> <span class="o">=</span> <span class="n">Color</span><span class="o">.</span><span class="n">from_rgba8</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>             <span class="c1"># Same as Color(1, 0, 0).</span>
+<span class="n">var</span> <span class="n">dark_blue</span> <span class="o">=</span> <span class="n">Color</span><span class="o">.</span><span class="n">from_rgba8</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">51</span><span class="p">)</span>        <span class="c1"># Same as Color(0, 0, 0.2).</span>
+<span class="n">var</span> <span class="n">my_color</span> <span class="o">=</span> <span class="n">Color</span><span class="o">.</span><span class="n">from_rgba8</span><span class="p">(</span><span class="mi">306</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">102</span><span class="p">)</span> <span class="c1"># Same as Color(1.2, 1, 0, 0.4).</span>
+</pre></div>
+</div>
+<p><strong>Note:</strong> Due to the lower precision of <a class="reference internal" href="#class-color-method-from-rgba8"><span class="std std-ref">from_rgba8()</span></a> compared to the standard <strong>Color</strong> constructor, a color created with <a class="reference internal" href="#class-color-method-from-rgba8"><span class="std std-ref">from_rgba8()</span></a> will generally not be equal to the same color created with the standard <strong>Color</strong> constructor. Use <a class="reference internal" href="#class-color-method-is-equal-approx"><span class="std std-ref">is_equal_approx()</span></a> for comparisons to avoid issues with floating-point precision error.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-color-method-from-rgbe9995"><a class="reference internal" href="#class-color"><span class="std std-ref">Color</span></a> <strong>from_rgbe9995</strong>(rgbe: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr> <a class="reference internal" href="#class-color-method-from-rgbe9995"><span class="std std-ref">🔗</span></a></p>
+<p>Decodes a <strong>Color</strong> from an RGBE9995 format integer. See <a class="reference internal" href="class_image.html#class-image-constant-format-rgbe9995"><span class="std std-ref">Image.FORMAT_RGBE9995</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-color-method-from-string"><a class="reference internal" href="#class-color"><span class="std std-ref">Color</span></a> <strong>from_string</strong>(str: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, default: <a class="reference internal" href="#class-color"><span class="std std-ref">Color</span></a>) <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr> <a class="reference internal" href="#class-color-method-from-string"><span class="std std-ref">🔗</span></a></p>
+<p>Creates a <strong>Color</strong> from the given string, which can be either an HTML color code or a named color (case-insensitive). Returns <code class="docutils literal notranslate"><span class="pre">default</span></code> if the color cannot be inferred from the string.</p>
+<p>If you want to create a color from String in a constant expression, use the equivalent constructor instead (i.e. <code class="docutils literal notranslate"><span class="pre">Color(&quot;color</span> <span class="pre">string&quot;)</span></code>).</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-color-method-get-luminance"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>get_luminance</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-color-method-get-luminance"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the light intensity of the color, as a value between 0.0 and 1.0 (inclusive). This is useful when determining light or dark color. Colors with a luminance smaller than 0.5 can be generally considered dark.</p>
+<p><strong>Note:</strong> <a class="reference internal" href="#class-color-method-get-luminance"><span class="std std-ref">get_luminance()</span></a> relies on the color using linear encoding to return an accurate relative luminance value. If the color uses the default nonlinear sRGB encoding, use <a class="reference internal" href="#class-color-method-srgb-to-linear"><span class="std std-ref">srgb_to_linear()</span></a> to convert it to linear encoding first.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-color-method-hex"><a class="reference internal" href="#class-color"><span class="std std-ref">Color</span></a> <strong>hex</strong>(hex: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr> <a class="reference internal" href="#class-color-method-hex"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the <strong>Color</strong> associated with the provided <code class="docutils literal notranslate"><span class="pre">hex</span></code> integer in 32-bit RGBA format (8 bits per channel). This method is the inverse of <a class="reference internal" href="#class-color-method-to-rgba32"><span class="std std-ref">to_rgba32()</span></a>.</p>
+<p>In GDScript and C#, the <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> is best visualized with hexadecimal notation (<code class="docutils literal notranslate"><span class="pre">&quot;0x&quot;</span></code> prefix, making it <code class="docutils literal notranslate"><span class="pre">&quot;0xRRGGBBAA&quot;</span></code>).</p>
+<p>If you want to use hex notation in a constant expression, use the equivalent constructor instead (i.e. <code class="docutils literal notranslate"><span class="pre">Color(0xRRGGBBAA)</span></code>).</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-color-method-hex64"><a class="reference internal" href="#class-color"><span class="std std-ref">Color</span></a> <strong>hex64</strong>(hex: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr> <a class="reference internal" href="#class-color-method-hex64"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the <strong>Color</strong> associated with the provided <code class="docutils literal notranslate"><span class="pre">hex</span></code> integer in 64-bit RGBA format (16 bits per channel). This method is the inverse of <a class="reference internal" href="#class-color-method-to-rgba64"><span class="std std-ref">to_rgba64()</span></a>.</p>
+<p>In GDScript and C#, the <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> is best visualized with hexadecimal notation (<code class="docutils literal notranslate"><span class="pre">&quot;0x&quot;</span></code> prefix, making it <code class="docutils literal notranslate"><span class="pre">&quot;0xRRRRGGGGBBBBAAAA&quot;</span></code>).</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-color-method-html"><a class="reference internal" href="#class-color"><span class="std std-ref">Color</span></a> <strong>html</strong>(rgba: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr> <a class="reference internal" href="#class-color-method-html"><span class="std std-ref">🔗</span></a></p>
+<p>Returns a new color from <code class="docutils literal notranslate"><span class="pre">rgba</span></code>, an HTML hexadecimal color string. <code class="docutils literal notranslate"><span class="pre">rgba</span></code> is not case-sensitive, and may be prefixed by a hash sign (<code class="docutils literal notranslate"><span class="pre">#</span></code>).</p>
+<p><code class="docutils literal notranslate"><span class="pre">rgba</span></code> must be a valid three-digit or six-digit hexadecimal color string, and may contain an alpha channel value. If <code class="docutils literal notranslate"><span class="pre">rgba</span></code> does not contain an alpha channel value, an alpha channel value of 1.0 is applied. If <code class="docutils literal notranslate"><span class="pre">rgba</span></code> is invalid, returns an empty color.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-color-method-html-is-valid"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>html_is_valid</strong>(color: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr> <a class="reference internal" href="#class-color-method-html-is-valid"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if <code class="docutils literal notranslate"><span class="pre">color</span></code> is a valid HTML hexadecimal color string. The string must be a hexadecimal value (case-insensitive) of either 3, 4, 6 or 8 digits, and may be prefixed by a hash sign (<code class="docutils literal notranslate"><span class="pre">#</span></code>). This method is identical to <a class="reference internal" href="class_string.html#class-string-method-is-valid-html-color"><span class="std std-ref">String.is_valid_html_color()</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-color-method-inverted"><a class="reference internal" href="#class-color"><span class="std std-ref">Color</span></a> <strong>inverted</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-color-method-inverted"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the color with its <a class="reference internal" href="#class-color-property-r"><span class="std std-ref">r</span></a>, <a class="reference internal" href="#class-color-property-g"><span class="std std-ref">g</span></a>, and <a class="reference internal" href="#class-color-property-b"><span class="std std-ref">b</span></a> components inverted (<code class="docutils literal notranslate"><span class="pre">(1</span> <span class="pre">-</span> <span class="pre">r,</span> <span class="pre">1</span> <span class="pre">-</span> <span class="pre">g,</span> <span class="pre">1</span> <span class="pre">-</span> <span class="pre">b,</span> <span class="pre">a)</span></code>).</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-color-method-is-equal-approx"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_equal_approx</strong>(to: <a class="reference internal" href="#class-color"><span class="std std-ref">Color</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-color-method-is-equal-approx"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if this color and <code class="docutils literal notranslate"><span class="pre">to</span></code> are approximately equal, by running <a class="reference internal" href="class_%40globalscope.html#class-globalscope-method-is-equal-approx"><span class="std std-ref">&#64;GlobalScope.is_equal_approx()</span></a> on each component.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-color-method-lerp"><a class="reference internal" href="#class-color"><span class="std std-ref">Color</span></a> <strong>lerp</strong>(to: <a class="reference internal" href="#class-color"><span class="std std-ref">Color</span></a>, weight: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-color-method-lerp"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the linear interpolation between this color’s components and <code class="docutils literal notranslate"><span class="pre">to</span></code>’s components. The interpolation factor <code class="docutils literal notranslate"><span class="pre">weight</span></code> should be between 0.0 and 1.0 (inclusive). See also <a class="reference internal" href="class_%40globalscope.html#class-globalscope-method-lerp"><span class="std std-ref">&#64;GlobalScope.lerp()</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-color-method-lightened"><a class="reference internal" href="#class-color"><span class="std std-ref">Color</span></a> <strong>lightened</strong>(amount: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-color-method-lightened"><span class="std std-ref">🔗</span></a></p>
+<p>Returns a new color resulting from making this color lighter by the specified <code class="docutils literal notranslate"><span class="pre">amount</span></code>, which should be a ratio from 0.0 to 1.0. See also <a class="reference internal" href="#class-color-method-darkened"><span class="std std-ref">darkened()</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-color-method-linear-to-srgb"><a class="reference internal" href="#class-color"><span class="std std-ref">Color</span></a> <strong>linear_to_srgb</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-color-method-linear-to-srgb"><span class="std std-ref">🔗</span></a></p>
+<p>Returns a copy of the color that is encoded using the <a class="reference external" href="https://en.wikipedia.org/wiki/SRGB">nonlinear sRGB transfer function</a>. This method requires the original color to use linear encoding. See also <a class="reference internal" href="#class-color-method-srgb-to-linear"><span class="std std-ref">srgb_to_linear()</span></a> which performs the opposite operation.</p>
+<p><strong>Note:</strong> The color’s alpha channel (<a class="reference internal" href="#class-color-property-a"><span class="std std-ref">a</span></a>) is not affected. The alpha channel is always stored with linear encoding, regardless of the color space of the other color channels.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-color-method-srgb-to-linear"><a class="reference internal" href="#class-color"><span class="std std-ref">Color</span></a> <strong>srgb_to_linear</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-color-method-srgb-to-linear"><span class="std std-ref">🔗</span></a></p>
+<p>Returns a copy of the color that uses linear encoding. This method requires the original color to be encoded using the <a class="reference external" href="https://en.wikipedia.org/wiki/SRGB">nonlinear sRGB transfer function</a>. See also <a class="reference internal" href="#class-color-method-linear-to-srgb"><span class="std std-ref">linear_to_srgb()</span></a> which performs the opposite operation.</p>
+<p><strong>Note:</strong> The color’s alpha channel (<a class="reference internal" href="#class-color-property-a"><span class="std std-ref">a</span></a>) is not affected. The alpha channel is always stored with linear encoding, regardless of the color space of the other color channels.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-color-method-to-abgr32"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>to_abgr32</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-color-method-to-abgr32"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the color converted to a 32-bit integer in ABGR format (each component is 8 bits). ABGR is the reversed version of the default RGBA format.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-color-method-to-abgr64"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>to_abgr64</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-color-method-to-abgr64"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the color converted to a 64-bit integer in ABGR format (each component is 16 bits). ABGR is the reversed version of the default RGBA format.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-color-method-to-argb32"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>to_argb32</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-color-method-to-argb32"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the color converted to a 32-bit integer in ARGB format (each component is 8 bits). ARGB is more compatible with DirectX.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-color-method-to-argb64"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>to_argb64</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-color-method-to-argb64"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the color converted to a 64-bit integer in ARGB format (each component is 16 bits). ARGB is more compatible with DirectX.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-color-method-to-html"><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a> <strong>to_html</strong>(with_alpha: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = true) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-color-method-to-html"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the color converted to an HTML hexadecimal color <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a> in RGBA format, without the hash (<code class="docutils literal notranslate"><span class="pre">#</span></code>) prefix.</p>
+<p>Setting <code class="docutils literal notranslate"><span class="pre">with_alpha</span></code> to <code class="docutils literal notranslate"><span class="pre">false</span></code>, excludes alpha from the hexadecimal string, using RGB format instead of RGBA format.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-color-method-to-rgba32"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>to_rgba32</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-color-method-to-rgba32"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the color converted to a 32-bit integer in RGBA format (each component is 8 bits). RGBA is Godot’s default format. This method is the inverse of <a class="reference internal" href="#class-color-method-hex"><span class="std std-ref">hex()</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-color-method-to-rgba64"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>to_rgba64</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-color-method-to-rgba64"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the color converted to a 64-bit integer in RGBA format (each component is 16 bits). RGBA is Godot’s default format. This method is the inverse of <a class="reference internal" href="#class-color-method-hex64"><span class="std std-ref">hex64()</span></a>.</p>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="operator-descriptions">
+<h2>Operator Descriptions<a class="headerlink" href="#operator-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-operator" id="class-color-operator-neq-color"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>operator !=</strong>(right: <a class="reference internal" href="#class-color"><span class="std std-ref">Color</span></a>) <a class="reference internal" href="#class-color-operator-neq-color"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if the colors are not exactly equal.</p>
+<p><strong>Note:</strong> Due to floating-point precision errors, consider using <a class="reference internal" href="#class-color-method-is-equal-approx"><span class="std std-ref">is_equal_approx()</span></a> instead, which is more reliable.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-operator" id="class-color-operator-mul-color"><a class="reference internal" href="#class-color"><span class="std std-ref">Color</span></a> <strong>operator *</strong>(right: <a class="reference internal" href="#class-color"><span class="std std-ref">Color</span></a>) <a class="reference internal" href="#class-color-operator-mul-color"><span class="std std-ref">🔗</span></a></p>
+<p>Multiplies each component of the <strong>Color</strong> by the components of the given <strong>Color</strong>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-operator" id="class-color-operator-mul-float"><a class="reference internal" href="#class-color"><span class="std std-ref">Color</span></a> <strong>operator *</strong>(right: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>) <a class="reference internal" href="#class-color-operator-mul-float"><span class="std std-ref">🔗</span></a></p>
+<p>Multiplies each component of the <strong>Color</strong> by the given <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-operator" id="class-color-operator-mul-int"><a class="reference internal" href="#class-color"><span class="std std-ref">Color</span></a> <strong>operator *</strong>(right: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <a class="reference internal" href="#class-color-operator-mul-int"><span class="std std-ref">🔗</span></a></p>
+<p>Multiplies each component of the <strong>Color</strong> by the given <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-operator" id="class-color-operator-sum-color"><a class="reference internal" href="#class-color"><span class="std std-ref">Color</span></a> <strong>operator +</strong>(right: <a class="reference internal" href="#class-color"><span class="std std-ref">Color</span></a>) <a class="reference internal" href="#class-color-operator-sum-color"><span class="std std-ref">🔗</span></a></p>
+<p>Adds each component of the <strong>Color</strong> with the components of the given <strong>Color</strong>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-operator" id="class-color-operator-dif-color"><a class="reference internal" href="#class-color"><span class="std std-ref">Color</span></a> <strong>operator -</strong>(right: <a class="reference internal" href="#class-color"><span class="std std-ref">Color</span></a>) <a class="reference internal" href="#class-color-operator-dif-color"><span class="std std-ref">🔗</span></a></p>
+<p>Subtracts each component of the <strong>Color</strong> by the components of the given <strong>Color</strong>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-operator" id="class-color-operator-div-color"><a class="reference internal" href="#class-color"><span class="std std-ref">Color</span></a> <strong>operator /</strong>(right: <a class="reference internal" href="#class-color"><span class="std std-ref">Color</span></a>) <a class="reference internal" href="#class-color-operator-div-color"><span class="std std-ref">🔗</span></a></p>
+<p>Divides each component of the <strong>Color</strong> by the components of the given <strong>Color</strong>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-operator" id="class-color-operator-div-float"><a class="reference internal" href="#class-color"><span class="std std-ref">Color</span></a> <strong>operator /</strong>(right: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>) <a class="reference internal" href="#class-color-operator-div-float"><span class="std std-ref">🔗</span></a></p>
+<p>Divides each component of the <strong>Color</strong> by the given <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-operator" id="class-color-operator-div-int"><a class="reference internal" href="#class-color"><span class="std std-ref">Color</span></a> <strong>operator /</strong>(right: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <a class="reference internal" href="#class-color-operator-div-int"><span class="std std-ref">🔗</span></a></p>
+<p>Divides each component of the <strong>Color</strong> by the given <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-operator" id="class-color-operator-eq-color"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>operator ==</strong>(right: <a class="reference internal" href="#class-color"><span class="std std-ref">Color</span></a>) <a class="reference internal" href="#class-color-operator-eq-color"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if the colors are exactly equal.</p>
+<p><strong>Note:</strong> Due to floating-point precision errors, consider using <a class="reference internal" href="#class-color-method-is-equal-approx"><span class="std std-ref">is_equal_approx()</span></a> instead, which is more reliable.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-operator" id="class-color-operator-idx-int"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>operator []</strong>(index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <a class="reference internal" href="#class-color-operator-idx-int"><span class="std std-ref">🔗</span></a></p>
+<p>Access color components using their index. <code class="docutils literal notranslate"><span class="pre">[0]</span></code> is equivalent to <a class="reference internal" href="#class-color-property-r"><span class="std std-ref">r</span></a>, <code class="docutils literal notranslate"><span class="pre">[1]</span></code> is equivalent to <a class="reference internal" href="#class-color-property-g"><span class="std std-ref">g</span></a>, <code class="docutils literal notranslate"><span class="pre">[2]</span></code> is equivalent to <a class="reference internal" href="#class-color-property-b"><span class="std std-ref">b</span></a>, and <code class="docutils literal notranslate"><span class="pre">[3]</span></code> is equivalent to <a class="reference internal" href="#class-color-property-a"><span class="std std-ref">a</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-operator" id="class-color-operator-unplus"><a class="reference internal" href="#class-color"><span class="std std-ref">Color</span></a> <strong>operator unary+</strong>() <a class="reference internal" href="#class-color-operator-unplus"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the same value as if the <code class="docutils literal notranslate"><span class="pre">+</span></code> was not there. Unary <code class="docutils literal notranslate"><span class="pre">+</span></code> does nothing, but sometimes it can make your code more readable.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-operator" id="class-color-operator-unminus"><a class="reference internal" href="#class-color"><span class="std std-ref">Color</span></a> <strong>operator unary-</strong>() <a class="reference internal" href="#class-color-operator-unminus"><span class="std std-ref">🔗</span></a></p>
+<p>Inverts the given color. This is equivalent to <code class="docutils literal notranslate"><span class="pre">Color.WHITE</span> <span class="pre">-</span> <span class="pre">c</span></code> or <code class="docutils literal notranslate"><span class="pre">Color(1</span> <span class="pre">-</span> <span class="pre">c.r,</span> <span class="pre">1</span> <span class="pre">-</span> <span class="pre">c.g,</span> <span class="pre">1</span> <span class="pre">-</span> <span class="pre">c.b,</span> <span class="pre">1</span> <span class="pre">-</span> <span class="pre">c.a)</span></code>. Unlike with <a class="reference internal" href="#class-color-method-inverted"><span class="std std-ref">inverted()</span></a>, the <a class="reference internal" href="#class-color-property-a"><span class="std std-ref">a</span></a> component is inverted, too.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, MUmarShahbaz.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,193 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EditorPaths &mdash; RPG Components 2D 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=d45e8c67"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            RPG Components 2D
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">EditorPaths</a><ul>
+<li><a class="reference internal" href="#description">Description</a></li>
+<li><a class="reference internal" href="#tutorials">Tutorials</a></li>
+<li><a class="reference internal" href="#methods">Methods</a></li>
+<li><a class="reference internal" href="#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">RPG Components 2D</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">EditorPaths</li>
+      <li class="wy-breadcrumbs-aside">
+              <!-- User defined GitHub URL -->
+              <a href="hide" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="editorpaths">
+<span id="class-editorpaths"></span><h1>EditorPaths<a class="headerlink" href="#editorpaths" title="Link to this heading"></a></h1>
+<p><strong>Inherits:</strong> <a class="reference internal" href="class_object.html#class-object"><span class="std std-ref">Object</span></a></p>
+<p>Editor-only singleton that returns paths to various OS-specific data folders and files.</p>
+<section class="classref-introduction-group" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
+<p>This editor-only singleton returns OS-specific paths to various data folders and files. It can be used in editor plugins to ensure files are saved in the correct location on each operating system.</p>
+<p><strong>Note:</strong> This singleton is not accessible in exported projects. Attempting to access it in an exported project will result in a script error as the singleton won’t be declared. To prevent script errors in exported projects, use <a class="reference internal" href="class_engine.html#class-engine-method-has-singleton"><span class="std std-ref">Engine.has_singleton()</span></a> to check whether the singleton is available before using it.</p>
+<p><strong>Note:</strong> On the Linux/BSD platform, Godot complies with the <a class="reference external" href="https://specifications.freedesktop.org/basedir-spec/basedir-spec-latest.html">XDG Base Directory Specification</a>. You can override environment variables following the specification to change the editor and project data paths.</p>
+</section>
+<section class="classref-introduction-group" id="tutorials">
+<h2>Tutorials<a class="headerlink" href="#tutorials" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><span class="xref std std-doc">File paths in Godot projects</span></p></li>
+</ul>
+</section>
+<section class="classref-reftable-group" id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a></p></td>
+<td><p><a class="reference internal" href="#class-editorpaths-method-get-cache-dir"><span class="std std-ref">get_cache_dir</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a></p></td>
+<td><p><a class="reference internal" href="#class-editorpaths-method-get-config-dir"><span class="std std-ref">get_config_dir</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a></p></td>
+<td><p><a class="reference internal" href="#class-editorpaths-method-get-data-dir"><span class="std std-ref">get_data_dir</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a></p></td>
+<td><p><a class="reference internal" href="#class-editorpaths-method-get-project-settings-dir"><span class="std std-ref">get_project_settings_dir</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a></p></td>
+<td><p><a class="reference internal" href="#class-editorpaths-method-get-self-contained-file"><span class="std std-ref">get_self_contained_file</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-editorpaths-method-is-self-contained"><span class="std std-ref">is_self_contained</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="method-descriptions">
+<h2>Method Descriptions<a class="headerlink" href="#method-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-method" id="class-editorpaths-method-get-cache-dir"><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a> <strong>get_cache_dir</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-editorpaths-method-get-cache-dir"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the absolute path to the user’s cache folder. This folder should be used for temporary data that can be removed safely whenever the editor is closed (such as generated resource thumbnails).</p>
+<p><strong>Default paths per platform:</strong></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>- Windows: %LOCALAPPDATA%\Godot\
+- macOS: ~/Library/Caches/Godot/
+- Linux: ~/.cache/godot/
+</pre></div>
+</div>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-editorpaths-method-get-config-dir"><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a> <strong>get_config_dir</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-editorpaths-method-get-config-dir"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the absolute path to the user’s configuration folder. This folder should be used for <em>persistent</em> user configuration files.</p>
+<p><strong>Default paths per platform:</strong></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>- Windows: %APPDATA%\Godot\                    (same as `get_data_dir()`)
+- macOS: ~/Library/Application Support/Godot/  (same as `get_data_dir()`)
+- Linux: ~/.config/godot/
+</pre></div>
+</div>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-editorpaths-method-get-data-dir"><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a> <strong>get_data_dir</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-editorpaths-method-get-data-dir"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the absolute path to the user’s data folder. This folder should be used for <em>persistent</em> user data files such as installed export templates.</p>
+<p><strong>Default paths per platform:</strong></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>- Windows: %APPDATA%\Godot\                    (same as `get_config_dir()`)
+- macOS: ~/Library/Application Support/Godot/  (same as `get_config_dir()`)
+- Linux: ~/.local/share/godot/
+</pre></div>
+</div>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-editorpaths-method-get-project-settings-dir"><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a> <strong>get_project_settings_dir</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-editorpaths-method-get-project-settings-dir"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the relative path to the editor settings for this project. This is usually <code class="docutils literal notranslate"><span class="pre">&quot;res://.godot/editor&quot;</span></code>. Projects all have a unique subdirectory inside the settings path where project-specific editor settings are saved.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-editorpaths-method-get-self-contained-file"><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a> <strong>get_self_contained_file</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-editorpaths-method-get-self-contained-file"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the absolute path to the self-contained file that makes the current Godot editor instance be considered as self-contained. Returns an empty string if the current Godot editor instance isn’t self-contained. See also <a class="reference internal" href="#class-editorpaths-method-is-self-contained"><span class="std std-ref">is_self_contained()</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-editorpaths-method-is-self-contained"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_self_contained</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-editorpaths-method-is-self-contained"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if the editor is marked as self-contained, <code class="docutils literal notranslate"><span class="pre">false</span></code> otherwise. When self-contained mode is enabled, user configuration, data and cache files are saved in an <code class="docutils literal notranslate"><span class="pre">editor_data/</span></code> folder next to the editor binary. This makes portable usage easier and ensures the Godot editor minimizes file writes outside its own folder. Self-contained mode is not available for exported projects.</p>
+<p>Self-contained mode can be enabled by creating a file named <code class="docutils literal notranslate"><span class="pre">._sc_</span></code> or <code class="docutils literal notranslate"><span class="pre">_sc_</span></code> in the same folder as the editor binary or macOS .app bundle while the editor is not running. See also <a class="reference internal" href="#class-editorpaths-method-get-self-contained-file"><span class="std std-ref">get_self_contained_file()</span></a>.</p>
+<p><strong>Note:</strong> On macOS, quarantine flag should be manually removed before using self-contained mode, see <a class="reference external" href="https://docs.godotengine.org/en/stable/tutorials/export/running_on_macos.html">Running on macOS</a>.</p>
+<p><strong>Note:</strong> On macOS, placing <code class="docutils literal notranslate"><span class="pre">_sc_</span></code> or any other file inside .app bundle will break digital signature and make it non-portable, consider placing it in the same folder as the .app bundle instead.</p>
+<p><strong>Note:</strong> The Steam release of Godot uses self-contained mode by default.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, MUmarShahbaz.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

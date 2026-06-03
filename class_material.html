@@ -1,0 +1,217 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Material &mdash; RPG Components 2D 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=d45e8c67"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            RPG Components 2D
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">Material</a><ul>
+<li><a class="reference internal" href="#description">Description</a></li>
+<li><a class="reference internal" href="#tutorials">Tutorials</a></li>
+<li><a class="reference internal" href="#properties">Properties</a></li>
+<li><a class="reference internal" href="#methods">Methods</a></li>
+<li><a class="reference internal" href="#constants">Constants</a></li>
+<li><a class="reference internal" href="#property-descriptions">Property Descriptions</a></li>
+<li><a class="reference internal" href="#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">RPG Components 2D</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Material</li>
+      <li class="wy-breadcrumbs-aside">
+              <!-- User defined GitHub URL -->
+              <a href="hide" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="material">
+<span id="class-material"></span><h1>Material<a class="headerlink" href="#material" title="Link to this heading"></a></h1>
+<p><strong>Inherits:</strong> <a class="reference internal" href="class_resource.html#class-resource"><span class="std std-ref">Resource</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_refcounted.html#class-refcounted"><span class="std std-ref">RefCounted</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_object.html#class-object"><span class="std std-ref">Object</span></a></p>
+<p><strong>Inherited By:</strong> <a class="reference internal" href="class_basematerial3d.html#class-basematerial3d"><span class="std std-ref">BaseMaterial3D</span></a>, <a class="reference internal" href="class_blitmaterial.html#class-blitmaterial"><span class="std std-ref">BlitMaterial</span></a>, <a class="reference internal" href="class_canvasitemmaterial.html#class-canvasitemmaterial"><span class="std std-ref">CanvasItemMaterial</span></a>, <a class="reference internal" href="class_fogmaterial.html#class-fogmaterial"><span class="std std-ref">FogMaterial</span></a>, <a class="reference internal" href="class_panoramaskymaterial.html#class-panoramaskymaterial"><span class="std std-ref">PanoramaSkyMaterial</span></a>, <a class="reference internal" href="class_particleprocessmaterial.html#class-particleprocessmaterial"><span class="std std-ref">ParticleProcessMaterial</span></a>, <a class="reference internal" href="class_physicalskymaterial.html#class-physicalskymaterial"><span class="std std-ref">PhysicalSkyMaterial</span></a>, <a class="reference internal" href="class_placeholdermaterial.html#class-placeholdermaterial"><span class="std std-ref">PlaceholderMaterial</span></a>, <a class="reference internal" href="class_proceduralskymaterial.html#class-proceduralskymaterial"><span class="std std-ref">ProceduralSkyMaterial</span></a>, <a class="reference internal" href="class_shadermaterial.html#class-shadermaterial"><span class="std std-ref">ShaderMaterial</span></a></p>
+<p>Virtual base class for applying visual properties to an object, such as color and roughness.</p>
+<section class="classref-introduction-group" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
+<p><strong>Material</strong> is a base resource used for coloring and shading geometry. All materials inherit from it and almost all <a class="reference internal" href="class_visualinstance3d.html#class-visualinstance3d"><span class="std std-ref">VisualInstance3D</span></a> derived nodes carry a <strong>Material</strong>. A few flags and parameters are shared between all material types and are configured here.</p>
+<p>Importantly, you can inherit from <strong>Material</strong> to create your own custom material type in script or in GDExtension.</p>
+</section>
+<section class="classref-introduction-group" id="tutorials">
+<h2>Tutorials<a class="headerlink" href="#tutorials" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://godotengine.org/asset-library/asset/2742">3D Material Testers Demo</a></p></li>
+<li><p><a class="reference external" href="https://godotengine.org/asset-library/asset/2710">Third Person Shooter (TPS) Demo</a></p></li>
+</ul>
+</section>
+<section class="classref-reftable-group" id="properties">
+<h2>Properties<a class="headerlink" href="#properties" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#class-material"><span class="std std-ref">Material</span></a></p></td>
+<td><p><a class="reference internal" href="#class-material-property-next-pass"><span class="std std-ref">next_pass</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-material-property-render-priority"><span class="std std-ref">render_priority</span></a></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section class="classref-reftable-group" id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-material-private-method-can-do-next-pass"><span class="std std-ref">_can_do_next_pass</span></a>() <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-material-private-method-can-use-render-priority"><span class="std std-ref">_can_use_render_priority</span></a>() <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_shader.html#enum-shader-mode"><span class="std std-ref">Mode</span></a></p></td>
+<td><p><a class="reference internal" href="#class-material-private-method-get-shader-mode"><span class="std std-ref">_get_shader_mode</span></a>() <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method is required to be overridden when extending its base class.">required</abbr> <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_rid.html#class-rid"><span class="std std-ref">RID</span></a></p></td>
+<td><p><a class="reference internal" href="#class-material-private-method-get-shader-rid"><span class="std std-ref">_get_shader_rid</span></a>() <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method is required to be overridden when extending its base class.">required</abbr> <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_resource.html#class-resource"><span class="std std-ref">Resource</span></a></p></td>
+<td><p><a class="reference internal" href="#class-material-method-create-placeholder"><span class="std std-ref">create_placeholder</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-material-method-inspect-native-shader-code"><span class="std std-ref">inspect_native_shader_code</span></a>()</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="constants">
+<h2>Constants<a class="headerlink" href="#constants" title="Link to this heading"></a></h2>
+<p class="classref-constant" id="class-material-constant-render-priority-max"><strong>RENDER_PRIORITY_MAX</strong> = <code class="docutils literal notranslate"><span class="pre">127</span></code> <a class="reference internal" href="#class-material-constant-render-priority-max"><span class="std std-ref">🔗</span></a></p>
+<p>Maximum value for the <a class="reference internal" href="#class-material-property-render-priority"><span class="std std-ref">render_priority</span></a> parameter.</p>
+<p class="classref-constant" id="class-material-constant-render-priority-min"><strong>RENDER_PRIORITY_MIN</strong> = <code class="docutils literal notranslate"><span class="pre">-128</span></code> <a class="reference internal" href="#class-material-constant-render-priority-min"><span class="std std-ref">🔗</span></a></p>
+<p>Minimum value for the <a class="reference internal" href="#class-material-property-render-priority"><span class="std std-ref">render_priority</span></a> parameter.</p>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="property-descriptions">
+<h2>Property Descriptions<a class="headerlink" href="#property-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-property" id="class-material-property-next-pass"><a class="reference internal" href="#class-material"><span class="std std-ref">Material</span></a> <strong>next_pass</strong> <a class="reference internal" href="#class-material-property-next-pass"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_next_pass</strong>(value: <a class="reference internal" href="#class-material"><span class="std std-ref">Material</span></a>)</p></li>
+<li><p><a class="reference internal" href="#class-material"><span class="std std-ref">Material</span></a> <strong>get_next_pass</strong>()</p></li>
+</ul>
+<p>Sets the <strong>Material</strong> to be used for the next pass. This renders the object again using a different material.</p>
+<p><strong>Note:</strong> <a class="reference internal" href="#class-material-property-next-pass"><span class="std std-ref">next_pass</span></a> materials are not necessarily drawn immediately after the source <strong>Material</strong>. Draw order is determined by material properties, <a class="reference internal" href="#class-material-property-render-priority"><span class="std std-ref">render_priority</span></a>, and distance to camera.</p>
+<p><strong>Note:</strong> This only applies to <a class="reference internal" href="class_standardmaterial3d.html#class-standardmaterial3d"><span class="std std-ref">StandardMaterial3D</span></a>s and <a class="reference internal" href="class_shadermaterial.html#class-shadermaterial"><span class="std std-ref">ShaderMaterial</span></a>s with type “Spatial”.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-material-property-render-priority"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>render_priority</strong> <a class="reference internal" href="#class-material-property-render-priority"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_render_priority</strong>(value: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>get_render_priority</strong>()</p></li>
+</ul>
+<p>Sets the render priority for objects in 3D scenes. Higher priority objects will be sorted in front of lower priority objects. In other words, all objects with <a class="reference internal" href="#class-material-property-render-priority"><span class="std std-ref">render_priority</span></a> <code class="docutils literal notranslate"><span class="pre">1</span></code> will render on top of all objects with <a class="reference internal" href="#class-material-property-render-priority"><span class="std std-ref">render_priority</span></a> <code class="docutils literal notranslate"><span class="pre">0</span></code>.</p>
+<p><strong>Note:</strong> This only applies to <a class="reference internal" href="class_standardmaterial3d.html#class-standardmaterial3d"><span class="std std-ref">StandardMaterial3D</span></a>s and <a class="reference internal" href="class_shadermaterial.html#class-shadermaterial"><span class="std std-ref">ShaderMaterial</span></a>s with type “Spatial”.</p>
+<p><strong>Note:</strong> This will not impact how transparent objects are sorted relative to opaque objects or how dynamic meshes will be sorted relative to other opaque meshes. This is because all transparent objects are drawn after all opaque objects and all dynamic opaque meshes are drawn before other opaque meshes.</p>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="method-descriptions">
+<h2>Method Descriptions<a class="headerlink" href="#method-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-method" id="class-material-private-method-can-do-next-pass"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>_can_do_next_pass</strong>() <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-material-private-method-can-do-next-pass"><span class="std std-ref">🔗</span></a></p>
+<p>Only exposed for the purpose of overriding. You cannot call this function directly. Used internally to determine if <a class="reference internal" href="#class-material-property-next-pass"><span class="std std-ref">next_pass</span></a> should be shown in the editor or not.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-material-private-method-can-use-render-priority"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>_can_use_render_priority</strong>() <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-material-private-method-can-use-render-priority"><span class="std std-ref">🔗</span></a></p>
+<p>Only exposed for the purpose of overriding. You cannot call this function directly. Used internally to determine if <a class="reference internal" href="#class-material-property-render-priority"><span class="std std-ref">render_priority</span></a> should be shown in the editor or not.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-material-private-method-get-shader-mode"><a class="reference internal" href="class_shader.html#enum-shader-mode"><span class="std std-ref">Mode</span></a> <strong>_get_shader_mode</strong>() <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method is required to be overridden when extending its base class.">required</abbr> <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-material-private-method-get-shader-mode"><span class="std std-ref">🔗</span></a></p>
+<p>Only exposed for the purpose of overriding. You cannot call this function directly. Used internally by various editor tools.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-material-private-method-get-shader-rid"><a class="reference internal" href="class_rid.html#class-rid"><span class="std std-ref">RID</span></a> <strong>_get_shader_rid</strong>() <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method is required to be overridden when extending its base class.">required</abbr> <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-material-private-method-get-shader-rid"><span class="std std-ref">🔗</span></a></p>
+<p>Only exposed for the purpose of overriding. You cannot call this function directly. Used internally by various editor tools. Used to access the RID of the <strong>Material</strong>’s <a class="reference internal" href="class_shader.html#class-shader"><span class="std std-ref">Shader</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-material-method-create-placeholder"><a class="reference internal" href="class_resource.html#class-resource"><span class="std std-ref">Resource</span></a> <strong>create_placeholder</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-material-method-create-placeholder"><span class="std std-ref">🔗</span></a></p>
+<p>Creates a placeholder version of this resource (<a class="reference internal" href="class_placeholdermaterial.html#class-placeholdermaterial"><span class="std std-ref">PlaceholderMaterial</span></a>).</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-material-method-inspect-native-shader-code"><abbr title="No return value.">void</abbr> <strong>inspect_native_shader_code</strong>() <a class="reference internal" href="#class-material-method-inspect-native-shader-code"><span class="std std-ref">🔗</span></a></p>
+<p>Only available when running in the editor. Opens a popup that visualizes the generated shader code, including all variants and internal shader code. See also <a class="reference internal" href="class_shader.html#class-shader-method-inspect-native-shader-code"><span class="std std-ref">Shader.inspect_native_shader_code()</span></a>.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, MUmarShahbaz.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

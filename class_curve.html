@@ -1,0 +1,387 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Curve &mdash; RPG Components 2D 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=d45e8c67"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            RPG Components 2D
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">Curve</a><ul>
+<li><a class="reference internal" href="#description">Description</a></li>
+<li><a class="reference internal" href="#properties">Properties</a></li>
+<li><a class="reference internal" href="#methods">Methods</a></li>
+<li><a class="reference internal" href="#signals">Signals</a></li>
+<li><a class="reference internal" href="#enumerations">Enumerations</a></li>
+<li><a class="reference internal" href="#property-descriptions">Property Descriptions</a></li>
+<li><a class="reference internal" href="#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">RPG Components 2D</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Curve</li>
+      <li class="wy-breadcrumbs-aside">
+              <!-- User defined GitHub URL -->
+              <a href="hide" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="curve">
+<span id="class-curve"></span><h1>Curve<a class="headerlink" href="#curve" title="Link to this heading"></a></h1>
+<p><strong>Inherits:</strong> <a class="reference internal" href="class_resource.html#class-resource"><span class="std std-ref">Resource</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_refcounted.html#class-refcounted"><span class="std std-ref">RefCounted</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_object.html#class-object"><span class="std std-ref">Object</span></a></p>
+<p>A mathematical curve.</p>
+<section class="classref-introduction-group" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
+<p>This resource describes a mathematical curve by defining a set of points and tangents at each point. By default, it ranges between <code class="docutils literal notranslate"><span class="pre">0</span></code> and <code class="docutils literal notranslate"><span class="pre">1</span></code> on the X and Y axes, but these ranges can be changed.</p>
+<p>Please note that many resources and nodes assume they are given <em>unit curves</em>. A unit curve is a curve whose domain (the X axis) is between <code class="docutils literal notranslate"><span class="pre">0</span></code> and <code class="docutils literal notranslate"><span class="pre">1</span></code>. Some examples of unit curve usage are <a class="reference internal" href="class_cpuparticles2d.html#class-cpuparticles2d-property-angle-curve"><span class="std std-ref">CPUParticles2D.angle_curve</span></a> and <a class="reference internal" href="class_line2d.html#class-line2d-property-width-curve"><span class="std std-ref">Line2D.width_curve</span></a>.</p>
+</section>
+<section class="classref-reftable-group" id="properties">
+<h2>Properties<a class="headerlink" href="#properties" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-curve-property-bake-resolution"><span class="std std-ref">bake_resolution</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">100</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-curve-property-max-domain"><span class="std std-ref">max_domain</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">1.0</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-curve-property-max-value"><span class="std std-ref">max_value</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">1.0</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-curve-property-min-domain"><span class="std std-ref">min_domain</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0.0</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-curve-property-min-value"><span class="std std-ref">min_value</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0.0</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-curve-property-point-count"><span class="std std-ref">point_count</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-curve-property-point-index-left-mode"><span class="std std-ref">point_{index}/left_mode</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-curve-property-point-index-left-tangent"><span class="std std-ref">point_{index}/left_tangent</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0.0</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a></p></td>
+<td><p><a class="reference internal" href="#class-curve-property-point-index-position"><span class="std std-ref">point_{index}/position</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Vector2(0,</span> <span class="pre">0)</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-curve-property-point-index-right-mode"><span class="std std-ref">point_{index}/right_mode</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-curve-property-point-index-right-tangent"><span class="std std-ref">point_{index}/right_tangent</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0.0</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section class="classref-reftable-group" id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-curve-method-add-point"><span class="std std-ref">add_point</span></a>(position: <a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a>, left_tangent: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> = 0, right_tangent: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> = 0, left_mode: <a class="reference internal" href="#enum-curve-tangentmode"><span class="std std-ref">TangentMode</span></a> = 0, right_mode: <a class="reference internal" href="#enum-curve-tangentmode"><span class="std std-ref">TangentMode</span></a> = 0)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-curve-method-bake"><span class="std std-ref">bake</span></a>()</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-curve-method-clean-dupes"><span class="std std-ref">clean_dupes</span></a>()</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-curve-method-clear-points"><span class="std std-ref">clear_points</span></a>()</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-curve-method-get-domain-range"><span class="std std-ref">get_domain_range</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#enum-curve-tangentmode"><span class="std std-ref">TangentMode</span></a></p></td>
+<td><p><a class="reference internal" href="#class-curve-method-get-point-left-mode"><span class="std std-ref">get_point_left_mode</span></a>(index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-curve-method-get-point-left-tangent"><span class="std std-ref">get_point_left_tangent</span></a>(index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a></p></td>
+<td><p><a class="reference internal" href="#class-curve-method-get-point-position"><span class="std std-ref">get_point_position</span></a>(index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#enum-curve-tangentmode"><span class="std std-ref">TangentMode</span></a></p></td>
+<td><p><a class="reference internal" href="#class-curve-method-get-point-right-mode"><span class="std std-ref">get_point_right_mode</span></a>(index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-curve-method-get-point-right-tangent"><span class="std std-ref">get_point_right_tangent</span></a>(index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-curve-method-get-value-range"><span class="std std-ref">get_value_range</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-curve-method-remove-point"><span class="std std-ref">remove_point</span></a>(index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-curve-method-sample"><span class="std std-ref">sample</span></a>(offset: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-curve-method-sample-baked"><span class="std std-ref">sample_baked</span></a>(offset: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-curve-method-set-point-left-mode"><span class="std std-ref">set_point_left_mode</span></a>(index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, mode: <a class="reference internal" href="#enum-curve-tangentmode"><span class="std std-ref">TangentMode</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-curve-method-set-point-left-tangent"><span class="std std-ref">set_point_left_tangent</span></a>(index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, tangent: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-curve-method-set-point-offset"><span class="std std-ref">set_point_offset</span></a>(index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, offset: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-curve-method-set-point-right-mode"><span class="std std-ref">set_point_right_mode</span></a>(index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, mode: <a class="reference internal" href="#enum-curve-tangentmode"><span class="std std-ref">TangentMode</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-curve-method-set-point-right-tangent"><span class="std std-ref">set_point_right_tangent</span></a>(index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, tangent: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-curve-method-set-point-value"><span class="std std-ref">set_point_value</span></a>(index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, y: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="signals">
+<h2>Signals<a class="headerlink" href="#signals" title="Link to this heading"></a></h2>
+<p class="classref-signal" id="class-curve-signal-domain-changed"><strong>domain_changed</strong>() <a class="reference internal" href="#class-curve-signal-domain-changed"><span class="std std-ref">🔗</span></a></p>
+<p>Emitted when <a class="reference internal" href="#class-curve-property-max-domain"><span class="std std-ref">max_domain</span></a> or <a class="reference internal" href="#class-curve-property-min-domain"><span class="std std-ref">min_domain</span></a> is changed.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-signal" id="class-curve-signal-range-changed"><strong>range_changed</strong>() <a class="reference internal" href="#class-curve-signal-range-changed"><span class="std std-ref">🔗</span></a></p>
+<p>Emitted when <a class="reference internal" href="#class-curve-property-max-value"><span class="std std-ref">max_value</span></a> or <a class="reference internal" href="#class-curve-property-min-value"><span class="std std-ref">min_value</span></a> is changed.</p>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="enumerations">
+<h2>Enumerations<a class="headerlink" href="#enumerations" title="Link to this heading"></a></h2>
+<p class="classref-enumeration" id="enum-curve-tangentmode">enum <strong>TangentMode</strong>: <a class="reference internal" href="#enum-curve-tangentmode"><span class="std std-ref">🔗</span></a></p>
+<p class="classref-enumeration-constant" id="class-curve-constant-tangent-free"><a class="reference internal" href="#enum-curve-tangentmode"><span class="std std-ref">TangentMode</span></a> <strong>TANGENT_FREE</strong> = <code class="docutils literal notranslate"><span class="pre">0</span></code></p>
+<p>The tangent on this side of the point is user-defined.</p>
+<p class="classref-enumeration-constant" id="class-curve-constant-tangent-linear"><a class="reference internal" href="#enum-curve-tangentmode"><span class="std std-ref">TangentMode</span></a> <strong>TANGENT_LINEAR</strong> = <code class="docutils literal notranslate"><span class="pre">1</span></code></p>
+<p>The curve calculates the tangent on this side of the point as the slope halfway towards the adjacent point.</p>
+<p class="classref-enumeration-constant" id="class-curve-constant-tangent-mode-count"><a class="reference internal" href="#enum-curve-tangentmode"><span class="std std-ref">TangentMode</span></a> <strong>TANGENT_MODE_COUNT</strong> = <code class="docutils literal notranslate"><span class="pre">2</span></code></p>
+<p>The total number of available tangent modes.</p>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="property-descriptions">
+<h2>Property Descriptions<a class="headerlink" href="#property-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-property" id="class-curve-property-bake-resolution"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>bake_resolution</strong> = <code class="docutils literal notranslate"><span class="pre">100</span></code> <a class="reference internal" href="#class-curve-property-bake-resolution"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_bake_resolution</strong>(value: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>get_bake_resolution</strong>()</p></li>
+</ul>
+<p>The number of points to include in the baked (i.e. cached) curve data.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-curve-property-max-domain"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>max_domain</strong> = <code class="docutils literal notranslate"><span class="pre">1.0</span></code> <a class="reference internal" href="#class-curve-property-max-domain"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_max_domain</strong>(value: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>get_max_domain</strong>()</p></li>
+</ul>
+<p>The maximum domain (x-coordinate) that points can have.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-curve-property-max-value"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>max_value</strong> = <code class="docutils literal notranslate"><span class="pre">1.0</span></code> <a class="reference internal" href="#class-curve-property-max-value"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_max_value</strong>(value: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>get_max_value</strong>()</p></li>
+</ul>
+<p>The maximum value (y-coordinate) that points can have. Tangents can cause higher values between points.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-curve-property-min-domain"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>min_domain</strong> = <code class="docutils literal notranslate"><span class="pre">0.0</span></code> <a class="reference internal" href="#class-curve-property-min-domain"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_min_domain</strong>(value: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>get_min_domain</strong>()</p></li>
+</ul>
+<p>The minimum domain (x-coordinate) that points can have.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-curve-property-min-value"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>min_value</strong> = <code class="docutils literal notranslate"><span class="pre">0.0</span></code> <a class="reference internal" href="#class-curve-property-min-value"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_min_value</strong>(value: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>get_min_value</strong>()</p></li>
+</ul>
+<p>The minimum value (y-coordinate) that points can have. Tangents can cause lower values between points.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-curve-property-point-count"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>point_count</strong> = <code class="docutils literal notranslate"><span class="pre">0</span></code> <a class="reference internal" href="#class-curve-property-point-count"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_point_count</strong>(value: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>get_point_count</strong>()</p></li>
+</ul>
+<p>The number of points describing the curve.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-curve-property-point-index-left-mode"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>point_{index}/left_mode</strong> = <code class="docutils literal notranslate"><span class="pre">0</span></code> <a class="reference internal" href="#class-curve-property-point-index-left-mode"><span class="std std-ref">🔗</span></a></p>
+<p>The left <a class="reference internal" href="#enum-curve-tangentmode"><span class="std std-ref">TangentMode</span></a> for the point at <code class="docutils literal notranslate"><span class="pre">index</span></code>.</p>
+<p><strong>Note:</strong> <code class="docutils literal notranslate"><span class="pre">index</span></code> is a value in the <code class="docutils literal notranslate"><span class="pre">0</span> <span class="pre">..</span> <span class="pre">point_count</span> <span class="pre">-</span> <span class="pre">1</span></code> range.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-curve-property-point-index-left-tangent"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>point_{index}/left_tangent</strong> = <code class="docutils literal notranslate"><span class="pre">0.0</span></code> <a class="reference internal" href="#class-curve-property-point-index-left-tangent"><span class="std std-ref">🔗</span></a></p>
+<p>The left tangent angle (in degrees) for the point at <code class="docutils literal notranslate"><span class="pre">index</span></code>.</p>
+<p><strong>Note:</strong> <code class="docutils literal notranslate"><span class="pre">index</span></code> is a value in the <code class="docutils literal notranslate"><span class="pre">0</span> <span class="pre">..</span> <span class="pre">point_count</span> <span class="pre">-</span> <span class="pre">1</span></code> range.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-curve-property-point-index-position"><a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a> <strong>point_{index}/position</strong> = <code class="docutils literal notranslate"><span class="pre">Vector2(0,</span> <span class="pre">0)</span></code> <a class="reference internal" href="#class-curve-property-point-index-position"><span class="std std-ref">🔗</span></a></p>
+<p>The position of the point at <code class="docutils literal notranslate"><span class="pre">index</span></code>.</p>
+<p><strong>Note:</strong> <code class="docutils literal notranslate"><span class="pre">index</span></code> is a value in the <code class="docutils literal notranslate"><span class="pre">0</span> <span class="pre">..</span> <span class="pre">point_count</span> <span class="pre">-</span> <span class="pre">1</span></code> range.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-curve-property-point-index-right-mode"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>point_{index}/right_mode</strong> = <code class="docutils literal notranslate"><span class="pre">0</span></code> <a class="reference internal" href="#class-curve-property-point-index-right-mode"><span class="std std-ref">🔗</span></a></p>
+<p>The right <a class="reference internal" href="#enum-curve-tangentmode"><span class="std std-ref">TangentMode</span></a> for the point at <code class="docutils literal notranslate"><span class="pre">index</span></code>.</p>
+<p><strong>Note:</strong> <code class="docutils literal notranslate"><span class="pre">index</span></code> is a value in the <code class="docutils literal notranslate"><span class="pre">0</span> <span class="pre">..</span> <span class="pre">point_count</span> <span class="pre">-</span> <span class="pre">1</span></code> range.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-curve-property-point-index-right-tangent"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>point_{index}/right_tangent</strong> = <code class="docutils literal notranslate"><span class="pre">0.0</span></code> <a class="reference internal" href="#class-curve-property-point-index-right-tangent"><span class="std std-ref">🔗</span></a></p>
+<p>The right tangent angle (in degrees) for the point at <code class="docutils literal notranslate"><span class="pre">index</span></code>.</p>
+<p><strong>Note:</strong> <code class="docutils literal notranslate"><span class="pre">index</span></code> is a value in the <code class="docutils literal notranslate"><span class="pre">0</span> <span class="pre">..</span> <span class="pre">point_count</span> <span class="pre">-</span> <span class="pre">1</span></code> range.</p>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="method-descriptions">
+<h2>Method Descriptions<a class="headerlink" href="#method-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-method" id="class-curve-method-add-point"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>add_point</strong>(position: <a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a>, left_tangent: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> = 0, right_tangent: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> = 0, left_mode: <a class="reference internal" href="#enum-curve-tangentmode"><span class="std std-ref">TangentMode</span></a> = 0, right_mode: <a class="reference internal" href="#enum-curve-tangentmode"><span class="std std-ref">TangentMode</span></a> = 0) <a class="reference internal" href="#class-curve-method-add-point"><span class="std std-ref">🔗</span></a></p>
+<p>Adds a point to the curve. For each side, if the <code class="docutils literal notranslate"><span class="pre">*_mode</span></code> is <a class="reference internal" href="#class-curve-constant-tangent-linear"><span class="std std-ref">TANGENT_LINEAR</span></a>, the <code class="docutils literal notranslate"><span class="pre">*_tangent</span></code> angle (in degrees) uses the slope of the curve halfway to the adjacent point. Allows custom assignments to the <code class="docutils literal notranslate"><span class="pre">*_tangent</span></code> angle if <code class="docutils literal notranslate"><span class="pre">*_mode</span></code> is set to <a class="reference internal" href="#class-curve-constant-tangent-free"><span class="std std-ref">TANGENT_FREE</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-curve-method-bake"><abbr title="No return value.">void</abbr> <strong>bake</strong>() <a class="reference internal" href="#class-curve-method-bake"><span class="std std-ref">🔗</span></a></p>
+<p>Recomputes the baked cache of points for the curve.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-curve-method-clean-dupes"><abbr title="No return value.">void</abbr> <strong>clean_dupes</strong>() <a class="reference internal" href="#class-curve-method-clean-dupes"><span class="std std-ref">🔗</span></a></p>
+<p>Removes duplicate points, i.e. points that are less than 0.00001 units (engine epsilon value) away from their neighbor on the curve.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-curve-method-clear-points"><abbr title="No return value.">void</abbr> <strong>clear_points</strong>() <a class="reference internal" href="#class-curve-method-clear-points"><span class="std std-ref">🔗</span></a></p>
+<p>Removes all points from the curve.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-curve-method-get-domain-range"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>get_domain_range</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-curve-method-get-domain-range"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the difference between <a class="reference internal" href="#class-curve-property-min-domain"><span class="std std-ref">min_domain</span></a> and <a class="reference internal" href="#class-curve-property-max-domain"><span class="std std-ref">max_domain</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-curve-method-get-point-left-mode"><a class="reference internal" href="#enum-curve-tangentmode"><span class="std std-ref">TangentMode</span></a> <strong>get_point_left_mode</strong>(index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-curve-method-get-point-left-mode"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the left <a class="reference internal" href="#enum-curve-tangentmode"><span class="std std-ref">TangentMode</span></a> for the point at <code class="docutils literal notranslate"><span class="pre">index</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-curve-method-get-point-left-tangent"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>get_point_left_tangent</strong>(index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-curve-method-get-point-left-tangent"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the left tangent angle (in degrees) for the point at <code class="docutils literal notranslate"><span class="pre">index</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-curve-method-get-point-position"><a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a> <strong>get_point_position</strong>(index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-curve-method-get-point-position"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the curve coordinates for the point at <code class="docutils literal notranslate"><span class="pre">index</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-curve-method-get-point-right-mode"><a class="reference internal" href="#enum-curve-tangentmode"><span class="std std-ref">TangentMode</span></a> <strong>get_point_right_mode</strong>(index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-curve-method-get-point-right-mode"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the right <a class="reference internal" href="#enum-curve-tangentmode"><span class="std std-ref">TangentMode</span></a> for the point at <code class="docutils literal notranslate"><span class="pre">index</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-curve-method-get-point-right-tangent"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>get_point_right_tangent</strong>(index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-curve-method-get-point-right-tangent"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the right tangent angle (in degrees) for the point at <code class="docutils literal notranslate"><span class="pre">index</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-curve-method-get-value-range"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>get_value_range</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-curve-method-get-value-range"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the difference between <a class="reference internal" href="#class-curve-property-min-value"><span class="std std-ref">min_value</span></a> and <a class="reference internal" href="#class-curve-property-max-value"><span class="std std-ref">max_value</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-curve-method-remove-point"><abbr title="No return value.">void</abbr> <strong>remove_point</strong>(index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <a class="reference internal" href="#class-curve-method-remove-point"><span class="std std-ref">🔗</span></a></p>
+<p>Removes the point at <code class="docutils literal notranslate"><span class="pre">index</span></code> from the curve.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-curve-method-sample"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>sample</strong>(offset: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-curve-method-sample"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the Y value for the point that would exist at the X position <code class="docutils literal notranslate"><span class="pre">offset</span></code> along the curve.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-curve-method-sample-baked"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>sample_baked</strong>(offset: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-curve-method-sample-baked"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the Y value for the point that would exist at the X position <code class="docutils literal notranslate"><span class="pre">offset</span></code> along the curve using the baked cache. Bakes the curve’s points if not already baked.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-curve-method-set-point-left-mode"><abbr title="No return value.">void</abbr> <strong>set_point_left_mode</strong>(index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, mode: <a class="reference internal" href="#enum-curve-tangentmode"><span class="std std-ref">TangentMode</span></a>) <a class="reference internal" href="#class-curve-method-set-point-left-mode"><span class="std std-ref">🔗</span></a></p>
+<p>Sets the left <a class="reference internal" href="#enum-curve-tangentmode"><span class="std std-ref">TangentMode</span></a> for the point at <code class="docutils literal notranslate"><span class="pre">index</span></code> to <code class="docutils literal notranslate"><span class="pre">mode</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-curve-method-set-point-left-tangent"><abbr title="No return value.">void</abbr> <strong>set_point_left_tangent</strong>(index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, tangent: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>) <a class="reference internal" href="#class-curve-method-set-point-left-tangent"><span class="std std-ref">🔗</span></a></p>
+<p>Sets the left tangent angle for the point at <code class="docutils literal notranslate"><span class="pre">index</span></code> to <code class="docutils literal notranslate"><span class="pre">tangent</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-curve-method-set-point-offset"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>set_point_offset</strong>(index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, offset: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>) <a class="reference internal" href="#class-curve-method-set-point-offset"><span class="std std-ref">🔗</span></a></p>
+<p>Assigns the horizontal position <code class="docutils literal notranslate"><span class="pre">offset</span></code> to the point at <code class="docutils literal notranslate"><span class="pre">index</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-curve-method-set-point-right-mode"><abbr title="No return value.">void</abbr> <strong>set_point_right_mode</strong>(index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, mode: <a class="reference internal" href="#enum-curve-tangentmode"><span class="std std-ref">TangentMode</span></a>) <a class="reference internal" href="#class-curve-method-set-point-right-mode"><span class="std std-ref">🔗</span></a></p>
+<p>Sets the right <a class="reference internal" href="#enum-curve-tangentmode"><span class="std std-ref">TangentMode</span></a> for the point at <code class="docutils literal notranslate"><span class="pre">index</span></code> to <code class="docutils literal notranslate"><span class="pre">mode</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-curve-method-set-point-right-tangent"><abbr title="No return value.">void</abbr> <strong>set_point_right_tangent</strong>(index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, tangent: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>) <a class="reference internal" href="#class-curve-method-set-point-right-tangent"><span class="std std-ref">🔗</span></a></p>
+<p>Sets the right tangent angle for the point at <code class="docutils literal notranslate"><span class="pre">index</span></code> to <code class="docutils literal notranslate"><span class="pre">tangent</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-curve-method-set-point-value"><abbr title="No return value.">void</abbr> <strong>set_point_value</strong>(index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, y: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>) <a class="reference internal" href="#class-curve-method-set-point-value"><span class="std std-ref">🔗</span></a></p>
+<p>Assigns the vertical position <code class="docutils literal notranslate"><span class="pre">y</span></code> to the point at <code class="docutils literal notranslate"><span class="pre">index</span></code>.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, MUmarShahbaz.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

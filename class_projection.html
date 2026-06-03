@@ -1,0 +1,447 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Projection &mdash; RPG Components 2D 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=d45e8c67"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            RPG Components 2D
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">Projection</a><ul>
+<li><a class="reference internal" href="#description">Description</a></li>
+<li><a class="reference internal" href="#properties">Properties</a></li>
+<li><a class="reference internal" href="#constructors">Constructors</a></li>
+<li><a class="reference internal" href="#methods">Methods</a></li>
+<li><a class="reference internal" href="#operators">Operators</a></li>
+<li><a class="reference internal" href="#enumerations">Enumerations</a></li>
+<li><a class="reference internal" href="#constants">Constants</a></li>
+<li><a class="reference internal" href="#property-descriptions">Property Descriptions</a></li>
+<li><a class="reference internal" href="#constructor-descriptions">Constructor Descriptions</a></li>
+<li><a class="reference internal" href="#method-descriptions">Method Descriptions</a></li>
+<li><a class="reference internal" href="#operator-descriptions">Operator Descriptions</a></li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">RPG Components 2D</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Projection</li>
+      <li class="wy-breadcrumbs-aside">
+              <!-- User defined GitHub URL -->
+              <a href="hide" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="projection">
+<span id="class-projection"></span><h1>Projection<a class="headerlink" href="#projection" title="Link to this heading"></a></h1>
+<p>A 4×4 matrix for 3D projective transformations.</p>
+<section class="classref-introduction-group" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
+<p>A 4×4 matrix used for 3D projective transformations. It can represent transformations such as translation, rotation, scaling, shearing, and perspective division. It consists of four <a class="reference internal" href="class_vector4.html#class-vector4"><span class="std std-ref">Vector4</span></a> columns.</p>
+<p>For purely linear transformations (translation, rotation, and scale), it is recommended to use <a class="reference internal" href="class_transform3d.html#class-transform3d"><span class="std std-ref">Transform3D</span></a>, as it is more performant and requires less memory.</p>
+<p>Used internally as <a class="reference internal" href="class_camera3d.html#class-camera3d"><span class="std std-ref">Camera3D</span></a>’s projection matrix.</p>
+<p><strong>Note:</strong> In a boolean context, a projection will evaluate to <code class="docutils literal notranslate"><span class="pre">false</span></code> if it’s equal to <a class="reference internal" href="#class-projection-constant-identity"><span class="std std-ref">IDENTITY</span></a>. Otherwise, a projection will always evaluate to <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>There are notable differences when using this API with C#. See <span class="xref std std-ref">doc_c_sharp_differences</span> for more information.</p>
+</div>
+</section>
+<section class="classref-reftable-group" id="properties">
+<h2>Properties<a class="headerlink" href="#properties" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_vector4.html#class-vector4"><span class="std std-ref">Vector4</span></a></p></td>
+<td><p><a class="reference internal" href="#class-projection-property-w"><span class="std std-ref">w</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Vector4(0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">1)</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_vector4.html#class-vector4"><span class="std std-ref">Vector4</span></a></p></td>
+<td><p><a class="reference internal" href="#class-projection-property-x"><span class="std std-ref">x</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Vector4(1,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0)</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_vector4.html#class-vector4"><span class="std std-ref">Vector4</span></a></p></td>
+<td><p><a class="reference internal" href="#class-projection-property-y"><span class="std std-ref">y</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Vector4(0,</span> <span class="pre">1,</span> <span class="pre">0,</span> <span class="pre">0)</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_vector4.html#class-vector4"><span class="std std-ref">Vector4</span></a></p></td>
+<td><p><a class="reference internal" href="#class-projection-property-z"><span class="std std-ref">z</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Vector4(0,</span> <span class="pre">0,</span> <span class="pre">1,</span> <span class="pre">0)</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section class="classref-reftable-group" id="constructors">
+<h2>Constructors<a class="headerlink" href="#constructors" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#class-projection"><span class="std std-ref">Projection</span></a></p></td>
+<td><p><a class="reference internal" href="#class-projection-constructor-projection"><span class="std std-ref">Projection</span></a>()</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#class-projection"><span class="std std-ref">Projection</span></a></p></td>
+<td><p><a class="reference internal" href="#class-projection-constructor-projection"><span class="std std-ref">Projection</span></a>(from: <a class="reference internal" href="#class-projection"><span class="std std-ref">Projection</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#class-projection"><span class="std std-ref">Projection</span></a></p></td>
+<td><p><a class="reference internal" href="#class-projection-constructor-projection"><span class="std std-ref">Projection</span></a>(from: <a class="reference internal" href="class_transform3d.html#class-transform3d"><span class="std std-ref">Transform3D</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#class-projection"><span class="std std-ref">Projection</span></a></p></td>
+<td><p><a class="reference internal" href="#class-projection-constructor-projection"><span class="std std-ref">Projection</span></a>(x_axis: <a class="reference internal" href="class_vector4.html#class-vector4"><span class="std std-ref">Vector4</span></a>, y_axis: <a class="reference internal" href="class_vector4.html#class-vector4"><span class="std std-ref">Vector4</span></a>, z_axis: <a class="reference internal" href="class_vector4.html#class-vector4"><span class="std std-ref">Vector4</span></a>, w_axis: <a class="reference internal" href="class_vector4.html#class-vector4"><span class="std std-ref">Vector4</span></a>)</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section class="classref-reftable-group" id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#class-projection"><span class="std std-ref">Projection</span></a></p></td>
+<td><p><a class="reference internal" href="#class-projection-method-create-depth-correction"><span class="std std-ref">create_depth_correction</span></a>(flip_y: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>) <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#class-projection"><span class="std std-ref">Projection</span></a></p></td>
+<td><p><a class="reference internal" href="#class-projection-method-create-fit-aabb"><span class="std std-ref">create_fit_aabb</span></a>(aabb: <a class="reference internal" href="class_aabb.html#class-aabb"><span class="std std-ref">AABB</span></a>) <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#class-projection"><span class="std std-ref">Projection</span></a></p></td>
+<td><p><a class="reference internal" href="#class-projection-method-create-for-hmd"><span class="std std-ref">create_for_hmd</span></a>(eye: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, aspect: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, intraocular_dist: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, display_width: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, display_to_lens: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, oversample: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, z_near: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, z_far: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>) <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#class-projection"><span class="std std-ref">Projection</span></a></p></td>
+<td><p><a class="reference internal" href="#class-projection-method-create-frustum"><span class="std std-ref">create_frustum</span></a>(left: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, right: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, bottom: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, top: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, z_near: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, z_far: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>) <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#class-projection"><span class="std std-ref">Projection</span></a></p></td>
+<td><p><a class="reference internal" href="#class-projection-method-create-frustum-aspect"><span class="std std-ref">create_frustum_aspect</span></a>(size: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, aspect: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, offset: <a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a>, z_near: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, z_far: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, flip_fov: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = false) <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#class-projection"><span class="std std-ref">Projection</span></a></p></td>
+<td><p><a class="reference internal" href="#class-projection-method-create-light-atlas-rect"><span class="std std-ref">create_light_atlas_rect</span></a>(rect: <a class="reference internal" href="class_rect2.html#class-rect2"><span class="std std-ref">Rect2</span></a>) <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#class-projection"><span class="std std-ref">Projection</span></a></p></td>
+<td><p><a class="reference internal" href="#class-projection-method-create-orthogonal"><span class="std std-ref">create_orthogonal</span></a>(left: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, right: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, bottom: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, top: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, z_near: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, z_far: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>) <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#class-projection"><span class="std std-ref">Projection</span></a></p></td>
+<td><p><a class="reference internal" href="#class-projection-method-create-orthogonal-aspect"><span class="std std-ref">create_orthogonal_aspect</span></a>(size: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, aspect: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, z_near: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, z_far: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, flip_fov: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = false) <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#class-projection"><span class="std std-ref">Projection</span></a></p></td>
+<td><p><a class="reference internal" href="#class-projection-method-create-perspective"><span class="std std-ref">create_perspective</span></a>(fovy: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, aspect: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, z_near: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, z_far: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, flip_fov: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = false) <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#class-projection"><span class="std std-ref">Projection</span></a></p></td>
+<td><p><a class="reference internal" href="#class-projection-method-create-perspective-hmd"><span class="std std-ref">create_perspective_hmd</span></a>(fovy: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, aspect: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, z_near: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, z_far: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, flip_fov: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>, eye: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, intraocular_dist: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, convergence_dist: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>) <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-projection-method-determinant"><span class="std std-ref">determinant</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#class-projection"><span class="std std-ref">Projection</span></a></p></td>
+<td><p><a class="reference internal" href="#class-projection-method-flipped-y"><span class="std std-ref">flipped_y</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-projection-method-get-aspect"><span class="std std-ref">get_aspect</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a></p></td>
+<td><p><a class="reference internal" href="#class-projection-method-get-far-plane-half-extents"><span class="std std-ref">get_far_plane_half_extents</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-projection-method-get-fov"><span class="std std-ref">get_fov</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-projection-method-get-fovy"><span class="std std-ref">get_fovy</span></a>(fovx: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, aspect: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>) <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-projection-method-get-lod-multiplier"><span class="std std-ref">get_lod_multiplier</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-projection-method-get-pixels-per-meter"><span class="std std-ref">get_pixels_per_meter</span></a>(for_pixel_width: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_plane.html#class-plane"><span class="std std-ref">Plane</span></a></p></td>
+<td><p><a class="reference internal" href="#class-projection-method-get-projection-plane"><span class="std std-ref">get_projection_plane</span></a>(plane: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a></p></td>
+<td><p><a class="reference internal" href="#class-projection-method-get-viewport-half-extents"><span class="std std-ref">get_viewport_half_extents</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-projection-method-get-z-far"><span class="std std-ref">get_z_far</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-projection-method-get-z-near"><span class="std std-ref">get_z_near</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#class-projection"><span class="std std-ref">Projection</span></a></p></td>
+<td><p><a class="reference internal" href="#class-projection-method-inverse"><span class="std std-ref">inverse</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-projection-method-is-orthogonal"><span class="std std-ref">is_orthogonal</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#class-projection"><span class="std std-ref">Projection</span></a></p></td>
+<td><p><a class="reference internal" href="#class-projection-method-jitter-offseted"><span class="std std-ref">jitter_offseted</span></a>(offset: <a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#class-projection"><span class="std std-ref">Projection</span></a></p></td>
+<td><p><a class="reference internal" href="#class-projection-method-perspective-znear-adjusted"><span class="std std-ref">perspective_znear_adjusted</span></a>(new_znear: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section class="classref-reftable-group" id="operators">
+<h2>Operators<a class="headerlink" href="#operators" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-projection-operator-neq-projection"><span class="std std-ref">operator !=</span></a>(right: <a class="reference internal" href="#class-projection"><span class="std std-ref">Projection</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#class-projection"><span class="std std-ref">Projection</span></a></p></td>
+<td><p><a class="reference internal" href="#class-projection-operator-mul-projection"><span class="std std-ref">operator *</span></a>(right: <a class="reference internal" href="#class-projection"><span class="std std-ref">Projection</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_vector4.html#class-vector4"><span class="std std-ref">Vector4</span></a></p></td>
+<td><p><a class="reference internal" href="#class-projection-operator-mul-vector4"><span class="std std-ref">operator *</span></a>(right: <a class="reference internal" href="class_vector4.html#class-vector4"><span class="std std-ref">Vector4</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-projection-operator-eq-projection"><span class="std std-ref">operator ==</span></a>(right: <a class="reference internal" href="#class-projection"><span class="std std-ref">Projection</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_vector4.html#class-vector4"><span class="std std-ref">Vector4</span></a></p></td>
+<td><p><a class="reference internal" href="#class-projection-operator-idx-int"><span class="std std-ref">operator []</span></a>(index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="enumerations">
+<h2>Enumerations<a class="headerlink" href="#enumerations" title="Link to this heading"></a></h2>
+<p class="classref-enumeration" id="enum-projection-planes">enum <strong>Planes</strong>: <a class="reference internal" href="#enum-projection-planes"><span class="std std-ref">🔗</span></a></p>
+<p class="classref-enumeration-constant" id="class-projection-constant-plane-near"><a class="reference internal" href="#enum-projection-planes"><span class="std std-ref">Planes</span></a> <strong>PLANE_NEAR</strong> = <code class="docutils literal notranslate"><span class="pre">0</span></code></p>
+<p>The index value of the projection’s near clipping plane.</p>
+<p class="classref-enumeration-constant" id="class-projection-constant-plane-far"><a class="reference internal" href="#enum-projection-planes"><span class="std std-ref">Planes</span></a> <strong>PLANE_FAR</strong> = <code class="docutils literal notranslate"><span class="pre">1</span></code></p>
+<p>The index value of the projection’s far clipping plane.</p>
+<p class="classref-enumeration-constant" id="class-projection-constant-plane-left"><a class="reference internal" href="#enum-projection-planes"><span class="std std-ref">Planes</span></a> <strong>PLANE_LEFT</strong> = <code class="docutils literal notranslate"><span class="pre">2</span></code></p>
+<p>The index value of the projection’s left clipping plane.</p>
+<p class="classref-enumeration-constant" id="class-projection-constant-plane-top"><a class="reference internal" href="#enum-projection-planes"><span class="std std-ref">Planes</span></a> <strong>PLANE_TOP</strong> = <code class="docutils literal notranslate"><span class="pre">3</span></code></p>
+<p>The index value of the projection’s top clipping plane.</p>
+<p class="classref-enumeration-constant" id="class-projection-constant-plane-right"><a class="reference internal" href="#enum-projection-planes"><span class="std std-ref">Planes</span></a> <strong>PLANE_RIGHT</strong> = <code class="docutils literal notranslate"><span class="pre">4</span></code></p>
+<p>The index value of the projection’s right clipping plane.</p>
+<p class="classref-enumeration-constant" id="class-projection-constant-plane-bottom"><a class="reference internal" href="#enum-projection-planes"><span class="std std-ref">Planes</span></a> <strong>PLANE_BOTTOM</strong> = <code class="docutils literal notranslate"><span class="pre">5</span></code></p>
+<p>The index value of the projection bottom clipping plane.</p>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="constants">
+<h2>Constants<a class="headerlink" href="#constants" title="Link to this heading"></a></h2>
+<p class="classref-constant" id="class-projection-constant-identity"><strong>IDENTITY</strong> = <code class="docutils literal notranslate"><span class="pre">Projection(1,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">1,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">1,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">1)</span></code> <a class="reference internal" href="#class-projection-constant-identity"><span class="std std-ref">🔗</span></a></p>
+<p>A <strong>Projection</strong> with no transformation defined. When applied to other data structures, no transformation is performed.</p>
+<p class="classref-constant" id="class-projection-constant-zero"><strong>ZERO</strong> = <code class="docutils literal notranslate"><span class="pre">Projection(0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0)</span></code> <a class="reference internal" href="#class-projection-constant-zero"><span class="std std-ref">🔗</span></a></p>
+<p>A <strong>Projection</strong> with all values initialized to 0. When applied to other data structures, they will be zeroed.</p>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="property-descriptions">
+<h2>Property Descriptions<a class="headerlink" href="#property-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-property" id="class-projection-property-w"><a class="reference internal" href="class_vector4.html#class-vector4"><span class="std std-ref">Vector4</span></a> <strong>w</strong> = <code class="docutils literal notranslate"><span class="pre">Vector4(0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">1)</span></code> <a class="reference internal" href="#class-projection-property-w"><span class="std std-ref">🔗</span></a></p>
+<p>The projection matrix’s W vector (column 3). Equivalent to array index <code class="docutils literal notranslate"><span class="pre">3</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-projection-property-x"><a class="reference internal" href="class_vector4.html#class-vector4"><span class="std std-ref">Vector4</span></a> <strong>x</strong> = <code class="docutils literal notranslate"><span class="pre">Vector4(1,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0)</span></code> <a class="reference internal" href="#class-projection-property-x"><span class="std std-ref">🔗</span></a></p>
+<p>The projection matrix’s X vector (column 0). Equivalent to array index <code class="docutils literal notranslate"><span class="pre">0</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-projection-property-y"><a class="reference internal" href="class_vector4.html#class-vector4"><span class="std std-ref">Vector4</span></a> <strong>y</strong> = <code class="docutils literal notranslate"><span class="pre">Vector4(0,</span> <span class="pre">1,</span> <span class="pre">0,</span> <span class="pre">0)</span></code> <a class="reference internal" href="#class-projection-property-y"><span class="std std-ref">🔗</span></a></p>
+<p>The projection matrix’s Y vector (column 1). Equivalent to array index <code class="docutils literal notranslate"><span class="pre">1</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-projection-property-z"><a class="reference internal" href="class_vector4.html#class-vector4"><span class="std std-ref">Vector4</span></a> <strong>z</strong> = <code class="docutils literal notranslate"><span class="pre">Vector4(0,</span> <span class="pre">0,</span> <span class="pre">1,</span> <span class="pre">0)</span></code> <a class="reference internal" href="#class-projection-property-z"><span class="std std-ref">🔗</span></a></p>
+<p>The projection matrix’s Z vector (column 2). Equivalent to array index <code class="docutils literal notranslate"><span class="pre">2</span></code>.</p>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="constructor-descriptions">
+<h2>Constructor Descriptions<a class="headerlink" href="#constructor-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-constructor" id="class-projection-constructor-projection"><a class="reference internal" href="#class-projection"><span class="std std-ref">Projection</span></a> <strong>Projection</strong>() <a class="reference internal" href="#class-projection-constructor-projection"><span class="std std-ref">🔗</span></a></p>
+<p>Constructs a default-initialized <strong>Projection</strong> identical to <a class="reference internal" href="#class-projection-constant-identity"><span class="std std-ref">IDENTITY</span></a>.</p>
+<p><strong>Note:</strong> In C#, this constructs a <strong>Projection</strong> identical to <a class="reference internal" href="#class-projection-constant-zero"><span class="std std-ref">ZERO</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-constructor"><a class="reference internal" href="#class-projection"><span class="std std-ref">Projection</span></a> <strong>Projection</strong>(from: <a class="reference internal" href="#class-projection"><span class="std std-ref">Projection</span></a>)</p>
+<p>Constructs a <strong>Projection</strong> as a copy of the given <strong>Projection</strong>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-constructor"><a class="reference internal" href="#class-projection"><span class="std std-ref">Projection</span></a> <strong>Projection</strong>(from: <a class="reference internal" href="class_transform3d.html#class-transform3d"><span class="std std-ref">Transform3D</span></a>)</p>
+<p>Constructs a Projection as a copy of the given <a class="reference internal" href="class_transform3d.html#class-transform3d"><span class="std std-ref">Transform3D</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-constructor"><a class="reference internal" href="#class-projection"><span class="std std-ref">Projection</span></a> <strong>Projection</strong>(x_axis: <a class="reference internal" href="class_vector4.html#class-vector4"><span class="std std-ref">Vector4</span></a>, y_axis: <a class="reference internal" href="class_vector4.html#class-vector4"><span class="std std-ref">Vector4</span></a>, z_axis: <a class="reference internal" href="class_vector4.html#class-vector4"><span class="std std-ref">Vector4</span></a>, w_axis: <a class="reference internal" href="class_vector4.html#class-vector4"><span class="std std-ref">Vector4</span></a>)</p>
+<p>Constructs a Projection from four <a class="reference internal" href="class_vector4.html#class-vector4"><span class="std std-ref">Vector4</span></a> values (matrix columns).</p>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="method-descriptions">
+<h2>Method Descriptions<a class="headerlink" href="#method-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-method" id="class-projection-method-create-depth-correction"><a class="reference internal" href="#class-projection"><span class="std std-ref">Projection</span></a> <strong>create_depth_correction</strong>(flip_y: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>) <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr> <a class="reference internal" href="#class-projection-method-create-depth-correction"><span class="std std-ref">🔗</span></a></p>
+<p>Creates a new <strong>Projection</strong> that projects positions from a depth range of <code class="docutils literal notranslate"><span class="pre">-1</span></code> to <code class="docutils literal notranslate"><span class="pre">1</span></code> to one that ranges from <code class="docutils literal notranslate"><span class="pre">0</span></code> to <code class="docutils literal notranslate"><span class="pre">1</span></code>, and flips the projected positions vertically, according to <code class="docutils literal notranslate"><span class="pre">flip_y</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-projection-method-create-fit-aabb"><a class="reference internal" href="#class-projection"><span class="std std-ref">Projection</span></a> <strong>create_fit_aabb</strong>(aabb: <a class="reference internal" href="class_aabb.html#class-aabb"><span class="std std-ref">AABB</span></a>) <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr> <a class="reference internal" href="#class-projection-method-create-fit-aabb"><span class="std std-ref">🔗</span></a></p>
+<p>Creates a new <strong>Projection</strong> that scales a given projection to fit around a given <a class="reference internal" href="class_aabb.html#class-aabb"><span class="std std-ref">AABB</span></a> in projection space.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-projection-method-create-for-hmd"><a class="reference internal" href="#class-projection"><span class="std std-ref">Projection</span></a> <strong>create_for_hmd</strong>(eye: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, aspect: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, intraocular_dist: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, display_width: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, display_to_lens: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, oversample: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, z_near: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, z_far: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>) <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr> <a class="reference internal" href="#class-projection-method-create-for-hmd"><span class="std std-ref">🔗</span></a></p>
+<p>Creates a new <strong>Projection</strong> for projecting positions onto a head-mounted display with the given X:Y aspect ratio, distance between eyes, display width, distance to lens, oversampling factor, and depth clipping planes.</p>
+<p><code class="docutils literal notranslate"><span class="pre">eye</span></code> creates the projection for the left eye when set to 1, or the right eye when set to 2.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-projection-method-create-frustum"><a class="reference internal" href="#class-projection"><span class="std std-ref">Projection</span></a> <strong>create_frustum</strong>(left: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, right: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, bottom: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, top: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, z_near: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, z_far: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>) <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr> <a class="reference internal" href="#class-projection-method-create-frustum"><span class="std std-ref">🔗</span></a></p>
+<p>Creates a new <strong>Projection</strong> that projects positions in a frustum with the given clipping planes.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-projection-method-create-frustum-aspect"><a class="reference internal" href="#class-projection"><span class="std std-ref">Projection</span></a> <strong>create_frustum_aspect</strong>(size: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, aspect: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, offset: <a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a>, z_near: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, z_far: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, flip_fov: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = false) <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr> <a class="reference internal" href="#class-projection-method-create-frustum-aspect"><span class="std std-ref">🔗</span></a></p>
+<p>Creates a new <strong>Projection</strong> that projects positions in a frustum with the given size, X:Y aspect ratio, offset, and clipping planes.</p>
+<p><code class="docutils literal notranslate"><span class="pre">flip_fov</span></code> determines whether the projection’s field of view is flipped over its diagonal.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-projection-method-create-light-atlas-rect"><a class="reference internal" href="#class-projection"><span class="std std-ref">Projection</span></a> <strong>create_light_atlas_rect</strong>(rect: <a class="reference internal" href="class_rect2.html#class-rect2"><span class="std std-ref">Rect2</span></a>) <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr> <a class="reference internal" href="#class-projection-method-create-light-atlas-rect"><span class="std std-ref">🔗</span></a></p>
+<p>Creates a new <strong>Projection</strong> that projects positions into the given <a class="reference internal" href="class_rect2.html#class-rect2"><span class="std std-ref">Rect2</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-projection-method-create-orthogonal"><a class="reference internal" href="#class-projection"><span class="std std-ref">Projection</span></a> <strong>create_orthogonal</strong>(left: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, right: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, bottom: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, top: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, z_near: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, z_far: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>) <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr> <a class="reference internal" href="#class-projection-method-create-orthogonal"><span class="std std-ref">🔗</span></a></p>
+<p>Creates a new <strong>Projection</strong> that projects positions using an orthogonal projection with the given clipping planes.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-projection-method-create-orthogonal-aspect"><a class="reference internal" href="#class-projection"><span class="std std-ref">Projection</span></a> <strong>create_orthogonal_aspect</strong>(size: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, aspect: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, z_near: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, z_far: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, flip_fov: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = false) <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr> <a class="reference internal" href="#class-projection-method-create-orthogonal-aspect"><span class="std std-ref">🔗</span></a></p>
+<p>Creates a new <strong>Projection</strong> that projects positions using an orthogonal projection with the given size, X:Y aspect ratio, and clipping planes.</p>
+<p><code class="docutils literal notranslate"><span class="pre">flip_fov</span></code> determines whether the projection’s field of view is flipped over its diagonal.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-projection-method-create-perspective"><a class="reference internal" href="#class-projection"><span class="std std-ref">Projection</span></a> <strong>create_perspective</strong>(fovy: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, aspect: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, z_near: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, z_far: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, flip_fov: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = false) <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr> <a class="reference internal" href="#class-projection-method-create-perspective"><span class="std std-ref">🔗</span></a></p>
+<p>Creates a new <strong>Projection</strong> that projects positions using a perspective projection with the given Y-axis field of view (in degrees), X:Y aspect ratio, and clipping planes.</p>
+<p><code class="docutils literal notranslate"><span class="pre">flip_fov</span></code> determines whether the projection’s field of view is flipped over its diagonal.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-projection-method-create-perspective-hmd"><a class="reference internal" href="#class-projection"><span class="std std-ref">Projection</span></a> <strong>create_perspective_hmd</strong>(fovy: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, aspect: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, z_near: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, z_far: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, flip_fov: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>, eye: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, intraocular_dist: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, convergence_dist: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>) <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr> <a class="reference internal" href="#class-projection-method-create-perspective-hmd"><span class="std std-ref">🔗</span></a></p>
+<p>Creates a new <strong>Projection</strong> that projects positions using a perspective projection with the given Y-axis field of view (in degrees), X:Y aspect ratio, and clipping distances. The projection is adjusted for a head-mounted display with the given distance between eyes and distance to a point that can be focused on.</p>
+<p><code class="docutils literal notranslate"><span class="pre">eye</span></code> creates the projection for the left eye when set to 1, or the right eye when set to 2.</p>
+<p><code class="docutils literal notranslate"><span class="pre">flip_fov</span></code> determines whether the projection’s field of view is flipped over its diagonal.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-projection-method-determinant"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>determinant</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-projection-method-determinant"><span class="std std-ref">🔗</span></a></p>
+<p>Returns a scalar value that is the signed factor by which areas are scaled by this matrix. If the sign is negative, the matrix flips the orientation of the area.</p>
+<p>The determinant can be used to calculate the invertibility of a matrix or solve linear systems of equations involving the matrix, among other applications.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-projection-method-flipped-y"><a class="reference internal" href="#class-projection"><span class="std std-ref">Projection</span></a> <strong>flipped_y</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-projection-method-flipped-y"><span class="std std-ref">🔗</span></a></p>
+<p>Returns a copy of this <strong>Projection</strong> with the signs of the values of the Y column flipped.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-projection-method-get-aspect"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>get_aspect</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-projection-method-get-aspect"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the X:Y aspect ratio of this <strong>Projection</strong>’s viewport.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-projection-method-get-far-plane-half-extents"><a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a> <strong>get_far_plane_half_extents</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-projection-method-get-far-plane-half-extents"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the dimensions of the far clipping plane of the projection, divided by two.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-projection-method-get-fov"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>get_fov</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-projection-method-get-fov"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the horizontal field of view of the projection (in degrees).</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-projection-method-get-fovy"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>get_fovy</strong>(fovx: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, aspect: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>) <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr> <a class="reference internal" href="#class-projection-method-get-fovy"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the vertical field of view of the projection (in degrees) associated with the given horizontal field of view (in degrees) and aspect ratio.</p>
+<p><strong>Note:</strong> Unlike most methods of <strong>Projection</strong>, <code class="docutils literal notranslate"><span class="pre">aspect</span></code> is expected to be 1 divided by the X:Y aspect ratio.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-projection-method-get-lod-multiplier"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>get_lod_multiplier</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-projection-method-get-lod-multiplier"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the factor by which the visible level of detail is scaled by this <strong>Projection</strong>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-projection-method-get-pixels-per-meter"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>get_pixels_per_meter</strong>(for_pixel_width: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-projection-method-get-pixels-per-meter"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">for_pixel_width</span></code> divided by the viewport’s width measured in meters on the near plane, after this <strong>Projection</strong> is applied.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-projection-method-get-projection-plane"><a class="reference internal" href="class_plane.html#class-plane"><span class="std std-ref">Plane</span></a> <strong>get_projection_plane</strong>(plane: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-projection-method-get-projection-plane"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the clipping plane of this <strong>Projection</strong> whose index is given by <code class="docutils literal notranslate"><span class="pre">plane</span></code>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">plane</span></code> should be equal to one of <a class="reference internal" href="#class-projection-constant-plane-near"><span class="std std-ref">PLANE_NEAR</span></a>, <a class="reference internal" href="#class-projection-constant-plane-far"><span class="std std-ref">PLANE_FAR</span></a>, <a class="reference internal" href="#class-projection-constant-plane-left"><span class="std std-ref">PLANE_LEFT</span></a>, <a class="reference internal" href="#class-projection-constant-plane-top"><span class="std std-ref">PLANE_TOP</span></a>, <a class="reference internal" href="#class-projection-constant-plane-right"><span class="std std-ref">PLANE_RIGHT</span></a>, or <a class="reference internal" href="#class-projection-constant-plane-bottom"><span class="std std-ref">PLANE_BOTTOM</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-projection-method-get-viewport-half-extents"><a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a> <strong>get_viewport_half_extents</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-projection-method-get-viewport-half-extents"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the dimensions of the viewport plane that this <strong>Projection</strong> projects positions onto, divided by two.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-projection-method-get-z-far"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>get_z_far</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-projection-method-get-z-far"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the distance for this <strong>Projection</strong> beyond which positions are clipped.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-projection-method-get-z-near"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>get_z_near</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-projection-method-get-z-near"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the distance for this <strong>Projection</strong> before which positions are clipped.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-projection-method-inverse"><a class="reference internal" href="#class-projection"><span class="std std-ref">Projection</span></a> <strong>inverse</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-projection-method-inverse"><span class="std std-ref">🔗</span></a></p>
+<p>Returns a <strong>Projection</strong> that performs the inverse of this <strong>Projection</strong>’s projective transformation.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-projection-method-is-orthogonal"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_orthogonal</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-projection-method-is-orthogonal"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if this <strong>Projection</strong> performs an orthogonal projection.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-projection-method-jitter-offseted"><a class="reference internal" href="#class-projection"><span class="std std-ref">Projection</span></a> <strong>jitter_offseted</strong>(offset: <a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-projection-method-jitter-offseted"><span class="std std-ref">🔗</span></a></p>
+<p>Returns a <strong>Projection</strong> with the X and Y values from the given <a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a> added to the first and second values of the final column respectively.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-projection-method-perspective-znear-adjusted"><a class="reference internal" href="#class-projection"><span class="std std-ref">Projection</span></a> <strong>perspective_znear_adjusted</strong>(new_znear: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-projection-method-perspective-znear-adjusted"><span class="std std-ref">🔗</span></a></p>
+<p>Returns a <strong>Projection</strong> with the near clipping distance adjusted to be <code class="docutils literal notranslate"><span class="pre">new_znear</span></code>.</p>
+<p><strong>Note:</strong> The original <strong>Projection</strong> must be a perspective projection.</p>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="operator-descriptions">
+<h2>Operator Descriptions<a class="headerlink" href="#operator-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-operator" id="class-projection-operator-neq-projection"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>operator !=</strong>(right: <a class="reference internal" href="#class-projection"><span class="std std-ref">Projection</span></a>) <a class="reference internal" href="#class-projection-operator-neq-projection"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if the projections are not equal.</p>
+<p><strong>Note:</strong> Due to floating-point precision errors, this may return <code class="docutils literal notranslate"><span class="pre">true</span></code>, even if the projections are virtually equal. An <code class="docutils literal notranslate"><span class="pre">is_equal_approx</span></code> method may be added in a future version of Godot.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-operator" id="class-projection-operator-mul-projection"><a class="reference internal" href="#class-projection"><span class="std std-ref">Projection</span></a> <strong>operator *</strong>(right: <a class="reference internal" href="#class-projection"><span class="std std-ref">Projection</span></a>) <a class="reference internal" href="#class-projection-operator-mul-projection"><span class="std std-ref">🔗</span></a></p>
+<p>Returns a <strong>Projection</strong> that applies the combined transformations of this <strong>Projection</strong> and <code class="docutils literal notranslate"><span class="pre">right</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-operator" id="class-projection-operator-mul-vector4"><a class="reference internal" href="class_vector4.html#class-vector4"><span class="std std-ref">Vector4</span></a> <strong>operator *</strong>(right: <a class="reference internal" href="class_vector4.html#class-vector4"><span class="std std-ref">Vector4</span></a>) <a class="reference internal" href="#class-projection-operator-mul-vector4"><span class="std std-ref">🔗</span></a></p>
+<p>Projects (multiplies) the given <a class="reference internal" href="class_vector4.html#class-vector4"><span class="std std-ref">Vector4</span></a> by this <strong>Projection</strong> matrix.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-operator" id="class-projection-operator-eq-projection"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>operator ==</strong>(right: <a class="reference internal" href="#class-projection"><span class="std std-ref">Projection</span></a>) <a class="reference internal" href="#class-projection-operator-eq-projection"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if the projections are equal.</p>
+<p><strong>Note:</strong> Due to floating-point precision errors, this may return <code class="docutils literal notranslate"><span class="pre">false</span></code>, even if the projections are virtually equal. An <code class="docutils literal notranslate"><span class="pre">is_equal_approx</span></code> method may be added in a future version of Godot.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-operator" id="class-projection-operator-idx-int"><a class="reference internal" href="class_vector4.html#class-vector4"><span class="std std-ref">Vector4</span></a> <strong>operator []</strong>(index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <a class="reference internal" href="#class-projection-operator-idx-int"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the column of the <strong>Projection</strong> with the given index.</p>
+<p>Indices are in the following order: x, y, z, w.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, MUmarShahbaz.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

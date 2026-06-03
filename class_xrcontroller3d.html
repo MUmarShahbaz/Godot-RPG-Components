@@ -1,0 +1,189 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>XRController3D &mdash; RPG Components 2D 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=d45e8c67"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            RPG Components 2D
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">XRController3D</a><ul>
+<li><a class="reference internal" href="#description">Description</a></li>
+<li><a class="reference internal" href="#tutorials">Tutorials</a></li>
+<li><a class="reference internal" href="#methods">Methods</a></li>
+<li><a class="reference internal" href="#signals">Signals</a></li>
+<li><a class="reference internal" href="#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">RPG Components 2D</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">XRController3D</li>
+      <li class="wy-breadcrumbs-aside">
+              <!-- User defined GitHub URL -->
+              <a href="hide" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="xrcontroller3d">
+<span id="class-xrcontroller3d"></span><h1>XRController3D<a class="headerlink" href="#xrcontroller3d" title="Link to this heading"></a></h1>
+<p><strong>Inherits:</strong> <a class="reference internal" href="class_xrnode3d.html#class-xrnode3d"><span class="std std-ref">XRNode3D</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_node3d.html#class-node3d"><span class="std std-ref">Node3D</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_node.html#class-node"><span class="std std-ref">Node</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_object.html#class-object"><span class="std std-ref">Object</span></a></p>
+<p>A 3D node representing a spatially-tracked controller.</p>
+<section class="classref-introduction-group" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
+<p>This is a helper 3D node that is linked to the tracking of controllers. It also offers several handy passthroughs to the state of buttons and such on the controllers.</p>
+<p>Controllers are linked by their ID. You can create controller nodes before the controllers are available. If your game always uses two controllers (one for each hand), you can predefine the controllers with ID 1 and 2; they will become active as soon as the controllers are identified. If you expect additional controllers to be used, you should react to the signals and add XRController3D nodes to your scene.</p>
+<p>The position of the controller node is automatically updated by the <a class="reference internal" href="class_xrserver.html#class-xrserver"><span class="std std-ref">XRServer</span></a>. This makes this node ideal to add child nodes to visualize the controller.</p>
+<p>The current <a class="reference internal" href="class_xrinterface.html#class-xrinterface"><span class="std std-ref">XRInterface</span></a> defines the names of inputs. In the case of OpenXR, these are the names of actions in the current action set from the OpenXR action map.</p>
+</section>
+<section class="classref-introduction-group" id="tutorials">
+<h2>Tutorials<a class="headerlink" href="#tutorials" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><span class="xref std std-doc">XR documentation index</span></p></li>
+</ul>
+</section>
+<section class="classref-reftable-group" id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-xrcontroller3d-method-get-float"><span class="std std-ref">get_float</span></a>(name: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a></p></td>
+<td><p><a class="reference internal" href="#class-xrcontroller3d-method-get-input"><span class="std std-ref">get_input</span></a>(name: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_xrpositionaltracker.html#enum-xrpositionaltracker-trackerhand"><span class="std std-ref">TrackerHand</span></a></p></td>
+<td><p><a class="reference internal" href="#class-xrcontroller3d-method-get-tracker-hand"><span class="std std-ref">get_tracker_hand</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a></p></td>
+<td><p><a class="reference internal" href="#class-xrcontroller3d-method-get-vector2"><span class="std std-ref">get_vector2</span></a>(name: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-xrcontroller3d-method-is-button-pressed"><span class="std std-ref">is_button_pressed</span></a>(name: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="signals">
+<h2>Signals<a class="headerlink" href="#signals" title="Link to this heading"></a></h2>
+<p class="classref-signal" id="class-xrcontroller3d-signal-button-pressed"><strong>button_pressed</strong>(action_name: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <a class="reference internal" href="#class-xrcontroller3d-signal-button-pressed"><span class="std std-ref">🔗</span></a></p>
+<p>Emitted when a button on this controller is pressed.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-signal" id="class-xrcontroller3d-signal-button-released"><strong>button_released</strong>(action_name: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <a class="reference internal" href="#class-xrcontroller3d-signal-button-released"><span class="std std-ref">🔗</span></a></p>
+<p>Emitted when a button on this controller is released.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-signal" id="class-xrcontroller3d-signal-input-float-changed"><strong>input_float_changed</strong>(action_name: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, value: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>) <a class="reference internal" href="#class-xrcontroller3d-signal-input-float-changed"><span class="std std-ref">🔗</span></a></p>
+<p>Emitted when a trigger or similar input on this controller changes value.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-signal" id="class-xrcontroller3d-signal-input-vector2-changed"><strong>input_vector2_changed</strong>(action_name: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, value: <a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a>) <a class="reference internal" href="#class-xrcontroller3d-signal-input-vector2-changed"><span class="std std-ref">🔗</span></a></p>
+<p>Emitted when a thumbstick or thumbpad on this controller is moved.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-signal" id="class-xrcontroller3d-signal-profile-changed"><strong>profile_changed</strong>(role: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <a class="reference internal" href="#class-xrcontroller3d-signal-profile-changed"><span class="std std-ref">🔗</span></a></p>
+<p>Emitted when the interaction profile on this controller is changed.</p>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="method-descriptions">
+<h2>Method Descriptions<a class="headerlink" href="#method-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-method" id="class-xrcontroller3d-method-get-float"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>get_float</strong>(name: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-xrcontroller3d-method-get-float"><span class="std std-ref">🔗</span></a></p>
+<p>Returns a numeric value for the input with the given <code class="docutils literal notranslate"><span class="pre">name</span></code>. This is used for triggers and grip sensors.</p>
+<p><strong>Note:</strong> The current <a class="reference internal" href="class_xrinterface.html#class-xrinterface"><span class="std std-ref">XRInterface</span></a> defines the <code class="docutils literal notranslate"><span class="pre">name</span></code> for each input. In the case of OpenXR, these are the names of actions in the current action set.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-xrcontroller3d-method-get-input"><a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a> <strong>get_input</strong>(name: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-xrcontroller3d-method-get-input"><span class="std std-ref">🔗</span></a></p>
+<p>Returns a <a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a> for the input with the given <code class="docutils literal notranslate"><span class="pre">name</span></code>. This works for any input type, the variant will be typed according to the actions configuration.</p>
+<p><strong>Note:</strong> The current <a class="reference internal" href="class_xrinterface.html#class-xrinterface"><span class="std std-ref">XRInterface</span></a> defines the <code class="docutils literal notranslate"><span class="pre">name</span></code> for each input. In the case of OpenXR, these are the names of actions in the current action set.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-xrcontroller3d-method-get-tracker-hand"><a class="reference internal" href="class_xrpositionaltracker.html#enum-xrpositionaltracker-trackerhand"><span class="std std-ref">TrackerHand</span></a> <strong>get_tracker_hand</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-xrcontroller3d-method-get-tracker-hand"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the hand holding this controller, if known.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-xrcontroller3d-method-get-vector2"><a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a> <strong>get_vector2</strong>(name: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-xrcontroller3d-method-get-vector2"><span class="std std-ref">🔗</span></a></p>
+<p>Returns a <a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a> for the input with the given <code class="docutils literal notranslate"><span class="pre">name</span></code>. This is used for thumbsticks and thumbpads found on many controllers.</p>
+<p><strong>Note:</strong> The current <a class="reference internal" href="class_xrinterface.html#class-xrinterface"><span class="std std-ref">XRInterface</span></a> defines the <code class="docutils literal notranslate"><span class="pre">name</span></code> for each input. In the case of OpenXR, these are the names of actions in the current action set.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-xrcontroller3d-method-is-button-pressed"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_button_pressed</strong>(name: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-xrcontroller3d-method-is-button-pressed"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if the button with the given <code class="docutils literal notranslate"><span class="pre">name</span></code> is pressed.</p>
+<p><strong>Note:</strong> The current <a class="reference internal" href="class_xrinterface.html#class-xrinterface"><span class="std std-ref">XRInterface</span></a> defines the <code class="docutils literal notranslate"><span class="pre">name</span></code> for each input. In the case of OpenXR, these are the names of actions in the current action set.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, MUmarShahbaz.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

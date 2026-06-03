@@ -1,0 +1,247 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>XRPositionalTracker &mdash; RPG Components 2D 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=d45e8c67"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            RPG Components 2D
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">XRPositionalTracker</a><ul>
+<li><a class="reference internal" href="#description">Description</a></li>
+<li><a class="reference internal" href="#tutorials">Tutorials</a></li>
+<li><a class="reference internal" href="#properties">Properties</a></li>
+<li><a class="reference internal" href="#methods">Methods</a></li>
+<li><a class="reference internal" href="#signals">Signals</a></li>
+<li><a class="reference internal" href="#enumerations">Enumerations</a></li>
+<li><a class="reference internal" href="#property-descriptions">Property Descriptions</a></li>
+<li><a class="reference internal" href="#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">RPG Components 2D</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">XRPositionalTracker</li>
+      <li class="wy-breadcrumbs-aside">
+              <!-- User defined GitHub URL -->
+              <a href="hide" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="xrpositionaltracker">
+<span id="class-xrpositionaltracker"></span><h1>XRPositionalTracker<a class="headerlink" href="#xrpositionaltracker" title="Link to this heading"></a></h1>
+<p><strong>Inherits:</strong> <a class="reference internal" href="class_xrtracker.html#class-xrtracker"><span class="std std-ref">XRTracker</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_refcounted.html#class-refcounted"><span class="std std-ref">RefCounted</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_object.html#class-object"><span class="std std-ref">Object</span></a></p>
+<p><strong>Inherited By:</strong> <a class="reference internal" href="class_xrbodytracker.html#class-xrbodytracker"><span class="std std-ref">XRBodyTracker</span></a>, <a class="reference internal" href="class_xrcontrollertracker.html#class-xrcontrollertracker"><span class="std std-ref">XRControllerTracker</span></a>, <a class="reference internal" href="class_xrhandtracker.html#class-xrhandtracker"><span class="std std-ref">XRHandTracker</span></a></p>
+<p>A tracked object.</p>
+<section class="classref-introduction-group" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
+<p>An instance of this object represents a device that is tracked, such as a controller or anchor point. HMDs aren’t represented here as they are handled internally.</p>
+<p>As controllers are turned on and the <a class="reference internal" href="class_xrinterface.html#class-xrinterface"><span class="std std-ref">XRInterface</span></a> detects them, instances of this object are automatically added to this list of active tracking objects accessible through the <a class="reference internal" href="class_xrserver.html#class-xrserver"><span class="std std-ref">XRServer</span></a>.</p>
+<p>The <a class="reference internal" href="class_xrnode3d.html#class-xrnode3d"><span class="std std-ref">XRNode3D</span></a> and <a class="reference internal" href="class_xranchor3d.html#class-xranchor3d"><span class="std std-ref">XRAnchor3D</span></a> both consume objects of this type and should be used in your project. The positional trackers are just under-the-hood objects that make this all work. These are mostly exposed so that GDExtension-based interfaces can interact with them.</p>
+</section>
+<section class="classref-introduction-group" id="tutorials">
+<h2>Tutorials<a class="headerlink" href="#tutorials" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><span class="xref std std-doc">XR documentation index</span></p></li>
+</ul>
+</section>
+<section class="classref-reftable-group" id="properties">
+<h2>Properties<a class="headerlink" href="#properties" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#enum-xrpositionaltracker-trackerhand"><span class="std std-ref">TrackerHand</span></a></p></td>
+<td><p><a class="reference internal" href="#class-xrpositionaltracker-property-hand"><span class="std std-ref">hand</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a></p></td>
+<td><p><a class="reference internal" href="#class-xrpositionaltracker-property-profile"><span class="std std-ref">profile</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&quot;&quot;</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section class="classref-reftable-group" id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a></p></td>
+<td><p><a class="reference internal" href="#class-xrpositionaltracker-method-get-input"><span class="std std-ref">get_input</span></a>(name: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_xrpose.html#class-xrpose"><span class="std std-ref">XRPose</span></a></p></td>
+<td><p><a class="reference internal" href="#class-xrpositionaltracker-method-get-pose"><span class="std std-ref">get_pose</span></a>(name: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-xrpositionaltracker-method-has-pose"><span class="std std-ref">has_pose</span></a>(name: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-xrpositionaltracker-method-invalidate-pose"><span class="std std-ref">invalidate_pose</span></a>(name: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-xrpositionaltracker-method-set-input"><span class="std std-ref">set_input</span></a>(name: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>, value: <a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-xrpositionaltracker-method-set-pose"><span class="std std-ref">set_pose</span></a>(name: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>, transform: <a class="reference internal" href="class_transform3d.html#class-transform3d"><span class="std std-ref">Transform3D</span></a>, linear_velocity: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>, angular_velocity: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>, tracking_confidence: <a class="reference internal" href="class_xrpose.html#enum-xrpose-trackingconfidence"><span class="std std-ref">TrackingConfidence</span></a>)</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="signals">
+<h2>Signals<a class="headerlink" href="#signals" title="Link to this heading"></a></h2>
+<p class="classref-signal" id="class-xrpositionaltracker-signal-button-pressed"><strong>button_pressed</strong>(action_name: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <a class="reference internal" href="#class-xrpositionaltracker-signal-button-pressed"><span class="std std-ref">🔗</span></a></p>
+<p>Emitted when a button on this tracker is pressed. Note that many XR runtimes allow other inputs to be mapped to buttons.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-signal" id="class-xrpositionaltracker-signal-button-released"><strong>button_released</strong>(action_name: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <a class="reference internal" href="#class-xrpositionaltracker-signal-button-released"><span class="std std-ref">🔗</span></a></p>
+<p>Emitted when a button on this tracker is released.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-signal" id="class-xrpositionaltracker-signal-input-float-changed"><strong>input_float_changed</strong>(action_name: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, value: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>) <a class="reference internal" href="#class-xrpositionaltracker-signal-input-float-changed"><span class="std std-ref">🔗</span></a></p>
+<p>Emitted when a trigger or similar input on this tracker changes value.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-signal" id="class-xrpositionaltracker-signal-input-vector2-changed"><strong>input_vector2_changed</strong>(action_name: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, vector: <a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a>) <a class="reference internal" href="#class-xrpositionaltracker-signal-input-vector2-changed"><span class="std std-ref">🔗</span></a></p>
+<p>Emitted when a thumbstick or thumbpad on this tracker moves.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-signal" id="class-xrpositionaltracker-signal-pose-changed"><strong>pose_changed</strong>(pose: <a class="reference internal" href="class_xrpose.html#class-xrpose"><span class="std std-ref">XRPose</span></a>) <a class="reference internal" href="#class-xrpositionaltracker-signal-pose-changed"><span class="std std-ref">🔗</span></a></p>
+<p>Emitted when the state of a pose tracked by this tracker changes.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-signal" id="class-xrpositionaltracker-signal-pose-lost-tracking"><strong>pose_lost_tracking</strong>(pose: <a class="reference internal" href="class_xrpose.html#class-xrpose"><span class="std std-ref">XRPose</span></a>) <a class="reference internal" href="#class-xrpositionaltracker-signal-pose-lost-tracking"><span class="std std-ref">🔗</span></a></p>
+<p>Emitted when a pose tracked by this tracker stops getting updated tracking data.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-signal" id="class-xrpositionaltracker-signal-profile-changed"><strong>profile_changed</strong>(role: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <a class="reference internal" href="#class-xrpositionaltracker-signal-profile-changed"><span class="std std-ref">🔗</span></a></p>
+<p>Emitted when the profile of our tracker changes.</p>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="enumerations">
+<h2>Enumerations<a class="headerlink" href="#enumerations" title="Link to this heading"></a></h2>
+<p class="classref-enumeration" id="enum-xrpositionaltracker-trackerhand">enum <strong>TrackerHand</strong>: <a class="reference internal" href="#enum-xrpositionaltracker-trackerhand"><span class="std std-ref">🔗</span></a></p>
+<p class="classref-enumeration-constant" id="class-xrpositionaltracker-constant-tracker-hand-unknown"><a class="reference internal" href="#enum-xrpositionaltracker-trackerhand"><span class="std std-ref">TrackerHand</span></a> <strong>TRACKER_HAND_UNKNOWN</strong> = <code class="docutils literal notranslate"><span class="pre">0</span></code></p>
+<p>The hand this tracker is held in is unknown or not applicable.</p>
+<p class="classref-enumeration-constant" id="class-xrpositionaltracker-constant-tracker-hand-left"><a class="reference internal" href="#enum-xrpositionaltracker-trackerhand"><span class="std std-ref">TrackerHand</span></a> <strong>TRACKER_HAND_LEFT</strong> = <code class="docutils literal notranslate"><span class="pre">1</span></code></p>
+<p>This tracker is the left hand controller.</p>
+<p class="classref-enumeration-constant" id="class-xrpositionaltracker-constant-tracker-hand-right"><a class="reference internal" href="#enum-xrpositionaltracker-trackerhand"><span class="std std-ref">TrackerHand</span></a> <strong>TRACKER_HAND_RIGHT</strong> = <code class="docutils literal notranslate"><span class="pre">2</span></code></p>
+<p>This tracker is the right hand controller.</p>
+<p class="classref-enumeration-constant" id="class-xrpositionaltracker-constant-tracker-hand-max"><a class="reference internal" href="#enum-xrpositionaltracker-trackerhand"><span class="std std-ref">TrackerHand</span></a> <strong>TRACKER_HAND_MAX</strong> = <code class="docutils literal notranslate"><span class="pre">3</span></code></p>
+<p>Represents the size of the <a class="reference internal" href="#enum-xrpositionaltracker-trackerhand"><span class="std std-ref">TrackerHand</span></a> enum.</p>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="property-descriptions">
+<h2>Property Descriptions<a class="headerlink" href="#property-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-property" id="class-xrpositionaltracker-property-hand"><a class="reference internal" href="#enum-xrpositionaltracker-trackerhand"><span class="std std-ref">TrackerHand</span></a> <strong>hand</strong> = <code class="docutils literal notranslate"><span class="pre">0</span></code> <a class="reference internal" href="#class-xrpositionaltracker-property-hand"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_tracker_hand</strong>(value: <a class="reference internal" href="#enum-xrpositionaltracker-trackerhand"><span class="std std-ref">TrackerHand</span></a>)</p></li>
+<li><p><a class="reference internal" href="#enum-xrpositionaltracker-trackerhand"><span class="std std-ref">TrackerHand</span></a> <strong>get_tracker_hand</strong>()</p></li>
+</ul>
+<p>Defines which hand this tracker relates to.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-xrpositionaltracker-property-profile"><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a> <strong>profile</strong> = <code class="docutils literal notranslate"><span class="pre">&quot;&quot;</span></code> <a class="reference internal" href="#class-xrpositionaltracker-property-profile"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_tracker_profile</strong>(value: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a> <strong>get_tracker_profile</strong>()</p></li>
+</ul>
+<p>The profile associated with this tracker, interface dependent but will indicate the type of controller being tracked.</p>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="method-descriptions">
+<h2>Method Descriptions<a class="headerlink" href="#method-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-method" id="class-xrpositionaltracker-method-get-input"><a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a> <strong>get_input</strong>(name: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-xrpositionaltracker-method-get-input"><span class="std std-ref">🔗</span></a></p>
+<p><strong>Deprecated:</strong> Use through <a class="reference internal" href="class_xrcontrollertracker.html#class-xrcontrollertracker"><span class="std std-ref">XRControllerTracker</span></a>.</p>
+<p>Returns an input for this tracker. It can return a boolean, float or <a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a> value depending on whether the input is a button, trigger or thumbstick/thumbpad.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-xrpositionaltracker-method-get-pose"><a class="reference internal" href="class_xrpose.html#class-xrpose"><span class="std std-ref">XRPose</span></a> <strong>get_pose</strong>(name: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-xrpositionaltracker-method-get-pose"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the current <a class="reference internal" href="class_xrpose.html#class-xrpose"><span class="std std-ref">XRPose</span></a> state object for the bound <code class="docutils literal notranslate"><span class="pre">name</span></code> pose.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-xrpositionaltracker-method-has-pose"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>has_pose</strong>(name: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-xrpositionaltracker-method-has-pose"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if the tracker is available and is currently tracking the bound <code class="docutils literal notranslate"><span class="pre">name</span></code> pose.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-xrpositionaltracker-method-invalidate-pose"><abbr title="No return value.">void</abbr> <strong>invalidate_pose</strong>(name: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>) <a class="reference internal" href="#class-xrpositionaltracker-method-invalidate-pose"><span class="std std-ref">🔗</span></a></p>
+<p>Marks this pose as invalid, we don’t clear the last reported state but it allows users to decide if trackers need to be hidden if we lose tracking or just remain at their last known position.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-xrpositionaltracker-method-set-input"><abbr title="No return value.">void</abbr> <strong>set_input</strong>(name: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>, value: <a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a>) <a class="reference internal" href="#class-xrpositionaltracker-method-set-input"><span class="std std-ref">🔗</span></a></p>
+<p><strong>Deprecated:</strong> Use through <a class="reference internal" href="class_xrcontrollertracker.html#class-xrcontrollertracker"><span class="std std-ref">XRControllerTracker</span></a>.</p>
+<p>Changes the value for the given input. This method is called by an <a class="reference internal" href="class_xrinterface.html#class-xrinterface"><span class="std std-ref">XRInterface</span></a> implementation and should not be used directly.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-xrpositionaltracker-method-set-pose"><abbr title="No return value.">void</abbr> <strong>set_pose</strong>(name: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>, transform: <a class="reference internal" href="class_transform3d.html#class-transform3d"><span class="std std-ref">Transform3D</span></a>, linear_velocity: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>, angular_velocity: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>, tracking_confidence: <a class="reference internal" href="class_xrpose.html#enum-xrpose-trackingconfidence"><span class="std std-ref">TrackingConfidence</span></a>) <a class="reference internal" href="#class-xrpositionaltracker-method-set-pose"><span class="std std-ref">🔗</span></a></p>
+<p>Sets the transform, linear velocity, angular velocity and tracking confidence for the given pose. This method is called by an <a class="reference internal" href="class_xrinterface.html#class-xrinterface"><span class="std std-ref">XRInterface</span></a> implementation and should not be used directly.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, MUmarShahbaz.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

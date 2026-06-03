@@ -1,0 +1,247 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BoneConstraint3D &mdash; RPG Components 2D 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=d45e8c67"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            RPG Components 2D
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">BoneConstraint3D</a><ul>
+<li><a class="reference internal" href="#description">Description</a></li>
+<li><a class="reference internal" href="#methods">Methods</a></li>
+<li><a class="reference internal" href="#enumerations">Enumerations</a></li>
+<li><a class="reference internal" href="#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">RPG Components 2D</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">BoneConstraint3D</li>
+      <li class="wy-breadcrumbs-aside">
+              <!-- User defined GitHub URL -->
+              <a href="hide" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="boneconstraint3d">
+<span id="class-boneconstraint3d"></span><h1>BoneConstraint3D<a class="headerlink" href="#boneconstraint3d" title="Link to this heading"></a></h1>
+<p><strong>Inherits:</strong> <a class="reference internal" href="class_skeletonmodifier3d.html#class-skeletonmodifier3d"><span class="std std-ref">SkeletonModifier3D</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_node3d.html#class-node3d"><span class="std std-ref">Node3D</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_node.html#class-node"><span class="std std-ref">Node</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_object.html#class-object"><span class="std std-ref">Object</span></a></p>
+<p><strong>Inherited By:</strong> <a class="reference internal" href="class_aimmodifier3d.html#class-aimmodifier3d"><span class="std std-ref">AimModifier3D</span></a>, <a class="reference internal" href="class_converttransformmodifier3d.html#class-converttransformmodifier3d"><span class="std std-ref">ConvertTransformModifier3D</span></a>, <a class="reference internal" href="class_copytransformmodifier3d.html#class-copytransformmodifier3d"><span class="std std-ref">CopyTransformModifier3D</span></a></p>
+<p>A node that may modify Skeleton3D’s bone with associating the two bones.</p>
+<section class="classref-introduction-group" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
+<p>Base class of <a class="reference internal" href="class_skeletonmodifier3d.html#class-skeletonmodifier3d"><span class="std std-ref">SkeletonModifier3D</span></a> that modifies the bone set in <a class="reference internal" href="#class-boneconstraint3d-method-set-apply-bone"><span class="std std-ref">set_apply_bone()</span></a> based on the transform of the bone retrieved by <a class="reference internal" href="#class-boneconstraint3d-method-get-reference-bone"><span class="std std-ref">get_reference_bone()</span></a>.</p>
+<p><strong>Note:</strong> Most methods in this class take an <code class="docutils literal notranslate"><span class="pre">index</span></code> parameter. This parameter specifies which setting list entry to return if the IK has multiple entries (e.g. <code class="docutils literal notranslate"><span class="pre">settings/&lt;index&gt;/amount</span></code>).</p>
+</section>
+<section class="classref-reftable-group" id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-boneconstraint3d-method-clear-setting"><span class="std std-ref">clear_setting</span></a>()</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-boneconstraint3d-method-get-amount"><span class="std std-ref">get_amount</span></a>(index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-boneconstraint3d-method-get-apply-bone"><span class="std std-ref">get_apply_bone</span></a>(index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a></p></td>
+<td><p><a class="reference internal" href="#class-boneconstraint3d-method-get-apply-bone-name"><span class="std std-ref">get_apply_bone_name</span></a>(index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-boneconstraint3d-method-get-reference-bone"><span class="std std-ref">get_reference_bone</span></a>(index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a></p></td>
+<td><p><a class="reference internal" href="#class-boneconstraint3d-method-get-reference-bone-name"><span class="std std-ref">get_reference_bone_name</span></a>(index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_nodepath.html#class-nodepath"><span class="std std-ref">NodePath</span></a></p></td>
+<td><p><a class="reference internal" href="#class-boneconstraint3d-method-get-reference-node"><span class="std std-ref">get_reference_node</span></a>(index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#enum-boneconstraint3d-referencetype"><span class="std std-ref">ReferenceType</span></a></p></td>
+<td><p><a class="reference internal" href="#class-boneconstraint3d-method-get-reference-type"><span class="std std-ref">get_reference_type</span></a>(index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-boneconstraint3d-method-get-setting-count"><span class="std std-ref">get_setting_count</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-boneconstraint3d-method-set-amount"><span class="std std-ref">set_amount</span></a>(index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, amount: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-boneconstraint3d-method-set-apply-bone"><span class="std std-ref">set_apply_bone</span></a>(index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, bone: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-boneconstraint3d-method-set-apply-bone-name"><span class="std std-ref">set_apply_bone_name</span></a>(index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, bone_name: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-boneconstraint3d-method-set-reference-bone"><span class="std std-ref">set_reference_bone</span></a>(index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, bone: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-boneconstraint3d-method-set-reference-bone-name"><span class="std std-ref">set_reference_bone_name</span></a>(index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, bone_name: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-boneconstraint3d-method-set-reference-node"><span class="std std-ref">set_reference_node</span></a>(index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, node: <a class="reference internal" href="class_nodepath.html#class-nodepath"><span class="std std-ref">NodePath</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-boneconstraint3d-method-set-reference-type"><span class="std std-ref">set_reference_type</span></a>(index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, type: <a class="reference internal" href="#enum-boneconstraint3d-referencetype"><span class="std std-ref">ReferenceType</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-boneconstraint3d-method-set-setting-count"><span class="std std-ref">set_setting_count</span></a>(count: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="enumerations">
+<h2>Enumerations<a class="headerlink" href="#enumerations" title="Link to this heading"></a></h2>
+<p class="classref-enumeration" id="enum-boneconstraint3d-referencetype">enum <strong>ReferenceType</strong>: <a class="reference internal" href="#enum-boneconstraint3d-referencetype"><span class="std std-ref">🔗</span></a></p>
+<p class="classref-enumeration-constant" id="class-boneconstraint3d-constant-reference-type-bone"><a class="reference internal" href="#enum-boneconstraint3d-referencetype"><span class="std std-ref">ReferenceType</span></a> <strong>REFERENCE_TYPE_BONE</strong> = <code class="docutils literal notranslate"><span class="pre">0</span></code></p>
+<p>The reference target is a bone. In this case, the reference target spaces is local space.</p>
+<p class="classref-enumeration-constant" id="class-boneconstraint3d-constant-reference-type-node"><a class="reference internal" href="#enum-boneconstraint3d-referencetype"><span class="std std-ref">ReferenceType</span></a> <strong>REFERENCE_TYPE_NODE</strong> = <code class="docutils literal notranslate"><span class="pre">1</span></code></p>
+<p>The reference target is a <a class="reference internal" href="class_node3d.html#class-node3d"><span class="std std-ref">Node3D</span></a>. In this case, the reference target spaces is model space.</p>
+<p>In other words, the reference target’s coordinates are treated as if it were placed directly under <a class="reference internal" href="class_skeleton3d.html#class-skeleton3d"><span class="std std-ref">Skeleton3D</span></a> which parent of the <strong>BoneConstraint3D</strong>.</p>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="method-descriptions">
+<h2>Method Descriptions<a class="headerlink" href="#method-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-method" id="class-boneconstraint3d-method-clear-setting"><abbr title="No return value.">void</abbr> <strong>clear_setting</strong>() <a class="reference internal" href="#class-boneconstraint3d-method-clear-setting"><span class="std std-ref">🔗</span></a></p>
+<p>Clear all settings.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-boneconstraint3d-method-get-amount"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>get_amount</strong>(index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-boneconstraint3d-method-get-amount"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the apply amount of the setting at <code class="docutils literal notranslate"><span class="pre">index</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-boneconstraint3d-method-get-apply-bone"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>get_apply_bone</strong>(index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-boneconstraint3d-method-get-apply-bone"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the apply bone of the setting at <code class="docutils literal notranslate"><span class="pre">index</span></code>. This bone will be modified.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-boneconstraint3d-method-get-apply-bone-name"><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a> <strong>get_apply_bone_name</strong>(index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-boneconstraint3d-method-get-apply-bone-name"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the apply bone name of the setting at <code class="docutils literal notranslate"><span class="pre">index</span></code>. This bone will be modified.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-boneconstraint3d-method-get-reference-bone"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>get_reference_bone</strong>(index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-boneconstraint3d-method-get-reference-bone"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the reference bone of the setting at <code class="docutils literal notranslate"><span class="pre">index</span></code>.</p>
+<p>This bone will be only referenced and not modified by this modifier.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-boneconstraint3d-method-get-reference-bone-name"><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a> <strong>get_reference_bone_name</strong>(index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-boneconstraint3d-method-get-reference-bone-name"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the reference bone name of the setting at <code class="docutils literal notranslate"><span class="pre">index</span></code>.</p>
+<p>This bone will be only referenced and not modified by this modifier.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-boneconstraint3d-method-get-reference-node"><a class="reference internal" href="class_nodepath.html#class-nodepath"><span class="std std-ref">NodePath</span></a> <strong>get_reference_node</strong>(index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-boneconstraint3d-method-get-reference-node"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the reference node path of the setting at <code class="docutils literal notranslate"><span class="pre">index</span></code>.</p>
+<p>This node will be only referenced and not modified by this modifier.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-boneconstraint3d-method-get-reference-type"><a class="reference internal" href="#enum-boneconstraint3d-referencetype"><span class="std std-ref">ReferenceType</span></a> <strong>get_reference_type</strong>(index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-boneconstraint3d-method-get-reference-type"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the reference target type of the setting at <code class="docutils literal notranslate"><span class="pre">index</span></code>. See also <a class="reference internal" href="#enum-boneconstraint3d-referencetype"><span class="std std-ref">ReferenceType</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-boneconstraint3d-method-get-setting-count"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>get_setting_count</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-boneconstraint3d-method-get-setting-count"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the number of settings in the modifier.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-boneconstraint3d-method-set-amount"><abbr title="No return value.">void</abbr> <strong>set_amount</strong>(index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, amount: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>) <a class="reference internal" href="#class-boneconstraint3d-method-set-amount"><span class="std std-ref">🔗</span></a></p>
+<p>Sets the apply amount of the setting at <code class="docutils literal notranslate"><span class="pre">index</span></code> to <code class="docutils literal notranslate"><span class="pre">amount</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-boneconstraint3d-method-set-apply-bone"><abbr title="No return value.">void</abbr> <strong>set_apply_bone</strong>(index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, bone: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <a class="reference internal" href="#class-boneconstraint3d-method-set-apply-bone"><span class="std std-ref">🔗</span></a></p>
+<p>Sets the apply bone of the setting at <code class="docutils literal notranslate"><span class="pre">index</span></code> to <code class="docutils literal notranslate"><span class="pre">bone</span></code>. This bone will be modified.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-boneconstraint3d-method-set-apply-bone-name"><abbr title="No return value.">void</abbr> <strong>set_apply_bone_name</strong>(index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, bone_name: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <a class="reference internal" href="#class-boneconstraint3d-method-set-apply-bone-name"><span class="std std-ref">🔗</span></a></p>
+<p>Sets the apply bone of the setting at <code class="docutils literal notranslate"><span class="pre">index</span></code> to <code class="docutils literal notranslate"><span class="pre">bone_name</span></code>. This bone will be modified.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-boneconstraint3d-method-set-reference-bone"><abbr title="No return value.">void</abbr> <strong>set_reference_bone</strong>(index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, bone: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <a class="reference internal" href="#class-boneconstraint3d-method-set-reference-bone"><span class="std std-ref">🔗</span></a></p>
+<p>Sets the reference bone of the setting at <code class="docutils literal notranslate"><span class="pre">index</span></code> to <code class="docutils literal notranslate"><span class="pre">bone</span></code>.</p>
+<p>This bone will be only referenced and not modified by this modifier.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-boneconstraint3d-method-set-reference-bone-name"><abbr title="No return value.">void</abbr> <strong>set_reference_bone_name</strong>(index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, bone_name: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <a class="reference internal" href="#class-boneconstraint3d-method-set-reference-bone-name"><span class="std std-ref">🔗</span></a></p>
+<p>Sets the reference bone of the setting at <code class="docutils literal notranslate"><span class="pre">index</span></code> to <code class="docutils literal notranslate"><span class="pre">bone_name</span></code>.</p>
+<p>This bone will be only referenced and not modified by this modifier.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-boneconstraint3d-method-set-reference-node"><abbr title="No return value.">void</abbr> <strong>set_reference_node</strong>(index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, node: <a class="reference internal" href="class_nodepath.html#class-nodepath"><span class="std std-ref">NodePath</span></a>) <a class="reference internal" href="#class-boneconstraint3d-method-set-reference-node"><span class="std std-ref">🔗</span></a></p>
+<p>Sets the reference node path of the setting at <code class="docutils literal notranslate"><span class="pre">index</span></code> to <code class="docutils literal notranslate"><span class="pre">node</span></code>.</p>
+<p>This node will be only referenced and not modified by this modifier.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-boneconstraint3d-method-set-reference-type"><abbr title="No return value.">void</abbr> <strong>set_reference_type</strong>(index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, type: <a class="reference internal" href="#enum-boneconstraint3d-referencetype"><span class="std std-ref">ReferenceType</span></a>) <a class="reference internal" href="#class-boneconstraint3d-method-set-reference-type"><span class="std std-ref">🔗</span></a></p>
+<p>Sets the reference target type of the setting at <code class="docutils literal notranslate"><span class="pre">index</span></code> to <code class="docutils literal notranslate"><span class="pre">type</span></code>. See also <a class="reference internal" href="#enum-boneconstraint3d-referencetype"><span class="std std-ref">ReferenceType</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-boneconstraint3d-method-set-setting-count"><abbr title="No return value.">void</abbr> <strong>set_setting_count</strong>(count: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <a class="reference internal" href="#class-boneconstraint3d-method-set-setting-count"><span class="std std-ref">🔗</span></a></p>
+<p>Sets the number of settings in the modifier.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, MUmarShahbaz.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

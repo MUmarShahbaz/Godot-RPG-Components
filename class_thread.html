@@ -1,0 +1,208 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Thread &mdash; RPG Components 2D 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=d45e8c67"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            RPG Components 2D
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">Thread</a><ul>
+<li><a class="reference internal" href="#description">Description</a></li>
+<li><a class="reference internal" href="#tutorials">Tutorials</a></li>
+<li><a class="reference internal" href="#methods">Methods</a></li>
+<li><a class="reference internal" href="#enumerations">Enumerations</a></li>
+<li><a class="reference internal" href="#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">RPG Components 2D</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Thread</li>
+      <li class="wy-breadcrumbs-aside">
+              <!-- User defined GitHub URL -->
+              <a href="hide" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="thread">
+<span id="class-thread"></span><h1>Thread<a class="headerlink" href="#thread" title="Link to this heading"></a></h1>
+<p><strong>Inherits:</strong> <a class="reference internal" href="class_refcounted.html#class-refcounted"><span class="std std-ref">RefCounted</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_object.html#class-object"><span class="std std-ref">Object</span></a></p>
+<p>A unit of execution in a process.</p>
+<section class="classref-introduction-group" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
+<p>A unit of execution in a process. Can run methods on <a class="reference internal" href="class_object.html#class-object"><span class="std std-ref">Object</span></a>s simultaneously. The use of synchronization via <a class="reference internal" href="class_mutex.html#class-mutex"><span class="std std-ref">Mutex</span></a> or <a class="reference internal" href="class_semaphore.html#class-semaphore"><span class="std std-ref">Semaphore</span></a> is advised if working with shared objects.</p>
+<p><strong>Warning:</strong> To ensure proper cleanup without crashes or deadlocks, when a <strong>Thread</strong>’s reference count reaches zero and it is therefore destroyed, the following conditions must be met:</p>
+<ul class="simple">
+<li><p>It must not have any <a class="reference internal" href="class_mutex.html#class-mutex"><span class="std std-ref">Mutex</span></a> objects locked.</p></li>
+<li><p>It must not be waiting on any <a class="reference internal" href="class_semaphore.html#class-semaphore"><span class="std std-ref">Semaphore</span></a> objects.</p></li>
+<li><p><a class="reference internal" href="#class-thread-method-wait-to-finish"><span class="std std-ref">wait_to_finish()</span></a> should have been called on it.</p></li>
+</ul>
+</section>
+<section class="classref-introduction-group" id="tutorials">
+<h2>Tutorials<a class="headerlink" href="#tutorials" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><span class="xref std std-doc">Using multiple threads</span></p></li>
+<li><p><span class="xref std std-doc">Thread-safe APIs</span></p></li>
+<li><p><a class="reference external" href="https://godotengine.org/asset-library/asset/2755">3D Voxel Demo</a></p></li>
+</ul>
+</section>
+<section class="classref-reftable-group" id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a></p></td>
+<td><p><a class="reference internal" href="#class-thread-method-get-id"><span class="std std-ref">get_id</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-thread-method-is-alive"><span class="std std-ref">is_alive</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-thread-method-is-main-thread"><span class="std std-ref">is_main_thread</span></a>() <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-thread-method-is-started"><span class="std std-ref">is_started</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-thread-method-set-thread-safety-checks-enabled"><span class="std std-ref">set_thread_safety_checks_enabled</span></a>(enabled: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>) <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_%40globalscope.html#enum-globalscope-error"><span class="std std-ref">Error</span></a></p></td>
+<td><p><a class="reference internal" href="#class-thread-method-start"><span class="std std-ref">start</span></a>(callable: <a class="reference internal" href="class_callable.html#class-callable"><span class="std std-ref">Callable</span></a>, priority: <a class="reference internal" href="#enum-thread-priority"><span class="std std-ref">Priority</span></a> = 1)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a></p></td>
+<td><p><a class="reference internal" href="#class-thread-method-wait-to-finish"><span class="std std-ref">wait_to_finish</span></a>()</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="enumerations">
+<h2>Enumerations<a class="headerlink" href="#enumerations" title="Link to this heading"></a></h2>
+<p class="classref-enumeration" id="enum-thread-priority">enum <strong>Priority</strong>: <a class="reference internal" href="#enum-thread-priority"><span class="std std-ref">🔗</span></a></p>
+<p class="classref-enumeration-constant" id="class-thread-constant-priority-low"><a class="reference internal" href="#enum-thread-priority"><span class="std std-ref">Priority</span></a> <strong>PRIORITY_LOW</strong> = <code class="docutils literal notranslate"><span class="pre">0</span></code></p>
+<p>A thread running with lower priority than normally.</p>
+<p class="classref-enumeration-constant" id="class-thread-constant-priority-normal"><a class="reference internal" href="#enum-thread-priority"><span class="std std-ref">Priority</span></a> <strong>PRIORITY_NORMAL</strong> = <code class="docutils literal notranslate"><span class="pre">1</span></code></p>
+<p>A thread with a standard priority.</p>
+<p class="classref-enumeration-constant" id="class-thread-constant-priority-high"><a class="reference internal" href="#enum-thread-priority"><span class="std std-ref">Priority</span></a> <strong>PRIORITY_HIGH</strong> = <code class="docutils literal notranslate"><span class="pre">2</span></code></p>
+<p>A thread running with higher priority than normally.</p>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="method-descriptions">
+<h2>Method Descriptions<a class="headerlink" href="#method-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-method" id="class-thread-method-get-id"><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a> <strong>get_id</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-thread-method-get-id"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the current <strong>Thread</strong>’s ID, uniquely identifying it among all threads. If the <strong>Thread</strong> has not started running or if <a class="reference internal" href="#class-thread-method-wait-to-finish"><span class="std std-ref">wait_to_finish()</span></a> has been called, this returns an empty string.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-thread-method-is-alive"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_alive</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-thread-method-is-alive"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if this <strong>Thread</strong> is currently running the provided function. This is useful for determining if <a class="reference internal" href="#class-thread-method-wait-to-finish"><span class="std std-ref">wait_to_finish()</span></a> can be called without blocking the calling thread.</p>
+<p>To check if a <strong>Thread</strong> is joinable, use <a class="reference internal" href="#class-thread-method-is-started"><span class="std std-ref">is_started()</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-thread-method-is-main-thread"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_main_thread</strong>() <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr> <a class="reference internal" href="#class-thread-method-is-main-thread"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if the thread this method was called from is the main thread.</p>
+<p><strong>Note:</strong> This is a static method and isn’t associated with a specific <strong>Thread</strong> object.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-thread-method-is-started"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_started</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-thread-method-is-started"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if this <strong>Thread</strong> has been started. Once started, this will return <code class="docutils literal notranslate"><span class="pre">true</span></code> until it is joined using <a class="reference internal" href="#class-thread-method-wait-to-finish"><span class="std std-ref">wait_to_finish()</span></a>. For checking if a <strong>Thread</strong> is still executing its task, use <a class="reference internal" href="#class-thread-method-is-alive"><span class="std std-ref">is_alive()</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-thread-method-set-thread-safety-checks-enabled"><abbr title="No return value.">void</abbr> <strong>set_thread_safety_checks_enabled</strong>(enabled: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>) <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr> <a class="reference internal" href="#class-thread-method-set-thread-safety-checks-enabled"><span class="std std-ref">🔗</span></a></p>
+<p>Sets whether the thread safety checks the engine normally performs in methods of certain classes (e.g., <a class="reference internal" href="class_node.html#class-node"><span class="std std-ref">Node</span></a>) should happen <strong>on the current thread</strong>.</p>
+<p>The default, for every thread, is that they are enabled (as if called with <code class="docutils literal notranslate"><span class="pre">enabled</span></code> being <code class="docutils literal notranslate"><span class="pre">true</span></code>).</p>
+<p>Those checks are conservative. That means that they will only succeed in considering a call thread-safe (and therefore allow it to happen) if the engine can guarantee such safety.</p>
+<p>Because of that, there may be cases where the user may want to disable them (<code class="docutils literal notranslate"><span class="pre">enabled</span></code> being <code class="docutils literal notranslate"><span class="pre">false</span></code>) to make certain operations allowed again. By doing so, it becomes the user’s responsibility to ensure thread safety (e.g., by using <a class="reference internal" href="class_mutex.html#class-mutex"><span class="std std-ref">Mutex</span></a>) for those objects that are otherwise protected by the engine.</p>
+<p><strong>Note:</strong> This is an advanced usage of the engine. You are advised to use it only if you know what you are doing and there is no safer way.</p>
+<p><strong>Note:</strong> This is useful for scripts running on either arbitrary <strong>Thread</strong> objects or tasks submitted to the <a class="reference internal" href="class_workerthreadpool.html#class-workerthreadpool"><span class="std std-ref">WorkerThreadPool</span></a>. It doesn’t apply to code running during <a class="reference internal" href="class_node.html#class-node"><span class="std std-ref">Node</span></a> group processing, where the checks will be always performed.</p>
+<p><strong>Note:</strong> Even in the case of having disabled the checks in a <a class="reference internal" href="class_workerthreadpool.html#class-workerthreadpool"><span class="std std-ref">WorkerThreadPool</span></a> task, there’s no need to re-enable them at the end. The engine will do so.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-thread-method-start"><a class="reference internal" href="class_%40globalscope.html#enum-globalscope-error"><span class="std std-ref">Error</span></a> <strong>start</strong>(callable: <a class="reference internal" href="class_callable.html#class-callable"><span class="std std-ref">Callable</span></a>, priority: <a class="reference internal" href="#enum-thread-priority"><span class="std std-ref">Priority</span></a> = 1) <a class="reference internal" href="#class-thread-method-start"><span class="std std-ref">🔗</span></a></p>
+<p>Starts a new <strong>Thread</strong> that calls <code class="docutils literal notranslate"><span class="pre">callable</span></code>.</p>
+<p>If the method takes some arguments, you can pass them using <a class="reference internal" href="class_callable.html#class-callable-method-bind"><span class="std std-ref">Callable.bind()</span></a>.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">priority</span></code> of the <strong>Thread</strong> can be changed by passing a value from the <a class="reference internal" href="#enum-thread-priority"><span class="std std-ref">Priority</span></a> enum.</p>
+<p>Returns <a class="reference internal" href="class_%40globalscope.html#class-globalscope-constant-ok"><span class="std std-ref">&#64;GlobalScope.OK</span></a> on success, or <a class="reference internal" href="class_%40globalscope.html#class-globalscope-constant-err-cant-create"><span class="std std-ref">&#64;GlobalScope.ERR_CANT_CREATE</span></a> on failure.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-thread-method-wait-to-finish"><a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a> <strong>wait_to_finish</strong>() <a class="reference internal" href="#class-thread-method-wait-to-finish"><span class="std std-ref">🔗</span></a></p>
+<p>Joins the <strong>Thread</strong> and waits for it to finish. Returns the output of the <a class="reference internal" href="class_callable.html#class-callable"><span class="std std-ref">Callable</span></a> passed to <a class="reference internal" href="#class-thread-method-start"><span class="std std-ref">start()</span></a>.</p>
+<p>Should either be used when you want to retrieve the value returned from the method called by the <strong>Thread</strong> or before freeing the instance that contains the <strong>Thread</strong>.</p>
+<p>To determine if this can be called without blocking the calling thread, check if <a class="reference internal" href="#class-thread-method-is-alive"><span class="std std-ref">is_alive()</span></a> is <code class="docutils literal notranslate"><span class="pre">false</span></code>.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, MUmarShahbaz.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

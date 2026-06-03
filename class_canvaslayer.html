@@ -1,0 +1,285 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CanvasLayer &mdash; RPG Components 2D 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=d45e8c67"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            RPG Components 2D
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">CanvasLayer</a><ul>
+<li><a class="reference internal" href="#description">Description</a></li>
+<li><a class="reference internal" href="#tutorials">Tutorials</a></li>
+<li><a class="reference internal" href="#properties">Properties</a></li>
+<li><a class="reference internal" href="#methods">Methods</a></li>
+<li><a class="reference internal" href="#signals">Signals</a></li>
+<li><a class="reference internal" href="#property-descriptions">Property Descriptions</a></li>
+<li><a class="reference internal" href="#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">RPG Components 2D</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">CanvasLayer</li>
+      <li class="wy-breadcrumbs-aside">
+              <!-- User defined GitHub URL -->
+              <a href="hide" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="canvaslayer">
+<span id="class-canvaslayer"></span><h1>CanvasLayer<a class="headerlink" href="#canvaslayer" title="Link to this heading"></a></h1>
+<p><strong>Inherits:</strong> <a class="reference internal" href="class_node.html#class-node"><span class="std std-ref">Node</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_object.html#class-object"><span class="std std-ref">Object</span></a></p>
+<p><strong>Inherited By:</strong> <a class="reference internal" href="class_parallaxbackground.html#class-parallaxbackground"><span class="std std-ref">ParallaxBackground</span></a></p>
+<p>A node used for independent rendering of objects within a 2D scene.</p>
+<section class="classref-introduction-group" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
+<p><a class="reference internal" href="class_canvasitem.html#class-canvasitem"><span class="std std-ref">CanvasItem</span></a>-derived nodes that are direct or indirect children of a <strong>CanvasLayer</strong> will be drawn in that layer. The layer is a numeric index that defines the draw order. The default 2D scene renders with index <code class="docutils literal notranslate"><span class="pre">0</span></code>, so a <strong>CanvasLayer</strong> with index <code class="docutils literal notranslate"><span class="pre">-1</span></code> will be drawn below, and a <strong>CanvasLayer</strong> with index <code class="docutils literal notranslate"><span class="pre">1</span></code> will be drawn above. This order will hold regardless of the <a class="reference internal" href="class_canvasitem.html#class-canvasitem-property-z-index"><span class="std std-ref">CanvasItem.z_index</span></a> of the nodes within each layer.</p>
+<p><strong>CanvasLayer</strong>s can be hidden and they can also optionally follow the viewport. This makes them useful for HUDs like health bar overlays (on layers <code class="docutils literal notranslate"><span class="pre">1</span></code> and higher) or backgrounds (on layers <code class="docutils literal notranslate"><span class="pre">-1</span></code> and lower).</p>
+<p><strong>Note:</strong> Embedded <a class="reference internal" href="class_window.html#class-window"><span class="std std-ref">Window</span></a>s are placed on layer <code class="docutils literal notranslate"><span class="pre">1024</span></code>. <a class="reference internal" href="class_canvasitem.html#class-canvasitem"><span class="std std-ref">CanvasItem</span></a>s on layers <code class="docutils literal notranslate"><span class="pre">1025</span></code> and higher appear in front of embedded windows.</p>
+<p><strong>Note:</strong> Each <strong>CanvasLayer</strong> is drawn on one specific <a class="reference internal" href="class_viewport.html#class-viewport"><span class="std std-ref">Viewport</span></a> and cannot be shared between multiple <a class="reference internal" href="class_viewport.html#class-viewport"><span class="std std-ref">Viewport</span></a>s, see <a class="reference internal" href="#class-canvaslayer-property-custom-viewport"><span class="std std-ref">custom_viewport</span></a>. When using multiple <a class="reference internal" href="class_viewport.html#class-viewport"><span class="std std-ref">Viewport</span></a>s, for example in a split-screen game, you need to create an individual <strong>CanvasLayer</strong> for each <a class="reference internal" href="class_viewport.html#class-viewport"><span class="std std-ref">Viewport</span></a> you want it to be drawn on.</p>
+</section>
+<section class="classref-introduction-group" id="tutorials">
+<h2>Tutorials<a class="headerlink" href="#tutorials" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><span class="xref std std-doc">Viewport and canvas transforms</span></p></li>
+<li><p><span class="xref std std-doc">Canvas layers</span></p></li>
+<li><p><a class="reference external" href="https://godotengine.org/asset-library/asset/2712">2D Dodge The Creeps Demo</a></p></li>
+</ul>
+</section>
+<section class="classref-reftable-group" id="properties">
+<h2>Properties<a class="headerlink" href="#properties" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_node.html#class-node"><span class="std std-ref">Node</span></a></p></td>
+<td><p><a class="reference internal" href="#class-canvaslayer-property-custom-viewport"><span class="std std-ref">custom_viewport</span></a></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-canvaslayer-property-follow-viewport-enabled"><span class="std std-ref">follow_viewport_enabled</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-canvaslayer-property-follow-viewport-scale"><span class="std std-ref">follow_viewport_scale</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">1.0</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-canvaslayer-property-layer"><span class="std std-ref">layer</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">1</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a></p></td>
+<td><p><a class="reference internal" href="#class-canvaslayer-property-offset"><span class="std std-ref">offset</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Vector2(0,</span> <span class="pre">0)</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-canvaslayer-property-rotation"><span class="std std-ref">rotation</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0.0</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a></p></td>
+<td><p><a class="reference internal" href="#class-canvaslayer-property-scale"><span class="std std-ref">scale</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Vector2(1,</span> <span class="pre">1)</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_transform2d.html#class-transform2d"><span class="std std-ref">Transform2D</span></a></p></td>
+<td><p><a class="reference internal" href="#class-canvaslayer-property-transform"><span class="std std-ref">transform</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Transform2D(1,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">1,</span> <span class="pre">0,</span> <span class="pre">0)</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-canvaslayer-property-visible"><span class="std std-ref">visible</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section class="classref-reftable-group" id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_rid.html#class-rid"><span class="std std-ref">RID</span></a></p></td>
+<td><p><a class="reference internal" href="#class-canvaslayer-method-get-canvas"><span class="std std-ref">get_canvas</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_transform2d.html#class-transform2d"><span class="std std-ref">Transform2D</span></a></p></td>
+<td><p><a class="reference internal" href="#class-canvaslayer-method-get-final-transform"><span class="std std-ref">get_final_transform</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-canvaslayer-method-hide"><span class="std std-ref">hide</span></a>()</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-canvaslayer-method-show"><span class="std std-ref">show</span></a>()</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="signals">
+<h2>Signals<a class="headerlink" href="#signals" title="Link to this heading"></a></h2>
+<p class="classref-signal" id="class-canvaslayer-signal-visibility-changed"><strong>visibility_changed</strong>() <a class="reference internal" href="#class-canvaslayer-signal-visibility-changed"><span class="std std-ref">🔗</span></a></p>
+<p>Emitted when visibility of the layer is changed. See <a class="reference internal" href="#class-canvaslayer-property-visible"><span class="std std-ref">visible</span></a>.</p>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="property-descriptions">
+<h2>Property Descriptions<a class="headerlink" href="#property-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-property" id="class-canvaslayer-property-custom-viewport"><a class="reference internal" href="class_node.html#class-node"><span class="std std-ref">Node</span></a> <strong>custom_viewport</strong> <a class="reference internal" href="#class-canvaslayer-property-custom-viewport"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_custom_viewport</strong>(value: <a class="reference internal" href="class_node.html#class-node"><span class="std std-ref">Node</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_node.html#class-node"><span class="std std-ref">Node</span></a> <strong>get_custom_viewport</strong>()</p></li>
+</ul>
+<p>The custom <a class="reference internal" href="class_viewport.html#class-viewport"><span class="std std-ref">Viewport</span></a> node assigned to the <strong>CanvasLayer</strong>. If <code class="docutils literal notranslate"><span class="pre">null</span></code>, uses the default viewport instead.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-canvaslayer-property-follow-viewport-enabled"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>follow_viewport_enabled</strong> = <code class="docutils literal notranslate"><span class="pre">false</span></code> <a class="reference internal" href="#class-canvaslayer-property-follow-viewport-enabled"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_follow_viewport</strong>(value: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_following_viewport</strong>()</p></li>
+</ul>
+<p>If enabled, the <strong>CanvasLayer</strong> maintains its position in world space. If disabled, the <strong>CanvasLayer</strong> stays in a fixed position on the screen.</p>
+<p>Together with <a class="reference internal" href="#class-canvaslayer-property-follow-viewport-scale"><span class="std std-ref">follow_viewport_scale</span></a>, this can be used for a pseudo-3D effect.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-canvaslayer-property-follow-viewport-scale"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>follow_viewport_scale</strong> = <code class="docutils literal notranslate"><span class="pre">1.0</span></code> <a class="reference internal" href="#class-canvaslayer-property-follow-viewport-scale"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_follow_viewport_scale</strong>(value: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>get_follow_viewport_scale</strong>()</p></li>
+</ul>
+<p>Scales the layer when using <a class="reference internal" href="#class-canvaslayer-property-follow-viewport-enabled"><span class="std std-ref">follow_viewport_enabled</span></a>. Layers moving into the foreground should have increasing scales, while layers moving into the background should have decreasing scales.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-canvaslayer-property-layer"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>layer</strong> = <code class="docutils literal notranslate"><span class="pre">1</span></code> <a class="reference internal" href="#class-canvaslayer-property-layer"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_layer</strong>(value: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>get_layer</strong>()</p></li>
+</ul>
+<p>Layer index for draw order. Lower values are drawn behind higher values.</p>
+<p><strong>Note:</strong> If multiple CanvasLayers have the same layer index, <a class="reference internal" href="class_canvasitem.html#class-canvasitem"><span class="std std-ref">CanvasItem</span></a> children of one CanvasLayer are drawn behind the <a class="reference internal" href="class_canvasitem.html#class-canvasitem"><span class="std std-ref">CanvasItem</span></a> children of the other CanvasLayer. Which CanvasLayer is drawn in front is non-deterministic.</p>
+<p><strong>Note:</strong> The layer index should be between <a class="reference internal" href="class_renderingserver.html#class-renderingserver-constant-canvas-layer-min"><span class="std std-ref">RenderingServer.CANVAS_LAYER_MIN</span></a> and <a class="reference internal" href="class_renderingserver.html#class-renderingserver-constant-canvas-layer-max"><span class="std std-ref">RenderingServer.CANVAS_LAYER_MAX</span></a> (inclusive). Any other value will wrap around.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-canvaslayer-property-offset"><a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a> <strong>offset</strong> = <code class="docutils literal notranslate"><span class="pre">Vector2(0,</span> <span class="pre">0)</span></code> <a class="reference internal" href="#class-canvaslayer-property-offset"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_offset</strong>(value: <a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a> <strong>get_offset</strong>()</p></li>
+</ul>
+<p>The layer’s base offset.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-canvaslayer-property-rotation"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>rotation</strong> = <code class="docutils literal notranslate"><span class="pre">0.0</span></code> <a class="reference internal" href="#class-canvaslayer-property-rotation"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_rotation</strong>(value: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>get_rotation</strong>()</p></li>
+</ul>
+<p>The layer’s rotation in radians.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-canvaslayer-property-scale"><a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a> <strong>scale</strong> = <code class="docutils literal notranslate"><span class="pre">Vector2(1,</span> <span class="pre">1)</span></code> <a class="reference internal" href="#class-canvaslayer-property-scale"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_scale</strong>(value: <a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a> <strong>get_scale</strong>()</p></li>
+</ul>
+<p>The layer’s scale.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-canvaslayer-property-transform"><a class="reference internal" href="class_transform2d.html#class-transform2d"><span class="std std-ref">Transform2D</span></a> <strong>transform</strong> = <code class="docutils literal notranslate"><span class="pre">Transform2D(1,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">1,</span> <span class="pre">0,</span> <span class="pre">0)</span></code> <a class="reference internal" href="#class-canvaslayer-property-transform"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_transform</strong>(value: <a class="reference internal" href="class_transform2d.html#class-transform2d"><span class="std std-ref">Transform2D</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_transform2d.html#class-transform2d"><span class="std std-ref">Transform2D</span></a> <strong>get_transform</strong>()</p></li>
+</ul>
+<p>The layer’s transform.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-canvaslayer-property-visible"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>visible</strong> = <code class="docutils literal notranslate"><span class="pre">true</span></code> <a class="reference internal" href="#class-canvaslayer-property-visible"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_visible</strong>(value: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_visible</strong>()</p></li>
+</ul>
+<p>If <code class="docutils literal notranslate"><span class="pre">false</span></code>, any <a class="reference internal" href="class_canvasitem.html#class-canvasitem"><span class="std std-ref">CanvasItem</span></a> under this <strong>CanvasLayer</strong> will be hidden.</p>
+<p>Unlike <a class="reference internal" href="class_canvasitem.html#class-canvasitem-property-visible"><span class="std std-ref">CanvasItem.visible</span></a>, visibility of a <strong>CanvasLayer</strong> isn’t propagated to underlying layers.</p>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="method-descriptions">
+<h2>Method Descriptions<a class="headerlink" href="#method-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-method" id="class-canvaslayer-method-get-canvas"><a class="reference internal" href="class_rid.html#class-rid"><span class="std std-ref">RID</span></a> <strong>get_canvas</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-canvaslayer-method-get-canvas"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the RID of the canvas used by this layer.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-canvaslayer-method-get-final-transform"><a class="reference internal" href="class_transform2d.html#class-transform2d"><span class="std std-ref">Transform2D</span></a> <strong>get_final_transform</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-canvaslayer-method-get-final-transform"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the transform from the <strong>CanvasLayer</strong>s coordinate system to the <a class="reference internal" href="class_viewport.html#class-viewport"><span class="std std-ref">Viewport</span></a>s coordinate system.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-canvaslayer-method-hide"><abbr title="No return value.">void</abbr> <strong>hide</strong>() <a class="reference internal" href="#class-canvaslayer-method-hide"><span class="std std-ref">🔗</span></a></p>
+<p>Hides any <a class="reference internal" href="class_canvasitem.html#class-canvasitem"><span class="std std-ref">CanvasItem</span></a> under this <strong>CanvasLayer</strong>. This is equivalent to setting <a class="reference internal" href="#class-canvaslayer-property-visible"><span class="std std-ref">visible</span></a> to <code class="docutils literal notranslate"><span class="pre">false</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-canvaslayer-method-show"><abbr title="No return value.">void</abbr> <strong>show</strong>() <a class="reference internal" href="#class-canvaslayer-method-show"><span class="std std-ref">🔗</span></a></p>
+<p>Shows any <a class="reference internal" href="class_canvasitem.html#class-canvasitem"><span class="std std-ref">CanvasItem</span></a> under this <strong>CanvasLayer</strong>. This is equivalent to setting <a class="reference internal" href="#class-canvaslayer-property-visible"><span class="std std-ref">visible</span></a> to <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, MUmarShahbaz.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,192 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ResourceImporterOBJ &mdash; RPG Components 2D 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=d45e8c67"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            RPG Components 2D
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">ResourceImporterOBJ</a><ul>
+<li><a class="reference internal" href="#description">Description</a></li>
+<li><a class="reference internal" href="#tutorials">Tutorials</a></li>
+<li><a class="reference internal" href="#properties">Properties</a></li>
+<li><a class="reference internal" href="#property-descriptions">Property Descriptions</a></li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">RPG Components 2D</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">ResourceImporterOBJ</li>
+      <li class="wy-breadcrumbs-aside">
+              <!-- User defined GitHub URL -->
+              <a href="hide" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="resourceimporterobj">
+<span id="class-resourceimporterobj"></span><h1>ResourceImporterOBJ<a class="headerlink" href="#resourceimporterobj" title="Link to this heading"></a></h1>
+<p><strong>Inherits:</strong> <a class="reference internal" href="class_resourceimporter.html#class-resourceimporter"><span class="std std-ref">ResourceImporter</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_refcounted.html#class-refcounted"><span class="std std-ref">RefCounted</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_object.html#class-object"><span class="std std-ref">Object</span></a></p>
+<p>Imports an OBJ 3D model as an independent <a class="reference internal" href="class_mesh.html#class-mesh"><span class="std std-ref">Mesh</span></a> or scene.</p>
+<section class="classref-introduction-group" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
+<p>Unlike <a class="reference internal" href="class_resourceimporterscene.html#class-resourceimporterscene"><span class="std std-ref">ResourceImporterScene</span></a>, <strong>ResourceImporterOBJ</strong> will import a single <a class="reference internal" href="class_mesh.html#class-mesh"><span class="std std-ref">Mesh</span></a> resource by default instead of importing a <a class="reference internal" href="class_packedscene.html#class-packedscene"><span class="std std-ref">PackedScene</span></a>. This makes it easier to use the <a class="reference internal" href="class_mesh.html#class-mesh"><span class="std std-ref">Mesh</span></a> resource in nodes that expect direct <a class="reference internal" href="class_mesh.html#class-mesh"><span class="std std-ref">Mesh</span></a> resources, such as <code class="docutils literal notranslate"><span class="pre">GridMap</span></code>, <a class="reference internal" href="class_gpuparticles3d.html#class-gpuparticles3d"><span class="std std-ref">GPUParticles3D</span></a> or <a class="reference internal" href="class_cpuparticles3d.html#class-cpuparticles3d"><span class="std std-ref">CPUParticles3D</span></a>. Note that it is still possible to save mesh resources from 3D scenes using the <strong>Advanced Import Settings</strong> dialog, regardless of the source format.</p>
+<p>See also <a class="reference internal" href="class_resourceimporterscene.html#class-resourceimporterscene"><span class="std std-ref">ResourceImporterScene</span></a>, which is used for more advanced 3D formats such as glTF.</p>
+</section>
+<section class="classref-introduction-group" id="tutorials">
+<h2>Tutorials<a class="headerlink" href="#tutorials" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><span class="xref std std-doc">Importing 3D scenes</span></p></li>
+</ul>
+</section>
+<section class="classref-reftable-group" id="properties">
+<h2>Properties<a class="headerlink" href="#properties" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-resourceimporterobj-property-force-disable-mesh-compression"><span class="std std-ref">force_disable_mesh_compression</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-resourceimporterobj-property-generate-lightmap-uv2"><span class="std std-ref">generate_lightmap_uv2</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-resourceimporterobj-property-generate-lightmap-uv2-texel-size"><span class="std std-ref">generate_lightmap_uv2_texel_size</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0.2</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-resourceimporterobj-property-generate-lods"><span class="std std-ref">generate_lods</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-resourceimporterobj-property-generate-shadow-mesh"><span class="std std-ref">generate_shadow_mesh</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-resourceimporterobj-property-generate-tangents"><span class="std std-ref">generate_tangents</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a></p></td>
+<td><p><a class="reference internal" href="#class-resourceimporterobj-property-offset-mesh"><span class="std std-ref">offset_mesh</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Vector3(0,</span> <span class="pre">0,</span> <span class="pre">0)</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a></p></td>
+<td><p><a class="reference internal" href="#class-resourceimporterobj-property-scale-mesh"><span class="std std-ref">scale_mesh</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Vector3(1,</span> <span class="pre">1,</span> <span class="pre">1)</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="property-descriptions">
+<h2>Property Descriptions<a class="headerlink" href="#property-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-property" id="class-resourceimporterobj-property-force-disable-mesh-compression"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>force_disable_mesh_compression</strong> = <code class="docutils literal notranslate"><span class="pre">false</span></code> <a class="reference internal" href="#class-resourceimporterobj-property-force-disable-mesh-compression"><span class="std std-ref">🔗</span></a></p>
+<p>If <code class="docutils literal notranslate"><span class="pre">true</span></code>, mesh compression will not be used. Consider enabling if you notice blocky artifacts in your mesh normals or UVs, or if you have meshes that are larger than a few thousand meters in each direction.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-resourceimporterobj-property-generate-lightmap-uv2"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>generate_lightmap_uv2</strong> = <code class="docutils literal notranslate"><span class="pre">false</span></code> <a class="reference internal" href="#class-resourceimporterobj-property-generate-lightmap-uv2"><span class="std std-ref">🔗</span></a></p>
+<p>If <code class="docutils literal notranslate"><span class="pre">true</span></code>, generates UV2 on import for <a class="reference internal" href="class_lightmapgi.html#class-lightmapgi"><span class="std std-ref">LightmapGI</span></a> baking.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-resourceimporterobj-property-generate-lightmap-uv2-texel-size"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>generate_lightmap_uv2_texel_size</strong> = <code class="docutils literal notranslate"><span class="pre">0.2</span></code> <a class="reference internal" href="#class-resourceimporterobj-property-generate-lightmap-uv2-texel-size"><span class="std std-ref">🔗</span></a></p>
+<p>Controls the size of each texel on the baked lightmap. A smaller value results in more precise lightmaps, at the cost of larger lightmap sizes and longer bake times.</p>
+<p><strong>Note:</strong> Only effective if <a class="reference internal" href="#class-resourceimporterobj-property-generate-lightmap-uv2"><span class="std std-ref">generate_lightmap_uv2</span></a> is <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-resourceimporterobj-property-generate-lods"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>generate_lods</strong> = <code class="docutils literal notranslate"><span class="pre">true</span></code> <a class="reference internal" href="#class-resourceimporterobj-property-generate-lods"><span class="std std-ref">🔗</span></a></p>
+<p>If <code class="docutils literal notranslate"><span class="pre">true</span></code>, generates lower detail variants of the mesh which will be displayed in the distance to improve rendering performance. Not all meshes benefit from LOD, especially if they are never rendered from far away. Disabling this can reduce output file size and speed up importing. See <a class="reference external" href="../tutorials/3d/mesh_lod.html#doc-mesh-lod">Mesh level of detail (LOD)</a> for more information.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-resourceimporterobj-property-generate-shadow-mesh"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>generate_shadow_mesh</strong> = <code class="docutils literal notranslate"><span class="pre">true</span></code> <a class="reference internal" href="#class-resourceimporterobj-property-generate-shadow-mesh"><span class="std std-ref">🔗</span></a></p>
+<p>If <code class="docutils literal notranslate"><span class="pre">true</span></code>, enables the generation of shadow meshes on import. This optimizes shadow rendering without reducing quality by welding vertices together when possible. This in turn reduces the memory bandwidth required to render shadows. Shadow mesh generation currently doesn’t support using a lower detail level than the source mesh (but shadow rendering will make use of LODs when relevant).</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-resourceimporterobj-property-generate-tangents"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>generate_tangents</strong> = <code class="docutils literal notranslate"><span class="pre">true</span></code> <a class="reference internal" href="#class-resourceimporterobj-property-generate-tangents"><span class="std std-ref">🔗</span></a></p>
+<p>If <code class="docutils literal notranslate"><span class="pre">true</span></code>, generate vertex tangents using <a class="reference external" href="http://www.mikktspace.com/">Mikktspace</a> if the source mesh doesn’t have tangent data. When possible, it’s recommended to let the 3D modeling software generate tangents on export instead of relying on this option. Tangents are required for correct display of normal and height maps, along with any material/shader features that require tangents.</p>
+<p>If you don’t need material features that require tangents, disabling this can reduce output file size and speed up importing if the source 3D file doesn’t contain tangents.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-resourceimporterobj-property-offset-mesh"><a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a> <strong>offset_mesh</strong> = <code class="docutils literal notranslate"><span class="pre">Vector3(0,</span> <span class="pre">0,</span> <span class="pre">0)</span></code> <a class="reference internal" href="#class-resourceimporterobj-property-offset-mesh"><span class="std std-ref">🔗</span></a></p>
+<p>Offsets the mesh’s data by the specified value. This can be used to work around misaligned meshes without having to modify the source file.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-resourceimporterobj-property-scale-mesh"><a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a> <strong>scale_mesh</strong> = <code class="docutils literal notranslate"><span class="pre">Vector3(1,</span> <span class="pre">1,</span> <span class="pre">1)</span></code> <a class="reference internal" href="#class-resourceimporterobj-property-scale-mesh"><span class="std std-ref">🔗</span></a></p>
+<p>Scales the mesh’s data by the specified value. This can be used to work around misscaled meshes without having to modify the source file.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, MUmarShahbaz.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

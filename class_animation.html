@@ -1,0 +1,739 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Animation &mdash; RPG Components 2D 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=d45e8c67"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            RPG Components 2D
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">Animation</a><ul>
+<li><a class="reference internal" href="#description">Description</a></li>
+<li><a class="reference internal" href="#tutorials">Tutorials</a></li>
+<li><a class="reference internal" href="#properties">Properties</a></li>
+<li><a class="reference internal" href="#methods">Methods</a></li>
+<li><a class="reference internal" href="#enumerations">Enumerations</a></li>
+<li><a class="reference internal" href="#property-descriptions">Property Descriptions</a></li>
+<li><a class="reference internal" href="#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">RPG Components 2D</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Animation</li>
+      <li class="wy-breadcrumbs-aside">
+              <!-- User defined GitHub URL -->
+              <a href="hide" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="animation">
+<span id="class-animation"></span><h1>Animation<a class="headerlink" href="#animation" title="Link to this heading"></a></h1>
+<p><strong>Inherits:</strong> <a class="reference internal" href="class_resource.html#class-resource"><span class="std std-ref">Resource</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_refcounted.html#class-refcounted"><span class="std std-ref">RefCounted</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_object.html#class-object"><span class="std std-ref">Object</span></a></p>
+<p>Holds data that can be used to animate anything in the engine.</p>
+<section class="classref-introduction-group" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
+<p>This resource holds data that can be used to animate anything in the engine. Animations are divided into tracks and each track must be linked to a node. The state of that node can be changed through time, by adding timed keys (events) to the track.</p>
+<p>Animations are just data containers, and must be added to nodes such as an <a class="reference internal" href="class_animationplayer.html#class-animationplayer"><span class="std std-ref">AnimationPlayer</span></a> to be played back. Animation tracks have different types, each with its own set of dedicated methods. Check <a class="reference internal" href="#enum-animation-tracktype"><span class="std std-ref">TrackType</span></a> to see available types.</p>
+<p><strong>Note:</strong> For 3D position/rotation/scale, using the dedicated <a class="reference internal" href="#class-animation-constant-type-position-3d"><span class="std std-ref">TYPE_POSITION_3D</span></a>, <a class="reference internal" href="#class-animation-constant-type-rotation-3d"><span class="std std-ref">TYPE_ROTATION_3D</span></a> and <a class="reference internal" href="#class-animation-constant-type-scale-3d"><span class="std std-ref">TYPE_SCALE_3D</span></a> track types instead of <a class="reference internal" href="#class-animation-constant-type-value"><span class="std std-ref">TYPE_VALUE</span></a> is recommended for performance reasons.</p>
+</section>
+<section class="classref-introduction-group" id="tutorials">
+<h2>Tutorials<a class="headerlink" href="#tutorials" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><span class="xref std std-doc">Animation documentation index</span></p></li>
+</ul>
+</section>
+<section class="classref-reftable-group" id="properties">
+<h2>Properties<a class="headerlink" href="#properties" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-animation-property-capture-included"><span class="std std-ref">capture_included</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-animation-property-length"><span class="std std-ref">length</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">1.0</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#enum-animation-loopmode"><span class="std std-ref">LoopMode</span></a></p></td>
+<td><p><a class="reference internal" href="#class-animation-property-loop-mode"><span class="std std-ref">loop_mode</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-animation-property-step"><span class="std std-ref">step</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0.033333335</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section class="classref-reftable-group" id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-animation-method-add-marker"><span class="std std-ref">add_marker</span></a>(name: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>, time: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-animation-method-add-track"><span class="std std-ref">add_track</span></a>(type: <a class="reference internal" href="#enum-animation-tracktype"><span class="std std-ref">TrackType</span></a>, at_position: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> = -1)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a></p></td>
+<td><p><a class="reference internal" href="#class-animation-method-animation-track-get-key-animation"><span class="std std-ref">animation_track_get_key_animation</span></a>(track_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, key_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-animation-method-animation-track-insert-key"><span class="std std-ref">animation_track_insert_key</span></a>(track_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, time: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, animation: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-animation-method-animation-track-set-key-animation"><span class="std std-ref">animation_track_set_key_animation</span></a>(track_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, key_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, animation: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-animation-method-audio-track-get-key-end-offset"><span class="std std-ref">audio_track_get_key_end_offset</span></a>(track_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, key_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-animation-method-audio-track-get-key-start-offset"><span class="std std-ref">audio_track_get_key_start_offset</span></a>(track_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, key_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_resource.html#class-resource"><span class="std std-ref">Resource</span></a></p></td>
+<td><p><a class="reference internal" href="#class-animation-method-audio-track-get-key-stream"><span class="std std-ref">audio_track_get_key_stream</span></a>(track_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, key_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-animation-method-audio-track-insert-key"><span class="std std-ref">audio_track_insert_key</span></a>(track_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, time: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, stream: <a class="reference internal" href="class_resource.html#class-resource"><span class="std std-ref">Resource</span></a>, start_offset: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> = 0, end_offset: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> = 0)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-animation-method-audio-track-is-use-blend"><span class="std std-ref">audio_track_is_use_blend</span></a>(track_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-animation-method-audio-track-set-key-end-offset"><span class="std std-ref">audio_track_set_key_end_offset</span></a>(track_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, key_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, offset: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-animation-method-audio-track-set-key-start-offset"><span class="std std-ref">audio_track_set_key_start_offset</span></a>(track_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, key_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, offset: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-animation-method-audio-track-set-key-stream"><span class="std std-ref">audio_track_set_key_stream</span></a>(track_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, key_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, stream: <a class="reference internal" href="class_resource.html#class-resource"><span class="std std-ref">Resource</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-animation-method-audio-track-set-use-blend"><span class="std std-ref">audio_track_set_use_blend</span></a>(track_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, enable: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a></p></td>
+<td><p><a class="reference internal" href="#class-animation-method-bezier-track-get-key-in-handle"><span class="std std-ref">bezier_track_get_key_in_handle</span></a>(track_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, key_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a></p></td>
+<td><p><a class="reference internal" href="#class-animation-method-bezier-track-get-key-out-handle"><span class="std std-ref">bezier_track_get_key_out_handle</span></a>(track_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, key_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-animation-method-bezier-track-get-key-value"><span class="std std-ref">bezier_track_get_key_value</span></a>(track_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, key_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-animation-method-bezier-track-insert-key"><span class="std std-ref">bezier_track_insert_key</span></a>(track_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, time: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, value: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, in_handle: <a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a> = Vector2(0, 0), out_handle: <a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a> = Vector2(0, 0))</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-animation-method-bezier-track-interpolate"><span class="std std-ref">bezier_track_interpolate</span></a>(track_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, time: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-animation-method-bezier-track-set-key-in-handle"><span class="std std-ref">bezier_track_set_key_in_handle</span></a>(track_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, key_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, in_handle: <a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a>, balanced_value_time_ratio: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> = 1.0)</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-animation-method-bezier-track-set-key-out-handle"><span class="std std-ref">bezier_track_set_key_out_handle</span></a>(track_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, key_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, out_handle: <a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a>, balanced_value_time_ratio: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> = 1.0)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-animation-method-bezier-track-set-key-value"><span class="std std-ref">bezier_track_set_key_value</span></a>(track_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, key_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, value: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-animation-method-blend-shape-track-insert-key"><span class="std std-ref">blend_shape_track_insert_key</span></a>(track_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, time: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, amount: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-animation-method-blend-shape-track-interpolate"><span class="std std-ref">blend_shape_track_interpolate</span></a>(track_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, time_sec: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, backward: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = false) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-animation-method-clear"><span class="std std-ref">clear</span></a>()</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-animation-method-compress"><span class="std std-ref">compress</span></a>(page_size: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> = 8192, fps: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> = 120, split_tolerance: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> = 4.0)</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-animation-method-copy-track"><span class="std std-ref">copy_track</span></a>(track_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, to_animation: <a class="reference internal" href="#class-animation"><span class="std std-ref">Animation</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-animation-method-find-track"><span class="std std-ref">find_track</span></a>(path: <a class="reference internal" href="class_nodepath.html#class-nodepath"><span class="std std-ref">NodePath</span></a>, type: <a class="reference internal" href="#enum-animation-tracktype"><span class="std std-ref">TrackType</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a></p></td>
+<td><p><a class="reference internal" href="#class-animation-method-get-marker-at-time"><span class="std std-ref">get_marker_at_time</span></a>(time: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_color.html#class-color"><span class="std std-ref">Color</span></a></p></td>
+<td><p><a class="reference internal" href="#class-animation-method-get-marker-color"><span class="std std-ref">get_marker_color</span></a>(name: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_packedstringarray.html#class-packedstringarray"><span class="std std-ref">PackedStringArray</span></a></p></td>
+<td><p><a class="reference internal" href="#class-animation-method-get-marker-names"><span class="std std-ref">get_marker_names</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-animation-method-get-marker-time"><span class="std std-ref">get_marker_time</span></a>(name: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a></p></td>
+<td><p><a class="reference internal" href="#class-animation-method-get-next-marker"><span class="std std-ref">get_next_marker</span></a>(time: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a></p></td>
+<td><p><a class="reference internal" href="#class-animation-method-get-prev-marker"><span class="std std-ref">get_prev_marker</span></a>(time: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-animation-method-get-track-count"><span class="std std-ref">get_track_count</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-animation-method-has-marker"><span class="std std-ref">has_marker</span></a>(name: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a></p></td>
+<td><p><a class="reference internal" href="#class-animation-method-method-track-get-name"><span class="std std-ref">method_track_get_name</span></a>(track_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, key_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_array.html#class-array"><span class="std std-ref">Array</span></a></p></td>
+<td><p><a class="reference internal" href="#class-animation-method-method-track-get-params"><span class="std std-ref">method_track_get_params</span></a>(track_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, key_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-animation-method-optimize"><span class="std std-ref">optimize</span></a>(allowed_velocity_err: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> = 0.01, allowed_angular_err: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> = 0.01, precision: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> = 3)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-animation-method-position-track-insert-key"><span class="std std-ref">position_track_insert_key</span></a>(track_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, time: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, position: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a></p></td>
+<td><p><a class="reference internal" href="#class-animation-method-position-track-interpolate"><span class="std std-ref">position_track_interpolate</span></a>(track_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, time_sec: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, backward: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = false) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-animation-method-remove-marker"><span class="std std-ref">remove_marker</span></a>(name: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-animation-method-remove-track"><span class="std std-ref">remove_track</span></a>(track_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-animation-method-rotation-track-insert-key"><span class="std std-ref">rotation_track_insert_key</span></a>(track_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, time: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, rotation: <a class="reference internal" href="class_quaternion.html#class-quaternion"><span class="std std-ref">Quaternion</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_quaternion.html#class-quaternion"><span class="std std-ref">Quaternion</span></a></p></td>
+<td><p><a class="reference internal" href="#class-animation-method-rotation-track-interpolate"><span class="std std-ref">rotation_track_interpolate</span></a>(track_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, time_sec: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, backward: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = false) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-animation-method-scale-track-insert-key"><span class="std std-ref">scale_track_insert_key</span></a>(track_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, time: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, scale: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a></p></td>
+<td><p><a class="reference internal" href="#class-animation-method-scale-track-interpolate"><span class="std std-ref">scale_track_interpolate</span></a>(track_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, time_sec: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, backward: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = false) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-animation-method-set-marker-color"><span class="std std-ref">set_marker_color</span></a>(name: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>, color: <a class="reference internal" href="class_color.html#class-color"><span class="std std-ref">Color</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-animation-method-track-find-key"><span class="std std-ref">track_find_key</span></a>(track_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, time: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, find_mode: <a class="reference internal" href="#enum-animation-findmode"><span class="std std-ref">FindMode</span></a> = 0, limit: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = false, backward: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = false) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-animation-method-track-get-interpolation-loop-wrap"><span class="std std-ref">track_get_interpolation_loop_wrap</span></a>(track_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#enum-animation-interpolationtype"><span class="std std-ref">InterpolationType</span></a></p></td>
+<td><p><a class="reference internal" href="#class-animation-method-track-get-interpolation-type"><span class="std std-ref">track_get_interpolation_type</span></a>(track_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-animation-method-track-get-key-count"><span class="std std-ref">track_get_key_count</span></a>(track_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-animation-method-track-get-key-time"><span class="std std-ref">track_get_key_time</span></a>(track_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, key_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-animation-method-track-get-key-transition"><span class="std std-ref">track_get_key_transition</span></a>(track_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, key_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a></p></td>
+<td><p><a class="reference internal" href="#class-animation-method-track-get-key-value"><span class="std std-ref">track_get_key_value</span></a>(track_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, key_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_nodepath.html#class-nodepath"><span class="std std-ref">NodePath</span></a></p></td>
+<td><p><a class="reference internal" href="#class-animation-method-track-get-path"><span class="std std-ref">track_get_path</span></a>(track_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#enum-animation-tracktype"><span class="std std-ref">TrackType</span></a></p></td>
+<td><p><a class="reference internal" href="#class-animation-method-track-get-type"><span class="std std-ref">track_get_type</span></a>(track_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-animation-method-track-insert-key"><span class="std std-ref">track_insert_key</span></a>(track_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, time: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, key: <a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a>, transition: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> = 1)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-animation-method-track-is-compressed"><span class="std std-ref">track_is_compressed</span></a>(track_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-animation-method-track-is-enabled"><span class="std std-ref">track_is_enabled</span></a>(track_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-animation-method-track-is-imported"><span class="std std-ref">track_is_imported</span></a>(track_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-animation-method-track-move-down"><span class="std std-ref">track_move_down</span></a>(track_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-animation-method-track-move-to"><span class="std std-ref">track_move_to</span></a>(track_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, to_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-animation-method-track-move-up"><span class="std std-ref">track_move_up</span></a>(track_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-animation-method-track-remove-key"><span class="std std-ref">track_remove_key</span></a>(track_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, key_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-animation-method-track-remove-key-at-time"><span class="std std-ref">track_remove_key_at_time</span></a>(track_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, time: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-animation-method-track-set-enabled"><span class="std std-ref">track_set_enabled</span></a>(track_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, enabled: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-animation-method-track-set-imported"><span class="std std-ref">track_set_imported</span></a>(track_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, imported: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-animation-method-track-set-interpolation-loop-wrap"><span class="std std-ref">track_set_interpolation_loop_wrap</span></a>(track_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, interpolation: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-animation-method-track-set-interpolation-type"><span class="std std-ref">track_set_interpolation_type</span></a>(track_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, interpolation: <a class="reference internal" href="#enum-animation-interpolationtype"><span class="std std-ref">InterpolationType</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-animation-method-track-set-key-time"><span class="std std-ref">track_set_key_time</span></a>(track_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, key_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, time: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-animation-method-track-set-key-transition"><span class="std std-ref">track_set_key_transition</span></a>(track_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, key_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, transition: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-animation-method-track-set-key-value"><span class="std std-ref">track_set_key_value</span></a>(track_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, key: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, value: <a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-animation-method-track-set-path"><span class="std std-ref">track_set_path</span></a>(track_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, path: <a class="reference internal" href="class_nodepath.html#class-nodepath"><span class="std std-ref">NodePath</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-animation-method-track-swap"><span class="std std-ref">track_swap</span></a>(track_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, with_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#enum-animation-updatemode"><span class="std std-ref">UpdateMode</span></a></p></td>
+<td><p><a class="reference internal" href="#class-animation-method-value-track-get-update-mode"><span class="std std-ref">value_track_get_update_mode</span></a>(track_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a></p></td>
+<td><p><a class="reference internal" href="#class-animation-method-value-track-interpolate"><span class="std std-ref">value_track_interpolate</span></a>(track_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, time_sec: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, backward: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = false) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-animation-method-value-track-set-update-mode"><span class="std std-ref">value_track_set_update_mode</span></a>(track_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, mode: <a class="reference internal" href="#enum-animation-updatemode"><span class="std std-ref">UpdateMode</span></a>)</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="enumerations">
+<h2>Enumerations<a class="headerlink" href="#enumerations" title="Link to this heading"></a></h2>
+<p class="classref-enumeration" id="enum-animation-tracktype">enum <strong>TrackType</strong>: <a class="reference internal" href="#enum-animation-tracktype"><span class="std std-ref">🔗</span></a></p>
+<p class="classref-enumeration-constant" id="class-animation-constant-type-value"><a class="reference internal" href="#enum-animation-tracktype"><span class="std std-ref">TrackType</span></a> <strong>TYPE_VALUE</strong> = <code class="docutils literal notranslate"><span class="pre">0</span></code></p>
+<p>Value tracks set values in node properties, but only those which can be interpolated. For 3D position/rotation/scale, using the dedicated <a class="reference internal" href="#class-animation-constant-type-position-3d"><span class="std std-ref">TYPE_POSITION_3D</span></a>, <a class="reference internal" href="#class-animation-constant-type-rotation-3d"><span class="std std-ref">TYPE_ROTATION_3D</span></a> and <a class="reference internal" href="#class-animation-constant-type-scale-3d"><span class="std std-ref">TYPE_SCALE_3D</span></a> track types instead of <a class="reference internal" href="#class-animation-constant-type-value"><span class="std std-ref">TYPE_VALUE</span></a> is recommended for performance reasons.</p>
+<p class="classref-enumeration-constant" id="class-animation-constant-type-position-3d"><a class="reference internal" href="#enum-animation-tracktype"><span class="std std-ref">TrackType</span></a> <strong>TYPE_POSITION_3D</strong> = <code class="docutils literal notranslate"><span class="pre">1</span></code></p>
+<p>3D position track (values are stored in <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>s).</p>
+<p class="classref-enumeration-constant" id="class-animation-constant-type-rotation-3d"><a class="reference internal" href="#enum-animation-tracktype"><span class="std std-ref">TrackType</span></a> <strong>TYPE_ROTATION_3D</strong> = <code class="docutils literal notranslate"><span class="pre">2</span></code></p>
+<p>3D rotation track (values are stored in <a class="reference internal" href="class_quaternion.html#class-quaternion"><span class="std std-ref">Quaternion</span></a>s).</p>
+<p class="classref-enumeration-constant" id="class-animation-constant-type-scale-3d"><a class="reference internal" href="#enum-animation-tracktype"><span class="std std-ref">TrackType</span></a> <strong>TYPE_SCALE_3D</strong> = <code class="docutils literal notranslate"><span class="pre">3</span></code></p>
+<p>3D scale track (values are stored in <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>s).</p>
+<p class="classref-enumeration-constant" id="class-animation-constant-type-blend-shape"><a class="reference internal" href="#enum-animation-tracktype"><span class="std std-ref">TrackType</span></a> <strong>TYPE_BLEND_SHAPE</strong> = <code class="docutils literal notranslate"><span class="pre">4</span></code></p>
+<p>Blend shape track.</p>
+<p class="classref-enumeration-constant" id="class-animation-constant-type-method"><a class="reference internal" href="#enum-animation-tracktype"><span class="std std-ref">TrackType</span></a> <strong>TYPE_METHOD</strong> = <code class="docutils literal notranslate"><span class="pre">5</span></code></p>
+<p>Method tracks call functions with given arguments per key.</p>
+<p class="classref-enumeration-constant" id="class-animation-constant-type-bezier"><a class="reference internal" href="#enum-animation-tracktype"><span class="std std-ref">TrackType</span></a> <strong>TYPE_BEZIER</strong> = <code class="docutils literal notranslate"><span class="pre">6</span></code></p>
+<p>Bezier tracks are used to interpolate a value using custom curves. They can also be used to animate sub-properties of vectors and colors (e.g. alpha value of a <a class="reference internal" href="class_color.html#class-color"><span class="std std-ref">Color</span></a>).</p>
+<p class="classref-enumeration-constant" id="class-animation-constant-type-audio"><a class="reference internal" href="#enum-animation-tracktype"><span class="std std-ref">TrackType</span></a> <strong>TYPE_AUDIO</strong> = <code class="docutils literal notranslate"><span class="pre">7</span></code></p>
+<p>Audio tracks are used to play an audio stream with either type of <a class="reference internal" href="class_audiostreamplayer.html#class-audiostreamplayer"><span class="std std-ref">AudioStreamPlayer</span></a>. The stream can be trimmed and previewed in the animation.</p>
+<p class="classref-enumeration-constant" id="class-animation-constant-type-animation"><a class="reference internal" href="#enum-animation-tracktype"><span class="std std-ref">TrackType</span></a> <strong>TYPE_ANIMATION</strong> = <code class="docutils literal notranslate"><span class="pre">8</span></code></p>
+<p>Animation tracks play animations in other <a class="reference internal" href="class_animationplayer.html#class-animationplayer"><span class="std std-ref">AnimationPlayer</span></a> nodes.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-enumeration" id="enum-animation-interpolationtype">enum <strong>InterpolationType</strong>: <a class="reference internal" href="#enum-animation-interpolationtype"><span class="std std-ref">🔗</span></a></p>
+<p class="classref-enumeration-constant" id="class-animation-constant-interpolation-nearest"><a class="reference internal" href="#enum-animation-interpolationtype"><span class="std std-ref">InterpolationType</span></a> <strong>INTERPOLATION_NEAREST</strong> = <code class="docutils literal notranslate"><span class="pre">0</span></code></p>
+<p>No interpolation (nearest value).</p>
+<p class="classref-enumeration-constant" id="class-animation-constant-interpolation-linear"><a class="reference internal" href="#enum-animation-interpolationtype"><span class="std std-ref">InterpolationType</span></a> <strong>INTERPOLATION_LINEAR</strong> = <code class="docutils literal notranslate"><span class="pre">1</span></code></p>
+<p>Linear interpolation.</p>
+<p class="classref-enumeration-constant" id="class-animation-constant-interpolation-cubic"><a class="reference internal" href="#enum-animation-interpolationtype"><span class="std std-ref">InterpolationType</span></a> <strong>INTERPOLATION_CUBIC</strong> = <code class="docutils literal notranslate"><span class="pre">2</span></code></p>
+<p>Cubic interpolation. This looks smoother than linear interpolation, but is more expensive to interpolate. Stick to <a class="reference internal" href="#class-animation-constant-interpolation-linear"><span class="std std-ref">INTERPOLATION_LINEAR</span></a> for complex 3D animations imported from external software, even if it requires using a higher animation framerate in return.</p>
+<p class="classref-enumeration-constant" id="class-animation-constant-interpolation-linear-angle"><a class="reference internal" href="#enum-animation-interpolationtype"><span class="std std-ref">InterpolationType</span></a> <strong>INTERPOLATION_LINEAR_ANGLE</strong> = <code class="docutils literal notranslate"><span class="pre">3</span></code></p>
+<p>Linear interpolation with shortest path rotation.</p>
+<p><strong>Note:</strong> The result value is always normalized and may not match the key value.</p>
+<p class="classref-enumeration-constant" id="class-animation-constant-interpolation-cubic-angle"><a class="reference internal" href="#enum-animation-interpolationtype"><span class="std std-ref">InterpolationType</span></a> <strong>INTERPOLATION_CUBIC_ANGLE</strong> = <code class="docutils literal notranslate"><span class="pre">4</span></code></p>
+<p>Cubic interpolation with shortest path rotation.</p>
+<p><strong>Note:</strong> The result value is always normalized and may not match the key value.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-enumeration" id="enum-animation-updatemode">enum <strong>UpdateMode</strong>: <a class="reference internal" href="#enum-animation-updatemode"><span class="std std-ref">🔗</span></a></p>
+<p class="classref-enumeration-constant" id="class-animation-constant-update-continuous"><a class="reference internal" href="#enum-animation-updatemode"><span class="std std-ref">UpdateMode</span></a> <strong>UPDATE_CONTINUOUS</strong> = <code class="docutils literal notranslate"><span class="pre">0</span></code></p>
+<p>Update between keyframes and hold the value.</p>
+<p class="classref-enumeration-constant" id="class-animation-constant-update-discrete"><a class="reference internal" href="#enum-animation-updatemode"><span class="std std-ref">UpdateMode</span></a> <strong>UPDATE_DISCRETE</strong> = <code class="docutils literal notranslate"><span class="pre">1</span></code></p>
+<p>Update at the keyframes.</p>
+<p class="classref-enumeration-constant" id="class-animation-constant-update-capture"><a class="reference internal" href="#enum-animation-updatemode"><span class="std std-ref">UpdateMode</span></a> <strong>UPDATE_CAPTURE</strong> = <code class="docutils literal notranslate"><span class="pre">2</span></code></p>
+<p>Same as <a class="reference internal" href="#class-animation-constant-update-continuous"><span class="std std-ref">UPDATE_CONTINUOUS</span></a> but works as a flag to capture the value of the current object and perform interpolation in some methods. See also <a class="reference internal" href="class_animationmixer.html#class-animationmixer-method-capture"><span class="std std-ref">AnimationMixer.capture()</span></a>, <a class="reference internal" href="class_animationplayer.html#class-animationplayer-property-playback-auto-capture"><span class="std std-ref">AnimationPlayer.playback_auto_capture</span></a>, and <a class="reference internal" href="class_animationplayer.html#class-animationplayer-method-play-with-capture"><span class="std std-ref">AnimationPlayer.play_with_capture()</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-enumeration" id="enum-animation-loopmode">enum <strong>LoopMode</strong>: <a class="reference internal" href="#enum-animation-loopmode"><span class="std std-ref">🔗</span></a></p>
+<p class="classref-enumeration-constant" id="class-animation-constant-loop-none"><a class="reference internal" href="#enum-animation-loopmode"><span class="std std-ref">LoopMode</span></a> <strong>LOOP_NONE</strong> = <code class="docutils literal notranslate"><span class="pre">0</span></code></p>
+<p>At both ends of the animation, the animation will stop playing.</p>
+<p class="classref-enumeration-constant" id="class-animation-constant-loop-linear"><a class="reference internal" href="#enum-animation-loopmode"><span class="std std-ref">LoopMode</span></a> <strong>LOOP_LINEAR</strong> = <code class="docutils literal notranslate"><span class="pre">1</span></code></p>
+<p>At both ends of the animation, the animation will be repeated without changing the playback direction.</p>
+<p class="classref-enumeration-constant" id="class-animation-constant-loop-pingpong"><a class="reference internal" href="#enum-animation-loopmode"><span class="std std-ref">LoopMode</span></a> <strong>LOOP_PINGPONG</strong> = <code class="docutils literal notranslate"><span class="pre">2</span></code></p>
+<p>Repeats playback and reverse playback at both ends of the animation.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-enumeration" id="enum-animation-loopedflag">enum <strong>LoopedFlag</strong>: <a class="reference internal" href="#enum-animation-loopedflag"><span class="std std-ref">🔗</span></a></p>
+<p class="classref-enumeration-constant" id="class-animation-constant-looped-flag-none"><a class="reference internal" href="#enum-animation-loopedflag"><span class="std std-ref">LoopedFlag</span></a> <strong>LOOPED_FLAG_NONE</strong> = <code class="docutils literal notranslate"><span class="pre">0</span></code></p>
+<p>This flag indicates that the animation proceeds without any looping.</p>
+<p class="classref-enumeration-constant" id="class-animation-constant-looped-flag-end"><a class="reference internal" href="#enum-animation-loopedflag"><span class="std std-ref">LoopedFlag</span></a> <strong>LOOPED_FLAG_END</strong> = <code class="docutils literal notranslate"><span class="pre">1</span></code></p>
+<p>This flag indicates that the animation has reached the end of the animation and just after loop processed.</p>
+<p class="classref-enumeration-constant" id="class-animation-constant-looped-flag-start"><a class="reference internal" href="#enum-animation-loopedflag"><span class="std std-ref">LoopedFlag</span></a> <strong>LOOPED_FLAG_START</strong> = <code class="docutils literal notranslate"><span class="pre">2</span></code></p>
+<p>This flag indicates that the animation has reached the start of the animation and just after loop processed.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-enumeration" id="enum-animation-findmode">enum <strong>FindMode</strong>: <a class="reference internal" href="#enum-animation-findmode"><span class="std std-ref">🔗</span></a></p>
+<p class="classref-enumeration-constant" id="class-animation-constant-find-mode-nearest"><a class="reference internal" href="#enum-animation-findmode"><span class="std std-ref">FindMode</span></a> <strong>FIND_MODE_NEAREST</strong> = <code class="docutils literal notranslate"><span class="pre">0</span></code></p>
+<p>Finds the nearest time key.</p>
+<p class="classref-enumeration-constant" id="class-animation-constant-find-mode-approx"><a class="reference internal" href="#enum-animation-findmode"><span class="std std-ref">FindMode</span></a> <strong>FIND_MODE_APPROX</strong> = <code class="docutils literal notranslate"><span class="pre">1</span></code></p>
+<p>Finds only the key with approximating the time.</p>
+<p class="classref-enumeration-constant" id="class-animation-constant-find-mode-exact"><a class="reference internal" href="#enum-animation-findmode"><span class="std std-ref">FindMode</span></a> <strong>FIND_MODE_EXACT</strong> = <code class="docutils literal notranslate"><span class="pre">2</span></code></p>
+<p>Finds only the key with matching the time.</p>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="property-descriptions">
+<h2>Property Descriptions<a class="headerlink" href="#property-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-property" id="class-animation-property-capture-included"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>capture_included</strong> = <code class="docutils literal notranslate"><span class="pre">false</span></code> <a class="reference internal" href="#class-animation-property-capture-included"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_capture_included</strong>()</p></li>
+</ul>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if the capture track is included. This is a cached readonly value for performance.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-animation-property-length"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>length</strong> = <code class="docutils literal notranslate"><span class="pre">1.0</span></code> <a class="reference internal" href="#class-animation-property-length"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_length</strong>(value: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>get_length</strong>()</p></li>
+</ul>
+<p>The total length of the animation (in seconds).</p>
+<p><strong>Note:</strong> Length is not delimited by the last key, as this one may be before or after the end to ensure correct interpolation and looping.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-animation-property-loop-mode"><a class="reference internal" href="#enum-animation-loopmode"><span class="std std-ref">LoopMode</span></a> <strong>loop_mode</strong> = <code class="docutils literal notranslate"><span class="pre">0</span></code> <a class="reference internal" href="#class-animation-property-loop-mode"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_loop_mode</strong>(value: <a class="reference internal" href="#enum-animation-loopmode"><span class="std std-ref">LoopMode</span></a>)</p></li>
+<li><p><a class="reference internal" href="#enum-animation-loopmode"><span class="std std-ref">LoopMode</span></a> <strong>get_loop_mode</strong>()</p></li>
+</ul>
+<p>Determines the behavior of both ends of the animation timeline during animation playback. This indicates whether and how the animation should be restarted, and is also used to correctly interpolate animation cycles.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-animation-property-step"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>step</strong> = <code class="docutils literal notranslate"><span class="pre">0.033333335</span></code> <a class="reference internal" href="#class-animation-property-step"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_step</strong>(value: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>get_step</strong>()</p></li>
+</ul>
+<p>The animation step value.</p>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="method-descriptions">
+<h2>Method Descriptions<a class="headerlink" href="#method-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-method" id="class-animation-method-add-marker"><abbr title="No return value.">void</abbr> <strong>add_marker</strong>(name: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>, time: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>) <a class="reference internal" href="#class-animation-method-add-marker"><span class="std std-ref">🔗</span></a></p>
+<p>Adds a marker to this Animation.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-animation-method-add-track"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>add_track</strong>(type: <a class="reference internal" href="#enum-animation-tracktype"><span class="std std-ref">TrackType</span></a>, at_position: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> = -1) <a class="reference internal" href="#class-animation-method-add-track"><span class="std std-ref">🔗</span></a></p>
+<p>Adds a track to the Animation.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-animation-method-animation-track-get-key-animation"><a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a> <strong>animation_track_get_key_animation</strong>(track_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, key_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-animation-method-animation-track-get-key-animation"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the animation name at the key identified by <code class="docutils literal notranslate"><span class="pre">key_idx</span></code>. The <code class="docutils literal notranslate"><span class="pre">track_idx</span></code> must be the index of an Animation Track.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-animation-method-animation-track-insert-key"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>animation_track_insert_key</strong>(track_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, time: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, animation: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>) <a class="reference internal" href="#class-animation-method-animation-track-insert-key"><span class="std std-ref">🔗</span></a></p>
+<p>Inserts a key with value <code class="docutils literal notranslate"><span class="pre">animation</span></code> at the given <code class="docutils literal notranslate"><span class="pre">time</span></code> (in seconds). The <code class="docutils literal notranslate"><span class="pre">track_idx</span></code> must be the index of an Animation Track.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-animation-method-animation-track-set-key-animation"><abbr title="No return value.">void</abbr> <strong>animation_track_set_key_animation</strong>(track_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, key_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, animation: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>) <a class="reference internal" href="#class-animation-method-animation-track-set-key-animation"><span class="std std-ref">🔗</span></a></p>
+<p>Sets the key identified by <code class="docutils literal notranslate"><span class="pre">key_idx</span></code> to value <code class="docutils literal notranslate"><span class="pre">animation</span></code>. The <code class="docutils literal notranslate"><span class="pre">track_idx</span></code> must be the index of an Animation Track.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-animation-method-audio-track-get-key-end-offset"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>audio_track_get_key_end_offset</strong>(track_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, key_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-animation-method-audio-track-get-key-end-offset"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the end offset of the key identified by <code class="docutils literal notranslate"><span class="pre">key_idx</span></code>. The <code class="docutils literal notranslate"><span class="pre">track_idx</span></code> must be the index of an Audio Track.</p>
+<p>End offset is the number of seconds cut off at the ending of the audio stream.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-animation-method-audio-track-get-key-start-offset"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>audio_track_get_key_start_offset</strong>(track_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, key_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-animation-method-audio-track-get-key-start-offset"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the start offset of the key identified by <code class="docutils literal notranslate"><span class="pre">key_idx</span></code>. The <code class="docutils literal notranslate"><span class="pre">track_idx</span></code> must be the index of an Audio Track.</p>
+<p>Start offset is the number of seconds cut off at the beginning of the audio stream.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-animation-method-audio-track-get-key-stream"><a class="reference internal" href="class_resource.html#class-resource"><span class="std std-ref">Resource</span></a> <strong>audio_track_get_key_stream</strong>(track_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, key_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-animation-method-audio-track-get-key-stream"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the audio stream of the key identified by <code class="docutils literal notranslate"><span class="pre">key_idx</span></code>. The <code class="docutils literal notranslate"><span class="pre">track_idx</span></code> must be the index of an Audio Track.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-animation-method-audio-track-insert-key"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>audio_track_insert_key</strong>(track_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, time: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, stream: <a class="reference internal" href="class_resource.html#class-resource"><span class="std std-ref">Resource</span></a>, start_offset: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> = 0, end_offset: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> = 0) <a class="reference internal" href="#class-animation-method-audio-track-insert-key"><span class="std std-ref">🔗</span></a></p>
+<p>Inserts an Audio Track key at the given <code class="docutils literal notranslate"><span class="pre">time</span></code> in seconds. The <code class="docutils literal notranslate"><span class="pre">track_idx</span></code> must be the index of an Audio Track.</p>
+<p><code class="docutils literal notranslate"><span class="pre">stream</span></code> is the <a class="reference internal" href="class_audiostream.html#class-audiostream"><span class="std std-ref">AudioStream</span></a> resource to play. <code class="docutils literal notranslate"><span class="pre">start_offset</span></code> is the number of seconds cut off at the beginning of the audio stream, while <code class="docutils literal notranslate"><span class="pre">end_offset</span></code> is at the ending.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-animation-method-audio-track-is-use-blend"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>audio_track_is_use_blend</strong>(track_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-animation-method-audio-track-is-use-blend"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if the track at <code class="docutils literal notranslate"><span class="pre">track_idx</span></code> will be blended with other animations.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-animation-method-audio-track-set-key-end-offset"><abbr title="No return value.">void</abbr> <strong>audio_track_set_key_end_offset</strong>(track_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, key_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, offset: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>) <a class="reference internal" href="#class-animation-method-audio-track-set-key-end-offset"><span class="std std-ref">🔗</span></a></p>
+<p>Sets the end offset of the key identified by <code class="docutils literal notranslate"><span class="pre">key_idx</span></code> to value <code class="docutils literal notranslate"><span class="pre">offset</span></code>. The <code class="docutils literal notranslate"><span class="pre">track_idx</span></code> must be the index of an Audio Track.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-animation-method-audio-track-set-key-start-offset"><abbr title="No return value.">void</abbr> <strong>audio_track_set_key_start_offset</strong>(track_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, key_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, offset: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>) <a class="reference internal" href="#class-animation-method-audio-track-set-key-start-offset"><span class="std std-ref">🔗</span></a></p>
+<p>Sets the start offset of the key identified by <code class="docutils literal notranslate"><span class="pre">key_idx</span></code> to value <code class="docutils literal notranslate"><span class="pre">offset</span></code>. The <code class="docutils literal notranslate"><span class="pre">track_idx</span></code> must be the index of an Audio Track.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-animation-method-audio-track-set-key-stream"><abbr title="No return value.">void</abbr> <strong>audio_track_set_key_stream</strong>(track_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, key_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, stream: <a class="reference internal" href="class_resource.html#class-resource"><span class="std std-ref">Resource</span></a>) <a class="reference internal" href="#class-animation-method-audio-track-set-key-stream"><span class="std std-ref">🔗</span></a></p>
+<p>Sets the stream of the key identified by <code class="docutils literal notranslate"><span class="pre">key_idx</span></code> to value <code class="docutils literal notranslate"><span class="pre">stream</span></code>. The <code class="docutils literal notranslate"><span class="pre">track_idx</span></code> must be the index of an Audio Track.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-animation-method-audio-track-set-use-blend"><abbr title="No return value.">void</abbr> <strong>audio_track_set_use_blend</strong>(track_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, enable: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>) <a class="reference internal" href="#class-animation-method-audio-track-set-use-blend"><span class="std std-ref">🔗</span></a></p>
+<p>Sets whether the track will be blended with other animations. If <code class="docutils literal notranslate"><span class="pre">true</span></code>, the audio playback volume changes depending on the blend value.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-animation-method-bezier-track-get-key-in-handle"><a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a> <strong>bezier_track_get_key_in_handle</strong>(track_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, key_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-animation-method-bezier-track-get-key-in-handle"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the in handle of the key identified by <code class="docutils literal notranslate"><span class="pre">key_idx</span></code>. The <code class="docutils literal notranslate"><span class="pre">track_idx</span></code> must be the index of a Bezier Track.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-animation-method-bezier-track-get-key-out-handle"><a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a> <strong>bezier_track_get_key_out_handle</strong>(track_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, key_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-animation-method-bezier-track-get-key-out-handle"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the out handle of the key identified by <code class="docutils literal notranslate"><span class="pre">key_idx</span></code>. The <code class="docutils literal notranslate"><span class="pre">track_idx</span></code> must be the index of a Bezier Track.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-animation-method-bezier-track-get-key-value"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>bezier_track_get_key_value</strong>(track_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, key_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-animation-method-bezier-track-get-key-value"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the value of the key identified by <code class="docutils literal notranslate"><span class="pre">key_idx</span></code>. The <code class="docutils literal notranslate"><span class="pre">track_idx</span></code> must be the index of a Bezier Track.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-animation-method-bezier-track-insert-key"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>bezier_track_insert_key</strong>(track_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, time: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, value: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, in_handle: <a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a> = Vector2(0, 0), out_handle: <a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a> = Vector2(0, 0)) <a class="reference internal" href="#class-animation-method-bezier-track-insert-key"><span class="std std-ref">🔗</span></a></p>
+<p>Inserts a Bezier Track key at the given <code class="docutils literal notranslate"><span class="pre">time</span></code> in seconds. The <code class="docutils literal notranslate"><span class="pre">track_idx</span></code> must be the index of a Bezier Track.</p>
+<p><code class="docutils literal notranslate"><span class="pre">in_handle</span></code> is the left-side weight of the added Bezier curve point, <code class="docutils literal notranslate"><span class="pre">out_handle</span></code> is the right-side one, while <code class="docutils literal notranslate"><span class="pre">value</span></code> is the actual value at this point.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-animation-method-bezier-track-interpolate"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>bezier_track_interpolate</strong>(track_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, time: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-animation-method-bezier-track-interpolate"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the interpolated value at the given <code class="docutils literal notranslate"><span class="pre">time</span></code> (in seconds). The <code class="docutils literal notranslate"><span class="pre">track_idx</span></code> must be the index of a Bezier Track.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-animation-method-bezier-track-set-key-in-handle"><abbr title="No return value.">void</abbr> <strong>bezier_track_set_key_in_handle</strong>(track_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, key_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, in_handle: <a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a>, balanced_value_time_ratio: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> = 1.0) <a class="reference internal" href="#class-animation-method-bezier-track-set-key-in-handle"><span class="std std-ref">🔗</span></a></p>
+<p>Sets the in handle of the key identified by <code class="docutils literal notranslate"><span class="pre">key_idx</span></code> to value <code class="docutils literal notranslate"><span class="pre">in_handle</span></code>. The <code class="docutils literal notranslate"><span class="pre">track_idx</span></code> must be the index of a Bezier Track.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-animation-method-bezier-track-set-key-out-handle"><abbr title="No return value.">void</abbr> <strong>bezier_track_set_key_out_handle</strong>(track_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, key_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, out_handle: <a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a>, balanced_value_time_ratio: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> = 1.0) <a class="reference internal" href="#class-animation-method-bezier-track-set-key-out-handle"><span class="std std-ref">🔗</span></a></p>
+<p>Sets the out handle of the key identified by <code class="docutils literal notranslate"><span class="pre">key_idx</span></code> to value <code class="docutils literal notranslate"><span class="pre">out_handle</span></code>. The <code class="docutils literal notranslate"><span class="pre">track_idx</span></code> must be the index of a Bezier Track.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-animation-method-bezier-track-set-key-value"><abbr title="No return value.">void</abbr> <strong>bezier_track_set_key_value</strong>(track_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, key_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, value: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>) <a class="reference internal" href="#class-animation-method-bezier-track-set-key-value"><span class="std std-ref">🔗</span></a></p>
+<p>Sets the value of the key identified by <code class="docutils literal notranslate"><span class="pre">key_idx</span></code> to the given value. The <code class="docutils literal notranslate"><span class="pre">track_idx</span></code> must be the index of a Bezier Track.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-animation-method-blend-shape-track-insert-key"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>blend_shape_track_insert_key</strong>(track_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, time: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, amount: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>) <a class="reference internal" href="#class-animation-method-blend-shape-track-insert-key"><span class="std std-ref">🔗</span></a></p>
+<p>Inserts a key in a given blend shape track. Returns the key index.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-animation-method-blend-shape-track-interpolate"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>blend_shape_track_interpolate</strong>(track_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, time_sec: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, backward: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = false) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-animation-method-blend-shape-track-interpolate"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the interpolated blend shape value at the given time (in seconds). The <code class="docutils literal notranslate"><span class="pre">track_idx</span></code> must be the index of a blend shape track.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-animation-method-clear"><abbr title="No return value.">void</abbr> <strong>clear</strong>() <a class="reference internal" href="#class-animation-method-clear"><span class="std std-ref">🔗</span></a></p>
+<p>Clear the animation (clear all tracks and reset all).</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-animation-method-compress"><abbr title="No return value.">void</abbr> <strong>compress</strong>(page_size: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> = 8192, fps: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> = 120, split_tolerance: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> = 4.0) <a class="reference internal" href="#class-animation-method-compress"><span class="std std-ref">🔗</span></a></p>
+<p>Compress the animation and all its tracks in-place. This will make <a class="reference internal" href="#class-animation-method-track-is-compressed"><span class="std std-ref">track_is_compressed()</span></a> return <code class="docutils literal notranslate"><span class="pre">true</span></code> once called on this <strong>Animation</strong>. Compressed tracks require less memory to be played, and are designed to be used for complex 3D animations (such as cutscenes) imported from external 3D software. Compression is lossy, but the difference is usually not noticeable in real world conditions.</p>
+<p><strong>Note:</strong> Compressed tracks have various limitations (such as not being editable from the editor), so only use compressed animations if you actually need them.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-animation-method-copy-track"><abbr title="No return value.">void</abbr> <strong>copy_track</strong>(track_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, to_animation: <a class="reference internal" href="#class-animation"><span class="std std-ref">Animation</span></a>) <a class="reference internal" href="#class-animation-method-copy-track"><span class="std std-ref">🔗</span></a></p>
+<p>Adds a new track to <code class="docutils literal notranslate"><span class="pre">to_animation</span></code> that is a copy of the given track from this animation.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-animation-method-find-track"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>find_track</strong>(path: <a class="reference internal" href="class_nodepath.html#class-nodepath"><span class="std std-ref">NodePath</span></a>, type: <a class="reference internal" href="#enum-animation-tracktype"><span class="std std-ref">TrackType</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-animation-method-find-track"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the index of the specified track. If the track is not found, return -1.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-animation-method-get-marker-at-time"><a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a> <strong>get_marker_at_time</strong>(time: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-animation-method-get-marker-at-time"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the name of the marker located at the given time.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-animation-method-get-marker-color"><a class="reference internal" href="class_color.html#class-color"><span class="std std-ref">Color</span></a> <strong>get_marker_color</strong>(name: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-animation-method-get-marker-color"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the given marker’s color.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-animation-method-get-marker-names"><a class="reference internal" href="class_packedstringarray.html#class-packedstringarray"><span class="std std-ref">PackedStringArray</span></a> <strong>get_marker_names</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-animation-method-get-marker-names"><span class="std std-ref">🔗</span></a></p>
+<p>Returns every marker in this Animation, sorted ascending by time.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-animation-method-get-marker-time"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>get_marker_time</strong>(name: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-animation-method-get-marker-time"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the given marker’s time.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-animation-method-get-next-marker"><a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a> <strong>get_next_marker</strong>(time: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-animation-method-get-next-marker"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the closest marker that comes after the given time. If no such marker exists, an empty string is returned.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-animation-method-get-prev-marker"><a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a> <strong>get_prev_marker</strong>(time: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-animation-method-get-prev-marker"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the closest marker that comes before the given time. If no such marker exists, an empty string is returned.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-animation-method-get-track-count"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>get_track_count</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-animation-method-get-track-count"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the amount of tracks in the animation.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-animation-method-has-marker"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>has_marker</strong>(name: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-animation-method-has-marker"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if this Animation contains a marker with the given name.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-animation-method-method-track-get-name"><a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a> <strong>method_track_get_name</strong>(track_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, key_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-animation-method-method-track-get-name"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the method name of a method track.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-animation-method-method-track-get-params"><a class="reference internal" href="class_array.html#class-array"><span class="std std-ref">Array</span></a> <strong>method_track_get_params</strong>(track_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, key_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-animation-method-method-track-get-params"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the arguments values to be called on a method track for a given key in a given track.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-animation-method-optimize"><abbr title="No return value.">void</abbr> <strong>optimize</strong>(allowed_velocity_err: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> = 0.01, allowed_angular_err: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> = 0.01, precision: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> = 3) <a class="reference internal" href="#class-animation-method-optimize"><span class="std std-ref">🔗</span></a></p>
+<p>Optimize the animation and all its tracks in-place. This will preserve only as many keys as are necessary to keep the animation within the specified bounds.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-animation-method-position-track-insert-key"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>position_track_insert_key</strong>(track_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, time: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, position: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>) <a class="reference internal" href="#class-animation-method-position-track-insert-key"><span class="std std-ref">🔗</span></a></p>
+<p>Inserts a key in a given 3D position track. Returns the key index.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-animation-method-position-track-interpolate"><a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a> <strong>position_track_interpolate</strong>(track_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, time_sec: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, backward: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = false) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-animation-method-position-track-interpolate"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the interpolated position value at the given time (in seconds). The <code class="docutils literal notranslate"><span class="pre">track_idx</span></code> must be the index of a 3D position track.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-animation-method-remove-marker"><abbr title="No return value.">void</abbr> <strong>remove_marker</strong>(name: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>) <a class="reference internal" href="#class-animation-method-remove-marker"><span class="std std-ref">🔗</span></a></p>
+<p>Removes the marker with the given name from this Animation.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-animation-method-remove-track"><abbr title="No return value.">void</abbr> <strong>remove_track</strong>(track_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <a class="reference internal" href="#class-animation-method-remove-track"><span class="std std-ref">🔗</span></a></p>
+<p>Removes a track by specifying the track index.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-animation-method-rotation-track-insert-key"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>rotation_track_insert_key</strong>(track_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, time: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, rotation: <a class="reference internal" href="class_quaternion.html#class-quaternion"><span class="std std-ref">Quaternion</span></a>) <a class="reference internal" href="#class-animation-method-rotation-track-insert-key"><span class="std std-ref">🔗</span></a></p>
+<p>Inserts a key in a given 3D rotation track. Returns the key index.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-animation-method-rotation-track-interpolate"><a class="reference internal" href="class_quaternion.html#class-quaternion"><span class="std std-ref">Quaternion</span></a> <strong>rotation_track_interpolate</strong>(track_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, time_sec: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, backward: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = false) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-animation-method-rotation-track-interpolate"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the interpolated rotation value at the given time (in seconds). The <code class="docutils literal notranslate"><span class="pre">track_idx</span></code> must be the index of a 3D rotation track.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-animation-method-scale-track-insert-key"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>scale_track_insert_key</strong>(track_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, time: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, scale: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>) <a class="reference internal" href="#class-animation-method-scale-track-insert-key"><span class="std std-ref">🔗</span></a></p>
+<p>Inserts a key in a given 3D scale track. Returns the key index.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-animation-method-scale-track-interpolate"><a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a> <strong>scale_track_interpolate</strong>(track_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, time_sec: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, backward: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = false) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-animation-method-scale-track-interpolate"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the interpolated scale value at the given time (in seconds). The <code class="docutils literal notranslate"><span class="pre">track_idx</span></code> must be the index of a 3D scale track.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-animation-method-set-marker-color"><abbr title="No return value.">void</abbr> <strong>set_marker_color</strong>(name: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>, color: <a class="reference internal" href="class_color.html#class-color"><span class="std std-ref">Color</span></a>) <a class="reference internal" href="#class-animation-method-set-marker-color"><span class="std std-ref">🔗</span></a></p>
+<p>Sets the given marker’s color.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-animation-method-track-find-key"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>track_find_key</strong>(track_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, time: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, find_mode: <a class="reference internal" href="#enum-animation-findmode"><span class="std std-ref">FindMode</span></a> = 0, limit: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = false, backward: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = false) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-animation-method-track-find-key"><span class="std std-ref">🔗</span></a></p>
+<p>Finds the key index by time in a given track. Optionally, only find it if the approx/exact time is given.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">limit</span></code> is <code class="docutils literal notranslate"><span class="pre">true</span></code>, it does not return keys outside the animation range.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">backward</span></code> is <code class="docutils literal notranslate"><span class="pre">true</span></code>, the direction is reversed in methods that rely on one directional processing.</p>
+<p>For example, in case <code class="docutils literal notranslate"><span class="pre">find_mode</span></code> is <a class="reference internal" href="#class-animation-constant-find-mode-nearest"><span class="std std-ref">FIND_MODE_NEAREST</span></a>, if there is no key in the current position just after seeked, the first key found is retrieved by searching before the position, but if <code class="docutils literal notranslate"><span class="pre">backward</span></code> is <code class="docutils literal notranslate"><span class="pre">true</span></code>, the first key found is retrieved after the position.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-animation-method-track-get-interpolation-loop-wrap"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>track_get_interpolation_loop_wrap</strong>(track_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-animation-method-track-get-interpolation-loop-wrap"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if the track at <code class="docutils literal notranslate"><span class="pre">track_idx</span></code> wraps the interpolation loop. New tracks wrap the interpolation loop by default.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-animation-method-track-get-interpolation-type"><a class="reference internal" href="#enum-animation-interpolationtype"><span class="std std-ref">InterpolationType</span></a> <strong>track_get_interpolation_type</strong>(track_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-animation-method-track-get-interpolation-type"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the interpolation type of a given track.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-animation-method-track-get-key-count"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>track_get_key_count</strong>(track_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-animation-method-track-get-key-count"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the number of keys in a given track.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-animation-method-track-get-key-time"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>track_get_key_time</strong>(track_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, key_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-animation-method-track-get-key-time"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the time at which the key is located.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-animation-method-track-get-key-transition"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>track_get_key_transition</strong>(track_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, key_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-animation-method-track-get-key-transition"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the transition curve (easing) for a specific key (see the built-in math function <a class="reference internal" href="class_%40globalscope.html#class-globalscope-method-ease"><span class="std std-ref">&#64;GlobalScope.ease()</span></a>).</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-animation-method-track-get-key-value"><a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a> <strong>track_get_key_value</strong>(track_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, key_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-animation-method-track-get-key-value"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the value of a given key in a given track.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-animation-method-track-get-path"><a class="reference internal" href="class_nodepath.html#class-nodepath"><span class="std std-ref">NodePath</span></a> <strong>track_get_path</strong>(track_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-animation-method-track-get-path"><span class="std std-ref">🔗</span></a></p>
+<p>Gets the path of a track. For more information on the path format, see <a class="reference internal" href="#class-animation-method-track-set-path"><span class="std std-ref">track_set_path()</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-animation-method-track-get-type"><a class="reference internal" href="#enum-animation-tracktype"><span class="std std-ref">TrackType</span></a> <strong>track_get_type</strong>(track_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-animation-method-track-get-type"><span class="std std-ref">🔗</span></a></p>
+<p>Gets the type of a track.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-animation-method-track-insert-key"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>track_insert_key</strong>(track_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, time: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, key: <a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a>, transition: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> = 1) <a class="reference internal" href="#class-animation-method-track-insert-key"><span class="std std-ref">🔗</span></a></p>
+<p>Inserts a generic key in a given track. Returns the key index.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-animation-method-track-is-compressed"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>track_is_compressed</strong>(track_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-animation-method-track-is-compressed"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if the track is compressed, <code class="docutils literal notranslate"><span class="pre">false</span></code> otherwise. See also <a class="reference internal" href="#class-animation-method-compress"><span class="std std-ref">compress()</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-animation-method-track-is-enabled"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>track_is_enabled</strong>(track_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-animation-method-track-is-enabled"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if the track at index <code class="docutils literal notranslate"><span class="pre">track_idx</span></code> is enabled.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-animation-method-track-is-imported"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>track_is_imported</strong>(track_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-animation-method-track-is-imported"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if the given track is imported. Else, return <code class="docutils literal notranslate"><span class="pre">false</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-animation-method-track-move-down"><abbr title="No return value.">void</abbr> <strong>track_move_down</strong>(track_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <a class="reference internal" href="#class-animation-method-track-move-down"><span class="std std-ref">🔗</span></a></p>
+<p>Moves a track down.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-animation-method-track-move-to"><abbr title="No return value.">void</abbr> <strong>track_move_to</strong>(track_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, to_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <a class="reference internal" href="#class-animation-method-track-move-to"><span class="std std-ref">🔗</span></a></p>
+<p>Changes the index position of track <code class="docutils literal notranslate"><span class="pre">track_idx</span></code> to the one defined in <code class="docutils literal notranslate"><span class="pre">to_idx</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-animation-method-track-move-up"><abbr title="No return value.">void</abbr> <strong>track_move_up</strong>(track_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <a class="reference internal" href="#class-animation-method-track-move-up"><span class="std std-ref">🔗</span></a></p>
+<p>Moves a track up.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-animation-method-track-remove-key"><abbr title="No return value.">void</abbr> <strong>track_remove_key</strong>(track_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, key_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <a class="reference internal" href="#class-animation-method-track-remove-key"><span class="std std-ref">🔗</span></a></p>
+<p>Removes a key by index in a given track.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-animation-method-track-remove-key-at-time"><abbr title="No return value.">void</abbr> <strong>track_remove_key_at_time</strong>(track_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, time: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>) <a class="reference internal" href="#class-animation-method-track-remove-key-at-time"><span class="std std-ref">🔗</span></a></p>
+<p>Removes a key at <code class="docutils literal notranslate"><span class="pre">time</span></code> in a given track.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-animation-method-track-set-enabled"><abbr title="No return value.">void</abbr> <strong>track_set_enabled</strong>(track_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, enabled: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>) <a class="reference internal" href="#class-animation-method-track-set-enabled"><span class="std std-ref">🔗</span></a></p>
+<p>Enables/disables the given track. Tracks are enabled by default.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-animation-method-track-set-imported"><abbr title="No return value.">void</abbr> <strong>track_set_imported</strong>(track_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, imported: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>) <a class="reference internal" href="#class-animation-method-track-set-imported"><span class="std std-ref">🔗</span></a></p>
+<p>Sets the given track as imported or not.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-animation-method-track-set-interpolation-loop-wrap"><abbr title="No return value.">void</abbr> <strong>track_set_interpolation_loop_wrap</strong>(track_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, interpolation: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>) <a class="reference internal" href="#class-animation-method-track-set-interpolation-loop-wrap"><span class="std std-ref">🔗</span></a></p>
+<p>If <code class="docutils literal notranslate"><span class="pre">true</span></code>, the track at <code class="docutils literal notranslate"><span class="pre">track_idx</span></code> wraps the interpolation loop.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-animation-method-track-set-interpolation-type"><abbr title="No return value.">void</abbr> <strong>track_set_interpolation_type</strong>(track_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, interpolation: <a class="reference internal" href="#enum-animation-interpolationtype"><span class="std std-ref">InterpolationType</span></a>) <a class="reference internal" href="#class-animation-method-track-set-interpolation-type"><span class="std std-ref">🔗</span></a></p>
+<p>Sets the interpolation type of a given track.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-animation-method-track-set-key-time"><abbr title="No return value.">void</abbr> <strong>track_set_key_time</strong>(track_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, key_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, time: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>) <a class="reference internal" href="#class-animation-method-track-set-key-time"><span class="std std-ref">🔗</span></a></p>
+<p>Sets the time of an existing key.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-animation-method-track-set-key-transition"><abbr title="No return value.">void</abbr> <strong>track_set_key_transition</strong>(track_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, key_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, transition: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>) <a class="reference internal" href="#class-animation-method-track-set-key-transition"><span class="std std-ref">🔗</span></a></p>
+<p>Sets the transition curve (easing) for a specific key (see the built-in math function <a class="reference internal" href="class_%40globalscope.html#class-globalscope-method-ease"><span class="std std-ref">&#64;GlobalScope.ease()</span></a>).</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-animation-method-track-set-key-value"><abbr title="No return value.">void</abbr> <strong>track_set_key_value</strong>(track_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, key: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, value: <a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a>) <a class="reference internal" href="#class-animation-method-track-set-key-value"><span class="std std-ref">🔗</span></a></p>
+<p>Sets the value of an existing key.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-animation-method-track-set-path"><abbr title="No return value.">void</abbr> <strong>track_set_path</strong>(track_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, path: <a class="reference internal" href="class_nodepath.html#class-nodepath"><span class="std std-ref">NodePath</span></a>) <a class="reference internal" href="#class-animation-method-track-set-path"><span class="std std-ref">🔗</span></a></p>
+<p>Sets the path of a track. Paths must be valid scene-tree paths to a node and must be specified starting from the <a class="reference internal" href="class_animationmixer.html#class-animationmixer-property-root-node"><span class="std std-ref">AnimationMixer.root_node</span></a> that will reproduce the animation. Tracks that control properties or bones must append their name after the path, separated by <code class="docutils literal notranslate"><span class="pre">&quot;:&quot;</span></code>.</p>
+<p>For example, <code class="docutils literal notranslate"><span class="pre">&quot;character/skeleton:ankle&quot;</span></code> or <code class="docutils literal notranslate"><span class="pre">&quot;character/mesh:transform/local&quot;</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-animation-method-track-swap"><abbr title="No return value.">void</abbr> <strong>track_swap</strong>(track_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, with_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <a class="reference internal" href="#class-animation-method-track-swap"><span class="std std-ref">🔗</span></a></p>
+<p>Swaps the track <code class="docutils literal notranslate"><span class="pre">track_idx</span></code>’s index position with the track <code class="docutils literal notranslate"><span class="pre">with_idx</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-animation-method-value-track-get-update-mode"><a class="reference internal" href="#enum-animation-updatemode"><span class="std std-ref">UpdateMode</span></a> <strong>value_track_get_update_mode</strong>(track_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-animation-method-value-track-get-update-mode"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the update mode of a value track.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-animation-method-value-track-interpolate"><a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a> <strong>value_track_interpolate</strong>(track_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, time_sec: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, backward: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = false) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-animation-method-value-track-interpolate"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the interpolated value at the given time (in seconds). The <code class="docutils literal notranslate"><span class="pre">track_idx</span></code> must be the index of a value track.</p>
+<p>A <code class="docutils literal notranslate"><span class="pre">backward</span></code> mainly affects the direction of key retrieval of the track with <a class="reference internal" href="#class-animation-constant-update-discrete"><span class="std std-ref">UPDATE_DISCRETE</span></a> converted by <a class="reference internal" href="class_animationmixer.html#class-animationmixer-constant-animation-callback-mode-discrete-force-continuous"><span class="std std-ref">AnimationMixer.ANIMATION_CALLBACK_MODE_DISCRETE_FORCE_CONTINUOUS</span></a> to match the result with <a class="reference internal" href="#class-animation-method-track-find-key"><span class="std std-ref">track_find_key()</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-animation-method-value-track-set-update-mode"><abbr title="No return value.">void</abbr> <strong>value_track_set_update_mode</strong>(track_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, mode: <a class="reference internal" href="#enum-animation-updatemode"><span class="std std-ref">UpdateMode</span></a>) <a class="reference internal" href="#class-animation-method-value-track-set-update-mode"><span class="std std-ref">🔗</span></a></p>
+<p>Sets the update mode of a value track.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, MUmarShahbaz.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

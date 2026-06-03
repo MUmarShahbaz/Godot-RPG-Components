@@ -1,0 +1,260 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SkeletonModification2DCCDIK &mdash; RPG Components 2D 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=d45e8c67"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            RPG Components 2D
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">SkeletonModification2DCCDIK</a><ul>
+<li><a class="reference internal" href="#description">Description</a></li>
+<li><a class="reference internal" href="#properties">Properties</a></li>
+<li><a class="reference internal" href="#methods">Methods</a></li>
+<li><a class="reference internal" href="#property-descriptions">Property Descriptions</a></li>
+<li><a class="reference internal" href="#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">RPG Components 2D</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">SkeletonModification2DCCDIK</li>
+      <li class="wy-breadcrumbs-aside">
+              <!-- User defined GitHub URL -->
+              <a href="hide" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="skeletonmodification2dccdik">
+<span id="class-skeletonmodification2dccdik"></span><h1>SkeletonModification2DCCDIK<a class="headerlink" href="#skeletonmodification2dccdik" title="Link to this heading"></a></h1>
+<p><strong>Experimental:</strong> This class may be changed or removed in future versions.</p>
+<p><strong>Inherits:</strong> <a class="reference internal" href="class_skeletonmodification2d.html#class-skeletonmodification2d"><span class="std std-ref">SkeletonModification2D</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_resource.html#class-resource"><span class="std std-ref">Resource</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_refcounted.html#class-refcounted"><span class="std std-ref">RefCounted</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_object.html#class-object"><span class="std std-ref">Object</span></a></p>
+<p>A modification that uses CCDIK to manipulate a series of bones to reach a target in 2D.</p>
+<section class="classref-introduction-group" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
+<p>This <a class="reference internal" href="class_skeletonmodification2d.html#class-skeletonmodification2d"><span class="std std-ref">SkeletonModification2D</span></a> uses an algorithm called Cyclic Coordinate Descent Inverse Kinematics, or CCDIK, to manipulate a chain of bones in a <a class="reference internal" href="class_skeleton2d.html#class-skeleton2d"><span class="std std-ref">Skeleton2D</span></a> so it reaches a defined target.</p>
+<p>CCDIK works by rotating a set of bones, typically called a “bone chain”, on a single axis. Each bone is rotated to face the target from the tip (by default), which over a chain of bones allow it to rotate properly to reach the target. Because the bones only rotate on a single axis, CCDIK <em>can</em> look more robotic than other IK solvers.</p>
+<p><strong>Note:</strong> The CCDIK modifier has <code class="docutils literal notranslate"><span class="pre">ccdik_joints</span></code>, which are the data objects that hold the data for each joint in the CCDIK chain. This is different from a bone! CCDIK joints hold the data needed for each bone in the bone chain used by CCDIK.</p>
+<p>CCDIK also fully supports angle constraints, allowing for more control over how a solution is met.</p>
+</section>
+<section class="classref-reftable-group" id="properties">
+<h2>Properties<a class="headerlink" href="#properties" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-skeletonmodification2dccdik-property-ccdik-data-chain-length"><span class="std std-ref">ccdik_data_chain_length</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_nodepath.html#class-nodepath"><span class="std std-ref">NodePath</span></a></p></td>
+<td><p><a class="reference internal" href="#class-skeletonmodification2dccdik-property-target-nodepath"><span class="std std-ref">target_nodepath</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">NodePath(&quot;&quot;)</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_nodepath.html#class-nodepath"><span class="std std-ref">NodePath</span></a></p></td>
+<td><p><a class="reference internal" href="#class-skeletonmodification2dccdik-property-tip-nodepath"><span class="std std-ref">tip_nodepath</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">NodePath(&quot;&quot;)</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section class="classref-reftable-group" id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_nodepath.html#class-nodepath"><span class="std std-ref">NodePath</span></a></p></td>
+<td><p><a class="reference internal" href="#class-skeletonmodification2dccdik-method-get-ccdik-joint-bone2d-node"><span class="std std-ref">get_ccdik_joint_bone2d_node</span></a>(joint_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-skeletonmodification2dccdik-method-get-ccdik-joint-bone-index"><span class="std std-ref">get_ccdik_joint_bone_index</span></a>(joint_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-skeletonmodification2dccdik-method-get-ccdik-joint-constraint-angle-invert"><span class="std std-ref">get_ccdik_joint_constraint_angle_invert</span></a>(joint_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-skeletonmodification2dccdik-method-get-ccdik-joint-constraint-angle-max"><span class="std std-ref">get_ccdik_joint_constraint_angle_max</span></a>(joint_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-skeletonmodification2dccdik-method-get-ccdik-joint-constraint-angle-min"><span class="std std-ref">get_ccdik_joint_constraint_angle_min</span></a>(joint_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-skeletonmodification2dccdik-method-get-ccdik-joint-enable-constraint"><span class="std std-ref">get_ccdik_joint_enable_constraint</span></a>(joint_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-skeletonmodification2dccdik-method-get-ccdik-joint-rotate-from-joint"><span class="std std-ref">get_ccdik_joint_rotate_from_joint</span></a>(joint_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-skeletonmodification2dccdik-method-set-ccdik-joint-bone2d-node"><span class="std std-ref">set_ccdik_joint_bone2d_node</span></a>(joint_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, bone2d_nodepath: <a class="reference internal" href="class_nodepath.html#class-nodepath"><span class="std std-ref">NodePath</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-skeletonmodification2dccdik-method-set-ccdik-joint-bone-index"><span class="std std-ref">set_ccdik_joint_bone_index</span></a>(joint_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, bone_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-skeletonmodification2dccdik-method-set-ccdik-joint-constraint-angle-invert"><span class="std std-ref">set_ccdik_joint_constraint_angle_invert</span></a>(joint_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, invert: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-skeletonmodification2dccdik-method-set-ccdik-joint-constraint-angle-max"><span class="std std-ref">set_ccdik_joint_constraint_angle_max</span></a>(joint_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, angle_max: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-skeletonmodification2dccdik-method-set-ccdik-joint-constraint-angle-min"><span class="std std-ref">set_ccdik_joint_constraint_angle_min</span></a>(joint_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, angle_min: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-skeletonmodification2dccdik-method-set-ccdik-joint-enable-constraint"><span class="std std-ref">set_ccdik_joint_enable_constraint</span></a>(joint_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, enable_constraint: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-skeletonmodification2dccdik-method-set-ccdik-joint-rotate-from-joint"><span class="std std-ref">set_ccdik_joint_rotate_from_joint</span></a>(joint_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, rotate_from_joint: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>)</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="property-descriptions">
+<h2>Property Descriptions<a class="headerlink" href="#property-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-property" id="class-skeletonmodification2dccdik-property-ccdik-data-chain-length"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>ccdik_data_chain_length</strong> = <code class="docutils literal notranslate"><span class="pre">0</span></code> <a class="reference internal" href="#class-skeletonmodification2dccdik-property-ccdik-data-chain-length"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_ccdik_data_chain_length</strong>(value: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>get_ccdik_data_chain_length</strong>()</p></li>
+</ul>
+<p>The number of CCDIK joints in the CCDIK modification.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-skeletonmodification2dccdik-property-target-nodepath"><a class="reference internal" href="class_nodepath.html#class-nodepath"><span class="std std-ref">NodePath</span></a> <strong>target_nodepath</strong> = <code class="docutils literal notranslate"><span class="pre">NodePath(&quot;&quot;)</span></code> <a class="reference internal" href="#class-skeletonmodification2dccdik-property-target-nodepath"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_target_node</strong>(value: <a class="reference internal" href="class_nodepath.html#class-nodepath"><span class="std std-ref">NodePath</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_nodepath.html#class-nodepath"><span class="std std-ref">NodePath</span></a> <strong>get_target_node</strong>()</p></li>
+</ul>
+<p>The NodePath to the node that is the target for the CCDIK modification. This node is what the CCDIK chain will attempt to rotate the bone chain to.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-skeletonmodification2dccdik-property-tip-nodepath"><a class="reference internal" href="class_nodepath.html#class-nodepath"><span class="std std-ref">NodePath</span></a> <strong>tip_nodepath</strong> = <code class="docutils literal notranslate"><span class="pre">NodePath(&quot;&quot;)</span></code> <a class="reference internal" href="#class-skeletonmodification2dccdik-property-tip-nodepath"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_tip_node</strong>(value: <a class="reference internal" href="class_nodepath.html#class-nodepath"><span class="std std-ref">NodePath</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_nodepath.html#class-nodepath"><span class="std std-ref">NodePath</span></a> <strong>get_tip_node</strong>()</p></li>
+</ul>
+<p>The end position of the CCDIK chain. Typically, this should be a child of a <a class="reference internal" href="class_bone2d.html#class-bone2d"><span class="std std-ref">Bone2D</span></a> node attached to the final <a class="reference internal" href="class_bone2d.html#class-bone2d"><span class="std std-ref">Bone2D</span></a> in the CCDIK chain.</p>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="method-descriptions">
+<h2>Method Descriptions<a class="headerlink" href="#method-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-method" id="class-skeletonmodification2dccdik-method-get-ccdik-joint-bone2d-node"><a class="reference internal" href="class_nodepath.html#class-nodepath"><span class="std std-ref">NodePath</span></a> <strong>get_ccdik_joint_bone2d_node</strong>(joint_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-skeletonmodification2dccdik-method-get-ccdik-joint-bone2d-node"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the <a class="reference internal" href="class_bone2d.html#class-bone2d"><span class="std std-ref">Bone2D</span></a> node assigned to the CCDIK joint at <code class="docutils literal notranslate"><span class="pre">joint_idx</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-skeletonmodification2dccdik-method-get-ccdik-joint-bone-index"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>get_ccdik_joint_bone_index</strong>(joint_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-skeletonmodification2dccdik-method-get-ccdik-joint-bone-index"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the index of the <a class="reference internal" href="class_bone2d.html#class-bone2d"><span class="std std-ref">Bone2D</span></a> node assigned to the CCDIK joint at <code class="docutils literal notranslate"><span class="pre">joint_idx</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-skeletonmodification2dccdik-method-get-ccdik-joint-constraint-angle-invert"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>get_ccdik_joint_constraint_angle_invert</strong>(joint_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-skeletonmodification2dccdik-method-get-ccdik-joint-constraint-angle-invert"><span class="std std-ref">🔗</span></a></p>
+<p>Returns whether the CCDIK joint at <code class="docutils literal notranslate"><span class="pre">joint_idx</span></code> uses an inverted joint constraint. See <a class="reference internal" href="#class-skeletonmodification2dccdik-method-set-ccdik-joint-constraint-angle-invert"><span class="std std-ref">set_ccdik_joint_constraint_angle_invert()</span></a> for details.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-skeletonmodification2dccdik-method-get-ccdik-joint-constraint-angle-max"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>get_ccdik_joint_constraint_angle_max</strong>(joint_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-skeletonmodification2dccdik-method-get-ccdik-joint-constraint-angle-max"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the maximum angle constraint for the joint at <code class="docutils literal notranslate"><span class="pre">joint_idx</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-skeletonmodification2dccdik-method-get-ccdik-joint-constraint-angle-min"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>get_ccdik_joint_constraint_angle_min</strong>(joint_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-skeletonmodification2dccdik-method-get-ccdik-joint-constraint-angle-min"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the minimum angle constraint for the joint at <code class="docutils literal notranslate"><span class="pre">joint_idx</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-skeletonmodification2dccdik-method-get-ccdik-joint-enable-constraint"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>get_ccdik_joint_enable_constraint</strong>(joint_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-skeletonmodification2dccdik-method-get-ccdik-joint-enable-constraint"><span class="std std-ref">🔗</span></a></p>
+<p>Returns whether angle constraints on the CCDIK joint at <code class="docutils literal notranslate"><span class="pre">joint_idx</span></code> are enabled.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-skeletonmodification2dccdik-method-get-ccdik-joint-rotate-from-joint"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>get_ccdik_joint_rotate_from_joint</strong>(joint_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-skeletonmodification2dccdik-method-get-ccdik-joint-rotate-from-joint"><span class="std std-ref">🔗</span></a></p>
+<p>Returns whether the joint at <code class="docutils literal notranslate"><span class="pre">joint_idx</span></code> is set to rotate from the joint, <code class="docutils literal notranslate"><span class="pre">true</span></code>, or to rotate from the tip, <code class="docutils literal notranslate"><span class="pre">false</span></code>. The default is to rotate from the tip.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-skeletonmodification2dccdik-method-set-ccdik-joint-bone2d-node"><abbr title="No return value.">void</abbr> <strong>set_ccdik_joint_bone2d_node</strong>(joint_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, bone2d_nodepath: <a class="reference internal" href="class_nodepath.html#class-nodepath"><span class="std std-ref">NodePath</span></a>) <a class="reference internal" href="#class-skeletonmodification2dccdik-method-set-ccdik-joint-bone2d-node"><span class="std std-ref">🔗</span></a></p>
+<p>Sets the <a class="reference internal" href="class_bone2d.html#class-bone2d"><span class="std std-ref">Bone2D</span></a> node assigned to the CCDIK joint at <code class="docutils literal notranslate"><span class="pre">joint_idx</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-skeletonmodification2dccdik-method-set-ccdik-joint-bone-index"><abbr title="No return value.">void</abbr> <strong>set_ccdik_joint_bone_index</strong>(joint_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, bone_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <a class="reference internal" href="#class-skeletonmodification2dccdik-method-set-ccdik-joint-bone-index"><span class="std std-ref">🔗</span></a></p>
+<p>Sets the bone index, <code class="docutils literal notranslate"><span class="pre">bone_idx</span></code>, of the CCDIK joint at <code class="docutils literal notranslate"><span class="pre">joint_idx</span></code>. When possible, this will also update the <code class="docutils literal notranslate"><span class="pre">bone2d_node</span></code> of the CCDIK joint based on data provided by the linked skeleton.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-skeletonmodification2dccdik-method-set-ccdik-joint-constraint-angle-invert"><abbr title="No return value.">void</abbr> <strong>set_ccdik_joint_constraint_angle_invert</strong>(joint_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, invert: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>) <a class="reference internal" href="#class-skeletonmodification2dccdik-method-set-ccdik-joint-constraint-angle-invert"><span class="std std-ref">🔗</span></a></p>
+<p>Sets whether the CCDIK joint at <code class="docutils literal notranslate"><span class="pre">joint_idx</span></code> uses an inverted joint constraint.</p>
+<p>An inverted joint constraint only constraints the CCDIK joint to the angles <em>outside of</em> the inputted minimum and maximum angles. For this reason, it is referred to as an inverted joint constraint, as it constraints the joint to the outside of the inputted values.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-skeletonmodification2dccdik-method-set-ccdik-joint-constraint-angle-max"><abbr title="No return value.">void</abbr> <strong>set_ccdik_joint_constraint_angle_max</strong>(joint_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, angle_max: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>) <a class="reference internal" href="#class-skeletonmodification2dccdik-method-set-ccdik-joint-constraint-angle-max"><span class="std std-ref">🔗</span></a></p>
+<p>Sets the maximum angle constraint for the joint at <code class="docutils literal notranslate"><span class="pre">joint_idx</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-skeletonmodification2dccdik-method-set-ccdik-joint-constraint-angle-min"><abbr title="No return value.">void</abbr> <strong>set_ccdik_joint_constraint_angle_min</strong>(joint_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, angle_min: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>) <a class="reference internal" href="#class-skeletonmodification2dccdik-method-set-ccdik-joint-constraint-angle-min"><span class="std std-ref">🔗</span></a></p>
+<p>Sets the minimum angle constraint for the joint at <code class="docutils literal notranslate"><span class="pre">joint_idx</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-skeletonmodification2dccdik-method-set-ccdik-joint-enable-constraint"><abbr title="No return value.">void</abbr> <strong>set_ccdik_joint_enable_constraint</strong>(joint_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, enable_constraint: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>) <a class="reference internal" href="#class-skeletonmodification2dccdik-method-set-ccdik-joint-enable-constraint"><span class="std std-ref">🔗</span></a></p>
+<p>Determines whether angle constraints on the CCDIK joint at <code class="docutils literal notranslate"><span class="pre">joint_idx</span></code> are enabled. When <code class="docutils literal notranslate"><span class="pre">true</span></code>, constraints will be enabled and taken into account when solving.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-skeletonmodification2dccdik-method-set-ccdik-joint-rotate-from-joint"><abbr title="No return value.">void</abbr> <strong>set_ccdik_joint_rotate_from_joint</strong>(joint_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, rotate_from_joint: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>) <a class="reference internal" href="#class-skeletonmodification2dccdik-method-set-ccdik-joint-rotate-from-joint"><span class="std std-ref">🔗</span></a></p>
+<p>Sets whether the joint at <code class="docutils literal notranslate"><span class="pre">joint_idx</span></code> is set to rotate from the joint, <code class="docutils literal notranslate"><span class="pre">true</span></code>, or to rotate from the tip, <code class="docutils literal notranslate"><span class="pre">false</span></code>.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, MUmarShahbaz.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

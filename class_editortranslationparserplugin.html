@@ -1,0 +1,164 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EditorTranslationParserPlugin &mdash; RPG Components 2D 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=d45e8c67"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            RPG Components 2D
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">EditorTranslationParserPlugin</a><ul>
+<li><a class="reference internal" href="#description">Description</a></li>
+<li><a class="reference internal" href="#methods">Methods</a></li>
+<li><a class="reference internal" href="#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">RPG Components 2D</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">EditorTranslationParserPlugin</li>
+      <li class="wy-breadcrumbs-aside">
+              <!-- User defined GitHub URL -->
+              <a href="hide" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="editortranslationparserplugin">
+<span id="class-editortranslationparserplugin"></span><h1>EditorTranslationParserPlugin<a class="headerlink" href="#editortranslationparserplugin" title="Link to this heading"></a></h1>
+<p><strong>Inherits:</strong> <a class="reference internal" href="class_refcounted.html#class-refcounted"><span class="std std-ref">RefCounted</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_object.html#class-object"><span class="std std-ref">Object</span></a></p>
+<p>Plugin for adding custom parsers to extract strings that are to be translated from custom files (.csv, .json etc.).</p>
+<section class="classref-introduction-group" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
+<p><strong>EditorTranslationParserPlugin</strong> is invoked when a file is being parsed to extract strings that require translation. To define the parsing and string extraction logic, override the <a class="reference internal" href="#class-editortranslationparserplugin-private-method-parse-file"><span class="std std-ref">_parse_file()</span></a> method in script.</p>
+<p>The return value should be an <a class="reference internal" href="class_array.html#class-array"><span class="std std-ref">Array</span></a> of <a class="reference internal" href="class_packedstringarray.html#class-packedstringarray"><span class="std std-ref">PackedStringArray</span></a>s, one for each extracted translatable string. Each entry should contain <code class="docutils literal notranslate"><span class="pre">[msgid,</span> <span class="pre">msgctxt,</span> <span class="pre">msgid_plural,</span> <span class="pre">comment,</span> <span class="pre">source_line]</span></code>, where all except <code class="docutils literal notranslate"><span class="pre">msgid</span></code> are optional. Empty strings will be ignored.</p>
+<p>The extracted strings will be written into a translation template file selected by user under “Template Generation” in “Localization” tab in “Project Settings” menu.</p>
+<p>Below shows an example of a custom parser that extracts strings from a CSV file to write into a template.</p>
+<p>To add a translatable string associated with a context, plural, comment, or source line:</p>
+<p><strong>Note:</strong> If you override parsing logic for standard script types (GDScript, C#, etc.), it would be better to load the <code class="docutils literal notranslate"><span class="pre">path</span></code> argument using <a class="reference internal" href="class_resourceloader.html#class-resourceloader-method-load"><span class="std std-ref">ResourceLoader.load()</span></a>. This is because built-in scripts are loaded as <a class="reference internal" href="class_resource.html#class-resource"><span class="std std-ref">Resource</span></a> type, not <a class="reference internal" href="class_fileaccess.html#class-fileaccess"><span class="std std-ref">FileAccess</span></a> type. For example:</p>
+<p>Alternatively, the plugin can directly modify the final list of strings, by implementing <a class="reference internal" href="#class-editortranslationparserplugin-private-method-customize-strings"><span class="std std-ref">_customize_strings()</span></a>.</p>
+<p>To use <strong>EditorTranslationParserPlugin</strong>, register it using the <a class="reference internal" href="class_editorplugin.html#class-editorplugin-method-add-translation-parser-plugin"><span class="std std-ref">EditorPlugin.add_translation_parser_plugin()</span></a> method first.</p>
+</section>
+<section class="classref-reftable-group" id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_array.html#class-array"><span class="std std-ref">Array</span></a>[<a class="reference internal" href="class_packedstringarray.html#class-packedstringarray"><span class="std std-ref">PackedStringArray</span></a>]</p></td>
+<td><p><a class="reference internal" href="#class-editortranslationparserplugin-private-method-customize-strings"><span class="std std-ref">_customize_strings</span></a>(strings: <a class="reference internal" href="class_array.html#class-array"><span class="std std-ref">Array</span></a>[<a class="reference internal" href="class_packedstringarray.html#class-packedstringarray"><span class="std std-ref">PackedStringArray</span></a>]) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_packedstringarray.html#class-packedstringarray"><span class="std std-ref">PackedStringArray</span></a></p></td>
+<td><p><a class="reference internal" href="#class-editortranslationparserplugin-private-method-get-recognized-extensions"><span class="std std-ref">_get_recognized_extensions</span></a>() <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_array.html#class-array"><span class="std std-ref">Array</span></a>[<a class="reference internal" href="class_packedstringarray.html#class-packedstringarray"><span class="std std-ref">PackedStringArray</span></a>]</p></td>
+<td><p><a class="reference internal" href="#class-editortranslationparserplugin-private-method-parse-file"><span class="std std-ref">_parse_file</span></a>(path: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="method-descriptions">
+<h2>Method Descriptions<a class="headerlink" href="#method-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-method" id="class-editortranslationparserplugin-private-method-customize-strings"><a class="reference internal" href="class_array.html#class-array"><span class="std std-ref">Array</span></a>[<a class="reference internal" href="class_packedstringarray.html#class-packedstringarray"><span class="std std-ref">PackedStringArray</span></a>] <strong>_customize_strings</strong>(strings: <a class="reference internal" href="class_array.html#class-array"><span class="std std-ref">Array</span></a>[<a class="reference internal" href="class_packedstringarray.html#class-packedstringarray"><span class="std std-ref">PackedStringArray</span></a>]) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-editortranslationparserplugin-private-method-customize-strings"><span class="std std-ref">🔗</span></a></p>
+<p>Called after parsing all files. You can modify the <code class="docutils literal notranslate"><span class="pre">strings</span></code> array to add or remove entries from the final list of strings, then return it after modifications. Each entry is a <a class="reference internal" href="class_packedstringarray.html#class-packedstringarray"><span class="std std-ref">PackedStringArray</span></a> like explained in the <strong>EditorTranslationParserPlugin</strong>’s description.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@tool</span>
+<span class="n">extends</span> <span class="n">EditorTranslationParserPlugin</span>
+
+<span class="n">func</span> <span class="n">_customize_strings</span><span class="p">(</span><span class="n">strings</span><span class="p">):</span>
+    <span class="c1"># Add new string.</span>
+    <span class="n">strings</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="s2">&quot;Test 1&quot;</span><span class="p">,</span> <span class="s2">&quot;context&quot;</span><span class="p">,</span> <span class="s2">&quot;test 1 plurals&quot;</span><span class="p">,</span> <span class="s2">&quot;test 1 comment&quot;</span><span class="p">])</span>
+
+    <span class="c1"># Remove all strings that begin with $.</span>
+    <span class="n">strings</span> <span class="o">=</span> <span class="n">strings</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">func</span><span class="p">(</span><span class="n">s</span><span class="p">):</span> <span class="k">return</span> <span class="ow">not</span> <span class="n">s</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">begins_with</span><span class="p">(</span><span class="s2">&quot;$&quot;</span><span class="p">))</span>
+
+    <span class="k">return</span> <span class="n">strings</span>
+</pre></div>
+</div>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-editortranslationparserplugin-private-method-get-recognized-extensions"><a class="reference internal" href="class_packedstringarray.html#class-packedstringarray"><span class="std std-ref">PackedStringArray</span></a> <strong>_get_recognized_extensions</strong>() <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-editortranslationparserplugin-private-method-get-recognized-extensions"><span class="std std-ref">🔗</span></a></p>
+<p>Gets the list of file extensions to associate with this parser, e.g. <code class="docutils literal notranslate"><span class="pre">[&quot;csv&quot;]</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-editortranslationparserplugin-private-method-parse-file"><a class="reference internal" href="class_array.html#class-array"><span class="std std-ref">Array</span></a>[<a class="reference internal" href="class_packedstringarray.html#class-packedstringarray"><span class="std std-ref">PackedStringArray</span></a>] <strong>_parse_file</strong>(path: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <a class="reference internal" href="#class-editortranslationparserplugin-private-method-parse-file"><span class="std std-ref">🔗</span></a></p>
+<p>Override this method to define a custom parsing logic to extract the translatable strings.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, MUmarShahbaz.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,551 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Skeleton3D &mdash; RPG Components 2D 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=d45e8c67"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            RPG Components 2D
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">Skeleton3D</a><ul>
+<li><a class="reference internal" href="#description">Description</a></li>
+<li><a class="reference internal" href="#tutorials">Tutorials</a></li>
+<li><a class="reference internal" href="#properties">Properties</a></li>
+<li><a class="reference internal" href="#methods">Methods</a></li>
+<li><a class="reference internal" href="#signals">Signals</a></li>
+<li><a class="reference internal" href="#enumerations">Enumerations</a></li>
+<li><a class="reference internal" href="#constants">Constants</a></li>
+<li><a class="reference internal" href="#property-descriptions">Property Descriptions</a></li>
+<li><a class="reference internal" href="#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">RPG Components 2D</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Skeleton3D</li>
+      <li class="wy-breadcrumbs-aside">
+              <!-- User defined GitHub URL -->
+              <a href="hide" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="skeleton3d">
+<span id="class-skeleton3d"></span><h1>Skeleton3D<a class="headerlink" href="#skeleton3d" title="Link to this heading"></a></h1>
+<p><strong>Inherits:</strong> <a class="reference internal" href="class_node3d.html#class-node3d"><span class="std std-ref">Node3D</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_node.html#class-node"><span class="std std-ref">Node</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_object.html#class-object"><span class="std std-ref">Object</span></a></p>
+<p>A node containing a bone hierarchy, used to create a 3D skeletal animation.</p>
+<section class="classref-introduction-group" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
+<p><strong>Skeleton3D</strong> provides an interface for managing a hierarchy of bones, including pose, rest and animation (see <a class="reference internal" href="class_animation.html#class-animation"><span class="std std-ref">Animation</span></a>). It can also use ragdoll physics.</p>
+<p>The overall transform of a bone with respect to the skeleton is determined by bone pose. Bone rest defines the initial transform of the bone pose.</p>
+<p>Note that “global pose” below refers to the overall transform of the bone with respect to skeleton, so it is not the actual global/world transform of the bone.</p>
+</section>
+<section class="classref-introduction-group" id="tutorials">
+<h2>Tutorials<a class="headerlink" href="#tutorials" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://godotengine.org/asset-library/asset/2710">Third Person Shooter (TPS) Demo</a></p></li>
+</ul>
+</section>
+<section class="classref-reftable-group" id="properties">
+<h2>Properties<a class="headerlink" href="#properties" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-skeleton3d-property-animate-physical-bones"><span class="std std-ref">animate_physical_bones</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#enum-skeleton3d-modifiercallbackmodeprocess"><span class="std std-ref">ModifierCallbackModeProcess</span></a></p></td>
+<td><p><a class="reference internal" href="#class-skeleton3d-property-modifier-callback-mode-process"><span class="std std-ref">modifier_callback_mode_process</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">1</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-skeleton3d-property-motion-scale"><span class="std std-ref">motion_scale</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">1.0</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-skeleton3d-property-show-rest-only"><span class="std std-ref">show_rest_only</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section class="classref-reftable-group" id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-skeleton3d-method-add-bone"><span class="std std-ref">add_bone</span></a>(name: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-skeleton3d-method-advance"><span class="std std-ref">advance</span></a>(delta: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-skeleton3d-method-clear-bones"><span class="std std-ref">clear_bones</span></a>()</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-skeleton3d-method-clear-bones-global-pose-override"><span class="std std-ref">clear_bones_global_pose_override</span></a>()</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_skin.html#class-skin"><span class="std std-ref">Skin</span></a></p></td>
+<td><p><a class="reference internal" href="#class-skeleton3d-method-create-skin-from-rest-transforms"><span class="std std-ref">create_skin_from_rest_transforms</span></a>()</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-skeleton3d-method-find-bone"><span class="std std-ref">find_bone</span></a>(name: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-skeleton3d-method-force-update-all-bone-transforms"><span class="std std-ref">force_update_all_bone_transforms</span></a>()</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-skeleton3d-method-force-update-bone-child-transform"><span class="std std-ref">force_update_bone_child_transform</span></a>(bone_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_packedint32array.html#class-packedint32array"><span class="std std-ref">PackedInt32Array</span></a></p></td>
+<td><p><a class="reference internal" href="#class-skeleton3d-method-get-bone-children"><span class="std std-ref">get_bone_children</span></a>(bone_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-skeleton3d-method-get-bone-count"><span class="std std-ref">get_bone_count</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_transform3d.html#class-transform3d"><span class="std std-ref">Transform3D</span></a></p></td>
+<td><p><a class="reference internal" href="#class-skeleton3d-method-get-bone-global-pose"><span class="std std-ref">get_bone_global_pose</span></a>(bone_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_transform3d.html#class-transform3d"><span class="std std-ref">Transform3D</span></a></p></td>
+<td><p><a class="reference internal" href="#class-skeleton3d-method-get-bone-global-pose-no-override"><span class="std std-ref">get_bone_global_pose_no_override</span></a>(bone_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_transform3d.html#class-transform3d"><span class="std std-ref">Transform3D</span></a></p></td>
+<td><p><a class="reference internal" href="#class-skeleton3d-method-get-bone-global-pose-override"><span class="std std-ref">get_bone_global_pose_override</span></a>(bone_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_transform3d.html#class-transform3d"><span class="std std-ref">Transform3D</span></a></p></td>
+<td><p><a class="reference internal" href="#class-skeleton3d-method-get-bone-global-rest"><span class="std std-ref">get_bone_global_rest</span></a>(bone_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a></p></td>
+<td><p><a class="reference internal" href="#class-skeleton3d-method-get-bone-meta"><span class="std std-ref">get_bone_meta</span></a>(bone_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, key: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_array.html#class-array"><span class="std std-ref">Array</span></a>[<a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>]</p></td>
+<td><p><a class="reference internal" href="#class-skeleton3d-method-get-bone-meta-list"><span class="std std-ref">get_bone_meta_list</span></a>(bone_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a></p></td>
+<td><p><a class="reference internal" href="#class-skeleton3d-method-get-bone-name"><span class="std std-ref">get_bone_name</span></a>(bone_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-skeleton3d-method-get-bone-parent"><span class="std std-ref">get_bone_parent</span></a>(bone_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_transform3d.html#class-transform3d"><span class="std std-ref">Transform3D</span></a></p></td>
+<td><p><a class="reference internal" href="#class-skeleton3d-method-get-bone-pose"><span class="std std-ref">get_bone_pose</span></a>(bone_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a></p></td>
+<td><p><a class="reference internal" href="#class-skeleton3d-method-get-bone-pose-position"><span class="std std-ref">get_bone_pose_position</span></a>(bone_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_quaternion.html#class-quaternion"><span class="std std-ref">Quaternion</span></a></p></td>
+<td><p><a class="reference internal" href="#class-skeleton3d-method-get-bone-pose-rotation"><span class="std std-ref">get_bone_pose_rotation</span></a>(bone_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a></p></td>
+<td><p><a class="reference internal" href="#class-skeleton3d-method-get-bone-pose-scale"><span class="std std-ref">get_bone_pose_scale</span></a>(bone_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_transform3d.html#class-transform3d"><span class="std std-ref">Transform3D</span></a></p></td>
+<td><p><a class="reference internal" href="#class-skeleton3d-method-get-bone-rest"><span class="std std-ref">get_bone_rest</span></a>(bone_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a></p></td>
+<td><p><a class="reference internal" href="#class-skeleton3d-method-get-concatenated-bone-names"><span class="std std-ref">get_concatenated_bone_names</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_packedint32array.html#class-packedint32array"><span class="std std-ref">PackedInt32Array</span></a></p></td>
+<td><p><a class="reference internal" href="#class-skeleton3d-method-get-parentless-bones"><span class="std std-ref">get_parentless_bones</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-skeleton3d-method-get-version"><span class="std std-ref">get_version</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-skeleton3d-method-has-bone-meta"><span class="std std-ref">has_bone_meta</span></a>(bone_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, key: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-skeleton3d-method-is-bone-enabled"><span class="std std-ref">is_bone_enabled</span></a>(bone_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-skeleton3d-method-localize-rests"><span class="std std-ref">localize_rests</span></a>()</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-skeleton3d-method-physical-bones-add-collision-exception"><span class="std std-ref">physical_bones_add_collision_exception</span></a>(exception: <a class="reference internal" href="class_rid.html#class-rid"><span class="std std-ref">RID</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-skeleton3d-method-physical-bones-remove-collision-exception"><span class="std std-ref">physical_bones_remove_collision_exception</span></a>(exception: <a class="reference internal" href="class_rid.html#class-rid"><span class="std std-ref">RID</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-skeleton3d-method-physical-bones-start-simulation"><span class="std std-ref">physical_bones_start_simulation</span></a>(bones: <a class="reference internal" href="class_array.html#class-array"><span class="std std-ref">Array</span></a>[<a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>] = [])</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-skeleton3d-method-physical-bones-stop-simulation"><span class="std std-ref">physical_bones_stop_simulation</span></a>()</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_skinreference.html#class-skinreference"><span class="std std-ref">SkinReference</span></a></p></td>
+<td><p><a class="reference internal" href="#class-skeleton3d-method-register-skin"><span class="std std-ref">register_skin</span></a>(skin: <a class="reference internal" href="class_skin.html#class-skin"><span class="std std-ref">Skin</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-skeleton3d-method-reset-bone-pose"><span class="std std-ref">reset_bone_pose</span></a>(bone_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-skeleton3d-method-reset-bone-poses"><span class="std std-ref">reset_bone_poses</span></a>()</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-skeleton3d-method-set-bone-enabled"><span class="std std-ref">set_bone_enabled</span></a>(bone_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, enabled: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = true)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-skeleton3d-method-set-bone-global-pose"><span class="std std-ref">set_bone_global_pose</span></a>(bone_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, pose: <a class="reference internal" href="class_transform3d.html#class-transform3d"><span class="std std-ref">Transform3D</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-skeleton3d-method-set-bone-global-pose-override"><span class="std std-ref">set_bone_global_pose_override</span></a>(bone_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, pose: <a class="reference internal" href="class_transform3d.html#class-transform3d"><span class="std std-ref">Transform3D</span></a>, amount: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, persistent: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = false)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-skeleton3d-method-set-bone-meta"><span class="std std-ref">set_bone_meta</span></a>(bone_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, key: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>, value: <a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-skeleton3d-method-set-bone-name"><span class="std std-ref">set_bone_name</span></a>(bone_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, name: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-skeleton3d-method-set-bone-parent"><span class="std std-ref">set_bone_parent</span></a>(bone_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, parent_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-skeleton3d-method-set-bone-pose"><span class="std std-ref">set_bone_pose</span></a>(bone_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, pose: <a class="reference internal" href="class_transform3d.html#class-transform3d"><span class="std std-ref">Transform3D</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-skeleton3d-method-set-bone-pose-position"><span class="std std-ref">set_bone_pose_position</span></a>(bone_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, position: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-skeleton3d-method-set-bone-pose-rotation"><span class="std std-ref">set_bone_pose_rotation</span></a>(bone_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, rotation: <a class="reference internal" href="class_quaternion.html#class-quaternion"><span class="std std-ref">Quaternion</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-skeleton3d-method-set-bone-pose-scale"><span class="std std-ref">set_bone_pose_scale</span></a>(bone_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, scale: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-skeleton3d-method-set-bone-rest"><span class="std std-ref">set_bone_rest</span></a>(bone_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, rest: <a class="reference internal" href="class_transform3d.html#class-transform3d"><span class="std std-ref">Transform3D</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-skeleton3d-method-unparent-bone-and-rest"><span class="std std-ref">unparent_bone_and_rest</span></a>(bone_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="signals">
+<h2>Signals<a class="headerlink" href="#signals" title="Link to this heading"></a></h2>
+<p class="classref-signal" id="class-skeleton3d-signal-bone-enabled-changed"><strong>bone_enabled_changed</strong>(bone_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <a class="reference internal" href="#class-skeleton3d-signal-bone-enabled-changed"><span class="std std-ref">🔗</span></a></p>
+<p>Emitted when the bone at <code class="docutils literal notranslate"><span class="pre">bone_idx</span></code> is toggled with <a class="reference internal" href="#class-skeleton3d-method-set-bone-enabled"><span class="std std-ref">set_bone_enabled()</span></a>. Use <a class="reference internal" href="#class-skeleton3d-method-is-bone-enabled"><span class="std std-ref">is_bone_enabled()</span></a> to check the new value.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-signal" id="class-skeleton3d-signal-bone-list-changed"><strong>bone_list_changed</strong>() <a class="reference internal" href="#class-skeleton3d-signal-bone-list-changed"><span class="std std-ref">🔗</span></a></p>
+<p>Emitted when the list of bones changes, such as when calling <a class="reference internal" href="#class-skeleton3d-method-add-bone"><span class="std std-ref">add_bone()</span></a>, <a class="reference internal" href="#class-skeleton3d-method-set-bone-parent"><span class="std std-ref">set_bone_parent()</span></a>, <a class="reference internal" href="#class-skeleton3d-method-unparent-bone-and-rest"><span class="std std-ref">unparent_bone_and_rest()</span></a>, or <a class="reference internal" href="#class-skeleton3d-method-clear-bones"><span class="std std-ref">clear_bones()</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-signal" id="class-skeleton3d-signal-pose-updated"><strong>pose_updated</strong>() <a class="reference internal" href="#class-skeleton3d-signal-pose-updated"><span class="std std-ref">🔗</span></a></p>
+<p>Emitted when the pose is updated.</p>
+<p><strong>Note:</strong> During the update process, this signal is not fired, so modification by <a class="reference internal" href="class_skeletonmodifier3d.html#class-skeletonmodifier3d"><span class="std std-ref">SkeletonModifier3D</span></a> is not detected.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-signal" id="class-skeleton3d-signal-rest-updated"><strong>rest_updated</strong>() <a class="reference internal" href="#class-skeleton3d-signal-rest-updated"><span class="std std-ref">🔗</span></a></p>
+<p>Emitted when the rest is updated.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-signal" id="class-skeleton3d-signal-show-rest-only-changed"><strong>show_rest_only_changed</strong>() <a class="reference internal" href="#class-skeleton3d-signal-show-rest-only-changed"><span class="std std-ref">🔗</span></a></p>
+<p>Emitted when the value of <a class="reference internal" href="#class-skeleton3d-property-show-rest-only"><span class="std std-ref">show_rest_only</span></a> changes.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-signal" id="class-skeleton3d-signal-skeleton-updated"><strong>skeleton_updated</strong>() <a class="reference internal" href="#class-skeleton3d-signal-skeleton-updated"><span class="std std-ref">🔗</span></a></p>
+<p>Emitted when the final pose has been calculated will be applied to the skin in the update process.</p>
+<p>This means that all <a class="reference internal" href="class_skeletonmodifier3d.html#class-skeletonmodifier3d"><span class="std std-ref">SkeletonModifier3D</span></a> processing is complete. In order to detect the completion of the processing of each <a class="reference internal" href="class_skeletonmodifier3d.html#class-skeletonmodifier3d"><span class="std std-ref">SkeletonModifier3D</span></a>, use <a class="reference internal" href="class_skeletonmodifier3d.html#class-skeletonmodifier3d-signal-modification-processed"><span class="std std-ref">SkeletonModifier3D.modification_processed</span></a>.</p>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="enumerations">
+<h2>Enumerations<a class="headerlink" href="#enumerations" title="Link to this heading"></a></h2>
+<p class="classref-enumeration" id="enum-skeleton3d-modifiercallbackmodeprocess">enum <strong>ModifierCallbackModeProcess</strong>: <a class="reference internal" href="#enum-skeleton3d-modifiercallbackmodeprocess"><span class="std std-ref">🔗</span></a></p>
+<p class="classref-enumeration-constant" id="class-skeleton3d-constant-modifier-callback-mode-process-physics"><a class="reference internal" href="#enum-skeleton3d-modifiercallbackmodeprocess"><span class="std std-ref">ModifierCallbackModeProcess</span></a> <strong>MODIFIER_CALLBACK_MODE_PROCESS_PHYSICS</strong> = <code class="docutils literal notranslate"><span class="pre">0</span></code></p>
+<p>Set a flag to process modification during physics frames (see <a class="reference internal" href="class_node.html#class-node-constant-notification-internal-physics-process"><span class="std std-ref">Node.NOTIFICATION_INTERNAL_PHYSICS_PROCESS</span></a>).</p>
+<p class="classref-enumeration-constant" id="class-skeleton3d-constant-modifier-callback-mode-process-idle"><a class="reference internal" href="#enum-skeleton3d-modifiercallbackmodeprocess"><span class="std std-ref">ModifierCallbackModeProcess</span></a> <strong>MODIFIER_CALLBACK_MODE_PROCESS_IDLE</strong> = <code class="docutils literal notranslate"><span class="pre">1</span></code></p>
+<p>Set a flag to process modification during process frames (see <a class="reference internal" href="class_node.html#class-node-constant-notification-internal-process"><span class="std std-ref">Node.NOTIFICATION_INTERNAL_PROCESS</span></a>).</p>
+<p class="classref-enumeration-constant" id="class-skeleton3d-constant-modifier-callback-mode-process-manual"><a class="reference internal" href="#enum-skeleton3d-modifiercallbackmodeprocess"><span class="std std-ref">ModifierCallbackModeProcess</span></a> <strong>MODIFIER_CALLBACK_MODE_PROCESS_MANUAL</strong> = <code class="docutils literal notranslate"><span class="pre">2</span></code></p>
+<p>Do not process modification. Use <a class="reference internal" href="#class-skeleton3d-method-advance"><span class="std std-ref">advance()</span></a> to process the modification manually.</p>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="constants">
+<h2>Constants<a class="headerlink" href="#constants" title="Link to this heading"></a></h2>
+<p class="classref-constant" id="class-skeleton3d-constant-notification-update-skeleton"><strong>NOTIFICATION_UPDATE_SKELETON</strong> = <code class="docutils literal notranslate"><span class="pre">50</span></code> <a class="reference internal" href="#class-skeleton3d-constant-notification-update-skeleton"><span class="std std-ref">🔗</span></a></p>
+<p>Notification received when this skeleton’s pose needs to be updated. In that case, this is called only once per frame in a deferred process.</p>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="property-descriptions">
+<h2>Property Descriptions<a class="headerlink" href="#property-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-property" id="class-skeleton3d-property-animate-physical-bones"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>animate_physical_bones</strong> = <code class="docutils literal notranslate"><span class="pre">true</span></code> <a class="reference internal" href="#class-skeleton3d-property-animate-physical-bones"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_animate_physical_bones</strong>(value: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>get_animate_physical_bones</strong>()</p></li>
+</ul>
+<p><strong>Deprecated:</strong> This property may be changed or removed in future versions.</p>
+<p>If you follow the recommended workflow and explicitly have <a class="reference internal" href="class_physicalbonesimulator3d.html#class-physicalbonesimulator3d"><span class="std std-ref">PhysicalBoneSimulator3D</span></a> as a child of <strong>Skeleton3D</strong>, you can control whether it is affected by raycasting without running <a class="reference internal" href="#class-skeleton3d-method-physical-bones-start-simulation"><span class="std std-ref">physical_bones_start_simulation()</span></a>, by its <a class="reference internal" href="class_skeletonmodifier3d.html#class-skeletonmodifier3d-property-active"><span class="std std-ref">SkeletonModifier3D.active</span></a>.</p>
+<p>However, for old (deprecated) configurations, <strong>Skeleton3D</strong> has an internal virtual <a class="reference internal" href="class_physicalbonesimulator3d.html#class-physicalbonesimulator3d"><span class="std std-ref">PhysicalBoneSimulator3D</span></a> for compatibility. This property controls the internal virtual <a class="reference internal" href="class_physicalbonesimulator3d.html#class-physicalbonesimulator3d"><span class="std std-ref">PhysicalBoneSimulator3D</span></a>’s <a class="reference internal" href="class_skeletonmodifier3d.html#class-skeletonmodifier3d-property-active"><span class="std std-ref">SkeletonModifier3D.active</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-skeleton3d-property-modifier-callback-mode-process"><a class="reference internal" href="#enum-skeleton3d-modifiercallbackmodeprocess"><span class="std std-ref">ModifierCallbackModeProcess</span></a> <strong>modifier_callback_mode_process</strong> = <code class="docutils literal notranslate"><span class="pre">1</span></code> <a class="reference internal" href="#class-skeleton3d-property-modifier-callback-mode-process"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_modifier_callback_mode_process</strong>(value: <a class="reference internal" href="#enum-skeleton3d-modifiercallbackmodeprocess"><span class="std std-ref">ModifierCallbackModeProcess</span></a>)</p></li>
+<li><p><a class="reference internal" href="#enum-skeleton3d-modifiercallbackmodeprocess"><span class="std std-ref">ModifierCallbackModeProcess</span></a> <strong>get_modifier_callback_mode_process</strong>()</p></li>
+</ul>
+<p>Sets the processing timing for the Modifier.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-skeleton3d-property-motion-scale"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>motion_scale</strong> = <code class="docutils literal notranslate"><span class="pre">1.0</span></code> <a class="reference internal" href="#class-skeleton3d-property-motion-scale"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_motion_scale</strong>(value: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>get_motion_scale</strong>()</p></li>
+</ul>
+<p>Multiplies the 3D position track animation.</p>
+<p><strong>Note:</strong> Unless this value is <code class="docutils literal notranslate"><span class="pre">1.0</span></code>, the key value in animation will not match the actual position value.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-skeleton3d-property-show-rest-only"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>show_rest_only</strong> = <code class="docutils literal notranslate"><span class="pre">false</span></code> <a class="reference internal" href="#class-skeleton3d-property-show-rest-only"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_show_rest_only</strong>(value: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_show_rest_only</strong>()</p></li>
+</ul>
+<p>If <code class="docutils literal notranslate"><span class="pre">true</span></code>, forces the bones in their default rest pose, regardless of their values. In the editor, this also prevents the bones from being edited.</p>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="method-descriptions">
+<h2>Method Descriptions<a class="headerlink" href="#method-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-method" id="class-skeleton3d-method-add-bone"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>add_bone</strong>(name: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <a class="reference internal" href="#class-skeleton3d-method-add-bone"><span class="std std-ref">🔗</span></a></p>
+<p>Adds a new bone with the given name. Returns the new bone’s index, or <code class="docutils literal notranslate"><span class="pre">-1</span></code> if this method fails.</p>
+<p><strong>Note:</strong> Bone names should be unique, non empty, and cannot include the <code class="docutils literal notranslate"><span class="pre">:</span></code> and <code class="docutils literal notranslate"><span class="pre">/</span></code> characters.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-skeleton3d-method-advance"><abbr title="No return value.">void</abbr> <strong>advance</strong>(delta: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>) <a class="reference internal" href="#class-skeleton3d-method-advance"><span class="std std-ref">🔗</span></a></p>
+<p>Manually advance the child <a class="reference internal" href="class_skeletonmodifier3d.html#class-skeletonmodifier3d"><span class="std std-ref">SkeletonModifier3D</span></a>s by the specified time (in seconds).</p>
+<p><strong>Note:</strong> The <code class="docutils literal notranslate"><span class="pre">delta</span></code> is temporarily accumulated in the <strong>Skeleton3D</strong>, and the deferred process uses the accumulated value to process the modification.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-skeleton3d-method-clear-bones"><abbr title="No return value.">void</abbr> <strong>clear_bones</strong>() <a class="reference internal" href="#class-skeleton3d-method-clear-bones"><span class="std std-ref">🔗</span></a></p>
+<p>Clear all the bones in this skeleton.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-skeleton3d-method-clear-bones-global-pose-override"><abbr title="No return value.">void</abbr> <strong>clear_bones_global_pose_override</strong>() <a class="reference internal" href="#class-skeleton3d-method-clear-bones-global-pose-override"><span class="std std-ref">🔗</span></a></p>
+<p><strong>Deprecated:</strong> This method may be changed or removed in future versions.</p>
+<p>Removes the global pose override on all bones in the skeleton.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-skeleton3d-method-create-skin-from-rest-transforms"><a class="reference internal" href="class_skin.html#class-skin"><span class="std std-ref">Skin</span></a> <strong>create_skin_from_rest_transforms</strong>() <a class="reference internal" href="#class-skeleton3d-method-create-skin-from-rest-transforms"><span class="std std-ref">🔗</span></a></p>
+<div class="contribute docutils container">
+<p>There is currently no description for this method. Please help us by <a class="reference external" href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+</div>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-skeleton3d-method-find-bone"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>find_bone</strong>(name: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-skeleton3d-method-find-bone"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the bone index that matches <code class="docutils literal notranslate"><span class="pre">name</span></code> as its name. Returns <code class="docutils literal notranslate"><span class="pre">-1</span></code> if no bone with this name exists.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-skeleton3d-method-force-update-all-bone-transforms"><abbr title="No return value.">void</abbr> <strong>force_update_all_bone_transforms</strong>() <a class="reference internal" href="#class-skeleton3d-method-force-update-all-bone-transforms"><span class="std std-ref">🔗</span></a></p>
+<p><strong>Deprecated:</strong> This method should only be called internally.</p>
+<p>Force updates the bone transforms/poses for all bones in the skeleton.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-skeleton3d-method-force-update-bone-child-transform"><abbr title="No return value.">void</abbr> <strong>force_update_bone_child_transform</strong>(bone_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <a class="reference internal" href="#class-skeleton3d-method-force-update-bone-child-transform"><span class="std std-ref">🔗</span></a></p>
+<p>Force updates the bone transform for the bone at <code class="docutils literal notranslate"><span class="pre">bone_idx</span></code> and all of its children.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-skeleton3d-method-get-bone-children"><a class="reference internal" href="class_packedint32array.html#class-packedint32array"><span class="std std-ref">PackedInt32Array</span></a> <strong>get_bone_children</strong>(bone_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-skeleton3d-method-get-bone-children"><span class="std std-ref">🔗</span></a></p>
+<p>Returns an array containing the bone indexes of all the child node of the passed in bone, <code class="docutils literal notranslate"><span class="pre">bone_idx</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-skeleton3d-method-get-bone-count"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>get_bone_count</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-skeleton3d-method-get-bone-count"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the number of bones in the skeleton.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-skeleton3d-method-get-bone-global-pose"><a class="reference internal" href="class_transform3d.html#class-transform3d"><span class="std std-ref">Transform3D</span></a> <strong>get_bone_global_pose</strong>(bone_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-skeleton3d-method-get-bone-global-pose"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the overall transform of the specified bone, with respect to the skeleton. Being relative to the skeleton frame, this is not the actual “global” transform of the bone.</p>
+<p><strong>Note:</strong> This is the global pose you set to the skeleton in the process, the final global pose can get overridden by modifiers in the deferred process, if you want to access the final global pose, use <a class="reference internal" href="class_skeletonmodifier3d.html#class-skeletonmodifier3d-signal-modification-processed"><span class="std std-ref">SkeletonModifier3D.modification_processed</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-skeleton3d-method-get-bone-global-pose-no-override"><a class="reference internal" href="class_transform3d.html#class-transform3d"><span class="std std-ref">Transform3D</span></a> <strong>get_bone_global_pose_no_override</strong>(bone_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-skeleton3d-method-get-bone-global-pose-no-override"><span class="std std-ref">🔗</span></a></p>
+<p><strong>Deprecated:</strong> This method may be changed or removed in future versions.</p>
+<p>Returns the overall transform of the specified bone, with respect to the skeleton, but without any global pose overrides. Being relative to the skeleton frame, this is not the actual “global” transform of the bone.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-skeleton3d-method-get-bone-global-pose-override"><a class="reference internal" href="class_transform3d.html#class-transform3d"><span class="std std-ref">Transform3D</span></a> <strong>get_bone_global_pose_override</strong>(bone_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-skeleton3d-method-get-bone-global-pose-override"><span class="std std-ref">🔗</span></a></p>
+<p><strong>Deprecated:</strong> This method may be changed or removed in future versions.</p>
+<p>Returns the global pose override transform for <code class="docutils literal notranslate"><span class="pre">bone_idx</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-skeleton3d-method-get-bone-global-rest"><a class="reference internal" href="class_transform3d.html#class-transform3d"><span class="std std-ref">Transform3D</span></a> <strong>get_bone_global_rest</strong>(bone_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-skeleton3d-method-get-bone-global-rest"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the global rest transform for <code class="docutils literal notranslate"><span class="pre">bone_idx</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-skeleton3d-method-get-bone-meta"><a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a> <strong>get_bone_meta</strong>(bone_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, key: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-skeleton3d-method-get-bone-meta"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the metadata with the given <code class="docutils literal notranslate"><span class="pre">key</span></code> for the bone at index <code class="docutils literal notranslate"><span class="pre">bone_idx</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-skeleton3d-method-get-bone-meta-list"><a class="reference internal" href="class_array.html#class-array"><span class="std std-ref">Array</span></a>[<a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>] <strong>get_bone_meta_list</strong>(bone_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-skeleton3d-method-get-bone-meta-list"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the list of all metadata keys for the bone at index <code class="docutils literal notranslate"><span class="pre">bone_idx</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-skeleton3d-method-get-bone-name"><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a> <strong>get_bone_name</strong>(bone_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-skeleton3d-method-get-bone-name"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the name of the bone at index <code class="docutils literal notranslate"><span class="pre">bone_idx</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-skeleton3d-method-get-bone-parent"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>get_bone_parent</strong>(bone_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-skeleton3d-method-get-bone-parent"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the bone index which is the parent of the bone at <code class="docutils literal notranslate"><span class="pre">bone_idx</span></code>. If -1, then bone has no parent.</p>
+<p><strong>Note:</strong> The parent bone returned will always be less than <code class="docutils literal notranslate"><span class="pre">bone_idx</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-skeleton3d-method-get-bone-pose"><a class="reference internal" href="class_transform3d.html#class-transform3d"><span class="std std-ref">Transform3D</span></a> <strong>get_bone_pose</strong>(bone_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-skeleton3d-method-get-bone-pose"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the pose transform of the specified bone.</p>
+<p><strong>Note:</strong> This is the pose you set to the skeleton in the process, the final pose can get overridden by modifiers in the deferred process, if you want to access the final pose, use <a class="reference internal" href="class_skeletonmodifier3d.html#class-skeletonmodifier3d-signal-modification-processed"><span class="std std-ref">SkeletonModifier3D.modification_processed</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-skeleton3d-method-get-bone-pose-position"><a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a> <strong>get_bone_pose_position</strong>(bone_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-skeleton3d-method-get-bone-pose-position"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the pose position of the bone at <code class="docutils literal notranslate"><span class="pre">bone_idx</span></code>. The returned <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a> is in the local coordinate space of the <strong>Skeleton3D</strong> node.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-skeleton3d-method-get-bone-pose-rotation"><a class="reference internal" href="class_quaternion.html#class-quaternion"><span class="std std-ref">Quaternion</span></a> <strong>get_bone_pose_rotation</strong>(bone_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-skeleton3d-method-get-bone-pose-rotation"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the pose rotation of the bone at <code class="docutils literal notranslate"><span class="pre">bone_idx</span></code>. The returned <a class="reference internal" href="class_quaternion.html#class-quaternion"><span class="std std-ref">Quaternion</span></a> is local to the bone with respect to the rotation of any parent bones.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-skeleton3d-method-get-bone-pose-scale"><a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a> <strong>get_bone_pose_scale</strong>(bone_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-skeleton3d-method-get-bone-pose-scale"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the pose scale of the bone at <code class="docutils literal notranslate"><span class="pre">bone_idx</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-skeleton3d-method-get-bone-rest"><a class="reference internal" href="class_transform3d.html#class-transform3d"><span class="std std-ref">Transform3D</span></a> <strong>get_bone_rest</strong>(bone_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-skeleton3d-method-get-bone-rest"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the rest transform for a bone <code class="docutils literal notranslate"><span class="pre">bone_idx</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-skeleton3d-method-get-concatenated-bone-names"><a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a> <strong>get_concatenated_bone_names</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-skeleton3d-method-get-concatenated-bone-names"><span class="std std-ref">🔗</span></a></p>
+<p>Returns all bone names concatenated with commas (<code class="docutils literal notranslate"><span class="pre">,</span></code>) as a single <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>.</p>
+<p>It is useful to set it as a hint for the enum property.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-skeleton3d-method-get-parentless-bones"><a class="reference internal" href="class_packedint32array.html#class-packedint32array"><span class="std std-ref">PackedInt32Array</span></a> <strong>get_parentless_bones</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-skeleton3d-method-get-parentless-bones"><span class="std std-ref">🔗</span></a></p>
+<p>Returns an array with all of the bones that are parentless. Another way to look at this is that it returns the indexes of all the bones that are not dependent or modified by other bones in the Skeleton.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-skeleton3d-method-get-version"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>get_version</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-skeleton3d-method-get-version"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the number of times the bone hierarchy has changed within this skeleton, including renames.</p>
+<p>The Skeleton version is not serialized: only use within a single instance of Skeleton3D.</p>
+<p>Use for invalidating caches in IK solvers and other nodes which process bones.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-skeleton3d-method-has-bone-meta"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>has_bone_meta</strong>(bone_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, key: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-skeleton3d-method-has-bone-meta"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if the bone at index <code class="docutils literal notranslate"><span class="pre">bone_idx</span></code> has metadata with the given <code class="docutils literal notranslate"><span class="pre">key</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-skeleton3d-method-is-bone-enabled"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_bone_enabled</strong>(bone_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-skeleton3d-method-is-bone-enabled"><span class="std std-ref">🔗</span></a></p>
+<p>Returns whether the bone pose for the bone at <code class="docutils literal notranslate"><span class="pre">bone_idx</span></code> is enabled.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-skeleton3d-method-localize-rests"><abbr title="No return value.">void</abbr> <strong>localize_rests</strong>() <a class="reference internal" href="#class-skeleton3d-method-localize-rests"><span class="std std-ref">🔗</span></a></p>
+<p>Returns all bones in the skeleton to their rest poses.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-skeleton3d-method-physical-bones-add-collision-exception"><abbr title="No return value.">void</abbr> <strong>physical_bones_add_collision_exception</strong>(exception: <a class="reference internal" href="class_rid.html#class-rid"><span class="std std-ref">RID</span></a>) <a class="reference internal" href="#class-skeleton3d-method-physical-bones-add-collision-exception"><span class="std std-ref">🔗</span></a></p>
+<p><strong>Deprecated:</strong> This method may be changed or removed in future versions.</p>
+<p>Adds a collision exception to the physical bone.</p>
+<p>Works just like the <a class="reference internal" href="class_rigidbody3d.html#class-rigidbody3d"><span class="std std-ref">RigidBody3D</span></a> node.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-skeleton3d-method-physical-bones-remove-collision-exception"><abbr title="No return value.">void</abbr> <strong>physical_bones_remove_collision_exception</strong>(exception: <a class="reference internal" href="class_rid.html#class-rid"><span class="std std-ref">RID</span></a>) <a class="reference internal" href="#class-skeleton3d-method-physical-bones-remove-collision-exception"><span class="std std-ref">🔗</span></a></p>
+<p><strong>Deprecated:</strong> This method may be changed or removed in future versions.</p>
+<p>Removes a collision exception to the physical bone.</p>
+<p>Works just like the <a class="reference internal" href="class_rigidbody3d.html#class-rigidbody3d"><span class="std std-ref">RigidBody3D</span></a> node.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-skeleton3d-method-physical-bones-start-simulation"><abbr title="No return value.">void</abbr> <strong>physical_bones_start_simulation</strong>(bones: <a class="reference internal" href="class_array.html#class-array"><span class="std std-ref">Array</span></a>[<a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>] = []) <a class="reference internal" href="#class-skeleton3d-method-physical-bones-start-simulation"><span class="std std-ref">🔗</span></a></p>
+<p><strong>Deprecated:</strong> This method may be changed or removed in future versions.</p>
+<p>Tells the <a class="reference internal" href="class_physicalbone3d.html#class-physicalbone3d"><span class="std std-ref">PhysicalBone3D</span></a> nodes in the Skeleton to start simulating and reacting to the physics world.</p>
+<p>Optionally, a list of bone names can be passed-in, allowing only the passed-in bones to be simulated.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-skeleton3d-method-physical-bones-stop-simulation"><abbr title="No return value.">void</abbr> <strong>physical_bones_stop_simulation</strong>() <a class="reference internal" href="#class-skeleton3d-method-physical-bones-stop-simulation"><span class="std std-ref">🔗</span></a></p>
+<p><strong>Deprecated:</strong> This method may be changed or removed in future versions.</p>
+<p>Tells the <a class="reference internal" href="class_physicalbone3d.html#class-physicalbone3d"><span class="std std-ref">PhysicalBone3D</span></a> nodes in the Skeleton to stop simulating.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-skeleton3d-method-register-skin"><a class="reference internal" href="class_skinreference.html#class-skinreference"><span class="std std-ref">SkinReference</span></a> <strong>register_skin</strong>(skin: <a class="reference internal" href="class_skin.html#class-skin"><span class="std std-ref">Skin</span></a>) <a class="reference internal" href="#class-skeleton3d-method-register-skin"><span class="std std-ref">🔗</span></a></p>
+<p>Binds the given Skin to the Skeleton.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-skeleton3d-method-reset-bone-pose"><abbr title="No return value.">void</abbr> <strong>reset_bone_pose</strong>(bone_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <a class="reference internal" href="#class-skeleton3d-method-reset-bone-pose"><span class="std std-ref">🔗</span></a></p>
+<p>Sets the bone pose to rest for <code class="docutils literal notranslate"><span class="pre">bone_idx</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-skeleton3d-method-reset-bone-poses"><abbr title="No return value.">void</abbr> <strong>reset_bone_poses</strong>() <a class="reference internal" href="#class-skeleton3d-method-reset-bone-poses"><span class="std std-ref">🔗</span></a></p>
+<p>Sets all bone poses to rests.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-skeleton3d-method-set-bone-enabled"><abbr title="No return value.">void</abbr> <strong>set_bone_enabled</strong>(bone_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, enabled: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = true) <a class="reference internal" href="#class-skeleton3d-method-set-bone-enabled"><span class="std std-ref">🔗</span></a></p>
+<p>Disables the pose for the bone at <code class="docutils literal notranslate"><span class="pre">bone_idx</span></code> if <code class="docutils literal notranslate"><span class="pre">false</span></code>, enables the bone pose if <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-skeleton3d-method-set-bone-global-pose"><abbr title="No return value.">void</abbr> <strong>set_bone_global_pose</strong>(bone_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, pose: <a class="reference internal" href="class_transform3d.html#class-transform3d"><span class="std std-ref">Transform3D</span></a>) <a class="reference internal" href="#class-skeleton3d-method-set-bone-global-pose"><span class="std std-ref">🔗</span></a></p>
+<p>Sets the global pose transform, <code class="docutils literal notranslate"><span class="pre">pose</span></code>, for the bone at <code class="docutils literal notranslate"><span class="pre">bone_idx</span></code>.</p>
+<p><strong>Note:</strong> If other bone poses have been changed, this method executes a dirty poses recalculation and will cause performance to deteriorate. If you know that multiple global poses will be applied, consider using <a class="reference internal" href="#class-skeleton3d-method-set-bone-pose"><span class="std std-ref">set_bone_pose()</span></a> with precalculation.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-skeleton3d-method-set-bone-global-pose-override"><abbr title="No return value.">void</abbr> <strong>set_bone_global_pose_override</strong>(bone_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, pose: <a class="reference internal" href="class_transform3d.html#class-transform3d"><span class="std std-ref">Transform3D</span></a>, amount: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, persistent: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = false) <a class="reference internal" href="#class-skeleton3d-method-set-bone-global-pose-override"><span class="std std-ref">🔗</span></a></p>
+<p><strong>Deprecated:</strong> This method may be changed or removed in future versions.</p>
+<p>Sets the global pose transform, <code class="docutils literal notranslate"><span class="pre">pose</span></code>, for the bone at <code class="docutils literal notranslate"><span class="pre">bone_idx</span></code>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">amount</span></code> is the interpolation strength that will be used when applying the pose, and <code class="docutils literal notranslate"><span class="pre">persistent</span></code> determines if the applied pose will remain.</p>
+<p><strong>Note:</strong> The pose transform needs to be a global pose! To convert a world transform from a <a class="reference internal" href="class_node3d.html#class-node3d"><span class="std std-ref">Node3D</span></a> to a global bone pose, multiply the <a class="reference internal" href="class_transform3d.html#class-transform3d-method-affine-inverse"><span class="std std-ref">Transform3D.affine_inverse()</span></a> of the node’s <a class="reference internal" href="class_node3d.html#class-node3d-property-global-transform"><span class="std std-ref">Node3D.global_transform</span></a> by the desired world transform.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-skeleton3d-method-set-bone-meta"><abbr title="No return value.">void</abbr> <strong>set_bone_meta</strong>(bone_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, key: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>, value: <a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a>) <a class="reference internal" href="#class-skeleton3d-method-set-bone-meta"><span class="std std-ref">🔗</span></a></p>
+<p>Sets the metadata with the given <code class="docutils literal notranslate"><span class="pre">key</span></code> to <code class="docutils literal notranslate"><span class="pre">value</span></code> for the bone at index <code class="docutils literal notranslate"><span class="pre">bone_idx</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-skeleton3d-method-set-bone-name"><abbr title="No return value.">void</abbr> <strong>set_bone_name</strong>(bone_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, name: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <a class="reference internal" href="#class-skeleton3d-method-set-bone-name"><span class="std std-ref">🔗</span></a></p>
+<p>Sets the bone name, <code class="docutils literal notranslate"><span class="pre">name</span></code>, for the bone at <code class="docutils literal notranslate"><span class="pre">bone_idx</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-skeleton3d-method-set-bone-parent"><abbr title="No return value.">void</abbr> <strong>set_bone_parent</strong>(bone_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, parent_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <a class="reference internal" href="#class-skeleton3d-method-set-bone-parent"><span class="std std-ref">🔗</span></a></p>
+<p>Sets the bone index <code class="docutils literal notranslate"><span class="pre">parent_idx</span></code> as the parent of the bone at <code class="docutils literal notranslate"><span class="pre">bone_idx</span></code>. If -1, then bone has no parent.</p>
+<p><strong>Note:</strong> <code class="docutils literal notranslate"><span class="pre">parent_idx</span></code> must be less than <code class="docutils literal notranslate"><span class="pre">bone_idx</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-skeleton3d-method-set-bone-pose"><abbr title="No return value.">void</abbr> <strong>set_bone_pose</strong>(bone_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, pose: <a class="reference internal" href="class_transform3d.html#class-transform3d"><span class="std std-ref">Transform3D</span></a>) <a class="reference internal" href="#class-skeleton3d-method-set-bone-pose"><span class="std std-ref">🔗</span></a></p>
+<p>Sets the pose transform, <code class="docutils literal notranslate"><span class="pre">pose</span></code>, for the bone at <code class="docutils literal notranslate"><span class="pre">bone_idx</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-skeleton3d-method-set-bone-pose-position"><abbr title="No return value.">void</abbr> <strong>set_bone_pose_position</strong>(bone_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, position: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>) <a class="reference internal" href="#class-skeleton3d-method-set-bone-pose-position"><span class="std std-ref">🔗</span></a></p>
+<p>Sets the pose position of the bone at <code class="docutils literal notranslate"><span class="pre">bone_idx</span></code> to <code class="docutils literal notranslate"><span class="pre">position</span></code>. <code class="docutils literal notranslate"><span class="pre">position</span></code> is a <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a> describing a position local to the <strong>Skeleton3D</strong> node.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-skeleton3d-method-set-bone-pose-rotation"><abbr title="No return value.">void</abbr> <strong>set_bone_pose_rotation</strong>(bone_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, rotation: <a class="reference internal" href="class_quaternion.html#class-quaternion"><span class="std std-ref">Quaternion</span></a>) <a class="reference internal" href="#class-skeleton3d-method-set-bone-pose-rotation"><span class="std std-ref">🔗</span></a></p>
+<p>Sets the pose rotation of the bone at <code class="docutils literal notranslate"><span class="pre">bone_idx</span></code> to <code class="docutils literal notranslate"><span class="pre">rotation</span></code>. <code class="docutils literal notranslate"><span class="pre">rotation</span></code> is a <a class="reference internal" href="class_quaternion.html#class-quaternion"><span class="std std-ref">Quaternion</span></a> describing a rotation in the bone’s local coordinate space with respect to the rotation of any parent bones.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-skeleton3d-method-set-bone-pose-scale"><abbr title="No return value.">void</abbr> <strong>set_bone_pose_scale</strong>(bone_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, scale: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>) <a class="reference internal" href="#class-skeleton3d-method-set-bone-pose-scale"><span class="std std-ref">🔗</span></a></p>
+<p>Sets the pose scale of the bone at <code class="docutils literal notranslate"><span class="pre">bone_idx</span></code> to <code class="docutils literal notranslate"><span class="pre">scale</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-skeleton3d-method-set-bone-rest"><abbr title="No return value.">void</abbr> <strong>set_bone_rest</strong>(bone_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, rest: <a class="reference internal" href="class_transform3d.html#class-transform3d"><span class="std std-ref">Transform3D</span></a>) <a class="reference internal" href="#class-skeleton3d-method-set-bone-rest"><span class="std std-ref">🔗</span></a></p>
+<p>Sets the rest transform for bone <code class="docutils literal notranslate"><span class="pre">bone_idx</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-skeleton3d-method-unparent-bone-and-rest"><abbr title="No return value.">void</abbr> <strong>unparent_bone_and_rest</strong>(bone_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <a class="reference internal" href="#class-skeleton3d-method-unparent-bone-and-rest"><span class="std std-ref">🔗</span></a></p>
+<p>Unparents the bone at <code class="docutils literal notranslate"><span class="pre">bone_idx</span></code> and sets its rest position to that of its parent prior to being reset.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, MUmarShahbaz.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

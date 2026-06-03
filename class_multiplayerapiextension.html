@@ -1,0 +1,184 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta content="network" name="keywords" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MultiplayerAPIExtension &mdash; RPG Components 2D 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=d45e8c67"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            RPG Components 2D
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">MultiplayerAPIExtension</a><ul>
+<li><a class="reference internal" href="#description">Description</a></li>
+<li><a class="reference internal" href="#methods">Methods</a></li>
+<li><a class="reference internal" href="#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">RPG Components 2D</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">MultiplayerAPIExtension</li>
+      <li class="wy-breadcrumbs-aside">
+              <!-- User defined GitHub URL -->
+              <a href="hide" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="multiplayerapiextension">
+<span id="class-multiplayerapiextension"></span><h1>MultiplayerAPIExtension<a class="headerlink" href="#multiplayerapiextension" title="Link to this heading"></a></h1>
+<p><strong>Inherits:</strong> <a class="reference internal" href="class_multiplayerapi.html#class-multiplayerapi"><span class="std std-ref">MultiplayerAPI</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_refcounted.html#class-refcounted"><span class="std std-ref">RefCounted</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_object.html#class-object"><span class="std std-ref">Object</span></a></p>
+<p>Base class used for extending the <a class="reference internal" href="class_multiplayerapi.html#class-multiplayerapi"><span class="std std-ref">MultiplayerAPI</span></a>.</p>
+<section class="classref-introduction-group" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
+<p>This class can be used to extend or replace the default <a class="reference internal" href="class_multiplayerapi.html#class-multiplayerapi"><span class="std std-ref">MultiplayerAPI</span></a> implementation via script or extensions.</p>
+<p>The following example extend the default implementation (<code class="docutils literal notranslate"><span class="pre">SceneMultiplayer</span></code>) by logging every RPC being made, and every object being configured for replication.</p>
+<p>Then in your main scene or in an autoload call <a class="reference internal" href="class_scenetree.html#class-scenetree-method-set-multiplayer"><span class="std std-ref">SceneTree.set_multiplayer()</span></a> to start using your custom <a class="reference internal" href="class_multiplayerapi.html#class-multiplayerapi"><span class="std std-ref">MultiplayerAPI</span></a>:</p>
+<p>Native extensions can alternatively use the <a class="reference internal" href="class_multiplayerapi.html#class-multiplayerapi-method-set-default-interface"><span class="std std-ref">MultiplayerAPI.set_default_interface()</span></a> method during initialization to configure themselves as the default implementation.</p>
+</section>
+<section class="classref-reftable-group" id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_multiplayerpeer.html#class-multiplayerpeer"><span class="std std-ref">MultiplayerPeer</span></a></p></td>
+<td><p><a class="reference internal" href="#class-multiplayerapiextension-private-method-get-multiplayer-peer"><span class="std std-ref">_get_multiplayer_peer</span></a>() <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_packedint32array.html#class-packedint32array"><span class="std std-ref">PackedInt32Array</span></a></p></td>
+<td><p><a class="reference internal" href="#class-multiplayerapiextension-private-method-get-peer-ids"><span class="std std-ref">_get_peer_ids</span></a>() <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-multiplayerapiextension-private-method-get-remote-sender-id"><span class="std std-ref">_get_remote_sender_id</span></a>() <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-multiplayerapiextension-private-method-get-unique-id"><span class="std std-ref">_get_unique_id</span></a>() <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_%40globalscope.html#enum-globalscope-error"><span class="std std-ref">Error</span></a></p></td>
+<td><p><a class="reference internal" href="#class-multiplayerapiextension-private-method-object-configuration-add"><span class="std std-ref">_object_configuration_add</span></a>(object: <a class="reference internal" href="class_object.html#class-object"><span class="std std-ref">Object</span></a>, configuration: <a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_%40globalscope.html#enum-globalscope-error"><span class="std std-ref">Error</span></a></p></td>
+<td><p><a class="reference internal" href="#class-multiplayerapiextension-private-method-object-configuration-remove"><span class="std std-ref">_object_configuration_remove</span></a>(object: <a class="reference internal" href="class_object.html#class-object"><span class="std std-ref">Object</span></a>, configuration: <a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_%40globalscope.html#enum-globalscope-error"><span class="std std-ref">Error</span></a></p></td>
+<td><p><a class="reference internal" href="#class-multiplayerapiextension-private-method-poll"><span class="std std-ref">_poll</span></a>() <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_%40globalscope.html#enum-globalscope-error"><span class="std std-ref">Error</span></a></p></td>
+<td><p><a class="reference internal" href="#class-multiplayerapiextension-private-method-rpc"><span class="std std-ref">_rpc</span></a>(peer: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, object: <a class="reference internal" href="class_object.html#class-object"><span class="std std-ref">Object</span></a>, method: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>, args: <a class="reference internal" href="class_array.html#class-array"><span class="std std-ref">Array</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-multiplayerapiextension-private-method-set-multiplayer-peer"><span class="std std-ref">_set_multiplayer_peer</span></a>(multiplayer_peer: <a class="reference internal" href="class_multiplayerpeer.html#class-multiplayerpeer"><span class="std std-ref">MultiplayerPeer</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="method-descriptions">
+<h2>Method Descriptions<a class="headerlink" href="#method-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-method" id="class-multiplayerapiextension-private-method-get-multiplayer-peer"><a class="reference internal" href="class_multiplayerpeer.html#class-multiplayerpeer"><span class="std std-ref">MultiplayerPeer</span></a> <strong>_get_multiplayer_peer</strong>() <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <a class="reference internal" href="#class-multiplayerapiextension-private-method-get-multiplayer-peer"><span class="std std-ref">🔗</span></a></p>
+<p>Called when the <a class="reference internal" href="class_multiplayerapi.html#class-multiplayerapi-property-multiplayer-peer"><span class="std std-ref">MultiplayerAPI.multiplayer_peer</span></a> is retrieved.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-multiplayerapiextension-private-method-get-peer-ids"><a class="reference internal" href="class_packedint32array.html#class-packedint32array"><span class="std std-ref">PackedInt32Array</span></a> <strong>_get_peer_ids</strong>() <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-multiplayerapiextension-private-method-get-peer-ids"><span class="std std-ref">🔗</span></a></p>
+<p>Callback for <a class="reference internal" href="class_multiplayerapi.html#class-multiplayerapi-method-get-peers"><span class="std std-ref">MultiplayerAPI.get_peers()</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-multiplayerapiextension-private-method-get-remote-sender-id"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>_get_remote_sender_id</strong>() <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-multiplayerapiextension-private-method-get-remote-sender-id"><span class="std std-ref">🔗</span></a></p>
+<p>Callback for <a class="reference internal" href="class_multiplayerapi.html#class-multiplayerapi-method-get-remote-sender-id"><span class="std std-ref">MultiplayerAPI.get_remote_sender_id()</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-multiplayerapiextension-private-method-get-unique-id"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>_get_unique_id</strong>() <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-multiplayerapiextension-private-method-get-unique-id"><span class="std std-ref">🔗</span></a></p>
+<p>Callback for <a class="reference internal" href="class_multiplayerapi.html#class-multiplayerapi-method-get-unique-id"><span class="std std-ref">MultiplayerAPI.get_unique_id()</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-multiplayerapiextension-private-method-object-configuration-add"><a class="reference internal" href="class_%40globalscope.html#enum-globalscope-error"><span class="std std-ref">Error</span></a> <strong>_object_configuration_add</strong>(object: <a class="reference internal" href="class_object.html#class-object"><span class="std std-ref">Object</span></a>, configuration: <a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <a class="reference internal" href="#class-multiplayerapiextension-private-method-object-configuration-add"><span class="std std-ref">🔗</span></a></p>
+<p>Callback for <a class="reference internal" href="class_multiplayerapi.html#class-multiplayerapi-method-object-configuration-add"><span class="std std-ref">MultiplayerAPI.object_configuration_add()</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-multiplayerapiextension-private-method-object-configuration-remove"><a class="reference internal" href="class_%40globalscope.html#enum-globalscope-error"><span class="std std-ref">Error</span></a> <strong>_object_configuration_remove</strong>(object: <a class="reference internal" href="class_object.html#class-object"><span class="std std-ref">Object</span></a>, configuration: <a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <a class="reference internal" href="#class-multiplayerapiextension-private-method-object-configuration-remove"><span class="std std-ref">🔗</span></a></p>
+<p>Callback for <a class="reference internal" href="class_multiplayerapi.html#class-multiplayerapi-method-object-configuration-remove"><span class="std std-ref">MultiplayerAPI.object_configuration_remove()</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-multiplayerapiextension-private-method-poll"><a class="reference internal" href="class_%40globalscope.html#enum-globalscope-error"><span class="std std-ref">Error</span></a> <strong>_poll</strong>() <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <a class="reference internal" href="#class-multiplayerapiextension-private-method-poll"><span class="std std-ref">🔗</span></a></p>
+<p>Callback for <a class="reference internal" href="class_multiplayerapi.html#class-multiplayerapi-method-poll"><span class="std std-ref">MultiplayerAPI.poll()</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-multiplayerapiextension-private-method-rpc"><a class="reference internal" href="class_%40globalscope.html#enum-globalscope-error"><span class="std std-ref">Error</span></a> <strong>_rpc</strong>(peer: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, object: <a class="reference internal" href="class_object.html#class-object"><span class="std std-ref">Object</span></a>, method: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>, args: <a class="reference internal" href="class_array.html#class-array"><span class="std std-ref">Array</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <a class="reference internal" href="#class-multiplayerapiextension-private-method-rpc"><span class="std std-ref">🔗</span></a></p>
+<p>Callback for <a class="reference internal" href="class_multiplayerapi.html#class-multiplayerapi-method-rpc"><span class="std std-ref">MultiplayerAPI.rpc()</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-multiplayerapiextension-private-method-set-multiplayer-peer"><abbr title="No return value.">void</abbr> <strong>_set_multiplayer_peer</strong>(multiplayer_peer: <a class="reference internal" href="class_multiplayerpeer.html#class-multiplayerpeer"><span class="std std-ref">MultiplayerPeer</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <a class="reference internal" href="#class-multiplayerapiextension-private-method-set-multiplayer-peer"><span class="std std-ref">🔗</span></a></p>
+<p>Called when the <a class="reference internal" href="class_multiplayerapi.html#class-multiplayerapi-property-multiplayer-peer"><span class="std std-ref">MultiplayerAPI.multiplayer_peer</span></a> is set.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, MUmarShahbaz.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

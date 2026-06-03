@@ -1,0 +1,471 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>StyleBoxFlat &mdash; RPG Components 2D 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=d45e8c67"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            RPG Components 2D
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">StyleBoxFlat</a><ul>
+<li><a class="reference internal" href="#description">Description</a></li>
+<li><a class="reference internal" href="#properties">Properties</a></li>
+<li><a class="reference internal" href="#methods">Methods</a></li>
+<li><a class="reference internal" href="#property-descriptions">Property Descriptions</a></li>
+<li><a class="reference internal" href="#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">RPG Components 2D</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">StyleBoxFlat</li>
+      <li class="wy-breadcrumbs-aside">
+              <!-- User defined GitHub URL -->
+              <a href="hide" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="styleboxflat">
+<span id="class-styleboxflat"></span><h1>StyleBoxFlat<a class="headerlink" href="#styleboxflat" title="Link to this heading"></a></h1>
+<p><strong>Inherits:</strong> <a class="reference internal" href="class_stylebox.html#class-stylebox"><span class="std std-ref">StyleBox</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_resource.html#class-resource"><span class="std std-ref">Resource</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_refcounted.html#class-refcounted"><span class="std std-ref">RefCounted</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_object.html#class-object"><span class="std std-ref">Object</span></a></p>
+<p>A customizable <a class="reference internal" href="class_stylebox.html#class-stylebox"><span class="std std-ref">StyleBox</span></a> that doesn’t use a texture.</p>
+<section class="classref-introduction-group" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
+<p>By configuring various properties of this style box, you can achieve many common looks without the need of a texture. This includes optionally rounded borders, antialiasing, shadows, and skew.</p>
+<p>Setting corner radius to high values is allowed. As soon as corners overlap, the stylebox will switch to a relative system:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>height = 30
+corner_radius_top_left = 50
+corner_radius_bottom_left = 100
+</pre></div>
+</div>
+<p>The relative system now would take the 1:2 ratio of the two left corners to calculate the actual corner width. Both corners added will <strong>never</strong> be more than the height. Result:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>corner_radius_top_left: 10
+corner_radius_bottom_left: 20
+</pre></div>
+</div>
+</section>
+<section class="classref-reftable-group" id="properties">
+<h2>Properties<a class="headerlink" href="#properties" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-styleboxflat-property-anti-aliasing"><span class="std std-ref">anti_aliasing</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-styleboxflat-property-anti-aliasing-size"><span class="std std-ref">anti_aliasing_size</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">1.0</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_color.html#class-color"><span class="std std-ref">Color</span></a></p></td>
+<td><p><a class="reference internal" href="#class-styleboxflat-property-bg-color"><span class="std std-ref">bg_color</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Color(0.6,</span> <span class="pre">0.6,</span> <span class="pre">0.6,</span> <span class="pre">1)</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-styleboxflat-property-border-blend"><span class="std std-ref">border_blend</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_color.html#class-color"><span class="std std-ref">Color</span></a></p></td>
+<td><p><a class="reference internal" href="#class-styleboxflat-property-border-color"><span class="std std-ref">border_color</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Color(0.8,</span> <span class="pre">0.8,</span> <span class="pre">0.8,</span> <span class="pre">1)</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-styleboxflat-property-border-width-bottom"><span class="std std-ref">border_width_bottom</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-styleboxflat-property-border-width-left"><span class="std std-ref">border_width_left</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-styleboxflat-property-border-width-right"><span class="std std-ref">border_width_right</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-styleboxflat-property-border-width-top"><span class="std std-ref">border_width_top</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-styleboxflat-property-corner-detail"><span class="std std-ref">corner_detail</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">8</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-styleboxflat-property-corner-radius-bottom-left"><span class="std std-ref">corner_radius_bottom_left</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-styleboxflat-property-corner-radius-bottom-right"><span class="std std-ref">corner_radius_bottom_right</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-styleboxflat-property-corner-radius-top-left"><span class="std std-ref">corner_radius_top_left</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-styleboxflat-property-corner-radius-top-right"><span class="std std-ref">corner_radius_top_right</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-styleboxflat-property-draw-center"><span class="std std-ref">draw_center</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-styleboxflat-property-expand-margin-bottom"><span class="std std-ref">expand_margin_bottom</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0.0</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-styleboxflat-property-expand-margin-left"><span class="std std-ref">expand_margin_left</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0.0</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-styleboxflat-property-expand-margin-right"><span class="std std-ref">expand_margin_right</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0.0</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-styleboxflat-property-expand-margin-top"><span class="std std-ref">expand_margin_top</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0.0</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_color.html#class-color"><span class="std std-ref">Color</span></a></p></td>
+<td><p><a class="reference internal" href="#class-styleboxflat-property-shadow-color"><span class="std std-ref">shadow_color</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Color(0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0.6)</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a></p></td>
+<td><p><a class="reference internal" href="#class-styleboxflat-property-shadow-offset"><span class="std std-ref">shadow_offset</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Vector2(0,</span> <span class="pre">0)</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-styleboxflat-property-shadow-size"><span class="std std-ref">shadow_size</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a></p></td>
+<td><p><a class="reference internal" href="#class-styleboxflat-property-skew"><span class="std std-ref">skew</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Vector2(0,</span> <span class="pre">0)</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section class="classref-reftable-group" id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-styleboxflat-method-get-border-width"><span class="std std-ref">get_border_width</span></a>(margin: <a class="reference internal" href="class_%40globalscope.html#enum-globalscope-side"><span class="std std-ref">Side</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-styleboxflat-method-get-border-width-min"><span class="std std-ref">get_border_width_min</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-styleboxflat-method-get-corner-radius"><span class="std std-ref">get_corner_radius</span></a>(corner: <a class="reference internal" href="class_%40globalscope.html#enum-globalscope-corner"><span class="std std-ref">Corner</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-styleboxflat-method-get-expand-margin"><span class="std std-ref">get_expand_margin</span></a>(margin: <a class="reference internal" href="class_%40globalscope.html#enum-globalscope-side"><span class="std std-ref">Side</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-styleboxflat-method-set-border-width"><span class="std std-ref">set_border_width</span></a>(margin: <a class="reference internal" href="class_%40globalscope.html#enum-globalscope-side"><span class="std std-ref">Side</span></a>, width: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-styleboxflat-method-set-border-width-all"><span class="std std-ref">set_border_width_all</span></a>(width: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-styleboxflat-method-set-corner-radius"><span class="std std-ref">set_corner_radius</span></a>(corner: <a class="reference internal" href="class_%40globalscope.html#enum-globalscope-corner"><span class="std std-ref">Corner</span></a>, radius: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-styleboxflat-method-set-corner-radius-all"><span class="std std-ref">set_corner_radius_all</span></a>(radius: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-styleboxflat-method-set-expand-margin"><span class="std std-ref">set_expand_margin</span></a>(margin: <a class="reference internal" href="class_%40globalscope.html#enum-globalscope-side"><span class="std std-ref">Side</span></a>, size: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-styleboxflat-method-set-expand-margin-all"><span class="std std-ref">set_expand_margin_all</span></a>(size: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="property-descriptions">
+<h2>Property Descriptions<a class="headerlink" href="#property-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-property" id="class-styleboxflat-property-anti-aliasing"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>anti_aliasing</strong> = <code class="docutils literal notranslate"><span class="pre">true</span></code> <a class="reference internal" href="#class-styleboxflat-property-anti-aliasing"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_anti_aliased</strong>(value: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_anti_aliased</strong>()</p></li>
+</ul>
+<p>Antialiasing draws a small ring around the edges, which fades to transparency. As a result, edges look much smoother. This is only noticeable when using rounded corners or <a class="reference internal" href="#class-styleboxflat-property-skew"><span class="std std-ref">skew</span></a>.</p>
+<p><strong>Note:</strong> When using beveled corners with 45-degree angles (<a class="reference internal" href="#class-styleboxflat-property-corner-detail"><span class="std std-ref">corner_detail</span></a> = 1), it is recommended to set <a class="reference internal" href="#class-styleboxflat-property-anti-aliasing"><span class="std std-ref">anti_aliasing</span></a> to <code class="docutils literal notranslate"><span class="pre">false</span></code> to ensure crisp visuals and avoid possible visual glitches.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-styleboxflat-property-anti-aliasing-size"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>anti_aliasing_size</strong> = <code class="docutils literal notranslate"><span class="pre">1.0</span></code> <a class="reference internal" href="#class-styleboxflat-property-anti-aliasing-size"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_aa_size</strong>(value: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>get_aa_size</strong>()</p></li>
+</ul>
+<p>This changes the size of the antialiasing effect. <code class="docutils literal notranslate"><span class="pre">1.0</span></code> is recommended for an optimal result at 100% scale, identical to how rounded rectangles are rendered in web browsers and most vector drawing software.</p>
+<p><strong>Note:</strong> Higher values may produce a blur effect but can also create undesired artifacts on small boxes with large-radius corners.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-styleboxflat-property-bg-color"><a class="reference internal" href="class_color.html#class-color"><span class="std std-ref">Color</span></a> <strong>bg_color</strong> = <code class="docutils literal notranslate"><span class="pre">Color(0.6,</span> <span class="pre">0.6,</span> <span class="pre">0.6,</span> <span class="pre">1)</span></code> <a class="reference internal" href="#class-styleboxflat-property-bg-color"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_bg_color</strong>(value: <a class="reference internal" href="class_color.html#class-color"><span class="std std-ref">Color</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_color.html#class-color"><span class="std std-ref">Color</span></a> <strong>get_bg_color</strong>()</p></li>
+</ul>
+<p>The background color of the stylebox.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-styleboxflat-property-border-blend"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>border_blend</strong> = <code class="docutils literal notranslate"><span class="pre">false</span></code> <a class="reference internal" href="#class-styleboxflat-property-border-blend"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_border_blend</strong>(value: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>get_border_blend</strong>()</p></li>
+</ul>
+<p>If <code class="docutils literal notranslate"><span class="pre">true</span></code>, the border will fade into the background color.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-styleboxflat-property-border-color"><a class="reference internal" href="class_color.html#class-color"><span class="std std-ref">Color</span></a> <strong>border_color</strong> = <code class="docutils literal notranslate"><span class="pre">Color(0.8,</span> <span class="pre">0.8,</span> <span class="pre">0.8,</span> <span class="pre">1)</span></code> <a class="reference internal" href="#class-styleboxflat-property-border-color"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_border_color</strong>(value: <a class="reference internal" href="class_color.html#class-color"><span class="std std-ref">Color</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_color.html#class-color"><span class="std std-ref">Color</span></a> <strong>get_border_color</strong>()</p></li>
+</ul>
+<p>Sets the color of the border.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-styleboxflat-property-border-width-bottom"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>border_width_bottom</strong> = <code class="docutils literal notranslate"><span class="pre">0</span></code> <a class="reference internal" href="#class-styleboxflat-property-border-width-bottom"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_border_width</strong>(margin: <a class="reference internal" href="class_%40globalscope.html#enum-globalscope-side"><span class="std std-ref">Side</span></a>, width: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>get_border_width</strong>(margin: <a class="reference internal" href="class_%40globalscope.html#enum-globalscope-side"><span class="std std-ref">Side</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></li>
+</ul>
+<p>Border width for the bottom border.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-styleboxflat-property-border-width-left"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>border_width_left</strong> = <code class="docutils literal notranslate"><span class="pre">0</span></code> <a class="reference internal" href="#class-styleboxflat-property-border-width-left"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_border_width</strong>(margin: <a class="reference internal" href="class_%40globalscope.html#enum-globalscope-side"><span class="std std-ref">Side</span></a>, width: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>get_border_width</strong>(margin: <a class="reference internal" href="class_%40globalscope.html#enum-globalscope-side"><span class="std std-ref">Side</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></li>
+</ul>
+<p>Border width for the left border.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-styleboxflat-property-border-width-right"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>border_width_right</strong> = <code class="docutils literal notranslate"><span class="pre">0</span></code> <a class="reference internal" href="#class-styleboxflat-property-border-width-right"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_border_width</strong>(margin: <a class="reference internal" href="class_%40globalscope.html#enum-globalscope-side"><span class="std std-ref">Side</span></a>, width: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>get_border_width</strong>(margin: <a class="reference internal" href="class_%40globalscope.html#enum-globalscope-side"><span class="std std-ref">Side</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></li>
+</ul>
+<p>Border width for the right border.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-styleboxflat-property-border-width-top"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>border_width_top</strong> = <code class="docutils literal notranslate"><span class="pre">0</span></code> <a class="reference internal" href="#class-styleboxflat-property-border-width-top"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_border_width</strong>(margin: <a class="reference internal" href="class_%40globalscope.html#enum-globalscope-side"><span class="std std-ref">Side</span></a>, width: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>get_border_width</strong>(margin: <a class="reference internal" href="class_%40globalscope.html#enum-globalscope-side"><span class="std std-ref">Side</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></li>
+</ul>
+<p>Border width for the top border.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-styleboxflat-property-corner-detail"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>corner_detail</strong> = <code class="docutils literal notranslate"><span class="pre">8</span></code> <a class="reference internal" href="#class-styleboxflat-property-corner-detail"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_corner_detail</strong>(value: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>get_corner_detail</strong>()</p></li>
+</ul>
+<p>This sets the number of vertices used for each corner. Higher values result in rounder corners but take more processing power to compute. When choosing a value, you should take the corner radius (<a class="reference internal" href="#class-styleboxflat-method-set-corner-radius-all"><span class="std std-ref">set_corner_radius_all()</span></a>) into account.</p>
+<p>For corner radii less than 10, <code class="docutils literal notranslate"><span class="pre">4</span></code> or <code class="docutils literal notranslate"><span class="pre">5</span></code> should be enough. For corner radii less than 30, values between <code class="docutils literal notranslate"><span class="pre">8</span></code> and <code class="docutils literal notranslate"><span class="pre">12</span></code> should be enough.</p>
+<p>A corner detail of <code class="docutils literal notranslate"><span class="pre">1</span></code> will result in chamfered corners instead of rounded corners, which is useful for some artistic effects.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-styleboxflat-property-corner-radius-bottom-left"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>corner_radius_bottom_left</strong> = <code class="docutils literal notranslate"><span class="pre">0</span></code> <a class="reference internal" href="#class-styleboxflat-property-corner-radius-bottom-left"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_corner_radius</strong>(corner: <a class="reference internal" href="class_%40globalscope.html#enum-globalscope-corner"><span class="std std-ref">Corner</span></a>, radius: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>get_corner_radius</strong>(corner: <a class="reference internal" href="class_%40globalscope.html#enum-globalscope-corner"><span class="std std-ref">Corner</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></li>
+</ul>
+<p>The bottom-left corner’s radius. If <code class="docutils literal notranslate"><span class="pre">0</span></code>, the corner is not rounded.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-styleboxflat-property-corner-radius-bottom-right"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>corner_radius_bottom_right</strong> = <code class="docutils literal notranslate"><span class="pre">0</span></code> <a class="reference internal" href="#class-styleboxflat-property-corner-radius-bottom-right"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_corner_radius</strong>(corner: <a class="reference internal" href="class_%40globalscope.html#enum-globalscope-corner"><span class="std std-ref">Corner</span></a>, radius: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>get_corner_radius</strong>(corner: <a class="reference internal" href="class_%40globalscope.html#enum-globalscope-corner"><span class="std std-ref">Corner</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></li>
+</ul>
+<p>The bottom-right corner’s radius. If <code class="docutils literal notranslate"><span class="pre">0</span></code>, the corner is not rounded.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-styleboxflat-property-corner-radius-top-left"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>corner_radius_top_left</strong> = <code class="docutils literal notranslate"><span class="pre">0</span></code> <a class="reference internal" href="#class-styleboxflat-property-corner-radius-top-left"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_corner_radius</strong>(corner: <a class="reference internal" href="class_%40globalscope.html#enum-globalscope-corner"><span class="std std-ref">Corner</span></a>, radius: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>get_corner_radius</strong>(corner: <a class="reference internal" href="class_%40globalscope.html#enum-globalscope-corner"><span class="std std-ref">Corner</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></li>
+</ul>
+<p>The top-left corner’s radius. If <code class="docutils literal notranslate"><span class="pre">0</span></code>, the corner is not rounded.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-styleboxflat-property-corner-radius-top-right"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>corner_radius_top_right</strong> = <code class="docutils literal notranslate"><span class="pre">0</span></code> <a class="reference internal" href="#class-styleboxflat-property-corner-radius-top-right"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_corner_radius</strong>(corner: <a class="reference internal" href="class_%40globalscope.html#enum-globalscope-corner"><span class="std std-ref">Corner</span></a>, radius: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>get_corner_radius</strong>(corner: <a class="reference internal" href="class_%40globalscope.html#enum-globalscope-corner"><span class="std std-ref">Corner</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></li>
+</ul>
+<p>The top-right corner’s radius. If <code class="docutils literal notranslate"><span class="pre">0</span></code>, the corner is not rounded.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-styleboxflat-property-draw-center"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>draw_center</strong> = <code class="docutils literal notranslate"><span class="pre">true</span></code> <a class="reference internal" href="#class-styleboxflat-property-draw-center"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_draw_center</strong>(value: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_draw_center_enabled</strong>()</p></li>
+</ul>
+<p>Toggles drawing of the inner part of the stylebox.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-styleboxflat-property-expand-margin-bottom"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>expand_margin_bottom</strong> = <code class="docutils literal notranslate"><span class="pre">0.0</span></code> <a class="reference internal" href="#class-styleboxflat-property-expand-margin-bottom"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_expand_margin</strong>(margin: <a class="reference internal" href="class_%40globalscope.html#enum-globalscope-side"><span class="std std-ref">Side</span></a>, size: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>get_expand_margin</strong>(margin: <a class="reference internal" href="class_%40globalscope.html#enum-globalscope-side"><span class="std std-ref">Side</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></li>
+</ul>
+<p>Expands the stylebox outside of the control rect on the bottom edge. Useful in combination with <a class="reference internal" href="#class-styleboxflat-property-border-width-bottom"><span class="std std-ref">border_width_bottom</span></a> to draw a border outside the control rect.</p>
+<p><strong>Note:</strong> Unlike <a class="reference internal" href="class_stylebox.html#class-stylebox-property-content-margin-bottom"><span class="std std-ref">StyleBox.content_margin_bottom</span></a>, <a class="reference internal" href="#class-styleboxflat-property-expand-margin-bottom"><span class="std std-ref">expand_margin_bottom</span></a> does <em>not</em> affect the size of the clickable area for <a class="reference internal" href="class_control.html#class-control"><span class="std std-ref">Control</span></a>s. This can negatively impact usability if used wrong, as the user may try to click an area of the StyleBox that cannot actually receive clicks.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-styleboxflat-property-expand-margin-left"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>expand_margin_left</strong> = <code class="docutils literal notranslate"><span class="pre">0.0</span></code> <a class="reference internal" href="#class-styleboxflat-property-expand-margin-left"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_expand_margin</strong>(margin: <a class="reference internal" href="class_%40globalscope.html#enum-globalscope-side"><span class="std std-ref">Side</span></a>, size: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>get_expand_margin</strong>(margin: <a class="reference internal" href="class_%40globalscope.html#enum-globalscope-side"><span class="std std-ref">Side</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></li>
+</ul>
+<p>Expands the stylebox outside of the control rect on the left edge. Useful in combination with <a class="reference internal" href="#class-styleboxflat-property-border-width-left"><span class="std std-ref">border_width_left</span></a> to draw a border outside the control rect.</p>
+<p><strong>Note:</strong> Unlike <a class="reference internal" href="class_stylebox.html#class-stylebox-property-content-margin-left"><span class="std std-ref">StyleBox.content_margin_left</span></a>, <a class="reference internal" href="#class-styleboxflat-property-expand-margin-left"><span class="std std-ref">expand_margin_left</span></a> does <em>not</em> affect the size of the clickable area for <a class="reference internal" href="class_control.html#class-control"><span class="std std-ref">Control</span></a>s. This can negatively impact usability if used wrong, as the user may try to click an area of the StyleBox that cannot actually receive clicks.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-styleboxflat-property-expand-margin-right"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>expand_margin_right</strong> = <code class="docutils literal notranslate"><span class="pre">0.0</span></code> <a class="reference internal" href="#class-styleboxflat-property-expand-margin-right"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_expand_margin</strong>(margin: <a class="reference internal" href="class_%40globalscope.html#enum-globalscope-side"><span class="std std-ref">Side</span></a>, size: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>get_expand_margin</strong>(margin: <a class="reference internal" href="class_%40globalscope.html#enum-globalscope-side"><span class="std std-ref">Side</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></li>
+</ul>
+<p>Expands the stylebox outside of the control rect on the right edge. Useful in combination with <a class="reference internal" href="#class-styleboxflat-property-border-width-right"><span class="std std-ref">border_width_right</span></a> to draw a border outside the control rect.</p>
+<p><strong>Note:</strong> Unlike <a class="reference internal" href="class_stylebox.html#class-stylebox-property-content-margin-right"><span class="std std-ref">StyleBox.content_margin_right</span></a>, <a class="reference internal" href="#class-styleboxflat-property-expand-margin-right"><span class="std std-ref">expand_margin_right</span></a> does <em>not</em> affect the size of the clickable area for <a class="reference internal" href="class_control.html#class-control"><span class="std std-ref">Control</span></a>s. This can negatively impact usability if used wrong, as the user may try to click an area of the StyleBox that cannot actually receive clicks.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-styleboxflat-property-expand-margin-top"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>expand_margin_top</strong> = <code class="docutils literal notranslate"><span class="pre">0.0</span></code> <a class="reference internal" href="#class-styleboxflat-property-expand-margin-top"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_expand_margin</strong>(margin: <a class="reference internal" href="class_%40globalscope.html#enum-globalscope-side"><span class="std std-ref">Side</span></a>, size: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>get_expand_margin</strong>(margin: <a class="reference internal" href="class_%40globalscope.html#enum-globalscope-side"><span class="std std-ref">Side</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></li>
+</ul>
+<p>Expands the stylebox outside of the control rect on the top edge. Useful in combination with <a class="reference internal" href="#class-styleboxflat-property-border-width-top"><span class="std std-ref">border_width_top</span></a> to draw a border outside the control rect.</p>
+<p><strong>Note:</strong> Unlike <a class="reference internal" href="class_stylebox.html#class-stylebox-property-content-margin-top"><span class="std std-ref">StyleBox.content_margin_top</span></a>, <a class="reference internal" href="#class-styleboxflat-property-expand-margin-top"><span class="std std-ref">expand_margin_top</span></a> does <em>not</em> affect the size of the clickable area for <a class="reference internal" href="class_control.html#class-control"><span class="std std-ref">Control</span></a>s. This can negatively impact usability if used wrong, as the user may try to click an area of the StyleBox that cannot actually receive clicks.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-styleboxflat-property-shadow-color"><a class="reference internal" href="class_color.html#class-color"><span class="std std-ref">Color</span></a> <strong>shadow_color</strong> = <code class="docutils literal notranslate"><span class="pre">Color(0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0.6)</span></code> <a class="reference internal" href="#class-styleboxflat-property-shadow-color"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_shadow_color</strong>(value: <a class="reference internal" href="class_color.html#class-color"><span class="std std-ref">Color</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_color.html#class-color"><span class="std std-ref">Color</span></a> <strong>get_shadow_color</strong>()</p></li>
+</ul>
+<p>The color of the shadow. This has no effect if <a class="reference internal" href="#class-styleboxflat-property-shadow-size"><span class="std std-ref">shadow_size</span></a> is lower than 1.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-styleboxflat-property-shadow-offset"><a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a> <strong>shadow_offset</strong> = <code class="docutils literal notranslate"><span class="pre">Vector2(0,</span> <span class="pre">0)</span></code> <a class="reference internal" href="#class-styleboxflat-property-shadow-offset"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_shadow_offset</strong>(value: <a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a> <strong>get_shadow_offset</strong>()</p></li>
+</ul>
+<p>The shadow offset in pixels. Adjusts the position of the shadow relatively to the stylebox.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-styleboxflat-property-shadow-size"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>shadow_size</strong> = <code class="docutils literal notranslate"><span class="pre">0</span></code> <a class="reference internal" href="#class-styleboxflat-property-shadow-size"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_shadow_size</strong>(value: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>get_shadow_size</strong>()</p></li>
+</ul>
+<p>The shadow size in pixels.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-styleboxflat-property-skew"><a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a> <strong>skew</strong> = <code class="docutils literal notranslate"><span class="pre">Vector2(0,</span> <span class="pre">0)</span></code> <a class="reference internal" href="#class-styleboxflat-property-skew"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_skew</strong>(value: <a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a> <strong>get_skew</strong>()</p></li>
+</ul>
+<p>If set to a non-zero value on either axis, <a class="reference internal" href="#class-styleboxflat-property-skew"><span class="std std-ref">skew</span></a> distorts the StyleBox horizontally and/or vertically. This can be used for “futuristic”-style UIs. Positive values skew the StyleBox towards the right (X axis) and upwards (Y axis), while negative values skew the StyleBox towards the left (X axis) and downwards (Y axis).</p>
+<p><strong>Note:</strong> To ensure text does not touch the StyleBox’s edges, consider increasing the <a class="reference internal" href="class_stylebox.html#class-stylebox"><span class="std std-ref">StyleBox</span></a>’s content margin (see <a class="reference internal" href="class_stylebox.html#class-stylebox-property-content-margin-bottom"><span class="std std-ref">StyleBox.content_margin_bottom</span></a>). It is preferable to increase the content margin instead of the expand margin (see <a class="reference internal" href="#class-styleboxflat-property-expand-margin-bottom"><span class="std std-ref">expand_margin_bottom</span></a>), as increasing the expand margin does not increase the size of the clickable area for <a class="reference internal" href="class_control.html#class-control"><span class="std std-ref">Control</span></a>s.</p>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="method-descriptions">
+<h2>Method Descriptions<a class="headerlink" href="#method-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-method" id="class-styleboxflat-method-get-border-width"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>get_border_width</strong>(margin: <a class="reference internal" href="class_%40globalscope.html#enum-globalscope-side"><span class="std std-ref">Side</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-styleboxflat-method-get-border-width"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the specified <a class="reference internal" href="class_%40globalscope.html#enum-globalscope-side"><span class="std std-ref">Side</span></a>’s border width.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-styleboxflat-method-get-border-width-min"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>get_border_width_min</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-styleboxflat-method-get-border-width-min"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the smallest border width out of all four borders.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-styleboxflat-method-get-corner-radius"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>get_corner_radius</strong>(corner: <a class="reference internal" href="class_%40globalscope.html#enum-globalscope-corner"><span class="std std-ref">Corner</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-styleboxflat-method-get-corner-radius"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the given <code class="docutils literal notranslate"><span class="pre">corner</span></code>’s radius.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-styleboxflat-method-get-expand-margin"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>get_expand_margin</strong>(margin: <a class="reference internal" href="class_%40globalscope.html#enum-globalscope-side"><span class="std std-ref">Side</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-styleboxflat-method-get-expand-margin"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the size of the specified <a class="reference internal" href="class_%40globalscope.html#enum-globalscope-side"><span class="std std-ref">Side</span></a>’s expand margin.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-styleboxflat-method-set-border-width"><abbr title="No return value.">void</abbr> <strong>set_border_width</strong>(margin: <a class="reference internal" href="class_%40globalscope.html#enum-globalscope-side"><span class="std std-ref">Side</span></a>, width: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <a class="reference internal" href="#class-styleboxflat-method-set-border-width"><span class="std std-ref">🔗</span></a></p>
+<p>Sets the specified <a class="reference internal" href="class_%40globalscope.html#enum-globalscope-side"><span class="std std-ref">Side</span></a>’s border width to <code class="docutils literal notranslate"><span class="pre">width</span></code> pixels.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-styleboxflat-method-set-border-width-all"><abbr title="No return value.">void</abbr> <strong>set_border_width_all</strong>(width: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <a class="reference internal" href="#class-styleboxflat-method-set-border-width-all"><span class="std std-ref">🔗</span></a></p>
+<p>Sets the border width to <code class="docutils literal notranslate"><span class="pre">width</span></code> pixels for all sides.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-styleboxflat-method-set-corner-radius"><abbr title="No return value.">void</abbr> <strong>set_corner_radius</strong>(corner: <a class="reference internal" href="class_%40globalscope.html#enum-globalscope-corner"><span class="std std-ref">Corner</span></a>, radius: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <a class="reference internal" href="#class-styleboxflat-method-set-corner-radius"><span class="std std-ref">🔗</span></a></p>
+<p>Sets the corner radius to <code class="docutils literal notranslate"><span class="pre">radius</span></code> pixels for the given <code class="docutils literal notranslate"><span class="pre">corner</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-styleboxflat-method-set-corner-radius-all"><abbr title="No return value.">void</abbr> <strong>set_corner_radius_all</strong>(radius: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <a class="reference internal" href="#class-styleboxflat-method-set-corner-radius-all"><span class="std std-ref">🔗</span></a></p>
+<p>Sets the corner radius to <code class="docutils literal notranslate"><span class="pre">radius</span></code> pixels for all corners.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-styleboxflat-method-set-expand-margin"><abbr title="No return value.">void</abbr> <strong>set_expand_margin</strong>(margin: <a class="reference internal" href="class_%40globalscope.html#enum-globalscope-side"><span class="std std-ref">Side</span></a>, size: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>) <a class="reference internal" href="#class-styleboxflat-method-set-expand-margin"><span class="std std-ref">🔗</span></a></p>
+<p>Sets the expand margin to <code class="docutils literal notranslate"><span class="pre">size</span></code> pixels for the specified <a class="reference internal" href="class_%40globalscope.html#enum-globalscope-side"><span class="std std-ref">Side</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-styleboxflat-method-set-expand-margin-all"><abbr title="No return value.">void</abbr> <strong>set_expand_margin_all</strong>(size: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>) <a class="reference internal" href="#class-styleboxflat-method-set-expand-margin-all"><span class="std std-ref">🔗</span></a></p>
+<p>Sets the expand margin to <code class="docutils literal notranslate"><span class="pre">size</span></code> pixels for all sides.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, MUmarShahbaz.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,451 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta content="directory, path, folder" name="keywords" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DirAccess &mdash; RPG Components 2D 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=d45e8c67"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            RPG Components 2D
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">DirAccess</a><ul>
+<li><a class="reference internal" href="#description">Description</a></li>
+<li><a class="reference internal" href="#tutorials">Tutorials</a></li>
+<li><a class="reference internal" href="#properties">Properties</a></li>
+<li><a class="reference internal" href="#methods">Methods</a></li>
+<li><a class="reference internal" href="#property-descriptions">Property Descriptions</a></li>
+<li><a class="reference internal" href="#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">RPG Components 2D</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">DirAccess</li>
+      <li class="wy-breadcrumbs-aside">
+              <!-- User defined GitHub URL -->
+              <a href="hide" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="diraccess">
+<span id="class-diraccess"></span><h1>DirAccess<a class="headerlink" href="#diraccess" title="Link to this heading"></a></h1>
+<p><strong>Inherits:</strong> <a class="reference internal" href="class_refcounted.html#class-refcounted"><span class="std std-ref">RefCounted</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_object.html#class-object"><span class="std std-ref">Object</span></a></p>
+<p>Provides methods for managing directories and their content.</p>
+<section class="classref-introduction-group" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
+<p>This class is used to manage directories and their content, even outside of the project folder.</p>
+<p><strong>DirAccess</strong> can’t be instantiated directly. Instead it is created with a static method that takes a path for which it will be opened.</p>
+<p>Most of the methods have a static alternative that can be used without creating a <strong>DirAccess</strong>. Static methods only support absolute paths (including <code class="docutils literal notranslate"><span class="pre">res://</span></code> and <code class="docutils literal notranslate"><span class="pre">user://</span></code>).</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Standard</span>
+<span class="n">var</span> <span class="nb">dir</span> <span class="o">=</span> <span class="n">DirAccess</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;user://levels&quot;</span><span class="p">)</span>
+<span class="nb">dir</span><span class="o">.</span><span class="n">make_dir</span><span class="p">(</span><span class="s2">&quot;world1&quot;</span><span class="p">)</span>
+<span class="c1"># Static</span>
+<span class="n">DirAccess</span><span class="o">.</span><span class="n">make_dir_absolute</span><span class="p">(</span><span class="s2">&quot;user://levels/world1&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Note:</strong> Accessing project (”<a class="reference external" href="res://">res://</a>”) directories once exported may behave unexpectedly as some files are converted to engine-specific formats and their original source files may not be present in the expected PCK package. Because of this, to access resources in an exported project, it is recommended to use <a class="reference internal" href="class_resourceloader.html#class-resourceloader"><span class="std std-ref">ResourceLoader</span></a> instead of <a class="reference internal" href="class_fileaccess.html#class-fileaccess"><span class="std std-ref">FileAccess</span></a>.</p>
+<p>Here is an example on how to iterate through the files of a directory:</p>
+<p>Keep in mind that file names may change or be remapped after export. If you want to see the actual resource file list as it appears in the editor, use <a class="reference internal" href="class_resourceloader.html#class-resourceloader-method-list-directory"><span class="std std-ref">ResourceLoader.list_directory()</span></a> instead.</p>
+</section>
+<section class="classref-introduction-group" id="tutorials">
+<h2>Tutorials<a class="headerlink" href="#tutorials" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><span class="xref std std-doc">File system</span></p></li>
+</ul>
+</section>
+<section class="classref-reftable-group" id="properties">
+<h2>Properties<a class="headerlink" href="#properties" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-diraccess-property-include-hidden"><span class="std std-ref">include_hidden</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-diraccess-property-include-navigational"><span class="std std-ref">include_navigational</span></a></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section class="classref-reftable-group" id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_%40globalscope.html#enum-globalscope-error"><span class="std std-ref">Error</span></a></p></td>
+<td><p><a class="reference internal" href="#class-diraccess-method-change-dir"><span class="std std-ref">change_dir</span></a>(to_dir: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_%40globalscope.html#enum-globalscope-error"><span class="std std-ref">Error</span></a></p></td>
+<td><p><a class="reference internal" href="#class-diraccess-method-copy"><span class="std std-ref">copy</span></a>(from: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, to: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, chmod_flags: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> = -1)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_%40globalscope.html#enum-globalscope-error"><span class="std std-ref">Error</span></a></p></td>
+<td><p><a class="reference internal" href="#class-diraccess-method-copy-absolute"><span class="std std-ref">copy_absolute</span></a>(from: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, to: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, chmod_flags: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> = -1) <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_%40globalscope.html#enum-globalscope-error"><span class="std std-ref">Error</span></a></p></td>
+<td><p><a class="reference internal" href="#class-diraccess-method-create-link"><span class="std std-ref">create_link</span></a>(source: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, target: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#class-diraccess"><span class="std std-ref">DirAccess</span></a></p></td>
+<td><p><a class="reference internal" href="#class-diraccess-method-create-temp"><span class="std std-ref">create_temp</span></a>(prefix: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a> = “”, keep: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = false) <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-diraccess-method-current-is-dir"><span class="std std-ref">current_is_dir</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-diraccess-method-dir-exists"><span class="std std-ref">dir_exists</span></a>(path: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-diraccess-method-dir-exists-absolute"><span class="std std-ref">dir_exists_absolute</span></a>(path: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-diraccess-method-file-exists"><span class="std std-ref">file_exists</span></a>(path: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a></p></td>
+<td><p><a class="reference internal" href="#class-diraccess-method-get-current-dir"><span class="std std-ref">get_current_dir</span></a>(include_drive: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = true) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-diraccess-method-get-current-drive"><span class="std std-ref">get_current_drive</span></a>()</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_packedstringarray.html#class-packedstringarray"><span class="std std-ref">PackedStringArray</span></a></p></td>
+<td><p><a class="reference internal" href="#class-diraccess-method-get-directories"><span class="std std-ref">get_directories</span></a>()</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_packedstringarray.html#class-packedstringarray"><span class="std std-ref">PackedStringArray</span></a></p></td>
+<td><p><a class="reference internal" href="#class-diraccess-method-get-directories-at"><span class="std std-ref">get_directories_at</span></a>(path: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-diraccess-method-get-drive-count"><span class="std std-ref">get_drive_count</span></a>() <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a></p></td>
+<td><p><a class="reference internal" href="#class-diraccess-method-get-drive-label"><span class="std std-ref">get_drive_label</span></a>(idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a></p></td>
+<td><p><a class="reference internal" href="#class-diraccess-method-get-drive-name"><span class="std std-ref">get_drive_name</span></a>(idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_packedstringarray.html#class-packedstringarray"><span class="std std-ref">PackedStringArray</span></a></p></td>
+<td><p><a class="reference internal" href="#class-diraccess-method-get-files"><span class="std std-ref">get_files</span></a>()</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_packedstringarray.html#class-packedstringarray"><span class="std std-ref">PackedStringArray</span></a></p></td>
+<td><p><a class="reference internal" href="#class-diraccess-method-get-files-at"><span class="std std-ref">get_files_at</span></a>(path: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a></p></td>
+<td><p><a class="reference internal" href="#class-diraccess-method-get-filesystem-type"><span class="std std-ref">get_filesystem_type</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a></p></td>
+<td><p><a class="reference internal" href="#class-diraccess-method-get-next"><span class="std std-ref">get_next</span></a>()</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_%40globalscope.html#enum-globalscope-error"><span class="std std-ref">Error</span></a></p></td>
+<td><p><a class="reference internal" href="#class-diraccess-method-get-open-error"><span class="std std-ref">get_open_error</span></a>() <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-diraccess-method-get-space-left"><span class="std std-ref">get_space_left</span></a>()</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-diraccess-method-is-bundle"><span class="std std-ref">is_bundle</span></a>(path: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-diraccess-method-is-case-sensitive"><span class="std std-ref">is_case_sensitive</span></a>(path: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-diraccess-method-is-equivalent"><span class="std std-ref">is_equivalent</span></a>(path_a: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, path_b: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-diraccess-method-is-link"><span class="std std-ref">is_link</span></a>(path: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_%40globalscope.html#enum-globalscope-error"><span class="std std-ref">Error</span></a></p></td>
+<td><p><a class="reference internal" href="#class-diraccess-method-list-dir-begin"><span class="std std-ref">list_dir_begin</span></a>()</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-diraccess-method-list-dir-end"><span class="std std-ref">list_dir_end</span></a>()</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_%40globalscope.html#enum-globalscope-error"><span class="std std-ref">Error</span></a></p></td>
+<td><p><a class="reference internal" href="#class-diraccess-method-make-dir"><span class="std std-ref">make_dir</span></a>(path: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_%40globalscope.html#enum-globalscope-error"><span class="std std-ref">Error</span></a></p></td>
+<td><p><a class="reference internal" href="#class-diraccess-method-make-dir-absolute"><span class="std std-ref">make_dir_absolute</span></a>(path: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_%40globalscope.html#enum-globalscope-error"><span class="std std-ref">Error</span></a></p></td>
+<td><p><a class="reference internal" href="#class-diraccess-method-make-dir-recursive"><span class="std std-ref">make_dir_recursive</span></a>(path: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_%40globalscope.html#enum-globalscope-error"><span class="std std-ref">Error</span></a></p></td>
+<td><p><a class="reference internal" href="#class-diraccess-method-make-dir-recursive-absolute"><span class="std std-ref">make_dir_recursive_absolute</span></a>(path: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#class-diraccess"><span class="std std-ref">DirAccess</span></a></p></td>
+<td><p><a class="reference internal" href="#class-diraccess-method-open"><span class="std std-ref">open</span></a>(path: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a></p></td>
+<td><p><a class="reference internal" href="#class-diraccess-method-read-link"><span class="std std-ref">read_link</span></a>(path: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_%40globalscope.html#enum-globalscope-error"><span class="std std-ref">Error</span></a></p></td>
+<td><p><a class="reference internal" href="#class-diraccess-method-remove"><span class="std std-ref">remove</span></a>(path: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_%40globalscope.html#enum-globalscope-error"><span class="std std-ref">Error</span></a></p></td>
+<td><p><a class="reference internal" href="#class-diraccess-method-remove-absolute"><span class="std std-ref">remove_absolute</span></a>(path: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_%40globalscope.html#enum-globalscope-error"><span class="std std-ref">Error</span></a></p></td>
+<td><p><a class="reference internal" href="#class-diraccess-method-rename"><span class="std std-ref">rename</span></a>(from: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, to: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_%40globalscope.html#enum-globalscope-error"><span class="std std-ref">Error</span></a></p></td>
+<td><p><a class="reference internal" href="#class-diraccess-method-rename-absolute"><span class="std std-ref">rename_absolute</span></a>(from: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, to: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="property-descriptions">
+<h2>Property Descriptions<a class="headerlink" href="#property-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-property" id="class-diraccess-property-include-hidden"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>include_hidden</strong> <a class="reference internal" href="#class-diraccess-property-include-hidden"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_include_hidden</strong>(value: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>get_include_hidden</strong>()</p></li>
+</ul>
+<p>If <code class="docutils literal notranslate"><span class="pre">true</span></code>, hidden files are included when navigating the directory.</p>
+<p>Affects <a class="reference internal" href="#class-diraccess-method-list-dir-begin"><span class="std std-ref">list_dir_begin()</span></a>, <a class="reference internal" href="#class-diraccess-method-get-directories"><span class="std std-ref">get_directories()</span></a> and <a class="reference internal" href="#class-diraccess-method-get-files"><span class="std std-ref">get_files()</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-diraccess-property-include-navigational"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>include_navigational</strong> <a class="reference internal" href="#class-diraccess-property-include-navigational"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_include_navigational</strong>(value: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>get_include_navigational</strong>()</p></li>
+</ul>
+<p>If <code class="docutils literal notranslate"><span class="pre">true</span></code>, <code class="docutils literal notranslate"><span class="pre">.</span></code> and <code class="docutils literal notranslate"><span class="pre">..</span></code> are included when navigating the directory.</p>
+<p>Affects <a class="reference internal" href="#class-diraccess-method-list-dir-begin"><span class="std std-ref">list_dir_begin()</span></a> and <a class="reference internal" href="#class-diraccess-method-get-directories"><span class="std std-ref">get_directories()</span></a>.</p>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="method-descriptions">
+<h2>Method Descriptions<a class="headerlink" href="#method-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-method" id="class-diraccess-method-change-dir"><a class="reference internal" href="class_%40globalscope.html#enum-globalscope-error"><span class="std std-ref">Error</span></a> <strong>change_dir</strong>(to_dir: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <a class="reference internal" href="#class-diraccess-method-change-dir"><span class="std std-ref">🔗</span></a></p>
+<p>Changes the currently opened directory to the one passed as an argument. The argument can be relative to the current directory (e.g. <code class="docutils literal notranslate"><span class="pre">newdir</span></code> or <code class="docutils literal notranslate"><span class="pre">../newdir</span></code>), or an absolute path (e.g. <code class="docutils literal notranslate"><span class="pre">/tmp/newdir</span></code> or <code class="docutils literal notranslate"><span class="pre">res://somedir/newdir</span></code>).</p>
+<p>Returns one of the <a class="reference internal" href="class_%40globalscope.html#enum-globalscope-error"><span class="std std-ref">Error</span></a> code constants (<a class="reference internal" href="class_%40globalscope.html#class-globalscope-constant-ok"><span class="std std-ref">&#64;GlobalScope.OK</span></a> on success).</p>
+<p><strong>Note:</strong> The new directory must be within the same scope, e.g. when you had opened a directory inside <code class="docutils literal notranslate"><span class="pre">res://</span></code>, you can’t change it to <code class="docutils literal notranslate"><span class="pre">user://</span></code> directory. If you need to open a directory in another access scope, use <a class="reference internal" href="#class-diraccess-method-open"><span class="std std-ref">open()</span></a> to create a new instance instead.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-diraccess-method-copy"><a class="reference internal" href="class_%40globalscope.html#enum-globalscope-error"><span class="std std-ref">Error</span></a> <strong>copy</strong>(from: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, to: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, chmod_flags: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> = -1) <a class="reference internal" href="#class-diraccess-method-copy"><span class="std std-ref">🔗</span></a></p>
+<p>Copies the <code class="docutils literal notranslate"><span class="pre">from</span></code> file to the <code class="docutils literal notranslate"><span class="pre">to</span></code> destination. Both arguments should be paths to files, either relative or absolute. If the destination file exists and is not access-protected, it will be overwritten.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">chmod_flags</span></code> is different than <code class="docutils literal notranslate"><span class="pre">-1</span></code>, the Unix permissions for the destination path will be set to the provided value, if available on the current operating system.</p>
+<p>Returns one of the <a class="reference internal" href="class_%40globalscope.html#enum-globalscope-error"><span class="std std-ref">Error</span></a> code constants (<a class="reference internal" href="class_%40globalscope.html#class-globalscope-constant-ok"><span class="std std-ref">&#64;GlobalScope.OK</span></a> on success).</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-diraccess-method-copy-absolute"><a class="reference internal" href="class_%40globalscope.html#enum-globalscope-error"><span class="std std-ref">Error</span></a> <strong>copy_absolute</strong>(from: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, to: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, chmod_flags: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> = -1) <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr> <a class="reference internal" href="#class-diraccess-method-copy-absolute"><span class="std std-ref">🔗</span></a></p>
+<p>Static version of <a class="reference internal" href="#class-diraccess-method-copy"><span class="std std-ref">copy()</span></a>. Supports only absolute paths.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-diraccess-method-create-link"><a class="reference internal" href="class_%40globalscope.html#enum-globalscope-error"><span class="std std-ref">Error</span></a> <strong>create_link</strong>(source: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, target: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <a class="reference internal" href="#class-diraccess-method-create-link"><span class="std std-ref">🔗</span></a></p>
+<p>Creates symbolic link between files or folders.</p>
+<p><strong>Note:</strong> On Windows, this method works only if the application is running with elevated privileges or Developer Mode is enabled.</p>
+<p><strong>Note:</strong> This method is implemented on macOS, Linux, and Windows.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-diraccess-method-create-temp"><a class="reference internal" href="#class-diraccess"><span class="std std-ref">DirAccess</span></a> <strong>create_temp</strong>(prefix: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a> = “”, keep: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = false) <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr> <a class="reference internal" href="#class-diraccess-method-create-temp"><span class="std std-ref">🔗</span></a></p>
+<p>Creates a temporary directory. This directory will be freed when the returned <strong>DirAccess</strong> is freed.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">prefix</span></code> is not empty, it will be prefixed to the directory name, separated by a <code class="docutils literal notranslate"><span class="pre">-</span></code>.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">keep</span></code> is <code class="docutils literal notranslate"><span class="pre">true</span></code>, the directory is not deleted when the returned <strong>DirAccess</strong> is freed.</p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">null</span></code> if opening the directory failed. You can use <a class="reference internal" href="#class-diraccess-method-get-open-error"><span class="std std-ref">get_open_error()</span></a> to check the error that occurred.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-diraccess-method-current-is-dir"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>current_is_dir</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-diraccess-method-current-is-dir"><span class="std std-ref">🔗</span></a></p>
+<p>Returns whether the current item processed with the last <a class="reference internal" href="#class-diraccess-method-get-next"><span class="std std-ref">get_next()</span></a> call is a directory (<code class="docutils literal notranslate"><span class="pre">.</span></code> and <code class="docutils literal notranslate"><span class="pre">..</span></code> are considered directories).</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-diraccess-method-dir-exists"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>dir_exists</strong>(path: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <a class="reference internal" href="#class-diraccess-method-dir-exists"><span class="std std-ref">🔗</span></a></p>
+<p>Returns whether the target directory exists. The argument can be relative to the current directory, or an absolute path.</p>
+<p><strong>Note:</strong> The returned <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> in the editor and after exporting when used on a path in the <code class="docutils literal notranslate"><span class="pre">res://</span></code> directory may be different. Some files are converted to engine-specific formats when exported, potentially changing the directory structure.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-diraccess-method-dir-exists-absolute"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>dir_exists_absolute</strong>(path: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr> <a class="reference internal" href="#class-diraccess-method-dir-exists-absolute"><span class="std std-ref">🔗</span></a></p>
+<p>Static version of <a class="reference internal" href="#class-diraccess-method-dir-exists"><span class="std std-ref">dir_exists()</span></a>. Supports only absolute paths.</p>
+<p><strong>Note:</strong> The returned <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> in the editor and after exporting when used on a path in the <code class="docutils literal notranslate"><span class="pre">res://</span></code> directory may be different. Some files are converted to engine-specific formats when exported, potentially changing the directory structure.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-diraccess-method-file-exists"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>file_exists</strong>(path: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <a class="reference internal" href="#class-diraccess-method-file-exists"><span class="std std-ref">🔗</span></a></p>
+<p>Returns whether the target file exists. The argument can be relative to the current directory, or an absolute path.</p>
+<p>For a static equivalent, use <a class="reference internal" href="class_fileaccess.html#class-fileaccess-method-file-exists"><span class="std std-ref">FileAccess.file_exists()</span></a>.</p>
+<p><strong>Note:</strong> Many resources types are imported (e.g. textures or sound files), and their source asset will not be included in the exported game, as only the imported version is used. See <a class="reference internal" href="class_resourceloader.html#class-resourceloader-method-exists"><span class="std std-ref">ResourceLoader.exists()</span></a> for an alternative approach that takes resource remapping into account.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-diraccess-method-get-current-dir"><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a> <strong>get_current_dir</strong>(include_drive: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = true) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-diraccess-method-get-current-dir"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the absolute path to the currently opened directory (e.g. <code class="docutils literal notranslate"><span class="pre">res://folder</span></code> or <code class="docutils literal notranslate"><span class="pre">C:\tmp\folder</span></code>).</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-diraccess-method-get-current-drive"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>get_current_drive</strong>() <a class="reference internal" href="#class-diraccess-method-get-current-drive"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the currently opened directory’s drive index. See <a class="reference internal" href="#class-diraccess-method-get-drive-name"><span class="std std-ref">get_drive_name()</span></a> to convert returned index to the name of the drive.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-diraccess-method-get-directories"><a class="reference internal" href="class_packedstringarray.html#class-packedstringarray"><span class="std std-ref">PackedStringArray</span></a> <strong>get_directories</strong>() <a class="reference internal" href="#class-diraccess-method-get-directories"><span class="std std-ref">🔗</span></a></p>
+<p>Returns a <a class="reference internal" href="class_packedstringarray.html#class-packedstringarray"><span class="std std-ref">PackedStringArray</span></a> containing filenames of the directory contents, excluding files. The array is sorted alphabetically.</p>
+<p>Affected by <a class="reference internal" href="#class-diraccess-property-include-hidden"><span class="std std-ref">include_hidden</span></a> and <a class="reference internal" href="#class-diraccess-property-include-navigational"><span class="std std-ref">include_navigational</span></a>.</p>
+<p><strong>Note:</strong> The returned directories in the editor and after exporting in the <code class="docutils literal notranslate"><span class="pre">res://</span></code> directory may differ as some files are converted to engine-specific formats when exported.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-diraccess-method-get-directories-at"><a class="reference internal" href="class_packedstringarray.html#class-packedstringarray"><span class="std std-ref">PackedStringArray</span></a> <strong>get_directories_at</strong>(path: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr> <a class="reference internal" href="#class-diraccess-method-get-directories-at"><span class="std std-ref">🔗</span></a></p>
+<p>Returns a <a class="reference internal" href="class_packedstringarray.html#class-packedstringarray"><span class="std std-ref">PackedStringArray</span></a> containing filenames of the directory contents, excluding files, at the given <code class="docutils literal notranslate"><span class="pre">path</span></code>. The array is sorted alphabetically.</p>
+<p>Use <a class="reference internal" href="#class-diraccess-method-get-directories"><span class="std std-ref">get_directories()</span></a> if you want more control of what gets included.</p>
+<p><strong>Note:</strong> The returned directories in the editor and after exporting in the <code class="docutils literal notranslate"><span class="pre">res://</span></code> directory may differ as some files are converted to engine-specific formats when exported.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-diraccess-method-get-drive-count"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>get_drive_count</strong>() <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr> <a class="reference internal" href="#class-diraccess-method-get-drive-count"><span class="std std-ref">🔗</span></a></p>
+<p>On Windows, returns the number of drives (partitions) mounted on the current filesystem.</p>
+<p>On macOS and Android, returns the number of mounted volumes.</p>
+<p>On Linux, returns the number of mounted volumes and GTK 3 bookmarks.</p>
+<p>On other platforms, the method returns 0.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-diraccess-method-get-drive-label"><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a> <strong>get_drive_label</strong>(idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr> <a class="reference internal" href="#class-diraccess-method-get-drive-label"><span class="std std-ref">🔗</span></a></p>
+<p>On Windows, returns the label of the drive (partition) passed as an argument.</p>
+<p>On other platforms, or if the requested drive does not exist, returns an empty String.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-diraccess-method-get-drive-name"><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a> <strong>get_drive_name</strong>(idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr> <a class="reference internal" href="#class-diraccess-method-get-drive-name"><span class="std std-ref">🔗</span></a></p>
+<p>On Windows, returns the name of the drive (partition) passed as an argument (e.g. <code class="docutils literal notranslate"><span class="pre">C:</span></code>).</p>
+<p>On macOS, returns the path to the mounted volume passed as an argument.</p>
+<p>On Linux, returns the path to the mounted volume or GTK 3 bookmark passed as an argument.</p>
+<p>On Android (API level 30+), returns the path to the mounted volume as an argument.</p>
+<p>On other platforms, or if the requested drive does not exist, returns an empty String.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-diraccess-method-get-files"><a class="reference internal" href="class_packedstringarray.html#class-packedstringarray"><span class="std std-ref">PackedStringArray</span></a> <strong>get_files</strong>() <a class="reference internal" href="#class-diraccess-method-get-files"><span class="std std-ref">🔗</span></a></p>
+<p>Returns a <a class="reference internal" href="class_packedstringarray.html#class-packedstringarray"><span class="std std-ref">PackedStringArray</span></a> containing filenames of the directory contents, excluding directories. The array is sorted alphabetically.</p>
+<p>Affected by <a class="reference internal" href="#class-diraccess-property-include-hidden"><span class="std std-ref">include_hidden</span></a>.</p>
+<p><strong>Note:</strong> When used on a <code class="docutils literal notranslate"><span class="pre">res://</span></code> path in an exported project, only the files actually included in the PCK at the given folder level are returned. In practice, this means that since imported resources are stored in a top-level <code class="docutils literal notranslate"><span class="pre">.godot/</span></code> folder, only paths to <code class="docutils literal notranslate"><span class="pre">*.gd</span></code> and <code class="docutils literal notranslate"><span class="pre">*.import</span></code> files are returned (plus a few files such as <code class="docutils literal notranslate"><span class="pre">project.godot</span></code> or <code class="docutils literal notranslate"><span class="pre">project.binary</span></code> and the project icon). In an exported project, the list of returned files will also vary depending on whether <a class="reference internal" href="class_projectsettings.html#class-projectsettings-property-editor-export-convert-text-resources-to-binary"><span class="std std-ref">ProjectSettings.editor/export/convert_text_resources_to_binary</span></a> is <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-diraccess-method-get-files-at"><a class="reference internal" href="class_packedstringarray.html#class-packedstringarray"><span class="std std-ref">PackedStringArray</span></a> <strong>get_files_at</strong>(path: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr> <a class="reference internal" href="#class-diraccess-method-get-files-at"><span class="std std-ref">🔗</span></a></p>
+<p>Returns a <a class="reference internal" href="class_packedstringarray.html#class-packedstringarray"><span class="std std-ref">PackedStringArray</span></a> containing filenames of the directory contents, excluding directories, at the given <code class="docutils literal notranslate"><span class="pre">path</span></code>. The array is sorted alphabetically.</p>
+<p>Use <a class="reference internal" href="#class-diraccess-method-get-files"><span class="std std-ref">get_files()</span></a> if you want more control of what gets included.</p>
+<p><strong>Note:</strong> When used on a <code class="docutils literal notranslate"><span class="pre">res://</span></code> path in an exported project, only the files included in the PCK at the given folder level are returned. In practice, this means that since imported resources are stored in a top-level <code class="docutils literal notranslate"><span class="pre">.godot/</span></code> folder, only paths to <code class="docutils literal notranslate"><span class="pre">.gd</span></code> and <code class="docutils literal notranslate"><span class="pre">.import</span></code> files are returned (plus a few other files, such as <code class="docutils literal notranslate"><span class="pre">project.godot</span></code> or <code class="docutils literal notranslate"><span class="pre">project.binary</span></code> and the project icon). In an exported project, the list of returned files will also vary depending on <a class="reference internal" href="class_projectsettings.html#class-projectsettings-property-editor-export-convert-text-resources-to-binary"><span class="std std-ref">ProjectSettings.editor/export/convert_text_resources_to_binary</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-diraccess-method-get-filesystem-type"><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a> <strong>get_filesystem_type</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-diraccess-method-get-filesystem-type"><span class="std std-ref">🔗</span></a></p>
+<p>Returns file system type name of the current directory’s disk. Returned values are uppercase strings like <code class="docutils literal notranslate"><span class="pre">NTFS</span></code>, <code class="docutils literal notranslate"><span class="pre">FAT32</span></code>, <code class="docutils literal notranslate"><span class="pre">EXFAT</span></code>, <code class="docutils literal notranslate"><span class="pre">APFS</span></code>, <code class="docutils literal notranslate"><span class="pre">EXT4</span></code>, <code class="docutils literal notranslate"><span class="pre">BTRFS</span></code>, and so on.</p>
+<p><strong>Note:</strong> This method is implemented on macOS, Linux, Windows and for PCK virtual file system.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-diraccess-method-get-next"><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a> <strong>get_next</strong>() <a class="reference internal" href="#class-diraccess-method-get-next"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the next element (file or directory) in the current directory.</p>
+<p>The name of the file or directory is returned (and not its full path). Once the stream has been fully processed, the method returns an empty <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a> and closes the stream automatically (i.e. <a class="reference internal" href="#class-diraccess-method-list-dir-end"><span class="std std-ref">list_dir_end()</span></a> would not be mandatory in such a case).</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-diraccess-method-get-open-error"><a class="reference internal" href="class_%40globalscope.html#enum-globalscope-error"><span class="std std-ref">Error</span></a> <strong>get_open_error</strong>() <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr> <a class="reference internal" href="#class-diraccess-method-get-open-error"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the result of the last <a class="reference internal" href="#class-diraccess-method-open"><span class="std std-ref">open()</span></a> call in the current thread.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-diraccess-method-get-space-left"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>get_space_left</strong>() <a class="reference internal" href="#class-diraccess-method-get-space-left"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the available space on the current directory’s disk, in bytes. Returns <code class="docutils literal notranslate"><span class="pre">0</span></code> if the platform-specific method to query the available space fails.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-diraccess-method-is-bundle"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_bundle</strong>(path: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-diraccess-method-is-bundle"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if the directory is a macOS bundle.</p>
+<p><strong>Note:</strong> This method is implemented on macOS.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-diraccess-method-is-case-sensitive"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_case_sensitive</strong>(path: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-diraccess-method-is-case-sensitive"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if the file system or directory use case sensitive file names.</p>
+<p><strong>Note:</strong> This method is implemented on macOS, Linux (for EXT4 and F2FS filesystems only) and Windows. On other platforms, it always returns <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-diraccess-method-is-equivalent"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_equivalent</strong>(path_a: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, path_b: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-diraccess-method-is-equivalent"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if paths <code class="docutils literal notranslate"><span class="pre">path_a</span></code> and <code class="docutils literal notranslate"><span class="pre">path_b</span></code> resolve to the same file system object. Returns <code class="docutils literal notranslate"><span class="pre">false</span></code> otherwise, even if the files are bit-for-bit identical (e.g., identical copies of the file that are not symbolic links).</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-diraccess-method-is-link"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_link</strong>(path: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <a class="reference internal" href="#class-diraccess-method-is-link"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if the file or directory is a symbolic link, directory junction, or other reparse point.</p>
+<p><strong>Note:</strong> This method is implemented on macOS, Linux, and Windows.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-diraccess-method-list-dir-begin"><a class="reference internal" href="class_%40globalscope.html#enum-globalscope-error"><span class="std std-ref">Error</span></a> <strong>list_dir_begin</strong>() <a class="reference internal" href="#class-diraccess-method-list-dir-begin"><span class="std std-ref">🔗</span></a></p>
+<p>Initializes the stream used to list all files and directories using the <a class="reference internal" href="#class-diraccess-method-get-next"><span class="std std-ref">get_next()</span></a> function, closing the currently opened stream if needed. Once the stream has been processed, it should typically be closed with <a class="reference internal" href="#class-diraccess-method-list-dir-end"><span class="std std-ref">list_dir_end()</span></a>.</p>
+<p>Affected by <a class="reference internal" href="#class-diraccess-property-include-hidden"><span class="std std-ref">include_hidden</span></a> and <a class="reference internal" href="#class-diraccess-property-include-navigational"><span class="std std-ref">include_navigational</span></a>.</p>
+<p><strong>Note:</strong> The order of files and directories returned by this method is not deterministic, and can vary between operating systems. If you want a list of all files or folders sorted alphabetically, use <a class="reference internal" href="#class-diraccess-method-get-files"><span class="std std-ref">get_files()</span></a> or <a class="reference internal" href="#class-diraccess-method-get-directories"><span class="std std-ref">get_directories()</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-diraccess-method-list-dir-end"><abbr title="No return value.">void</abbr> <strong>list_dir_end</strong>() <a class="reference internal" href="#class-diraccess-method-list-dir-end"><span class="std std-ref">🔗</span></a></p>
+<p>Closes the current stream opened with <a class="reference internal" href="#class-diraccess-method-list-dir-begin"><span class="std std-ref">list_dir_begin()</span></a> (whether it has been fully processed with <a class="reference internal" href="#class-diraccess-method-get-next"><span class="std std-ref">get_next()</span></a> does not matter).</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-diraccess-method-make-dir"><a class="reference internal" href="class_%40globalscope.html#enum-globalscope-error"><span class="std std-ref">Error</span></a> <strong>make_dir</strong>(path: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <a class="reference internal" href="#class-diraccess-method-make-dir"><span class="std std-ref">🔗</span></a></p>
+<p>Creates a directory. The argument can be relative to the current directory, or an absolute path. The target directory should be placed in an already existing directory (to create the full path recursively, see <a class="reference internal" href="#class-diraccess-method-make-dir-recursive"><span class="std std-ref">make_dir_recursive()</span></a>).</p>
+<p>Returns one of the <a class="reference internal" href="class_%40globalscope.html#enum-globalscope-error"><span class="std std-ref">Error</span></a> code constants (<a class="reference internal" href="class_%40globalscope.html#class-globalscope-constant-ok"><span class="std std-ref">&#64;GlobalScope.OK</span></a> on success).</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-diraccess-method-make-dir-absolute"><a class="reference internal" href="class_%40globalscope.html#enum-globalscope-error"><span class="std std-ref">Error</span></a> <strong>make_dir_absolute</strong>(path: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr> <a class="reference internal" href="#class-diraccess-method-make-dir-absolute"><span class="std std-ref">🔗</span></a></p>
+<p>Static version of <a class="reference internal" href="#class-diraccess-method-make-dir"><span class="std std-ref">make_dir()</span></a>. Supports only absolute paths.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-diraccess-method-make-dir-recursive"><a class="reference internal" href="class_%40globalscope.html#enum-globalscope-error"><span class="std std-ref">Error</span></a> <strong>make_dir_recursive</strong>(path: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <a class="reference internal" href="#class-diraccess-method-make-dir-recursive"><span class="std std-ref">🔗</span></a></p>
+<p>Creates a target directory and all necessary intermediate directories in its path, by calling <a class="reference internal" href="#class-diraccess-method-make-dir"><span class="std std-ref">make_dir()</span></a> recursively. The argument can be relative to the current directory, or an absolute path.</p>
+<p>Returns one of the <a class="reference internal" href="class_%40globalscope.html#enum-globalscope-error"><span class="std std-ref">Error</span></a> code constants (<a class="reference internal" href="class_%40globalscope.html#class-globalscope-constant-ok"><span class="std std-ref">&#64;GlobalScope.OK</span></a> on success).</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-diraccess-method-make-dir-recursive-absolute"><a class="reference internal" href="class_%40globalscope.html#enum-globalscope-error"><span class="std std-ref">Error</span></a> <strong>make_dir_recursive_absolute</strong>(path: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr> <a class="reference internal" href="#class-diraccess-method-make-dir-recursive-absolute"><span class="std std-ref">🔗</span></a></p>
+<p>Static version of <a class="reference internal" href="#class-diraccess-method-make-dir-recursive"><span class="std std-ref">make_dir_recursive()</span></a>. Supports only absolute paths.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-diraccess-method-open"><a class="reference internal" href="#class-diraccess"><span class="std std-ref">DirAccess</span></a> <strong>open</strong>(path: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr> <a class="reference internal" href="#class-diraccess-method-open"><span class="std std-ref">🔗</span></a></p>
+<p>Creates a new <strong>DirAccess</strong> object and opens an existing directory of the filesystem. The <code class="docutils literal notranslate"><span class="pre">path</span></code> argument can be within the project tree (<code class="docutils literal notranslate"><span class="pre">res://folder</span></code>), the user directory (<code class="docutils literal notranslate"><span class="pre">user://folder</span></code>) or an absolute path of the user filesystem (e.g. <code class="docutils literal notranslate"><span class="pre">/tmp/folder</span></code> or <code class="docutils literal notranslate"><span class="pre">C:\tmp\folder</span></code>).</p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">null</span></code> if opening the directory failed. You can use <a class="reference internal" href="#class-diraccess-method-get-open-error"><span class="std std-ref">get_open_error()</span></a> to check the error that occurred.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-diraccess-method-read-link"><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a> <strong>read_link</strong>(path: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <a class="reference internal" href="#class-diraccess-method-read-link"><span class="std std-ref">🔗</span></a></p>
+<p>Returns target of the symbolic link.</p>
+<p><strong>Note:</strong> This method is implemented on macOS, Linux, and Windows.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-diraccess-method-remove"><a class="reference internal" href="class_%40globalscope.html#enum-globalscope-error"><span class="std std-ref">Error</span></a> <strong>remove</strong>(path: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <a class="reference internal" href="#class-diraccess-method-remove"><span class="std std-ref">🔗</span></a></p>
+<p>Permanently deletes the target file or an empty directory. The argument can be relative to the current directory, or an absolute path. If the target directory is not empty, the operation will fail.</p>
+<p>If you don’t want to delete the file/directory permanently, use <a class="reference internal" href="class_os.html#class-os-method-move-to-trash"><span class="std std-ref">OS.move_to_trash()</span></a> instead.</p>
+<p>Returns one of the <a class="reference internal" href="class_%40globalscope.html#enum-globalscope-error"><span class="std std-ref">Error</span></a> code constants (<a class="reference internal" href="class_%40globalscope.html#class-globalscope-constant-ok"><span class="std std-ref">&#64;GlobalScope.OK</span></a> on success).</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-diraccess-method-remove-absolute"><a class="reference internal" href="class_%40globalscope.html#enum-globalscope-error"><span class="std std-ref">Error</span></a> <strong>remove_absolute</strong>(path: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr> <a class="reference internal" href="#class-diraccess-method-remove-absolute"><span class="std std-ref">🔗</span></a></p>
+<p>Static version of <a class="reference internal" href="#class-diraccess-method-remove"><span class="std std-ref">remove()</span></a>. Supports only absolute paths.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-diraccess-method-rename"><a class="reference internal" href="class_%40globalscope.html#enum-globalscope-error"><span class="std std-ref">Error</span></a> <strong>rename</strong>(from: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, to: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <a class="reference internal" href="#class-diraccess-method-rename"><span class="std std-ref">🔗</span></a></p>
+<p>Renames (move) the <code class="docutils literal notranslate"><span class="pre">from</span></code> file or directory to the <code class="docutils literal notranslate"><span class="pre">to</span></code> destination. Both arguments should be paths to files or directories, either relative or absolute. If the destination file or directory exists and is not access-protected, it will be overwritten.</p>
+<p>Returns one of the <a class="reference internal" href="class_%40globalscope.html#enum-globalscope-error"><span class="std std-ref">Error</span></a> code constants (<a class="reference internal" href="class_%40globalscope.html#class-globalscope-constant-ok"><span class="std std-ref">&#64;GlobalScope.OK</span></a> on success).</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-diraccess-method-rename-absolute"><a class="reference internal" href="class_%40globalscope.html#enum-globalscope-error"><span class="std std-ref">Error</span></a> <strong>rename_absolute</strong>(from: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, to: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr> <a class="reference internal" href="#class-diraccess-method-rename-absolute"><span class="std std-ref">🔗</span></a></p>
+<p>Static version of <a class="reference internal" href="#class-diraccess-method-rename"><span class="std std-ref">rename()</span></a>. Supports only absolute paths.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, MUmarShahbaz.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

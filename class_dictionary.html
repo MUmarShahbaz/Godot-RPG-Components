@@ -1,0 +1,450 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dictionary &mdash; RPG Components 2D 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=d45e8c67"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            RPG Components 2D
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">Dictionary</a><ul>
+<li><a class="reference internal" href="#description">Description</a></li>
+<li><a class="reference internal" href="#tutorials">Tutorials</a></li>
+<li><a class="reference internal" href="#constructors">Constructors</a></li>
+<li><a class="reference internal" href="#methods">Methods</a></li>
+<li><a class="reference internal" href="#operators">Operators</a></li>
+<li><a class="reference internal" href="#constructor-descriptions">Constructor Descriptions</a></li>
+<li><a class="reference internal" href="#method-descriptions">Method Descriptions</a></li>
+<li><a class="reference internal" href="#operator-descriptions">Operator Descriptions</a></li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">RPG Components 2D</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Dictionary</li>
+      <li class="wy-breadcrumbs-aside">
+              <!-- User defined GitHub URL -->
+              <a href="hide" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="dictionary">
+<span id="class-dictionary"></span><h1>Dictionary<a class="headerlink" href="#dictionary" title="Link to this heading"></a></h1>
+<p>A built-in data structure that holds key-value pairs.</p>
+<section class="classref-introduction-group" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
+<p>Dictionaries are associative containers that contain values referenced by unique keys. Dictionaries will preserve the insertion order when adding new entries. In other programming languages, this data structure is often referred to as a hash map or an associative array.</p>
+<p>You can define a dictionary by placing a comma-separated list of <code class="docutils literal notranslate"><span class="pre">key:</span> <span class="pre">value</span></code> pairs inside curly braces <code class="docutils literal notranslate"><span class="pre">{}</span></code>.</p>
+<p>Creating a dictionary:</p>
+<p>You can access a dictionary’s value by referencing its corresponding key. In the above example, <code class="docutils literal notranslate"><span class="pre">points_dict[&quot;White&quot;]</span></code> will return <code class="docutils literal notranslate"><span class="pre">50</span></code>. You can also write <code class="docutils literal notranslate"><span class="pre">points_dict.White</span></code>, which is equivalent. However, you’ll have to use the bracket syntax if the key you’re accessing the dictionary with isn’t a fixed string (such as a number or variable).</p>
+<p>In the above code, <code class="docutils literal notranslate"><span class="pre">points</span></code> will be assigned the value that is paired with the appropriate color selected in <code class="docutils literal notranslate"><span class="pre">my_color</span></code>.</p>
+<p>Dictionaries can contain more complex data:</p>
+<p>To add a key to an existing dictionary, access it like an existing key and assign to it:</p>
+<p>Finally, untyped dictionaries can contain different types of keys and values in the same dictionary:</p>
+<p>The keys of a dictionary can be iterated with the <code class="docutils literal notranslate"><span class="pre">for</span></code> keyword:</p>
+<p>To enforce a certain type for keys and values, you can create a <em>typed dictionary</em>. Typed dictionaries can only contain keys and values of the given types, or that inherit from the given classes:</p>
+<p><strong>Note:</strong> Dictionaries are always passed by reference. To get a copy of a dictionary which can be modified independently of the original dictionary, use <a class="reference internal" href="#class-dictionary-method-duplicate"><span class="std std-ref">duplicate()</span></a>.</p>
+<p><strong>Note:</strong> Erasing elements while iterating over dictionaries is <strong>not</strong> supported and will result in unpredictable behavior.</p>
+<p><strong>Note:</strong> In a boolean context, a dictionary will evaluate to <code class="docutils literal notranslate"><span class="pre">false</span></code> if it’s empty (<code class="docutils literal notranslate"><span class="pre">{}</span></code>). Otherwise, a dictionary will always evaluate to <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>There are notable differences when using this API with C#. See <span class="xref std std-ref">doc_c_sharp_differences</span> for more information.</p>
+</div>
+</section>
+<section class="classref-introduction-group" id="tutorials">
+<h2>Tutorials<a class="headerlink" href="#tutorials" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="../tutorials/scripting/gdscript/gdscript_basics.html#dictionary">GDScript basics: Dictionary</a></p></li>
+<li><p><a class="reference external" href="https://godotengine.org/asset-library/asset/2755">3D Voxel Demo</a></p></li>
+<li><p><a class="reference external" href="https://godotengine.org/asset-library/asset/2789">Operating System Testing Demo</a></p></li>
+</ul>
+</section>
+<section class="classref-reftable-group" id="constructors">
+<h2>Constructors<a class="headerlink" href="#constructors" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#class-dictionary"><span class="std std-ref">Dictionary</span></a></p></td>
+<td><p><a class="reference internal" href="#class-dictionary-constructor-dictionary"><span class="std std-ref">Dictionary</span></a>()</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#class-dictionary"><span class="std std-ref">Dictionary</span></a></p></td>
+<td><p><a class="reference internal" href="#class-dictionary-constructor-dictionary"><span class="std std-ref">Dictionary</span></a>(base: <a class="reference internal" href="#class-dictionary"><span class="std std-ref">Dictionary</span></a>, key_type: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, key_class_name: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>, key_script: <a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a>, value_type: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, value_class_name: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>, value_script: <a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#class-dictionary"><span class="std std-ref">Dictionary</span></a></p></td>
+<td><p><a class="reference internal" href="#class-dictionary-constructor-dictionary"><span class="std std-ref">Dictionary</span></a>(from: <a class="reference internal" href="#class-dictionary"><span class="std std-ref">Dictionary</span></a>)</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section class="classref-reftable-group" id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-dictionary-method-assign"><span class="std std-ref">assign</span></a>(dictionary: <a class="reference internal" href="#class-dictionary"><span class="std std-ref">Dictionary</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-dictionary-method-clear"><span class="std std-ref">clear</span></a>()</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#class-dictionary"><span class="std std-ref">Dictionary</span></a></p></td>
+<td><p><a class="reference internal" href="#class-dictionary-method-duplicate"><span class="std std-ref">duplicate</span></a>(deep: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = false) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#class-dictionary"><span class="std std-ref">Dictionary</span></a></p></td>
+<td><p><a class="reference internal" href="#class-dictionary-method-duplicate-deep"><span class="std std-ref">duplicate_deep</span></a>(deep_subresources_mode: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> = 1) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-dictionary-method-erase"><span class="std std-ref">erase</span></a>(key: <a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a></p></td>
+<td><p><a class="reference internal" href="#class-dictionary-method-find-key"><span class="std std-ref">find_key</span></a>(value: <a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a></p></td>
+<td><p><a class="reference internal" href="#class-dictionary-method-get"><span class="std std-ref">get</span></a>(key: <a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a>, default: <a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a> = null) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a></p></td>
+<td><p><a class="reference internal" href="#class-dictionary-method-get-or-add"><span class="std std-ref">get_or_add</span></a>(key: <a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a>, default: <a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a> = null)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-dictionary-method-get-typed-key-builtin"><span class="std std-ref">get_typed_key_builtin</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a></p></td>
+<td><p><a class="reference internal" href="#class-dictionary-method-get-typed-key-class-name"><span class="std std-ref">get_typed_key_class_name</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a></p></td>
+<td><p><a class="reference internal" href="#class-dictionary-method-get-typed-key-script"><span class="std std-ref">get_typed_key_script</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-dictionary-method-get-typed-value-builtin"><span class="std std-ref">get_typed_value_builtin</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a></p></td>
+<td><p><a class="reference internal" href="#class-dictionary-method-get-typed-value-class-name"><span class="std std-ref">get_typed_value_class_name</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a></p></td>
+<td><p><a class="reference internal" href="#class-dictionary-method-get-typed-value-script"><span class="std std-ref">get_typed_value_script</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-dictionary-method-has"><span class="std std-ref">has</span></a>(key: <a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-dictionary-method-has-all"><span class="std std-ref">has_all</span></a>(keys: <a class="reference internal" href="class_array.html#class-array"><span class="std std-ref">Array</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-dictionary-method-hash"><span class="std std-ref">hash</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-dictionary-method-is-empty"><span class="std std-ref">is_empty</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-dictionary-method-is-read-only"><span class="std std-ref">is_read_only</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-dictionary-method-is-same-typed"><span class="std std-ref">is_same_typed</span></a>(dictionary: <a class="reference internal" href="#class-dictionary"><span class="std std-ref">Dictionary</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-dictionary-method-is-same-typed-key"><span class="std std-ref">is_same_typed_key</span></a>(dictionary: <a class="reference internal" href="#class-dictionary"><span class="std std-ref">Dictionary</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-dictionary-method-is-same-typed-value"><span class="std std-ref">is_same_typed_value</span></a>(dictionary: <a class="reference internal" href="#class-dictionary"><span class="std std-ref">Dictionary</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-dictionary-method-is-typed"><span class="std std-ref">is_typed</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-dictionary-method-is-typed-key"><span class="std std-ref">is_typed_key</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-dictionary-method-is-typed-value"><span class="std std-ref">is_typed_value</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_array.html#class-array"><span class="std std-ref">Array</span></a></p></td>
+<td><p><a class="reference internal" href="#class-dictionary-method-keys"><span class="std std-ref">keys</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-dictionary-method-make-read-only"><span class="std std-ref">make_read_only</span></a>()</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-dictionary-method-merge"><span class="std std-ref">merge</span></a>(dictionary: <a class="reference internal" href="#class-dictionary"><span class="std std-ref">Dictionary</span></a>, overwrite: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = false)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#class-dictionary"><span class="std std-ref">Dictionary</span></a></p></td>
+<td><p><a class="reference internal" href="#class-dictionary-method-merged"><span class="std std-ref">merged</span></a>(dictionary: <a class="reference internal" href="#class-dictionary"><span class="std std-ref">Dictionary</span></a>, overwrite: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = false) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-dictionary-method-recursive-equal"><span class="std std-ref">recursive_equal</span></a>(dictionary: <a class="reference internal" href="#class-dictionary"><span class="std std-ref">Dictionary</span></a>, recursion_count: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-dictionary-method-set"><span class="std std-ref">set</span></a>(key: <a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a>, value: <a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-dictionary-method-size"><span class="std std-ref">size</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-dictionary-method-sort"><span class="std std-ref">sort</span></a>()</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_array.html#class-array"><span class="std std-ref">Array</span></a></p></td>
+<td><p><a class="reference internal" href="#class-dictionary-method-values"><span class="std std-ref">values</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section class="classref-reftable-group" id="operators">
+<h2>Operators<a class="headerlink" href="#operators" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-dictionary-operator-neq-dictionary"><span class="std std-ref">operator !=</span></a>(right: <a class="reference internal" href="#class-dictionary"><span class="std std-ref">Dictionary</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-dictionary-operator-eq-dictionary"><span class="std std-ref">operator ==</span></a>(right: <a class="reference internal" href="#class-dictionary"><span class="std std-ref">Dictionary</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a></p></td>
+<td><p><a class="reference internal" href="#class-dictionary-operator-idx-variant"><span class="std std-ref">operator []</span></a>(key: <a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a>)</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="constructor-descriptions">
+<h2>Constructor Descriptions<a class="headerlink" href="#constructor-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-constructor" id="class-dictionary-constructor-dictionary"><a class="reference internal" href="#class-dictionary"><span class="std std-ref">Dictionary</span></a> <strong>Dictionary</strong>() <a class="reference internal" href="#class-dictionary-constructor-dictionary"><span class="std std-ref">🔗</span></a></p>
+<p>Constructs an empty <strong>Dictionary</strong>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-constructor"><a class="reference internal" href="#class-dictionary"><span class="std std-ref">Dictionary</span></a> <strong>Dictionary</strong>(base: <a class="reference internal" href="#class-dictionary"><span class="std std-ref">Dictionary</span></a>, key_type: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, key_class_name: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>, key_script: <a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a>, value_type: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, value_class_name: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>, value_script: <a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a>)</p>
+<p>Creates a typed dictionary from the <code class="docutils literal notranslate"><span class="pre">base</span></code> dictionary. A typed dictionary can only contain keys and values of the given types, or that inherit from the given classes, as described by this constructor’s parameters.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-constructor"><a class="reference internal" href="#class-dictionary"><span class="std std-ref">Dictionary</span></a> <strong>Dictionary</strong>(from: <a class="reference internal" href="#class-dictionary"><span class="std std-ref">Dictionary</span></a>)</p>
+<p>Returns the same dictionary as <code class="docutils literal notranslate"><span class="pre">from</span></code>. If you need a copy of the dictionary, use <a class="reference internal" href="#class-dictionary-method-duplicate"><span class="std std-ref">duplicate()</span></a>.</p>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="method-descriptions">
+<h2>Method Descriptions<a class="headerlink" href="#method-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-method" id="class-dictionary-method-assign"><abbr title="No return value.">void</abbr> <strong>assign</strong>(dictionary: <a class="reference internal" href="#class-dictionary"><span class="std std-ref">Dictionary</span></a>) <a class="reference internal" href="#class-dictionary-method-assign"><span class="std std-ref">🔗</span></a></p>
+<p>Assigns elements of another <code class="docutils literal notranslate"><span class="pre">dictionary</span></code> into the dictionary. Resizes the dictionary to match <code class="docutils literal notranslate"><span class="pre">dictionary</span></code>. Performs type conversions if the dictionary is typed.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-dictionary-method-clear"><abbr title="No return value.">void</abbr> <strong>clear</strong>() <a class="reference internal" href="#class-dictionary-method-clear"><span class="std std-ref">🔗</span></a></p>
+<p>Clears the dictionary, removing all entries from it.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-dictionary-method-duplicate"><a class="reference internal" href="#class-dictionary"><span class="std std-ref">Dictionary</span></a> <strong>duplicate</strong>(deep: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = false) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-dictionary-method-duplicate"><span class="std std-ref">🔗</span></a></p>
+<p>Returns a new copy of the dictionary.</p>
+<p>By default, a <strong>shallow</strong> copy is returned: all nested <a class="reference internal" href="class_array.html#class-array"><span class="std std-ref">Array</span></a>, <strong>Dictionary</strong>, and <a class="reference internal" href="class_resource.html#class-resource"><span class="std std-ref">Resource</span></a> keys and values are shared with the original dictionary. Modifying any of those in one dictionary will also affect them in the other.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">deep</span></code> is <code class="docutils literal notranslate"><span class="pre">true</span></code>, a <strong>deep</strong> copy is returned: all nested arrays and dictionaries are also duplicated (recursively). Any <a class="reference internal" href="class_resource.html#class-resource"><span class="std std-ref">Resource</span></a> is still shared with the original dictionary, though.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-dictionary-method-duplicate-deep"><a class="reference internal" href="#class-dictionary"><span class="std std-ref">Dictionary</span></a> <strong>duplicate_deep</strong>(deep_subresources_mode: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> = 1) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-dictionary-method-duplicate-deep"><span class="std std-ref">🔗</span></a></p>
+<p>Duplicates this dictionary, deeply, like <a class="reference internal" href="#class-dictionary-method-duplicate"><span class="std std-ref">duplicate()</span></a> when passing <code class="docutils literal notranslate"><span class="pre">true</span></code>, with extra control over how subresources are handled.</p>
+<p><code class="docutils literal notranslate"><span class="pre">deep_subresources_mode</span></code> must be one of the values from <a class="reference internal" href="class_resource.html#enum-resource-deepduplicatemode"><span class="std std-ref">DeepDuplicateMode</span></a>. By default, only internal resources will be duplicated (recursively).</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-dictionary-method-erase"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>erase</strong>(key: <a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a>) <a class="reference internal" href="#class-dictionary-method-erase"><span class="std std-ref">🔗</span></a></p>
+<p>Removes the dictionary entry by key, if it exists. Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if the given <code class="docutils literal notranslate"><span class="pre">key</span></code> existed in the dictionary, otherwise <code class="docutils literal notranslate"><span class="pre">false</span></code>.</p>
+<p><strong>Note:</strong> Do not erase entries while iterating over the dictionary. You can iterate over the <a class="reference internal" href="#class-dictionary-method-keys"><span class="std std-ref">keys()</span></a> array instead.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-dictionary-method-find-key"><a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a> <strong>find_key</strong>(value: <a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-dictionary-method-find-key"><span class="std std-ref">🔗</span></a></p>
+<p>Finds and returns the first key whose associated value is equal to <code class="docutils literal notranslate"><span class="pre">value</span></code>, or <code class="docutils literal notranslate"><span class="pre">null</span></code> if it is not found.</p>
+<p><strong>Note:</strong> <code class="docutils literal notranslate"><span class="pre">null</span></code> is also a valid key. If inside the dictionary, <a class="reference internal" href="#class-dictionary-method-find-key"><span class="std std-ref">find_key()</span></a> may give misleading results.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-dictionary-method-get"><a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a> <strong>get</strong>(key: <a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a>, default: <a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a> = null) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-dictionary-method-get"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the corresponding value for the given <code class="docutils literal notranslate"><span class="pre">key</span></code> in the dictionary. If the <code class="docutils literal notranslate"><span class="pre">key</span></code> does not exist, returns <code class="docutils literal notranslate"><span class="pre">default</span></code>, or <code class="docutils literal notranslate"><span class="pre">null</span></code> if the parameter is omitted.</p>
+<p><strong>Note:</strong> If the <code class="docutils literal notranslate"><span class="pre">default</span></code> argument is computationally expensive or has unwanted side effects, consider using the <a class="reference internal" href="#class-dictionary-method-has"><span class="std std-ref">has()</span></a> method instead:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Always calls `expensive_function()`.</span>
+<span class="nb">dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;key&quot;</span><span class="p">,</span> <span class="n">expensive_function</span><span class="p">())</span>
+<span class="c1"># Calls `expensive_function()` only if the key does not exist.</span>
+<span class="nb">dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;key&quot;</span><span class="p">)</span> <span class="k">if</span> <span class="nb">dict</span><span class="o">.</span><span class="n">has</span><span class="p">(</span><span class="s2">&quot;key&quot;</span><span class="p">)</span> <span class="k">else</span> <span class="n">expensive_function</span><span class="p">()</span>
+</pre></div>
+</div>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-dictionary-method-get-or-add"><a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a> <strong>get_or_add</strong>(key: <a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a>, default: <a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a> = null) <a class="reference internal" href="#class-dictionary-method-get-or-add"><span class="std std-ref">🔗</span></a></p>
+<p>Gets a value and ensures the key is set. If the <code class="docutils literal notranslate"><span class="pre">key</span></code> exists in the dictionary, this behaves like <a class="reference internal" href="#class-dictionary-method-get"><span class="std std-ref">get()</span></a>. Otherwise, the <code class="docutils literal notranslate"><span class="pre">default</span></code> value is inserted into the dictionary and returned.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-dictionary-method-get-typed-key-builtin"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>get_typed_key_builtin</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-dictionary-method-get-typed-key-builtin"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the built-in <a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a> type of the typed dictionary’s keys as a <a class="reference internal" href="class_%40globalscope.html#enum-globalscope-variant-type"><span class="std std-ref">Variant.Type</span></a> constant. If the keys are not typed, returns <a class="reference internal" href="class_%40globalscope.html#class-globalscope-constant-type-nil"><span class="std std-ref">&#64;GlobalScope.TYPE_NIL</span></a>. See also <a class="reference internal" href="#class-dictionary-method-is-typed-key"><span class="std std-ref">is_typed_key()</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-dictionary-method-get-typed-key-class-name"><a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a> <strong>get_typed_key_class_name</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-dictionary-method-get-typed-key-class-name"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the <strong>built-in</strong> class name of the typed dictionary’s keys, if the built-in <a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a> type is <a class="reference internal" href="class_%40globalscope.html#class-globalscope-constant-type-object"><span class="std std-ref">&#64;GlobalScope.TYPE_OBJECT</span></a>. Otherwise, returns an empty <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>. See also <a class="reference internal" href="#class-dictionary-method-is-typed-key"><span class="std std-ref">is_typed_key()</span></a> and <a class="reference internal" href="class_object.html#class-object-method-get-class"><span class="std std-ref">Object.get_class()</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-dictionary-method-get-typed-key-script"><a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a> <strong>get_typed_key_script</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-dictionary-method-get-typed-key-script"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the <a class="reference internal" href="class_script.html#class-script"><span class="std std-ref">Script</span></a> instance associated with this typed dictionary’s keys, or <code class="docutils literal notranslate"><span class="pre">null</span></code> if it does not exist. See also <a class="reference internal" href="#class-dictionary-method-is-typed-key"><span class="std std-ref">is_typed_key()</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-dictionary-method-get-typed-value-builtin"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>get_typed_value_builtin</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-dictionary-method-get-typed-value-builtin"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the built-in <a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a> type of the typed dictionary’s values as a <a class="reference internal" href="class_%40globalscope.html#enum-globalscope-variant-type"><span class="std std-ref">Variant.Type</span></a> constant. If the values are not typed, returns <a class="reference internal" href="class_%40globalscope.html#class-globalscope-constant-type-nil"><span class="std std-ref">&#64;GlobalScope.TYPE_NIL</span></a>. See also <a class="reference internal" href="#class-dictionary-method-is-typed-value"><span class="std std-ref">is_typed_value()</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-dictionary-method-get-typed-value-class-name"><a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a> <strong>get_typed_value_class_name</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-dictionary-method-get-typed-value-class-name"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the <strong>built-in</strong> class name of the typed dictionary’s values, if the built-in <a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a> type is <a class="reference internal" href="class_%40globalscope.html#class-globalscope-constant-type-object"><span class="std std-ref">&#64;GlobalScope.TYPE_OBJECT</span></a>. Otherwise, returns an empty <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>. See also <a class="reference internal" href="#class-dictionary-method-is-typed-value"><span class="std std-ref">is_typed_value()</span></a> and <a class="reference internal" href="class_object.html#class-object-method-get-class"><span class="std std-ref">Object.get_class()</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-dictionary-method-get-typed-value-script"><a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a> <strong>get_typed_value_script</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-dictionary-method-get-typed-value-script"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the <a class="reference internal" href="class_script.html#class-script"><span class="std std-ref">Script</span></a> instance associated with this typed dictionary’s values, or <code class="docutils literal notranslate"><span class="pre">null</span></code> if it does not exist. See also <a class="reference internal" href="#class-dictionary-method-is-typed-value"><span class="std std-ref">is_typed_value()</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-dictionary-method-has"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>has</strong>(key: <a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-dictionary-method-has"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if the dictionary contains an entry with the given <code class="docutils literal notranslate"><span class="pre">key</span></code>.</p>
+<p>In GDScript, this is equivalent to the <code class="docutils literal notranslate"><span class="pre">in</span></code> operator:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="s2">&quot;Godot&quot;</span> <span class="ow">in</span> <span class="p">{</span> <span class="s2">&quot;Godot&quot;</span><span class="p">:</span> <span class="mi">4</span> <span class="p">}:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The key is here!&quot;</span><span class="p">)</span> <span class="c1"># Will be printed.</span>
+</pre></div>
+</div>
+<p><strong>Note:</strong> This method returns <code class="docutils literal notranslate"><span class="pre">true</span></code> as long as the <code class="docutils literal notranslate"><span class="pre">key</span></code> exists, even if its corresponding value is <code class="docutils literal notranslate"><span class="pre">null</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-dictionary-method-has-all"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>has_all</strong>(keys: <a class="reference internal" href="class_array.html#class-array"><span class="std std-ref">Array</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-dictionary-method-has-all"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if the dictionary contains all keys in the given <code class="docutils literal notranslate"><span class="pre">keys</span></code> array.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">data</span> <span class="o">=</span> <span class="p">{</span> <span class="s2">&quot;width&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="s2">&quot;height&quot;</span><span class="p">:</span> <span class="mi">20</span> <span class="p">}</span>
+<span class="n">data</span><span class="o">.</span><span class="n">has_all</span><span class="p">([</span><span class="s2">&quot;height&quot;</span><span class="p">,</span> <span class="s2">&quot;width&quot;</span><span class="p">])</span> <span class="c1"># Returns true</span>
+</pre></div>
+</div>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-dictionary-method-hash"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>hash</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-dictionary-method-hash"><span class="std std-ref">🔗</span></a></p>
+<p>Returns a hashed 32-bit integer value representing the dictionary contents.</p>
+<p><strong>Note:</strong> Dictionaries with the same entries but in a different order will not have the same hash.</p>
+<p><strong>Note:</strong> Dictionaries with equal hash values are <em>not</em> guaranteed to be the same, because of hash collisions. On the contrary, dictionaries with different hash values are guaranteed to be different.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-dictionary-method-is-empty"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_empty</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-dictionary-method-is-empty"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if the dictionary is empty (its size is <code class="docutils literal notranslate"><span class="pre">0</span></code>). See also <a class="reference internal" href="#class-dictionary-method-size"><span class="std std-ref">size()</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-dictionary-method-is-read-only"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_read_only</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-dictionary-method-is-read-only"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if the dictionary is read-only. See <a class="reference internal" href="#class-dictionary-method-make-read-only"><span class="std std-ref">make_read_only()</span></a>. Dictionaries are automatically read-only if declared with <code class="docutils literal notranslate"><span class="pre">const</span></code> keyword.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-dictionary-method-is-same-typed"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_same_typed</strong>(dictionary: <a class="reference internal" href="#class-dictionary"><span class="std std-ref">Dictionary</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-dictionary-method-is-same-typed"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if the dictionary is typed the same as <code class="docutils literal notranslate"><span class="pre">dictionary</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-dictionary-method-is-same-typed-key"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_same_typed_key</strong>(dictionary: <a class="reference internal" href="#class-dictionary"><span class="std std-ref">Dictionary</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-dictionary-method-is-same-typed-key"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if the dictionary’s keys are typed the same as <code class="docutils literal notranslate"><span class="pre">dictionary</span></code>’s keys.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-dictionary-method-is-same-typed-value"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_same_typed_value</strong>(dictionary: <a class="reference internal" href="#class-dictionary"><span class="std std-ref">Dictionary</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-dictionary-method-is-same-typed-value"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if the dictionary’s values are typed the same as <code class="docutils literal notranslate"><span class="pre">dictionary</span></code>’s values.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-dictionary-method-is-typed"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_typed</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-dictionary-method-is-typed"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if the dictionary is typed. Typed dictionaries can only store keys/values of their associated type and provide type safety for the <code class="docutils literal notranslate"><span class="pre">[]</span></code> operator. Methods of typed dictionary still return <a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-dictionary-method-is-typed-key"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_typed_key</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-dictionary-method-is-typed-key"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if the dictionary’s keys are typed.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-dictionary-method-is-typed-value"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_typed_value</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-dictionary-method-is-typed-value"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if the dictionary’s values are typed.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-dictionary-method-keys"><a class="reference internal" href="class_array.html#class-array"><span class="std std-ref">Array</span></a> <strong>keys</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-dictionary-method-keys"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the list of keys in the dictionary.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-dictionary-method-make-read-only"><abbr title="No return value.">void</abbr> <strong>make_read_only</strong>() <a class="reference internal" href="#class-dictionary-method-make-read-only"><span class="std std-ref">🔗</span></a></p>
+<p>Makes the dictionary read-only, i.e. disables modification of the dictionary’s contents. Does not apply to nested content, e.g. content of nested dictionaries.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-dictionary-method-merge"><abbr title="No return value.">void</abbr> <strong>merge</strong>(dictionary: <a class="reference internal" href="#class-dictionary"><span class="std std-ref">Dictionary</span></a>, overwrite: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = false) <a class="reference internal" href="#class-dictionary-method-merge"><span class="std std-ref">🔗</span></a></p>
+<p>Adds entries from <code class="docutils literal notranslate"><span class="pre">dictionary</span></code> to this dictionary. By default, duplicate keys are not copied over, unless <code class="docutils literal notranslate"><span class="pre">overwrite</span></code> is <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p>
+<p><strong>Note:</strong> <a class="reference internal" href="#class-dictionary-method-merge"><span class="std std-ref">merge()</span></a> is <em>not</em> recursive. Nested dictionaries are considered as keys that can be overwritten or not depending on the value of <code class="docutils literal notranslate"><span class="pre">overwrite</span></code>, but they will never be merged together.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-dictionary-method-merged"><a class="reference internal" href="#class-dictionary"><span class="std std-ref">Dictionary</span></a> <strong>merged</strong>(dictionary: <a class="reference internal" href="#class-dictionary"><span class="std std-ref">Dictionary</span></a>, overwrite: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = false) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-dictionary-method-merged"><span class="std std-ref">🔗</span></a></p>
+<p>Returns a copy of this dictionary merged with the other <code class="docutils literal notranslate"><span class="pre">dictionary</span></code>. By default, duplicate keys are not copied over, unless <code class="docutils literal notranslate"><span class="pre">overwrite</span></code> is <code class="docutils literal notranslate"><span class="pre">true</span></code>. See also <a class="reference internal" href="#class-dictionary-method-merge"><span class="std std-ref">merge()</span></a>.</p>
+<p>This method is useful for quickly making dictionaries with default values:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">base</span> <span class="o">=</span> <span class="p">{</span> <span class="s2">&quot;fruit&quot;</span><span class="p">:</span> <span class="s2">&quot;apple&quot;</span><span class="p">,</span> <span class="s2">&quot;vegetable&quot;</span><span class="p">:</span> <span class="s2">&quot;potato&quot;</span> <span class="p">}</span>
+<span class="n">var</span> <span class="n">extra</span> <span class="o">=</span> <span class="p">{</span> <span class="s2">&quot;fruit&quot;</span><span class="p">:</span> <span class="s2">&quot;orange&quot;</span><span class="p">,</span> <span class="s2">&quot;dressing&quot;</span><span class="p">:</span> <span class="s2">&quot;vinegar&quot;</span> <span class="p">}</span>
+<span class="c1"># Prints { &quot;fruit&quot;: &quot;orange&quot;, &quot;vegetable&quot;: &quot;potato&quot;, &quot;dressing&quot;: &quot;vinegar&quot; }</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">extra</span><span class="o">.</span><span class="n">merged</span><span class="p">(</span><span class="n">base</span><span class="p">))</span>
+<span class="c1"># Prints { &quot;fruit&quot;: &quot;apple&quot;, &quot;vegetable&quot;: &quot;potato&quot;, &quot;dressing&quot;: &quot;vinegar&quot; }</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">extra</span><span class="o">.</span><span class="n">merged</span><span class="p">(</span><span class="n">base</span><span class="p">,</span> <span class="n">true</span><span class="p">))</span>
+</pre></div>
+</div>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-dictionary-method-recursive-equal"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>recursive_equal</strong>(dictionary: <a class="reference internal" href="#class-dictionary"><span class="std std-ref">Dictionary</span></a>, recursion_count: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-dictionary-method-recursive-equal"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if the two dictionaries contain the same keys and values, inner <strong>Dictionary</strong> and <a class="reference internal" href="class_array.html#class-array"><span class="std std-ref">Array</span></a> keys and values are compared recursively.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-dictionary-method-set"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>set</strong>(key: <a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a>, value: <a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a>) <a class="reference internal" href="#class-dictionary-method-set"><span class="std std-ref">🔗</span></a></p>
+<p>Sets the value of the element at the given <code class="docutils literal notranslate"><span class="pre">key</span></code> to the given <code class="docutils literal notranslate"><span class="pre">value</span></code>. Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if the value is set successfully. Fails and returns <code class="docutils literal notranslate"><span class="pre">false</span></code> if the dictionary is read-only, or if <code class="docutils literal notranslate"><span class="pre">key</span></code> and <code class="docutils literal notranslate"><span class="pre">value</span></code> don’t match the dictionary’s types. This is the same as using the <code class="docutils literal notranslate"><span class="pre">[]</span></code> operator (<code class="docutils literal notranslate"><span class="pre">dict[key]</span> <span class="pre">=</span> <span class="pre">value</span></code>).</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-dictionary-method-size"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>size</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-dictionary-method-size"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the number of entries in the dictionary. Empty dictionaries (<code class="docutils literal notranslate"><span class="pre">{</span> <span class="pre">}</span></code>) always return <code class="docutils literal notranslate"><span class="pre">0</span></code>. See also <a class="reference internal" href="#class-dictionary-method-is-empty"><span class="std std-ref">is_empty()</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-dictionary-method-sort"><abbr title="No return value.">void</abbr> <strong>sort</strong>() <a class="reference internal" href="#class-dictionary-method-sort"><span class="std std-ref">🔗</span></a></p>
+<p>Sorts the dictionary in ascending order, by key. The final order is dependent on the “less than” (<code class="docutils literal notranslate"><span class="pre">&lt;</span></code>) comparison between keys.</p>
+<p>This method ensures that the dictionary’s entries are ordered consistently when <a class="reference internal" href="#class-dictionary-method-keys"><span class="std std-ref">keys()</span></a> or <a class="reference internal" href="#class-dictionary-method-values"><span class="std std-ref">values()</span></a> are called, or when the dictionary needs to be converted to a string through <a class="reference internal" href="class_%40globalscope.html#class-globalscope-method-str"><span class="std std-ref">&#64;GlobalScope.str()</span></a> or <a class="reference internal" href="class_json.html#class-json-method-stringify"><span class="std std-ref">JSON.stringify()</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-dictionary-method-values"><a class="reference internal" href="class_array.html#class-array"><span class="std std-ref">Array</span></a> <strong>values</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-dictionary-method-values"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the list of values in this dictionary.</p>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="operator-descriptions">
+<h2>Operator Descriptions<a class="headerlink" href="#operator-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-operator" id="class-dictionary-operator-neq-dictionary"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>operator !=</strong>(right: <a class="reference internal" href="#class-dictionary"><span class="std std-ref">Dictionary</span></a>) <a class="reference internal" href="#class-dictionary-operator-neq-dictionary"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if the two dictionaries do not contain the same keys and values.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-operator" id="class-dictionary-operator-eq-dictionary"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>operator ==</strong>(right: <a class="reference internal" href="#class-dictionary"><span class="std std-ref">Dictionary</span></a>) <a class="reference internal" href="#class-dictionary-operator-eq-dictionary"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if the two dictionaries contain the same keys and values. The order of the entries does not matter.</p>
+<p><strong>Note:</strong> In C#, by convention, this operator compares by <strong>reference</strong>. If you need to compare by value, iterate over both dictionaries.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-operator" id="class-dictionary-operator-idx-variant"><a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a> <strong>operator []</strong>(key: <a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a>) <a class="reference internal" href="#class-dictionary-operator-idx-variant"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the corresponding value for the given <code class="docutils literal notranslate"><span class="pre">key</span></code> in the dictionary. If the entry does not exist, fails and returns <code class="docutils literal notranslate"><span class="pre">null</span></code>. For safe access, use <a class="reference internal" href="#class-dictionary-method-get"><span class="std std-ref">get()</span></a> or <a class="reference internal" href="#class-dictionary-method-has"><span class="std std-ref">has()</span></a>.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, MUmarShahbaz.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

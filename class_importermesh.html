@@ -1,0 +1,291 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ImporterMesh &mdash; RPG Components 2D 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=d45e8c67"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            RPG Components 2D
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">ImporterMesh</a><ul>
+<li><a class="reference internal" href="#description">Description</a></li>
+<li><a class="reference internal" href="#methods">Methods</a></li>
+<li><a class="reference internal" href="#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">RPG Components 2D</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">ImporterMesh</li>
+      <li class="wy-breadcrumbs-aside">
+              <!-- User defined GitHub URL -->
+              <a href="hide" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="importermesh">
+<span id="class-importermesh"></span><h1>ImporterMesh<a class="headerlink" href="#importermesh" title="Link to this heading"></a></h1>
+<p><strong>Inherits:</strong> <a class="reference internal" href="class_resource.html#class-resource"><span class="std std-ref">Resource</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_refcounted.html#class-refcounted"><span class="std std-ref">RefCounted</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_object.html#class-object"><span class="std std-ref">Object</span></a></p>
+<p>A <a class="reference internal" href="class_resource.html#class-resource"><span class="std std-ref">Resource</span></a> that contains vertex array-based geometry during the import process.</p>
+<section class="classref-introduction-group" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
+<p>ImporterMesh is a type of <a class="reference internal" href="class_resource.html#class-resource"><span class="std std-ref">Resource</span></a> analogous to <a class="reference internal" href="class_arraymesh.html#class-arraymesh"><span class="std std-ref">ArrayMesh</span></a>. It contains vertex array-based geometry, divided in <em>surfaces</em>. Each surface contains a completely separate array and a material used to draw it. Design wise, a mesh with multiple surfaces is preferred to a single surface, because objects created in 3D editing software commonly contain multiple materials.</p>
+<p>Unlike its runtime counterpart, <strong>ImporterMesh</strong> contains mesh data before various import steps, such as LOD and shadow mesh generation, have taken place. Modify surface data by calling <a class="reference internal" href="#class-importermesh-method-clear"><span class="std std-ref">clear()</span></a>, followed by <a class="reference internal" href="#class-importermesh-method-add-surface"><span class="std std-ref">add_surface()</span></a> for each surface.</p>
+</section>
+<section class="classref-reftable-group" id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-importermesh-method-add-blend-shape"><span class="std std-ref">add_blend_shape</span></a>(name: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-importermesh-method-add-surface"><span class="std std-ref">add_surface</span></a>(primitive: <a class="reference internal" href="class_mesh.html#enum-mesh-primitivetype"><span class="std std-ref">PrimitiveType</span></a>, arrays: <a class="reference internal" href="class_array.html#class-array"><span class="std std-ref">Array</span></a>, blend_shapes: <a class="reference internal" href="class_array.html#class-array"><span class="std std-ref">Array</span></a>[<a class="reference internal" href="class_array.html#class-array"><span class="std std-ref">Array</span></a>] = [], lods: <a class="reference internal" href="class_dictionary.html#class-dictionary"><span class="std std-ref">Dictionary</span></a> = {}, material: <a class="reference internal" href="class_material.html#class-material"><span class="std std-ref">Material</span></a> = null, name: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a> = “”, flags: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> = 0)</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-importermesh-method-clear"><span class="std std-ref">clear</span></a>()</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#class-importermesh"><span class="std std-ref">ImporterMesh</span></a></p></td>
+<td><p><a class="reference internal" href="#class-importermesh-method-from-mesh"><span class="std std-ref">from_mesh</span></a>(mesh: <a class="reference internal" href="class_mesh.html#class-mesh"><span class="std std-ref">Mesh</span></a>) <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-importermesh-method-generate-lods"><span class="std std-ref">generate_lods</span></a>(normal_merge_angle: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, normal_split_angle: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, bone_transform_array: <a class="reference internal" href="class_array.html#class-array"><span class="std std-ref">Array</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-importermesh-method-get-blend-shape-count"><span class="std std-ref">get_blend_shape_count</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_mesh.html#enum-mesh-blendshapemode"><span class="std std-ref">BlendShapeMode</span></a></p></td>
+<td><p><a class="reference internal" href="#class-importermesh-method-get-blend-shape-mode"><span class="std std-ref">get_blend_shape_mode</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a></p></td>
+<td><p><a class="reference internal" href="#class-importermesh-method-get-blend-shape-name"><span class="std std-ref">get_blend_shape_name</span></a>(blend_shape_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_vector2i.html#class-vector2i"><span class="std std-ref">Vector2i</span></a></p></td>
+<td><p><a class="reference internal" href="#class-importermesh-method-get-lightmap-size-hint"><span class="std std-ref">get_lightmap_size_hint</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_arraymesh.html#class-arraymesh"><span class="std std-ref">ArrayMesh</span></a></p></td>
+<td><p><a class="reference internal" href="#class-importermesh-method-get-mesh"><span class="std std-ref">get_mesh</span></a>(base_mesh: <a class="reference internal" href="class_arraymesh.html#class-arraymesh"><span class="std std-ref">ArrayMesh</span></a> = null)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_array.html#class-array"><span class="std std-ref">Array</span></a></p></td>
+<td><p><a class="reference internal" href="#class-importermesh-method-get-surface-arrays"><span class="std std-ref">get_surface_arrays</span></a>(surface_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_array.html#class-array"><span class="std std-ref">Array</span></a></p></td>
+<td><p><a class="reference internal" href="#class-importermesh-method-get-surface-blend-shape-arrays"><span class="std std-ref">get_surface_blend_shape_arrays</span></a>(surface_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, blend_shape_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-importermesh-method-get-surface-count"><span class="std std-ref">get_surface_count</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-importermesh-method-get-surface-format"><span class="std std-ref">get_surface_format</span></a>(surface_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-importermesh-method-get-surface-lod-count"><span class="std std-ref">get_surface_lod_count</span></a>(surface_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_packedint32array.html#class-packedint32array"><span class="std std-ref">PackedInt32Array</span></a></p></td>
+<td><p><a class="reference internal" href="#class-importermesh-method-get-surface-lod-indices"><span class="std std-ref">get_surface_lod_indices</span></a>(surface_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, lod_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-importermesh-method-get-surface-lod-size"><span class="std std-ref">get_surface_lod_size</span></a>(surface_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, lod_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_material.html#class-material"><span class="std std-ref">Material</span></a></p></td>
+<td><p><a class="reference internal" href="#class-importermesh-method-get-surface-material"><span class="std std-ref">get_surface_material</span></a>(surface_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a></p></td>
+<td><p><a class="reference internal" href="#class-importermesh-method-get-surface-name"><span class="std std-ref">get_surface_name</span></a>(surface_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_mesh.html#enum-mesh-primitivetype"><span class="std std-ref">PrimitiveType</span></a></p></td>
+<td><p><a class="reference internal" href="#class-importermesh-method-get-surface-primitive-type"><span class="std std-ref">get_surface_primitive_type</span></a>(surface_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#class-importermesh"><span class="std std-ref">ImporterMesh</span></a></p></td>
+<td><p><a class="reference internal" href="#class-importermesh-method-merge-importer-meshes"><span class="std std-ref">merge_importer_meshes</span></a>(importer_meshes: <a class="reference internal" href="class_array.html#class-array"><span class="std std-ref">Array</span></a>[<a class="reference internal" href="#class-importermesh"><span class="std std-ref">ImporterMesh</span></a>], relative_transforms: <a class="reference internal" href="class_array.html#class-array"><span class="std std-ref">Array</span></a>[<a class="reference internal" href="class_transform3d.html#class-transform3d"><span class="std std-ref">Transform3D</span></a>], deduplicate_surfaces: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = true) <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-importermesh-method-set-blend-shape-mode"><span class="std std-ref">set_blend_shape_mode</span></a>(mode: <a class="reference internal" href="class_mesh.html#enum-mesh-blendshapemode"><span class="std std-ref">BlendShapeMode</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-importermesh-method-set-lightmap-size-hint"><span class="std std-ref">set_lightmap_size_hint</span></a>(size: <a class="reference internal" href="class_vector2i.html#class-vector2i"><span class="std std-ref">Vector2i</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-importermesh-method-set-surface-material"><span class="std std-ref">set_surface_material</span></a>(surface_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, material: <a class="reference internal" href="class_material.html#class-material"><span class="std std-ref">Material</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-importermesh-method-set-surface-name"><span class="std std-ref">set_surface_name</span></a>(surface_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, name: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>)</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="method-descriptions">
+<h2>Method Descriptions<a class="headerlink" href="#method-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-method" id="class-importermesh-method-add-blend-shape"><abbr title="No return value.">void</abbr> <strong>add_blend_shape</strong>(name: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <a class="reference internal" href="#class-importermesh-method-add-blend-shape"><span class="std std-ref">🔗</span></a></p>
+<p>Adds name for a blend shape that will be added with <a class="reference internal" href="#class-importermesh-method-add-surface"><span class="std std-ref">add_surface()</span></a>. Must be called before surface is added.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-importermesh-method-add-surface"><abbr title="No return value.">void</abbr> <strong>add_surface</strong>(primitive: <a class="reference internal" href="class_mesh.html#enum-mesh-primitivetype"><span class="std std-ref">PrimitiveType</span></a>, arrays: <a class="reference internal" href="class_array.html#class-array"><span class="std std-ref">Array</span></a>, blend_shapes: <a class="reference internal" href="class_array.html#class-array"><span class="std std-ref">Array</span></a>[<a class="reference internal" href="class_array.html#class-array"><span class="std std-ref">Array</span></a>] = [], lods: <a class="reference internal" href="class_dictionary.html#class-dictionary"><span class="std std-ref">Dictionary</span></a> = {}, material: <a class="reference internal" href="class_material.html#class-material"><span class="std std-ref">Material</span></a> = null, name: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a> = “”, flags: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> = 0) <a class="reference internal" href="#class-importermesh-method-add-surface"><span class="std std-ref">🔗</span></a></p>
+<p>Creates a new surface. <a class="reference internal" href="class_mesh.html#class-mesh-method-get-surface-count"><span class="std std-ref">Mesh.get_surface_count()</span></a> will become the <code class="docutils literal notranslate"><span class="pre">surf_idx</span></code> for this new surface.</p>
+<p>Surfaces are created to be rendered using a <code class="docutils literal notranslate"><span class="pre">primitive</span></code>, which may be any of the values defined in <a class="reference internal" href="class_mesh.html#enum-mesh-primitivetype"><span class="std std-ref">PrimitiveType</span></a>.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">arrays</span></code> argument is an array of arrays. Each of the <a class="reference internal" href="class_mesh.html#class-mesh-constant-array-max"><span class="std std-ref">Mesh.ARRAY_MAX</span></a> elements contains an array with some of the mesh data for this surface as described by the corresponding member of <a class="reference internal" href="class_mesh.html#enum-mesh-arraytype"><span class="std std-ref">ArrayType</span></a> or <code class="docutils literal notranslate"><span class="pre">null</span></code> if it is not used by the surface. For example, <code class="docutils literal notranslate"><span class="pre">arrays[0]</span></code> is the array of vertices. That first vertex sub-array is always required; the others are optional. Adding an index array puts this surface into “index mode” where the vertex and other arrays become the sources of data and the index array defines the vertex order. All sub-arrays must have the same length as the vertex array (or be an exact multiple of the vertex array’s length, when multiple elements of a sub-array correspond to a single vertex) or be empty, except for <a class="reference internal" href="class_mesh.html#class-mesh-constant-array-index"><span class="std std-ref">Mesh.ARRAY_INDEX</span></a> if it is used.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">blend_shapes</span></code> argument is an array of vertex data for each blend shape. Each element is an array of the same structure as <code class="docutils literal notranslate"><span class="pre">arrays</span></code>, but <a class="reference internal" href="class_mesh.html#class-mesh-constant-array-vertex"><span class="std std-ref">Mesh.ARRAY_VERTEX</span></a>, <a class="reference internal" href="class_mesh.html#class-mesh-constant-array-normal"><span class="std std-ref">Mesh.ARRAY_NORMAL</span></a>, and <a class="reference internal" href="class_mesh.html#class-mesh-constant-array-tangent"><span class="std std-ref">Mesh.ARRAY_TANGENT</span></a> are set if and only if they are set in <code class="docutils literal notranslate"><span class="pre">arrays</span></code> and all other entries are <code class="docutils literal notranslate"><span class="pre">null</span></code>.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">lods</span></code> argument is a dictionary with <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> keys and <a class="reference internal" href="class_packedint32array.html#class-packedint32array"><span class="std std-ref">PackedInt32Array</span></a> values. Each entry in the dictionary represents an LOD level of the surface, where the value is the <a class="reference internal" href="class_mesh.html#class-mesh-constant-array-index"><span class="std std-ref">Mesh.ARRAY_INDEX</span></a> array to use for the LOD level and the key is roughly proportional to the distance at which the LOD stats being used. I.e., increasing the key of an LOD also increases the distance that the objects has to be from the camera before the LOD is used.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">flags</span></code> argument is the bitwise OR of, as required: One value of <a class="reference internal" href="class_mesh.html#enum-mesh-arraycustomformat"><span class="std std-ref">ArrayCustomFormat</span></a> left shifted by <code class="docutils literal notranslate"><span class="pre">ARRAY_FORMAT_CUSTOMn_SHIFT</span></code> for each custom channel in use, <a class="reference internal" href="class_mesh.html#class-mesh-constant-array-flag-use-dynamic-update"><span class="std std-ref">Mesh.ARRAY_FLAG_USE_DYNAMIC_UPDATE</span></a>, <a class="reference internal" href="class_mesh.html#class-mesh-constant-array-flag-use-8-bone-weights"><span class="std std-ref">Mesh.ARRAY_FLAG_USE_8_BONE_WEIGHTS</span></a>, or <a class="reference internal" href="class_mesh.html#class-mesh-constant-array-flag-uses-empty-vertex-array"><span class="std std-ref">Mesh.ARRAY_FLAG_USES_EMPTY_VERTEX_ARRAY</span></a>.</p>
+<p><strong>Note:</strong> When using indices, it is recommended to only use points, lines, or triangles.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-importermesh-method-clear"><abbr title="No return value.">void</abbr> <strong>clear</strong>() <a class="reference internal" href="#class-importermesh-method-clear"><span class="std std-ref">🔗</span></a></p>
+<p>Removes all surfaces and blend shapes from this <strong>ImporterMesh</strong>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-importermesh-method-from-mesh"><a class="reference internal" href="#class-importermesh"><span class="std std-ref">ImporterMesh</span></a> <strong>from_mesh</strong>(mesh: <a class="reference internal" href="class_mesh.html#class-mesh"><span class="std std-ref">Mesh</span></a>) <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr> <a class="reference internal" href="#class-importermesh-method-from-mesh"><span class="std std-ref">🔗</span></a></p>
+<p>Converts the given <a class="reference internal" href="class_mesh.html#class-mesh"><span class="std std-ref">Mesh</span></a> into an <strong>ImporterMesh</strong> by copying all its surfaces, blend shapes, materials, and metadata into a new <strong>ImporterMesh</strong> object.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-importermesh-method-generate-lods"><abbr title="No return value.">void</abbr> <strong>generate_lods</strong>(normal_merge_angle: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, normal_split_angle: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, bone_transform_array: <a class="reference internal" href="class_array.html#class-array"><span class="std std-ref">Array</span></a>) <a class="reference internal" href="#class-importermesh-method-generate-lods"><span class="std std-ref">🔗</span></a></p>
+<p>Generates all lods for this ImporterMesh.</p>
+<p><code class="docutils literal notranslate"><span class="pre">normal_merge_angle</span></code> is in degrees and used in the same way as the importer settings in <code class="docutils literal notranslate"><span class="pre">lods</span></code>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">normal_split_angle</span></code> is not used and only remains for compatibility with older versions of the API.</p>
+<p>The number of generated lods can be accessed using <a class="reference internal" href="#class-importermesh-method-get-surface-lod-count"><span class="std std-ref">get_surface_lod_count()</span></a>, and each LOD is available in <a class="reference internal" href="#class-importermesh-method-get-surface-lod-size"><span class="std std-ref">get_surface_lod_size()</span></a> and <a class="reference internal" href="#class-importermesh-method-get-surface-lod-indices"><span class="std std-ref">get_surface_lod_indices()</span></a>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">bone_transform_array</span></code> is an <a class="reference internal" href="class_array.html#class-array"><span class="std std-ref">Array</span></a> which can be either empty or contain <a class="reference internal" href="class_transform3d.html#class-transform3d"><span class="std std-ref">Transform3D</span></a>s which, for each of the mesh’s bone IDs, will apply mesh skinning when generating the LOD mesh variations. This is usually used to account for discrepancies in scale between the mesh itself and its skinning data.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-importermesh-method-get-blend-shape-count"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>get_blend_shape_count</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-importermesh-method-get-blend-shape-count"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the number of blend shapes that the mesh holds.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-importermesh-method-get-blend-shape-mode"><a class="reference internal" href="class_mesh.html#enum-mesh-blendshapemode"><span class="std std-ref">BlendShapeMode</span></a> <strong>get_blend_shape_mode</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-importermesh-method-get-blend-shape-mode"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the blend shape mode for this Mesh.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-importermesh-method-get-blend-shape-name"><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a> <strong>get_blend_shape_name</strong>(blend_shape_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-importermesh-method-get-blend-shape-name"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the name of the blend shape at this index.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-importermesh-method-get-lightmap-size-hint"><a class="reference internal" href="class_vector2i.html#class-vector2i"><span class="std std-ref">Vector2i</span></a> <strong>get_lightmap_size_hint</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-importermesh-method-get-lightmap-size-hint"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the size hint of this mesh for lightmap-unwrapping in UV-space.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-importermesh-method-get-mesh"><a class="reference internal" href="class_arraymesh.html#class-arraymesh"><span class="std std-ref">ArrayMesh</span></a> <strong>get_mesh</strong>(base_mesh: <a class="reference internal" href="class_arraymesh.html#class-arraymesh"><span class="std std-ref">ArrayMesh</span></a> = null) <a class="reference internal" href="#class-importermesh-method-get-mesh"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the mesh data represented by this <strong>ImporterMesh</strong> as a usable <a class="reference internal" href="class_arraymesh.html#class-arraymesh"><span class="std std-ref">ArrayMesh</span></a>.</p>
+<p>This method caches the returned mesh, and subsequent calls will return the cached data until <a class="reference internal" href="#class-importermesh-method-clear"><span class="std std-ref">clear()</span></a> is called.</p>
+<p>If not yet cached and <code class="docutils literal notranslate"><span class="pre">base_mesh</span></code> is provided, <code class="docutils literal notranslate"><span class="pre">base_mesh</span></code> will be used and mutated.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-importermesh-method-get-surface-arrays"><a class="reference internal" href="class_array.html#class-array"><span class="std std-ref">Array</span></a> <strong>get_surface_arrays</strong>(surface_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-importermesh-method-get-surface-arrays"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the arrays for the vertices, normals, UVs, etc. that make up the requested surface. See <a class="reference internal" href="#class-importermesh-method-add-surface"><span class="std std-ref">add_surface()</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-importermesh-method-get-surface-blend-shape-arrays"><a class="reference internal" href="class_array.html#class-array"><span class="std std-ref">Array</span></a> <strong>get_surface_blend_shape_arrays</strong>(surface_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, blend_shape_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-importermesh-method-get-surface-blend-shape-arrays"><span class="std std-ref">🔗</span></a></p>
+<p>Returns a single set of blend shape arrays for the requested blend shape index for a surface.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-importermesh-method-get-surface-count"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>get_surface_count</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-importermesh-method-get-surface-count"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the number of surfaces that the mesh holds.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-importermesh-method-get-surface-format"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>get_surface_format</strong>(surface_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-importermesh-method-get-surface-format"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the format of the surface that the mesh holds.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-importermesh-method-get-surface-lod-count"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>get_surface_lod_count</strong>(surface_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-importermesh-method-get-surface-lod-count"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the number of lods that the mesh holds on a given surface.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-importermesh-method-get-surface-lod-indices"><a class="reference internal" href="class_packedint32array.html#class-packedint32array"><span class="std std-ref">PackedInt32Array</span></a> <strong>get_surface_lod_indices</strong>(surface_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, lod_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-importermesh-method-get-surface-lod-indices"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the index buffer of a lod for a surface.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-importermesh-method-get-surface-lod-size"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>get_surface_lod_size</strong>(surface_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, lod_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-importermesh-method-get-surface-lod-size"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the screen ratio which activates a lod for a surface.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-importermesh-method-get-surface-material"><a class="reference internal" href="class_material.html#class-material"><span class="std std-ref">Material</span></a> <strong>get_surface_material</strong>(surface_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-importermesh-method-get-surface-material"><span class="std std-ref">🔗</span></a></p>
+<p>Returns a <a class="reference internal" href="class_material.html#class-material"><span class="std std-ref">Material</span></a> in a given surface. Surface is rendered using this material.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-importermesh-method-get-surface-name"><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a> <strong>get_surface_name</strong>(surface_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-importermesh-method-get-surface-name"><span class="std std-ref">🔗</span></a></p>
+<p>Gets the name assigned to this surface.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-importermesh-method-get-surface-primitive-type"><a class="reference internal" href="class_mesh.html#enum-mesh-primitivetype"><span class="std std-ref">PrimitiveType</span></a> <strong>get_surface_primitive_type</strong>(surface_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <a class="reference internal" href="#class-importermesh-method-get-surface-primitive-type"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the primitive type of the requested surface (see <a class="reference internal" href="#class-importermesh-method-add-surface"><span class="std std-ref">add_surface()</span></a>).</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-importermesh-method-merge-importer-meshes"><a class="reference internal" href="#class-importermesh"><span class="std std-ref">ImporterMesh</span></a> <strong>merge_importer_meshes</strong>(importer_meshes: <a class="reference internal" href="class_array.html#class-array"><span class="std std-ref">Array</span></a>[<a class="reference internal" href="#class-importermesh"><span class="std std-ref">ImporterMesh</span></a>], relative_transforms: <a class="reference internal" href="class_array.html#class-array"><span class="std std-ref">Array</span></a>[<a class="reference internal" href="class_transform3d.html#class-transform3d"><span class="std std-ref">Transform3D</span></a>], deduplicate_surfaces: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = true) <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr> <a class="reference internal" href="#class-importermesh-method-merge-importer-meshes"><span class="std std-ref">🔗</span></a></p>
+<p>Merges multiple <strong>ImporterMesh</strong>es into a single <strong>ImporterMesh</strong>. Each input mesh is transformed by the corresponding <a class="reference internal" href="class_transform3d.html#class-transform3d"><span class="std std-ref">Transform3D</span></a> in the <code class="docutils literal notranslate"><span class="pre">relative_transforms</span></code> array, which must be the same size as <code class="docutils literal notranslate"><span class="pre">importer_meshes</span></code>. Negative scales are supported, and the winding order in the mesh data will be corrected to account for this.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">deduplicate_surfaces</span></code> is <code class="docutils literal notranslate"><span class="pre">true</span></code> and multiple meshes have surfaces with the same names and formats, the surfaces will be merged together when the meshes are merged, and will use the material from the first matching surface. This is useful for reducing the number of surfaces in the resulting mesh, and avoids duplicating materials. Surfaces with bone weights will never be deduplicated. If <code class="docutils literal notranslate"><span class="pre">deduplicate_surfaces</span></code> is <code class="docutils literal notranslate"><span class="pre">false</span></code>, the surfaces will always be kept separate, and will be given unique names.</p>
+<p><strong>Warning:</strong> Blend shapes and LODs are not supported and will be discarded. Do not use this function to discard blend shapes and LODs, as support for these may be added in the future.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-importermesh-method-set-blend-shape-mode"><abbr title="No return value.">void</abbr> <strong>set_blend_shape_mode</strong>(mode: <a class="reference internal" href="class_mesh.html#enum-mesh-blendshapemode"><span class="std std-ref">BlendShapeMode</span></a>) <a class="reference internal" href="#class-importermesh-method-set-blend-shape-mode"><span class="std std-ref">🔗</span></a></p>
+<p>Sets the blend shape mode.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-importermesh-method-set-lightmap-size-hint"><abbr title="No return value.">void</abbr> <strong>set_lightmap_size_hint</strong>(size: <a class="reference internal" href="class_vector2i.html#class-vector2i"><span class="std std-ref">Vector2i</span></a>) <a class="reference internal" href="#class-importermesh-method-set-lightmap-size-hint"><span class="std std-ref">🔗</span></a></p>
+<p>Sets the size hint of this mesh for lightmap-unwrapping in UV-space.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-importermesh-method-set-surface-material"><abbr title="No return value.">void</abbr> <strong>set_surface_material</strong>(surface_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, material: <a class="reference internal" href="class_material.html#class-material"><span class="std std-ref">Material</span></a>) <a class="reference internal" href="#class-importermesh-method-set-surface-material"><span class="std std-ref">🔗</span></a></p>
+<p>Sets a <a class="reference internal" href="class_material.html#class-material"><span class="std std-ref">Material</span></a> for a given surface. Surface will be rendered using this material.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-importermesh-method-set-surface-name"><abbr title="No return value.">void</abbr> <strong>set_surface_name</strong>(surface_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, name: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <a class="reference internal" href="#class-importermesh-method-set-surface-name"><span class="std std-ref">🔗</span></a></p>
+<p>Sets a name for a given surface.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, MUmarShahbaz.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

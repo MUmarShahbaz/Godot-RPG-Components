@@ -1,0 +1,624 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta content="gridmap" name="keywords" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TileMap &mdash; RPG Components 2D 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=d45e8c67"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            RPG Components 2D
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">TileMap</a><ul>
+<li><a class="reference internal" href="#description">Description</a></li>
+<li><a class="reference internal" href="#tutorials">Tutorials</a></li>
+<li><a class="reference internal" href="#properties">Properties</a></li>
+<li><a class="reference internal" href="#methods">Methods</a></li>
+<li><a class="reference internal" href="#signals">Signals</a></li>
+<li><a class="reference internal" href="#enumerations">Enumerations</a></li>
+<li><a class="reference internal" href="#property-descriptions">Property Descriptions</a></li>
+<li><a class="reference internal" href="#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">RPG Components 2D</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">TileMap</li>
+      <li class="wy-breadcrumbs-aside">
+              <!-- User defined GitHub URL -->
+              <a href="hide" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="tilemap">
+<span id="class-tilemap"></span><h1>TileMap<a class="headerlink" href="#tilemap" title="Link to this heading"></a></h1>
+<p><strong>Deprecated:</strong> Use multiple <a class="reference internal" href="class_tilemaplayer.html#class-tilemaplayer"><span class="std std-ref">TileMapLayer</span></a> nodes instead. To convert a TileMap to a set of TileMapLayer nodes, open the TileMap bottom panel with the node selected, click the toolbox icon in the top-right corner and choose ‘Extract TileMap layers as individual TileMapLayer nodes’.</p>
+<p><strong>Inherits:</strong> <a class="reference internal" href="class_node2d.html#class-node2d"><span class="std std-ref">Node2D</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_canvasitem.html#class-canvasitem"><span class="std std-ref">CanvasItem</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_node.html#class-node"><span class="std std-ref">Node</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_object.html#class-object"><span class="std std-ref">Object</span></a></p>
+<p>Node for 2D tile-based maps.</p>
+<section class="classref-introduction-group" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
+<p>Node for 2D tile-based maps. Tilemaps use a <a class="reference internal" href="class_tileset.html#class-tileset"><span class="std std-ref">TileSet</span></a> which contain a list of tiles which are used to create grid-based maps. A TileMap may have several layers, layouting tiles on top of each other.</p>
+<p>For performance reasons, all TileMap updates are batched at the end of a frame. Notably, this means that scene tiles from a <a class="reference internal" href="class_tilesetscenescollectionsource.html#class-tilesetscenescollectionsource"><span class="std std-ref">TileSetScenesCollectionSource</span></a> may be initialized after their parent. This is only queued when inside the scene tree.</p>
+<p>To force an update earlier on, call <a class="reference internal" href="#class-tilemap-method-update-internals"><span class="std std-ref">update_internals()</span></a>.</p>
+<p><strong>Note:</strong> For performance and compatibility reasons, the coordinates serialized by <strong>TileMap</strong> are limited to 16-bit signed integers, i.e. the range for X and Y coordinates is from <code class="docutils literal notranslate"><span class="pre">-32768</span></code> to <code class="docutils literal notranslate"><span class="pre">32767</span></code>. When saving tile data, tiles outside this range are wrapped.</p>
+</section>
+<section class="classref-introduction-group" id="tutorials">
+<h2>Tutorials<a class="headerlink" href="#tutorials" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><span class="xref std std-doc">Using Tilemaps</span></p></li>
+<li><p><a class="reference external" href="https://godotengine.org/asset-library/asset/2727">2D Platformer Demo</a></p></li>
+<li><p><a class="reference external" href="https://godotengine.org/asset-library/asset/2718">2D Isometric Demo</a></p></li>
+<li><p><a class="reference external" href="https://godotengine.org/asset-library/asset/2717">2D Hexagonal Demo</a></p></li>
+<li><p><a class="reference external" href="https://godotengine.org/asset-library/asset/2723">2D Grid-based Navigation with AStarGrid2D Demo</a></p></li>
+<li><p><a class="reference external" href="https://godotengine.org/asset-library/asset/2729">2D Role Playing Game (RPG) Demo</a></p></li>
+<li><p><a class="reference external" href="https://godotengine.org/asset-library/asset/2719">2D Kinematic Character Demo</a></p></li>
+<li><p><a class="reference external" href="https://godotengine.org/asset-library/asset/2713">2D Dynamic TileMap Layers Demo</a></p></li>
+</ul>
+</section>
+<section class="classref-reftable-group" id="properties">
+<h2>Properties<a class="headerlink" href="#properties" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-tilemap-property-collision-animatable"><span class="std std-ref">collision_animatable</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#enum-tilemap-visibilitymode"><span class="std std-ref">VisibilityMode</span></a></p></td>
+<td><p><a class="reference internal" href="#class-tilemap-property-collision-visibility-mode"><span class="std std-ref">collision_visibility_mode</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#enum-tilemap-visibilitymode"><span class="std std-ref">VisibilityMode</span></a></p></td>
+<td><p><a class="reference internal" href="#class-tilemap-property-navigation-visibility-mode"><span class="std std-ref">navigation_visibility_mode</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-tilemap-property-rendering-quadrant-size"><span class="std std-ref">rendering_quadrant_size</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">16</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_tileset.html#class-tileset"><span class="std std-ref">TileSet</span></a></p></td>
+<td><p><a class="reference internal" href="#class-tilemap-property-tile-set"><span class="std std-ref">tile_set</span></a></p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section class="classref-reftable-group" id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-tilemap-private-method-tile-data-runtime-update"><span class="std std-ref">_tile_data_runtime_update</span></a>(layer: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, coords: <a class="reference internal" href="class_vector2i.html#class-vector2i"><span class="std std-ref">Vector2i</span></a>, tile_data: <a class="reference internal" href="class_tiledata.html#class-tiledata"><span class="std std-ref">TileData</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-tilemap-private-method-use-tile-data-runtime-update"><span class="std std-ref">_use_tile_data_runtime_update</span></a>(layer: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, coords: <a class="reference internal" href="class_vector2i.html#class-vector2i"><span class="std std-ref">Vector2i</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-tilemap-method-add-layer"><span class="std std-ref">add_layer</span></a>(to_position: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-tilemap-method-clear"><span class="std std-ref">clear</span></a>()</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-tilemap-method-clear-layer"><span class="std std-ref">clear_layer</span></a>(layer: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-tilemap-method-erase-cell"><span class="std std-ref">erase_cell</span></a>(layer: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, coords: <a class="reference internal" href="class_vector2i.html#class-vector2i"><span class="std std-ref">Vector2i</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-tilemap-method-fix-invalid-tiles"><span class="std std-ref">fix_invalid_tiles</span></a>()</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-tilemap-method-force-update"><span class="std std-ref">force_update</span></a>(layer: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> = -1)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-tilemap-method-get-cell-alternative-tile"><span class="std std-ref">get_cell_alternative_tile</span></a>(layer: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, coords: <a class="reference internal" href="class_vector2i.html#class-vector2i"><span class="std std-ref">Vector2i</span></a>, use_proxies: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = false) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_vector2i.html#class-vector2i"><span class="std std-ref">Vector2i</span></a></p></td>
+<td><p><a class="reference internal" href="#class-tilemap-method-get-cell-atlas-coords"><span class="std std-ref">get_cell_atlas_coords</span></a>(layer: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, coords: <a class="reference internal" href="class_vector2i.html#class-vector2i"><span class="std std-ref">Vector2i</span></a>, use_proxies: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = false) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-tilemap-method-get-cell-source-id"><span class="std std-ref">get_cell_source_id</span></a>(layer: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, coords: <a class="reference internal" href="class_vector2i.html#class-vector2i"><span class="std std-ref">Vector2i</span></a>, use_proxies: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = false) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_tiledata.html#class-tiledata"><span class="std std-ref">TileData</span></a></p></td>
+<td><p><a class="reference internal" href="#class-tilemap-method-get-cell-tile-data"><span class="std std-ref">get_cell_tile_data</span></a>(layer: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, coords: <a class="reference internal" href="class_vector2i.html#class-vector2i"><span class="std std-ref">Vector2i</span></a>, use_proxies: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = false) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_vector2i.html#class-vector2i"><span class="std std-ref">Vector2i</span></a></p></td>
+<td><p><a class="reference internal" href="#class-tilemap-method-get-coords-for-body-rid"><span class="std std-ref">get_coords_for_body_rid</span></a>(body: <a class="reference internal" href="class_rid.html#class-rid"><span class="std std-ref">RID</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-tilemap-method-get-layer-for-body-rid"><span class="std std-ref">get_layer_for_body_rid</span></a>(body: <a class="reference internal" href="class_rid.html#class-rid"><span class="std std-ref">RID</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_color.html#class-color"><span class="std std-ref">Color</span></a></p></td>
+<td><p><a class="reference internal" href="#class-tilemap-method-get-layer-modulate"><span class="std std-ref">get_layer_modulate</span></a>(layer: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a></p></td>
+<td><p><a class="reference internal" href="#class-tilemap-method-get-layer-name"><span class="std std-ref">get_layer_name</span></a>(layer: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_rid.html#class-rid"><span class="std std-ref">RID</span></a></p></td>
+<td><p><a class="reference internal" href="#class-tilemap-method-get-layer-navigation-map"><span class="std std-ref">get_layer_navigation_map</span></a>(layer: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-tilemap-method-get-layer-y-sort-origin"><span class="std std-ref">get_layer_y_sort_origin</span></a>(layer: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-tilemap-method-get-layer-z-index"><span class="std std-ref">get_layer_z_index</span></a>(layer: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-tilemap-method-get-layers-count"><span class="std std-ref">get_layers_count</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_rid.html#class-rid"><span class="std std-ref">RID</span></a></p></td>
+<td><p><a class="reference internal" href="#class-tilemap-method-get-navigation-map"><span class="std std-ref">get_navigation_map</span></a>(layer: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_vector2i.html#class-vector2i"><span class="std std-ref">Vector2i</span></a></p></td>
+<td><p><a class="reference internal" href="#class-tilemap-method-get-neighbor-cell"><span class="std std-ref">get_neighbor_cell</span></a>(coords: <a class="reference internal" href="class_vector2i.html#class-vector2i"><span class="std std-ref">Vector2i</span></a>, neighbor: <a class="reference internal" href="class_tileset.html#enum-tileset-cellneighbor"><span class="std std-ref">CellNeighbor</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_tilemappattern.html#class-tilemappattern"><span class="std std-ref">TileMapPattern</span></a></p></td>
+<td><p><a class="reference internal" href="#class-tilemap-method-get-pattern"><span class="std std-ref">get_pattern</span></a>(layer: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, coords_array: <a class="reference internal" href="class_array.html#class-array"><span class="std std-ref">Array</span></a>[<a class="reference internal" href="class_vector2i.html#class-vector2i"><span class="std std-ref">Vector2i</span></a>])</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_array.html#class-array"><span class="std std-ref">Array</span></a>[<a class="reference internal" href="class_vector2i.html#class-vector2i"><span class="std std-ref">Vector2i</span></a>]</p></td>
+<td><p><a class="reference internal" href="#class-tilemap-method-get-surrounding-cells"><span class="std std-ref">get_surrounding_cells</span></a>(coords: <a class="reference internal" href="class_vector2i.html#class-vector2i"><span class="std std-ref">Vector2i</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_array.html#class-array"><span class="std std-ref">Array</span></a>[<a class="reference internal" href="class_vector2i.html#class-vector2i"><span class="std std-ref">Vector2i</span></a>]</p></td>
+<td><p><a class="reference internal" href="#class-tilemap-method-get-used-cells"><span class="std std-ref">get_used_cells</span></a>(layer: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_array.html#class-array"><span class="std std-ref">Array</span></a>[<a class="reference internal" href="class_vector2i.html#class-vector2i"><span class="std std-ref">Vector2i</span></a>]</p></td>
+<td><p><a class="reference internal" href="#class-tilemap-method-get-used-cells-by-id"><span class="std std-ref">get_used_cells_by_id</span></a>(layer: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, source_id: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> = -1, atlas_coords: <a class="reference internal" href="class_vector2i.html#class-vector2i"><span class="std std-ref">Vector2i</span></a> = Vector2i(-1, -1), alternative_tile: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> = -1) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_rect2i.html#class-rect2i"><span class="std std-ref">Rect2i</span></a></p></td>
+<td><p><a class="reference internal" href="#class-tilemap-method-get-used-rect"><span class="std std-ref">get_used_rect</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-tilemap-method-is-cell-flipped-h"><span class="std std-ref">is_cell_flipped_h</span></a>(layer: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, coords: <a class="reference internal" href="class_vector2i.html#class-vector2i"><span class="std std-ref">Vector2i</span></a>, use_proxies: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = false) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-tilemap-method-is-cell-flipped-v"><span class="std std-ref">is_cell_flipped_v</span></a>(layer: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, coords: <a class="reference internal" href="class_vector2i.html#class-vector2i"><span class="std std-ref">Vector2i</span></a>, use_proxies: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = false) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-tilemap-method-is-cell-transposed"><span class="std std-ref">is_cell_transposed</span></a>(layer: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, coords: <a class="reference internal" href="class_vector2i.html#class-vector2i"><span class="std std-ref">Vector2i</span></a>, use_proxies: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = false) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-tilemap-method-is-layer-enabled"><span class="std std-ref">is_layer_enabled</span></a>(layer: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-tilemap-method-is-layer-navigation-enabled"><span class="std std-ref">is_layer_navigation_enabled</span></a>(layer: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-tilemap-method-is-layer-y-sort-enabled"><span class="std std-ref">is_layer_y_sort_enabled</span></a>(layer: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_vector2i.html#class-vector2i"><span class="std std-ref">Vector2i</span></a></p></td>
+<td><p><a class="reference internal" href="#class-tilemap-method-local-to-map"><span class="std std-ref">local_to_map</span></a>(local_position: <a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_vector2i.html#class-vector2i"><span class="std std-ref">Vector2i</span></a></p></td>
+<td><p><a class="reference internal" href="#class-tilemap-method-map-pattern"><span class="std std-ref">map_pattern</span></a>(position_in_tilemap: <a class="reference internal" href="class_vector2i.html#class-vector2i"><span class="std std-ref">Vector2i</span></a>, coords_in_pattern: <a class="reference internal" href="class_vector2i.html#class-vector2i"><span class="std std-ref">Vector2i</span></a>, pattern: <a class="reference internal" href="class_tilemappattern.html#class-tilemappattern"><span class="std std-ref">TileMapPattern</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a></p></td>
+<td><p><a class="reference internal" href="#class-tilemap-method-map-to-local"><span class="std std-ref">map_to_local</span></a>(map_position: <a class="reference internal" href="class_vector2i.html#class-vector2i"><span class="std std-ref">Vector2i</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-tilemap-method-move-layer"><span class="std std-ref">move_layer</span></a>(layer: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, to_position: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-tilemap-method-notify-runtime-tile-data-update"><span class="std std-ref">notify_runtime_tile_data_update</span></a>(layer: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> = -1)</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-tilemap-method-remove-layer"><span class="std std-ref">remove_layer</span></a>(layer: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-tilemap-method-set-cell"><span class="std std-ref">set_cell</span></a>(layer: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, coords: <a class="reference internal" href="class_vector2i.html#class-vector2i"><span class="std std-ref">Vector2i</span></a>, source_id: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> = -1, atlas_coords: <a class="reference internal" href="class_vector2i.html#class-vector2i"><span class="std std-ref">Vector2i</span></a> = Vector2i(-1, -1), alternative_tile: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> = 0)</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-tilemap-method-set-cells-terrain-connect"><span class="std std-ref">set_cells_terrain_connect</span></a>(layer: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, cells: <a class="reference internal" href="class_array.html#class-array"><span class="std std-ref">Array</span></a>[<a class="reference internal" href="class_vector2i.html#class-vector2i"><span class="std std-ref">Vector2i</span></a>], terrain_set: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, terrain: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, ignore_empty_terrains: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = true)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-tilemap-method-set-cells-terrain-path"><span class="std std-ref">set_cells_terrain_path</span></a>(layer: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, path: <a class="reference internal" href="class_array.html#class-array"><span class="std std-ref">Array</span></a>[<a class="reference internal" href="class_vector2i.html#class-vector2i"><span class="std std-ref">Vector2i</span></a>], terrain_set: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, terrain: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, ignore_empty_terrains: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = true)</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-tilemap-method-set-layer-enabled"><span class="std std-ref">set_layer_enabled</span></a>(layer: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, enabled: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-tilemap-method-set-layer-modulate"><span class="std std-ref">set_layer_modulate</span></a>(layer: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, modulate: <a class="reference internal" href="class_color.html#class-color"><span class="std std-ref">Color</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-tilemap-method-set-layer-name"><span class="std std-ref">set_layer_name</span></a>(layer: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, name: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-tilemap-method-set-layer-navigation-enabled"><span class="std std-ref">set_layer_navigation_enabled</span></a>(layer: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, enabled: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-tilemap-method-set-layer-navigation-map"><span class="std std-ref">set_layer_navigation_map</span></a>(layer: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, map: <a class="reference internal" href="class_rid.html#class-rid"><span class="std std-ref">RID</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-tilemap-method-set-layer-y-sort-enabled"><span class="std std-ref">set_layer_y_sort_enabled</span></a>(layer: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, y_sort_enabled: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-tilemap-method-set-layer-y-sort-origin"><span class="std std-ref">set_layer_y_sort_origin</span></a>(layer: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, y_sort_origin: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-tilemap-method-set-layer-z-index"><span class="std std-ref">set_layer_z_index</span></a>(layer: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, z_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-tilemap-method-set-navigation-map"><span class="std std-ref">set_navigation_map</span></a>(layer: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, map: <a class="reference internal" href="class_rid.html#class-rid"><span class="std std-ref">RID</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-tilemap-method-set-pattern"><span class="std std-ref">set_pattern</span></a>(layer: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, position: <a class="reference internal" href="class_vector2i.html#class-vector2i"><span class="std std-ref">Vector2i</span></a>, pattern: <a class="reference internal" href="class_tilemappattern.html#class-tilemappattern"><span class="std std-ref">TileMapPattern</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-tilemap-method-update-internals"><span class="std std-ref">update_internals</span></a>()</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="signals">
+<h2>Signals<a class="headerlink" href="#signals" title="Link to this heading"></a></h2>
+<p class="classref-signal" id="class-tilemap-signal-changed"><strong>changed</strong>() <a class="reference internal" href="#class-tilemap-signal-changed"><span class="std std-ref">🔗</span></a></p>
+<p>Emitted when the <a class="reference internal" href="class_tileset.html#class-tileset"><span class="std std-ref">TileSet</span></a> of this TileMap changes.</p>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="enumerations">
+<h2>Enumerations<a class="headerlink" href="#enumerations" title="Link to this heading"></a></h2>
+<p class="classref-enumeration" id="enum-tilemap-visibilitymode">enum <strong>VisibilityMode</strong>: <a class="reference internal" href="#enum-tilemap-visibilitymode"><span class="std std-ref">🔗</span></a></p>
+<p class="classref-enumeration-constant" id="class-tilemap-constant-visibility-mode-default"><a class="reference internal" href="#enum-tilemap-visibilitymode"><span class="std std-ref">VisibilityMode</span></a> <strong>VISIBILITY_MODE_DEFAULT</strong> = <code class="docutils literal notranslate"><span class="pre">0</span></code></p>
+<p>Use the debug settings to determine visibility.</p>
+<p class="classref-enumeration-constant" id="class-tilemap-constant-visibility-mode-force-hide"><a class="reference internal" href="#enum-tilemap-visibilitymode"><span class="std std-ref">VisibilityMode</span></a> <strong>VISIBILITY_MODE_FORCE_HIDE</strong> = <code class="docutils literal notranslate"><span class="pre">2</span></code></p>
+<p>Always hide.</p>
+<p class="classref-enumeration-constant" id="class-tilemap-constant-visibility-mode-force-show"><a class="reference internal" href="#enum-tilemap-visibilitymode"><span class="std std-ref">VisibilityMode</span></a> <strong>VISIBILITY_MODE_FORCE_SHOW</strong> = <code class="docutils literal notranslate"><span class="pre">1</span></code></p>
+<p>Always show.</p>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="property-descriptions">
+<h2>Property Descriptions<a class="headerlink" href="#property-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-property" id="class-tilemap-property-collision-animatable"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>collision_animatable</strong> = <code class="docutils literal notranslate"><span class="pre">false</span></code> <a class="reference internal" href="#class-tilemap-property-collision-animatable"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_collision_animatable</strong>(value: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_collision_animatable</strong>()</p></li>
+</ul>
+<p>If enabled, the TileMap will see its collisions synced to the physics tick and change its collision type from static to kinematic. This is required to create TileMap-based moving platform.</p>
+<p><strong>Note:</strong> Enabling <a class="reference internal" href="#class-tilemap-property-collision-animatable"><span class="std std-ref">collision_animatable</span></a> may have a small performance impact, only do it if the TileMap is moving and has colliding tiles.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-tilemap-property-collision-visibility-mode"><a class="reference internal" href="#enum-tilemap-visibilitymode"><span class="std std-ref">VisibilityMode</span></a> <strong>collision_visibility_mode</strong> = <code class="docutils literal notranslate"><span class="pre">0</span></code> <a class="reference internal" href="#class-tilemap-property-collision-visibility-mode"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_collision_visibility_mode</strong>(value: <a class="reference internal" href="#enum-tilemap-visibilitymode"><span class="std std-ref">VisibilityMode</span></a>)</p></li>
+<li><p><a class="reference internal" href="#enum-tilemap-visibilitymode"><span class="std std-ref">VisibilityMode</span></a> <strong>get_collision_visibility_mode</strong>()</p></li>
+</ul>
+<p>Show or hide the TileMap’s collision shapes. If set to <a class="reference internal" href="#class-tilemap-constant-visibility-mode-default"><span class="std std-ref">VISIBILITY_MODE_DEFAULT</span></a>, this depends on the show collision debug settings.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-tilemap-property-navigation-visibility-mode"><a class="reference internal" href="#enum-tilemap-visibilitymode"><span class="std std-ref">VisibilityMode</span></a> <strong>navigation_visibility_mode</strong> = <code class="docutils literal notranslate"><span class="pre">0</span></code> <a class="reference internal" href="#class-tilemap-property-navigation-visibility-mode"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_navigation_visibility_mode</strong>(value: <a class="reference internal" href="#enum-tilemap-visibilitymode"><span class="std std-ref">VisibilityMode</span></a>)</p></li>
+<li><p><a class="reference internal" href="#enum-tilemap-visibilitymode"><span class="std std-ref">VisibilityMode</span></a> <strong>get_navigation_visibility_mode</strong>()</p></li>
+</ul>
+<p>Show or hide the TileMap’s navigation meshes. If set to <a class="reference internal" href="#class-tilemap-constant-visibility-mode-default"><span class="std std-ref">VISIBILITY_MODE_DEFAULT</span></a>, this depends on the show navigation debug settings.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-tilemap-property-rendering-quadrant-size"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>rendering_quadrant_size</strong> = <code class="docutils literal notranslate"><span class="pre">16</span></code> <a class="reference internal" href="#class-tilemap-property-rendering-quadrant-size"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_rendering_quadrant_size</strong>(value: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>get_rendering_quadrant_size</strong>()</p></li>
+</ul>
+<p>The TileMap’s quadrant size. A quadrant is a group of tiles to be drawn together on a single canvas item, for optimization purposes. <a class="reference internal" href="#class-tilemap-property-rendering-quadrant-size"><span class="std std-ref">rendering_quadrant_size</span></a> defines the length of a square’s side, in the map’s coordinate system, that forms the quadrant. Thus, the default quadrant size groups together <code class="docutils literal notranslate"><span class="pre">16</span> <span class="pre">*</span> <span class="pre">16</span> <span class="pre">=</span> <span class="pre">256</span></code> tiles.</p>
+<p>The quadrant size does not apply on Y-sorted layers, as tiles are grouped by Y position instead in that case.</p>
+<p><strong>Note:</strong> As quadrants are created according to the map’s coordinate system, the quadrant’s “square shape” might not look like square in the TileMap’s local coordinate system.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-tilemap-property-tile-set"><a class="reference internal" href="class_tileset.html#class-tileset"><span class="std std-ref">TileSet</span></a> <strong>tile_set</strong> <a class="reference internal" href="#class-tilemap-property-tile-set"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_tileset</strong>(value: <a class="reference internal" href="class_tileset.html#class-tileset"><span class="std std-ref">TileSet</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_tileset.html#class-tileset"><span class="std std-ref">TileSet</span></a> <strong>get_tileset</strong>()</p></li>
+</ul>
+<p>The <a class="reference internal" href="class_tileset.html#class-tileset"><span class="std std-ref">TileSet</span></a> used by this <strong>TileMap</strong>. The textures, collisions, and additional behavior of all available tiles are stored here.</p>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="method-descriptions">
+<h2>Method Descriptions<a class="headerlink" href="#method-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-method" id="class-tilemap-private-method-tile-data-runtime-update"><abbr title="No return value.">void</abbr> <strong>_tile_data_runtime_update</strong>(layer: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, coords: <a class="reference internal" href="class_vector2i.html#class-vector2i"><span class="std std-ref">Vector2i</span></a>, tile_data: <a class="reference internal" href="class_tiledata.html#class-tiledata"><span class="std std-ref">TileData</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <a class="reference internal" href="#class-tilemap-private-method-tile-data-runtime-update"><span class="std std-ref">🔗</span></a></p>
+<p>Called with a TileData object about to be used internally by the TileMap, allowing its modification at runtime.</p>
+<p>This method is only called if <a class="reference internal" href="#class-tilemap-private-method-use-tile-data-runtime-update"><span class="std std-ref">_use_tile_data_runtime_update()</span></a> is implemented and returns <code class="docutils literal notranslate"><span class="pre">true</span></code> for the given tile <code class="docutils literal notranslate"><span class="pre">coords</span></code> and <code class="docutils literal notranslate"><span class="pre">layer</span></code>.</p>
+<p><strong>Warning:</strong> The <code class="docutils literal notranslate"><span class="pre">tile_data</span></code> object’s sub-resources are the same as the one in the TileSet. Modifying them might impact the whole TileSet. Instead, make sure to duplicate those resources.</p>
+<p><strong>Note:</strong> If the properties of <code class="docutils literal notranslate"><span class="pre">tile_data</span></code> object should change over time, use <a class="reference internal" href="#class-tilemap-method-notify-runtime-tile-data-update"><span class="std std-ref">notify_runtime_tile_data_update()</span></a> to notify the TileMap it needs an update.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-tilemap-private-method-use-tile-data-runtime-update"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>_use_tile_data_runtime_update</strong>(layer: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, coords: <a class="reference internal" href="class_vector2i.html#class-vector2i"><span class="std std-ref">Vector2i</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <a class="reference internal" href="#class-tilemap-private-method-use-tile-data-runtime-update"><span class="std std-ref">🔗</span></a></p>
+<p>Should return <code class="docutils literal notranslate"><span class="pre">true</span></code> if the tile at coordinates <code class="docutils literal notranslate"><span class="pre">coords</span></code> on layer <code class="docutils literal notranslate"><span class="pre">layer</span></code> requires a runtime update.</p>
+<p><strong>Warning:</strong> Make sure this function only return <code class="docutils literal notranslate"><span class="pre">true</span></code> when needed. Any tile processed at runtime without a need for it will imply a significant performance penalty.</p>
+<p><strong>Note:</strong> If the result of this function should changed, use <a class="reference internal" href="#class-tilemap-method-notify-runtime-tile-data-update"><span class="std std-ref">notify_runtime_tile_data_update()</span></a> to notify the TileMap it needs an update.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-tilemap-method-add-layer"><abbr title="No return value.">void</abbr> <strong>add_layer</strong>(to_position: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <a class="reference internal" href="#class-tilemap-method-add-layer"><span class="std std-ref">🔗</span></a></p>
+<p>Adds a layer at the given position <code class="docutils literal notranslate"><span class="pre">to_position</span></code> in the array. If <code class="docutils literal notranslate"><span class="pre">to_position</span></code> is negative, the position is counted from the end, with <code class="docutils literal notranslate"><span class="pre">-1</span></code> adding the layer at the end of the array.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-tilemap-method-clear"><abbr title="No return value.">void</abbr> <strong>clear</strong>() <a class="reference internal" href="#class-tilemap-method-clear"><span class="std std-ref">🔗</span></a></p>
+<p>Clears all cells.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-tilemap-method-clear-layer"><abbr title="No return value.">void</abbr> <strong>clear_layer</strong>(layer: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <a class="reference internal" href="#class-tilemap-method-clear-layer"><span class="std std-ref">🔗</span></a></p>
+<p>Clears all cells on the given layer.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">layer</span></code> is negative, the layers are accessed from the last one.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-tilemap-method-erase-cell"><abbr title="No return value.">void</abbr> <strong>erase_cell</strong>(layer: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, coords: <a class="reference internal" href="class_vector2i.html#class-vector2i"><span class="std std-ref">Vector2i</span></a>) <a class="reference internal" href="#class-tilemap-method-erase-cell"><span class="std std-ref">🔗</span></a></p>
+<p>Erases the cell on layer <code class="docutils literal notranslate"><span class="pre">layer</span></code> at coordinates <code class="docutils literal notranslate"><span class="pre">coords</span></code>.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">layer</span></code> is negative, the layers are accessed from the last one.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-tilemap-method-fix-invalid-tiles"><abbr title="No return value.">void</abbr> <strong>fix_invalid_tiles</strong>() <a class="reference internal" href="#class-tilemap-method-fix-invalid-tiles"><span class="std std-ref">🔗</span></a></p>
+<p>Clears cells that do not exist in the tileset.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-tilemap-method-force-update"><abbr title="No return value.">void</abbr> <strong>force_update</strong>(layer: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> = -1) <a class="reference internal" href="#class-tilemap-method-force-update"><span class="std std-ref">🔗</span></a></p>
+<p><strong>Deprecated:</strong> Use <a class="reference internal" href="#class-tilemap-method-notify-runtime-tile-data-update"><span class="std std-ref">notify_runtime_tile_data_update()</span></a> and/or <a class="reference internal" href="#class-tilemap-method-update-internals"><span class="std std-ref">update_internals()</span></a> instead.</p>
+<p>Forces the TileMap and the layer <code class="docutils literal notranslate"><span class="pre">layer</span></code> to update.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-tilemap-method-get-cell-alternative-tile"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>get_cell_alternative_tile</strong>(layer: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, coords: <a class="reference internal" href="class_vector2i.html#class-vector2i"><span class="std std-ref">Vector2i</span></a>, use_proxies: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = false) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-tilemap-method-get-cell-alternative-tile"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the tile alternative ID of the cell on layer <code class="docutils literal notranslate"><span class="pre">layer</span></code> at <code class="docutils literal notranslate"><span class="pre">coords</span></code>.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">use_proxies</span></code> is <code class="docutils literal notranslate"><span class="pre">false</span></code>, ignores the <a class="reference internal" href="class_tileset.html#class-tileset"><span class="std std-ref">TileSet</span></a>’s tile proxies, returning the raw alternative identifier. See <a class="reference internal" href="class_tileset.html#class-tileset-method-map-tile-proxy"><span class="std std-ref">TileSet.map_tile_proxy()</span></a>.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">layer</span></code> is negative, the layers are accessed from the last one.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-tilemap-method-get-cell-atlas-coords"><a class="reference internal" href="class_vector2i.html#class-vector2i"><span class="std std-ref">Vector2i</span></a> <strong>get_cell_atlas_coords</strong>(layer: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, coords: <a class="reference internal" href="class_vector2i.html#class-vector2i"><span class="std std-ref">Vector2i</span></a>, use_proxies: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = false) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-tilemap-method-get-cell-atlas-coords"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the tile atlas coordinates ID of the cell on layer <code class="docutils literal notranslate"><span class="pre">layer</span></code> at coordinates <code class="docutils literal notranslate"><span class="pre">coords</span></code>. Returns <code class="docutils literal notranslate"><span class="pre">Vector2i(-1,</span> <span class="pre">-1)</span></code> if the cell does not exist.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">use_proxies</span></code> is <code class="docutils literal notranslate"><span class="pre">false</span></code>, ignores the <a class="reference internal" href="class_tileset.html#class-tileset"><span class="std std-ref">TileSet</span></a>’s tile proxies, returning the raw atlas coordinate identifier. See <a class="reference internal" href="class_tileset.html#class-tileset-method-map-tile-proxy"><span class="std std-ref">TileSet.map_tile_proxy()</span></a>.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">layer</span></code> is negative, the layers are accessed from the last one.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-tilemap-method-get-cell-source-id"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>get_cell_source_id</strong>(layer: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, coords: <a class="reference internal" href="class_vector2i.html#class-vector2i"><span class="std std-ref">Vector2i</span></a>, use_proxies: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = false) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-tilemap-method-get-cell-source-id"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the tile source ID of the cell on layer <code class="docutils literal notranslate"><span class="pre">layer</span></code> at coordinates <code class="docutils literal notranslate"><span class="pre">coords</span></code>. Returns <code class="docutils literal notranslate"><span class="pre">-1</span></code> if the cell does not exist.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">use_proxies</span></code> is <code class="docutils literal notranslate"><span class="pre">false</span></code>, ignores the <a class="reference internal" href="class_tileset.html#class-tileset"><span class="std std-ref">TileSet</span></a>’s tile proxies, returning the raw source identifier. See <a class="reference internal" href="class_tileset.html#class-tileset-method-map-tile-proxy"><span class="std std-ref">TileSet.map_tile_proxy()</span></a>.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">layer</span></code> is negative, the layers are accessed from the last one.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-tilemap-method-get-cell-tile-data"><a class="reference internal" href="class_tiledata.html#class-tiledata"><span class="std std-ref">TileData</span></a> <strong>get_cell_tile_data</strong>(layer: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, coords: <a class="reference internal" href="class_vector2i.html#class-vector2i"><span class="std std-ref">Vector2i</span></a>, use_proxies: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = false) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-tilemap-method-get-cell-tile-data"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the <a class="reference internal" href="class_tiledata.html#class-tiledata"><span class="std std-ref">TileData</span></a> object associated with the given cell, or <code class="docutils literal notranslate"><span class="pre">null</span></code> if the cell does not exist or is not a <a class="reference internal" href="class_tilesetatlassource.html#class-tilesetatlassource"><span class="std std-ref">TileSetAtlasSource</span></a>.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">layer</span></code> is negative, the layers are accessed from the last one.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">func</span> <span class="n">get_clicked_tile_power</span><span class="p">():</span>
+    <span class="n">var</span> <span class="n">clicked_cell</span> <span class="o">=</span> <span class="n">tile_map</span><span class="o">.</span><span class="n">local_to_map</span><span class="p">(</span><span class="n">tile_map</span><span class="o">.</span><span class="n">get_local_mouse_position</span><span class="p">())</span>
+    <span class="n">var</span> <span class="n">data</span> <span class="o">=</span> <span class="n">tile_map</span><span class="o">.</span><span class="n">get_cell_tile_data</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">clicked_cell</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">data</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">data</span><span class="o">.</span><span class="n">get_custom_data</span><span class="p">(</span><span class="s2">&quot;power&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">0</span>
+</pre></div>
+</div>
+<p>If <code class="docutils literal notranslate"><span class="pre">use_proxies</span></code> is <code class="docutils literal notranslate"><span class="pre">false</span></code>, ignores the <a class="reference internal" href="class_tileset.html#class-tileset"><span class="std std-ref">TileSet</span></a>’s tile proxies. See <a class="reference internal" href="class_tileset.html#class-tileset-method-map-tile-proxy"><span class="std std-ref">TileSet.map_tile_proxy()</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-tilemap-method-get-coords-for-body-rid"><a class="reference internal" href="class_vector2i.html#class-vector2i"><span class="std std-ref">Vector2i</span></a> <strong>get_coords_for_body_rid</strong>(body: <a class="reference internal" href="class_rid.html#class-rid"><span class="std std-ref">RID</span></a>) <a class="reference internal" href="#class-tilemap-method-get-coords-for-body-rid"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the coordinates of the tile for given physics body RID. Such RID can be retrieved from <a class="reference internal" href="class_kinematiccollision2d.html#class-kinematiccollision2d-method-get-collider-rid"><span class="std std-ref">KinematicCollision2D.get_collider_rid()</span></a>, when colliding with a tile.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-tilemap-method-get-layer-for-body-rid"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>get_layer_for_body_rid</strong>(body: <a class="reference internal" href="class_rid.html#class-rid"><span class="std std-ref">RID</span></a>) <a class="reference internal" href="#class-tilemap-method-get-layer-for-body-rid"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the tilemap layer of the tile for given physics body RID. Such RID can be retrieved from <a class="reference internal" href="class_kinematiccollision2d.html#class-kinematiccollision2d-method-get-collider-rid"><span class="std std-ref">KinematicCollision2D.get_collider_rid()</span></a>, when colliding with a tile.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-tilemap-method-get-layer-modulate"><a class="reference internal" href="class_color.html#class-color"><span class="std std-ref">Color</span></a> <strong>get_layer_modulate</strong>(layer: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-tilemap-method-get-layer-modulate"><span class="std std-ref">🔗</span></a></p>
+<p>Returns a TileMap layer’s modulate.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">layer</span></code> is negative, the layers are accessed from the last one.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-tilemap-method-get-layer-name"><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a> <strong>get_layer_name</strong>(layer: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-tilemap-method-get-layer-name"><span class="std std-ref">🔗</span></a></p>
+<p>Returns a TileMap layer’s name.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">layer</span></code> is negative, the layers are accessed from the last one.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-tilemap-method-get-layer-navigation-map"><a class="reference internal" href="class_rid.html#class-rid"><span class="std std-ref">RID</span></a> <strong>get_layer_navigation_map</strong>(layer: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-tilemap-method-get-layer-navigation-map"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the <a class="reference internal" href="class_rid.html#class-rid"><span class="std std-ref">RID</span></a> of the <a class="reference internal" href="class_navigationserver2d.html#class-navigationserver2d"><span class="std std-ref">NavigationServer2D</span></a> navigation map assigned to the specified TileMap layer <code class="docutils literal notranslate"><span class="pre">layer</span></code>.</p>
+<p>By default the TileMap uses the default <a class="reference internal" href="class_world2d.html#class-world2d"><span class="std std-ref">World2D</span></a> navigation map for the first TileMap layer. For each additional TileMap layer a new navigation map is created for the additional layer.</p>
+<p>In order to make <a class="reference internal" href="class_navigationagent2d.html#class-navigationagent2d"><span class="std std-ref">NavigationAgent2D</span></a> switch between TileMap layer navigation maps use <a class="reference internal" href="class_navigationagent2d.html#class-navigationagent2d-method-set-navigation-map"><span class="std std-ref">NavigationAgent2D.set_navigation_map()</span></a> with the navigation map received from <a class="reference internal" href="#class-tilemap-method-get-layer-navigation-map"><span class="std std-ref">get_layer_navigation_map()</span></a>.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">layer</span></code> is negative, the layers are accessed from the last one.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-tilemap-method-get-layer-y-sort-origin"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>get_layer_y_sort_origin</strong>(layer: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-tilemap-method-get-layer-y-sort-origin"><span class="std std-ref">🔗</span></a></p>
+<p>Returns a TileMap layer’s Y sort origin.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">layer</span></code> is negative, the layers are accessed from the last one.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-tilemap-method-get-layer-z-index"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>get_layer_z_index</strong>(layer: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-tilemap-method-get-layer-z-index"><span class="std std-ref">🔗</span></a></p>
+<p>Returns a TileMap layer’s Z-index value.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">layer</span></code> is negative, the layers are accessed from the last one.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-tilemap-method-get-layers-count"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>get_layers_count</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-tilemap-method-get-layers-count"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the number of layers in the TileMap.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-tilemap-method-get-navigation-map"><a class="reference internal" href="class_rid.html#class-rid"><span class="std std-ref">RID</span></a> <strong>get_navigation_map</strong>(layer: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-tilemap-method-get-navigation-map"><span class="std std-ref">🔗</span></a></p>
+<p><strong>Deprecated:</strong> Use <a class="reference internal" href="#class-tilemap-method-get-layer-navigation-map"><span class="std std-ref">get_layer_navigation_map()</span></a> instead.</p>
+<p>Returns the <a class="reference internal" href="class_rid.html#class-rid"><span class="std std-ref">RID</span></a> of the <a class="reference internal" href="class_navigationserver2d.html#class-navigationserver2d"><span class="std std-ref">NavigationServer2D</span></a> navigation map assigned to the specified TileMap layer <code class="docutils literal notranslate"><span class="pre">layer</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-tilemap-method-get-neighbor-cell"><a class="reference internal" href="class_vector2i.html#class-vector2i"><span class="std std-ref">Vector2i</span></a> <strong>get_neighbor_cell</strong>(coords: <a class="reference internal" href="class_vector2i.html#class-vector2i"><span class="std std-ref">Vector2i</span></a>, neighbor: <a class="reference internal" href="class_tileset.html#enum-tileset-cellneighbor"><span class="std std-ref">CellNeighbor</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-tilemap-method-get-neighbor-cell"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the neighboring cell to the one at coordinates <code class="docutils literal notranslate"><span class="pre">coords</span></code>, identified by the <code class="docutils literal notranslate"><span class="pre">neighbor</span></code> direction. This method takes into account the different layouts a TileMap can take.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-tilemap-method-get-pattern"><a class="reference internal" href="class_tilemappattern.html#class-tilemappattern"><span class="std std-ref">TileMapPattern</span></a> <strong>get_pattern</strong>(layer: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, coords_array: <a class="reference internal" href="class_array.html#class-array"><span class="std std-ref">Array</span></a>[<a class="reference internal" href="class_vector2i.html#class-vector2i"><span class="std std-ref">Vector2i</span></a>]) <a class="reference internal" href="#class-tilemap-method-get-pattern"><span class="std std-ref">🔗</span></a></p>
+<p>Creates a new <a class="reference internal" href="class_tilemappattern.html#class-tilemappattern"><span class="std std-ref">TileMapPattern</span></a> from the given layer and set of cells.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">layer</span></code> is negative, the layers are accessed from the last one.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-tilemap-method-get-surrounding-cells"><a class="reference internal" href="class_array.html#class-array"><span class="std std-ref">Array</span></a>[<a class="reference internal" href="class_vector2i.html#class-vector2i"><span class="std std-ref">Vector2i</span></a>] <strong>get_surrounding_cells</strong>(coords: <a class="reference internal" href="class_vector2i.html#class-vector2i"><span class="std std-ref">Vector2i</span></a>) <a class="reference internal" href="#class-tilemap-method-get-surrounding-cells"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the list of all neighbourings cells to the one at <code class="docutils literal notranslate"><span class="pre">coords</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-tilemap-method-get-used-cells"><a class="reference internal" href="class_array.html#class-array"><span class="std std-ref">Array</span></a>[<a class="reference internal" href="class_vector2i.html#class-vector2i"><span class="std std-ref">Vector2i</span></a>] <strong>get_used_cells</strong>(layer: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-tilemap-method-get-used-cells"><span class="std std-ref">🔗</span></a></p>
+<p>Returns a <a class="reference internal" href="class_vector2i.html#class-vector2i"><span class="std std-ref">Vector2i</span></a> array with the positions of all cells containing a tile in the given layer. A cell is considered empty if its source identifier equals -1, its atlas coordinates identifiers is <code class="docutils literal notranslate"><span class="pre">Vector2(-1,</span> <span class="pre">-1)</span></code> and its alternative identifier is -1.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">layer</span></code> is negative, the layers are accessed from the last one.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-tilemap-method-get-used-cells-by-id"><a class="reference internal" href="class_array.html#class-array"><span class="std std-ref">Array</span></a>[<a class="reference internal" href="class_vector2i.html#class-vector2i"><span class="std std-ref">Vector2i</span></a>] <strong>get_used_cells_by_id</strong>(layer: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, source_id: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> = -1, atlas_coords: <a class="reference internal" href="class_vector2i.html#class-vector2i"><span class="std std-ref">Vector2i</span></a> = Vector2i(-1, -1), alternative_tile: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> = -1) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-tilemap-method-get-used-cells-by-id"><span class="std std-ref">🔗</span></a></p>
+<p>Returns a <a class="reference internal" href="class_vector2i.html#class-vector2i"><span class="std std-ref">Vector2i</span></a> array with the positions of all cells containing a tile in the given layer. Tiles may be filtered according to their source (<code class="docutils literal notranslate"><span class="pre">source_id</span></code>), their atlas coordinates (<code class="docutils literal notranslate"><span class="pre">atlas_coords</span></code>) or alternative id (<code class="docutils literal notranslate"><span class="pre">alternative_tile</span></code>).</p>
+<p>If a parameter has its value set to the default one, this parameter is not used to filter a cell. Thus, if all parameters have their respective default value, this method returns the same result as <a class="reference internal" href="#class-tilemap-method-get-used-cells"><span class="std std-ref">get_used_cells()</span></a>.</p>
+<p>A cell is considered empty if its source identifier equals -1, its atlas coordinates identifiers is <code class="docutils literal notranslate"><span class="pre">Vector2(-1,</span> <span class="pre">-1)</span></code> and its alternative identifier is -1.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">layer</span></code> is negative, the layers are accessed from the last one.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-tilemap-method-get-used-rect"><a class="reference internal" href="class_rect2i.html#class-rect2i"><span class="std std-ref">Rect2i</span></a> <strong>get_used_rect</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-tilemap-method-get-used-rect"><span class="std std-ref">🔗</span></a></p>
+<p>Returns a rectangle enclosing the used (non-empty) tiles of the map, including all layers.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-tilemap-method-is-cell-flipped-h"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_cell_flipped_h</strong>(layer: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, coords: <a class="reference internal" href="class_vector2i.html#class-vector2i"><span class="std std-ref">Vector2i</span></a>, use_proxies: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = false) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-tilemap-method-is-cell-flipped-h"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if the cell on layer <code class="docutils literal notranslate"><span class="pre">layer</span></code> at coordinates <code class="docutils literal notranslate"><span class="pre">coords</span></code> is flipped horizontally. The result is valid only for atlas sources.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-tilemap-method-is-cell-flipped-v"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_cell_flipped_v</strong>(layer: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, coords: <a class="reference internal" href="class_vector2i.html#class-vector2i"><span class="std std-ref">Vector2i</span></a>, use_proxies: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = false) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-tilemap-method-is-cell-flipped-v"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if the cell on layer <code class="docutils literal notranslate"><span class="pre">layer</span></code> at coordinates <code class="docutils literal notranslate"><span class="pre">coords</span></code> is flipped vertically. The result is valid only for atlas sources.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-tilemap-method-is-cell-transposed"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_cell_transposed</strong>(layer: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, coords: <a class="reference internal" href="class_vector2i.html#class-vector2i"><span class="std std-ref">Vector2i</span></a>, use_proxies: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = false) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-tilemap-method-is-cell-transposed"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if the cell on layer <code class="docutils literal notranslate"><span class="pre">layer</span></code> at coordinates <code class="docutils literal notranslate"><span class="pre">coords</span></code> is transposed. The result is valid only for atlas sources.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-tilemap-method-is-layer-enabled"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_layer_enabled</strong>(layer: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-tilemap-method-is-layer-enabled"><span class="std std-ref">🔗</span></a></p>
+<p>Returns if a layer is enabled.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">layer</span></code> is negative, the layers are accessed from the last one.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-tilemap-method-is-layer-navigation-enabled"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_layer_navigation_enabled</strong>(layer: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-tilemap-method-is-layer-navigation-enabled"><span class="std std-ref">🔗</span></a></p>
+<p>Returns if a layer’s built-in navigation regions generation is enabled.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-tilemap-method-is-layer-y-sort-enabled"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_layer_y_sort_enabled</strong>(layer: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-tilemap-method-is-layer-y-sort-enabled"><span class="std std-ref">🔗</span></a></p>
+<p>Returns if a layer Y-sorts its tiles.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">layer</span></code> is negative, the layers are accessed from the last one.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-tilemap-method-local-to-map"><a class="reference internal" href="class_vector2i.html#class-vector2i"><span class="std std-ref">Vector2i</span></a> <strong>local_to_map</strong>(local_position: <a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-tilemap-method-local-to-map"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the map coordinates of the cell containing the given <code class="docutils literal notranslate"><span class="pre">local_position</span></code>. If <code class="docutils literal notranslate"><span class="pre">local_position</span></code> is in global coordinates, consider using <a class="reference internal" href="class_node2d.html#class-node2d-method-to-local"><span class="std std-ref">Node2D.to_local()</span></a> before passing it to this method. See also <a class="reference internal" href="#class-tilemap-method-map-to-local"><span class="std std-ref">map_to_local()</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-tilemap-method-map-pattern"><a class="reference internal" href="class_vector2i.html#class-vector2i"><span class="std std-ref">Vector2i</span></a> <strong>map_pattern</strong>(position_in_tilemap: <a class="reference internal" href="class_vector2i.html#class-vector2i"><span class="std std-ref">Vector2i</span></a>, coords_in_pattern: <a class="reference internal" href="class_vector2i.html#class-vector2i"><span class="std std-ref">Vector2i</span></a>, pattern: <a class="reference internal" href="class_tilemappattern.html#class-tilemappattern"><span class="std std-ref">TileMapPattern</span></a>) <a class="reference internal" href="#class-tilemap-method-map-pattern"><span class="std std-ref">🔗</span></a></p>
+<p>Returns for the given coordinate <code class="docutils literal notranslate"><span class="pre">coords_in_pattern</span></code> in a <a class="reference internal" href="class_tilemappattern.html#class-tilemappattern"><span class="std std-ref">TileMapPattern</span></a> the corresponding cell coordinates if the pattern was pasted at the <code class="docutils literal notranslate"><span class="pre">position_in_tilemap</span></code> coordinates (see <a class="reference internal" href="#class-tilemap-method-set-pattern"><span class="std std-ref">set_pattern()</span></a>). This mapping is required as in half-offset tile shapes, the mapping might not work by calculating <code class="docutils literal notranslate"><span class="pre">position_in_tile_map</span> <span class="pre">+</span> <span class="pre">coords_in_pattern</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-tilemap-method-map-to-local"><a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a> <strong>map_to_local</strong>(map_position: <a class="reference internal" href="class_vector2i.html#class-vector2i"><span class="std std-ref">Vector2i</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-tilemap-method-map-to-local"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the centered position of a cell in the TileMap’s local coordinate space. To convert the returned value into global coordinates, use <a class="reference internal" href="class_node2d.html#class-node2d-method-to-global"><span class="std std-ref">Node2D.to_global()</span></a>. See also <a class="reference internal" href="#class-tilemap-method-local-to-map"><span class="std std-ref">local_to_map()</span></a>.</p>
+<p><strong>Note:</strong> This may not correspond to the visual position of the tile, i.e. it ignores the <a class="reference internal" href="class_tiledata.html#class-tiledata-property-texture-origin"><span class="std std-ref">TileData.texture_origin</span></a> property of individual tiles.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-tilemap-method-move-layer"><abbr title="No return value.">void</abbr> <strong>move_layer</strong>(layer: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, to_position: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <a class="reference internal" href="#class-tilemap-method-move-layer"><span class="std std-ref">🔗</span></a></p>
+<p>Moves the layer at index <code class="docutils literal notranslate"><span class="pre">layer</span></code> to the given position <code class="docutils literal notranslate"><span class="pre">to_position</span></code> in the array.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-tilemap-method-notify-runtime-tile-data-update"><abbr title="No return value.">void</abbr> <strong>notify_runtime_tile_data_update</strong>(layer: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> = -1) <a class="reference internal" href="#class-tilemap-method-notify-runtime-tile-data-update"><span class="std std-ref">🔗</span></a></p>
+<p>Notifies the TileMap node that calls to <a class="reference internal" href="#class-tilemap-private-method-use-tile-data-runtime-update"><span class="std std-ref">_use_tile_data_runtime_update()</span></a> or <a class="reference internal" href="#class-tilemap-private-method-tile-data-runtime-update"><span class="std std-ref">_tile_data_runtime_update()</span></a> will lead to different results. This will thus trigger a TileMap update.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">layer</span></code> is provided, only notifies changes for the given layer. Providing the <code class="docutils literal notranslate"><span class="pre">layer</span></code> argument (when applicable) is usually preferred for performance reasons.</p>
+<p><strong>Warning:</strong> Updating the TileMap is computationally expensive and may impact performance. Try to limit the number of calls to this function to avoid unnecessary update.</p>
+<p><strong>Note:</strong> This does not trigger a direct update of the TileMap, the update will be done at the end of the frame as usual (unless you call <a class="reference internal" href="#class-tilemap-method-update-internals"><span class="std std-ref">update_internals()</span></a>).</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-tilemap-method-remove-layer"><abbr title="No return value.">void</abbr> <strong>remove_layer</strong>(layer: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <a class="reference internal" href="#class-tilemap-method-remove-layer"><span class="std std-ref">🔗</span></a></p>
+<p>Removes the layer at index <code class="docutils literal notranslate"><span class="pre">layer</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-tilemap-method-set-cell"><abbr title="No return value.">void</abbr> <strong>set_cell</strong>(layer: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, coords: <a class="reference internal" href="class_vector2i.html#class-vector2i"><span class="std std-ref">Vector2i</span></a>, source_id: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> = -1, atlas_coords: <a class="reference internal" href="class_vector2i.html#class-vector2i"><span class="std std-ref">Vector2i</span></a> = Vector2i(-1, -1), alternative_tile: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> = 0) <a class="reference internal" href="#class-tilemap-method-set-cell"><span class="std std-ref">🔗</span></a></p>
+<p>Sets the tile identifiers for the cell on layer <code class="docutils literal notranslate"><span class="pre">layer</span></code> at coordinates <code class="docutils literal notranslate"><span class="pre">coords</span></code>. Each tile of the <a class="reference internal" href="class_tileset.html#class-tileset"><span class="std std-ref">TileSet</span></a> is identified using three parts:</p>
+<ul class="simple">
+<li><p>The source identifier <code class="docutils literal notranslate"><span class="pre">source_id</span></code> identifies a <a class="reference internal" href="class_tilesetsource.html#class-tilesetsource"><span class="std std-ref">TileSetSource</span></a> identifier. See <a class="reference internal" href="class_tileset.html#class-tileset-method-set-source-id"><span class="std std-ref">TileSet.set_source_id()</span></a>,</p></li>
+<li><p>The atlas coordinates identifier <code class="docutils literal notranslate"><span class="pre">atlas_coords</span></code> identifies a tile coordinates in the atlas (if the source is a <a class="reference internal" href="class_tilesetatlassource.html#class-tilesetatlassource"><span class="std std-ref">TileSetAtlasSource</span></a>). For <a class="reference internal" href="class_tilesetscenescollectionsource.html#class-tilesetscenescollectionsource"><span class="std std-ref">TileSetScenesCollectionSource</span></a> it should always be <code class="docutils literal notranslate"><span class="pre">Vector2i(0,</span> <span class="pre">0)</span></code>),</p></li>
+<li><p>The alternative tile identifier <code class="docutils literal notranslate"><span class="pre">alternative_tile</span></code> identifies a tile alternative in the atlas (if the source is a <a class="reference internal" href="class_tilesetatlassource.html#class-tilesetatlassource"><span class="std std-ref">TileSetAtlasSource</span></a>), and the scene for a <a class="reference internal" href="class_tilesetscenescollectionsource.html#class-tilesetscenescollectionsource"><span class="std std-ref">TileSetScenesCollectionSource</span></a>.</p></li>
+</ul>
+<p>If <code class="docutils literal notranslate"><span class="pre">source_id</span></code> is set to <code class="docutils literal notranslate"><span class="pre">-1</span></code>, <code class="docutils literal notranslate"><span class="pre">atlas_coords</span></code> to <code class="docutils literal notranslate"><span class="pre">Vector2i(-1,</span> <span class="pre">-1)</span></code> or <code class="docutils literal notranslate"><span class="pre">alternative_tile</span></code> to <code class="docutils literal notranslate"><span class="pre">-1</span></code>, the cell will be erased. An erased cell gets <strong>all</strong> its identifiers automatically set to their respective invalid values, namely <code class="docutils literal notranslate"><span class="pre">-1</span></code>, <code class="docutils literal notranslate"><span class="pre">Vector2i(-1,</span> <span class="pre">-1)</span></code> and <code class="docutils literal notranslate"><span class="pre">-1</span></code>.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">layer</span></code> is negative, the layers are accessed from the last one.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-tilemap-method-set-cells-terrain-connect"><abbr title="No return value.">void</abbr> <strong>set_cells_terrain_connect</strong>(layer: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, cells: <a class="reference internal" href="class_array.html#class-array"><span class="std std-ref">Array</span></a>[<a class="reference internal" href="class_vector2i.html#class-vector2i"><span class="std std-ref">Vector2i</span></a>], terrain_set: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, terrain: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, ignore_empty_terrains: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = true) <a class="reference internal" href="#class-tilemap-method-set-cells-terrain-connect"><span class="std std-ref">🔗</span></a></p>
+<p>Update all the cells in the <code class="docutils literal notranslate"><span class="pre">cells</span></code> coordinates array so that they use the given <code class="docutils literal notranslate"><span class="pre">terrain</span></code> for the given <code class="docutils literal notranslate"><span class="pre">terrain_set</span></code>. If an updated cell has the same terrain as one of its neighboring cells, this function tries to join the two. This function might update neighboring tiles if needed to create correct terrain transitions.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">ignore_empty_terrains</span></code> is <code class="docutils literal notranslate"><span class="pre">true</span></code>, empty terrains will be ignored when trying to find the best fitting tile for the given terrain constraints.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">layer</span></code> is negative, the layers are accessed from the last one.</p>
+<p><strong>Note:</strong> To work correctly, this method requires the TileMap’s TileSet to have terrains set up with all required terrain combinations. Otherwise, it may produce unexpected results.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-tilemap-method-set-cells-terrain-path"><abbr title="No return value.">void</abbr> <strong>set_cells_terrain_path</strong>(layer: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, path: <a class="reference internal" href="class_array.html#class-array"><span class="std std-ref">Array</span></a>[<a class="reference internal" href="class_vector2i.html#class-vector2i"><span class="std std-ref">Vector2i</span></a>], terrain_set: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, terrain: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, ignore_empty_terrains: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = true) <a class="reference internal" href="#class-tilemap-method-set-cells-terrain-path"><span class="std std-ref">🔗</span></a></p>
+<p>Update all the cells in the <code class="docutils literal notranslate"><span class="pre">path</span></code> coordinates array so that they use the given <code class="docutils literal notranslate"><span class="pre">terrain</span></code> for the given <code class="docutils literal notranslate"><span class="pre">terrain_set</span></code>. The function will also connect two successive cell in the path with the same terrain. This function might update neighboring tiles if needed to create correct terrain transitions.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">ignore_empty_terrains</span></code> is <code class="docutils literal notranslate"><span class="pre">true</span></code>, empty terrains will be ignored when trying to find the best fitting tile for the given terrain constraints.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">layer</span></code> is negative, the layers are accessed from the last one.</p>
+<p><strong>Note:</strong> To work correctly, this method requires the TileMap’s TileSet to have terrains set up with all required terrain combinations. Otherwise, it may produce unexpected results.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-tilemap-method-set-layer-enabled"><abbr title="No return value.">void</abbr> <strong>set_layer_enabled</strong>(layer: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, enabled: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>) <a class="reference internal" href="#class-tilemap-method-set-layer-enabled"><span class="std std-ref">🔗</span></a></p>
+<p>Enables or disables the layer <code class="docutils literal notranslate"><span class="pre">layer</span></code>. A disabled layer is not processed at all (no rendering, no physics, etc.).</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">layer</span></code> is negative, the layers are accessed from the last one.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-tilemap-method-set-layer-modulate"><abbr title="No return value.">void</abbr> <strong>set_layer_modulate</strong>(layer: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, modulate: <a class="reference internal" href="class_color.html#class-color"><span class="std std-ref">Color</span></a>) <a class="reference internal" href="#class-tilemap-method-set-layer-modulate"><span class="std std-ref">🔗</span></a></p>
+<p>Sets a layer’s color. It will be multiplied by tile’s color and TileMap’s modulate.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">layer</span></code> is negative, the layers are accessed from the last one.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-tilemap-method-set-layer-name"><abbr title="No return value.">void</abbr> <strong>set_layer_name</strong>(layer: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, name: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <a class="reference internal" href="#class-tilemap-method-set-layer-name"><span class="std std-ref">🔗</span></a></p>
+<p>Sets a layer’s name. This is mostly useful in the editor.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">layer</span></code> is negative, the layers are accessed from the last one.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-tilemap-method-set-layer-navigation-enabled"><abbr title="No return value.">void</abbr> <strong>set_layer_navigation_enabled</strong>(layer: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, enabled: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>) <a class="reference internal" href="#class-tilemap-method-set-layer-navigation-enabled"><span class="std std-ref">🔗</span></a></p>
+<p>Enables or disables a layer’s built-in navigation regions generation. Disable this if you need to bake navigation regions from a TileMap using a <a class="reference internal" href="class_navigationregion2d.html#class-navigationregion2d"><span class="std std-ref">NavigationRegion2D</span></a> node.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-tilemap-method-set-layer-navigation-map"><abbr title="No return value.">void</abbr> <strong>set_layer_navigation_map</strong>(layer: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, map: <a class="reference internal" href="class_rid.html#class-rid"><span class="std std-ref">RID</span></a>) <a class="reference internal" href="#class-tilemap-method-set-layer-navigation-map"><span class="std std-ref">🔗</span></a></p>
+<p>Assigns <code class="docutils literal notranslate"><span class="pre">map</span></code> as a <a class="reference internal" href="class_navigationserver2d.html#class-navigationserver2d"><span class="std std-ref">NavigationServer2D</span></a> navigation map for the specified TileMap layer <code class="docutils literal notranslate"><span class="pre">layer</span></code>.</p>
+<p>By default the TileMap uses the default <a class="reference internal" href="class_world2d.html#class-world2d"><span class="std std-ref">World2D</span></a> navigation map for the first TileMap layer. For each additional TileMap layer a new navigation map is created for the additional layer.</p>
+<p>In order to make <a class="reference internal" href="class_navigationagent2d.html#class-navigationagent2d"><span class="std std-ref">NavigationAgent2D</span></a> switch between TileMap layer navigation maps use <a class="reference internal" href="class_navigationagent2d.html#class-navigationagent2d-method-set-navigation-map"><span class="std std-ref">NavigationAgent2D.set_navigation_map()</span></a> with the navigation map received from <a class="reference internal" href="#class-tilemap-method-get-layer-navigation-map"><span class="std std-ref">get_layer_navigation_map()</span></a>.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">layer</span></code> is negative, the layers are accessed from the last one.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-tilemap-method-set-layer-y-sort-enabled"><abbr title="No return value.">void</abbr> <strong>set_layer_y_sort_enabled</strong>(layer: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, y_sort_enabled: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>) <a class="reference internal" href="#class-tilemap-method-set-layer-y-sort-enabled"><span class="std std-ref">🔗</span></a></p>
+<p>Enables or disables a layer’s Y-sorting. If a layer is Y-sorted, the layer will behave as a CanvasItem node where each of its tile gets Y-sorted.</p>
+<p>Y-sorted layers should usually be on different Z-index values than not Y-sorted layers, otherwise, each of those layer will be Y-sorted as whole with the Y-sorted one. This is usually an undesired behavior.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">layer</span></code> is negative, the layers are accessed from the last one.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-tilemap-method-set-layer-y-sort-origin"><abbr title="No return value.">void</abbr> <strong>set_layer_y_sort_origin</strong>(layer: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, y_sort_origin: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <a class="reference internal" href="#class-tilemap-method-set-layer-y-sort-origin"><span class="std std-ref">🔗</span></a></p>
+<p>Sets a layer’s Y-sort origin value. This Y-sort origin value is added to each tile’s Y-sort origin value.</p>
+<p>This allows, for example, to fake a different height level on each layer. This can be useful for top-down view games.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">layer</span></code> is negative, the layers are accessed from the last one.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-tilemap-method-set-layer-z-index"><abbr title="No return value.">void</abbr> <strong>set_layer_z_index</strong>(layer: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, z_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <a class="reference internal" href="#class-tilemap-method-set-layer-z-index"><span class="std std-ref">🔗</span></a></p>
+<p>Sets a layers Z-index value. This Z-index is added to each tile’s Z-index value.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">layer</span></code> is negative, the layers are accessed from the last one.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-tilemap-method-set-navigation-map"><abbr title="No return value.">void</abbr> <strong>set_navigation_map</strong>(layer: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, map: <a class="reference internal" href="class_rid.html#class-rid"><span class="std std-ref">RID</span></a>) <a class="reference internal" href="#class-tilemap-method-set-navigation-map"><span class="std std-ref">🔗</span></a></p>
+<p><strong>Deprecated:</strong> Use <a class="reference internal" href="#class-tilemap-method-set-layer-navigation-map"><span class="std std-ref">set_layer_navigation_map()</span></a> instead.</p>
+<p>Assigns <code class="docutils literal notranslate"><span class="pre">map</span></code> as a <a class="reference internal" href="class_navigationserver2d.html#class-navigationserver2d"><span class="std std-ref">NavigationServer2D</span></a> navigation map for the specified TileMap layer <code class="docutils literal notranslate"><span class="pre">layer</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-tilemap-method-set-pattern"><abbr title="No return value.">void</abbr> <strong>set_pattern</strong>(layer: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, position: <a class="reference internal" href="class_vector2i.html#class-vector2i"><span class="std std-ref">Vector2i</span></a>, pattern: <a class="reference internal" href="class_tilemappattern.html#class-tilemappattern"><span class="std std-ref">TileMapPattern</span></a>) <a class="reference internal" href="#class-tilemap-method-set-pattern"><span class="std std-ref">🔗</span></a></p>
+<p>Paste the given <a class="reference internal" href="class_tilemappattern.html#class-tilemappattern"><span class="std std-ref">TileMapPattern</span></a> at the given <code class="docutils literal notranslate"><span class="pre">position</span></code> and <code class="docutils literal notranslate"><span class="pre">layer</span></code> in the tile map.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">layer</span></code> is negative, the layers are accessed from the last one.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-tilemap-method-update-internals"><abbr title="No return value.">void</abbr> <strong>update_internals</strong>() <a class="reference internal" href="#class-tilemap-method-update-internals"><span class="std std-ref">🔗</span></a></p>
+<p>Triggers a direct update of the TileMap. Usually, calling this function is not needed, as TileMap node updates automatically when one of its properties or cells is modified.</p>
+<p>However, for performance reasons, those updates are batched and delayed to the end of the frame. Calling this function will force the TileMap to update right away instead.</p>
+<p><strong>Warning:</strong> Updating the TileMap is computationally expensive and may impact performance. Try to limit the number of updates and how many tiles they impact.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, MUmarShahbaz.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

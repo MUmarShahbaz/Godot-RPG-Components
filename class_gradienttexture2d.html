@@ -1,0 +1,241 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GradientTexture2D &mdash; RPG Components 2D 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=d45e8c67"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            RPG Components 2D
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">GradientTexture2D</a><ul>
+<li><a class="reference internal" href="#description">Description</a></li>
+<li><a class="reference internal" href="#properties">Properties</a></li>
+<li><a class="reference internal" href="#enumerations">Enumerations</a></li>
+<li><a class="reference internal" href="#property-descriptions">Property Descriptions</a></li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">RPG Components 2D</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">GradientTexture2D</li>
+      <li class="wy-breadcrumbs-aside">
+              <!-- User defined GitHub URL -->
+              <a href="hide" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="gradienttexture2d">
+<span id="class-gradienttexture2d"></span><h1>GradientTexture2D<a class="headerlink" href="#gradienttexture2d" title="Link to this heading"></a></h1>
+<p><strong>Inherits:</strong> <a class="reference internal" href="class_texture2d.html#class-texture2d"><span class="std std-ref">Texture2D</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_texture.html#class-texture"><span class="std std-ref">Texture</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_resource.html#class-resource"><span class="std std-ref">Resource</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_refcounted.html#class-refcounted"><span class="std std-ref">RefCounted</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_object.html#class-object"><span class="std std-ref">Object</span></a></p>
+<p>A 2D texture that creates a pattern with colors obtained from a <a class="reference internal" href="class_gradient.html#class-gradient"><span class="std std-ref">Gradient</span></a>.</p>
+<section class="classref-introduction-group" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
+<p>A 2D texture that obtains colors from a <a class="reference internal" href="class_gradient.html#class-gradient"><span class="std std-ref">Gradient</span></a> to fill the texture data. This texture is able to transform a color transition into different patterns such as a linear or a radial gradient. The texture is filled by interpolating colors starting from <a class="reference internal" href="#class-gradienttexture2d-property-fill-from"><span class="std std-ref">fill_from</span></a> to <a class="reference internal" href="#class-gradienttexture2d-property-fill-to"><span class="std std-ref">fill_to</span></a> offsets by default, but the gradient fill can be repeated to cover the entire texture.</p>
+<p>The gradient is sampled individually for each pixel so it does not necessarily represent an exact copy of the gradient (see <a class="reference internal" href="#class-gradienttexture2d-property-width"><span class="std std-ref">width</span></a> and <a class="reference internal" href="#class-gradienttexture2d-property-height"><span class="std std-ref">height</span></a>). See also <a class="reference internal" href="class_gradienttexture1d.html#class-gradienttexture1d"><span class="std std-ref">GradientTexture1D</span></a>, <a class="reference internal" href="class_curvetexture.html#class-curvetexture"><span class="std std-ref">CurveTexture</span></a> and <a class="reference internal" href="class_curvexyztexture.html#class-curvexyztexture"><span class="std std-ref">CurveXYZTexture</span></a>.</p>
+</section>
+<section class="classref-reftable-group" id="properties">
+<h2>Properties<a class="headerlink" href="#properties" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#enum-gradienttexture2d-fill"><span class="std std-ref">Fill</span></a></p></td>
+<td><p><a class="reference internal" href="#class-gradienttexture2d-property-fill"><span class="std std-ref">fill</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a></p></td>
+<td><p><a class="reference internal" href="#class-gradienttexture2d-property-fill-from"><span class="std std-ref">fill_from</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Vector2(0,</span> <span class="pre">0)</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a></p></td>
+<td><p><a class="reference internal" href="#class-gradienttexture2d-property-fill-to"><span class="std std-ref">fill_to</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Vector2(1,</span> <span class="pre">0)</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_gradient.html#class-gradient"><span class="std std-ref">Gradient</span></a></p></td>
+<td><p><a class="reference internal" href="#class-gradienttexture2d-property-gradient"><span class="std std-ref">gradient</span></a></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-gradienttexture2d-property-height"><span class="std std-ref">height</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">64</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#enum-gradienttexture2d-repeat"><span class="std std-ref">Repeat</span></a></p></td>
+<td><p><a class="reference internal" href="#class-gradienttexture2d-property-repeat"><span class="std std-ref">repeat</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p>resource_local_to_scene</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">false</span></code> (overrides <a class="reference internal" href="class_resource.html#class-resource-property-resource-local-to-scene"><span class="std std-ref">Resource</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-gradienttexture2d-property-use-hdr"><span class="std std-ref">use_hdr</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-gradienttexture2d-property-width"><span class="std std-ref">width</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">64</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="enumerations">
+<h2>Enumerations<a class="headerlink" href="#enumerations" title="Link to this heading"></a></h2>
+<p class="classref-enumeration" id="enum-gradienttexture2d-fill">enum <strong>Fill</strong>: <a class="reference internal" href="#enum-gradienttexture2d-fill"><span class="std std-ref">🔗</span></a></p>
+<p class="classref-enumeration-constant" id="class-gradienttexture2d-constant-fill-linear"><a class="reference internal" href="#enum-gradienttexture2d-fill"><span class="std std-ref">Fill</span></a> <strong>FILL_LINEAR</strong> = <code class="docutils literal notranslate"><span class="pre">0</span></code></p>
+<p>The colors are linearly interpolated in a straight line.</p>
+<p class="classref-enumeration-constant" id="class-gradienttexture2d-constant-fill-radial"><a class="reference internal" href="#enum-gradienttexture2d-fill"><span class="std std-ref">Fill</span></a> <strong>FILL_RADIAL</strong> = <code class="docutils literal notranslate"><span class="pre">1</span></code></p>
+<p>The colors are linearly interpolated in a circular pattern.</p>
+<p class="classref-enumeration-constant" id="class-gradienttexture2d-constant-fill-square"><a class="reference internal" href="#enum-gradienttexture2d-fill"><span class="std std-ref">Fill</span></a> <strong>FILL_SQUARE</strong> = <code class="docutils literal notranslate"><span class="pre">2</span></code></p>
+<p>The colors are linearly interpolated in a square pattern.</p>
+<p class="classref-enumeration-constant" id="class-gradienttexture2d-constant-fill-conic"><a class="reference internal" href="#enum-gradienttexture2d-fill"><span class="std std-ref">Fill</span></a> <strong>FILL_CONIC</strong> = <code class="docutils literal notranslate"><span class="pre">3</span></code></p>
+<p>The colors are linearly interpolated in a cone pattern.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-enumeration" id="enum-gradienttexture2d-repeat">enum <strong>Repeat</strong>: <a class="reference internal" href="#enum-gradienttexture2d-repeat"><span class="std std-ref">🔗</span></a></p>
+<p class="classref-enumeration-constant" id="class-gradienttexture2d-constant-repeat-none"><a class="reference internal" href="#enum-gradienttexture2d-repeat"><span class="std std-ref">Repeat</span></a> <strong>REPEAT_NONE</strong> = <code class="docutils literal notranslate"><span class="pre">0</span></code></p>
+<p>The gradient fill is restricted to the range defined by <a class="reference internal" href="#class-gradienttexture2d-property-fill-from"><span class="std std-ref">fill_from</span></a> to <a class="reference internal" href="#class-gradienttexture2d-property-fill-to"><span class="std std-ref">fill_to</span></a> offsets.</p>
+<p class="classref-enumeration-constant" id="class-gradienttexture2d-constant-repeat"><a class="reference internal" href="#enum-gradienttexture2d-repeat"><span class="std std-ref">Repeat</span></a> <strong>REPEAT</strong> = <code class="docutils literal notranslate"><span class="pre">1</span></code></p>
+<p>The texture is filled starting from <a class="reference internal" href="#class-gradienttexture2d-property-fill-from"><span class="std std-ref">fill_from</span></a> to <a class="reference internal" href="#class-gradienttexture2d-property-fill-to"><span class="std std-ref">fill_to</span></a> offsets, repeating the same pattern in both directions.</p>
+<p class="classref-enumeration-constant" id="class-gradienttexture2d-constant-repeat-mirror"><a class="reference internal" href="#enum-gradienttexture2d-repeat"><span class="std std-ref">Repeat</span></a> <strong>REPEAT_MIRROR</strong> = <code class="docutils literal notranslate"><span class="pre">2</span></code></p>
+<p>The texture is filled starting from <a class="reference internal" href="#class-gradienttexture2d-property-fill-from"><span class="std std-ref">fill_from</span></a> to <a class="reference internal" href="#class-gradienttexture2d-property-fill-to"><span class="std std-ref">fill_to</span></a> offsets, mirroring the pattern in both directions.</p>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="property-descriptions">
+<h2>Property Descriptions<a class="headerlink" href="#property-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-property" id="class-gradienttexture2d-property-fill"><a class="reference internal" href="#enum-gradienttexture2d-fill"><span class="std std-ref">Fill</span></a> <strong>fill</strong> = <code class="docutils literal notranslate"><span class="pre">0</span></code> <a class="reference internal" href="#class-gradienttexture2d-property-fill"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_fill</strong>(value: <a class="reference internal" href="#enum-gradienttexture2d-fill"><span class="std std-ref">Fill</span></a>)</p></li>
+<li><p><a class="reference internal" href="#enum-gradienttexture2d-fill"><span class="std std-ref">Fill</span></a> <strong>get_fill</strong>()</p></li>
+</ul>
+<p>The gradient’s fill type.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-gradienttexture2d-property-fill-from"><a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a> <strong>fill_from</strong> = <code class="docutils literal notranslate"><span class="pre">Vector2(0,</span> <span class="pre">0)</span></code> <a class="reference internal" href="#class-gradienttexture2d-property-fill-from"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_fill_from</strong>(value: <a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a> <strong>get_fill_from</strong>()</p></li>
+</ul>
+<p>The initial offset used to fill the texture specified in UV coordinates.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-gradienttexture2d-property-fill-to"><a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a> <strong>fill_to</strong> = <code class="docutils literal notranslate"><span class="pre">Vector2(1,</span> <span class="pre">0)</span></code> <a class="reference internal" href="#class-gradienttexture2d-property-fill-to"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_fill_to</strong>(value: <a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a> <strong>get_fill_to</strong>()</p></li>
+</ul>
+<p>The final offset used to fill the texture specified in UV coordinates.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-gradienttexture2d-property-gradient"><a class="reference internal" href="class_gradient.html#class-gradient"><span class="std std-ref">Gradient</span></a> <strong>gradient</strong> <a class="reference internal" href="#class-gradienttexture2d-property-gradient"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_gradient</strong>(value: <a class="reference internal" href="class_gradient.html#class-gradient"><span class="std std-ref">Gradient</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_gradient.html#class-gradient"><span class="std std-ref">Gradient</span></a> <strong>get_gradient</strong>()</p></li>
+</ul>
+<p>The <a class="reference internal" href="class_gradient.html#class-gradient"><span class="std std-ref">Gradient</span></a> used to fill the texture.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-gradienttexture2d-property-height"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>height</strong> = <code class="docutils literal notranslate"><span class="pre">64</span></code> <a class="reference internal" href="#class-gradienttexture2d-property-height"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_height</strong>(value: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>get_height</strong>()</p></li>
+</ul>
+<p>The number of vertical color samples that will be obtained from the <a class="reference internal" href="class_gradient.html#class-gradient"><span class="std std-ref">Gradient</span></a>, which also represents the texture’s height.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-gradienttexture2d-property-repeat"><a class="reference internal" href="#enum-gradienttexture2d-repeat"><span class="std std-ref">Repeat</span></a> <strong>repeat</strong> = <code class="docutils literal notranslate"><span class="pre">0</span></code> <a class="reference internal" href="#class-gradienttexture2d-property-repeat"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_repeat</strong>(value: <a class="reference internal" href="#enum-gradienttexture2d-repeat"><span class="std std-ref">Repeat</span></a>)</p></li>
+<li><p><a class="reference internal" href="#enum-gradienttexture2d-repeat"><span class="std std-ref">Repeat</span></a> <strong>get_repeat</strong>()</p></li>
+</ul>
+<p>The gradient’s repeat type.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-gradienttexture2d-property-use-hdr"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>use_hdr</strong> = <code class="docutils literal notranslate"><span class="pre">false</span></code> <a class="reference internal" href="#class-gradienttexture2d-property-use-hdr"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_use_hdr</strong>(value: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_using_hdr</strong>()</p></li>
+</ul>
+<p>If <code class="docutils literal notranslate"><span class="pre">true</span></code>, the generated texture will support high dynamic range (<a class="reference internal" href="class_image.html#class-image-constant-format-rgbaf"><span class="std std-ref">Image.FORMAT_RGBAF</span></a> format). This allows for glow effects to work if <a class="reference internal" href="class_environment.html#class-environment-property-glow-enabled"><span class="std std-ref">Environment.glow_enabled</span></a> is <code class="docutils literal notranslate"><span class="pre">true</span></code>. If <code class="docutils literal notranslate"><span class="pre">false</span></code>, the generated texture will use low dynamic range; overbright colors will be clamped (<a class="reference internal" href="class_image.html#class-image-constant-format-rgba8"><span class="std std-ref">Image.FORMAT_RGBA8</span></a> format).</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-gradienttexture2d-property-width"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>width</strong> = <code class="docutils literal notranslate"><span class="pre">64</span></code> <a class="reference internal" href="#class-gradienttexture2d-property-width"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_width</strong>(value: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>get_width</strong>()</p></li>
+</ul>
+<p>The number of horizontal color samples that will be obtained from the <a class="reference internal" href="class_gradient.html#class-gradient"><span class="std std-ref">Gradient</span></a>, which also represents the texture’s width.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, MUmarShahbaz.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

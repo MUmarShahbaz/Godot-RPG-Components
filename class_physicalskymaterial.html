@@ -1,0 +1,248 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PhysicalSkyMaterial &mdash; RPG Components 2D 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=d45e8c67"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            RPG Components 2D
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">PhysicalSkyMaterial</a><ul>
+<li><a class="reference internal" href="#description">Description</a></li>
+<li><a class="reference internal" href="#properties">Properties</a></li>
+<li><a class="reference internal" href="#property-descriptions">Property Descriptions</a></li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">RPG Components 2D</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">PhysicalSkyMaterial</li>
+      <li class="wy-breadcrumbs-aside">
+              <!-- User defined GitHub URL -->
+              <a href="hide" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="physicalskymaterial">
+<span id="class-physicalskymaterial"></span><h1>PhysicalSkyMaterial<a class="headerlink" href="#physicalskymaterial" title="Link to this heading"></a></h1>
+<p><strong>Inherits:</strong> <a class="reference internal" href="class_material.html#class-material"><span class="std std-ref">Material</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_resource.html#class-resource"><span class="std std-ref">Resource</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_refcounted.html#class-refcounted"><span class="std std-ref">RefCounted</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_object.html#class-object"><span class="std std-ref">Object</span></a></p>
+<p>A material that defines a sky for a <a class="reference internal" href="class_sky.html#class-sky"><span class="std std-ref">Sky</span></a> resource by a set of physical properties.</p>
+<section class="classref-introduction-group" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
+<p>The <strong>PhysicalSkyMaterial</strong> uses the Preetham analytic daylight model to draw a sky based on physical properties. This results in a substantially more realistic sky than the <a class="reference internal" href="class_proceduralskymaterial.html#class-proceduralskymaterial"><span class="std std-ref">ProceduralSkyMaterial</span></a>, but it is slightly slower and less flexible.</p>
+<p>The <strong>PhysicalSkyMaterial</strong> only supports one sun. The color, energy, and direction of the sun are taken from the first <a class="reference internal" href="class_directionallight3d.html#class-directionallight3d"><span class="std std-ref">DirectionalLight3D</span></a> in the scene tree.</p>
+</section>
+<section class="classref-reftable-group" id="properties">
+<h2>Properties<a class="headerlink" href="#properties" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-physicalskymaterial-property-energy-multiplier"><span class="std std-ref">energy_multiplier</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">1.0</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_color.html#class-color"><span class="std std-ref">Color</span></a></p></td>
+<td><p><a class="reference internal" href="#class-physicalskymaterial-property-ground-color"><span class="std std-ref">ground_color</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Color(0.1,</span> <span class="pre">0.07,</span> <span class="pre">0.034,</span> <span class="pre">1)</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-physicalskymaterial-property-mie-coefficient"><span class="std std-ref">mie_coefficient</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0.005</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_color.html#class-color"><span class="std std-ref">Color</span></a></p></td>
+<td><p><a class="reference internal" href="#class-physicalskymaterial-property-mie-color"><span class="std std-ref">mie_color</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Color(0.69,</span> <span class="pre">0.729,</span> <span class="pre">0.812,</span> <span class="pre">1)</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-physicalskymaterial-property-mie-eccentricity"><span class="std std-ref">mie_eccentricity</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0.8</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_texture2d.html#class-texture2d"><span class="std std-ref">Texture2D</span></a></p></td>
+<td><p><a class="reference internal" href="#class-physicalskymaterial-property-night-sky"><span class="std std-ref">night_sky</span></a></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-physicalskymaterial-property-rayleigh-coefficient"><span class="std std-ref">rayleigh_coefficient</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">2.0</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_color.html#class-color"><span class="std std-ref">Color</span></a></p></td>
+<td><p><a class="reference internal" href="#class-physicalskymaterial-property-rayleigh-color"><span class="std std-ref">rayleigh_color</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Color(0.3,</span> <span class="pre">0.405,</span> <span class="pre">0.6,</span> <span class="pre">1)</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-physicalskymaterial-property-sun-disk-scale"><span class="std std-ref">sun_disk_scale</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">1.0</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-physicalskymaterial-property-turbidity"><span class="std std-ref">turbidity</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">10.0</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-physicalskymaterial-property-use-debanding"><span class="std std-ref">use_debanding</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="property-descriptions">
+<h2>Property Descriptions<a class="headerlink" href="#property-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-property" id="class-physicalskymaterial-property-energy-multiplier"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>energy_multiplier</strong> = <code class="docutils literal notranslate"><span class="pre">1.0</span></code> <a class="reference internal" href="#class-physicalskymaterial-property-energy-multiplier"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_energy_multiplier</strong>(value: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>get_energy_multiplier</strong>()</p></li>
+</ul>
+<p>The sky’s overall brightness multiplier. Higher values result in a brighter sky.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-physicalskymaterial-property-ground-color"><a class="reference internal" href="class_color.html#class-color"><span class="std std-ref">Color</span></a> <strong>ground_color</strong> = <code class="docutils literal notranslate"><span class="pre">Color(0.1,</span> <span class="pre">0.07,</span> <span class="pre">0.034,</span> <span class="pre">1)</span></code> <a class="reference internal" href="#class-physicalskymaterial-property-ground-color"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_ground_color</strong>(value: <a class="reference internal" href="class_color.html#class-color"><span class="std std-ref">Color</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_color.html#class-color"><span class="std std-ref">Color</span></a> <strong>get_ground_color</strong>()</p></li>
+</ul>
+<p>Modulates the <a class="reference internal" href="class_color.html#class-color"><span class="std std-ref">Color</span></a> on the bottom half of the sky to represent the ground.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-physicalskymaterial-property-mie-coefficient"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>mie_coefficient</strong> = <code class="docutils literal notranslate"><span class="pre">0.005</span></code> <a class="reference internal" href="#class-physicalskymaterial-property-mie-coefficient"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_mie_coefficient</strong>(value: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>get_mie_coefficient</strong>()</p></li>
+</ul>
+<p>Controls the strength of <a class="reference external" href="https://en.wikipedia.org/wiki/Mie_scattering">Mie scattering</a> for the sky. Mie scattering results from light colliding with larger particles (like water). On earth, Mie scattering results in a whitish color around the sun and horizon.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-physicalskymaterial-property-mie-color"><a class="reference internal" href="class_color.html#class-color"><span class="std std-ref">Color</span></a> <strong>mie_color</strong> = <code class="docutils literal notranslate"><span class="pre">Color(0.69,</span> <span class="pre">0.729,</span> <span class="pre">0.812,</span> <span class="pre">1)</span></code> <a class="reference internal" href="#class-physicalskymaterial-property-mie-color"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_mie_color</strong>(value: <a class="reference internal" href="class_color.html#class-color"><span class="std std-ref">Color</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_color.html#class-color"><span class="std std-ref">Color</span></a> <strong>get_mie_color</strong>()</p></li>
+</ul>
+<p>Controls the <a class="reference internal" href="class_color.html#class-color"><span class="std std-ref">Color</span></a> of the <a class="reference external" href="https://en.wikipedia.org/wiki/Mie_scattering">Mie scattering</a> effect. While not physically accurate, this allows for the creation of alien-looking planets.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-physicalskymaterial-property-mie-eccentricity"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>mie_eccentricity</strong> = <code class="docutils literal notranslate"><span class="pre">0.8</span></code> <a class="reference internal" href="#class-physicalskymaterial-property-mie-eccentricity"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_mie_eccentricity</strong>(value: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>get_mie_eccentricity</strong>()</p></li>
+</ul>
+<p>Controls the direction of the <a class="reference external" href="https://en.wikipedia.org/wiki/Mie_scattering">Mie scattering</a>. A value of <code class="docutils literal notranslate"><span class="pre">1</span></code> means that when light hits a particle it’s passing through straight forward. A value of <code class="docutils literal notranslate"><span class="pre">-1</span></code> means that all light is scatter backwards.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-physicalskymaterial-property-night-sky"><a class="reference internal" href="class_texture2d.html#class-texture2d"><span class="std std-ref">Texture2D</span></a> <strong>night_sky</strong> <a class="reference internal" href="#class-physicalskymaterial-property-night-sky"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_night_sky</strong>(value: <a class="reference internal" href="class_texture2d.html#class-texture2d"><span class="std std-ref">Texture2D</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_texture2d.html#class-texture2d"><span class="std std-ref">Texture2D</span></a> <strong>get_night_sky</strong>()</p></li>
+</ul>
+<p><a class="reference internal" href="class_texture2d.html#class-texture2d"><span class="std std-ref">Texture2D</span></a> for the night sky. This is added to the sky, so if it is bright enough, it may be visible during the day.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-physicalskymaterial-property-rayleigh-coefficient"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>rayleigh_coefficient</strong> = <code class="docutils literal notranslate"><span class="pre">2.0</span></code> <a class="reference internal" href="#class-physicalskymaterial-property-rayleigh-coefficient"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_rayleigh_coefficient</strong>(value: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>get_rayleigh_coefficient</strong>()</p></li>
+</ul>
+<p>Controls the strength of the <a class="reference external" href="https://en.wikipedia.org/wiki/Rayleigh_scattering">Rayleigh scattering</a>. Rayleigh scattering results from light colliding with small particles. It is responsible for the blue color of the sky.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-physicalskymaterial-property-rayleigh-color"><a class="reference internal" href="class_color.html#class-color"><span class="std std-ref">Color</span></a> <strong>rayleigh_color</strong> = <code class="docutils literal notranslate"><span class="pre">Color(0.3,</span> <span class="pre">0.405,</span> <span class="pre">0.6,</span> <span class="pre">1)</span></code> <a class="reference internal" href="#class-physicalskymaterial-property-rayleigh-color"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_rayleigh_color</strong>(value: <a class="reference internal" href="class_color.html#class-color"><span class="std std-ref">Color</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_color.html#class-color"><span class="std std-ref">Color</span></a> <strong>get_rayleigh_color</strong>()</p></li>
+</ul>
+<p>Controls the <a class="reference internal" href="class_color.html#class-color"><span class="std std-ref">Color</span></a> of the <a class="reference external" href="https://en.wikipedia.org/wiki/Rayleigh_scattering">Rayleigh scattering</a>. While not physically accurate, this allows for the creation of alien-looking planets. For example, setting this to a red <a class="reference internal" href="class_color.html#class-color"><span class="std std-ref">Color</span></a> results in a Mars-looking atmosphere with a corresponding blue sunset.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-physicalskymaterial-property-sun-disk-scale"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>sun_disk_scale</strong> = <code class="docutils literal notranslate"><span class="pre">1.0</span></code> <a class="reference internal" href="#class-physicalskymaterial-property-sun-disk-scale"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_sun_disk_scale</strong>(value: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>get_sun_disk_scale</strong>()</p></li>
+</ul>
+<p>Sets the size of the sun disk. Default value is based on Sol’s perceived size from Earth.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-physicalskymaterial-property-turbidity"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>turbidity</strong> = <code class="docutils literal notranslate"><span class="pre">10.0</span></code> <a class="reference internal" href="#class-physicalskymaterial-property-turbidity"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_turbidity</strong>(value: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>get_turbidity</strong>()</p></li>
+</ul>
+<p>Sets the thickness of the atmosphere. High turbidity creates a foggy-looking atmosphere, while a low turbidity results in a clearer atmosphere.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-physicalskymaterial-property-use-debanding"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>use_debanding</strong> = <code class="docutils literal notranslate"><span class="pre">true</span></code> <a class="reference internal" href="#class-physicalskymaterial-property-use-debanding"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_use_debanding</strong>(value: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>get_use_debanding</strong>()</p></li>
+</ul>
+<p>If <code class="docutils literal notranslate"><span class="pre">true</span></code>, enables debanding. Debanding adds a small amount of noise which helps reduce banding that appears from the smooth changes in color in the sky.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, MUmarShahbaz.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,205 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MainLoop &mdash; RPG Components 2D 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=d45e8c67"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            RPG Components 2D
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">MainLoop</a><ul>
+<li><a class="reference internal" href="#description">Description</a></li>
+<li><a class="reference internal" href="#methods">Methods</a></li>
+<li><a class="reference internal" href="#signals">Signals</a></li>
+<li><a class="reference internal" href="#constants">Constants</a></li>
+<li><a class="reference internal" href="#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">RPG Components 2D</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">MainLoop</li>
+      <li class="wy-breadcrumbs-aside">
+              <!-- User defined GitHub URL -->
+              <a href="hide" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="mainloop">
+<span id="class-mainloop"></span><h1>MainLoop<a class="headerlink" href="#mainloop" title="Link to this heading"></a></h1>
+<p><strong>Inherits:</strong> <a class="reference internal" href="class_object.html#class-object"><span class="std std-ref">Object</span></a></p>
+<p><strong>Inherited By:</strong> <a class="reference internal" href="class_scenetree.html#class-scenetree"><span class="std std-ref">SceneTree</span></a></p>
+<p>Abstract base class for the game’s main loop.</p>
+<section class="classref-introduction-group" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
+<p><strong>MainLoop</strong> is the abstract base class for a Godot project’s game loop. It is inherited by <a class="reference internal" href="class_scenetree.html#class-scenetree"><span class="std std-ref">SceneTree</span></a>, which is the default game loop implementation used in Godot projects, though it is also possible to write and use one’s own <strong>MainLoop</strong> subclass instead of the scene tree.</p>
+<p>Upon the application start, a <strong>MainLoop</strong> implementation must be provided to the OS; otherwise, the application will exit. This happens automatically (and a <a class="reference internal" href="class_scenetree.html#class-scenetree"><span class="std std-ref">SceneTree</span></a> is created) unless a <strong>MainLoop</strong> <a class="reference internal" href="class_script.html#class-script"><span class="std std-ref">Script</span></a> is provided from the command line (with e.g. <code class="docutils literal notranslate"><span class="pre">godot</span> <span class="pre">-s</span> <span class="pre">my_loop.gd</span></code>) or the <a class="reference internal" href="class_projectsettings.html#class-projectsettings-property-application-run-main-loop-type"><span class="std std-ref">ProjectSettings.application/run/main_loop_type</span></a> project setting is overwritten.</p>
+<p>Here is an example script implementing a simple <strong>MainLoop</strong>:</p>
+</section>
+<section class="classref-reftable-group" id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-mainloop-private-method-finalize"><span class="std std-ref">_finalize</span></a>() <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-mainloop-private-method-initialize"><span class="std std-ref">_initialize</span></a>() <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-mainloop-private-method-physics-process"><span class="std std-ref">_physics_process</span></a>(delta: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-mainloop-private-method-process"><span class="std std-ref">_process</span></a>(delta: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="signals">
+<h2>Signals<a class="headerlink" href="#signals" title="Link to this heading"></a></h2>
+<p class="classref-signal" id="class-mainloop-signal-on-request-permissions-result"><strong>on_request_permissions_result</strong>(permission: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, granted: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>) <a class="reference internal" href="#class-mainloop-signal-on-request-permissions-result"><span class="std std-ref">🔗</span></a></p>
+<p>Emitted when a user responds to a permission request.</p>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="constants">
+<h2>Constants<a class="headerlink" href="#constants" title="Link to this heading"></a></h2>
+<p class="classref-constant" id="class-mainloop-constant-notification-os-memory-warning"><strong>NOTIFICATION_OS_MEMORY_WARNING</strong> = <code class="docutils literal notranslate"><span class="pre">2009</span></code> <a class="reference internal" href="#class-mainloop-constant-notification-os-memory-warning"><span class="std std-ref">🔗</span></a></p>
+<p>Notification received from the OS when the application is exceeding its allocated memory.</p>
+<p>Specific to the iOS platform.</p>
+<p class="classref-constant" id="class-mainloop-constant-notification-translation-changed"><strong>NOTIFICATION_TRANSLATION_CHANGED</strong> = <code class="docutils literal notranslate"><span class="pre">2010</span></code> <a class="reference internal" href="#class-mainloop-constant-notification-translation-changed"><span class="std std-ref">🔗</span></a></p>
+<p>Notification received when translations may have changed. Can be triggered by the user changing the locale. Can be used to respond to language changes, for example to change the UI strings on the fly. Useful when working with the built-in translation support, like <a class="reference internal" href="class_object.html#class-object-method-tr"><span class="std std-ref">Object.tr()</span></a>.</p>
+<p class="classref-constant" id="class-mainloop-constant-notification-wm-about"><strong>NOTIFICATION_WM_ABOUT</strong> = <code class="docutils literal notranslate"><span class="pre">2011</span></code> <a class="reference internal" href="#class-mainloop-constant-notification-wm-about"><span class="std std-ref">🔗</span></a></p>
+<p>Notification received from the OS when a request for “About” information is sent.</p>
+<p>Specific to the macOS platform.</p>
+<p class="classref-constant" id="class-mainloop-constant-notification-crash"><strong>NOTIFICATION_CRASH</strong> = <code class="docutils literal notranslate"><span class="pre">2012</span></code> <a class="reference internal" href="#class-mainloop-constant-notification-crash"><span class="std std-ref">🔗</span></a></p>
+<p>Notification received from Godot’s crash handler when the engine is about to crash.</p>
+<p>Implemented on desktop platforms if the crash handler is enabled.</p>
+<p class="classref-constant" id="class-mainloop-constant-notification-os-ime-update"><strong>NOTIFICATION_OS_IME_UPDATE</strong> = <code class="docutils literal notranslate"><span class="pre">2013</span></code> <a class="reference internal" href="#class-mainloop-constant-notification-os-ime-update"><span class="std std-ref">🔗</span></a></p>
+<p>Notification received from the OS when an update of the Input Method Engine occurs (e.g. change of IME cursor position or composition string).</p>
+<p>Implemented on desktop and web platforms.</p>
+<p class="classref-constant" id="class-mainloop-constant-notification-application-resumed"><strong>NOTIFICATION_APPLICATION_RESUMED</strong> = <code class="docutils literal notranslate"><span class="pre">2014</span></code> <a class="reference internal" href="#class-mainloop-constant-notification-application-resumed"><span class="std std-ref">🔗</span></a></p>
+<p>Notification received from the OS when the application is resumed.</p>
+<p>Specific to the Android and iOS platforms.</p>
+<p class="classref-constant" id="class-mainloop-constant-notification-application-paused"><strong>NOTIFICATION_APPLICATION_PAUSED</strong> = <code class="docutils literal notranslate"><span class="pre">2015</span></code> <a class="reference internal" href="#class-mainloop-constant-notification-application-paused"><span class="std std-ref">🔗</span></a></p>
+<p>Notification received from the OS when the application is paused.</p>
+<p>Specific to the Android and iOS platforms.</p>
+<p><strong>Note:</strong> On iOS, you only have approximately 5 seconds to finish a task started by this signal. If you go over this allotment, iOS will kill the app instead of pausing it.</p>
+<p class="classref-constant" id="class-mainloop-constant-notification-application-focus-in"><strong>NOTIFICATION_APPLICATION_FOCUS_IN</strong> = <code class="docutils literal notranslate"><span class="pre">2016</span></code> <a class="reference internal" href="#class-mainloop-constant-notification-application-focus-in"><span class="std std-ref">🔗</span></a></p>
+<p>Notification received from the OS when the application is focused, i.e. when changing the focus from the OS desktop or a thirdparty application to any open window of the Godot instance.</p>
+<p>Implemented on desktop and mobile platforms.</p>
+<p class="classref-constant" id="class-mainloop-constant-notification-application-focus-out"><strong>NOTIFICATION_APPLICATION_FOCUS_OUT</strong> = <code class="docutils literal notranslate"><span class="pre">2017</span></code> <a class="reference internal" href="#class-mainloop-constant-notification-application-focus-out"><span class="std std-ref">🔗</span></a></p>
+<p>Notification received from the OS when the application is defocused, i.e. when changing the focus from any open window of the Godot instance to the OS desktop or a thirdparty application.</p>
+<p>Implemented on desktop and mobile platforms.</p>
+<p class="classref-constant" id="class-mainloop-constant-notification-text-server-changed"><strong>NOTIFICATION_TEXT_SERVER_CHANGED</strong> = <code class="docutils literal notranslate"><span class="pre">2018</span></code> <a class="reference internal" href="#class-mainloop-constant-notification-text-server-changed"><span class="std std-ref">🔗</span></a></p>
+<p>Notification received when text server is changed.</p>
+<p class="classref-constant" id="class-mainloop-constant-notification-application-pip-mode-entered"><strong>NOTIFICATION_APPLICATION_PIP_MODE_ENTERED</strong> = <code class="docutils literal notranslate"><span class="pre">2019</span></code> <a class="reference internal" href="#class-mainloop-constant-notification-application-pip-mode-entered"><span class="std std-ref">🔗</span></a></p>
+<p>Notification received when the application enters picture-in-picture mode.</p>
+<p class="classref-constant" id="class-mainloop-constant-notification-application-pip-mode-exited"><strong>NOTIFICATION_APPLICATION_PIP_MODE_EXITED</strong> = <code class="docutils literal notranslate"><span class="pre">2020</span></code> <a class="reference internal" href="#class-mainloop-constant-notification-application-pip-mode-exited"><span class="std std-ref">🔗</span></a></p>
+<p>Notification received when the application exits picture-in-picture mode.</p>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="method-descriptions">
+<h2>Method Descriptions<a class="headerlink" href="#method-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-method" id="class-mainloop-private-method-finalize"><abbr title="No return value.">void</abbr> <strong>_finalize</strong>() <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <a class="reference internal" href="#class-mainloop-private-method-finalize"><span class="std std-ref">🔗</span></a></p>
+<p>Called before the program exits.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-mainloop-private-method-initialize"><abbr title="No return value.">void</abbr> <strong>_initialize</strong>() <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <a class="reference internal" href="#class-mainloop-private-method-initialize"><span class="std std-ref">🔗</span></a></p>
+<p>Called once during initialization.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-mainloop-private-method-physics-process"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>_physics_process</strong>(delta: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <a class="reference internal" href="#class-mainloop-private-method-physics-process"><span class="std std-ref">🔗</span></a></p>
+<p>Called each physics tick. <code class="docutils literal notranslate"><span class="pre">delta</span></code> is the logical time between physics ticks in seconds and is equal to <a class="reference internal" href="class_engine.html#class-engine-property-time-scale"><span class="std std-ref">Engine.time_scale</span></a> / <a class="reference internal" href="class_engine.html#class-engine-property-physics-ticks-per-second"><span class="std std-ref">Engine.physics_ticks_per_second</span></a>. Equivalent to <a class="reference internal" href="class_node.html#class-node-private-method-physics-process"><span class="std std-ref">Node._physics_process()</span></a>.</p>
+<p>If implemented, the method must return a boolean value. <code class="docutils literal notranslate"><span class="pre">true</span></code> ends the main loop, while <code class="docutils literal notranslate"><span class="pre">false</span></code> lets it proceed to the next step.</p>
+<p><strong>Note:</strong> <a class="reference internal" href="#class-mainloop-private-method-physics-process"><span class="std std-ref">_physics_process()</span></a> may be called up to <a class="reference internal" href="class_engine.html#class-engine-property-max-physics-steps-per-frame"><span class="std std-ref">Engine.max_physics_steps_per_frame</span></a> times per (idle) frame. This step limit may be reached when the engine is suffering performance issues.</p>
+<p><strong>Note:</strong> Accumulated <code class="docutils literal notranslate"><span class="pre">delta</span></code> may diverge from real world seconds.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-mainloop-private-method-process"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>_process</strong>(delta: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <a class="reference internal" href="#class-mainloop-private-method-process"><span class="std std-ref">🔗</span></a></p>
+<p>Called on each idle frame, prior to rendering, and after physics ticks have been processed. <code class="docutils literal notranslate"><span class="pre">delta</span></code> is the time between frames in seconds. Equivalent to <a class="reference internal" href="class_node.html#class-node-private-method-process"><span class="std std-ref">Node._process()</span></a>.</p>
+<p>If implemented, the method must return a boolean value. <code class="docutils literal notranslate"><span class="pre">true</span></code> ends the main loop, while <code class="docutils literal notranslate"><span class="pre">false</span></code> lets it proceed to the next frame.</p>
+<p><strong>Note:</strong> When the engine is struggling and the frame rate is lowered, <code class="docutils literal notranslate"><span class="pre">delta</span></code> will increase. When <code class="docutils literal notranslate"><span class="pre">delta</span></code> is increased, it’s capped at a maximum of <a class="reference internal" href="class_engine.html#class-engine-property-time-scale"><span class="std std-ref">Engine.time_scale</span></a> * <a class="reference internal" href="class_engine.html#class-engine-property-max-physics-steps-per-frame"><span class="std std-ref">Engine.max_physics_steps_per_frame</span></a> / <a class="reference internal" href="class_engine.html#class-engine-property-physics-ticks-per-second"><span class="std std-ref">Engine.physics_ticks_per_second</span></a>. As a result, accumulated <code class="docutils literal notranslate"><span class="pre">delta</span></code> may not represent real world time.</p>
+<p><strong>Note:</strong> When <code class="docutils literal notranslate"><span class="pre">--fixed-fps</span></code> is enabled or the engine is running in Movie Maker mode (see <a class="reference internal" href="class_moviewriter.html#class-moviewriter"><span class="std std-ref">MovieWriter</span></a>), process <code class="docutils literal notranslate"><span class="pre">delta</span></code> will always be the same for every frame, regardless of how much time the frame took to render.</p>
+<p><strong>Note:</strong> Frame delta may be post-processed by <a class="reference internal" href="class_os.html#class-os-property-delta-smoothing"><span class="std std-ref">OS.delta_smoothing</span></a> if this is enabled for the project.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, MUmarShahbaz.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

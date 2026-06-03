@@ -1,0 +1,417 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta content="expandable, collapsible, collapse, accordion, details" name="keywords" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FoldableContainer &mdash; RPG Components 2D 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=d45e8c67"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            RPG Components 2D
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">FoldableContainer</a><ul>
+<li><a class="reference internal" href="#description">Description</a></li>
+<li><a class="reference internal" href="#properties">Properties</a></li>
+<li><a class="reference internal" href="#methods">Methods</a></li>
+<li><a class="reference internal" href="#theme-properties">Theme Properties</a></li>
+<li><a class="reference internal" href="#signals">Signals</a></li>
+<li><a class="reference internal" href="#enumerations">Enumerations</a></li>
+<li><a class="reference internal" href="#property-descriptions">Property Descriptions</a></li>
+<li><a class="reference internal" href="#method-descriptions">Method Descriptions</a></li>
+<li><a class="reference internal" href="#theme-property-descriptions">Theme Property Descriptions</a></li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">RPG Components 2D</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">FoldableContainer</li>
+      <li class="wy-breadcrumbs-aside">
+              <!-- User defined GitHub URL -->
+              <a href="hide" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="foldablecontainer">
+<span id="class-foldablecontainer"></span><h1>FoldableContainer<a class="headerlink" href="#foldablecontainer" title="Link to this heading"></a></h1>
+<p><strong>Inherits:</strong> <a class="reference internal" href="class_container.html#class-container"><span class="std std-ref">Container</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_control.html#class-control"><span class="std std-ref">Control</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_canvasitem.html#class-canvasitem"><span class="std std-ref">CanvasItem</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_node.html#class-node"><span class="std std-ref">Node</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_object.html#class-object"><span class="std std-ref">Object</span></a></p>
+<p>A container that can be expanded/collapsed.</p>
+<section class="classref-introduction-group" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
+<p>A container that can be expanded/collapsed, with a title that can be filled with controls, such as buttons. This is also called an accordion.</p>
+<p>The title can be positioned at the top or bottom of the container. The container can be expanded or collapsed by clicking the title or by pressing <code class="docutils literal notranslate"><span class="pre">ui_accept</span></code> when focused. Child control nodes are hidden when the container is collapsed. Ignores non-control children.</p>
+<p>A FoldableContainer can be grouped with other FoldableContainers so that only one of them can be opened at a time; see <a class="reference internal" href="#class-foldablecontainer-property-foldable-group"><span class="std std-ref">foldable_group</span></a> and <a class="reference internal" href="class_foldablegroup.html#class-foldablegroup"><span class="std std-ref">FoldableGroup</span></a>.</p>
+</section>
+<section class="classref-reftable-group" id="properties">
+<h2>Properties<a class="headerlink" href="#properties" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_control.html#enum-control-focusmode"><span class="std std-ref">FocusMode</span></a></p></td>
+<td><p>focus_mode</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">2</span></code> (overrides <a class="reference internal" href="class_control.html#class-control-property-focus-mode"><span class="std std-ref">Control</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_foldablegroup.html#class-foldablegroup"><span class="std std-ref">FoldableGroup</span></a></p></td>
+<td><p><a class="reference internal" href="#class-foldablecontainer-property-foldable-group"><span class="std std-ref">foldable_group</span></a></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-foldablecontainer-property-folded"><span class="std std-ref">folded</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a></p></td>
+<td><p><a class="reference internal" href="#class-foldablecontainer-property-language"><span class="std std-ref">language</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&quot;&quot;</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_control.html#enum-control-mousefilter"><span class="std std-ref">MouseFilter</span></a></p></td>
+<td><p>mouse_filter</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code> (overrides <a class="reference internal" href="class_control.html#class-control-property-mouse-filter"><span class="std std-ref">Control</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a></p></td>
+<td><p><a class="reference internal" href="#class-foldablecontainer-property-title"><span class="std std-ref">title</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&quot;&quot;</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_%40globalscope.html#enum-globalscope-horizontalalignment"><span class="std std-ref">HorizontalAlignment</span></a></p></td>
+<td><p><a class="reference internal" href="#class-foldablecontainer-property-title-alignment"><span class="std std-ref">title_alignment</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#enum-foldablecontainer-titleposition"><span class="std std-ref">TitlePosition</span></a></p></td>
+<td><p><a class="reference internal" href="#class-foldablecontainer-property-title-position"><span class="std std-ref">title_position</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_control.html#enum-control-textdirection"><span class="std std-ref">TextDirection</span></a></p></td>
+<td><p><a class="reference internal" href="#class-foldablecontainer-property-title-text-direction"><span class="std std-ref">title_text_direction</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_textserver.html#enum-textserver-overrunbehavior"><span class="std std-ref">OverrunBehavior</span></a></p></td>
+<td><p><a class="reference internal" href="#class-foldablecontainer-property-title-text-overrun-behavior"><span class="std std-ref">title_text_overrun_behavior</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section class="classref-reftable-group" id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-foldablecontainer-method-add-title-bar-control"><span class="std std-ref">add_title_bar_control</span></a>(control: <a class="reference internal" href="class_control.html#class-control"><span class="std std-ref">Control</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-foldablecontainer-method-expand"><span class="std std-ref">expand</span></a>()</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-foldablecontainer-method-fold"><span class="std std-ref">fold</span></a>()</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-foldablecontainer-method-remove-title-bar-control"><span class="std std-ref">remove_title_bar_control</span></a>(control: <a class="reference internal" href="class_control.html#class-control"><span class="std std-ref">Control</span></a>)</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section class="classref-reftable-group" id="theme-properties">
+<h2>Theme Properties<a class="headerlink" href="#theme-properties" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_color.html#class-color"><span class="std std-ref">Color</span></a></p></td>
+<td><p><a class="reference internal" href="#class-foldablecontainer-theme-color-collapsed-font-color"><span class="std std-ref">collapsed_font_color</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Color(1,</span> <span class="pre">1,</span> <span class="pre">1,</span> <span class="pre">1)</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_color.html#class-color"><span class="std std-ref">Color</span></a></p></td>
+<td><p><a class="reference internal" href="#class-foldablecontainer-theme-color-font-color"><span class="std std-ref">font_color</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Color(0.875,</span> <span class="pre">0.875,</span> <span class="pre">0.875,</span> <span class="pre">1)</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_color.html#class-color"><span class="std std-ref">Color</span></a></p></td>
+<td><p><a class="reference internal" href="#class-foldablecontainer-theme-color-font-outline-color"><span class="std std-ref">font_outline_color</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Color(1,</span> <span class="pre">1,</span> <span class="pre">1,</span> <span class="pre">1)</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_color.html#class-color"><span class="std std-ref">Color</span></a></p></td>
+<td><p><a class="reference internal" href="#class-foldablecontainer-theme-color-hover-font-color"><span class="std std-ref">hover_font_color</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Color(0.95,</span> <span class="pre">0.95,</span> <span class="pre">0.95,</span> <span class="pre">1)</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-foldablecontainer-theme-constant-h-separation"><span class="std std-ref">h_separation</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">2</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-foldablecontainer-theme-constant-outline-size"><span class="std std-ref">outline_size</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_font.html#class-font"><span class="std std-ref">Font</span></a></p></td>
+<td><p><a class="reference internal" href="#class-foldablecontainer-theme-font-font"><span class="std std-ref">font</span></a></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-foldablecontainer-theme-font-size-font-size"><span class="std std-ref">font_size</span></a></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_texture2d.html#class-texture2d"><span class="std std-ref">Texture2D</span></a></p></td>
+<td><p><a class="reference internal" href="#class-foldablecontainer-theme-icon-expanded-arrow"><span class="std std-ref">expanded_arrow</span></a></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_texture2d.html#class-texture2d"><span class="std std-ref">Texture2D</span></a></p></td>
+<td><p><a class="reference internal" href="#class-foldablecontainer-theme-icon-expanded-arrow-mirrored"><span class="std std-ref">expanded_arrow_mirrored</span></a></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_texture2d.html#class-texture2d"><span class="std std-ref">Texture2D</span></a></p></td>
+<td><p><a class="reference internal" href="#class-foldablecontainer-theme-icon-folded-arrow"><span class="std std-ref">folded_arrow</span></a></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_texture2d.html#class-texture2d"><span class="std std-ref">Texture2D</span></a></p></td>
+<td><p><a class="reference internal" href="#class-foldablecontainer-theme-icon-folded-arrow-mirrored"><span class="std std-ref">folded_arrow_mirrored</span></a></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_stylebox.html#class-stylebox"><span class="std std-ref">StyleBox</span></a></p></td>
+<td><p><a class="reference internal" href="#class-foldablecontainer-theme-style-focus"><span class="std std-ref">focus</span></a></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_stylebox.html#class-stylebox"><span class="std std-ref">StyleBox</span></a></p></td>
+<td><p><a class="reference internal" href="#class-foldablecontainer-theme-style-panel"><span class="std std-ref">panel</span></a></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_stylebox.html#class-stylebox"><span class="std std-ref">StyleBox</span></a></p></td>
+<td><p><a class="reference internal" href="#class-foldablecontainer-theme-style-title-collapsed-hover-panel"><span class="std std-ref">title_collapsed_hover_panel</span></a></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_stylebox.html#class-stylebox"><span class="std std-ref">StyleBox</span></a></p></td>
+<td><p><a class="reference internal" href="#class-foldablecontainer-theme-style-title-collapsed-panel"><span class="std std-ref">title_collapsed_panel</span></a></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_stylebox.html#class-stylebox"><span class="std std-ref">StyleBox</span></a></p></td>
+<td><p><a class="reference internal" href="#class-foldablecontainer-theme-style-title-hover-panel"><span class="std std-ref">title_hover_panel</span></a></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_stylebox.html#class-stylebox"><span class="std std-ref">StyleBox</span></a></p></td>
+<td><p><a class="reference internal" href="#class-foldablecontainer-theme-style-title-panel"><span class="std std-ref">title_panel</span></a></p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="signals">
+<h2>Signals<a class="headerlink" href="#signals" title="Link to this heading"></a></h2>
+<p class="classref-signal" id="class-foldablecontainer-signal-folding-changed"><strong>folding_changed</strong>(is_folded: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>) <a class="reference internal" href="#class-foldablecontainer-signal-folding-changed"><span class="std std-ref">🔗</span></a></p>
+<p>Emitted when the container is folded/expanded.</p>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="enumerations">
+<h2>Enumerations<a class="headerlink" href="#enumerations" title="Link to this heading"></a></h2>
+<p class="classref-enumeration" id="enum-foldablecontainer-titleposition">enum <strong>TitlePosition</strong>: <a class="reference internal" href="#enum-foldablecontainer-titleposition"><span class="std std-ref">🔗</span></a></p>
+<p class="classref-enumeration-constant" id="class-foldablecontainer-constant-position-top"><a class="reference internal" href="#enum-foldablecontainer-titleposition"><span class="std std-ref">TitlePosition</span></a> <strong>POSITION_TOP</strong> = <code class="docutils literal notranslate"><span class="pre">0</span></code></p>
+<p>Makes the title appear at the top of the container.</p>
+<p class="classref-enumeration-constant" id="class-foldablecontainer-constant-position-bottom"><a class="reference internal" href="#enum-foldablecontainer-titleposition"><span class="std std-ref">TitlePosition</span></a> <strong>POSITION_BOTTOM</strong> = <code class="docutils literal notranslate"><span class="pre">1</span></code></p>
+<p>Makes the title appear at the bottom of the container. Also makes all StyleBoxes flipped vertically.</p>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="property-descriptions">
+<h2>Property Descriptions<a class="headerlink" href="#property-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-property" id="class-foldablecontainer-property-foldable-group"><a class="reference internal" href="class_foldablegroup.html#class-foldablegroup"><span class="std std-ref">FoldableGroup</span></a> <strong>foldable_group</strong> <a class="reference internal" href="#class-foldablecontainer-property-foldable-group"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_foldable_group</strong>(value: <a class="reference internal" href="class_foldablegroup.html#class-foldablegroup"><span class="std std-ref">FoldableGroup</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_foldablegroup.html#class-foldablegroup"><span class="std std-ref">FoldableGroup</span></a> <strong>get_foldable_group</strong>()</p></li>
+</ul>
+<p>The <a class="reference internal" href="class_foldablegroup.html#class-foldablegroup"><span class="std std-ref">FoldableGroup</span></a> associated with the container. When multiple <strong>FoldableContainer</strong> nodes share the same group, only one of them is allowed to be unfolded.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-foldablecontainer-property-folded"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>folded</strong> = <code class="docutils literal notranslate"><span class="pre">false</span></code> <a class="reference internal" href="#class-foldablecontainer-property-folded"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_folded</strong>(value: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_folded</strong>()</p></li>
+</ul>
+<p>If <code class="docutils literal notranslate"><span class="pre">true</span></code>, the container will become folded and will hide all its children.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-foldablecontainer-property-language"><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a> <strong>language</strong> = <code class="docutils literal notranslate"><span class="pre">&quot;&quot;</span></code> <a class="reference internal" href="#class-foldablecontainer-property-language"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_language</strong>(value: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a> <strong>get_language</strong>()</p></li>
+</ul>
+<p>Language code used for text shaping algorithms. If left empty, the current locale is used instead.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-foldablecontainer-property-title"><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a> <strong>title</strong> = <code class="docutils literal notranslate"><span class="pre">&quot;&quot;</span></code> <a class="reference internal" href="#class-foldablecontainer-property-title"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_title</strong>(value: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a> <strong>get_title</strong>()</p></li>
+</ul>
+<p>The container’s title text.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-foldablecontainer-property-title-alignment"><a class="reference internal" href="class_%40globalscope.html#enum-globalscope-horizontalalignment"><span class="std std-ref">HorizontalAlignment</span></a> <strong>title_alignment</strong> = <code class="docutils literal notranslate"><span class="pre">0</span></code> <a class="reference internal" href="#class-foldablecontainer-property-title-alignment"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_title_alignment</strong>(value: <a class="reference internal" href="class_%40globalscope.html#enum-globalscope-horizontalalignment"><span class="std std-ref">HorizontalAlignment</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_%40globalscope.html#enum-globalscope-horizontalalignment"><span class="std std-ref">HorizontalAlignment</span></a> <strong>get_title_alignment</strong>()</p></li>
+</ul>
+<p>Title’s horizontal text alignment.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-foldablecontainer-property-title-position"><a class="reference internal" href="#enum-foldablecontainer-titleposition"><span class="std std-ref">TitlePosition</span></a> <strong>title_position</strong> = <code class="docutils literal notranslate"><span class="pre">0</span></code> <a class="reference internal" href="#class-foldablecontainer-property-title-position"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_title_position</strong>(value: <a class="reference internal" href="#enum-foldablecontainer-titleposition"><span class="std std-ref">TitlePosition</span></a>)</p></li>
+<li><p><a class="reference internal" href="#enum-foldablecontainer-titleposition"><span class="std std-ref">TitlePosition</span></a> <strong>get_title_position</strong>()</p></li>
+</ul>
+<p>Title’s position.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-foldablecontainer-property-title-text-direction"><a class="reference internal" href="class_control.html#enum-control-textdirection"><span class="std std-ref">TextDirection</span></a> <strong>title_text_direction</strong> = <code class="docutils literal notranslate"><span class="pre">0</span></code> <a class="reference internal" href="#class-foldablecontainer-property-title-text-direction"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_title_text_direction</strong>(value: <a class="reference internal" href="class_control.html#enum-control-textdirection"><span class="std std-ref">TextDirection</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_control.html#enum-control-textdirection"><span class="std std-ref">TextDirection</span></a> <strong>get_title_text_direction</strong>()</p></li>
+</ul>
+<p>Title text writing direction.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-foldablecontainer-property-title-text-overrun-behavior"><a class="reference internal" href="class_textserver.html#enum-textserver-overrunbehavior"><span class="std std-ref">OverrunBehavior</span></a> <strong>title_text_overrun_behavior</strong> = <code class="docutils literal notranslate"><span class="pre">0</span></code> <a class="reference internal" href="#class-foldablecontainer-property-title-text-overrun-behavior"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_title_text_overrun_behavior</strong>(value: <a class="reference internal" href="class_textserver.html#enum-textserver-overrunbehavior"><span class="std std-ref">OverrunBehavior</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_textserver.html#enum-textserver-overrunbehavior"><span class="std std-ref">OverrunBehavior</span></a> <strong>get_title_text_overrun_behavior</strong>()</p></li>
+</ul>
+<p>Defines the behavior of the title when the text is longer than the available space.</p>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="method-descriptions">
+<h2>Method Descriptions<a class="headerlink" href="#method-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-method" id="class-foldablecontainer-method-add-title-bar-control"><abbr title="No return value.">void</abbr> <strong>add_title_bar_control</strong>(control: <a class="reference internal" href="class_control.html#class-control"><span class="std std-ref">Control</span></a>) <a class="reference internal" href="#class-foldablecontainer-method-add-title-bar-control"><span class="std std-ref">🔗</span></a></p>
+<p>Adds a <a class="reference internal" href="class_control.html#class-control"><span class="std std-ref">Control</span></a> that will be placed next to the container’s title, obscuring the clickable area. Prime usage is adding <a class="reference internal" href="class_button.html#class-button"><span class="std std-ref">Button</span></a> nodes, but it can be any <a class="reference internal" href="class_control.html#class-control"><span class="std std-ref">Control</span></a>.</p>
+<p>The control will be added as a child of this container and removed from previous parent if necessary. The controls will be placed aligned to the right, with the first added control being the leftmost one.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-foldablecontainer-method-expand"><abbr title="No return value.">void</abbr> <strong>expand</strong>() <a class="reference internal" href="#class-foldablecontainer-method-expand"><span class="std std-ref">🔗</span></a></p>
+<p>Expands the container and emits <a class="reference internal" href="#class-foldablecontainer-signal-folding-changed"><span class="std std-ref">folding_changed</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-foldablecontainer-method-fold"><abbr title="No return value.">void</abbr> <strong>fold</strong>() <a class="reference internal" href="#class-foldablecontainer-method-fold"><span class="std std-ref">🔗</span></a></p>
+<p>Folds the container and emits <a class="reference internal" href="#class-foldablecontainer-signal-folding-changed"><span class="std std-ref">folding_changed</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-foldablecontainer-method-remove-title-bar-control"><abbr title="No return value.">void</abbr> <strong>remove_title_bar_control</strong>(control: <a class="reference internal" href="class_control.html#class-control"><span class="std std-ref">Control</span></a>) <a class="reference internal" href="#class-foldablecontainer-method-remove-title-bar-control"><span class="std std-ref">🔗</span></a></p>
+<p>Removes a <a class="reference internal" href="class_control.html#class-control"><span class="std std-ref">Control</span></a> added with <a class="reference internal" href="#class-foldablecontainer-method-add-title-bar-control"><span class="std std-ref">add_title_bar_control()</span></a>. The node is not freed automatically, you need to use <a class="reference internal" href="class_node.html#class-node-method-queue-free"><span class="std std-ref">Node.queue_free()</span></a>.</p>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="theme-property-descriptions">
+<h2>Theme Property Descriptions<a class="headerlink" href="#theme-property-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-themeproperty" id="class-foldablecontainer-theme-color-collapsed-font-color"><a class="reference internal" href="class_color.html#class-color"><span class="std std-ref">Color</span></a> <strong>collapsed_font_color</strong> = <code class="docutils literal notranslate"><span class="pre">Color(1,</span> <span class="pre">1,</span> <span class="pre">1,</span> <span class="pre">1)</span></code> <a class="reference internal" href="#class-foldablecontainer-theme-color-collapsed-font-color"><span class="std std-ref">🔗</span></a></p>
+<p>The title’s font color when collapsed.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-themeproperty" id="class-foldablecontainer-theme-color-font-color"><a class="reference internal" href="class_color.html#class-color"><span class="std std-ref">Color</span></a> <strong>font_color</strong> = <code class="docutils literal notranslate"><span class="pre">Color(0.875,</span> <span class="pre">0.875,</span> <span class="pre">0.875,</span> <span class="pre">1)</span></code> <a class="reference internal" href="#class-foldablecontainer-theme-color-font-color"><span class="std std-ref">🔗</span></a></p>
+<p>The title’s font color when expanded.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-themeproperty" id="class-foldablecontainer-theme-color-font-outline-color"><a class="reference internal" href="class_color.html#class-color"><span class="std std-ref">Color</span></a> <strong>font_outline_color</strong> = <code class="docutils literal notranslate"><span class="pre">Color(1,</span> <span class="pre">1,</span> <span class="pre">1,</span> <span class="pre">1)</span></code> <a class="reference internal" href="#class-foldablecontainer-theme-color-font-outline-color"><span class="std std-ref">🔗</span></a></p>
+<p>The title’s font outline color.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-themeproperty" id="class-foldablecontainer-theme-color-hover-font-color"><a class="reference internal" href="class_color.html#class-color"><span class="std std-ref">Color</span></a> <strong>hover_font_color</strong> = <code class="docutils literal notranslate"><span class="pre">Color(0.95,</span> <span class="pre">0.95,</span> <span class="pre">0.95,</span> <span class="pre">1)</span></code> <a class="reference internal" href="#class-foldablecontainer-theme-color-hover-font-color"><span class="std std-ref">🔗</span></a></p>
+<p>The title’s font hover color.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-themeproperty" id="class-foldablecontainer-theme-constant-h-separation"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>h_separation</strong> = <code class="docutils literal notranslate"><span class="pre">2</span></code> <a class="reference internal" href="#class-foldablecontainer-theme-constant-h-separation"><span class="std std-ref">🔗</span></a></p>
+<p>The horizontal separation between the title’s icon and text, and between title bar controls.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-themeproperty" id="class-foldablecontainer-theme-constant-outline-size"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>outline_size</strong> = <code class="docutils literal notranslate"><span class="pre">0</span></code> <a class="reference internal" href="#class-foldablecontainer-theme-constant-outline-size"><span class="std std-ref">🔗</span></a></p>
+<p>The title’s font outline size.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-themeproperty" id="class-foldablecontainer-theme-font-font"><a class="reference internal" href="class_font.html#class-font"><span class="std std-ref">Font</span></a> <strong>font</strong> <a class="reference internal" href="#class-foldablecontainer-theme-font-font"><span class="std std-ref">🔗</span></a></p>
+<p>The title’s font.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-themeproperty" id="class-foldablecontainer-theme-font-size-font-size"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>font_size</strong> <a class="reference internal" href="#class-foldablecontainer-theme-font-size-font-size"><span class="std std-ref">🔗</span></a></p>
+<p>The title’s font size.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-themeproperty" id="class-foldablecontainer-theme-icon-expanded-arrow"><a class="reference internal" href="class_texture2d.html#class-texture2d"><span class="std std-ref">Texture2D</span></a> <strong>expanded_arrow</strong> <a class="reference internal" href="#class-foldablecontainer-theme-icon-expanded-arrow"><span class="std std-ref">🔗</span></a></p>
+<p>The title’s icon used when expanded.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-themeproperty" id="class-foldablecontainer-theme-icon-expanded-arrow-mirrored"><a class="reference internal" href="class_texture2d.html#class-texture2d"><span class="std std-ref">Texture2D</span></a> <strong>expanded_arrow_mirrored</strong> <a class="reference internal" href="#class-foldablecontainer-theme-icon-expanded-arrow-mirrored"><span class="std std-ref">🔗</span></a></p>
+<p>The title’s icon used when expanded (for bottom title).</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-themeproperty" id="class-foldablecontainer-theme-icon-folded-arrow"><a class="reference internal" href="class_texture2d.html#class-texture2d"><span class="std std-ref">Texture2D</span></a> <strong>folded_arrow</strong> <a class="reference internal" href="#class-foldablecontainer-theme-icon-folded-arrow"><span class="std std-ref">🔗</span></a></p>
+<p>The title’s icon used when folded (for left-to-right layouts).</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-themeproperty" id="class-foldablecontainer-theme-icon-folded-arrow-mirrored"><a class="reference internal" href="class_texture2d.html#class-texture2d"><span class="std std-ref">Texture2D</span></a> <strong>folded_arrow_mirrored</strong> <a class="reference internal" href="#class-foldablecontainer-theme-icon-folded-arrow-mirrored"><span class="std std-ref">🔗</span></a></p>
+<p>The title’s icon used when collapsed (for right-to-left layouts).</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-themeproperty" id="class-foldablecontainer-theme-style-focus"><a class="reference internal" href="class_stylebox.html#class-stylebox"><span class="std std-ref">StyleBox</span></a> <strong>focus</strong> <a class="reference internal" href="#class-foldablecontainer-theme-style-focus"><span class="std std-ref">🔗</span></a></p>
+<p>Background used when <strong>FoldableContainer</strong> has GUI focus. The <a class="reference internal" href="#class-foldablecontainer-theme-style-focus"><span class="std std-ref">focus</span></a> <a class="reference internal" href="class_stylebox.html#class-stylebox"><span class="std std-ref">StyleBox</span></a> is displayed <em>over</em> the base <a class="reference internal" href="class_stylebox.html#class-stylebox"><span class="std std-ref">StyleBox</span></a>, so a partially transparent <a class="reference internal" href="class_stylebox.html#class-stylebox"><span class="std std-ref">StyleBox</span></a> should be used to ensure the base <a class="reference internal" href="class_stylebox.html#class-stylebox"><span class="std std-ref">StyleBox</span></a> remains visible. A <a class="reference internal" href="class_stylebox.html#class-stylebox"><span class="std std-ref">StyleBox</span></a> that represents an outline or an underline works well for this purpose. To disable the focus visual effect, assign a <a class="reference internal" href="class_styleboxempty.html#class-styleboxempty"><span class="std std-ref">StyleBoxEmpty</span></a> resource. Note that disabling the focus visual effect will harm keyboard/controller navigation usability, so this is not recommended for accessibility reasons.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-themeproperty" id="class-foldablecontainer-theme-style-panel"><a class="reference internal" href="class_stylebox.html#class-stylebox"><span class="std std-ref">StyleBox</span></a> <strong>panel</strong> <a class="reference internal" href="#class-foldablecontainer-theme-style-panel"><span class="std std-ref">🔗</span></a></p>
+<p>Default background for the <strong>FoldableContainer</strong>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-themeproperty" id="class-foldablecontainer-theme-style-title-collapsed-hover-panel"><a class="reference internal" href="class_stylebox.html#class-stylebox"><span class="std std-ref">StyleBox</span></a> <strong>title_collapsed_hover_panel</strong> <a class="reference internal" href="#class-foldablecontainer-theme-style-title-collapsed-hover-panel"><span class="std std-ref">🔗</span></a></p>
+<p>Background used when the mouse cursor enters the title’s area when collapsed.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-themeproperty" id="class-foldablecontainer-theme-style-title-collapsed-panel"><a class="reference internal" href="class_stylebox.html#class-stylebox"><span class="std std-ref">StyleBox</span></a> <strong>title_collapsed_panel</strong> <a class="reference internal" href="#class-foldablecontainer-theme-style-title-collapsed-panel"><span class="std std-ref">🔗</span></a></p>
+<p>Default background for the <strong>FoldableContainer</strong>’s title when collapsed.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-themeproperty" id="class-foldablecontainer-theme-style-title-hover-panel"><a class="reference internal" href="class_stylebox.html#class-stylebox"><span class="std std-ref">StyleBox</span></a> <strong>title_hover_panel</strong> <a class="reference internal" href="#class-foldablecontainer-theme-style-title-hover-panel"><span class="std std-ref">🔗</span></a></p>
+<p>Background used when the mouse cursor enters the title’s area when expanded.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-themeproperty" id="class-foldablecontainer-theme-style-title-panel"><a class="reference internal" href="class_stylebox.html#class-stylebox"><span class="std std-ref">StyleBox</span></a> <strong>title_panel</strong> <a class="reference internal" href="#class-foldablecontainer-theme-style-title-panel"><span class="std std-ref">🔗</span></a></p>
+<p>Default background for the <strong>FoldableContainer</strong>’s title when expanded.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, MUmarShahbaz.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,354 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ShapeCast2D &mdash; RPG Components 2D 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=d45e8c67"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            RPG Components 2D
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">ShapeCast2D</a><ul>
+<li><a class="reference internal" href="#description">Description</a></li>
+<li><a class="reference internal" href="#properties">Properties</a></li>
+<li><a class="reference internal" href="#methods">Methods</a></li>
+<li><a class="reference internal" href="#property-descriptions">Property Descriptions</a></li>
+<li><a class="reference internal" href="#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">RPG Components 2D</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">ShapeCast2D</li>
+      <li class="wy-breadcrumbs-aside">
+              <!-- User defined GitHub URL -->
+              <a href="hide" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="shapecast2d">
+<span id="class-shapecast2d"></span><h1>ShapeCast2D<a class="headerlink" href="#shapecast2d" title="Link to this heading"></a></h1>
+<p><strong>Inherits:</strong> <a class="reference internal" href="class_node2d.html#class-node2d"><span class="std std-ref">Node2D</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_canvasitem.html#class-canvasitem"><span class="std std-ref">CanvasItem</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_node.html#class-node"><span class="std std-ref">Node</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_object.html#class-object"><span class="std std-ref">Object</span></a></p>
+<p>A 2D shape that sweeps a region of space to detect <a class="reference internal" href="class_collisionobject2d.html#class-collisionobject2d"><span class="std std-ref">CollisionObject2D</span></a>s.</p>
+<section class="classref-introduction-group" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
+<p>Shape casting allows to detect collision objects by sweeping its <a class="reference internal" href="#class-shapecast2d-property-shape"><span class="std std-ref">shape</span></a> along the cast direction determined by <a class="reference internal" href="#class-shapecast2d-property-target-position"><span class="std std-ref">target_position</span></a>. This is similar to <a class="reference internal" href="class_raycast2d.html#class-raycast2d"><span class="std std-ref">RayCast2D</span></a>, but it allows for sweeping a region of space, rather than just a straight line. <strong>ShapeCast2D</strong> can detect multiple collision objects. It is useful for things like wide laser beams or snapping a simple shape to a floor.</p>
+<p>Immediate collision overlaps can be done with the <a class="reference internal" href="#class-shapecast2d-property-target-position"><span class="std std-ref">target_position</span></a> set to <code class="docutils literal notranslate"><span class="pre">Vector2(0,</span> <span class="pre">0)</span></code> and by calling <a class="reference internal" href="#class-shapecast2d-method-force-shapecast-update"><span class="std std-ref">force_shapecast_update()</span></a> within the same physics frame. This helps to overcome some limitations of <a class="reference internal" href="class_area2d.html#class-area2d"><span class="std std-ref">Area2D</span></a> when used as an instantaneous detection area, as collision information isn’t immediately available to it.</p>
+<p><strong>Note:</strong> Shape casting is more computationally expensive than ray casting.</p>
+</section>
+<section class="classref-reftable-group" id="properties">
+<h2>Properties<a class="headerlink" href="#properties" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-shapecast2d-property-collide-with-areas"><span class="std std-ref">collide_with_areas</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-shapecast2d-property-collide-with-bodies"><span class="std std-ref">collide_with_bodies</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-shapecast2d-property-collision-mask"><span class="std std-ref">collision_mask</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">1</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_array.html#class-array"><span class="std std-ref">Array</span></a></p></td>
+<td><p><a class="reference internal" href="#class-shapecast2d-property-collision-result"><span class="std std-ref">collision_result</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">[]</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-shapecast2d-property-enabled"><span class="std std-ref">enabled</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-shapecast2d-property-exclude-parent"><span class="std std-ref">exclude_parent</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-shapecast2d-property-margin"><span class="std std-ref">margin</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0.0</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-shapecast2d-property-max-results"><span class="std std-ref">max_results</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">32</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_shape2d.html#class-shape2d"><span class="std std-ref">Shape2D</span></a></p></td>
+<td><p><a class="reference internal" href="#class-shapecast2d-property-shape"><span class="std std-ref">shape</span></a></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a></p></td>
+<td><p><a class="reference internal" href="#class-shapecast2d-property-target-position"><span class="std std-ref">target_position</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Vector2(0,</span> <span class="pre">50)</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section class="classref-reftable-group" id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-shapecast2d-method-add-exception"><span class="std std-ref">add_exception</span></a>(node: <a class="reference internal" href="class_collisionobject2d.html#class-collisionobject2d"><span class="std std-ref">CollisionObject2D</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-shapecast2d-method-add-exception-rid"><span class="std std-ref">add_exception_rid</span></a>(rid: <a class="reference internal" href="class_rid.html#class-rid"><span class="std std-ref">RID</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-shapecast2d-method-clear-exceptions"><span class="std std-ref">clear_exceptions</span></a>()</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-shapecast2d-method-force-shapecast-update"><span class="std std-ref">force_shapecast_update</span></a>()</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-shapecast2d-method-get-closest-collision-safe-fraction"><span class="std std-ref">get_closest_collision_safe_fraction</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-shapecast2d-method-get-closest-collision-unsafe-fraction"><span class="std std-ref">get_closest_collision_unsafe_fraction</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_object.html#class-object"><span class="std std-ref">Object</span></a></p></td>
+<td><p><a class="reference internal" href="#class-shapecast2d-method-get-collider"><span class="std std-ref">get_collider</span></a>(index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_rid.html#class-rid"><span class="std std-ref">RID</span></a></p></td>
+<td><p><a class="reference internal" href="#class-shapecast2d-method-get-collider-rid"><span class="std std-ref">get_collider_rid</span></a>(index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-shapecast2d-method-get-collider-shape"><span class="std std-ref">get_collider_shape</span></a>(index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-shapecast2d-method-get-collision-count"><span class="std std-ref">get_collision_count</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-shapecast2d-method-get-collision-mask-value"><span class="std std-ref">get_collision_mask_value</span></a>(layer_number: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a></p></td>
+<td><p><a class="reference internal" href="#class-shapecast2d-method-get-collision-normal"><span class="std std-ref">get_collision_normal</span></a>(index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a></p></td>
+<td><p><a class="reference internal" href="#class-shapecast2d-method-get-collision-point"><span class="std std-ref">get_collision_point</span></a>(index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-shapecast2d-method-is-colliding"><span class="std std-ref">is_colliding</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-shapecast2d-method-remove-exception"><span class="std std-ref">remove_exception</span></a>(node: <a class="reference internal" href="class_collisionobject2d.html#class-collisionobject2d"><span class="std std-ref">CollisionObject2D</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-shapecast2d-method-remove-exception-rid"><span class="std std-ref">remove_exception_rid</span></a>(rid: <a class="reference internal" href="class_rid.html#class-rid"><span class="std std-ref">RID</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-shapecast2d-method-set-collision-mask-value"><span class="std std-ref">set_collision_mask_value</span></a>(layer_number: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, value: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>)</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="property-descriptions">
+<h2>Property Descriptions<a class="headerlink" href="#property-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-property" id="class-shapecast2d-property-collide-with-areas"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>collide_with_areas</strong> = <code class="docutils literal notranslate"><span class="pre">false</span></code> <a class="reference internal" href="#class-shapecast2d-property-collide-with-areas"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_collide_with_areas</strong>(value: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_collide_with_areas_enabled</strong>()</p></li>
+</ul>
+<p>If <code class="docutils literal notranslate"><span class="pre">true</span></code>, collisions with <a class="reference internal" href="class_area2d.html#class-area2d"><span class="std std-ref">Area2D</span></a>s will be reported.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-shapecast2d-property-collide-with-bodies"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>collide_with_bodies</strong> = <code class="docutils literal notranslate"><span class="pre">true</span></code> <a class="reference internal" href="#class-shapecast2d-property-collide-with-bodies"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_collide_with_bodies</strong>(value: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_collide_with_bodies_enabled</strong>()</p></li>
+</ul>
+<p>If <code class="docutils literal notranslate"><span class="pre">true</span></code>, collisions with <a class="reference internal" href="class_physicsbody2d.html#class-physicsbody2d"><span class="std std-ref">PhysicsBody2D</span></a>s will be reported.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-shapecast2d-property-collision-mask"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>collision_mask</strong> = <code class="docutils literal notranslate"><span class="pre">1</span></code> <a class="reference internal" href="#class-shapecast2d-property-collision-mask"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_collision_mask</strong>(value: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>get_collision_mask</strong>()</p></li>
+</ul>
+<p>The shape’s collision mask. Only objects in at least one collision layer enabled in the mask will be detected. See <a class="reference external" href="../tutorials/physics/physics_introduction.html#collision-layers-and-masks">Collision layers and masks</a> in the documentation for more information.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-shapecast2d-property-collision-result"><a class="reference internal" href="class_array.html#class-array"><span class="std std-ref">Array</span></a> <strong>collision_result</strong> = <code class="docutils literal notranslate"><span class="pre">[]</span></code> <a class="reference internal" href="#class-shapecast2d-property-collision-result"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><a class="reference internal" href="class_array.html#class-array"><span class="std std-ref">Array</span></a> <strong>get_collision_result</strong>()</p></li>
+</ul>
+<p>Returns the complete collision information from the collision sweep. The data returned is the same as in the <a class="reference internal" href="class_physicsdirectspacestate2d.html#class-physicsdirectspacestate2d-method-get-rest-info"><span class="std std-ref">PhysicsDirectSpaceState2D.get_rest_info()</span></a> method.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-shapecast2d-property-enabled"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>enabled</strong> = <code class="docutils literal notranslate"><span class="pre">true</span></code> <a class="reference internal" href="#class-shapecast2d-property-enabled"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_enabled</strong>(value: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_enabled</strong>()</p></li>
+</ul>
+<p>If <code class="docutils literal notranslate"><span class="pre">true</span></code>, collisions will be reported.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-shapecast2d-property-exclude-parent"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>exclude_parent</strong> = <code class="docutils literal notranslate"><span class="pre">true</span></code> <a class="reference internal" href="#class-shapecast2d-property-exclude-parent"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_exclude_parent_body</strong>(value: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>get_exclude_parent_body</strong>()</p></li>
+</ul>
+<p>If <code class="docutils literal notranslate"><span class="pre">true</span></code>, the parent node will be excluded from collision detection.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-shapecast2d-property-margin"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>margin</strong> = <code class="docutils literal notranslate"><span class="pre">0.0</span></code> <a class="reference internal" href="#class-shapecast2d-property-margin"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_margin</strong>(value: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>get_margin</strong>()</p></li>
+</ul>
+<p>The collision margin for the shape. A larger margin helps detecting collisions more consistently, at the cost of precision.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-shapecast2d-property-max-results"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>max_results</strong> = <code class="docutils literal notranslate"><span class="pre">32</span></code> <a class="reference internal" href="#class-shapecast2d-property-max-results"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_max_results</strong>(value: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>get_max_results</strong>()</p></li>
+</ul>
+<p>The number of intersections can be limited with this parameter, to reduce the processing time.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-shapecast2d-property-shape"><a class="reference internal" href="class_shape2d.html#class-shape2d"><span class="std std-ref">Shape2D</span></a> <strong>shape</strong> <a class="reference internal" href="#class-shapecast2d-property-shape"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_shape</strong>(value: <a class="reference internal" href="class_shape2d.html#class-shape2d"><span class="std std-ref">Shape2D</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_shape2d.html#class-shape2d"><span class="std std-ref">Shape2D</span></a> <strong>get_shape</strong>()</p></li>
+</ul>
+<p>The shape to be used for collision queries.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-shapecast2d-property-target-position"><a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a> <strong>target_position</strong> = <code class="docutils literal notranslate"><span class="pre">Vector2(0,</span> <span class="pre">50)</span></code> <a class="reference internal" href="#class-shapecast2d-property-target-position"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_target_position</strong>(value: <a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a> <strong>get_target_position</strong>()</p></li>
+</ul>
+<p>The shape’s destination point, relative to this node’s <a class="reference internal" href="class_node2d.html#class-node2d-property-position"><span class="std std-ref">Node2D.position</span></a>.</p>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="method-descriptions">
+<h2>Method Descriptions<a class="headerlink" href="#method-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-method" id="class-shapecast2d-method-add-exception"><abbr title="No return value.">void</abbr> <strong>add_exception</strong>(node: <a class="reference internal" href="class_collisionobject2d.html#class-collisionobject2d"><span class="std std-ref">CollisionObject2D</span></a>) <a class="reference internal" href="#class-shapecast2d-method-add-exception"><span class="std std-ref">🔗</span></a></p>
+<p>Adds a collision exception so the shape does not report collisions with the specified node.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-shapecast2d-method-add-exception-rid"><abbr title="No return value.">void</abbr> <strong>add_exception_rid</strong>(rid: <a class="reference internal" href="class_rid.html#class-rid"><span class="std std-ref">RID</span></a>) <a class="reference internal" href="#class-shapecast2d-method-add-exception-rid"><span class="std std-ref">🔗</span></a></p>
+<p>Adds a collision exception so the shape does not report collisions with the specified <a class="reference internal" href="class_rid.html#class-rid"><span class="std std-ref">RID</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-shapecast2d-method-clear-exceptions"><abbr title="No return value.">void</abbr> <strong>clear_exceptions</strong>() <a class="reference internal" href="#class-shapecast2d-method-clear-exceptions"><span class="std std-ref">🔗</span></a></p>
+<p>Removes all collision exceptions for this shape.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-shapecast2d-method-force-shapecast-update"><abbr title="No return value.">void</abbr> <strong>force_shapecast_update</strong>() <a class="reference internal" href="#class-shapecast2d-method-force-shapecast-update"><span class="std std-ref">🔗</span></a></p>
+<p>Updates the collision information for the shape immediately, without waiting for the next <code class="docutils literal notranslate"><span class="pre">_physics_process</span></code> call. Use this method, for example, when the shape or its parent has changed state.</p>
+<p><strong>Note:</strong> Setting <a class="reference internal" href="#class-shapecast2d-property-enabled"><span class="std std-ref">enabled</span></a> to <code class="docutils literal notranslate"><span class="pre">true</span></code> is not required for this to work.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-shapecast2d-method-get-closest-collision-safe-fraction"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>get_closest_collision_safe_fraction</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-shapecast2d-method-get-closest-collision-safe-fraction"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the fraction from this cast’s origin to its <a class="reference internal" href="#class-shapecast2d-property-target-position"><span class="std std-ref">target_position</span></a> of how far the shape can move without triggering a collision, as a value between <code class="docutils literal notranslate"><span class="pre">0.0</span></code> and <code class="docutils literal notranslate"><span class="pre">1.0</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-shapecast2d-method-get-closest-collision-unsafe-fraction"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>get_closest_collision_unsafe_fraction</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-shapecast2d-method-get-closest-collision-unsafe-fraction"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the fraction from this cast’s origin to its <a class="reference internal" href="#class-shapecast2d-property-target-position"><span class="std std-ref">target_position</span></a> of how far the shape must move to trigger a collision, as a value between <code class="docutils literal notranslate"><span class="pre">0.0</span></code> and <code class="docutils literal notranslate"><span class="pre">1.0</span></code>.</p>
+<p>In ideal conditions this would be the same as <a class="reference internal" href="#class-shapecast2d-method-get-closest-collision-safe-fraction"><span class="std std-ref">get_closest_collision_safe_fraction()</span></a>, however shape casting is calculated in discrete steps, so the precise point of collision can occur between two calculated positions.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-shapecast2d-method-get-collider"><a class="reference internal" href="class_object.html#class-object"><span class="std std-ref">Object</span></a> <strong>get_collider</strong>(index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-shapecast2d-method-get-collider"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the collided <a class="reference internal" href="class_object.html#class-object"><span class="std std-ref">Object</span></a> of one of the multiple collisions at <code class="docutils literal notranslate"><span class="pre">index</span></code>, or <code class="docutils literal notranslate"><span class="pre">null</span></code> if no object is intersecting the shape (i.e. <a class="reference internal" href="#class-shapecast2d-method-is-colliding"><span class="std std-ref">is_colliding()</span></a> returns <code class="docutils literal notranslate"><span class="pre">false</span></code>).</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-shapecast2d-method-get-collider-rid"><a class="reference internal" href="class_rid.html#class-rid"><span class="std std-ref">RID</span></a> <strong>get_collider_rid</strong>(index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-shapecast2d-method-get-collider-rid"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the <a class="reference internal" href="class_rid.html#class-rid"><span class="std std-ref">RID</span></a> of the collided object of one of the multiple collisions at <code class="docutils literal notranslate"><span class="pre">index</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-shapecast2d-method-get-collider-shape"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>get_collider_shape</strong>(index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-shapecast2d-method-get-collider-shape"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the shape ID of the colliding shape of one of the multiple collisions at <code class="docutils literal notranslate"><span class="pre">index</span></code>, or <code class="docutils literal notranslate"><span class="pre">0</span></code> if no object is intersecting the shape (i.e. <a class="reference internal" href="#class-shapecast2d-method-is-colliding"><span class="std std-ref">is_colliding()</span></a> returns <code class="docutils literal notranslate"><span class="pre">false</span></code>).</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-shapecast2d-method-get-collision-count"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>get_collision_count</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-shapecast2d-method-get-collision-count"><span class="std std-ref">🔗</span></a></p>
+<p>The number of collisions detected at the point of impact. Use this to iterate over multiple collisions as provided by <a class="reference internal" href="#class-shapecast2d-method-get-collider"><span class="std std-ref">get_collider()</span></a>, <a class="reference internal" href="#class-shapecast2d-method-get-collider-shape"><span class="std std-ref">get_collider_shape()</span></a>, <a class="reference internal" href="#class-shapecast2d-method-get-collision-point"><span class="std std-ref">get_collision_point()</span></a>, and <a class="reference internal" href="#class-shapecast2d-method-get-collision-normal"><span class="std std-ref">get_collision_normal()</span></a> methods.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-shapecast2d-method-get-collision-mask-value"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>get_collision_mask_value</strong>(layer_number: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-shapecast2d-method-get-collision-mask-value"><span class="std std-ref">🔗</span></a></p>
+<p>Returns whether or not the specified layer of the <a class="reference internal" href="#class-shapecast2d-property-collision-mask"><span class="std std-ref">collision_mask</span></a> is enabled, given a <code class="docutils literal notranslate"><span class="pre">layer_number</span></code> between 1 and 32.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-shapecast2d-method-get-collision-normal"><a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a> <strong>get_collision_normal</strong>(index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-shapecast2d-method-get-collision-normal"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the normal of one of the multiple collisions at <code class="docutils literal notranslate"><span class="pre">index</span></code> of the intersecting object.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-shapecast2d-method-get-collision-point"><a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a> <strong>get_collision_point</strong>(index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-shapecast2d-method-get-collision-point"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the collision point of one of the multiple collisions at <code class="docutils literal notranslate"><span class="pre">index</span></code> where the shape intersects the colliding object.</p>
+<p><strong>Note:</strong> This point is in the <strong>global</strong> coordinate system.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-shapecast2d-method-is-colliding"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_colliding</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-shapecast2d-method-is-colliding"><span class="std std-ref">🔗</span></a></p>
+<p>Returns whether any object is intersecting with the shape’s vector (considering the vector length).</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-shapecast2d-method-remove-exception"><abbr title="No return value.">void</abbr> <strong>remove_exception</strong>(node: <a class="reference internal" href="class_collisionobject2d.html#class-collisionobject2d"><span class="std std-ref">CollisionObject2D</span></a>) <a class="reference internal" href="#class-shapecast2d-method-remove-exception"><span class="std std-ref">🔗</span></a></p>
+<p>Removes a collision exception so the shape does report collisions with the specified node.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-shapecast2d-method-remove-exception-rid"><abbr title="No return value.">void</abbr> <strong>remove_exception_rid</strong>(rid: <a class="reference internal" href="class_rid.html#class-rid"><span class="std std-ref">RID</span></a>) <a class="reference internal" href="#class-shapecast2d-method-remove-exception-rid"><span class="std std-ref">🔗</span></a></p>
+<p>Removes a collision exception so the shape does report collisions with the specified <a class="reference internal" href="class_rid.html#class-rid"><span class="std std-ref">RID</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-shapecast2d-method-set-collision-mask-value"><abbr title="No return value.">void</abbr> <strong>set_collision_mask_value</strong>(layer_number: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, value: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>) <a class="reference internal" href="#class-shapecast2d-method-set-collision-mask-value"><span class="std std-ref">🔗</span></a></p>
+<p>Based on <code class="docutils literal notranslate"><span class="pre">value</span></code>, enables or disables the specified layer in the <a class="reference internal" href="#class-shapecast2d-property-collision-mask"><span class="std std-ref">collision_mask</span></a>, given a <code class="docutils literal notranslate"><span class="pre">layer_number</span></code> between 1 and 32.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, MUmarShahbaz.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,328 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Time &mdash; RPG Components 2D 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=d45e8c67"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            RPG Components 2D
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">Time</a><ul>
+<li><a class="reference internal" href="#description">Description</a></li>
+<li><a class="reference internal" href="#methods">Methods</a></li>
+<li><a class="reference internal" href="#enumerations">Enumerations</a></li>
+<li><a class="reference internal" href="#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">RPG Components 2D</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Time</li>
+      <li class="wy-breadcrumbs-aside">
+              <!-- User defined GitHub URL -->
+              <a href="hide" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="time">
+<span id="class-time"></span><h1>Time<a class="headerlink" href="#time" title="Link to this heading"></a></h1>
+<p><strong>Inherits:</strong> <a class="reference internal" href="class_object.html#class-object"><span class="std std-ref">Object</span></a></p>
+<p>A singleton for working with time data.</p>
+<section class="classref-introduction-group" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
+<p>The Time singleton allows converting time between various formats and also getting time information from the system.</p>
+<p>This class conforms with as many of the ISO 8601 standards as possible. All dates follow the Proleptic Gregorian calendar. As such, the day before <code class="docutils literal notranslate"><span class="pre">1582-10-15</span></code> is <code class="docutils literal notranslate"><span class="pre">1582-10-14</span></code>, not <code class="docutils literal notranslate"><span class="pre">1582-10-04</span></code>. The year before 1 AD (aka 1 BC) is number <code class="docutils literal notranslate"><span class="pre">0</span></code>, with the year before that (2 BC) being <code class="docutils literal notranslate"><span class="pre">-1</span></code>, etc.</p>
+<p>Conversion methods assume “the same timezone”, and do not handle timezone conversions or DST automatically. Leap seconds are also not handled, they must be done manually if desired. Suffixes such as “Z” are not handled, you need to strip them away manually.</p>
+<p>When getting time information from the system, the time can either be in the local timezone or UTC depending on the <code class="docutils literal notranslate"><span class="pre">utc</span></code> parameter. However, the <a class="reference internal" href="#class-time-method-get-unix-time-from-system"><span class="std std-ref">get_unix_time_from_system()</span></a> method always uses UTC as it returns the seconds passed since the <a class="reference external" href="https://en.wikipedia.org/wiki/Unix_time">Unix epoch</a>.</p>
+<p><strong>Important:</strong> The <code class="docutils literal notranslate"><span class="pre">_from_system</span></code> methods use the system clock that the user can manually set. <strong>Never use</strong> this method for precise time calculation since its results are subject to automatic adjustments by the user or the operating system. <strong>Always use</strong> <a class="reference internal" href="#class-time-method-get-ticks-usec"><span class="std std-ref">get_ticks_usec()</span></a> or <a class="reference internal" href="#class-time-method-get-ticks-msec"><span class="std std-ref">get_ticks_msec()</span></a> for precise time calculation instead, since they are guaranteed to be monotonic (i.e. never decrease).</p>
+</section>
+<section class="classref-reftable-group" id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_dictionary.html#class-dictionary"><span class="std std-ref">Dictionary</span></a></p></td>
+<td><p><a class="reference internal" href="#class-time-method-get-date-dict-from-system"><span class="std std-ref">get_date_dict_from_system</span></a>(utc: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = false) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_dictionary.html#class-dictionary"><span class="std std-ref">Dictionary</span></a></p></td>
+<td><p><a class="reference internal" href="#class-time-method-get-date-dict-from-unix-time"><span class="std std-ref">get_date_dict_from_unix_time</span></a>(unix_time_val: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a></p></td>
+<td><p><a class="reference internal" href="#class-time-method-get-date-string-from-system"><span class="std std-ref">get_date_string_from_system</span></a>(utc: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = false) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a></p></td>
+<td><p><a class="reference internal" href="#class-time-method-get-date-string-from-unix-time"><span class="std std-ref">get_date_string_from_unix_time</span></a>(unix_time_val: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_dictionary.html#class-dictionary"><span class="std std-ref">Dictionary</span></a></p></td>
+<td><p><a class="reference internal" href="#class-time-method-get-datetime-dict-from-datetime-string"><span class="std std-ref">get_datetime_dict_from_datetime_string</span></a>(datetime: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, weekday: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_dictionary.html#class-dictionary"><span class="std std-ref">Dictionary</span></a></p></td>
+<td><p><a class="reference internal" href="#class-time-method-get-datetime-dict-from-system"><span class="std std-ref">get_datetime_dict_from_system</span></a>(utc: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = false) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_dictionary.html#class-dictionary"><span class="std std-ref">Dictionary</span></a></p></td>
+<td><p><a class="reference internal" href="#class-time-method-get-datetime-dict-from-unix-time"><span class="std std-ref">get_datetime_dict_from_unix_time</span></a>(unix_time_val: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a></p></td>
+<td><p><a class="reference internal" href="#class-time-method-get-datetime-string-from-datetime-dict"><span class="std std-ref">get_datetime_string_from_datetime_dict</span></a>(datetime: <a class="reference internal" href="class_dictionary.html#class-dictionary"><span class="std std-ref">Dictionary</span></a>, use_space: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a></p></td>
+<td><p><a class="reference internal" href="#class-time-method-get-datetime-string-from-system"><span class="std std-ref">get_datetime_string_from_system</span></a>(utc: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = false, use_space: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = false) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a></p></td>
+<td><p><a class="reference internal" href="#class-time-method-get-datetime-string-from-unix-time"><span class="std std-ref">get_datetime_string_from_unix_time</span></a>(unix_time_val: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, use_space: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = false) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a></p></td>
+<td><p><a class="reference internal" href="#class-time-method-get-offset-string-from-offset-minutes"><span class="std std-ref">get_offset_string_from_offset_minutes</span></a>(offset_minutes: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-time-method-get-ticks-msec"><span class="std std-ref">get_ticks_msec</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-time-method-get-ticks-usec"><span class="std std-ref">get_ticks_usec</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_dictionary.html#class-dictionary"><span class="std std-ref">Dictionary</span></a></p></td>
+<td><p><a class="reference internal" href="#class-time-method-get-time-dict-from-system"><span class="std std-ref">get_time_dict_from_system</span></a>(utc: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = false) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_dictionary.html#class-dictionary"><span class="std std-ref">Dictionary</span></a></p></td>
+<td><p><a class="reference internal" href="#class-time-method-get-time-dict-from-unix-time"><span class="std std-ref">get_time_dict_from_unix_time</span></a>(unix_time_val: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a></p></td>
+<td><p><a class="reference internal" href="#class-time-method-get-time-string-from-system"><span class="std std-ref">get_time_string_from_system</span></a>(utc: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = false) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a></p></td>
+<td><p><a class="reference internal" href="#class-time-method-get-time-string-from-unix-time"><span class="std std-ref">get_time_string_from_unix_time</span></a>(unix_time_val: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_dictionary.html#class-dictionary"><span class="std std-ref">Dictionary</span></a></p></td>
+<td><p><a class="reference internal" href="#class-time-method-get-time-zone-from-system"><span class="std std-ref">get_time_zone_from_system</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-time-method-get-unix-time-from-datetime-dict"><span class="std std-ref">get_unix_time_from_datetime_dict</span></a>(datetime: <a class="reference internal" href="class_dictionary.html#class-dictionary"><span class="std std-ref">Dictionary</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-time-method-get-unix-time-from-datetime-string"><span class="std std-ref">get_unix_time_from_datetime_string</span></a>(datetime: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-time-method-get-unix-time-from-system"><span class="std std-ref">get_unix_time_from_system</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="enumerations">
+<h2>Enumerations<a class="headerlink" href="#enumerations" title="Link to this heading"></a></h2>
+<p class="classref-enumeration" id="enum-time-month">enum <strong>Month</strong>: <a class="reference internal" href="#enum-time-month"><span class="std std-ref">🔗</span></a></p>
+<p class="classref-enumeration-constant" id="class-time-constant-month-january"><a class="reference internal" href="#enum-time-month"><span class="std std-ref">Month</span></a> <strong>MONTH_JANUARY</strong> = <code class="docutils literal notranslate"><span class="pre">1</span></code></p>
+<p>The month of January, represented numerically as <code class="docutils literal notranslate"><span class="pre">01</span></code>.</p>
+<p class="classref-enumeration-constant" id="class-time-constant-month-february"><a class="reference internal" href="#enum-time-month"><span class="std std-ref">Month</span></a> <strong>MONTH_FEBRUARY</strong> = <code class="docutils literal notranslate"><span class="pre">2</span></code></p>
+<p>The month of February, represented numerically as <code class="docutils literal notranslate"><span class="pre">02</span></code>.</p>
+<p class="classref-enumeration-constant" id="class-time-constant-month-march"><a class="reference internal" href="#enum-time-month"><span class="std std-ref">Month</span></a> <strong>MONTH_MARCH</strong> = <code class="docutils literal notranslate"><span class="pre">3</span></code></p>
+<p>The month of March, represented numerically as <code class="docutils literal notranslate"><span class="pre">03</span></code>.</p>
+<p class="classref-enumeration-constant" id="class-time-constant-month-april"><a class="reference internal" href="#enum-time-month"><span class="std std-ref">Month</span></a> <strong>MONTH_APRIL</strong> = <code class="docutils literal notranslate"><span class="pre">4</span></code></p>
+<p>The month of April, represented numerically as <code class="docutils literal notranslate"><span class="pre">04</span></code>.</p>
+<p class="classref-enumeration-constant" id="class-time-constant-month-may"><a class="reference internal" href="#enum-time-month"><span class="std std-ref">Month</span></a> <strong>MONTH_MAY</strong> = <code class="docutils literal notranslate"><span class="pre">5</span></code></p>
+<p>The month of May, represented numerically as <code class="docutils literal notranslate"><span class="pre">05</span></code>.</p>
+<p class="classref-enumeration-constant" id="class-time-constant-month-june"><a class="reference internal" href="#enum-time-month"><span class="std std-ref">Month</span></a> <strong>MONTH_JUNE</strong> = <code class="docutils literal notranslate"><span class="pre">6</span></code></p>
+<p>The month of June, represented numerically as <code class="docutils literal notranslate"><span class="pre">06</span></code>.</p>
+<p class="classref-enumeration-constant" id="class-time-constant-month-july"><a class="reference internal" href="#enum-time-month"><span class="std std-ref">Month</span></a> <strong>MONTH_JULY</strong> = <code class="docutils literal notranslate"><span class="pre">7</span></code></p>
+<p>The month of July, represented numerically as <code class="docutils literal notranslate"><span class="pre">07</span></code>.</p>
+<p class="classref-enumeration-constant" id="class-time-constant-month-august"><a class="reference internal" href="#enum-time-month"><span class="std std-ref">Month</span></a> <strong>MONTH_AUGUST</strong> = <code class="docutils literal notranslate"><span class="pre">8</span></code></p>
+<p>The month of August, represented numerically as <code class="docutils literal notranslate"><span class="pre">08</span></code>.</p>
+<p class="classref-enumeration-constant" id="class-time-constant-month-september"><a class="reference internal" href="#enum-time-month"><span class="std std-ref">Month</span></a> <strong>MONTH_SEPTEMBER</strong> = <code class="docutils literal notranslate"><span class="pre">9</span></code></p>
+<p>The month of September, represented numerically as <code class="docutils literal notranslate"><span class="pre">09</span></code>.</p>
+<p class="classref-enumeration-constant" id="class-time-constant-month-october"><a class="reference internal" href="#enum-time-month"><span class="std std-ref">Month</span></a> <strong>MONTH_OCTOBER</strong> = <code class="docutils literal notranslate"><span class="pre">10</span></code></p>
+<p>The month of October, represented numerically as <code class="docutils literal notranslate"><span class="pre">10</span></code>.</p>
+<p class="classref-enumeration-constant" id="class-time-constant-month-november"><a class="reference internal" href="#enum-time-month"><span class="std std-ref">Month</span></a> <strong>MONTH_NOVEMBER</strong> = <code class="docutils literal notranslate"><span class="pre">11</span></code></p>
+<p>The month of November, represented numerically as <code class="docutils literal notranslate"><span class="pre">11</span></code>.</p>
+<p class="classref-enumeration-constant" id="class-time-constant-month-december"><a class="reference internal" href="#enum-time-month"><span class="std std-ref">Month</span></a> <strong>MONTH_DECEMBER</strong> = <code class="docutils literal notranslate"><span class="pre">12</span></code></p>
+<p>The month of December, represented numerically as <code class="docutils literal notranslate"><span class="pre">12</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-enumeration" id="enum-time-weekday">enum <strong>Weekday</strong>: <a class="reference internal" href="#enum-time-weekday"><span class="std std-ref">🔗</span></a></p>
+<p class="classref-enumeration-constant" id="class-time-constant-weekday-sunday"><a class="reference internal" href="#enum-time-weekday"><span class="std std-ref">Weekday</span></a> <strong>WEEKDAY_SUNDAY</strong> = <code class="docutils literal notranslate"><span class="pre">0</span></code></p>
+<p>The day of the week Sunday, represented numerically as <code class="docutils literal notranslate"><span class="pre">0</span></code>.</p>
+<p class="classref-enumeration-constant" id="class-time-constant-weekday-monday"><a class="reference internal" href="#enum-time-weekday"><span class="std std-ref">Weekday</span></a> <strong>WEEKDAY_MONDAY</strong> = <code class="docutils literal notranslate"><span class="pre">1</span></code></p>
+<p>The day of the week Monday, represented numerically as <code class="docutils literal notranslate"><span class="pre">1</span></code>.</p>
+<p class="classref-enumeration-constant" id="class-time-constant-weekday-tuesday"><a class="reference internal" href="#enum-time-weekday"><span class="std std-ref">Weekday</span></a> <strong>WEEKDAY_TUESDAY</strong> = <code class="docutils literal notranslate"><span class="pre">2</span></code></p>
+<p>The day of the week Tuesday, represented numerically as <code class="docutils literal notranslate"><span class="pre">2</span></code>.</p>
+<p class="classref-enumeration-constant" id="class-time-constant-weekday-wednesday"><a class="reference internal" href="#enum-time-weekday"><span class="std std-ref">Weekday</span></a> <strong>WEEKDAY_WEDNESDAY</strong> = <code class="docutils literal notranslate"><span class="pre">3</span></code></p>
+<p>The day of the week Wednesday, represented numerically as <code class="docutils literal notranslate"><span class="pre">3</span></code>.</p>
+<p class="classref-enumeration-constant" id="class-time-constant-weekday-thursday"><a class="reference internal" href="#enum-time-weekday"><span class="std std-ref">Weekday</span></a> <strong>WEEKDAY_THURSDAY</strong> = <code class="docutils literal notranslate"><span class="pre">4</span></code></p>
+<p>The day of the week Thursday, represented numerically as <code class="docutils literal notranslate"><span class="pre">4</span></code>.</p>
+<p class="classref-enumeration-constant" id="class-time-constant-weekday-friday"><a class="reference internal" href="#enum-time-weekday"><span class="std std-ref">Weekday</span></a> <strong>WEEKDAY_FRIDAY</strong> = <code class="docutils literal notranslate"><span class="pre">5</span></code></p>
+<p>The day of the week Friday, represented numerically as <code class="docutils literal notranslate"><span class="pre">5</span></code>.</p>
+<p class="classref-enumeration-constant" id="class-time-constant-weekday-saturday"><a class="reference internal" href="#enum-time-weekday"><span class="std std-ref">Weekday</span></a> <strong>WEEKDAY_SATURDAY</strong> = <code class="docutils literal notranslate"><span class="pre">6</span></code></p>
+<p>The day of the week Saturday, represented numerically as <code class="docutils literal notranslate"><span class="pre">6</span></code>.</p>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="method-descriptions">
+<h2>Method Descriptions<a class="headerlink" href="#method-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-method" id="class-time-method-get-date-dict-from-system"><a class="reference internal" href="class_dictionary.html#class-dictionary"><span class="std std-ref">Dictionary</span></a> <strong>get_date_dict_from_system</strong>(utc: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = false) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-time-method-get-date-dict-from-system"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the current date as a dictionary of keys: <code class="docutils literal notranslate"><span class="pre">year</span></code>, <code class="docutils literal notranslate"><span class="pre">month</span></code>, <code class="docutils literal notranslate"><span class="pre">day</span></code>, and <code class="docutils literal notranslate"><span class="pre">weekday</span></code>.</p>
+<p>The returned values are in the system’s local time when <code class="docutils literal notranslate"><span class="pre">utc</span></code> is <code class="docutils literal notranslate"><span class="pre">false</span></code>, otherwise they are in UTC.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-time-method-get-date-dict-from-unix-time"><a class="reference internal" href="class_dictionary.html#class-dictionary"><span class="std std-ref">Dictionary</span></a> <strong>get_date_dict_from_unix_time</strong>(unix_time_val: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-time-method-get-date-dict-from-unix-time"><span class="std std-ref">🔗</span></a></p>
+<p>Converts the given Unix timestamp to a dictionary of keys: <code class="docutils literal notranslate"><span class="pre">year</span></code>, <code class="docutils literal notranslate"><span class="pre">month</span></code>, <code class="docutils literal notranslate"><span class="pre">day</span></code>, and <code class="docutils literal notranslate"><span class="pre">weekday</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-time-method-get-date-string-from-system"><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a> <strong>get_date_string_from_system</strong>(utc: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = false) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-time-method-get-date-string-from-system"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the current date as an ISO 8601 date string (YYYY-MM-DD).</p>
+<p>The returned values are in the system’s local time when <code class="docutils literal notranslate"><span class="pre">utc</span></code> is <code class="docutils literal notranslate"><span class="pre">false</span></code>, otherwise they are in UTC.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-time-method-get-date-string-from-unix-time"><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a> <strong>get_date_string_from_unix_time</strong>(unix_time_val: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-time-method-get-date-string-from-unix-time"><span class="std std-ref">🔗</span></a></p>
+<p>Converts the given Unix timestamp to an ISO 8601 date string (YYYY-MM-DD).</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-time-method-get-datetime-dict-from-datetime-string"><a class="reference internal" href="class_dictionary.html#class-dictionary"><span class="std std-ref">Dictionary</span></a> <strong>get_datetime_dict_from_datetime_string</strong>(datetime: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, weekday: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-time-method-get-datetime-dict-from-datetime-string"><span class="std std-ref">🔗</span></a></p>
+<p>Converts the given ISO 8601 date and time string (YYYY-MM-DDTHH:MM:SS) to a dictionary of keys: <code class="docutils literal notranslate"><span class="pre">year</span></code>, <code class="docutils literal notranslate"><span class="pre">month</span></code>, <code class="docutils literal notranslate"><span class="pre">day</span></code>, <code class="docutils literal notranslate"><span class="pre">weekday</span></code>, <code class="docutils literal notranslate"><span class="pre">hour</span></code>, <code class="docutils literal notranslate"><span class="pre">minute</span></code>, and <code class="docutils literal notranslate"><span class="pre">second</span></code>.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">weekday</span></code> is <code class="docutils literal notranslate"><span class="pre">false</span></code>, then the <code class="docutils literal notranslate"><span class="pre">weekday</span></code> entry is excluded (the calculation is relatively expensive).</p>
+<p><strong>Note:</strong> Any decimal fraction in the time string will be ignored silently.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-time-method-get-datetime-dict-from-system"><a class="reference internal" href="class_dictionary.html#class-dictionary"><span class="std std-ref">Dictionary</span></a> <strong>get_datetime_dict_from_system</strong>(utc: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = false) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-time-method-get-datetime-dict-from-system"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the current date as a dictionary of keys: <code class="docutils literal notranslate"><span class="pre">year</span></code>, <code class="docutils literal notranslate"><span class="pre">month</span></code>, <code class="docutils literal notranslate"><span class="pre">day</span></code>, <code class="docutils literal notranslate"><span class="pre">weekday</span></code>, <code class="docutils literal notranslate"><span class="pre">hour</span></code>, <code class="docutils literal notranslate"><span class="pre">minute</span></code>, <code class="docutils literal notranslate"><span class="pre">second</span></code>, and <code class="docutils literal notranslate"><span class="pre">dst</span></code> (Daylight Savings Time).</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-time-method-get-datetime-dict-from-unix-time"><a class="reference internal" href="class_dictionary.html#class-dictionary"><span class="std std-ref">Dictionary</span></a> <strong>get_datetime_dict_from_unix_time</strong>(unix_time_val: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-time-method-get-datetime-dict-from-unix-time"><span class="std std-ref">🔗</span></a></p>
+<p>Converts the given Unix timestamp to a dictionary of keys: <code class="docutils literal notranslate"><span class="pre">year</span></code>, <code class="docutils literal notranslate"><span class="pre">month</span></code>, <code class="docutils literal notranslate"><span class="pre">day</span></code>, <code class="docutils literal notranslate"><span class="pre">weekday</span></code>, <code class="docutils literal notranslate"><span class="pre">hour</span></code>, <code class="docutils literal notranslate"><span class="pre">minute</span></code>, and <code class="docutils literal notranslate"><span class="pre">second</span></code>.</p>
+<p>The returned Dictionary’s values will be the same as the <a class="reference internal" href="#class-time-method-get-datetime-dict-from-system"><span class="std std-ref">get_datetime_dict_from_system()</span></a> if the Unix timestamp is the current time, with the exception of Daylight Savings Time as it cannot be determined from the epoch.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-time-method-get-datetime-string-from-datetime-dict"><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a> <strong>get_datetime_string_from_datetime_dict</strong>(datetime: <a class="reference internal" href="class_dictionary.html#class-dictionary"><span class="std std-ref">Dictionary</span></a>, use_space: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-time-method-get-datetime-string-from-datetime-dict"><span class="std std-ref">🔗</span></a></p>
+<p>Converts the given dictionary of keys to an ISO 8601 date and time string (YYYY-MM-DDTHH:MM:SS).</p>
+<p>The given dictionary can be populated with the following keys: <code class="docutils literal notranslate"><span class="pre">year</span></code>, <code class="docutils literal notranslate"><span class="pre">month</span></code>, <code class="docutils literal notranslate"><span class="pre">day</span></code>, <code class="docutils literal notranslate"><span class="pre">hour</span></code>, <code class="docutils literal notranslate"><span class="pre">minute</span></code>, and <code class="docutils literal notranslate"><span class="pre">second</span></code>. Any other entries (including <code class="docutils literal notranslate"><span class="pre">dst</span></code>) are ignored.</p>
+<p>If the dictionary is empty, <code class="docutils literal notranslate"><span class="pre">0</span></code> is returned. If some keys are omitted, they default to the equivalent values for the Unix epoch timestamp 0 (1970-01-01 at 00:00:00).</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">use_space</span></code> is <code class="docutils literal notranslate"><span class="pre">true</span></code>, the date and time bits are separated by an empty space character instead of the letter T.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-time-method-get-datetime-string-from-system"><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a> <strong>get_datetime_string_from_system</strong>(utc: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = false, use_space: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = false) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-time-method-get-datetime-string-from-system"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the current date and time as an ISO 8601 date and time string (YYYY-MM-DDTHH:MM:SS).</p>
+<p>The returned values are in the system’s local time when <code class="docutils literal notranslate"><span class="pre">utc</span></code> is <code class="docutils literal notranslate"><span class="pre">false</span></code>, otherwise they are in UTC.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">use_space</span></code> is <code class="docutils literal notranslate"><span class="pre">true</span></code>, the date and time bits are separated by an empty space character instead of the letter T.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-time-method-get-datetime-string-from-unix-time"><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a> <strong>get_datetime_string_from_unix_time</strong>(unix_time_val: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, use_space: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = false) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-time-method-get-datetime-string-from-unix-time"><span class="std std-ref">🔗</span></a></p>
+<p>Converts the given Unix timestamp to an ISO 8601 date and time string (YYYY-MM-DDTHH:MM:SS).</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">use_space</span></code> is <code class="docutils literal notranslate"><span class="pre">true</span></code>, the date and time bits are separated by an empty space character instead of the letter T.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-time-method-get-offset-string-from-offset-minutes"><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a> <strong>get_offset_string_from_offset_minutes</strong>(offset_minutes: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-time-method-get-offset-string-from-offset-minutes"><span class="std std-ref">🔗</span></a></p>
+<p>Converts the given timezone offset in minutes to a timezone offset string. For example, -480 returns “-08:00”, 345 returns “+05:45”, and 0 returns “+00:00”.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-time-method-get-ticks-msec"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>get_ticks_msec</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-time-method-get-ticks-msec"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the amount of time passed in milliseconds since the engine started.</p>
+<p>Will always be positive or 0 and uses a 64-bit value (it will wrap after roughly 500 million years).</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-time-method-get-ticks-usec"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>get_ticks_usec</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-time-method-get-ticks-usec"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the amount of time passed in microseconds since the engine started.</p>
+<p>Will always be positive or 0 and uses a 64-bit value (it will wrap after roughly half a million years).</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-time-method-get-time-dict-from-system"><a class="reference internal" href="class_dictionary.html#class-dictionary"><span class="std std-ref">Dictionary</span></a> <strong>get_time_dict_from_system</strong>(utc: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = false) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-time-method-get-time-dict-from-system"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the current time as a dictionary of keys: <code class="docutils literal notranslate"><span class="pre">hour</span></code>, <code class="docutils literal notranslate"><span class="pre">minute</span></code>, and <code class="docutils literal notranslate"><span class="pre">second</span></code>.</p>
+<p>The returned values are in the system’s local time when <code class="docutils literal notranslate"><span class="pre">utc</span></code> is <code class="docutils literal notranslate"><span class="pre">false</span></code>, otherwise they are in UTC.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-time-method-get-time-dict-from-unix-time"><a class="reference internal" href="class_dictionary.html#class-dictionary"><span class="std std-ref">Dictionary</span></a> <strong>get_time_dict_from_unix_time</strong>(unix_time_val: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-time-method-get-time-dict-from-unix-time"><span class="std std-ref">🔗</span></a></p>
+<p>Converts the given time to a dictionary of keys: <code class="docutils literal notranslate"><span class="pre">hour</span></code>, <code class="docutils literal notranslate"><span class="pre">minute</span></code>, and <code class="docutils literal notranslate"><span class="pre">second</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-time-method-get-time-string-from-system"><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a> <strong>get_time_string_from_system</strong>(utc: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = false) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-time-method-get-time-string-from-system"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the current time as an ISO 8601 time string (HH:MM:SS).</p>
+<p>The returned values are in the system’s local time when <code class="docutils literal notranslate"><span class="pre">utc</span></code> is <code class="docutils literal notranslate"><span class="pre">false</span></code>, otherwise they are in UTC.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-time-method-get-time-string-from-unix-time"><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a> <strong>get_time_string_from_unix_time</strong>(unix_time_val: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-time-method-get-time-string-from-unix-time"><span class="std std-ref">🔗</span></a></p>
+<p>Converts the given Unix timestamp to an ISO 8601 time string (HH:MM:SS).</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-time-method-get-time-zone-from-system"><a class="reference internal" href="class_dictionary.html#class-dictionary"><span class="std std-ref">Dictionary</span></a> <strong>get_time_zone_from_system</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-time-method-get-time-zone-from-system"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the current time zone as a dictionary of keys: <code class="docutils literal notranslate"><span class="pre">bias</span></code> and <code class="docutils literal notranslate"><span class="pre">name</span></code>.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">bias</span></code> is the offset from UTC in minutes, since not all time zones are multiples of an hour from UTC.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">name</span></code> is the localized name of the time zone, according to the OS locale settings of the current user.</p></li>
+</ul>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-time-method-get-unix-time-from-datetime-dict"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>get_unix_time_from_datetime_dict</strong>(datetime: <a class="reference internal" href="class_dictionary.html#class-dictionary"><span class="std std-ref">Dictionary</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-time-method-get-unix-time-from-datetime-dict"><span class="std std-ref">🔗</span></a></p>
+<p>Converts a dictionary of time values to a Unix timestamp.</p>
+<p>The given dictionary can be populated with the following keys: <code class="docutils literal notranslate"><span class="pre">year</span></code>, <code class="docutils literal notranslate"><span class="pre">month</span></code>, <code class="docutils literal notranslate"><span class="pre">day</span></code>, <code class="docutils literal notranslate"><span class="pre">hour</span></code>, <code class="docutils literal notranslate"><span class="pre">minute</span></code>, and <code class="docutils literal notranslate"><span class="pre">second</span></code>. Any other entries (including <code class="docutils literal notranslate"><span class="pre">dst</span></code>) are ignored.</p>
+<p>If the dictionary is empty, <code class="docutils literal notranslate"><span class="pre">0</span></code> is returned. If some keys are omitted, they default to the equivalent values for the Unix epoch timestamp 0 (1970-01-01 at 00:00:00).</p>
+<p>You can pass the output from <a class="reference internal" href="#class-time-method-get-datetime-dict-from-unix-time"><span class="std std-ref">get_datetime_dict_from_unix_time()</span></a> directly into this function and get the same as what was put in.</p>
+<p><strong>Note:</strong> Unix timestamps are often in UTC. This method does not do any timezone conversion, so the timestamp will be in the same timezone as the given datetime dictionary.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-time-method-get-unix-time-from-datetime-string"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>get_unix_time_from_datetime_string</strong>(datetime: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-time-method-get-unix-time-from-datetime-string"><span class="std std-ref">🔗</span></a></p>
+<p>Converts the given ISO 8601 date and/or time string to a Unix timestamp. The string can contain a date only, a time only, or both.</p>
+<p><strong>Note:</strong> Unix timestamps are often in UTC. This method does not do any timezone conversion, so the timestamp will be in the same timezone as the given datetime string.</p>
+<p><strong>Note:</strong> Any decimal fraction in the time string will be ignored silently.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-time-method-get-unix-time-from-system"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>get_unix_time_from_system</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-time-method-get-unix-time-from-system"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the current Unix timestamp in seconds based on the system time in UTC. This method is implemented by the operating system and always returns the time in UTC. The Unix timestamp is the number of seconds passed since 1970-01-01 at 00:00:00, the <a class="reference external" href="https://en.wikipedia.org/wiki/Unix_time">Unix epoch</a>.</p>
+<p><strong>Note:</strong> Unlike other methods that use integer timestamps, this method returns the timestamp as a <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> for sub-second precision.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, MUmarShahbaz.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

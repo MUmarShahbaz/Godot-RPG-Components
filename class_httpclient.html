@@ -1,0 +1,483 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HTTPClient &mdash; RPG Components 2D 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=d45e8c67"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            RPG Components 2D
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">HTTPClient</a><ul>
+<li><a class="reference internal" href="#description">Description</a></li>
+<li><a class="reference internal" href="#tutorials">Tutorials</a></li>
+<li><a class="reference internal" href="#properties">Properties</a></li>
+<li><a class="reference internal" href="#methods">Methods</a></li>
+<li><a class="reference internal" href="#enumerations">Enumerations</a></li>
+<li><a class="reference internal" href="#property-descriptions">Property Descriptions</a></li>
+<li><a class="reference internal" href="#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">RPG Components 2D</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">HTTPClient</li>
+      <li class="wy-breadcrumbs-aside">
+              <!-- User defined GitHub URL -->
+              <a href="hide" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="httpclient">
+<span id="class-httpclient"></span><h1>HTTPClient<a class="headerlink" href="#httpclient" title="Link to this heading"></a></h1>
+<p><strong>Inherits:</strong> <a class="reference internal" href="class_refcounted.html#class-refcounted"><span class="std std-ref">RefCounted</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_object.html#class-object"><span class="std std-ref">Object</span></a></p>
+<p>Low-level hyper-text transfer protocol client.</p>
+<section class="classref-introduction-group" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
+<p>Hyper-text transfer protocol client (sometimes called “User Agent”). Used to make HTTP requests to download web content, upload files and other data or to communicate with various services, among other use cases.</p>
+<p>See the <a class="reference internal" href="class_httprequest.html#class-httprequest"><span class="std std-ref">HTTPRequest</span></a> node for a higher-level alternative.</p>
+<p><strong>Note:</strong> This client only needs to connect to a host once (see <a class="reference internal" href="#class-httpclient-method-connect-to-host"><span class="std std-ref">connect_to_host()</span></a>) to send multiple requests. Because of this, methods that take URLs usually take just the part after the host instead of the full URL, as the client is already connected to a host. See <a class="reference internal" href="#class-httpclient-method-request"><span class="std std-ref">request()</span></a> for a full example and to get started.</p>
+<p>An <strong>HTTPClient</strong> should be reused between multiple requests or to connect to different hosts instead of creating one client per request. Supports Transport Layer Security (TLS), including server certificate verification. HTTP status codes in the 2xx range indicate success, 3xx redirection (i.e. “try again, but over here”), 4xx something was wrong with the request, and 5xx something went wrong on the server’s side.</p>
+<p>For more information on HTTP, see <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTTP">MDN’s documentation on HTTP</a> (or read <a class="reference external" href="https://tools.ietf.org/html/rfc2616">RFC 2616</a> to get it straight from the source).</p>
+<p><strong>Note:</strong> When exporting to Android, make sure to enable the <code class="docutils literal notranslate"><span class="pre">INTERNET</span></code> permission in the Android export preset before exporting the project or using one-click deploy. Otherwise, network communication of any kind will be blocked by Android.</p>
+<p><strong>Note:</strong> It’s recommended to use transport encryption (TLS) and to avoid sending sensitive information (such as login credentials) in HTTP GET URL parameters. Consider using HTTP POST requests or HTTP headers for such information instead.</p>
+<p><strong>Note:</strong> When performing HTTP requests from a project exported to Web, keep in mind the remote server may not allow requests from foreign origins due to <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS">CORS</a>. If you host the server in question, you should modify its backend to allow requests from foreign origins by adding the <code class="docutils literal notranslate"><span class="pre">Access-Control-Allow-Origin:</span> <span class="pre">*</span></code> HTTP header.</p>
+<p><strong>Note:</strong> TLS support is currently limited to TLSv1.2 and TLSv1.3. Attempting to connect to a server that only supports older (insecure) TLS versions will return an error.</p>
+<p><strong>Warning:</strong> TLS certificate revocation and certificate pinning are currently not supported. Revoked certificates are accepted as long as they are otherwise valid. If this is a concern, you may want to use automatically managed certificates with a short validity period.</p>
+</section>
+<section class="classref-introduction-group" id="tutorials">
+<h2>Tutorials<a class="headerlink" href="#tutorials" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><span class="xref std std-doc">HTTP client class</span></p></li>
+<li><p><span class="xref std std-doc">TLS certificates</span></p></li>
+</ul>
+</section>
+<section class="classref-reftable-group" id="properties">
+<h2>Properties<a class="headerlink" href="#properties" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-httpclient-property-blocking-mode-enabled"><span class="std std-ref">blocking_mode_enabled</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_streampeer.html#class-streampeer"><span class="std std-ref">StreamPeer</span></a></p></td>
+<td><p><a class="reference internal" href="#class-httpclient-property-connection"><span class="std std-ref">connection</span></a></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-httpclient-property-read-chunk-size"><span class="std std-ref">read_chunk_size</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">65536</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section class="classref-reftable-group" id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-httpclient-method-close"><span class="std std-ref">close</span></a>()</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_%40globalscope.html#enum-globalscope-error"><span class="std std-ref">Error</span></a></p></td>
+<td><p><a class="reference internal" href="#class-httpclient-method-connect-to-host"><span class="std std-ref">connect_to_host</span></a>(host: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, port: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> = -1, tls_options: <a class="reference internal" href="class_tlsoptions.html#class-tlsoptions"><span class="std std-ref">TLSOptions</span></a> = null)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-httpclient-method-get-response-body-length"><span class="std std-ref">get_response_body_length</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-httpclient-method-get-response-code"><span class="std std-ref">get_response_code</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_packedstringarray.html#class-packedstringarray"><span class="std std-ref">PackedStringArray</span></a></p></td>
+<td><p><a class="reference internal" href="#class-httpclient-method-get-response-headers"><span class="std std-ref">get_response_headers</span></a>()</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_dictionary.html#class-dictionary"><span class="std std-ref">Dictionary</span></a></p></td>
+<td><p><a class="reference internal" href="#class-httpclient-method-get-response-headers-as-dictionary"><span class="std std-ref">get_response_headers_as_dictionary</span></a>()</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#enum-httpclient-status"><span class="std std-ref">Status</span></a></p></td>
+<td><p><a class="reference internal" href="#class-httpclient-method-get-status"><span class="std std-ref">get_status</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-httpclient-method-has-response"><span class="std std-ref">has_response</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-httpclient-method-is-response-chunked"><span class="std std-ref">is_response_chunked</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_%40globalscope.html#enum-globalscope-error"><span class="std std-ref">Error</span></a></p></td>
+<td><p><a class="reference internal" href="#class-httpclient-method-poll"><span class="std std-ref">poll</span></a>()</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a></p></td>
+<td><p><a class="reference internal" href="#class-httpclient-method-query-string-from-dict"><span class="std std-ref">query_string_from_dict</span></a>(fields: <a class="reference internal" href="class_dictionary.html#class-dictionary"><span class="std std-ref">Dictionary</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_packedbytearray.html#class-packedbytearray"><span class="std std-ref">PackedByteArray</span></a></p></td>
+<td><p><a class="reference internal" href="#class-httpclient-method-read-response-body-chunk"><span class="std std-ref">read_response_body_chunk</span></a>()</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_%40globalscope.html#enum-globalscope-error"><span class="std std-ref">Error</span></a></p></td>
+<td><p><a class="reference internal" href="#class-httpclient-method-request"><span class="std std-ref">request</span></a>(method: <a class="reference internal" href="#enum-httpclient-method"><span class="std std-ref">Method</span></a>, url: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, headers: <a class="reference internal" href="class_packedstringarray.html#class-packedstringarray"><span class="std std-ref">PackedStringArray</span></a>, body: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a> = “”)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_%40globalscope.html#enum-globalscope-error"><span class="std std-ref">Error</span></a></p></td>
+<td><p><a class="reference internal" href="#class-httpclient-method-request-raw"><span class="std std-ref">request_raw</span></a>(method: <a class="reference internal" href="#enum-httpclient-method"><span class="std std-ref">Method</span></a>, url: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, headers: <a class="reference internal" href="class_packedstringarray.html#class-packedstringarray"><span class="std std-ref">PackedStringArray</span></a>, body: <a class="reference internal" href="class_packedbytearray.html#class-packedbytearray"><span class="std std-ref">PackedByteArray</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-httpclient-method-set-http-proxy"><span class="std std-ref">set_http_proxy</span></a>(host: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, port: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-httpclient-method-set-https-proxy"><span class="std std-ref">set_https_proxy</span></a>(host: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, port: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="enumerations">
+<h2>Enumerations<a class="headerlink" href="#enumerations" title="Link to this heading"></a></h2>
+<p class="classref-enumeration" id="enum-httpclient-method">enum <strong>Method</strong>: <a class="reference internal" href="#enum-httpclient-method"><span class="std std-ref">🔗</span></a></p>
+<p class="classref-enumeration-constant" id="class-httpclient-constant-method-get"><a class="reference internal" href="#enum-httpclient-method"><span class="std std-ref">Method</span></a> <strong>METHOD_GET</strong> = <code class="docutils literal notranslate"><span class="pre">0</span></code></p>
+<p>HTTP GET method. The GET method requests a representation of the specified resource. Requests using GET should only retrieve data.</p>
+<p class="classref-enumeration-constant" id="class-httpclient-constant-method-head"><a class="reference internal" href="#enum-httpclient-method"><span class="std std-ref">Method</span></a> <strong>METHOD_HEAD</strong> = <code class="docutils literal notranslate"><span class="pre">1</span></code></p>
+<p>HTTP HEAD method. The HEAD method asks for a response identical to that of a GET request, but without the response body. This is useful to request metadata like HTTP headers or to check if a resource exists.</p>
+<p class="classref-enumeration-constant" id="class-httpclient-constant-method-post"><a class="reference internal" href="#enum-httpclient-method"><span class="std std-ref">Method</span></a> <strong>METHOD_POST</strong> = <code class="docutils literal notranslate"><span class="pre">2</span></code></p>
+<p>HTTP POST method. The POST method is used to submit an entity to the specified resource, often causing a change in state or side effects on the server. This is often used for forms and submitting data or uploading files.</p>
+<p class="classref-enumeration-constant" id="class-httpclient-constant-method-put"><a class="reference internal" href="#enum-httpclient-method"><span class="std std-ref">Method</span></a> <strong>METHOD_PUT</strong> = <code class="docutils literal notranslate"><span class="pre">3</span></code></p>
+<p>HTTP PUT method. The PUT method asks to replace all current representations of the target resource with the request payload. (You can think of POST as “create or update” and PUT as “update”, although many services tend to not make a clear distinction or change their meaning).</p>
+<p class="classref-enumeration-constant" id="class-httpclient-constant-method-delete"><a class="reference internal" href="#enum-httpclient-method"><span class="std std-ref">Method</span></a> <strong>METHOD_DELETE</strong> = <code class="docutils literal notranslate"><span class="pre">4</span></code></p>
+<p>HTTP DELETE method. The DELETE method requests to delete the specified resource.</p>
+<p class="classref-enumeration-constant" id="class-httpclient-constant-method-options"><a class="reference internal" href="#enum-httpclient-method"><span class="std std-ref">Method</span></a> <strong>METHOD_OPTIONS</strong> = <code class="docutils literal notranslate"><span class="pre">5</span></code></p>
+<p>HTTP OPTIONS method. The OPTIONS method asks for a description of the communication options for the target resource. Rarely used.</p>
+<p class="classref-enumeration-constant" id="class-httpclient-constant-method-trace"><a class="reference internal" href="#enum-httpclient-method"><span class="std std-ref">Method</span></a> <strong>METHOD_TRACE</strong> = <code class="docutils literal notranslate"><span class="pre">6</span></code></p>
+<p>HTTP TRACE method. The TRACE method performs a message loop-back test along the path to the target resource. Returns the entire HTTP request received in the response body. Rarely used.</p>
+<p class="classref-enumeration-constant" id="class-httpclient-constant-method-connect"><a class="reference internal" href="#enum-httpclient-method"><span class="std std-ref">Method</span></a> <strong>METHOD_CONNECT</strong> = <code class="docutils literal notranslate"><span class="pre">7</span></code></p>
+<p>HTTP CONNECT method. The CONNECT method establishes a tunnel to the server identified by the target resource. Rarely used.</p>
+<p class="classref-enumeration-constant" id="class-httpclient-constant-method-patch"><a class="reference internal" href="#enum-httpclient-method"><span class="std std-ref">Method</span></a> <strong>METHOD_PATCH</strong> = <code class="docutils literal notranslate"><span class="pre">8</span></code></p>
+<p>HTTP PATCH method. The PATCH method is used to apply partial modifications to a resource.</p>
+<p class="classref-enumeration-constant" id="class-httpclient-constant-method-max"><a class="reference internal" href="#enum-httpclient-method"><span class="std std-ref">Method</span></a> <strong>METHOD_MAX</strong> = <code class="docutils literal notranslate"><span class="pre">9</span></code></p>
+<p>Represents the size of the <a class="reference internal" href="#enum-httpclient-method"><span class="std std-ref">Method</span></a> enum.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-enumeration" id="enum-httpclient-status">enum <strong>Status</strong>: <a class="reference internal" href="#enum-httpclient-status"><span class="std std-ref">🔗</span></a></p>
+<p class="classref-enumeration-constant" id="class-httpclient-constant-status-disconnected"><a class="reference internal" href="#enum-httpclient-status"><span class="std std-ref">Status</span></a> <strong>STATUS_DISCONNECTED</strong> = <code class="docutils literal notranslate"><span class="pre">0</span></code></p>
+<p>Status: Disconnected from the server.</p>
+<p class="classref-enumeration-constant" id="class-httpclient-constant-status-resolving"><a class="reference internal" href="#enum-httpclient-status"><span class="std std-ref">Status</span></a> <strong>STATUS_RESOLVING</strong> = <code class="docutils literal notranslate"><span class="pre">1</span></code></p>
+<p>Status: Currently resolving the hostname for the given URL into an IP.</p>
+<p class="classref-enumeration-constant" id="class-httpclient-constant-status-cant-resolve"><a class="reference internal" href="#enum-httpclient-status"><span class="std std-ref">Status</span></a> <strong>STATUS_CANT_RESOLVE</strong> = <code class="docutils literal notranslate"><span class="pre">2</span></code></p>
+<p>Status: DNS failure: Can’t resolve the hostname for the given URL.</p>
+<p class="classref-enumeration-constant" id="class-httpclient-constant-status-connecting"><a class="reference internal" href="#enum-httpclient-status"><span class="std std-ref">Status</span></a> <strong>STATUS_CONNECTING</strong> = <code class="docutils literal notranslate"><span class="pre">3</span></code></p>
+<p>Status: Currently connecting to server.</p>
+<p class="classref-enumeration-constant" id="class-httpclient-constant-status-cant-connect"><a class="reference internal" href="#enum-httpclient-status"><span class="std std-ref">Status</span></a> <strong>STATUS_CANT_CONNECT</strong> = <code class="docutils literal notranslate"><span class="pre">4</span></code></p>
+<p>Status: Can’t connect to the server.</p>
+<p class="classref-enumeration-constant" id="class-httpclient-constant-status-connected"><a class="reference internal" href="#enum-httpclient-status"><span class="std std-ref">Status</span></a> <strong>STATUS_CONNECTED</strong> = <code class="docutils literal notranslate"><span class="pre">5</span></code></p>
+<p>Status: Connection established.</p>
+<p class="classref-enumeration-constant" id="class-httpclient-constant-status-requesting"><a class="reference internal" href="#enum-httpclient-status"><span class="std std-ref">Status</span></a> <strong>STATUS_REQUESTING</strong> = <code class="docutils literal notranslate"><span class="pre">6</span></code></p>
+<p>Status: Currently sending request.</p>
+<p class="classref-enumeration-constant" id="class-httpclient-constant-status-body"><a class="reference internal" href="#enum-httpclient-status"><span class="std std-ref">Status</span></a> <strong>STATUS_BODY</strong> = <code class="docutils literal notranslate"><span class="pre">7</span></code></p>
+<p>Status: HTTP body received.</p>
+<p class="classref-enumeration-constant" id="class-httpclient-constant-status-connection-error"><a class="reference internal" href="#enum-httpclient-status"><span class="std std-ref">Status</span></a> <strong>STATUS_CONNECTION_ERROR</strong> = <code class="docutils literal notranslate"><span class="pre">8</span></code></p>
+<p>Status: Error in HTTP connection.</p>
+<p class="classref-enumeration-constant" id="class-httpclient-constant-status-tls-handshake-error"><a class="reference internal" href="#enum-httpclient-status"><span class="std std-ref">Status</span></a> <strong>STATUS_TLS_HANDSHAKE_ERROR</strong> = <code class="docutils literal notranslate"><span class="pre">9</span></code></p>
+<p>Status: Error in TLS handshake.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-enumeration" id="enum-httpclient-responsecode">enum <strong>ResponseCode</strong>: <a class="reference internal" href="#enum-httpclient-responsecode"><span class="std std-ref">🔗</span></a></p>
+<p class="classref-enumeration-constant" id="class-httpclient-constant-response-continue"><a class="reference internal" href="#enum-httpclient-responsecode"><span class="std std-ref">ResponseCode</span></a> <strong>RESPONSE_CONTINUE</strong> = <code class="docutils literal notranslate"><span class="pre">100</span></code></p>
+<p>HTTP status code <code class="docutils literal notranslate"><span class="pre">100</span> <span class="pre">Continue</span></code>. Interim response that indicates everything so far is OK and that the client should continue with the request (or ignore this status if already finished).</p>
+<p class="classref-enumeration-constant" id="class-httpclient-constant-response-switching-protocols"><a class="reference internal" href="#enum-httpclient-responsecode"><span class="std std-ref">ResponseCode</span></a> <strong>RESPONSE_SWITCHING_PROTOCOLS</strong> = <code class="docutils literal notranslate"><span class="pre">101</span></code></p>
+<p>HTTP status code <code class="docutils literal notranslate"><span class="pre">101</span> <span class="pre">Switching</span> <span class="pre">Protocol</span></code>. Sent in response to an <code class="docutils literal notranslate"><span class="pre">Upgrade</span></code> request header by the client. Indicates the protocol the server is switching to.</p>
+<p class="classref-enumeration-constant" id="class-httpclient-constant-response-processing"><a class="reference internal" href="#enum-httpclient-responsecode"><span class="std std-ref">ResponseCode</span></a> <strong>RESPONSE_PROCESSING</strong> = <code class="docutils literal notranslate"><span class="pre">102</span></code></p>
+<p>HTTP status code <code class="docutils literal notranslate"><span class="pre">102</span> <span class="pre">Processing</span></code> (WebDAV). Indicates that the server has received and is processing the request, but no response is available yet.</p>
+<p class="classref-enumeration-constant" id="class-httpclient-constant-response-ok"><a class="reference internal" href="#enum-httpclient-responsecode"><span class="std std-ref">ResponseCode</span></a> <strong>RESPONSE_OK</strong> = <code class="docutils literal notranslate"><span class="pre">200</span></code></p>
+<p>HTTP status code <code class="docutils literal notranslate"><span class="pre">200</span> <span class="pre">OK</span></code>. The request has succeeded. Default response for successful requests. Meaning varies depending on the request:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#class-httpclient-constant-method-get"><span class="std std-ref">METHOD_GET</span></a>: The resource has been fetched and is transmitted in the message body.</p></li>
+<li><p><a class="reference internal" href="#class-httpclient-constant-method-head"><span class="std std-ref">METHOD_HEAD</span></a>: The entity headers are in the message body.</p></li>
+<li><p><a class="reference internal" href="#class-httpclient-constant-method-post"><span class="std std-ref">METHOD_POST</span></a>: The resource describing the result of the action is transmitted in the message body.</p></li>
+<li><p><a class="reference internal" href="#class-httpclient-constant-method-trace"><span class="std std-ref">METHOD_TRACE</span></a>: The message body contains the request message as received by the server.</p></li>
+</ul>
+<p class="classref-enumeration-constant" id="class-httpclient-constant-response-created"><a class="reference internal" href="#enum-httpclient-responsecode"><span class="std std-ref">ResponseCode</span></a> <strong>RESPONSE_CREATED</strong> = <code class="docutils literal notranslate"><span class="pre">201</span></code></p>
+<p>HTTP status code <code class="docutils literal notranslate"><span class="pre">201</span> <span class="pre">Created</span></code>. The request has succeeded and a new resource has been created as a result of it. This is typically the response sent after a PUT request.</p>
+<p class="classref-enumeration-constant" id="class-httpclient-constant-response-accepted"><a class="reference internal" href="#enum-httpclient-responsecode"><span class="std std-ref">ResponseCode</span></a> <strong>RESPONSE_ACCEPTED</strong> = <code class="docutils literal notranslate"><span class="pre">202</span></code></p>
+<p>HTTP status code <code class="docutils literal notranslate"><span class="pre">202</span> <span class="pre">Accepted</span></code>. The request has been received but not yet acted upon. It is non-committal, meaning that there is no way in HTTP to later send an asynchronous response indicating the outcome of processing the request. It is intended for cases where another process or server handles the request, or for batch processing.</p>
+<p class="classref-enumeration-constant" id="class-httpclient-constant-response-non-authoritative-information"><a class="reference internal" href="#enum-httpclient-responsecode"><span class="std std-ref">ResponseCode</span></a> <strong>RESPONSE_NON_AUTHORITATIVE_INFORMATION</strong> = <code class="docutils literal notranslate"><span class="pre">203</span></code></p>
+<p>HTTP status code <code class="docutils literal notranslate"><span class="pre">203</span> <span class="pre">Non-Authoritative</span> <span class="pre">Information</span></code>. This response code means returned meta-information set is not exact set as available from the origin server, but collected from a local or a third party copy. Except this condition, 200 OK response should be preferred instead of this response.</p>
+<p class="classref-enumeration-constant" id="class-httpclient-constant-response-no-content"><a class="reference internal" href="#enum-httpclient-responsecode"><span class="std std-ref">ResponseCode</span></a> <strong>RESPONSE_NO_CONTENT</strong> = <code class="docutils literal notranslate"><span class="pre">204</span></code></p>
+<p>HTTP status code <code class="docutils literal notranslate"><span class="pre">204</span> <span class="pre">No</span> <span class="pre">Content</span></code>. There is no content to send for this request, but the headers may be useful. The user-agent may update its cached headers for this resource with the new ones.</p>
+<p class="classref-enumeration-constant" id="class-httpclient-constant-response-reset-content"><a class="reference internal" href="#enum-httpclient-responsecode"><span class="std std-ref">ResponseCode</span></a> <strong>RESPONSE_RESET_CONTENT</strong> = <code class="docutils literal notranslate"><span class="pre">205</span></code></p>
+<p>HTTP status code <code class="docutils literal notranslate"><span class="pre">205</span> <span class="pre">Reset</span> <span class="pre">Content</span></code>. The server has fulfilled the request and desires that the client resets the “document view” that caused the request to be sent to its original state as received from the origin server.</p>
+<p class="classref-enumeration-constant" id="class-httpclient-constant-response-partial-content"><a class="reference internal" href="#enum-httpclient-responsecode"><span class="std std-ref">ResponseCode</span></a> <strong>RESPONSE_PARTIAL_CONTENT</strong> = <code class="docutils literal notranslate"><span class="pre">206</span></code></p>
+<p>HTTP status code <code class="docutils literal notranslate"><span class="pre">206</span> <span class="pre">Partial</span> <span class="pre">Content</span></code>. This response code is used because of a range header sent by the client to separate download into multiple streams.</p>
+<p class="classref-enumeration-constant" id="class-httpclient-constant-response-multi-status"><a class="reference internal" href="#enum-httpclient-responsecode"><span class="std std-ref">ResponseCode</span></a> <strong>RESPONSE_MULTI_STATUS</strong> = <code class="docutils literal notranslate"><span class="pre">207</span></code></p>
+<p>HTTP status code <code class="docutils literal notranslate"><span class="pre">207</span> <span class="pre">Multi-Status</span></code> (WebDAV). A Multi-Status response conveys information about multiple resources in situations where multiple status codes might be appropriate.</p>
+<p class="classref-enumeration-constant" id="class-httpclient-constant-response-already-reported"><a class="reference internal" href="#enum-httpclient-responsecode"><span class="std std-ref">ResponseCode</span></a> <strong>RESPONSE_ALREADY_REPORTED</strong> = <code class="docutils literal notranslate"><span class="pre">208</span></code></p>
+<p>HTTP status code <code class="docutils literal notranslate"><span class="pre">208</span> <span class="pre">Already</span> <span class="pre">Reported</span></code> (WebDAV). Used inside a DAV: propstat response element to avoid enumerating the internal members of multiple bindings to the same collection repeatedly.</p>
+<p class="classref-enumeration-constant" id="class-httpclient-constant-response-im-used"><a class="reference internal" href="#enum-httpclient-responsecode"><span class="std std-ref">ResponseCode</span></a> <strong>RESPONSE_IM_USED</strong> = <code class="docutils literal notranslate"><span class="pre">226</span></code></p>
+<p>HTTP status code <code class="docutils literal notranslate"><span class="pre">226</span> <span class="pre">IM</span> <span class="pre">Used</span></code> (WebDAV). The server has fulfilled a GET request for the resource, and the response is a representation of the result of one or more instance-manipulations applied to the current instance.</p>
+<p class="classref-enumeration-constant" id="class-httpclient-constant-response-multiple-choices"><a class="reference internal" href="#enum-httpclient-responsecode"><span class="std std-ref">ResponseCode</span></a> <strong>RESPONSE_MULTIPLE_CHOICES</strong> = <code class="docutils literal notranslate"><span class="pre">300</span></code></p>
+<p>HTTP status code <code class="docutils literal notranslate"><span class="pre">300</span> <span class="pre">Multiple</span> <span class="pre">Choice</span></code>. The request has more than one possible responses and there is no standardized way to choose one of the responses. User-agent or user should choose one of them.</p>
+<p class="classref-enumeration-constant" id="class-httpclient-constant-response-moved-permanently"><a class="reference internal" href="#enum-httpclient-responsecode"><span class="std std-ref">ResponseCode</span></a> <strong>RESPONSE_MOVED_PERMANENTLY</strong> = <code class="docutils literal notranslate"><span class="pre">301</span></code></p>
+<p>HTTP status code <code class="docutils literal notranslate"><span class="pre">301</span> <span class="pre">Moved</span> <span class="pre">Permanently</span></code>. Redirection. This response code means the URI of requested resource has been changed. The new URI is usually included in the response.</p>
+<p class="classref-enumeration-constant" id="class-httpclient-constant-response-found"><a class="reference internal" href="#enum-httpclient-responsecode"><span class="std std-ref">ResponseCode</span></a> <strong>RESPONSE_FOUND</strong> = <code class="docutils literal notranslate"><span class="pre">302</span></code></p>
+<p>HTTP status code <code class="docutils literal notranslate"><span class="pre">302</span> <span class="pre">Found</span></code>. Temporary redirection. This response code means the URI of requested resource has been changed temporarily. New changes in the URI might be made in the future. Therefore, this same URI should be used by the client in future requests.</p>
+<p class="classref-enumeration-constant" id="class-httpclient-constant-response-see-other"><a class="reference internal" href="#enum-httpclient-responsecode"><span class="std std-ref">ResponseCode</span></a> <strong>RESPONSE_SEE_OTHER</strong> = <code class="docutils literal notranslate"><span class="pre">303</span></code></p>
+<p>HTTP status code <code class="docutils literal notranslate"><span class="pre">303</span> <span class="pre">See</span> <span class="pre">Other</span></code>. The server is redirecting the user agent to a different resource, as indicated by a URI in the Location header field, which is intended to provide an indirect response to the original request.</p>
+<p class="classref-enumeration-constant" id="class-httpclient-constant-response-not-modified"><a class="reference internal" href="#enum-httpclient-responsecode"><span class="std std-ref">ResponseCode</span></a> <strong>RESPONSE_NOT_MODIFIED</strong> = <code class="docutils literal notranslate"><span class="pre">304</span></code></p>
+<p>HTTP status code <code class="docutils literal notranslate"><span class="pre">304</span> <span class="pre">Not</span> <span class="pre">Modified</span></code>. A conditional GET or HEAD request has been received and would have resulted in a 200 OK response if it were not for the fact that the condition evaluated to <code class="docutils literal notranslate"><span class="pre">false</span></code>.</p>
+<p class="classref-enumeration-constant" id="class-httpclient-constant-response-use-proxy"><a class="reference internal" href="#enum-httpclient-responsecode"><span class="std std-ref">ResponseCode</span></a> <strong>RESPONSE_USE_PROXY</strong> = <code class="docutils literal notranslate"><span class="pre">305</span></code></p>
+<p><strong>Deprecated:</strong> Many clients ignore this response code for security reasons. It is also deprecated by the HTTP standard.</p>
+<p>HTTP status code <code class="docutils literal notranslate"><span class="pre">305</span> <span class="pre">Use</span> <span class="pre">Proxy</span></code>.</p>
+<p class="classref-enumeration-constant" id="class-httpclient-constant-response-switch-proxy"><a class="reference internal" href="#enum-httpclient-responsecode"><span class="std std-ref">ResponseCode</span></a> <strong>RESPONSE_SWITCH_PROXY</strong> = <code class="docutils literal notranslate"><span class="pre">306</span></code></p>
+<p><strong>Deprecated:</strong> Many clients ignore this response code for security reasons. It is also deprecated by the HTTP standard.</p>
+<p>HTTP status code <code class="docutils literal notranslate"><span class="pre">306</span> <span class="pre">Switch</span> <span class="pre">Proxy</span></code>.</p>
+<p class="classref-enumeration-constant" id="class-httpclient-constant-response-temporary-redirect"><a class="reference internal" href="#enum-httpclient-responsecode"><span class="std std-ref">ResponseCode</span></a> <strong>RESPONSE_TEMPORARY_REDIRECT</strong> = <code class="docutils literal notranslate"><span class="pre">307</span></code></p>
+<p>HTTP status code <code class="docutils literal notranslate"><span class="pre">307</span> <span class="pre">Temporary</span> <span class="pre">Redirect</span></code>. The target resource resides temporarily under a different URI and the user agent MUST NOT change the request method if it performs an automatic redirection to that URI.</p>
+<p class="classref-enumeration-constant" id="class-httpclient-constant-response-permanent-redirect"><a class="reference internal" href="#enum-httpclient-responsecode"><span class="std std-ref">ResponseCode</span></a> <strong>RESPONSE_PERMANENT_REDIRECT</strong> = <code class="docutils literal notranslate"><span class="pre">308</span></code></p>
+<p>HTTP status code <code class="docutils literal notranslate"><span class="pre">308</span> <span class="pre">Permanent</span> <span class="pre">Redirect</span></code>. The target resource has been assigned a new permanent URI and any future references to this resource ought to use one of the enclosed URIs.</p>
+<p class="classref-enumeration-constant" id="class-httpclient-constant-response-bad-request"><a class="reference internal" href="#enum-httpclient-responsecode"><span class="std std-ref">ResponseCode</span></a> <strong>RESPONSE_BAD_REQUEST</strong> = <code class="docutils literal notranslate"><span class="pre">400</span></code></p>
+<p>HTTP status code <code class="docutils literal notranslate"><span class="pre">400</span> <span class="pre">Bad</span> <span class="pre">Request</span></code>. The request was invalid. The server cannot or will not process the request due to something that is perceived to be a client error (e.g., malformed request syntax, invalid request message framing, invalid request contents, or deceptive request routing).</p>
+<p class="classref-enumeration-constant" id="class-httpclient-constant-response-unauthorized"><a class="reference internal" href="#enum-httpclient-responsecode"><span class="std std-ref">ResponseCode</span></a> <strong>RESPONSE_UNAUTHORIZED</strong> = <code class="docutils literal notranslate"><span class="pre">401</span></code></p>
+<p>HTTP status code <code class="docutils literal notranslate"><span class="pre">401</span> <span class="pre">Unauthorized</span></code>. Credentials required. The request has not been applied because it lacks valid authentication credentials for the target resource.</p>
+<p class="classref-enumeration-constant" id="class-httpclient-constant-response-payment-required"><a class="reference internal" href="#enum-httpclient-responsecode"><span class="std std-ref">ResponseCode</span></a> <strong>RESPONSE_PAYMENT_REQUIRED</strong> = <code class="docutils literal notranslate"><span class="pre">402</span></code></p>
+<p>HTTP status code <code class="docutils literal notranslate"><span class="pre">402</span> <span class="pre">Payment</span> <span class="pre">Required</span></code>. This response code is reserved for future use. Initial aim for creating this code was using it for digital payment systems, however this is not currently used.</p>
+<p class="classref-enumeration-constant" id="class-httpclient-constant-response-forbidden"><a class="reference internal" href="#enum-httpclient-responsecode"><span class="std std-ref">ResponseCode</span></a> <strong>RESPONSE_FORBIDDEN</strong> = <code class="docutils literal notranslate"><span class="pre">403</span></code></p>
+<p>HTTP status code <code class="docutils literal notranslate"><span class="pre">403</span> <span class="pre">Forbidden</span></code>. The client does not have access rights to the content, i.e. they are unauthorized, so server is rejecting to give proper response. Unlike <code class="docutils literal notranslate"><span class="pre">401</span></code>, the client’s identity is known to the server.</p>
+<p class="classref-enumeration-constant" id="class-httpclient-constant-response-not-found"><a class="reference internal" href="#enum-httpclient-responsecode"><span class="std std-ref">ResponseCode</span></a> <strong>RESPONSE_NOT_FOUND</strong> = <code class="docutils literal notranslate"><span class="pre">404</span></code></p>
+<p>HTTP status code <code class="docutils literal notranslate"><span class="pre">404</span> <span class="pre">Not</span> <span class="pre">Found</span></code>. The server can not find requested resource. Either the URL is not recognized or the endpoint is valid but the resource itself does not exist. May also be sent instead of 403 to hide existence of a resource if the client is not authorized.</p>
+<p class="classref-enumeration-constant" id="class-httpclient-constant-response-method-not-allowed"><a class="reference internal" href="#enum-httpclient-responsecode"><span class="std std-ref">ResponseCode</span></a> <strong>RESPONSE_METHOD_NOT_ALLOWED</strong> = <code class="docutils literal notranslate"><span class="pre">405</span></code></p>
+<p>HTTP status code <code class="docutils literal notranslate"><span class="pre">405</span> <span class="pre">Method</span> <span class="pre">Not</span> <span class="pre">Allowed</span></code>. The request’s HTTP method is known by the server but has been disabled and cannot be used. For example, an API may forbid DELETE-ing a resource. The two mandatory methods, GET and HEAD, must never be disabled and should not return this error code.</p>
+<p class="classref-enumeration-constant" id="class-httpclient-constant-response-not-acceptable"><a class="reference internal" href="#enum-httpclient-responsecode"><span class="std std-ref">ResponseCode</span></a> <strong>RESPONSE_NOT_ACCEPTABLE</strong> = <code class="docutils literal notranslate"><span class="pre">406</span></code></p>
+<p>HTTP status code <code class="docutils literal notranslate"><span class="pre">406</span> <span class="pre">Not</span> <span class="pre">Acceptable</span></code>. The target resource does not have a current representation that would be acceptable to the user agent, according to the proactive negotiation header fields received in the request. Used when negotiation content.</p>
+<p class="classref-enumeration-constant" id="class-httpclient-constant-response-proxy-authentication-required"><a class="reference internal" href="#enum-httpclient-responsecode"><span class="std std-ref">ResponseCode</span></a> <strong>RESPONSE_PROXY_AUTHENTICATION_REQUIRED</strong> = <code class="docutils literal notranslate"><span class="pre">407</span></code></p>
+<p>HTTP status code <code class="docutils literal notranslate"><span class="pre">407</span> <span class="pre">Proxy</span> <span class="pre">Authentication</span> <span class="pre">Required</span></code>. Similar to 401 Unauthorized, but it indicates that the client needs to authenticate itself in order to use a proxy.</p>
+<p class="classref-enumeration-constant" id="class-httpclient-constant-response-request-timeout"><a class="reference internal" href="#enum-httpclient-responsecode"><span class="std std-ref">ResponseCode</span></a> <strong>RESPONSE_REQUEST_TIMEOUT</strong> = <code class="docutils literal notranslate"><span class="pre">408</span></code></p>
+<p>HTTP status code <code class="docutils literal notranslate"><span class="pre">408</span> <span class="pre">Request</span> <span class="pre">Timeout</span></code>. The server did not receive a complete request message within the time that it was prepared to wait.</p>
+<p class="classref-enumeration-constant" id="class-httpclient-constant-response-conflict"><a class="reference internal" href="#enum-httpclient-responsecode"><span class="std std-ref">ResponseCode</span></a> <strong>RESPONSE_CONFLICT</strong> = <code class="docutils literal notranslate"><span class="pre">409</span></code></p>
+<p>HTTP status code <code class="docutils literal notranslate"><span class="pre">409</span> <span class="pre">Conflict</span></code>. The request could not be completed due to a conflict with the current state of the target resource. This code is used in situations where the user might be able to resolve the conflict and resubmit the request.</p>
+<p class="classref-enumeration-constant" id="class-httpclient-constant-response-gone"><a class="reference internal" href="#enum-httpclient-responsecode"><span class="std std-ref">ResponseCode</span></a> <strong>RESPONSE_GONE</strong> = <code class="docutils literal notranslate"><span class="pre">410</span></code></p>
+<p>HTTP status code <code class="docutils literal notranslate"><span class="pre">410</span> <span class="pre">Gone</span></code>. The target resource is no longer available at the origin server and this condition is likely permanent.</p>
+<p class="classref-enumeration-constant" id="class-httpclient-constant-response-length-required"><a class="reference internal" href="#enum-httpclient-responsecode"><span class="std std-ref">ResponseCode</span></a> <strong>RESPONSE_LENGTH_REQUIRED</strong> = <code class="docutils literal notranslate"><span class="pre">411</span></code></p>
+<p>HTTP status code <code class="docutils literal notranslate"><span class="pre">411</span> <span class="pre">Length</span> <span class="pre">Required</span></code>. The server refuses to accept the request without a defined Content-Length header.</p>
+<p class="classref-enumeration-constant" id="class-httpclient-constant-response-precondition-failed"><a class="reference internal" href="#enum-httpclient-responsecode"><span class="std std-ref">ResponseCode</span></a> <strong>RESPONSE_PRECONDITION_FAILED</strong> = <code class="docutils literal notranslate"><span class="pre">412</span></code></p>
+<p>HTTP status code <code class="docutils literal notranslate"><span class="pre">412</span> <span class="pre">Precondition</span> <span class="pre">Failed</span></code>. One or more conditions given in the request header fields evaluated to <code class="docutils literal notranslate"><span class="pre">false</span></code> when tested on the server.</p>
+<p class="classref-enumeration-constant" id="class-httpclient-constant-response-request-entity-too-large"><a class="reference internal" href="#enum-httpclient-responsecode"><span class="std std-ref">ResponseCode</span></a> <strong>RESPONSE_REQUEST_ENTITY_TOO_LARGE</strong> = <code class="docutils literal notranslate"><span class="pre">413</span></code></p>
+<p>HTTP status code <code class="docutils literal notranslate"><span class="pre">413</span> <span class="pre">Entity</span> <span class="pre">Too</span> <span class="pre">Large</span></code>. The server is refusing to process a request because the request payload is larger than the server is willing or able to process.</p>
+<p class="classref-enumeration-constant" id="class-httpclient-constant-response-request-uri-too-long"><a class="reference internal" href="#enum-httpclient-responsecode"><span class="std std-ref">ResponseCode</span></a> <strong>RESPONSE_REQUEST_URI_TOO_LONG</strong> = <code class="docutils literal notranslate"><span class="pre">414</span></code></p>
+<p>HTTP status code <code class="docutils literal notranslate"><span class="pre">414</span> <span class="pre">Request-URI</span> <span class="pre">Too</span> <span class="pre">Long</span></code>. The server is refusing to service the request because the request-target is longer than the server is willing to interpret.</p>
+<p class="classref-enumeration-constant" id="class-httpclient-constant-response-unsupported-media-type"><a class="reference internal" href="#enum-httpclient-responsecode"><span class="std std-ref">ResponseCode</span></a> <strong>RESPONSE_UNSUPPORTED_MEDIA_TYPE</strong> = <code class="docutils literal notranslate"><span class="pre">415</span></code></p>
+<p>HTTP status code <code class="docutils literal notranslate"><span class="pre">415</span> <span class="pre">Unsupported</span> <span class="pre">Media</span> <span class="pre">Type</span></code>. The origin server is refusing to service the request because the payload is in a format not supported by this method on the target resource.</p>
+<p class="classref-enumeration-constant" id="class-httpclient-constant-response-requested-range-not-satisfiable"><a class="reference internal" href="#enum-httpclient-responsecode"><span class="std std-ref">ResponseCode</span></a> <strong>RESPONSE_REQUESTED_RANGE_NOT_SATISFIABLE</strong> = <code class="docutils literal notranslate"><span class="pre">416</span></code></p>
+<p>HTTP status code <code class="docutils literal notranslate"><span class="pre">416</span> <span class="pre">Requested</span> <span class="pre">Range</span> <span class="pre">Not</span> <span class="pre">Satisfiable</span></code>. None of the ranges in the request’s Range header field overlap the current extent of the selected resource or the set of ranges requested has been rejected due to invalid ranges or an excessive request of small or overlapping ranges.</p>
+<p class="classref-enumeration-constant" id="class-httpclient-constant-response-expectation-failed"><a class="reference internal" href="#enum-httpclient-responsecode"><span class="std std-ref">ResponseCode</span></a> <strong>RESPONSE_EXPECTATION_FAILED</strong> = <code class="docutils literal notranslate"><span class="pre">417</span></code></p>
+<p>HTTP status code <code class="docutils literal notranslate"><span class="pre">417</span> <span class="pre">Expectation</span> <span class="pre">Failed</span></code>. The expectation given in the request’s Expect header field could not be met by at least one of the inbound servers.</p>
+<p class="classref-enumeration-constant" id="class-httpclient-constant-response-im-a-teapot"><a class="reference internal" href="#enum-httpclient-responsecode"><span class="std std-ref">ResponseCode</span></a> <strong>RESPONSE_IM_A_TEAPOT</strong> = <code class="docutils literal notranslate"><span class="pre">418</span></code></p>
+<p>HTTP status code <code class="docutils literal notranslate"><span class="pre">418</span> <span class="pre">I'm</span> <span class="pre">A</span> <span class="pre">Teapot</span></code>. Any attempt to brew coffee with a teapot should result in the error code “418 I’m a teapot”. The resulting entity body MAY be short and stout.</p>
+<p class="classref-enumeration-constant" id="class-httpclient-constant-response-misdirected-request"><a class="reference internal" href="#enum-httpclient-responsecode"><span class="std std-ref">ResponseCode</span></a> <strong>RESPONSE_MISDIRECTED_REQUEST</strong> = <code class="docutils literal notranslate"><span class="pre">421</span></code></p>
+<p>HTTP status code <code class="docutils literal notranslate"><span class="pre">421</span> <span class="pre">Misdirected</span> <span class="pre">Request</span></code>. The request was directed at a server that is not able to produce a response. This can be sent by a server that is not configured to produce responses for the combination of scheme and authority that are included in the request URI.</p>
+<p class="classref-enumeration-constant" id="class-httpclient-constant-response-unprocessable-entity"><a class="reference internal" href="#enum-httpclient-responsecode"><span class="std std-ref">ResponseCode</span></a> <strong>RESPONSE_UNPROCESSABLE_ENTITY</strong> = <code class="docutils literal notranslate"><span class="pre">422</span></code></p>
+<p>HTTP status code <code class="docutils literal notranslate"><span class="pre">422</span> <span class="pre">Unprocessable</span> <span class="pre">Entity</span></code> (WebDAV). The server understands the content type of the request entity (hence a 415 Unsupported Media Type status code is inappropriate), and the syntax of the request entity is correct (thus a 400 Bad Request status code is inappropriate) but was unable to process the contained instructions.</p>
+<p class="classref-enumeration-constant" id="class-httpclient-constant-response-locked"><a class="reference internal" href="#enum-httpclient-responsecode"><span class="std std-ref">ResponseCode</span></a> <strong>RESPONSE_LOCKED</strong> = <code class="docutils literal notranslate"><span class="pre">423</span></code></p>
+<p>HTTP status code <code class="docutils literal notranslate"><span class="pre">423</span> <span class="pre">Locked</span></code> (WebDAV). The source or destination resource of a method is locked.</p>
+<p class="classref-enumeration-constant" id="class-httpclient-constant-response-failed-dependency"><a class="reference internal" href="#enum-httpclient-responsecode"><span class="std std-ref">ResponseCode</span></a> <strong>RESPONSE_FAILED_DEPENDENCY</strong> = <code class="docutils literal notranslate"><span class="pre">424</span></code></p>
+<p>HTTP status code <code class="docutils literal notranslate"><span class="pre">424</span> <span class="pre">Failed</span> <span class="pre">Dependency</span></code> (WebDAV). The method could not be performed on the resource because the requested action depended on another action and that action failed.</p>
+<p class="classref-enumeration-constant" id="class-httpclient-constant-response-upgrade-required"><a class="reference internal" href="#enum-httpclient-responsecode"><span class="std std-ref">ResponseCode</span></a> <strong>RESPONSE_UPGRADE_REQUIRED</strong> = <code class="docutils literal notranslate"><span class="pre">426</span></code></p>
+<p>HTTP status code <code class="docutils literal notranslate"><span class="pre">426</span> <span class="pre">Upgrade</span> <span class="pre">Required</span></code>. The server refuses to perform the request using the current protocol but might be willing to do so after the client upgrades to a different protocol.</p>
+<p class="classref-enumeration-constant" id="class-httpclient-constant-response-precondition-required"><a class="reference internal" href="#enum-httpclient-responsecode"><span class="std std-ref">ResponseCode</span></a> <strong>RESPONSE_PRECONDITION_REQUIRED</strong> = <code class="docutils literal notranslate"><span class="pre">428</span></code></p>
+<p>HTTP status code <code class="docutils literal notranslate"><span class="pre">428</span> <span class="pre">Precondition</span> <span class="pre">Required</span></code>. The origin server requires the request to be conditional.</p>
+<p class="classref-enumeration-constant" id="class-httpclient-constant-response-too-many-requests"><a class="reference internal" href="#enum-httpclient-responsecode"><span class="std std-ref">ResponseCode</span></a> <strong>RESPONSE_TOO_MANY_REQUESTS</strong> = <code class="docutils literal notranslate"><span class="pre">429</span></code></p>
+<p>HTTP status code <code class="docutils literal notranslate"><span class="pre">429</span> <span class="pre">Too</span> <span class="pre">Many</span> <span class="pre">Requests</span></code>. The user has sent too many requests in a given amount of time (see “rate limiting”). Back off and increase time between requests or try again later.</p>
+<p class="classref-enumeration-constant" id="class-httpclient-constant-response-request-header-fields-too-large"><a class="reference internal" href="#enum-httpclient-responsecode"><span class="std std-ref">ResponseCode</span></a> <strong>RESPONSE_REQUEST_HEADER_FIELDS_TOO_LARGE</strong> = <code class="docutils literal notranslate"><span class="pre">431</span></code></p>
+<p>HTTP status code <code class="docutils literal notranslate"><span class="pre">431</span> <span class="pre">Request</span> <span class="pre">Header</span> <span class="pre">Fields</span> <span class="pre">Too</span> <span class="pre">Large</span></code>. The server is unwilling to process the request because its header fields are too large. The request MAY be resubmitted after reducing the size of the request header fields.</p>
+<p class="classref-enumeration-constant" id="class-httpclient-constant-response-unavailable-for-legal-reasons"><a class="reference internal" href="#enum-httpclient-responsecode"><span class="std std-ref">ResponseCode</span></a> <strong>RESPONSE_UNAVAILABLE_FOR_LEGAL_REASONS</strong> = <code class="docutils literal notranslate"><span class="pre">451</span></code></p>
+<p>HTTP status code <code class="docutils literal notranslate"><span class="pre">451</span> <span class="pre">Response</span> <span class="pre">Unavailable</span> <span class="pre">For</span> <span class="pre">Legal</span> <span class="pre">Reasons</span></code>. The server is denying access to the resource as a consequence of a legal demand.</p>
+<p class="classref-enumeration-constant" id="class-httpclient-constant-response-internal-server-error"><a class="reference internal" href="#enum-httpclient-responsecode"><span class="std std-ref">ResponseCode</span></a> <strong>RESPONSE_INTERNAL_SERVER_ERROR</strong> = <code class="docutils literal notranslate"><span class="pre">500</span></code></p>
+<p>HTTP status code <code class="docutils literal notranslate"><span class="pre">500</span> <span class="pre">Internal</span> <span class="pre">Server</span> <span class="pre">Error</span></code>. The server encountered an unexpected condition that prevented it from fulfilling the request.</p>
+<p class="classref-enumeration-constant" id="class-httpclient-constant-response-not-implemented"><a class="reference internal" href="#enum-httpclient-responsecode"><span class="std std-ref">ResponseCode</span></a> <strong>RESPONSE_NOT_IMPLEMENTED</strong> = <code class="docutils literal notranslate"><span class="pre">501</span></code></p>
+<p>HTTP status code <code class="docutils literal notranslate"><span class="pre">501</span> <span class="pre">Not</span> <span class="pre">Implemented</span></code>. The server does not support the functionality required to fulfill the request.</p>
+<p class="classref-enumeration-constant" id="class-httpclient-constant-response-bad-gateway"><a class="reference internal" href="#enum-httpclient-responsecode"><span class="std std-ref">ResponseCode</span></a> <strong>RESPONSE_BAD_GATEWAY</strong> = <code class="docutils literal notranslate"><span class="pre">502</span></code></p>
+<p>HTTP status code <code class="docutils literal notranslate"><span class="pre">502</span> <span class="pre">Bad</span> <span class="pre">Gateway</span></code>. The server, while acting as a gateway or proxy, received an invalid response from an inbound server it accessed while attempting to fulfill the request. Usually returned by load balancers or proxies.</p>
+<p class="classref-enumeration-constant" id="class-httpclient-constant-response-service-unavailable"><a class="reference internal" href="#enum-httpclient-responsecode"><span class="std std-ref">ResponseCode</span></a> <strong>RESPONSE_SERVICE_UNAVAILABLE</strong> = <code class="docutils literal notranslate"><span class="pre">503</span></code></p>
+<p>HTTP status code <code class="docutils literal notranslate"><span class="pre">503</span> <span class="pre">Service</span> <span class="pre">Unavailable</span></code>. The server is currently unable to handle the request due to a temporary overload or scheduled maintenance, which will likely be alleviated after some delay. Try again later.</p>
+<p class="classref-enumeration-constant" id="class-httpclient-constant-response-gateway-timeout"><a class="reference internal" href="#enum-httpclient-responsecode"><span class="std std-ref">ResponseCode</span></a> <strong>RESPONSE_GATEWAY_TIMEOUT</strong> = <code class="docutils literal notranslate"><span class="pre">504</span></code></p>
+<p>HTTP status code <code class="docutils literal notranslate"><span class="pre">504</span> <span class="pre">Gateway</span> <span class="pre">Timeout</span></code>. The server, while acting as a gateway or proxy, did not receive a timely response from an upstream server it needed to access in order to complete the request. Usually returned by load balancers or proxies.</p>
+<p class="classref-enumeration-constant" id="class-httpclient-constant-response-http-version-not-supported"><a class="reference internal" href="#enum-httpclient-responsecode"><span class="std std-ref">ResponseCode</span></a> <strong>RESPONSE_HTTP_VERSION_NOT_SUPPORTED</strong> = <code class="docutils literal notranslate"><span class="pre">505</span></code></p>
+<p>HTTP status code <code class="docutils literal notranslate"><span class="pre">505</span> <span class="pre">HTTP</span> <span class="pre">Version</span> <span class="pre">Not</span> <span class="pre">Supported</span></code>. The server does not support, or refuses to support, the major version of HTTP that was used in the request message.</p>
+<p class="classref-enumeration-constant" id="class-httpclient-constant-response-variant-also-negotiates"><a class="reference internal" href="#enum-httpclient-responsecode"><span class="std std-ref">ResponseCode</span></a> <strong>RESPONSE_VARIANT_ALSO_NEGOTIATES</strong> = <code class="docutils literal notranslate"><span class="pre">506</span></code></p>
+<p>HTTP status code <code class="docutils literal notranslate"><span class="pre">506</span> <span class="pre">Variant</span> <span class="pre">Also</span> <span class="pre">Negotiates</span></code>. The server has an internal configuration error: the chosen variant resource is configured to engage in transparent content negotiation itself, and is therefore not a proper end point in the negotiation process.</p>
+<p class="classref-enumeration-constant" id="class-httpclient-constant-response-insufficient-storage"><a class="reference internal" href="#enum-httpclient-responsecode"><span class="std std-ref">ResponseCode</span></a> <strong>RESPONSE_INSUFFICIENT_STORAGE</strong> = <code class="docutils literal notranslate"><span class="pre">507</span></code></p>
+<p>HTTP status code <code class="docutils literal notranslate"><span class="pre">507</span> <span class="pre">Insufficient</span> <span class="pre">Storage</span></code>. The method could not be performed on the resource because the server is unable to store the representation needed to successfully complete the request.</p>
+<p class="classref-enumeration-constant" id="class-httpclient-constant-response-loop-detected"><a class="reference internal" href="#enum-httpclient-responsecode"><span class="std std-ref">ResponseCode</span></a> <strong>RESPONSE_LOOP_DETECTED</strong> = <code class="docutils literal notranslate"><span class="pre">508</span></code></p>
+<p>HTTP status code <code class="docutils literal notranslate"><span class="pre">508</span> <span class="pre">Loop</span> <span class="pre">Detected</span></code>. The server terminated an operation because it encountered an infinite loop while processing a request with “Depth: infinity”. This status indicates that the entire operation failed.</p>
+<p class="classref-enumeration-constant" id="class-httpclient-constant-response-not-extended"><a class="reference internal" href="#enum-httpclient-responsecode"><span class="std std-ref">ResponseCode</span></a> <strong>RESPONSE_NOT_EXTENDED</strong> = <code class="docutils literal notranslate"><span class="pre">510</span></code></p>
+<p>HTTP status code <code class="docutils literal notranslate"><span class="pre">510</span> <span class="pre">Not</span> <span class="pre">Extended</span></code>. The policy for accessing the resource has not been met in the request. The server should send back all the information necessary for the client to issue an extended request.</p>
+<p class="classref-enumeration-constant" id="class-httpclient-constant-response-network-auth-required"><a class="reference internal" href="#enum-httpclient-responsecode"><span class="std std-ref">ResponseCode</span></a> <strong>RESPONSE_NETWORK_AUTH_REQUIRED</strong> = <code class="docutils literal notranslate"><span class="pre">511</span></code></p>
+<p>HTTP status code <code class="docutils literal notranslate"><span class="pre">511</span> <span class="pre">Network</span> <span class="pre">Authentication</span> <span class="pre">Required</span></code>. The client needs to authenticate to gain network access.</p>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="property-descriptions">
+<h2>Property Descriptions<a class="headerlink" href="#property-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-property" id="class-httpclient-property-blocking-mode-enabled"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>blocking_mode_enabled</strong> = <code class="docutils literal notranslate"><span class="pre">false</span></code> <a class="reference internal" href="#class-httpclient-property-blocking-mode-enabled"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_blocking_mode</strong>(value: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_blocking_mode_enabled</strong>()</p></li>
+</ul>
+<p>If <code class="docutils literal notranslate"><span class="pre">true</span></code>, execution will block until all data is read from the response.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-httpclient-property-connection"><a class="reference internal" href="class_streampeer.html#class-streampeer"><span class="std std-ref">StreamPeer</span></a> <strong>connection</strong> <a class="reference internal" href="#class-httpclient-property-connection"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_connection</strong>(value: <a class="reference internal" href="class_streampeer.html#class-streampeer"><span class="std std-ref">StreamPeer</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_streampeer.html#class-streampeer"><span class="std std-ref">StreamPeer</span></a> <strong>get_connection</strong>()</p></li>
+</ul>
+<p>The connection to use for this client.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-httpclient-property-read-chunk-size"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>read_chunk_size</strong> = <code class="docutils literal notranslate"><span class="pre">65536</span></code> <a class="reference internal" href="#class-httpclient-property-read-chunk-size"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_read_chunk_size</strong>(value: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>get_read_chunk_size</strong>()</p></li>
+</ul>
+<p>The size of the buffer used and maximum bytes to read per iteration. See <a class="reference internal" href="#class-httpclient-method-read-response-body-chunk"><span class="std std-ref">read_response_body_chunk()</span></a>.</p>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="method-descriptions">
+<h2>Method Descriptions<a class="headerlink" href="#method-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-method" id="class-httpclient-method-close"><abbr title="No return value.">void</abbr> <strong>close</strong>() <a class="reference internal" href="#class-httpclient-method-close"><span class="std std-ref">🔗</span></a></p>
+<p>Closes the current connection, allowing reuse of this <strong>HTTPClient</strong>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-httpclient-method-connect-to-host"><a class="reference internal" href="class_%40globalscope.html#enum-globalscope-error"><span class="std std-ref">Error</span></a> <strong>connect_to_host</strong>(host: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, port: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> = -1, tls_options: <a class="reference internal" href="class_tlsoptions.html#class-tlsoptions"><span class="std std-ref">TLSOptions</span></a> = null) <a class="reference internal" href="#class-httpclient-method-connect-to-host"><span class="std std-ref">🔗</span></a></p>
+<p>Connects to a host. This needs to be done before any requests are sent.</p>
+<p>If no <code class="docutils literal notranslate"><span class="pre">port</span></code> is specified (or <code class="docutils literal notranslate"><span class="pre">-1</span></code> is used), it is automatically set to 80 for HTTP and 443 for HTTPS. You can pass the optional <code class="docutils literal notranslate"><span class="pre">tls_options</span></code> parameter to customize the trusted certification authorities, or the common name verification when using HTTPS. See <a class="reference internal" href="class_tlsoptions.html#class-tlsoptions-method-client"><span class="std std-ref">TLSOptions.client()</span></a> and <a class="reference internal" href="class_tlsoptions.html#class-tlsoptions-method-client-unsafe"><span class="std std-ref">TLSOptions.client_unsafe()</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-httpclient-method-get-response-body-length"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>get_response_body_length</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-httpclient-method-get-response-body-length"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the response’s body length.</p>
+<p><strong>Note:</strong> Some Web servers may not send a body length. In this case, the value returned will be <code class="docutils literal notranslate"><span class="pre">-1</span></code>. If using chunked transfer encoding, the body length will also be <code class="docutils literal notranslate"><span class="pre">-1</span></code>.</p>
+<p><strong>Note:</strong> This function always returns <code class="docutils literal notranslate"><span class="pre">-1</span></code> on the Web platform due to browsers limitations.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-httpclient-method-get-response-code"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>get_response_code</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-httpclient-method-get-response-code"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the response’s HTTP status code.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-httpclient-method-get-response-headers"><a class="reference internal" href="class_packedstringarray.html#class-packedstringarray"><span class="std std-ref">PackedStringArray</span></a> <strong>get_response_headers</strong>() <a class="reference internal" href="#class-httpclient-method-get-response-headers"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the response headers.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-httpclient-method-get-response-headers-as-dictionary"><a class="reference internal" href="class_dictionary.html#class-dictionary"><span class="std std-ref">Dictionary</span></a> <strong>get_response_headers_as_dictionary</strong>() <a class="reference internal" href="#class-httpclient-method-get-response-headers-as-dictionary"><span class="std std-ref">🔗</span></a></p>
+<p>Returns all response headers as a <a class="reference internal" href="class_dictionary.html#class-dictionary"><span class="std std-ref">Dictionary</span></a>. Each entry is composed by the header name, and a <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a> containing the values separated by <code class="docutils literal notranslate"><span class="pre">&quot;;</span> <span class="pre">&quot;</span></code>. The casing is kept the same as the headers were received.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;content-length&quot;</span><span class="p">:</span> <span class="mi">12</span><span class="p">,</span>
+    <span class="s2">&quot;Content-Type&quot;</span><span class="p">:</span> <span class="s2">&quot;application/json; charset=UTF-8&quot;</span><span class="p">,</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-httpclient-method-get-status"><a class="reference internal" href="#enum-httpclient-status"><span class="std std-ref">Status</span></a> <strong>get_status</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-httpclient-method-get-status"><span class="std std-ref">🔗</span></a></p>
+<p>Returns a <a class="reference internal" href="#enum-httpclient-status"><span class="std std-ref">Status</span></a> constant. Need to call <a class="reference internal" href="#class-httpclient-method-poll"><span class="std std-ref">poll()</span></a> in order to get status updates.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-httpclient-method-has-response"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>has_response</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-httpclient-method-has-response"><span class="std std-ref">🔗</span></a></p>
+<p>If <code class="docutils literal notranslate"><span class="pre">true</span></code>, this <strong>HTTPClient</strong> has a response available.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-httpclient-method-is-response-chunked"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_response_chunked</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-httpclient-method-is-response-chunked"><span class="std std-ref">🔗</span></a></p>
+<p>If <code class="docutils literal notranslate"><span class="pre">true</span></code>, this <strong>HTTPClient</strong> has a response that is chunked.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-httpclient-method-poll"><a class="reference internal" href="class_%40globalscope.html#enum-globalscope-error"><span class="std std-ref">Error</span></a> <strong>poll</strong>() <a class="reference internal" href="#class-httpclient-method-poll"><span class="std std-ref">🔗</span></a></p>
+<p>This needs to be called in order to have any request processed. Check results with <a class="reference internal" href="#class-httpclient-method-get-status"><span class="std std-ref">get_status()</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-httpclient-method-query-string-from-dict"><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a> <strong>query_string_from_dict</strong>(fields: <a class="reference internal" href="class_dictionary.html#class-dictionary"><span class="std std-ref">Dictionary</span></a>) <a class="reference internal" href="#class-httpclient-method-query-string-from-dict"><span class="std std-ref">🔗</span></a></p>
+<p>Generates a GET/POST application/x-www-form-urlencoded style query string from a provided dictionary, e.g.:</p>
+<p>Furthermore, if a key has a <code class="docutils literal notranslate"><span class="pre">null</span></code> value, only the key itself is added, without equal sign and value. If the value is an array, for each value in it a pair with the same key is added.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-httpclient-method-read-response-body-chunk"><a class="reference internal" href="class_packedbytearray.html#class-packedbytearray"><span class="std std-ref">PackedByteArray</span></a> <strong>read_response_body_chunk</strong>() <a class="reference internal" href="#class-httpclient-method-read-response-body-chunk"><span class="std std-ref">🔗</span></a></p>
+<p>Reads one chunk from the response.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-httpclient-method-request"><a class="reference internal" href="class_%40globalscope.html#enum-globalscope-error"><span class="std std-ref">Error</span></a> <strong>request</strong>(method: <a class="reference internal" href="#enum-httpclient-method"><span class="std std-ref">Method</span></a>, url: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, headers: <a class="reference internal" href="class_packedstringarray.html#class-packedstringarray"><span class="std std-ref">PackedStringArray</span></a>, body: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a> = “”) <a class="reference internal" href="#class-httpclient-method-request"><span class="std std-ref">🔗</span></a></p>
+<p>Sends an HTTP request to the connected host with the given <code class="docutils literal notranslate"><span class="pre">method</span></code>.</p>
+<p>The URL parameter is usually just the part after the host, so for <code class="docutils literal notranslate"><span class="pre">https://example.com/index.php</span></code>, it is <code class="docutils literal notranslate"><span class="pre">/index.php</span></code>. When sending requests to an HTTP proxy server, it should be an absolute URL. For <a class="reference internal" href="#class-httpclient-constant-method-options"><span class="std std-ref">METHOD_OPTIONS</span></a> requests, <code class="docutils literal notranslate"><span class="pre">*</span></code> is also allowed. For <a class="reference internal" href="#class-httpclient-constant-method-connect"><span class="std std-ref">METHOD_CONNECT</span></a> requests, it should be the authority component (<code class="docutils literal notranslate"><span class="pre">host:port</span></code>).</p>
+<p><code class="docutils literal notranslate"><span class="pre">headers</span></code> are HTTP request headers.</p>
+<p>To create a POST request with query strings to push to the server, do:</p>
+<p><strong>Note:</strong> The <code class="docutils literal notranslate"><span class="pre">body</span></code> parameter is ignored if <code class="docutils literal notranslate"><span class="pre">method</span></code> is <a class="reference internal" href="#class-httpclient-constant-method-get"><span class="std std-ref">METHOD_GET</span></a>. This is because GET methods can’t contain request data. As a workaround, you can pass request data as a query string in the URL. See <a class="reference internal" href="class_string.html#class-string-method-uri-encode"><span class="std std-ref">String.uri_encode()</span></a> for an example.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-httpclient-method-request-raw"><a class="reference internal" href="class_%40globalscope.html#enum-globalscope-error"><span class="std std-ref">Error</span></a> <strong>request_raw</strong>(method: <a class="reference internal" href="#enum-httpclient-method"><span class="std std-ref">Method</span></a>, url: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, headers: <a class="reference internal" href="class_packedstringarray.html#class-packedstringarray"><span class="std std-ref">PackedStringArray</span></a>, body: <a class="reference internal" href="class_packedbytearray.html#class-packedbytearray"><span class="std std-ref">PackedByteArray</span></a>) <a class="reference internal" href="#class-httpclient-method-request-raw"><span class="std std-ref">🔗</span></a></p>
+<p>Sends a raw HTTP request to the connected host with the given <code class="docutils literal notranslate"><span class="pre">method</span></code>.</p>
+<p>The URL parameter is usually just the part after the host, so for <code class="docutils literal notranslate"><span class="pre">https://example.com/index.php</span></code>, it is <code class="docutils literal notranslate"><span class="pre">/index.php</span></code>. When sending requests to an HTTP proxy server, it should be an absolute URL. For <a class="reference internal" href="#class-httpclient-constant-method-options"><span class="std std-ref">METHOD_OPTIONS</span></a> requests, <code class="docutils literal notranslate"><span class="pre">*</span></code> is also allowed. For <a class="reference internal" href="#class-httpclient-constant-method-connect"><span class="std std-ref">METHOD_CONNECT</span></a> requests, it should be the authority component (<code class="docutils literal notranslate"><span class="pre">host:port</span></code>).</p>
+<p><code class="docutils literal notranslate"><span class="pre">headers</span></code> are HTTP request headers.</p>
+<p>Sends the body data raw, as a byte array and does not encode it in any way.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-httpclient-method-set-http-proxy"><abbr title="No return value.">void</abbr> <strong>set_http_proxy</strong>(host: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, port: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <a class="reference internal" href="#class-httpclient-method-set-http-proxy"><span class="std std-ref">🔗</span></a></p>
+<p>Sets the proxy server for HTTP requests.</p>
+<p>The proxy server is unset if <code class="docutils literal notranslate"><span class="pre">host</span></code> is empty or <code class="docutils literal notranslate"><span class="pre">port</span></code> is -1.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-httpclient-method-set-https-proxy"><abbr title="No return value.">void</abbr> <strong>set_https_proxy</strong>(host: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, port: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <a class="reference internal" href="#class-httpclient-method-set-https-proxy"><span class="std std-ref">🔗</span></a></p>
+<p>Sets the proxy server for HTTPS requests.</p>
+<p>The proxy server is unset if <code class="docutils literal notranslate"><span class="pre">host</span></code> is empty or <code class="docutils literal notranslate"><span class="pre">port</span></code> is -1.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, MUmarShahbaz.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

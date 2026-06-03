@@ -1,0 +1,170 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FogVolume &mdash; RPG Components 2D 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=d45e8c67"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            RPG Components 2D
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">FogVolume</a><ul>
+<li><a class="reference internal" href="#description">Description</a></li>
+<li><a class="reference internal" href="#tutorials">Tutorials</a></li>
+<li><a class="reference internal" href="#properties">Properties</a></li>
+<li><a class="reference internal" href="#property-descriptions">Property Descriptions</a></li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">RPG Components 2D</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">FogVolume</li>
+      <li class="wy-breadcrumbs-aside">
+              <!-- User defined GitHub URL -->
+              <a href="hide" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="fogvolume">
+<span id="class-fogvolume"></span><h1>FogVolume<a class="headerlink" href="#fogvolume" title="Link to this heading"></a></h1>
+<p><strong>Inherits:</strong> <a class="reference internal" href="class_visualinstance3d.html#class-visualinstance3d"><span class="std std-ref">VisualInstance3D</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_node3d.html#class-node3d"><span class="std std-ref">Node3D</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_node.html#class-node"><span class="std std-ref">Node</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_object.html#class-object"><span class="std std-ref">Object</span></a></p>
+<p>A region that contributes to the default volumetric fog from the world environment.</p>
+<section class="classref-introduction-group" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
+<p><strong>FogVolume</strong>s are used to add localized fog into the global volumetric fog effect. <strong>FogVolume</strong>s can also remove volumetric fog from specific areas if using a <a class="reference internal" href="class_fogmaterial.html#class-fogmaterial"><span class="std std-ref">FogMaterial</span></a> with a negative <a class="reference internal" href="class_fogmaterial.html#class-fogmaterial-property-density"><span class="std std-ref">FogMaterial.density</span></a>.</p>
+<p>Performance of <strong>FogVolume</strong>s is directly related to their relative size on the screen and the complexity of their attached <a class="reference internal" href="class_fogmaterial.html#class-fogmaterial"><span class="std std-ref">FogMaterial</span></a>. It is best to keep <strong>FogVolume</strong>s relatively small and simple where possible.</p>
+<p><strong>Note:</strong> <strong>FogVolume</strong>s only have a visible effect if <a class="reference internal" href="class_environment.html#class-environment-property-volumetric-fog-enabled"><span class="std std-ref">Environment.volumetric_fog_enabled</span></a> is <code class="docutils literal notranslate"><span class="pre">true</span></code>. If you don’t want fog to be globally visible (but only within <strong>FogVolume</strong> nodes), set <a class="reference internal" href="class_environment.html#class-environment-property-volumetric-fog-density"><span class="std std-ref">Environment.volumetric_fog_density</span></a> to <code class="docutils literal notranslate"><span class="pre">0.0</span></code>.</p>
+</section>
+<section class="classref-introduction-group" id="tutorials">
+<h2>Tutorials<a class="headerlink" href="#tutorials" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><span class="xref std std-doc">Volumetric fog and fog volumes</span></p></li>
+</ul>
+</section>
+<section class="classref-reftable-group" id="properties">
+<h2>Properties<a class="headerlink" href="#properties" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_material.html#class-material"><span class="std std-ref">Material</span></a></p></td>
+<td><p><a class="reference internal" href="#class-fogvolume-property-material"><span class="std std-ref">material</span></a></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_renderingserver.html#enum-renderingserver-fogvolumeshape"><span class="std std-ref">FogVolumeShape</span></a></p></td>
+<td><p><a class="reference internal" href="#class-fogvolume-property-shape"><span class="std std-ref">shape</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">3</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a></p></td>
+<td><p><a class="reference internal" href="#class-fogvolume-property-size"><span class="std std-ref">size</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Vector3(2,</span> <span class="pre">2,</span> <span class="pre">2)</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="property-descriptions">
+<h2>Property Descriptions<a class="headerlink" href="#property-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-property" id="class-fogvolume-property-material"><a class="reference internal" href="class_material.html#class-material"><span class="std std-ref">Material</span></a> <strong>material</strong> <a class="reference internal" href="#class-fogvolume-property-material"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_material</strong>(value: <a class="reference internal" href="class_material.html#class-material"><span class="std std-ref">Material</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_material.html#class-material"><span class="std std-ref">Material</span></a> <strong>get_material</strong>()</p></li>
+</ul>
+<p>The <a class="reference internal" href="class_material.html#class-material"><span class="std std-ref">Material</span></a> used by the <strong>FogVolume</strong>. Can be either a built-in <a class="reference internal" href="class_fogmaterial.html#class-fogmaterial"><span class="std std-ref">FogMaterial</span></a> or a custom <a class="reference internal" href="class_shadermaterial.html#class-shadermaterial"><span class="std std-ref">ShaderMaterial</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-fogvolume-property-shape"><a class="reference internal" href="class_renderingserver.html#enum-renderingserver-fogvolumeshape"><span class="std std-ref">FogVolumeShape</span></a> <strong>shape</strong> = <code class="docutils literal notranslate"><span class="pre">3</span></code> <a class="reference internal" href="#class-fogvolume-property-shape"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_shape</strong>(value: <a class="reference internal" href="class_renderingserver.html#enum-renderingserver-fogvolumeshape"><span class="std std-ref">FogVolumeShape</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_renderingserver.html#enum-renderingserver-fogvolumeshape"><span class="std std-ref">FogVolumeShape</span></a> <strong>get_shape</strong>()</p></li>
+</ul>
+<p>The shape of the <strong>FogVolume</strong>. This can be set to either <a class="reference internal" href="class_renderingserver.html#class-renderingserver-constant-fog-volume-shape-ellipsoid"><span class="std std-ref">RenderingServer.FOG_VOLUME_SHAPE_ELLIPSOID</span></a>, <a class="reference internal" href="class_renderingserver.html#class-renderingserver-constant-fog-volume-shape-cone"><span class="std std-ref">RenderingServer.FOG_VOLUME_SHAPE_CONE</span></a>, <a class="reference internal" href="class_renderingserver.html#class-renderingserver-constant-fog-volume-shape-cylinder"><span class="std std-ref">RenderingServer.FOG_VOLUME_SHAPE_CYLINDER</span></a>, <a class="reference internal" href="class_renderingserver.html#class-renderingserver-constant-fog-volume-shape-box"><span class="std std-ref">RenderingServer.FOG_VOLUME_SHAPE_BOX</span></a> or <a class="reference internal" href="class_renderingserver.html#class-renderingserver-constant-fog-volume-shape-world"><span class="std std-ref">RenderingServer.FOG_VOLUME_SHAPE_WORLD</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-fogvolume-property-size"><a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a> <strong>size</strong> = <code class="docutils literal notranslate"><span class="pre">Vector3(2,</span> <span class="pre">2,</span> <span class="pre">2)</span></code> <a class="reference internal" href="#class-fogvolume-property-size"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_size</strong>(value: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a> <strong>get_size</strong>()</p></li>
+</ul>
+<p>The size of the <strong>FogVolume</strong> when <a class="reference internal" href="#class-fogvolume-property-shape"><span class="std std-ref">shape</span></a> is <a class="reference internal" href="class_renderingserver.html#class-renderingserver-constant-fog-volume-shape-ellipsoid"><span class="std std-ref">RenderingServer.FOG_VOLUME_SHAPE_ELLIPSOID</span></a>, <a class="reference internal" href="class_renderingserver.html#class-renderingserver-constant-fog-volume-shape-cone"><span class="std std-ref">RenderingServer.FOG_VOLUME_SHAPE_CONE</span></a>, <a class="reference internal" href="class_renderingserver.html#class-renderingserver-constant-fog-volume-shape-cylinder"><span class="std std-ref">RenderingServer.FOG_VOLUME_SHAPE_CYLINDER</span></a> or <a class="reference internal" href="class_renderingserver.html#class-renderingserver-constant-fog-volume-shape-box"><span class="std std-ref">RenderingServer.FOG_VOLUME_SHAPE_BOX</span></a>.</p>
+<p><strong>Note:</strong> Thin fog volumes may appear to flicker when the camera moves or rotates. This can be alleviated by increasing <a class="reference internal" href="class_projectsettings.html#class-projectsettings-property-rendering-environment-volumetric-fog-volume-depth"><span class="std std-ref">ProjectSettings.rendering/environment/volumetric_fog/volume_depth</span></a> (at a performance cost) or by decreasing <a class="reference internal" href="class_environment.html#class-environment-property-volumetric-fog-length"><span class="std std-ref">Environment.volumetric_fog_length</span></a> (at no performance cost, but at the cost of lower fog range). Alternatively, the <strong>FogVolume</strong> can be made thicker and use a lower density in the <a class="reference internal" href="#class-fogvolume-property-material"><span class="std std-ref">material</span></a>.</p>
+<p><strong>Note:</strong> If <a class="reference internal" href="#class-fogvolume-property-shape"><span class="std std-ref">shape</span></a> is <a class="reference internal" href="class_renderingserver.html#class-renderingserver-constant-fog-volume-shape-cone"><span class="std std-ref">RenderingServer.FOG_VOLUME_SHAPE_CONE</span></a> or <a class="reference internal" href="class_renderingserver.html#class-renderingserver-constant-fog-volume-shape-cylinder"><span class="std std-ref">RenderingServer.FOG_VOLUME_SHAPE_CYLINDER</span></a>, the cone/cylinder will be adjusted to fit within the size. Non-uniform scaling of cone/cylinder shapes via the <a class="reference internal" href="#class-fogvolume-property-size"><span class="std std-ref">size</span></a> property is not supported, but you can scale the <strong>FogVolume</strong> node instead.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, MUmarShahbaz.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,811 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FontFile &mdash; RPG Components 2D 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=d45e8c67"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            RPG Components 2D
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">FontFile</a><ul>
+<li><a class="reference internal" href="#description">Description</a></li>
+<li><a class="reference internal" href="#tutorials">Tutorials</a></li>
+<li><a class="reference internal" href="#properties">Properties</a></li>
+<li><a class="reference internal" href="#methods">Methods</a></li>
+<li><a class="reference internal" href="#property-descriptions">Property Descriptions</a></li>
+<li><a class="reference internal" href="#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">RPG Components 2D</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">FontFile</li>
+      <li class="wy-breadcrumbs-aside">
+              <!-- User defined GitHub URL -->
+              <a href="hide" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="fontfile">
+<span id="class-fontfile"></span><h1>FontFile<a class="headerlink" href="#fontfile" title="Link to this heading"></a></h1>
+<p><strong>Inherits:</strong> <a class="reference internal" href="class_font.html#class-font"><span class="std std-ref">Font</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_resource.html#class-resource"><span class="std std-ref">Resource</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_refcounted.html#class-refcounted"><span class="std std-ref">RefCounted</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_object.html#class-object"><span class="std std-ref">Object</span></a></p>
+<p>Holds font source data and prerendered glyph cache, imported from a dynamic or a bitmap font.</p>
+<section class="classref-introduction-group" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
+<p><strong>FontFile</strong> contains a set of glyphs to represent Unicode characters imported from a font file, as well as a cache of rasterized glyphs, and a set of fallback <a class="reference internal" href="class_font.html#class-font"><span class="std std-ref">Font</span></a>s to use.</p>
+<p>Use <a class="reference internal" href="class_fontvariation.html#class-fontvariation"><span class="std std-ref">FontVariation</span></a> to access specific OpenType variation of the font, create simulated bold / slanted version, and draw lines of text.</p>
+<p>For more complex text processing, use <a class="reference internal" href="class_fontvariation.html#class-fontvariation"><span class="std std-ref">FontVariation</span></a> in conjunction with <a class="reference internal" href="class_textline.html#class-textline"><span class="std std-ref">TextLine</span></a> or <a class="reference internal" href="class_textparagraph.html#class-textparagraph"><span class="std std-ref">TextParagraph</span></a>.</p>
+<p>Supported font formats:</p>
+<ul class="simple">
+<li><p>Dynamic font importer: TrueType (.ttf), TrueType collection (.ttc), OpenType (.otf), OpenType collection (.otc), WOFF (.woff), WOFF2 (.woff2), Type 1 (.pfb, .pfm).</p></li>
+<li><p>Bitmap font importer: AngelCode BMFont (.fnt, .font), text and binary (version 3) format variants.</p></li>
+<li><p>Monospace image font importer: All supported image formats.</p></li>
+</ul>
+<p><strong>Note:</strong> A character is a symbol that represents an item (letter, digit etc.) in an abstract way.</p>
+<p><strong>Note:</strong> A glyph is a bitmap or a shape used to draw one or more characters in a context-dependent manner. Glyph indices are bound to the specific font data source.</p>
+<p><strong>Note:</strong> If none of the font data sources contain glyphs for a character used in a string, the character in question will be replaced with a box displaying its hexadecimal code.</p>
+</section>
+<section class="classref-introduction-group" id="tutorials">
+<h2>Tutorials<a class="headerlink" href="#tutorials" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><span class="xref std std-doc">Runtime file loading and saving</span></p></li>
+</ul>
+</section>
+<section class="classref-reftable-group" id="properties">
+<h2>Properties<a class="headerlink" href="#properties" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-fontfile-property-allow-system-fallback"><span class="std std-ref">allow_system_fallback</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_textserver.html#enum-textserver-fontantialiasing"><span class="std std-ref">FontAntialiasing</span></a></p></td>
+<td><p><a class="reference internal" href="#class-fontfile-property-antialiasing"><span class="std std-ref">antialiasing</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">1</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_packedbytearray.html#class-packedbytearray"><span class="std std-ref">PackedByteArray</span></a></p></td>
+<td><p><a class="reference internal" href="#class-fontfile-property-data"><span class="std std-ref">data</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">PackedByteArray()</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-fontfile-property-disable-embedded-bitmaps"><span class="std std-ref">disable_embedded_bitmaps</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-fontfile-property-fixed-size"><span class="std std-ref">fixed_size</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_textserver.html#enum-textserver-fixedsizescalemode"><span class="std std-ref">FixedSizeScaleMode</span></a></p></td>
+<td><p><a class="reference internal" href="#class-fontfile-property-fixed-size-scale-mode"><span class="std std-ref">fixed_size_scale_mode</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a></p></td>
+<td><p><a class="reference internal" href="#class-fontfile-property-font-name"><span class="std std-ref">font_name</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&quot;&quot;</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-fontfile-property-font-stretch"><span class="std std-ref">font_stretch</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">100</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="This value is an integer composed as a bitmask of the following flags.">BitField</abbr>[<a class="reference internal" href="class_textserver.html#enum-textserver-fontstyle"><span class="std std-ref">FontStyle</span></a>]</p></td>
+<td><p><a class="reference internal" href="#class-fontfile-property-font-style"><span class="std std-ref">font_style</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-fontfile-property-font-weight"><span class="std std-ref">font_weight</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">400</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-fontfile-property-force-autohinter"><span class="std std-ref">force_autohinter</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-fontfile-property-generate-mipmaps"><span class="std std-ref">generate_mipmaps</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_textserver.html#enum-textserver-hinting"><span class="std std-ref">Hinting</span></a></p></td>
+<td><p><a class="reference internal" href="#class-fontfile-property-hinting"><span class="std std-ref">hinting</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">1</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-fontfile-property-keep-rounding-remainders"><span class="std std-ref">keep_rounding_remainders</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-fontfile-property-modulate-color-glyphs"><span class="std std-ref">modulate_color_glyphs</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-fontfile-property-msdf-pixel-range"><span class="std std-ref">msdf_pixel_range</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">16</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-fontfile-property-msdf-size"><span class="std std-ref">msdf_size</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">48</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-fontfile-property-multichannel-signed-distance-field"><span class="std std-ref">multichannel_signed_distance_field</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_dictionary.html#class-dictionary"><span class="std std-ref">Dictionary</span></a></p></td>
+<td><p><a class="reference internal" href="#class-fontfile-property-opentype-feature-overrides"><span class="std std-ref">opentype_feature_overrides</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">{}</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-fontfile-property-oversampling"><span class="std std-ref">oversampling</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0.0</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a></p></td>
+<td><p><a class="reference internal" href="#class-fontfile-property-style-name"><span class="std std-ref">style_name</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&quot;&quot;</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_textserver.html#enum-textserver-subpixelpositioning"><span class="std std-ref">SubpixelPositioning</span></a></p></td>
+<td><p><a class="reference internal" href="#class-fontfile-property-subpixel-positioning"><span class="std std-ref">subpixel_positioning</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">1</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section class="classref-reftable-group" id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-fontfile-method-clear-cache"><span class="std std-ref">clear_cache</span></a>()</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-fontfile-method-clear-glyphs"><span class="std std-ref">clear_glyphs</span></a>(cache_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, size: <a class="reference internal" href="class_vector2i.html#class-vector2i"><span class="std std-ref">Vector2i</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-fontfile-method-clear-kerning-map"><span class="std std-ref">clear_kerning_map</span></a>(cache_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, size: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-fontfile-method-clear-size-cache"><span class="std std-ref">clear_size_cache</span></a>(cache_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-fontfile-method-clear-textures"><span class="std std-ref">clear_textures</span></a>(cache_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, size: <a class="reference internal" href="class_vector2i.html#class-vector2i"><span class="std std-ref">Vector2i</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-fontfile-method-get-cache-ascent"><span class="std std-ref">get_cache_ascent</span></a>(cache_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, size: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-fontfile-method-get-cache-count"><span class="std std-ref">get_cache_count</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-fontfile-method-get-cache-descent"><span class="std std-ref">get_cache_descent</span></a>(cache_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, size: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-fontfile-method-get-cache-scale"><span class="std std-ref">get_cache_scale</span></a>(cache_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, size: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-fontfile-method-get-cache-underline-position"><span class="std std-ref">get_cache_underline_position</span></a>(cache_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, size: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-fontfile-method-get-cache-underline-thickness"><span class="std std-ref">get_cache_underline_thickness</span></a>(cache_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, size: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-fontfile-method-get-char-from-glyph-index"><span class="std std-ref">get_char_from_glyph_index</span></a>(size: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, glyph_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-fontfile-method-get-embolden"><span class="std std-ref">get_embolden</span></a>(cache_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-fontfile-method-get-extra-baseline-offset"><span class="std std-ref">get_extra_baseline_offset</span></a>(cache_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-fontfile-method-get-extra-spacing"><span class="std std-ref">get_extra_spacing</span></a>(cache_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, spacing: <a class="reference internal" href="class_textserver.html#enum-textserver-spacingtype"><span class="std std-ref">SpacingType</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-fontfile-method-get-face-index"><span class="std std-ref">get_face_index</span></a>(cache_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a></p></td>
+<td><p><a class="reference internal" href="#class-fontfile-method-get-glyph-advance"><span class="std std-ref">get_glyph_advance</span></a>(cache_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, size: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, glyph: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-fontfile-method-get-glyph-index"><span class="std std-ref">get_glyph_index</span></a>(size: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, char: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, variation_selector: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_packedint32array.html#class-packedint32array"><span class="std std-ref">PackedInt32Array</span></a></p></td>
+<td><p><a class="reference internal" href="#class-fontfile-method-get-glyph-list"><span class="std std-ref">get_glyph_list</span></a>(cache_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, size: <a class="reference internal" href="class_vector2i.html#class-vector2i"><span class="std std-ref">Vector2i</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a></p></td>
+<td><p><a class="reference internal" href="#class-fontfile-method-get-glyph-offset"><span class="std std-ref">get_glyph_offset</span></a>(cache_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, size: <a class="reference internal" href="class_vector2i.html#class-vector2i"><span class="std std-ref">Vector2i</span></a>, glyph: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a></p></td>
+<td><p><a class="reference internal" href="#class-fontfile-method-get-glyph-size"><span class="std std-ref">get_glyph_size</span></a>(cache_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, size: <a class="reference internal" href="class_vector2i.html#class-vector2i"><span class="std std-ref">Vector2i</span></a>, glyph: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-fontfile-method-get-glyph-texture-idx"><span class="std std-ref">get_glyph_texture_idx</span></a>(cache_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, size: <a class="reference internal" href="class_vector2i.html#class-vector2i"><span class="std std-ref">Vector2i</span></a>, glyph: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_rect2.html#class-rect2"><span class="std std-ref">Rect2</span></a></p></td>
+<td><p><a class="reference internal" href="#class-fontfile-method-get-glyph-uv-rect"><span class="std std-ref">get_glyph_uv_rect</span></a>(cache_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, size: <a class="reference internal" href="class_vector2i.html#class-vector2i"><span class="std std-ref">Vector2i</span></a>, glyph: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a></p></td>
+<td><p><a class="reference internal" href="#class-fontfile-method-get-kerning"><span class="std std-ref">get_kerning</span></a>(cache_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, size: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, glyph_pair: <a class="reference internal" href="class_vector2i.html#class-vector2i"><span class="std std-ref">Vector2i</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_array.html#class-array"><span class="std std-ref">Array</span></a>[<a class="reference internal" href="class_vector2i.html#class-vector2i"><span class="std std-ref">Vector2i</span></a>]</p></td>
+<td><p><a class="reference internal" href="#class-fontfile-method-get-kerning-list"><span class="std std-ref">get_kerning_list</span></a>(cache_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, size: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-fontfile-method-get-language-support-override"><span class="std std-ref">get_language_support_override</span></a>(language: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_packedstringarray.html#class-packedstringarray"><span class="std std-ref">PackedStringArray</span></a></p></td>
+<td><p><a class="reference internal" href="#class-fontfile-method-get-language-support-overrides"><span class="std std-ref">get_language_support_overrides</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-fontfile-method-get-script-support-override"><span class="std std-ref">get_script_support_override</span></a>(script: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_packedstringarray.html#class-packedstringarray"><span class="std std-ref">PackedStringArray</span></a></p></td>
+<td><p><a class="reference internal" href="#class-fontfile-method-get-script-support-overrides"><span class="std std-ref">get_script_support_overrides</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_array.html#class-array"><span class="std std-ref">Array</span></a>[<a class="reference internal" href="class_vector2i.html#class-vector2i"><span class="std std-ref">Vector2i</span></a>]</p></td>
+<td><p><a class="reference internal" href="#class-fontfile-method-get-size-cache-list"><span class="std std-ref">get_size_cache_list</span></a>(cache_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-fontfile-method-get-texture-count"><span class="std std-ref">get_texture_count</span></a>(cache_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, size: <a class="reference internal" href="class_vector2i.html#class-vector2i"><span class="std std-ref">Vector2i</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_image.html#class-image"><span class="std std-ref">Image</span></a></p></td>
+<td><p><a class="reference internal" href="#class-fontfile-method-get-texture-image"><span class="std std-ref">get_texture_image</span></a>(cache_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, size: <a class="reference internal" href="class_vector2i.html#class-vector2i"><span class="std std-ref">Vector2i</span></a>, texture_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_packedint32array.html#class-packedint32array"><span class="std std-ref">PackedInt32Array</span></a></p></td>
+<td><p><a class="reference internal" href="#class-fontfile-method-get-texture-offsets"><span class="std std-ref">get_texture_offsets</span></a>(cache_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, size: <a class="reference internal" href="class_vector2i.html#class-vector2i"><span class="std std-ref">Vector2i</span></a>, texture_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_transform2d.html#class-transform2d"><span class="std std-ref">Transform2D</span></a></p></td>
+<td><p><a class="reference internal" href="#class-fontfile-method-get-transform"><span class="std std-ref">get_transform</span></a>(cache_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_dictionary.html#class-dictionary"><span class="std std-ref">Dictionary</span></a></p></td>
+<td><p><a class="reference internal" href="#class-fontfile-method-get-variation-coordinates"><span class="std std-ref">get_variation_coordinates</span></a>(cache_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_%40globalscope.html#enum-globalscope-error"><span class="std std-ref">Error</span></a></p></td>
+<td><p><a class="reference internal" href="#class-fontfile-method-load-bitmap-font"><span class="std std-ref">load_bitmap_font</span></a>(path: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_%40globalscope.html#enum-globalscope-error"><span class="std std-ref">Error</span></a></p></td>
+<td><p><a class="reference internal" href="#class-fontfile-method-load-dynamic-font"><span class="std std-ref">load_dynamic_font</span></a>(path: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-fontfile-method-remove-cache"><span class="std std-ref">remove_cache</span></a>(cache_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-fontfile-method-remove-glyph"><span class="std std-ref">remove_glyph</span></a>(cache_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, size: <a class="reference internal" href="class_vector2i.html#class-vector2i"><span class="std std-ref">Vector2i</span></a>, glyph: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-fontfile-method-remove-kerning"><span class="std std-ref">remove_kerning</span></a>(cache_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, size: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, glyph_pair: <a class="reference internal" href="class_vector2i.html#class-vector2i"><span class="std std-ref">Vector2i</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-fontfile-method-remove-language-support-override"><span class="std std-ref">remove_language_support_override</span></a>(language: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-fontfile-method-remove-script-support-override"><span class="std std-ref">remove_script_support_override</span></a>(script: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-fontfile-method-remove-size-cache"><span class="std std-ref">remove_size_cache</span></a>(cache_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, size: <a class="reference internal" href="class_vector2i.html#class-vector2i"><span class="std std-ref">Vector2i</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-fontfile-method-remove-texture"><span class="std std-ref">remove_texture</span></a>(cache_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, size: <a class="reference internal" href="class_vector2i.html#class-vector2i"><span class="std std-ref">Vector2i</span></a>, texture_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-fontfile-method-render-glyph"><span class="std std-ref">render_glyph</span></a>(cache_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, size: <a class="reference internal" href="class_vector2i.html#class-vector2i"><span class="std std-ref">Vector2i</span></a>, index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-fontfile-method-render-range"><span class="std std-ref">render_range</span></a>(cache_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, size: <a class="reference internal" href="class_vector2i.html#class-vector2i"><span class="std std-ref">Vector2i</span></a>, start: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, end: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-fontfile-method-set-cache-ascent"><span class="std std-ref">set_cache_ascent</span></a>(cache_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, size: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, ascent: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-fontfile-method-set-cache-descent"><span class="std std-ref">set_cache_descent</span></a>(cache_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, size: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, descent: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-fontfile-method-set-cache-scale"><span class="std std-ref">set_cache_scale</span></a>(cache_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, size: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, scale: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-fontfile-method-set-cache-underline-position"><span class="std std-ref">set_cache_underline_position</span></a>(cache_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, size: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, underline_position: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-fontfile-method-set-cache-underline-thickness"><span class="std std-ref">set_cache_underline_thickness</span></a>(cache_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, size: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, underline_thickness: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-fontfile-method-set-embolden"><span class="std std-ref">set_embolden</span></a>(cache_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, strength: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-fontfile-method-set-extra-baseline-offset"><span class="std std-ref">set_extra_baseline_offset</span></a>(cache_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, baseline_offset: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-fontfile-method-set-extra-spacing"><span class="std std-ref">set_extra_spacing</span></a>(cache_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, spacing: <a class="reference internal" href="class_textserver.html#enum-textserver-spacingtype"><span class="std std-ref">SpacingType</span></a>, value: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-fontfile-method-set-face-index"><span class="std std-ref">set_face_index</span></a>(cache_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, face_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-fontfile-method-set-glyph-advance"><span class="std std-ref">set_glyph_advance</span></a>(cache_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, size: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, glyph: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, advance: <a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-fontfile-method-set-glyph-offset"><span class="std std-ref">set_glyph_offset</span></a>(cache_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, size: <a class="reference internal" href="class_vector2i.html#class-vector2i"><span class="std std-ref">Vector2i</span></a>, glyph: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, offset: <a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-fontfile-method-set-glyph-size"><span class="std std-ref">set_glyph_size</span></a>(cache_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, size: <a class="reference internal" href="class_vector2i.html#class-vector2i"><span class="std std-ref">Vector2i</span></a>, glyph: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, gl_size: <a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-fontfile-method-set-glyph-texture-idx"><span class="std std-ref">set_glyph_texture_idx</span></a>(cache_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, size: <a class="reference internal" href="class_vector2i.html#class-vector2i"><span class="std std-ref">Vector2i</span></a>, glyph: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, texture_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-fontfile-method-set-glyph-uv-rect"><span class="std std-ref">set_glyph_uv_rect</span></a>(cache_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, size: <a class="reference internal" href="class_vector2i.html#class-vector2i"><span class="std std-ref">Vector2i</span></a>, glyph: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, uv_rect: <a class="reference internal" href="class_rect2.html#class-rect2"><span class="std std-ref">Rect2</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-fontfile-method-set-kerning"><span class="std std-ref">set_kerning</span></a>(cache_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, size: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, glyph_pair: <a class="reference internal" href="class_vector2i.html#class-vector2i"><span class="std std-ref">Vector2i</span></a>, kerning: <a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-fontfile-method-set-language-support-override"><span class="std std-ref">set_language_support_override</span></a>(language: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, supported: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-fontfile-method-set-script-support-override"><span class="std std-ref">set_script_support_override</span></a>(script: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, supported: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-fontfile-method-set-texture-image"><span class="std std-ref">set_texture_image</span></a>(cache_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, size: <a class="reference internal" href="class_vector2i.html#class-vector2i"><span class="std std-ref">Vector2i</span></a>, texture_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, image: <a class="reference internal" href="class_image.html#class-image"><span class="std std-ref">Image</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-fontfile-method-set-texture-offsets"><span class="std std-ref">set_texture_offsets</span></a>(cache_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, size: <a class="reference internal" href="class_vector2i.html#class-vector2i"><span class="std std-ref">Vector2i</span></a>, texture_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, offset: <a class="reference internal" href="class_packedint32array.html#class-packedint32array"><span class="std std-ref">PackedInt32Array</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-fontfile-method-set-transform"><span class="std std-ref">set_transform</span></a>(cache_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, transform: <a class="reference internal" href="class_transform2d.html#class-transform2d"><span class="std std-ref">Transform2D</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-fontfile-method-set-variation-coordinates"><span class="std std-ref">set_variation_coordinates</span></a>(cache_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, variation_coordinates: <a class="reference internal" href="class_dictionary.html#class-dictionary"><span class="std std-ref">Dictionary</span></a>)</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="property-descriptions">
+<h2>Property Descriptions<a class="headerlink" href="#property-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-property" id="class-fontfile-property-allow-system-fallback"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>allow_system_fallback</strong> = <code class="docutils literal notranslate"><span class="pre">true</span></code> <a class="reference internal" href="#class-fontfile-property-allow-system-fallback"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_allow_system_fallback</strong>(value: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_allow_system_fallback</strong>()</p></li>
+</ul>
+<p>If set to <code class="docutils literal notranslate"><span class="pre">true</span></code>, system fonts can be automatically used as fallbacks.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-fontfile-property-antialiasing"><a class="reference internal" href="class_textserver.html#enum-textserver-fontantialiasing"><span class="std std-ref">FontAntialiasing</span></a> <strong>antialiasing</strong> = <code class="docutils literal notranslate"><span class="pre">1</span></code> <a class="reference internal" href="#class-fontfile-property-antialiasing"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_antialiasing</strong>(value: <a class="reference internal" href="class_textserver.html#enum-textserver-fontantialiasing"><span class="std std-ref">FontAntialiasing</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_textserver.html#enum-textserver-fontantialiasing"><span class="std std-ref">FontAntialiasing</span></a> <strong>get_antialiasing</strong>()</p></li>
+</ul>
+<p>Font anti-aliasing mode.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-fontfile-property-data"><a class="reference internal" href="class_packedbytearray.html#class-packedbytearray"><span class="std std-ref">PackedByteArray</span></a> <strong>data</strong> = <code class="docutils literal notranslate"><span class="pre">PackedByteArray()</span></code> <a class="reference internal" href="#class-fontfile-property-data"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_data</strong>(value: <a class="reference internal" href="class_packedbytearray.html#class-packedbytearray"><span class="std std-ref">PackedByteArray</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_packedbytearray.html#class-packedbytearray"><span class="std std-ref">PackedByteArray</span></a> <strong>get_data</strong>()</p></li>
+</ul>
+<p>Contents of the dynamic font source file.</p>
+<p><strong>Note:</strong> The returned array is <em>copied</em> and any changes to it will not update the original property value. See <a class="reference internal" href="class_packedbytearray.html#class-packedbytearray"><span class="std std-ref">PackedByteArray</span></a> for more details.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-fontfile-property-disable-embedded-bitmaps"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>disable_embedded_bitmaps</strong> = <code class="docutils literal notranslate"><span class="pre">true</span></code> <a class="reference internal" href="#class-fontfile-property-disable-embedded-bitmaps"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_disable_embedded_bitmaps</strong>(value: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>get_disable_embedded_bitmaps</strong>()</p></li>
+</ul>
+<p>If set to <code class="docutils literal notranslate"><span class="pre">true</span></code>, embedded font bitmap loading is disabled (bitmap-only and color fonts ignore this property).</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-fontfile-property-fixed-size"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>fixed_size</strong> = <code class="docutils literal notranslate"><span class="pre">0</span></code> <a class="reference internal" href="#class-fontfile-property-fixed-size"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_fixed_size</strong>(value: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>get_fixed_size</strong>()</p></li>
+</ul>
+<p>Font size, used only for the bitmap fonts.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-fontfile-property-fixed-size-scale-mode"><a class="reference internal" href="class_textserver.html#enum-textserver-fixedsizescalemode"><span class="std std-ref">FixedSizeScaleMode</span></a> <strong>fixed_size_scale_mode</strong> = <code class="docutils literal notranslate"><span class="pre">0</span></code> <a class="reference internal" href="#class-fontfile-property-fixed-size-scale-mode"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_fixed_size_scale_mode</strong>(value: <a class="reference internal" href="class_textserver.html#enum-textserver-fixedsizescalemode"><span class="std std-ref">FixedSizeScaleMode</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_textserver.html#enum-textserver-fixedsizescalemode"><span class="std std-ref">FixedSizeScaleMode</span></a> <strong>get_fixed_size_scale_mode</strong>()</p></li>
+</ul>
+<p>Scaling mode, used only for the bitmap fonts with <a class="reference internal" href="#class-fontfile-property-fixed-size"><span class="std std-ref">fixed_size</span></a> greater than zero.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-fontfile-property-font-name"><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a> <strong>font_name</strong> = <code class="docutils literal notranslate"><span class="pre">&quot;&quot;</span></code> <a class="reference internal" href="#class-fontfile-property-font-name"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_font_name</strong>(value: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a> <strong>get_font_name</strong>()</p></li>
+</ul>
+<p>Font family name.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-fontfile-property-font-stretch"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>font_stretch</strong> = <code class="docutils literal notranslate"><span class="pre">100</span></code> <a class="reference internal" href="#class-fontfile-property-font-stretch"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_font_stretch</strong>(value: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>get_font_stretch</strong>()</p></li>
+</ul>
+<p>Font stretch amount, compared to a normal width. A percentage value between <code class="docutils literal notranslate"><span class="pre">50%</span></code> and <code class="docutils literal notranslate"><span class="pre">200%</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-fontfile-property-font-style"><abbr title="This value is an integer composed as a bitmask of the following flags.">BitField</abbr>[<a class="reference internal" href="class_textserver.html#enum-textserver-fontstyle"><span class="std std-ref">FontStyle</span></a>] <strong>font_style</strong> = <code class="docutils literal notranslate"><span class="pre">0</span></code> <a class="reference internal" href="#class-fontfile-property-font-style"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_font_style</strong>(value: <abbr title="This value is an integer composed as a bitmask of the following flags.">BitField</abbr>[<a class="reference internal" href="class_textserver.html#enum-textserver-fontstyle"><span class="std std-ref">FontStyle</span></a>])</p></li>
+<li><p><abbr title="This value is an integer composed as a bitmask of the following flags.">BitField</abbr>[<a class="reference internal" href="class_textserver.html#enum-textserver-fontstyle"><span class="std std-ref">FontStyle</span></a>] <strong>get_font_style</strong>()</p></li>
+</ul>
+<p>Font style flags.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-fontfile-property-font-weight"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>font_weight</strong> = <code class="docutils literal notranslate"><span class="pre">400</span></code> <a class="reference internal" href="#class-fontfile-property-font-weight"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_font_weight</strong>(value: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>get_font_weight</strong>()</p></li>
+</ul>
+<p>Weight (boldness) of the font. A value in the <code class="docutils literal notranslate"><span class="pre">100...999</span></code> range, normal font weight is <code class="docutils literal notranslate"><span class="pre">400</span></code>, bold font weight is <code class="docutils literal notranslate"><span class="pre">700</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-fontfile-property-force-autohinter"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>force_autohinter</strong> = <code class="docutils literal notranslate"><span class="pre">false</span></code> <a class="reference internal" href="#class-fontfile-property-force-autohinter"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_force_autohinter</strong>(value: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_force_autohinter</strong>()</p></li>
+</ul>
+<p>If set to <code class="docutils literal notranslate"><span class="pre">true</span></code>, auto-hinting is supported and preferred over font built-in hinting. Used by dynamic fonts only (MSDF fonts don’t support hinting).</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-fontfile-property-generate-mipmaps"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>generate_mipmaps</strong> = <code class="docutils literal notranslate"><span class="pre">false</span></code> <a class="reference internal" href="#class-fontfile-property-generate-mipmaps"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_generate_mipmaps</strong>(value: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>get_generate_mipmaps</strong>()</p></li>
+</ul>
+<p>If set to <code class="docutils literal notranslate"><span class="pre">true</span></code>, generate mipmaps for the font textures.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-fontfile-property-hinting"><a class="reference internal" href="class_textserver.html#enum-textserver-hinting"><span class="std std-ref">Hinting</span></a> <strong>hinting</strong> = <code class="docutils literal notranslate"><span class="pre">1</span></code> <a class="reference internal" href="#class-fontfile-property-hinting"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_hinting</strong>(value: <a class="reference internal" href="class_textserver.html#enum-textserver-hinting"><span class="std std-ref">Hinting</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_textserver.html#enum-textserver-hinting"><span class="std std-ref">Hinting</span></a> <strong>get_hinting</strong>()</p></li>
+</ul>
+<p>Font hinting mode. Used by dynamic fonts only.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-fontfile-property-keep-rounding-remainders"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>keep_rounding_remainders</strong> = <code class="docutils literal notranslate"><span class="pre">true</span></code> <a class="reference internal" href="#class-fontfile-property-keep-rounding-remainders"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_keep_rounding_remainders</strong>(value: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>get_keep_rounding_remainders</strong>()</p></li>
+</ul>
+<p>If set to <code class="docutils literal notranslate"><span class="pre">true</span></code>, when aligning glyphs to the pixel boundaries rounding remainders are accumulated to ensure more uniform glyph distribution. This setting has no effect if subpixel positioning is enabled.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-fontfile-property-modulate-color-glyphs"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>modulate_color_glyphs</strong> = <code class="docutils literal notranslate"><span class="pre">false</span></code> <a class="reference internal" href="#class-fontfile-property-modulate-color-glyphs"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_modulate_color_glyphs</strong>(value: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_modulate_color_glyphs</strong>()</p></li>
+</ul>
+<p>If set to <code class="docutils literal notranslate"><span class="pre">true</span></code>, color modulation is applied when drawing colored glyphs, otherwise it’s applied to the monochrome glyphs only.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-fontfile-property-msdf-pixel-range"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>msdf_pixel_range</strong> = <code class="docutils literal notranslate"><span class="pre">16</span></code> <a class="reference internal" href="#class-fontfile-property-msdf-pixel-range"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_msdf_pixel_range</strong>(value: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>get_msdf_pixel_range</strong>()</p></li>
+</ul>
+<p>The width of the range around the shape between the minimum and maximum representable signed distance. If using font outlines, <a class="reference internal" href="#class-fontfile-property-msdf-pixel-range"><span class="std std-ref">msdf_pixel_range</span></a> must be set to at least <em>twice</em> the size of the largest font outline. The default <a class="reference internal" href="#class-fontfile-property-msdf-pixel-range"><span class="std std-ref">msdf_pixel_range</span></a> value of <code class="docutils literal notranslate"><span class="pre">16</span></code> allows outline sizes up to <code class="docutils literal notranslate"><span class="pre">8</span></code> to look correct.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-fontfile-property-msdf-size"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>msdf_size</strong> = <code class="docutils literal notranslate"><span class="pre">48</span></code> <a class="reference internal" href="#class-fontfile-property-msdf-size"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_msdf_size</strong>(value: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>get_msdf_size</strong>()</p></li>
+</ul>
+<p>Source font size used to generate MSDF textures. Higher values allow for more precision, but are slower to render and require more memory. Only increase this value if you notice a visible lack of precision in glyph rendering.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-fontfile-property-multichannel-signed-distance-field"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>multichannel_signed_distance_field</strong> = <code class="docutils literal notranslate"><span class="pre">false</span></code> <a class="reference internal" href="#class-fontfile-property-multichannel-signed-distance-field"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_multichannel_signed_distance_field</strong>(value: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_multichannel_signed_distance_field</strong>()</p></li>
+</ul>
+<p>If set to <code class="docutils literal notranslate"><span class="pre">true</span></code>, glyphs of all sizes are rendered using single multichannel signed distance field (MSDF) generated from the dynamic font vector data. Since this approach does not rely on rasterizing the font every time its size changes, this allows for resizing the font in real-time without any performance penalty. Text will also not look grainy for <a class="reference internal" href="class_control.html#class-control"><span class="std std-ref">Control</span></a>s that are scaled down (or for <a class="reference internal" href="class_label3d.html#class-label3d"><span class="std std-ref">Label3D</span></a>s viewed from a long distance). As a downside, font hinting is not available with MSDF. The lack of font hinting may result in less crisp and less readable fonts at small sizes.</p>
+<p><strong>Note:</strong> If using font outlines, <a class="reference internal" href="#class-fontfile-property-msdf-pixel-range"><span class="std std-ref">msdf_pixel_range</span></a> must be set to at least <em>twice</em> the size of the largest font outline.</p>
+<p><strong>Note:</strong> MSDF font rendering does not render glyphs with overlapping shapes correctly. Overlapping shapes are not valid per the OpenType standard, but are still commonly found in many font files, especially those converted by Google Fonts. To avoid issues with overlapping glyphs, consider downloading the font file directly from the type foundry instead of relying on Google Fonts.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-fontfile-property-opentype-feature-overrides"><a class="reference internal" href="class_dictionary.html#class-dictionary"><span class="std std-ref">Dictionary</span></a> <strong>opentype_feature_overrides</strong> = <code class="docutils literal notranslate"><span class="pre">{}</span></code> <a class="reference internal" href="#class-fontfile-property-opentype-feature-overrides"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_opentype_feature_overrides</strong>(value: <a class="reference internal" href="class_dictionary.html#class-dictionary"><span class="std std-ref">Dictionary</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_dictionary.html#class-dictionary"><span class="std std-ref">Dictionary</span></a> <strong>get_opentype_feature_overrides</strong>()</p></li>
+</ul>
+<p>Font OpenType feature set override.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-fontfile-property-oversampling"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>oversampling</strong> = <code class="docutils literal notranslate"><span class="pre">0.0</span></code> <a class="reference internal" href="#class-fontfile-property-oversampling"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_oversampling</strong>(value: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>get_oversampling</strong>()</p></li>
+</ul>
+<p>If set to a positive value, overrides the oversampling factor of the viewport this font is used in. See <a class="reference internal" href="class_viewport.html#class-viewport-property-oversampling"><span class="std std-ref">Viewport.oversampling</span></a>. This value doesn’t override the <code class="docutils literal notranslate"><span class="pre">oversampling</span></code> parameter of <code class="docutils literal notranslate"><span class="pre">draw_*</span></code> methods.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-fontfile-property-style-name"><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a> <strong>style_name</strong> = <code class="docutils literal notranslate"><span class="pre">&quot;&quot;</span></code> <a class="reference internal" href="#class-fontfile-property-style-name"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_font_style_name</strong>(value: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a> <strong>get_font_style_name</strong>()</p></li>
+</ul>
+<p>Font style name.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-fontfile-property-subpixel-positioning"><a class="reference internal" href="class_textserver.html#enum-textserver-subpixelpositioning"><span class="std std-ref">SubpixelPositioning</span></a> <strong>subpixel_positioning</strong> = <code class="docutils literal notranslate"><span class="pre">1</span></code> <a class="reference internal" href="#class-fontfile-property-subpixel-positioning"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_subpixel_positioning</strong>(value: <a class="reference internal" href="class_textserver.html#enum-textserver-subpixelpositioning"><span class="std std-ref">SubpixelPositioning</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_textserver.html#enum-textserver-subpixelpositioning"><span class="std std-ref">SubpixelPositioning</span></a> <strong>get_subpixel_positioning</strong>()</p></li>
+</ul>
+<p>Font glyph subpixel positioning mode. Subpixel positioning provides shaper text and better kerning for smaller font sizes, at the cost of higher memory usage and lower font rasterization speed. Use <a class="reference internal" href="class_textserver.html#class-textserver-constant-subpixel-positioning-auto"><span class="std std-ref">TextServer.SUBPIXEL_POSITIONING_AUTO</span></a> to automatically enable it based on the font size.</p>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="method-descriptions">
+<h2>Method Descriptions<a class="headerlink" href="#method-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-method" id="class-fontfile-method-clear-cache"><abbr title="No return value.">void</abbr> <strong>clear_cache</strong>() <a class="reference internal" href="#class-fontfile-method-clear-cache"><span class="std std-ref">🔗</span></a></p>
+<p>Removes all font cache entries.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-fontfile-method-clear-glyphs"><abbr title="No return value.">void</abbr> <strong>clear_glyphs</strong>(cache_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, size: <a class="reference internal" href="class_vector2i.html#class-vector2i"><span class="std std-ref">Vector2i</span></a>) <a class="reference internal" href="#class-fontfile-method-clear-glyphs"><span class="std std-ref">🔗</span></a></p>
+<p>Removes all rendered glyph information from the cache entry.</p>
+<p><strong>Note:</strong> This function will not remove textures associated with the glyphs, use <a class="reference internal" href="#class-fontfile-method-remove-texture"><span class="std std-ref">remove_texture()</span></a> to remove them manually.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-fontfile-method-clear-kerning-map"><abbr title="No return value.">void</abbr> <strong>clear_kerning_map</strong>(cache_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, size: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <a class="reference internal" href="#class-fontfile-method-clear-kerning-map"><span class="std std-ref">🔗</span></a></p>
+<p>Removes all kerning overrides.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-fontfile-method-clear-size-cache"><abbr title="No return value.">void</abbr> <strong>clear_size_cache</strong>(cache_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <a class="reference internal" href="#class-fontfile-method-clear-size-cache"><span class="std std-ref">🔗</span></a></p>
+<p>Removes all font sizes from the cache entry.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-fontfile-method-clear-textures"><abbr title="No return value.">void</abbr> <strong>clear_textures</strong>(cache_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, size: <a class="reference internal" href="class_vector2i.html#class-vector2i"><span class="std std-ref">Vector2i</span></a>) <a class="reference internal" href="#class-fontfile-method-clear-textures"><span class="std std-ref">🔗</span></a></p>
+<p>Removes all textures from font cache entry.</p>
+<p><strong>Note:</strong> This function will not remove glyphs associated with the texture, use <a class="reference internal" href="#class-fontfile-method-remove-glyph"><span class="std std-ref">remove_glyph()</span></a> to remove them manually.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-fontfile-method-get-cache-ascent"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>get_cache_ascent</strong>(cache_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, size: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-fontfile-method-get-cache-ascent"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the font ascent (number of pixels above the baseline).</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-fontfile-method-get-cache-count"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>get_cache_count</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-fontfile-method-get-cache-count"><span class="std std-ref">🔗</span></a></p>
+<p>Returns number of the font cache entries.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-fontfile-method-get-cache-descent"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>get_cache_descent</strong>(cache_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, size: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-fontfile-method-get-cache-descent"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the font descent (number of pixels below the baseline).</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-fontfile-method-get-cache-scale"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>get_cache_scale</strong>(cache_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, size: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-fontfile-method-get-cache-scale"><span class="std std-ref">🔗</span></a></p>
+<p>Returns scaling factor of the color bitmap font.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-fontfile-method-get-cache-underline-position"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>get_cache_underline_position</strong>(cache_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, size: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-fontfile-method-get-cache-underline-position"><span class="std std-ref">🔗</span></a></p>
+<p>Returns pixel offset of the underline below the baseline.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-fontfile-method-get-cache-underline-thickness"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>get_cache_underline_thickness</strong>(cache_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, size: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-fontfile-method-get-cache-underline-thickness"><span class="std std-ref">🔗</span></a></p>
+<p>Returns thickness of the underline in pixels.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-fontfile-method-get-char-from-glyph-index"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>get_char_from_glyph_index</strong>(size: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, glyph_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-fontfile-method-get-char-from-glyph-index"><span class="std std-ref">🔗</span></a></p>
+<p>Returns character code associated with <code class="docutils literal notranslate"><span class="pre">glyph_index</span></code>, or <code class="docutils literal notranslate"><span class="pre">0</span></code> if <code class="docutils literal notranslate"><span class="pre">glyph_index</span></code> is invalid. See <a class="reference internal" href="#class-fontfile-method-get-glyph-index"><span class="std std-ref">get_glyph_index()</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-fontfile-method-get-embolden"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>get_embolden</strong>(cache_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-fontfile-method-get-embolden"><span class="std std-ref">🔗</span></a></p>
+<p>Returns embolden strength, if is not equal to zero, emboldens the font outlines. Negative values reduce the outline thickness.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-fontfile-method-get-extra-baseline-offset"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>get_extra_baseline_offset</strong>(cache_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-fontfile-method-get-extra-baseline-offset"><span class="std std-ref">🔗</span></a></p>
+<p>Returns extra baseline offset (as a fraction of font height).</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-fontfile-method-get-extra-spacing"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>get_extra_spacing</strong>(cache_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, spacing: <a class="reference internal" href="class_textserver.html#enum-textserver-spacingtype"><span class="std std-ref">SpacingType</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-fontfile-method-get-extra-spacing"><span class="std std-ref">🔗</span></a></p>
+<p>Returns spacing for <code class="docutils literal notranslate"><span class="pre">spacing</span></code> in pixels (not relative to the font size).</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-fontfile-method-get-face-index"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>get_face_index</strong>(cache_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-fontfile-method-get-face-index"><span class="std std-ref">🔗</span></a></p>
+<p>Returns an active face index in the TrueType / OpenType collection.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-fontfile-method-get-glyph-advance"><a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a> <strong>get_glyph_advance</strong>(cache_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, size: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, glyph: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-fontfile-method-get-glyph-advance"><span class="std std-ref">🔗</span></a></p>
+<p>Returns glyph advance (offset of the next glyph).</p>
+<p><strong>Note:</strong> Advance for glyphs outlines is the same as the base glyph advance and is not saved.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-fontfile-method-get-glyph-index"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>get_glyph_index</strong>(size: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, char: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, variation_selector: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-fontfile-method-get-glyph-index"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the glyph index of a <code class="docutils literal notranslate"><span class="pre">char</span></code>, optionally modified by the <code class="docutils literal notranslate"><span class="pre">variation_selector</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-fontfile-method-get-glyph-list"><a class="reference internal" href="class_packedint32array.html#class-packedint32array"><span class="std std-ref">PackedInt32Array</span></a> <strong>get_glyph_list</strong>(cache_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, size: <a class="reference internal" href="class_vector2i.html#class-vector2i"><span class="std std-ref">Vector2i</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-fontfile-method-get-glyph-list"><span class="std std-ref">🔗</span></a></p>
+<p>Returns list of rendered glyphs in the cache entry.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-fontfile-method-get-glyph-offset"><a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a> <strong>get_glyph_offset</strong>(cache_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, size: <a class="reference internal" href="class_vector2i.html#class-vector2i"><span class="std std-ref">Vector2i</span></a>, glyph: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-fontfile-method-get-glyph-offset"><span class="std std-ref">🔗</span></a></p>
+<p>Returns glyph offset from the baseline.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-fontfile-method-get-glyph-size"><a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a> <strong>get_glyph_size</strong>(cache_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, size: <a class="reference internal" href="class_vector2i.html#class-vector2i"><span class="std std-ref">Vector2i</span></a>, glyph: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-fontfile-method-get-glyph-size"><span class="std std-ref">🔗</span></a></p>
+<p>Returns glyph size.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-fontfile-method-get-glyph-texture-idx"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>get_glyph_texture_idx</strong>(cache_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, size: <a class="reference internal" href="class_vector2i.html#class-vector2i"><span class="std std-ref">Vector2i</span></a>, glyph: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-fontfile-method-get-glyph-texture-idx"><span class="std std-ref">🔗</span></a></p>
+<p>Returns index of the cache texture containing the glyph.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-fontfile-method-get-glyph-uv-rect"><a class="reference internal" href="class_rect2.html#class-rect2"><span class="std std-ref">Rect2</span></a> <strong>get_glyph_uv_rect</strong>(cache_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, size: <a class="reference internal" href="class_vector2i.html#class-vector2i"><span class="std std-ref">Vector2i</span></a>, glyph: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-fontfile-method-get-glyph-uv-rect"><span class="std std-ref">🔗</span></a></p>
+<p>Returns rectangle in the cache texture containing the glyph.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-fontfile-method-get-kerning"><a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a> <strong>get_kerning</strong>(cache_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, size: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, glyph_pair: <a class="reference internal" href="class_vector2i.html#class-vector2i"><span class="std std-ref">Vector2i</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-fontfile-method-get-kerning"><span class="std std-ref">🔗</span></a></p>
+<p>Returns kerning for the pair of glyphs.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-fontfile-method-get-kerning-list"><a class="reference internal" href="class_array.html#class-array"><span class="std std-ref">Array</span></a>[<a class="reference internal" href="class_vector2i.html#class-vector2i"><span class="std std-ref">Vector2i</span></a>] <strong>get_kerning_list</strong>(cache_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, size: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-fontfile-method-get-kerning-list"><span class="std std-ref">🔗</span></a></p>
+<p>Returns list of the kerning overrides.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-fontfile-method-get-language-support-override"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>get_language_support_override</strong>(language: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-fontfile-method-get-language-support-override"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if support override is enabled for the <code class="docutils literal notranslate"><span class="pre">language</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-fontfile-method-get-language-support-overrides"><a class="reference internal" href="class_packedstringarray.html#class-packedstringarray"><span class="std std-ref">PackedStringArray</span></a> <strong>get_language_support_overrides</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-fontfile-method-get-language-support-overrides"><span class="std std-ref">🔗</span></a></p>
+<p>Returns list of language support overrides.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-fontfile-method-get-script-support-override"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>get_script_support_override</strong>(script: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-fontfile-method-get-script-support-override"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if support override is enabled for the <code class="docutils literal notranslate"><span class="pre">script</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-fontfile-method-get-script-support-overrides"><a class="reference internal" href="class_packedstringarray.html#class-packedstringarray"><span class="std std-ref">PackedStringArray</span></a> <strong>get_script_support_overrides</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-fontfile-method-get-script-support-overrides"><span class="std std-ref">🔗</span></a></p>
+<p>Returns list of script support overrides.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-fontfile-method-get-size-cache-list"><a class="reference internal" href="class_array.html#class-array"><span class="std std-ref">Array</span></a>[<a class="reference internal" href="class_vector2i.html#class-vector2i"><span class="std std-ref">Vector2i</span></a>] <strong>get_size_cache_list</strong>(cache_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-fontfile-method-get-size-cache-list"><span class="std std-ref">🔗</span></a></p>
+<p>Returns list of the font sizes in the cache. Each size is <a class="reference internal" href="class_vector2i.html#class-vector2i"><span class="std std-ref">Vector2i</span></a> with font size and outline size.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-fontfile-method-get-texture-count"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>get_texture_count</strong>(cache_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, size: <a class="reference internal" href="class_vector2i.html#class-vector2i"><span class="std std-ref">Vector2i</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-fontfile-method-get-texture-count"><span class="std std-ref">🔗</span></a></p>
+<p>Returns number of textures used by font cache entry.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-fontfile-method-get-texture-image"><a class="reference internal" href="class_image.html#class-image"><span class="std std-ref">Image</span></a> <strong>get_texture_image</strong>(cache_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, size: <a class="reference internal" href="class_vector2i.html#class-vector2i"><span class="std std-ref">Vector2i</span></a>, texture_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-fontfile-method-get-texture-image"><span class="std std-ref">🔗</span></a></p>
+<p>Returns a copy of the font cache texture image.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-fontfile-method-get-texture-offsets"><a class="reference internal" href="class_packedint32array.html#class-packedint32array"><span class="std std-ref">PackedInt32Array</span></a> <strong>get_texture_offsets</strong>(cache_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, size: <a class="reference internal" href="class_vector2i.html#class-vector2i"><span class="std std-ref">Vector2i</span></a>, texture_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-fontfile-method-get-texture-offsets"><span class="std std-ref">🔗</span></a></p>
+<p>Returns a copy of the array containing glyph packing data.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-fontfile-method-get-transform"><a class="reference internal" href="class_transform2d.html#class-transform2d"><span class="std std-ref">Transform2D</span></a> <strong>get_transform</strong>(cache_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-fontfile-method-get-transform"><span class="std std-ref">🔗</span></a></p>
+<p>Returns 2D transform, applied to the font outlines, can be used for slanting, flipping and rotating glyphs.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-fontfile-method-get-variation-coordinates"><a class="reference internal" href="class_dictionary.html#class-dictionary"><span class="std std-ref">Dictionary</span></a> <strong>get_variation_coordinates</strong>(cache_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-fontfile-method-get-variation-coordinates"><span class="std std-ref">🔗</span></a></p>
+<p>Returns variation coordinates for the specified font cache entry. See <a class="reference internal" href="class_font.html#class-font-method-get-supported-variation-list"><span class="std std-ref">Font.get_supported_variation_list()</span></a> for more info.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-fontfile-method-load-bitmap-font"><a class="reference internal" href="class_%40globalscope.html#enum-globalscope-error"><span class="std std-ref">Error</span></a> <strong>load_bitmap_font</strong>(path: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <a class="reference internal" href="#class-fontfile-method-load-bitmap-font"><span class="std std-ref">🔗</span></a></p>
+<p>Loads an AngelCode BMFont (.fnt, .font) bitmap font from file <code class="docutils literal notranslate"><span class="pre">path</span></code>.</p>
+<p><strong>Warning:</strong> This method should only be used in the editor or in cases when you need to load external fonts at run-time, such as fonts located at the <code class="docutils literal notranslate"><span class="pre">user://</span></code> directory.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-fontfile-method-load-dynamic-font"><a class="reference internal" href="class_%40globalscope.html#enum-globalscope-error"><span class="std std-ref">Error</span></a> <strong>load_dynamic_font</strong>(path: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <a class="reference internal" href="#class-fontfile-method-load-dynamic-font"><span class="std std-ref">🔗</span></a></p>
+<p>Loads a TrueType (.ttf), OpenType (.otf), WOFF (.woff), WOFF2 (.woff2) or Type 1 (.pfb, .pfm) dynamic font from file <code class="docutils literal notranslate"><span class="pre">path</span></code>.</p>
+<p><strong>Warning:</strong> This method should only be used in the editor or in cases when you need to load external fonts at run-time, such as fonts located at the <code class="docutils literal notranslate"><span class="pre">user://</span></code> directory.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-fontfile-method-remove-cache"><abbr title="No return value.">void</abbr> <strong>remove_cache</strong>(cache_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <a class="reference internal" href="#class-fontfile-method-remove-cache"><span class="std std-ref">🔗</span></a></p>
+<p>Removes specified font cache entry.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-fontfile-method-remove-glyph"><abbr title="No return value.">void</abbr> <strong>remove_glyph</strong>(cache_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, size: <a class="reference internal" href="class_vector2i.html#class-vector2i"><span class="std std-ref">Vector2i</span></a>, glyph: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <a class="reference internal" href="#class-fontfile-method-remove-glyph"><span class="std std-ref">🔗</span></a></p>
+<p>Removes specified rendered glyph information from the cache entry.</p>
+<p><strong>Note:</strong> This function will not remove textures associated with the glyphs, use <a class="reference internal" href="#class-fontfile-method-remove-texture"><span class="std std-ref">remove_texture()</span></a> to remove them manually.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-fontfile-method-remove-kerning"><abbr title="No return value.">void</abbr> <strong>remove_kerning</strong>(cache_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, size: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, glyph_pair: <a class="reference internal" href="class_vector2i.html#class-vector2i"><span class="std std-ref">Vector2i</span></a>) <a class="reference internal" href="#class-fontfile-method-remove-kerning"><span class="std std-ref">🔗</span></a></p>
+<p>Removes kerning override for the pair of glyphs.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-fontfile-method-remove-language-support-override"><abbr title="No return value.">void</abbr> <strong>remove_language_support_override</strong>(language: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <a class="reference internal" href="#class-fontfile-method-remove-language-support-override"><span class="std std-ref">🔗</span></a></p>
+<p>Remove language support override.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-fontfile-method-remove-script-support-override"><abbr title="No return value.">void</abbr> <strong>remove_script_support_override</strong>(script: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <a class="reference internal" href="#class-fontfile-method-remove-script-support-override"><span class="std std-ref">🔗</span></a></p>
+<p>Removes script support override.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-fontfile-method-remove-size-cache"><abbr title="No return value.">void</abbr> <strong>remove_size_cache</strong>(cache_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, size: <a class="reference internal" href="class_vector2i.html#class-vector2i"><span class="std std-ref">Vector2i</span></a>) <a class="reference internal" href="#class-fontfile-method-remove-size-cache"><span class="std std-ref">🔗</span></a></p>
+<p>Removes specified font size from the cache entry.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-fontfile-method-remove-texture"><abbr title="No return value.">void</abbr> <strong>remove_texture</strong>(cache_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, size: <a class="reference internal" href="class_vector2i.html#class-vector2i"><span class="std std-ref">Vector2i</span></a>, texture_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <a class="reference internal" href="#class-fontfile-method-remove-texture"><span class="std std-ref">🔗</span></a></p>
+<p>Removes specified texture from the cache entry.</p>
+<p><strong>Note:</strong> This function will not remove glyphs associated with the texture. Remove them manually using <a class="reference internal" href="#class-fontfile-method-remove-glyph"><span class="std std-ref">remove_glyph()</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-fontfile-method-render-glyph"><abbr title="No return value.">void</abbr> <strong>render_glyph</strong>(cache_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, size: <a class="reference internal" href="class_vector2i.html#class-vector2i"><span class="std std-ref">Vector2i</span></a>, index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <a class="reference internal" href="#class-fontfile-method-render-glyph"><span class="std std-ref">🔗</span></a></p>
+<p>Renders specified glyph to the font cache texture.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-fontfile-method-render-range"><abbr title="No return value.">void</abbr> <strong>render_range</strong>(cache_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, size: <a class="reference internal" href="class_vector2i.html#class-vector2i"><span class="std std-ref">Vector2i</span></a>, start: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, end: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <a class="reference internal" href="#class-fontfile-method-render-range"><span class="std std-ref">🔗</span></a></p>
+<p>Renders the range of characters to the font cache texture.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-fontfile-method-set-cache-ascent"><abbr title="No return value.">void</abbr> <strong>set_cache_ascent</strong>(cache_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, size: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, ascent: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>) <a class="reference internal" href="#class-fontfile-method-set-cache-ascent"><span class="std std-ref">🔗</span></a></p>
+<p>Sets the font ascent (number of pixels above the baseline).</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-fontfile-method-set-cache-descent"><abbr title="No return value.">void</abbr> <strong>set_cache_descent</strong>(cache_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, size: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, descent: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>) <a class="reference internal" href="#class-fontfile-method-set-cache-descent"><span class="std std-ref">🔗</span></a></p>
+<p>Sets the font descent (number of pixels below the baseline).</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-fontfile-method-set-cache-scale"><abbr title="No return value.">void</abbr> <strong>set_cache_scale</strong>(cache_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, size: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, scale: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>) <a class="reference internal" href="#class-fontfile-method-set-cache-scale"><span class="std std-ref">🔗</span></a></p>
+<p>Sets scaling factor of the color bitmap font.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-fontfile-method-set-cache-underline-position"><abbr title="No return value.">void</abbr> <strong>set_cache_underline_position</strong>(cache_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, size: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, underline_position: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>) <a class="reference internal" href="#class-fontfile-method-set-cache-underline-position"><span class="std std-ref">🔗</span></a></p>
+<p>Sets pixel offset of the underline below the baseline.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-fontfile-method-set-cache-underline-thickness"><abbr title="No return value.">void</abbr> <strong>set_cache_underline_thickness</strong>(cache_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, size: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, underline_thickness: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>) <a class="reference internal" href="#class-fontfile-method-set-cache-underline-thickness"><span class="std std-ref">🔗</span></a></p>
+<p>Sets thickness of the underline in pixels.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-fontfile-method-set-embolden"><abbr title="No return value.">void</abbr> <strong>set_embolden</strong>(cache_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, strength: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>) <a class="reference internal" href="#class-fontfile-method-set-embolden"><span class="std std-ref">🔗</span></a></p>
+<p>Sets embolden strength, if is not equal to zero, emboldens the font outlines. Negative values reduce the outline thickness.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-fontfile-method-set-extra-baseline-offset"><abbr title="No return value.">void</abbr> <strong>set_extra_baseline_offset</strong>(cache_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, baseline_offset: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>) <a class="reference internal" href="#class-fontfile-method-set-extra-baseline-offset"><span class="std std-ref">🔗</span></a></p>
+<p>Sets extra baseline offset (as a fraction of font height).</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-fontfile-method-set-extra-spacing"><abbr title="No return value.">void</abbr> <strong>set_extra_spacing</strong>(cache_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, spacing: <a class="reference internal" href="class_textserver.html#enum-textserver-spacingtype"><span class="std std-ref">SpacingType</span></a>, value: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <a class="reference internal" href="#class-fontfile-method-set-extra-spacing"><span class="std std-ref">🔗</span></a></p>
+<p>Sets the spacing for <code class="docutils literal notranslate"><span class="pre">spacing</span></code> to <code class="docutils literal notranslate"><span class="pre">value</span></code> in pixels (not relative to the font size).</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-fontfile-method-set-face-index"><abbr title="No return value.">void</abbr> <strong>set_face_index</strong>(cache_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, face_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <a class="reference internal" href="#class-fontfile-method-set-face-index"><span class="std std-ref">🔗</span></a></p>
+<p>Sets an active face index in the TrueType / OpenType collection.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-fontfile-method-set-glyph-advance"><abbr title="No return value.">void</abbr> <strong>set_glyph_advance</strong>(cache_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, size: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, glyph: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, advance: <a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a>) <a class="reference internal" href="#class-fontfile-method-set-glyph-advance"><span class="std std-ref">🔗</span></a></p>
+<p>Sets glyph advance (offset of the next glyph).</p>
+<p><strong>Note:</strong> Advance for glyphs outlines is the same as the base glyph advance and is not saved.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-fontfile-method-set-glyph-offset"><abbr title="No return value.">void</abbr> <strong>set_glyph_offset</strong>(cache_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, size: <a class="reference internal" href="class_vector2i.html#class-vector2i"><span class="std std-ref">Vector2i</span></a>, glyph: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, offset: <a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a>) <a class="reference internal" href="#class-fontfile-method-set-glyph-offset"><span class="std std-ref">🔗</span></a></p>
+<p>Sets glyph offset from the baseline.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-fontfile-method-set-glyph-size"><abbr title="No return value.">void</abbr> <strong>set_glyph_size</strong>(cache_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, size: <a class="reference internal" href="class_vector2i.html#class-vector2i"><span class="std std-ref">Vector2i</span></a>, glyph: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, gl_size: <a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a>) <a class="reference internal" href="#class-fontfile-method-set-glyph-size"><span class="std std-ref">🔗</span></a></p>
+<p>Sets glyph size.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-fontfile-method-set-glyph-texture-idx"><abbr title="No return value.">void</abbr> <strong>set_glyph_texture_idx</strong>(cache_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, size: <a class="reference internal" href="class_vector2i.html#class-vector2i"><span class="std std-ref">Vector2i</span></a>, glyph: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, texture_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <a class="reference internal" href="#class-fontfile-method-set-glyph-texture-idx"><span class="std std-ref">🔗</span></a></p>
+<p>Sets index of the cache texture containing the glyph.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-fontfile-method-set-glyph-uv-rect"><abbr title="No return value.">void</abbr> <strong>set_glyph_uv_rect</strong>(cache_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, size: <a class="reference internal" href="class_vector2i.html#class-vector2i"><span class="std std-ref">Vector2i</span></a>, glyph: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, uv_rect: <a class="reference internal" href="class_rect2.html#class-rect2"><span class="std std-ref">Rect2</span></a>) <a class="reference internal" href="#class-fontfile-method-set-glyph-uv-rect"><span class="std std-ref">🔗</span></a></p>
+<p>Sets rectangle in the cache texture containing the glyph.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-fontfile-method-set-kerning"><abbr title="No return value.">void</abbr> <strong>set_kerning</strong>(cache_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, size: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, glyph_pair: <a class="reference internal" href="class_vector2i.html#class-vector2i"><span class="std std-ref">Vector2i</span></a>, kerning: <a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a>) <a class="reference internal" href="#class-fontfile-method-set-kerning"><span class="std std-ref">🔗</span></a></p>
+<p>Sets kerning for the pair of glyphs.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-fontfile-method-set-language-support-override"><abbr title="No return value.">void</abbr> <strong>set_language_support_override</strong>(language: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, supported: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>) <a class="reference internal" href="#class-fontfile-method-set-language-support-override"><span class="std std-ref">🔗</span></a></p>
+<p>Adds override for <a class="reference internal" href="class_font.html#class-font-method-is-language-supported"><span class="std std-ref">Font.is_language_supported()</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-fontfile-method-set-script-support-override"><abbr title="No return value.">void</abbr> <strong>set_script_support_override</strong>(script: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, supported: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>) <a class="reference internal" href="#class-fontfile-method-set-script-support-override"><span class="std std-ref">🔗</span></a></p>
+<p>Adds override for <a class="reference internal" href="class_font.html#class-font-method-is-script-supported"><span class="std std-ref">Font.is_script_supported()</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-fontfile-method-set-texture-image"><abbr title="No return value.">void</abbr> <strong>set_texture_image</strong>(cache_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, size: <a class="reference internal" href="class_vector2i.html#class-vector2i"><span class="std std-ref">Vector2i</span></a>, texture_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, image: <a class="reference internal" href="class_image.html#class-image"><span class="std std-ref">Image</span></a>) <a class="reference internal" href="#class-fontfile-method-set-texture-image"><span class="std std-ref">🔗</span></a></p>
+<p>Sets font cache texture image.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-fontfile-method-set-texture-offsets"><abbr title="No return value.">void</abbr> <strong>set_texture_offsets</strong>(cache_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, size: <a class="reference internal" href="class_vector2i.html#class-vector2i"><span class="std std-ref">Vector2i</span></a>, texture_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, offset: <a class="reference internal" href="class_packedint32array.html#class-packedint32array"><span class="std std-ref">PackedInt32Array</span></a>) <a class="reference internal" href="#class-fontfile-method-set-texture-offsets"><span class="std std-ref">🔗</span></a></p>
+<p>Sets array containing glyph packing data.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-fontfile-method-set-transform"><abbr title="No return value.">void</abbr> <strong>set_transform</strong>(cache_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, transform: <a class="reference internal" href="class_transform2d.html#class-transform2d"><span class="std std-ref">Transform2D</span></a>) <a class="reference internal" href="#class-fontfile-method-set-transform"><span class="std std-ref">🔗</span></a></p>
+<p>Sets 2D transform, applied to the font outlines, can be used for slanting, flipping, and rotating glyphs.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-fontfile-method-set-variation-coordinates"><abbr title="No return value.">void</abbr> <strong>set_variation_coordinates</strong>(cache_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, variation_coordinates: <a class="reference internal" href="class_dictionary.html#class-dictionary"><span class="std std-ref">Dictionary</span></a>) <a class="reference internal" href="#class-fontfile-method-set-variation-coordinates"><span class="std std-ref">🔗</span></a></p>
+<p>Sets variation coordinates for the specified font cache entry. See <a class="reference internal" href="class_font.html#class-font-method-get-supported-variation-list"><span class="std std-ref">Font.get_supported_variation_list()</span></a> for more info.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, MUmarShahbaz.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

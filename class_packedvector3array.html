@@ -1,0 +1,360 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PackedVector3Array &mdash; RPG Components 2D 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=d45e8c67"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            RPG Components 2D
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">PackedVector3Array</a><ul>
+<li><a class="reference internal" href="#description">Description</a></li>
+<li><a class="reference internal" href="#constructors">Constructors</a></li>
+<li><a class="reference internal" href="#methods">Methods</a></li>
+<li><a class="reference internal" href="#operators">Operators</a></li>
+<li><a class="reference internal" href="#constructor-descriptions">Constructor Descriptions</a></li>
+<li><a class="reference internal" href="#method-descriptions">Method Descriptions</a></li>
+<li><a class="reference internal" href="#operator-descriptions">Operator Descriptions</a></li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">RPG Components 2D</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">PackedVector3Array</li>
+      <li class="wy-breadcrumbs-aside">
+              <!-- User defined GitHub URL -->
+              <a href="hide" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="packedvector3array">
+<span id="class-packedvector3array"></span><h1>PackedVector3Array<a class="headerlink" href="#packedvector3array" title="Link to this heading"></a></h1>
+<p>A packed array of <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>s.</p>
+<section class="classref-introduction-group" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
+<p>An array specifically designed to hold <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>. Packs data tightly, so it saves memory for large array sizes.</p>
+<p><strong>Differences between packed arrays, typed arrays, and untyped arrays:</strong> Packed arrays are generally faster to iterate on and modify compared to a typed array of the same type (e.g. <strong>PackedVector3Array</strong> versus <code class="docutils literal notranslate"><span class="pre">Array[Vector3]</span></code>). Also, packed arrays consume less memory. As a downside, packed arrays are less flexible as they don’t offer as many convenience methods such as <a class="reference internal" href="class_array.html#class-array-method-map"><span class="std std-ref">Array.map()</span></a>. Typed arrays are in turn faster to iterate on and modify than untyped arrays.</p>
+<p><strong>Note:</strong> Packed arrays are always passed by reference. To get a copy of an array that can be modified independently of the original array, use <a class="reference internal" href="#class-packedvector3array-method-duplicate"><span class="std std-ref">duplicate()</span></a>. This is <em>not</em> the case for built-in properties and methods. In these cases the returned packed array is a copy, and changing it will <em>not</em> affect the original value. To update a built-in property of this type, modify the returned array and then assign it to the property again.</p>
+<p><strong>Note:</strong> In a boolean context, a packed array will evaluate to <code class="docutils literal notranslate"><span class="pre">false</span></code> if it’s empty. Otherwise, a packed array will always evaluate to <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>There are notable differences when using this API with C#. See <span class="xref std std-ref">doc_c_sharp_differences</span> for more information.</p>
+</div>
+</section>
+<section class="classref-reftable-group" id="constructors">
+<h2>Constructors<a class="headerlink" href="#constructors" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#class-packedvector3array"><span class="std std-ref">PackedVector3Array</span></a></p></td>
+<td><p><a class="reference internal" href="#class-packedvector3array-constructor-packedvector3array"><span class="std std-ref">PackedVector3Array</span></a>()</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#class-packedvector3array"><span class="std std-ref">PackedVector3Array</span></a></p></td>
+<td><p><a class="reference internal" href="#class-packedvector3array-constructor-packedvector3array"><span class="std std-ref">PackedVector3Array</span></a>(from: <a class="reference internal" href="#class-packedvector3array"><span class="std std-ref">PackedVector3Array</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#class-packedvector3array"><span class="std std-ref">PackedVector3Array</span></a></p></td>
+<td><p><a class="reference internal" href="#class-packedvector3array-constructor-packedvector3array"><span class="std std-ref">PackedVector3Array</span></a>(from: <a class="reference internal" href="class_array.html#class-array"><span class="std std-ref">Array</span></a>)</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section class="classref-reftable-group" id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-packedvector3array-method-append"><span class="std std-ref">append</span></a>(value: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-packedvector3array-method-append-array"><span class="std std-ref">append_array</span></a>(array: <a class="reference internal" href="#class-packedvector3array"><span class="std std-ref">PackedVector3Array</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-packedvector3array-method-bsearch"><span class="std std-ref">bsearch</span></a>(value: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>, before: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = true) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-packedvector3array-method-clear"><span class="std std-ref">clear</span></a>()</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-packedvector3array-method-count"><span class="std std-ref">count</span></a>(value: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#class-packedvector3array"><span class="std std-ref">PackedVector3Array</span></a></p></td>
+<td><p><a class="reference internal" href="#class-packedvector3array-method-duplicate"><span class="std std-ref">duplicate</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-packedvector3array-method-erase"><span class="std std-ref">erase</span></a>(value: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-packedvector3array-method-fill"><span class="std std-ref">fill</span></a>(value: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-packedvector3array-method-find"><span class="std std-ref">find</span></a>(value: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>, from: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> = 0) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a></p></td>
+<td><p><a class="reference internal" href="#class-packedvector3array-method-get"><span class="std std-ref">get</span></a>(index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-packedvector3array-method-has"><span class="std std-ref">has</span></a>(value: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-packedvector3array-method-insert"><span class="std std-ref">insert</span></a>(at_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, value: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-packedvector3array-method-is-empty"><span class="std std-ref">is_empty</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-packedvector3array-method-push-back"><span class="std std-ref">push_back</span></a>(value: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-packedvector3array-method-remove-at"><span class="std std-ref">remove_at</span></a>(index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-packedvector3array-method-resize"><span class="std std-ref">resize</span></a>(new_size: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-packedvector3array-method-reverse"><span class="std std-ref">reverse</span></a>()</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-packedvector3array-method-rfind"><span class="std std-ref">rfind</span></a>(value: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>, from: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> = -1) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-packedvector3array-method-set"><span class="std std-ref">set</span></a>(index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, value: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-packedvector3array-method-size"><span class="std std-ref">size</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#class-packedvector3array"><span class="std std-ref">PackedVector3Array</span></a></p></td>
+<td><p><a class="reference internal" href="#class-packedvector3array-method-slice"><span class="std std-ref">slice</span></a>(begin: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, end: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> = 2147483647) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-packedvector3array-method-sort"><span class="std std-ref">sort</span></a>()</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_packedbytearray.html#class-packedbytearray"><span class="std std-ref">PackedByteArray</span></a></p></td>
+<td><p><a class="reference internal" href="#class-packedvector3array-method-to-byte-array"><span class="std std-ref">to_byte_array</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section class="classref-reftable-group" id="operators">
+<h2>Operators<a class="headerlink" href="#operators" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-packedvector3array-operator-neq-packedvector3array"><span class="std std-ref">operator !=</span></a>(right: <a class="reference internal" href="#class-packedvector3array"><span class="std std-ref">PackedVector3Array</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#class-packedvector3array"><span class="std std-ref">PackedVector3Array</span></a></p></td>
+<td><p><a class="reference internal" href="#class-packedvector3array-operator-mul-transform3d"><span class="std std-ref">operator *</span></a>(right: <a class="reference internal" href="class_transform3d.html#class-transform3d"><span class="std std-ref">Transform3D</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#class-packedvector3array"><span class="std std-ref">PackedVector3Array</span></a></p></td>
+<td><p><a class="reference internal" href="#class-packedvector3array-operator-sum-packedvector3array"><span class="std std-ref">operator +</span></a>(right: <a class="reference internal" href="#class-packedvector3array"><span class="std std-ref">PackedVector3Array</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-packedvector3array-operator-eq-packedvector3array"><span class="std std-ref">operator ==</span></a>(right: <a class="reference internal" href="#class-packedvector3array"><span class="std std-ref">PackedVector3Array</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a></p></td>
+<td><p><a class="reference internal" href="#class-packedvector3array-operator-idx-int"><span class="std std-ref">operator []</span></a>(index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="constructor-descriptions">
+<h2>Constructor Descriptions<a class="headerlink" href="#constructor-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-constructor" id="class-packedvector3array-constructor-packedvector3array"><a class="reference internal" href="#class-packedvector3array"><span class="std std-ref">PackedVector3Array</span></a> <strong>PackedVector3Array</strong>() <a class="reference internal" href="#class-packedvector3array-constructor-packedvector3array"><span class="std std-ref">🔗</span></a></p>
+<p>Constructs an empty <strong>PackedVector3Array</strong>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-constructor"><a class="reference internal" href="#class-packedvector3array"><span class="std std-ref">PackedVector3Array</span></a> <strong>PackedVector3Array</strong>(from: <a class="reference internal" href="#class-packedvector3array"><span class="std std-ref">PackedVector3Array</span></a>)</p>
+<p>Constructs a <strong>PackedVector3Array</strong> as a copy of the given <strong>PackedVector3Array</strong>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-constructor"><a class="reference internal" href="#class-packedvector3array"><span class="std std-ref">PackedVector3Array</span></a> <strong>PackedVector3Array</strong>(from: <a class="reference internal" href="class_array.html#class-array"><span class="std std-ref">Array</span></a>)</p>
+<p>Constructs a new <strong>PackedVector3Array</strong>. Optionally, you can pass in a generic <a class="reference internal" href="class_array.html#class-array"><span class="std std-ref">Array</span></a> that will be converted.</p>
+<p><strong>Note:</strong> When initializing a <strong>PackedVector3Array</strong> with elements, it must be initialized with an <a class="reference internal" href="class_array.html#class-array"><span class="std std-ref">Array</span></a> of <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a> values:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">array</span> <span class="o">=</span> <span class="n">PackedVector3Array</span><span class="p">([</span><span class="n">Vector3</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">34</span><span class="p">,</span> <span class="mi">56</span><span class="p">),</span> <span class="n">Vector3</span><span class="p">(</span><span class="mi">78</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">12</span><span class="p">)])</span>
+</pre></div>
+</div>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="method-descriptions">
+<h2>Method Descriptions<a class="headerlink" href="#method-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-method" id="class-packedvector3array-method-append"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>append</strong>(value: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>) <a class="reference internal" href="#class-packedvector3array-method-append"><span class="std std-ref">🔗</span></a></p>
+<p>Appends an element at the end of the array (alias of <a class="reference internal" href="#class-packedvector3array-method-push-back"><span class="std std-ref">push_back()</span></a>).</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-packedvector3array-method-append-array"><abbr title="No return value.">void</abbr> <strong>append_array</strong>(array: <a class="reference internal" href="#class-packedvector3array"><span class="std std-ref">PackedVector3Array</span></a>) <a class="reference internal" href="#class-packedvector3array-method-append-array"><span class="std std-ref">🔗</span></a></p>
+<p>Appends a <strong>PackedVector3Array</strong> at the end of this array.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-packedvector3array-method-bsearch"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>bsearch</strong>(value: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>, before: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = true) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-packedvector3array-method-bsearch"><span class="std std-ref">🔗</span></a></p>
+<p>Finds the index of an existing value (or the insertion index that maintains sorting order, if the value is not yet present in the array) using binary search. Optionally, a <code class="docutils literal notranslate"><span class="pre">before</span></code> specifier can be passed. If <code class="docutils literal notranslate"><span class="pre">false</span></code>, the returned index comes after all existing entries of the value in the array.</p>
+<p><strong>Note:</strong> Calling <a class="reference internal" href="#class-packedvector3array-method-bsearch"><span class="std std-ref">bsearch()</span></a> on an unsorted array results in unexpected behavior.</p>
+<p><strong>Note:</strong> Vectors with <span class="xref std std-ref">&#64;GDScript.NAN</span> elements don’t behave the same as other vectors. Therefore, the results from this method may not be accurate if NaNs are included.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-packedvector3array-method-clear"><abbr title="No return value.">void</abbr> <strong>clear</strong>() <a class="reference internal" href="#class-packedvector3array-method-clear"><span class="std std-ref">🔗</span></a></p>
+<p>Clears the array. This is equivalent to using <a class="reference internal" href="#class-packedvector3array-method-resize"><span class="std std-ref">resize()</span></a> with a size of <code class="docutils literal notranslate"><span class="pre">0</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-packedvector3array-method-count"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>count</strong>(value: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-packedvector3array-method-count"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the number of times an element is in the array.</p>
+<p><strong>Note:</strong> Vectors with <span class="xref std std-ref">&#64;GDScript.NAN</span> elements don’t behave the same as other vectors. Therefore, the results from this method may not be accurate if NaNs are included.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-packedvector3array-method-duplicate"><a class="reference internal" href="#class-packedvector3array"><span class="std std-ref">PackedVector3Array</span></a> <strong>duplicate</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-packedvector3array-method-duplicate"><span class="std std-ref">🔗</span></a></p>
+<p>Creates a copy of the array, and returns it.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-packedvector3array-method-erase"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>erase</strong>(value: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>) <a class="reference internal" href="#class-packedvector3array-method-erase"><span class="std std-ref">🔗</span></a></p>
+<p>Removes the first occurrence of a value from the array and returns <code class="docutils literal notranslate"><span class="pre">true</span></code>. If the value does not exist in the array, nothing happens and <code class="docutils literal notranslate"><span class="pre">false</span></code> is returned. To remove an element by index, use <a class="reference internal" href="#class-packedvector3array-method-remove-at"><span class="std std-ref">remove_at()</span></a> instead.</p>
+<p><strong>Note:</strong> Vectors with <span class="xref std std-ref">&#64;GDScript.NAN</span> elements don’t behave the same as other vectors. Therefore, the results from this method may not be accurate if NaNs are included.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-packedvector3array-method-fill"><abbr title="No return value.">void</abbr> <strong>fill</strong>(value: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>) <a class="reference internal" href="#class-packedvector3array-method-fill"><span class="std std-ref">🔗</span></a></p>
+<p>Assigns the given value to all elements in the array. This can typically be used together with <a class="reference internal" href="#class-packedvector3array-method-resize"><span class="std std-ref">resize()</span></a> to create an array with a given size and initialized elements.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-packedvector3array-method-find"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>find</strong>(value: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>, from: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> = 0) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-packedvector3array-method-find"><span class="std std-ref">🔗</span></a></p>
+<p>Searches the array for a value and returns its index or <code class="docutils literal notranslate"><span class="pre">-1</span></code> if not found. Optionally, the initial search index can be passed.</p>
+<p><strong>Note:</strong> Vectors with <span class="xref std std-ref">&#64;GDScript.NAN</span> elements don’t behave the same as other vectors. Therefore, the results from this method may not be accurate if NaNs are included.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-packedvector3array-method-get"><a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a> <strong>get</strong>(index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-packedvector3array-method-get"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a> at the given <code class="docutils literal notranslate"><span class="pre">index</span></code> in the array. If <code class="docutils literal notranslate"><span class="pre">index</span></code> is out-of-bounds or negative, this method fails and returns <code class="docutils literal notranslate"><span class="pre">Vector3(0,</span> <span class="pre">0,</span> <span class="pre">0)</span></code>.</p>
+<p>This method is similar (but not identical) to the <code class="docutils literal notranslate"><span class="pre">[]</span></code> operator. Most notably, when this method fails, it doesn’t pause project execution if run from the editor.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-packedvector3array-method-has"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>has</strong>(value: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-packedvector3array-method-has"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if the array contains <code class="docutils literal notranslate"><span class="pre">value</span></code>.</p>
+<p><strong>Note:</strong> Vectors with <span class="xref std std-ref">&#64;GDScript.NAN</span> elements don’t behave the same as other vectors. Therefore, the results from this method may not be accurate if NaNs are included.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-packedvector3array-method-insert"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>insert</strong>(at_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, value: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>) <a class="reference internal" href="#class-packedvector3array-method-insert"><span class="std std-ref">🔗</span></a></p>
+<p>Inserts a new element at a given position in the array. The position must be valid, or at the end of the array (<code class="docutils literal notranslate"><span class="pre">idx</span> <span class="pre">==</span> <span class="pre">size()</span></code>).</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-packedvector3array-method-is-empty"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_empty</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-packedvector3array-method-is-empty"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if the array is empty.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-packedvector3array-method-push-back"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>push_back</strong>(value: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>) <a class="reference internal" href="#class-packedvector3array-method-push-back"><span class="std std-ref">🔗</span></a></p>
+<p>Inserts a <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a> at the end.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-packedvector3array-method-remove-at"><abbr title="No return value.">void</abbr> <strong>remove_at</strong>(index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <a class="reference internal" href="#class-packedvector3array-method-remove-at"><span class="std std-ref">🔗</span></a></p>
+<p>Removes an element from the array by index.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-packedvector3array-method-resize"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>resize</strong>(new_size: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <a class="reference internal" href="#class-packedvector3array-method-resize"><span class="std std-ref">🔗</span></a></p>
+<p>Sets the size of the array. If the array is grown, reserves elements at the end of the array. If the array is shrunk, truncates the array to the new size. Calling <a class="reference internal" href="#class-packedvector3array-method-resize"><span class="std std-ref">resize()</span></a> once and assigning the new values is faster than adding new elements one by one.</p>
+<p>Returns <a class="reference internal" href="class_%40globalscope.html#class-globalscope-constant-ok"><span class="std std-ref">&#64;GlobalScope.OK</span></a> on success, or one of the following <a class="reference internal" href="class_%40globalscope.html#enum-globalscope-error"><span class="std std-ref">Error</span></a> constants if this method fails: <a class="reference internal" href="class_%40globalscope.html#class-globalscope-constant-err-invalid-parameter"><span class="std std-ref">&#64;GlobalScope.ERR_INVALID_PARAMETER</span></a> if the size is negative, or <a class="reference internal" href="class_%40globalscope.html#class-globalscope-constant-err-out-of-memory"><span class="std std-ref">&#64;GlobalScope.ERR_OUT_OF_MEMORY</span></a> if allocations fail. Use <a class="reference internal" href="#class-packedvector3array-method-size"><span class="std std-ref">size()</span></a> to find the actual size of the array after resize.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-packedvector3array-method-reverse"><abbr title="No return value.">void</abbr> <strong>reverse</strong>() <a class="reference internal" href="#class-packedvector3array-method-reverse"><span class="std std-ref">🔗</span></a></p>
+<p>Reverses the order of the elements in the array.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-packedvector3array-method-rfind"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>rfind</strong>(value: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>, from: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> = -1) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-packedvector3array-method-rfind"><span class="std std-ref">🔗</span></a></p>
+<p>Searches the array in reverse order. Optionally, a start search index can be passed. If negative, the start index is considered relative to the end of the array.</p>
+<p><strong>Note:</strong> Vectors with <span class="xref std std-ref">&#64;GDScript.NAN</span> elements don’t behave the same as other vectors. Therefore, the results from this method may not be accurate if NaNs are included.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-packedvector3array-method-set"><abbr title="No return value.">void</abbr> <strong>set</strong>(index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, value: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>) <a class="reference internal" href="#class-packedvector3array-method-set"><span class="std std-ref">🔗</span></a></p>
+<p>Changes the <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a> at the given index.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-packedvector3array-method-size"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>size</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-packedvector3array-method-size"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the number of elements in the array.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-packedvector3array-method-slice"><a class="reference internal" href="#class-packedvector3array"><span class="std std-ref">PackedVector3Array</span></a> <strong>slice</strong>(begin: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, end: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> = 2147483647) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-packedvector3array-method-slice"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the slice of the <strong>PackedVector3Array</strong>, from <code class="docutils literal notranslate"><span class="pre">begin</span></code> (inclusive) to <code class="docutils literal notranslate"><span class="pre">end</span></code> (exclusive), as a new <strong>PackedVector3Array</strong>.</p>
+<p>The absolute value of <code class="docutils literal notranslate"><span class="pre">begin</span></code> and <code class="docutils literal notranslate"><span class="pre">end</span></code> will be clamped to the array size, so the default value for <code class="docutils literal notranslate"><span class="pre">end</span></code> makes it slice to the size of the array by default (i.e. <code class="docutils literal notranslate"><span class="pre">arr.slice(1)</span></code> is a shorthand for <code class="docutils literal notranslate"><span class="pre">arr.slice(1,</span> <span class="pre">arr.size())</span></code>).</p>
+<p>If either <code class="docutils literal notranslate"><span class="pre">begin</span></code> or <code class="docutils literal notranslate"><span class="pre">end</span></code> are negative, they will be relative to the end of the array (i.e. <code class="docutils literal notranslate"><span class="pre">arr.slice(0,</span> <span class="pre">-2)</span></code> is a shorthand for <code class="docutils literal notranslate"><span class="pre">arr.slice(0,</span> <span class="pre">arr.size()</span> <span class="pre">-</span> <span class="pre">2)</span></code>).</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-packedvector3array-method-sort"><abbr title="No return value.">void</abbr> <strong>sort</strong>() <a class="reference internal" href="#class-packedvector3array-method-sort"><span class="std std-ref">🔗</span></a></p>
+<p>Sorts the elements of the array in ascending order.</p>
+<p><strong>Note:</strong> Vectors with <span class="xref std std-ref">&#64;GDScript.NAN</span> elements don’t behave the same as other vectors. Therefore, the results from this method may not be accurate if NaNs are included.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-packedvector3array-method-to-byte-array"><a class="reference internal" href="class_packedbytearray.html#class-packedbytearray"><span class="std std-ref">PackedByteArray</span></a> <strong>to_byte_array</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-packedvector3array-method-to-byte-array"><span class="std std-ref">🔗</span></a></p>
+<p>Returns a <a class="reference internal" href="class_packedbytearray.html#class-packedbytearray"><span class="std std-ref">PackedByteArray</span></a> with each vector encoded as bytes.</p>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="operator-descriptions">
+<h2>Operator Descriptions<a class="headerlink" href="#operator-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-operator" id="class-packedvector3array-operator-neq-packedvector3array"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>operator !=</strong>(right: <a class="reference internal" href="#class-packedvector3array"><span class="std std-ref">PackedVector3Array</span></a>) <a class="reference internal" href="#class-packedvector3array-operator-neq-packedvector3array"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if contents of the arrays differ.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-operator" id="class-packedvector3array-operator-mul-transform3d"><a class="reference internal" href="#class-packedvector3array"><span class="std std-ref">PackedVector3Array</span></a> <strong>operator *</strong>(right: <a class="reference internal" href="class_transform3d.html#class-transform3d"><span class="std std-ref">Transform3D</span></a>) <a class="reference internal" href="#class-packedvector3array-operator-mul-transform3d"><span class="std std-ref">🔗</span></a></p>
+<p>Returns a new <strong>PackedVector3Array</strong> with all vectors in this array inversely transformed (multiplied) by the given <a class="reference internal" href="class_transform3d.html#class-transform3d"><span class="std std-ref">Transform3D</span></a> transformation matrix, under the assumption that the transformation basis is orthonormal (i.e. rotation/reflection is fine, scaling/skew is not).</p>
+<p><code class="docutils literal notranslate"><span class="pre">array</span> <span class="pre">*</span> <span class="pre">transform</span></code> is equivalent to <code class="docutils literal notranslate"><span class="pre">transform.inverse()</span> <span class="pre">*</span> <span class="pre">array</span></code>. See <a class="reference internal" href="class_transform3d.html#class-transform3d-method-inverse"><span class="std std-ref">Transform3D.inverse()</span></a>.</p>
+<p>For transforming by inverse of an affine transformation (e.g. with scaling) <code class="docutils literal notranslate"><span class="pre">transform.affine_inverse()</span> <span class="pre">*</span> <span class="pre">array</span></code> can be used instead. See <a class="reference internal" href="class_transform3d.html#class-transform3d-method-affine-inverse"><span class="std std-ref">Transform3D.affine_inverse()</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-operator" id="class-packedvector3array-operator-sum-packedvector3array"><a class="reference internal" href="#class-packedvector3array"><span class="std std-ref">PackedVector3Array</span></a> <strong>operator +</strong>(right: <a class="reference internal" href="#class-packedvector3array"><span class="std std-ref">PackedVector3Array</span></a>) <a class="reference internal" href="#class-packedvector3array-operator-sum-packedvector3array"><span class="std std-ref">🔗</span></a></p>
+<p>Returns a new <strong>PackedVector3Array</strong> with contents of <code class="docutils literal notranslate"><span class="pre">right</span></code> added at the end of this array. For better performance, consider using <a class="reference internal" href="#class-packedvector3array-method-append-array"><span class="std std-ref">append_array()</span></a> instead.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-operator" id="class-packedvector3array-operator-eq-packedvector3array"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>operator ==</strong>(right: <a class="reference internal" href="#class-packedvector3array"><span class="std std-ref">PackedVector3Array</span></a>) <a class="reference internal" href="#class-packedvector3array-operator-eq-packedvector3array"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if contents of both arrays are the same, i.e. they have all equal <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>s at the corresponding indices.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-operator" id="class-packedvector3array-operator-idx-int"><a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a> <strong>operator []</strong>(index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <a class="reference internal" href="#class-packedvector3array-operator-idx-int"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a> at index <code class="docutils literal notranslate"><span class="pre">index</span></code>. Negative indices can be used to access the elements starting from the end. Using index out of array’s bounds will result in an error.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, MUmarShahbaz.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

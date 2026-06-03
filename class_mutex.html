@@ -1,0 +1,162 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mutex &mdash; RPG Components 2D 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=d45e8c67"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            RPG Components 2D
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">Mutex</a><ul>
+<li><a class="reference internal" href="#description">Description</a></li>
+<li><a class="reference internal" href="#tutorials">Tutorials</a></li>
+<li><a class="reference internal" href="#methods">Methods</a></li>
+<li><a class="reference internal" href="#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">RPG Components 2D</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Mutex</li>
+      <li class="wy-breadcrumbs-aside">
+              <!-- User defined GitHub URL -->
+              <a href="hide" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="mutex">
+<span id="class-mutex"></span><h1>Mutex<a class="headerlink" href="#mutex" title="Link to this heading"></a></h1>
+<p><strong>Inherits:</strong> <a class="reference internal" href="class_refcounted.html#class-refcounted"><span class="std std-ref">RefCounted</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_object.html#class-object"><span class="std std-ref">Object</span></a></p>
+<p>A binary <a class="reference internal" href="class_semaphore.html#class-semaphore"><span class="std std-ref">Semaphore</span></a> for synchronization of multiple <a class="reference internal" href="class_thread.html#class-thread"><span class="std std-ref">Thread</span></a>s.</p>
+<section class="classref-introduction-group" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
+<p>A synchronization mutex (mutual exclusion). This is used to synchronize multiple <a class="reference internal" href="class_thread.html#class-thread"><span class="std std-ref">Thread</span></a>s, and is equivalent to a binary <a class="reference internal" href="class_semaphore.html#class-semaphore"><span class="std std-ref">Semaphore</span></a>. It guarantees that only one thread can access a critical section at a time.</p>
+<p>This is a reentrant mutex, meaning that it can be locked multiple times by one thread, provided it also unlocks it as many times.</p>
+<p><strong>Warning:</strong> To ensure proper cleanup without crashes or deadlocks, the following conditions must be met:</p>
+<ul class="simple">
+<li><p>When a <strong>Mutex</strong>’s reference count reaches zero and it is therefore destroyed, no threads (including the one on which the destruction will happen) must have it locked.</p></li>
+<li><p>When a <a class="reference internal" href="class_thread.html#class-thread"><span class="std std-ref">Thread</span></a>’s reference count reaches zero and it is therefore destroyed, it must not have any mutex locked.</p></li>
+</ul>
+</section>
+<section class="classref-introduction-group" id="tutorials">
+<h2>Tutorials<a class="headerlink" href="#tutorials" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><span class="xref std std-doc">Using multiple threads</span></p></li>
+<li><p><span class="xref std std-doc">Thread-safe APIs</span></p></li>
+</ul>
+</section>
+<section class="classref-reftable-group" id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-mutex-method-lock"><span class="std std-ref">lock</span></a>()</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-mutex-method-try-lock"><span class="std std-ref">try_lock</span></a>()</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-mutex-method-unlock"><span class="std std-ref">unlock</span></a>()</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="method-descriptions">
+<h2>Method Descriptions<a class="headerlink" href="#method-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-method" id="class-mutex-method-lock"><abbr title="No return value.">void</abbr> <strong>lock</strong>() <a class="reference internal" href="#class-mutex-method-lock"><span class="std std-ref">🔗</span></a></p>
+<p>Locks this <strong>Mutex</strong>, blocks until it is unlocked by the current owner.</p>
+<p><strong>Note:</strong> This function returns without blocking if the thread already has ownership of the mutex.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-mutex-method-try-lock"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>try_lock</strong>() <a class="reference internal" href="#class-mutex-method-try-lock"><span class="std std-ref">🔗</span></a></p>
+<p>Tries locking this <strong>Mutex</strong>, but does not block. Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> on success, <code class="docutils literal notranslate"><span class="pre">false</span></code> otherwise.</p>
+<p><strong>Note:</strong> This function returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if the thread already has ownership of the mutex.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-mutex-method-unlock"><abbr title="No return value.">void</abbr> <strong>unlock</strong>() <a class="reference internal" href="#class-mutex-method-unlock"><span class="std std-ref">🔗</span></a></p>
+<p>Unlocks this <strong>Mutex</strong>, leaving it to other threads.</p>
+<p><strong>Note:</strong> If a thread called <a class="reference internal" href="#class-mutex-method-lock"><span class="std std-ref">lock()</span></a> or <a class="reference internal" href="#class-mutex-method-try-lock"><span class="std std-ref">try_lock()</span></a> multiple times while already having ownership of the mutex, it must also call <a class="reference internal" href="#class-mutex-method-unlock"><span class="std std-ref">unlock()</span></a> the same number of times in order to unlock it correctly.</p>
+<p><strong>Warning:</strong> Calling <a class="reference internal" href="#class-mutex-method-unlock"><span class="std std-ref">unlock()</span></a> more times than <a class="reference internal" href="#class-mutex-method-lock"><span class="std std-ref">lock()</span></a> on a given thread, thus ending up trying to unlock a non-locked mutex, is wrong and may causes crashes or deadlocks.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, MUmarShahbaz.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,571 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RigidBody3D &mdash; RPG Components 2D 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=d45e8c67"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            RPG Components 2D
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">RigidBody3D</a><ul>
+<li><a class="reference internal" href="#description">Description</a></li>
+<li><a class="reference internal" href="#tutorials">Tutorials</a></li>
+<li><a class="reference internal" href="#properties">Properties</a></li>
+<li><a class="reference internal" href="#methods">Methods</a></li>
+<li><a class="reference internal" href="#signals">Signals</a></li>
+<li><a class="reference internal" href="#enumerations">Enumerations</a></li>
+<li><a class="reference internal" href="#property-descriptions">Property Descriptions</a></li>
+<li><a class="reference internal" href="#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">RPG Components 2D</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">RigidBody3D</li>
+      <li class="wy-breadcrumbs-aside">
+              <!-- User defined GitHub URL -->
+              <a href="hide" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="rigidbody3d">
+<span id="class-rigidbody3d"></span><h1>RigidBody3D<a class="headerlink" href="#rigidbody3d" title="Link to this heading"></a></h1>
+<p><strong>Inherits:</strong> <a class="reference internal" href="class_physicsbody3d.html#class-physicsbody3d"><span class="std std-ref">PhysicsBody3D</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_collisionobject3d.html#class-collisionobject3d"><span class="std std-ref">CollisionObject3D</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_node3d.html#class-node3d"><span class="std std-ref">Node3D</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_node.html#class-node"><span class="std std-ref">Node</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_object.html#class-object"><span class="std std-ref">Object</span></a></p>
+<p><strong>Inherited By:</strong> <a class="reference internal" href="class_vehiclebody3d.html#class-vehiclebody3d"><span class="std std-ref">VehicleBody3D</span></a></p>
+<p>A 3D physics body that is moved by a physics simulation.</p>
+<section class="classref-introduction-group" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
+<p><strong>RigidBody3D</strong> implements full 3D physics. It cannot be controlled directly, instead, you must apply forces to it (gravity, impulses, etc.), and the physics simulation will calculate the resulting movement, rotation, react to collisions, and affect other physics bodies in its path.</p>
+<p>The body’s behavior can be adjusted via <a class="reference internal" href="#class-rigidbody3d-property-lock-rotation"><span class="std std-ref">lock_rotation</span></a>, <a class="reference internal" href="#class-rigidbody3d-property-freeze"><span class="std std-ref">freeze</span></a>, and <a class="reference internal" href="#class-rigidbody3d-property-freeze-mode"><span class="std std-ref">freeze_mode</span></a>. By changing various properties of the object, such as <a class="reference internal" href="#class-rigidbody3d-property-mass"><span class="std std-ref">mass</span></a>, you can control how the physics simulation acts on it.</p>
+<p>A rigid body will always maintain its shape and size, even when forces are applied to it. It is useful for objects that can be interacted with in an environment, such as a tree that can be knocked over or a stack of crates that can be pushed around.</p>
+<p>If you need to directly affect the body, prefer <a class="reference internal" href="#class-rigidbody3d-private-method-integrate-forces"><span class="std std-ref">_integrate_forces()</span></a> as it allows you to directly access the physics state.</p>
+<p>If you need to override the default physics behavior, you can write a custom force integration function. See <a class="reference internal" href="#class-rigidbody3d-property-custom-integrator"><span class="std std-ref">custom_integrator</span></a>.</p>
+<p><strong>Note:</strong> Changing the 3D transform or <a class="reference internal" href="#class-rigidbody3d-property-linear-velocity"><span class="std std-ref">linear_velocity</span></a> of a <strong>RigidBody3D</strong> very often may lead to some unpredictable behaviors. This also happens when a <strong>RigidBody3D</strong> is the descendant of a constantly moving node, like another <strong>RigidBody3D</strong>, as that will cause its global transform to be set whenever its ancestor moves.</p>
+</section>
+<section class="classref-introduction-group" id="tutorials">
+<h2>Tutorials<a class="headerlink" href="#tutorials" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><span class="xref std std-doc">Physics introduction</span></p></li>
+<li><p><span class="xref std std-doc">Troubleshooting physics issues</span></p></li>
+<li><p><a class="reference external" href="https://godotengine.org/asset-library/asset/2752">3D Truck Town Demo</a></p></li>
+<li><p><a class="reference external" href="https://godotengine.org/asset-library/asset/2747">3D Physics Tests Demo</a></p></li>
+</ul>
+</section>
+<section class="classref-reftable-group" id="properties">
+<h2>Properties<a class="headerlink" href="#properties" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-rigidbody3d-property-angular-damp"><span class="std std-ref">angular_damp</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0.0</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#enum-rigidbody3d-dampmode"><span class="std std-ref">DampMode</span></a></p></td>
+<td><p><a class="reference internal" href="#class-rigidbody3d-property-angular-damp-mode"><span class="std std-ref">angular_damp_mode</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a></p></td>
+<td><p><a class="reference internal" href="#class-rigidbody3d-property-angular-velocity"><span class="std std-ref">angular_velocity</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Vector3(0,</span> <span class="pre">0,</span> <span class="pre">0)</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-rigidbody3d-property-can-sleep"><span class="std std-ref">can_sleep</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a></p></td>
+<td><p><a class="reference internal" href="#class-rigidbody3d-property-center-of-mass"><span class="std std-ref">center_of_mass</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Vector3(0,</span> <span class="pre">0,</span> <span class="pre">0)</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#enum-rigidbody3d-centerofmassmode"><span class="std std-ref">CenterOfMassMode</span></a></p></td>
+<td><p><a class="reference internal" href="#class-rigidbody3d-property-center-of-mass-mode"><span class="std std-ref">center_of_mass_mode</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a></p></td>
+<td><p><a class="reference internal" href="#class-rigidbody3d-property-constant-force"><span class="std std-ref">constant_force</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Vector3(0,</span> <span class="pre">0,</span> <span class="pre">0)</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a></p></td>
+<td><p><a class="reference internal" href="#class-rigidbody3d-property-constant-torque"><span class="std std-ref">constant_torque</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Vector3(0,</span> <span class="pre">0,</span> <span class="pre">0)</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-rigidbody3d-property-contact-monitor"><span class="std std-ref">contact_monitor</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-rigidbody3d-property-continuous-cd"><span class="std std-ref">continuous_cd</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-rigidbody3d-property-custom-integrator"><span class="std std-ref">custom_integrator</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-rigidbody3d-property-freeze"><span class="std std-ref">freeze</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#enum-rigidbody3d-freezemode"><span class="std std-ref">FreezeMode</span></a></p></td>
+<td><p><a class="reference internal" href="#class-rigidbody3d-property-freeze-mode"><span class="std std-ref">freeze_mode</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-rigidbody3d-property-gravity-scale"><span class="std std-ref">gravity_scale</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">1.0</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a></p></td>
+<td><p><a class="reference internal" href="#class-rigidbody3d-property-inertia"><span class="std std-ref">inertia</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Vector3(0,</span> <span class="pre">0,</span> <span class="pre">0)</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-rigidbody3d-property-linear-damp"><span class="std std-ref">linear_damp</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0.0</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#enum-rigidbody3d-dampmode"><span class="std std-ref">DampMode</span></a></p></td>
+<td><p><a class="reference internal" href="#class-rigidbody3d-property-linear-damp-mode"><span class="std std-ref">linear_damp_mode</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a></p></td>
+<td><p><a class="reference internal" href="#class-rigidbody3d-property-linear-velocity"><span class="std std-ref">linear_velocity</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Vector3(0,</span> <span class="pre">0,</span> <span class="pre">0)</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-rigidbody3d-property-lock-rotation"><span class="std std-ref">lock_rotation</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-rigidbody3d-property-mass"><span class="std std-ref">mass</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">1.0</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-rigidbody3d-property-max-contacts-reported"><span class="std std-ref">max_contacts_reported</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_physicsmaterial.html#class-physicsmaterial"><span class="std std-ref">PhysicsMaterial</span></a></p></td>
+<td><p><a class="reference internal" href="#class-rigidbody3d-property-physics-material-override"><span class="std std-ref">physics_material_override</span></a></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-rigidbody3d-property-sleeping"><span class="std std-ref">sleeping</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section class="classref-reftable-group" id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-rigidbody3d-private-method-integrate-forces"><span class="std std-ref">_integrate_forces</span></a>(state: <a class="reference internal" href="class_physicsdirectbodystate3d.html#class-physicsdirectbodystate3d"><span class="std std-ref">PhysicsDirectBodyState3D</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-rigidbody3d-method-add-constant-central-force"><span class="std std-ref">add_constant_central_force</span></a>(force: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-rigidbody3d-method-add-constant-force"><span class="std std-ref">add_constant_force</span></a>(force: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>, position: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a> = Vector3(0, 0, 0))</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-rigidbody3d-method-add-constant-torque"><span class="std std-ref">add_constant_torque</span></a>(torque: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-rigidbody3d-method-apply-central-force"><span class="std std-ref">apply_central_force</span></a>(force: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-rigidbody3d-method-apply-central-impulse"><span class="std std-ref">apply_central_impulse</span></a>(impulse: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-rigidbody3d-method-apply-force"><span class="std std-ref">apply_force</span></a>(force: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>, position: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a> = Vector3(0, 0, 0))</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-rigidbody3d-method-apply-impulse"><span class="std std-ref">apply_impulse</span></a>(impulse: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>, position: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a> = Vector3(0, 0, 0))</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-rigidbody3d-method-apply-torque"><span class="std std-ref">apply_torque</span></a>(torque: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-rigidbody3d-method-apply-torque-impulse"><span class="std std-ref">apply_torque_impulse</span></a>(impulse: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_array.html#class-array"><span class="std std-ref">Array</span></a>[<a class="reference internal" href="class_node3d.html#class-node3d"><span class="std std-ref">Node3D</span></a>]</p></td>
+<td><p><a class="reference internal" href="#class-rigidbody3d-method-get-colliding-bodies"><span class="std std-ref">get_colliding_bodies</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-rigidbody3d-method-get-contact-count"><span class="std std-ref">get_contact_count</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_basis.html#class-basis"><span class="std std-ref">Basis</span></a></p></td>
+<td><p><a class="reference internal" href="#class-rigidbody3d-method-get-inverse-inertia-tensor"><span class="std std-ref">get_inverse_inertia_tensor</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-rigidbody3d-method-set-axis-velocity"><span class="std std-ref">set_axis_velocity</span></a>(axis_velocity: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>)</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="signals">
+<h2>Signals<a class="headerlink" href="#signals" title="Link to this heading"></a></h2>
+<p class="classref-signal" id="class-rigidbody3d-signal-body-entered"><strong>body_entered</strong>(body: <a class="reference internal" href="class_node.html#class-node"><span class="std std-ref">Node</span></a>) <a class="reference internal" href="#class-rigidbody3d-signal-body-entered"><span class="std std-ref">🔗</span></a></p>
+<p>Emitted when a collision with another <a class="reference internal" href="class_physicsbody3d.html#class-physicsbody3d"><span class="std std-ref">PhysicsBody3D</span></a> or <code class="docutils literal notranslate"><span class="pre">GridMap</span></code> occurs. Requires <a class="reference internal" href="#class-rigidbody3d-property-contact-monitor"><span class="std std-ref">contact_monitor</span></a> to be set to <code class="docutils literal notranslate"><span class="pre">true</span></code> and <a class="reference internal" href="#class-rigidbody3d-property-max-contacts-reported"><span class="std std-ref">max_contacts_reported</span></a> to be set high enough to detect all the collisions. <code class="docutils literal notranslate"><span class="pre">GridMap</span></code>s are detected if the <a class="reference internal" href="class_meshlibrary.html#class-meshlibrary"><span class="std std-ref">MeshLibrary</span></a> has Collision <a class="reference internal" href="class_shape3d.html#class-shape3d"><span class="std std-ref">Shape3D</span></a>s.</p>
+<p><code class="docutils literal notranslate"><span class="pre">body</span></code> the <a class="reference internal" href="class_node.html#class-node"><span class="std std-ref">Node</span></a>, if it exists in the tree, of the other <a class="reference internal" href="class_physicsbody3d.html#class-physicsbody3d"><span class="std std-ref">PhysicsBody3D</span></a> or <code class="docutils literal notranslate"><span class="pre">GridMap</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-signal" id="class-rigidbody3d-signal-body-exited"><strong>body_exited</strong>(body: <a class="reference internal" href="class_node.html#class-node"><span class="std std-ref">Node</span></a>) <a class="reference internal" href="#class-rigidbody3d-signal-body-exited"><span class="std std-ref">🔗</span></a></p>
+<p>Emitted when the collision with another <a class="reference internal" href="class_physicsbody3d.html#class-physicsbody3d"><span class="std std-ref">PhysicsBody3D</span></a> or <code class="docutils literal notranslate"><span class="pre">GridMap</span></code> ends. Requires <a class="reference internal" href="#class-rigidbody3d-property-contact-monitor"><span class="std std-ref">contact_monitor</span></a> to be set to <code class="docutils literal notranslate"><span class="pre">true</span></code> and <a class="reference internal" href="#class-rigidbody3d-property-max-contacts-reported"><span class="std std-ref">max_contacts_reported</span></a> to be set high enough to detect all the collisions. <code class="docutils literal notranslate"><span class="pre">GridMap</span></code>s are detected if the <a class="reference internal" href="class_meshlibrary.html#class-meshlibrary"><span class="std std-ref">MeshLibrary</span></a> has Collision <a class="reference internal" href="class_shape3d.html#class-shape3d"><span class="std std-ref">Shape3D</span></a>s.</p>
+<p><code class="docutils literal notranslate"><span class="pre">body</span></code> the <a class="reference internal" href="class_node.html#class-node"><span class="std std-ref">Node</span></a>, if it exists in the tree, of the other <a class="reference internal" href="class_physicsbody3d.html#class-physicsbody3d"><span class="std std-ref">PhysicsBody3D</span></a> or <code class="docutils literal notranslate"><span class="pre">GridMap</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-signal" id="class-rigidbody3d-signal-body-shape-entered"><strong>body_shape_entered</strong>(body_rid: <a class="reference internal" href="class_rid.html#class-rid"><span class="std std-ref">RID</span></a>, body: <a class="reference internal" href="class_node.html#class-node"><span class="std std-ref">Node</span></a>, body_shape_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, local_shape_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <a class="reference internal" href="#class-rigidbody3d-signal-body-shape-entered"><span class="std std-ref">🔗</span></a></p>
+<p>Emitted when one of this RigidBody3D’s <a class="reference internal" href="class_shape3d.html#class-shape3d"><span class="std std-ref">Shape3D</span></a>s collides with another <a class="reference internal" href="class_physicsbody3d.html#class-physicsbody3d"><span class="std std-ref">PhysicsBody3D</span></a> or <code class="docutils literal notranslate"><span class="pre">GridMap</span></code>’s <a class="reference internal" href="class_shape3d.html#class-shape3d"><span class="std std-ref">Shape3D</span></a>s. Requires <a class="reference internal" href="#class-rigidbody3d-property-contact-monitor"><span class="std std-ref">contact_monitor</span></a> to be set to <code class="docutils literal notranslate"><span class="pre">true</span></code> and <a class="reference internal" href="#class-rigidbody3d-property-max-contacts-reported"><span class="std std-ref">max_contacts_reported</span></a> to be set high enough to detect all the collisions. <code class="docutils literal notranslate"><span class="pre">GridMap</span></code>s are detected if the <a class="reference internal" href="class_meshlibrary.html#class-meshlibrary"><span class="std std-ref">MeshLibrary</span></a> has Collision <a class="reference internal" href="class_shape3d.html#class-shape3d"><span class="std std-ref">Shape3D</span></a>s.</p>
+<p><code class="docutils literal notranslate"><span class="pre">body_rid</span></code> the <a class="reference internal" href="class_rid.html#class-rid"><span class="std std-ref">RID</span></a> of the other <a class="reference internal" href="class_physicsbody3d.html#class-physicsbody3d"><span class="std std-ref">PhysicsBody3D</span></a> or <a class="reference internal" href="class_meshlibrary.html#class-meshlibrary"><span class="std std-ref">MeshLibrary</span></a>’s <a class="reference internal" href="class_collisionobject3d.html#class-collisionobject3d"><span class="std std-ref">CollisionObject3D</span></a> used by the <a class="reference internal" href="class_physicsserver3d.html#class-physicsserver3d"><span class="std std-ref">PhysicsServer3D</span></a>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">body</span></code> the <a class="reference internal" href="class_node.html#class-node"><span class="std std-ref">Node</span></a>, if it exists in the tree, of the other <a class="reference internal" href="class_physicsbody3d.html#class-physicsbody3d"><span class="std std-ref">PhysicsBody3D</span></a> or <code class="docutils literal notranslate"><span class="pre">GridMap</span></code>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">body_shape_index</span></code> the index of the <a class="reference internal" href="class_shape3d.html#class-shape3d"><span class="std std-ref">Shape3D</span></a> of the other <a class="reference internal" href="class_physicsbody3d.html#class-physicsbody3d"><span class="std std-ref">PhysicsBody3D</span></a> or <code class="docutils literal notranslate"><span class="pre">GridMap</span></code> used by the <a class="reference internal" href="class_physicsserver3d.html#class-physicsserver3d"><span class="std std-ref">PhysicsServer3D</span></a>. Get the <a class="reference internal" href="class_collisionshape3d.html#class-collisionshape3d"><span class="std std-ref">CollisionShape3D</span></a> node with <code class="docutils literal notranslate"><span class="pre">body.shape_owner_get_owner(body.shape_find_owner(body_shape_index))</span></code>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">local_shape_index</span></code> the index of the <a class="reference internal" href="class_shape3d.html#class-shape3d"><span class="std std-ref">Shape3D</span></a> of this RigidBody3D used by the <a class="reference internal" href="class_physicsserver3d.html#class-physicsserver3d"><span class="std std-ref">PhysicsServer3D</span></a>. Get the <a class="reference internal" href="class_collisionshape3d.html#class-collisionshape3d"><span class="std std-ref">CollisionShape3D</span></a> node with <code class="docutils literal notranslate"><span class="pre">self.shape_owner_get_owner(self.shape_find_owner(local_shape_index))</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-signal" id="class-rigidbody3d-signal-body-shape-exited"><strong>body_shape_exited</strong>(body_rid: <a class="reference internal" href="class_rid.html#class-rid"><span class="std std-ref">RID</span></a>, body: <a class="reference internal" href="class_node.html#class-node"><span class="std std-ref">Node</span></a>, body_shape_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, local_shape_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <a class="reference internal" href="#class-rigidbody3d-signal-body-shape-exited"><span class="std std-ref">🔗</span></a></p>
+<p>Emitted when the collision between one of this RigidBody3D’s <a class="reference internal" href="class_shape3d.html#class-shape3d"><span class="std std-ref">Shape3D</span></a>s and another <a class="reference internal" href="class_physicsbody3d.html#class-physicsbody3d"><span class="std std-ref">PhysicsBody3D</span></a> or <code class="docutils literal notranslate"><span class="pre">GridMap</span></code>’s <a class="reference internal" href="class_shape3d.html#class-shape3d"><span class="std std-ref">Shape3D</span></a>s ends. Requires <a class="reference internal" href="#class-rigidbody3d-property-contact-monitor"><span class="std std-ref">contact_monitor</span></a> to be set to <code class="docutils literal notranslate"><span class="pre">true</span></code> and <a class="reference internal" href="#class-rigidbody3d-property-max-contacts-reported"><span class="std std-ref">max_contacts_reported</span></a> to be set high enough to detect all the collisions. <code class="docutils literal notranslate"><span class="pre">GridMap</span></code>s are detected if the <a class="reference internal" href="class_meshlibrary.html#class-meshlibrary"><span class="std std-ref">MeshLibrary</span></a> has Collision <a class="reference internal" href="class_shape3d.html#class-shape3d"><span class="std std-ref">Shape3D</span></a>s.</p>
+<p><code class="docutils literal notranslate"><span class="pre">body_rid</span></code> the <a class="reference internal" href="class_rid.html#class-rid"><span class="std std-ref">RID</span></a> of the other <a class="reference internal" href="class_physicsbody3d.html#class-physicsbody3d"><span class="std std-ref">PhysicsBody3D</span></a> or <a class="reference internal" href="class_meshlibrary.html#class-meshlibrary"><span class="std std-ref">MeshLibrary</span></a>’s <a class="reference internal" href="class_collisionobject3d.html#class-collisionobject3d"><span class="std std-ref">CollisionObject3D</span></a> used by the <a class="reference internal" href="class_physicsserver3d.html#class-physicsserver3d"><span class="std std-ref">PhysicsServer3D</span></a>. <code class="docutils literal notranslate"><span class="pre">GridMap</span></code>s are detected if the Meshes have <a class="reference internal" href="class_shape3d.html#class-shape3d"><span class="std std-ref">Shape3D</span></a>s.</p>
+<p><code class="docutils literal notranslate"><span class="pre">body</span></code> the <a class="reference internal" href="class_node.html#class-node"><span class="std std-ref">Node</span></a>, if it exists in the tree, of the other <a class="reference internal" href="class_physicsbody3d.html#class-physicsbody3d"><span class="std std-ref">PhysicsBody3D</span></a> or <code class="docutils literal notranslate"><span class="pre">GridMap</span></code>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">body_shape_index</span></code> the index of the <a class="reference internal" href="class_shape3d.html#class-shape3d"><span class="std std-ref">Shape3D</span></a> of the other <a class="reference internal" href="class_physicsbody3d.html#class-physicsbody3d"><span class="std std-ref">PhysicsBody3D</span></a> or <code class="docutils literal notranslate"><span class="pre">GridMap</span></code> used by the <a class="reference internal" href="class_physicsserver3d.html#class-physicsserver3d"><span class="std std-ref">PhysicsServer3D</span></a>. Get the <a class="reference internal" href="class_collisionshape3d.html#class-collisionshape3d"><span class="std std-ref">CollisionShape3D</span></a> node with <code class="docutils literal notranslate"><span class="pre">body.shape_owner_get_owner(body.shape_find_owner(body_shape_index))</span></code>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">local_shape_index</span></code> the index of the <a class="reference internal" href="class_shape3d.html#class-shape3d"><span class="std std-ref">Shape3D</span></a> of this RigidBody3D used by the <a class="reference internal" href="class_physicsserver3d.html#class-physicsserver3d"><span class="std std-ref">PhysicsServer3D</span></a>. Get the <a class="reference internal" href="class_collisionshape3d.html#class-collisionshape3d"><span class="std std-ref">CollisionShape3D</span></a> node with <code class="docutils literal notranslate"><span class="pre">self.shape_owner_get_owner(self.shape_find_owner(local_shape_index))</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-signal" id="class-rigidbody3d-signal-sleeping-state-changed"><strong>sleeping_state_changed</strong>() <a class="reference internal" href="#class-rigidbody3d-signal-sleeping-state-changed"><span class="std std-ref">🔗</span></a></p>
+<p>Emitted when the physics engine changes the body’s sleeping state.</p>
+<p><strong>Note:</strong> Changing the value <a class="reference internal" href="#class-rigidbody3d-property-sleeping"><span class="std std-ref">sleeping</span></a> will not trigger this signal. It is only emitted if the sleeping state is changed by the physics engine or <code class="docutils literal notranslate"><span class="pre">emit_signal(&quot;sleeping_state_changed&quot;)</span></code> is used.</p>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="enumerations">
+<h2>Enumerations<a class="headerlink" href="#enumerations" title="Link to this heading"></a></h2>
+<p class="classref-enumeration" id="enum-rigidbody3d-freezemode">enum <strong>FreezeMode</strong>: <a class="reference internal" href="#enum-rigidbody3d-freezemode"><span class="std std-ref">🔗</span></a></p>
+<p class="classref-enumeration-constant" id="class-rigidbody3d-constant-freeze-mode-static"><a class="reference internal" href="#enum-rigidbody3d-freezemode"><span class="std std-ref">FreezeMode</span></a> <strong>FREEZE_MODE_STATIC</strong> = <code class="docutils literal notranslate"><span class="pre">0</span></code></p>
+<p>Static body freeze mode (default). The body is not affected by gravity and forces. It can be only moved by user code and doesn’t collide with other bodies along its path.</p>
+<p class="classref-enumeration-constant" id="class-rigidbody3d-constant-freeze-mode-kinematic"><a class="reference internal" href="#enum-rigidbody3d-freezemode"><span class="std std-ref">FreezeMode</span></a> <strong>FREEZE_MODE_KINEMATIC</strong> = <code class="docutils literal notranslate"><span class="pre">1</span></code></p>
+<p>Kinematic body freeze mode. Similar to <a class="reference internal" href="#class-rigidbody3d-constant-freeze-mode-static"><span class="std std-ref">FREEZE_MODE_STATIC</span></a>, but collides with other bodies along its path when moved. Useful for a frozen body that needs to be animated.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-enumeration" id="enum-rigidbody3d-centerofmassmode">enum <strong>CenterOfMassMode</strong>: <a class="reference internal" href="#enum-rigidbody3d-centerofmassmode"><span class="std std-ref">🔗</span></a></p>
+<p class="classref-enumeration-constant" id="class-rigidbody3d-constant-center-of-mass-mode-auto"><a class="reference internal" href="#enum-rigidbody3d-centerofmassmode"><span class="std std-ref">CenterOfMassMode</span></a> <strong>CENTER_OF_MASS_MODE_AUTO</strong> = <code class="docutils literal notranslate"><span class="pre">0</span></code></p>
+<p>In this mode, the body’s center of mass is calculated automatically based on its shapes. This assumes that the shapes’ origins are also their center of mass.</p>
+<p class="classref-enumeration-constant" id="class-rigidbody3d-constant-center-of-mass-mode-custom"><a class="reference internal" href="#enum-rigidbody3d-centerofmassmode"><span class="std std-ref">CenterOfMassMode</span></a> <strong>CENTER_OF_MASS_MODE_CUSTOM</strong> = <code class="docutils literal notranslate"><span class="pre">1</span></code></p>
+<p>In this mode, the body’s center of mass is set through <a class="reference internal" href="#class-rigidbody3d-property-center-of-mass"><span class="std std-ref">center_of_mass</span></a>. Defaults to the body’s origin position.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-enumeration" id="enum-rigidbody3d-dampmode">enum <strong>DampMode</strong>: <a class="reference internal" href="#enum-rigidbody3d-dampmode"><span class="std std-ref">🔗</span></a></p>
+<p class="classref-enumeration-constant" id="class-rigidbody3d-constant-damp-mode-combine"><a class="reference internal" href="#enum-rigidbody3d-dampmode"><span class="std std-ref">DampMode</span></a> <strong>DAMP_MODE_COMBINE</strong> = <code class="docutils literal notranslate"><span class="pre">0</span></code></p>
+<p>In this mode, the body’s damping value is added to any value set in areas or the default value.</p>
+<p class="classref-enumeration-constant" id="class-rigidbody3d-constant-damp-mode-replace"><a class="reference internal" href="#enum-rigidbody3d-dampmode"><span class="std std-ref">DampMode</span></a> <strong>DAMP_MODE_REPLACE</strong> = <code class="docutils literal notranslate"><span class="pre">1</span></code></p>
+<p>In this mode, the body’s damping value replaces any value set in areas or the default value.</p>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="property-descriptions">
+<h2>Property Descriptions<a class="headerlink" href="#property-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-property" id="class-rigidbody3d-property-angular-damp"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>angular_damp</strong> = <code class="docutils literal notranslate"><span class="pre">0.0</span></code> <a class="reference internal" href="#class-rigidbody3d-property-angular-damp"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_angular_damp</strong>(value: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>get_angular_damp</strong>()</p></li>
+</ul>
+<p>Damps the body’s rotation. By default, the body will use the <a class="reference internal" href="class_projectsettings.html#class-projectsettings-property-physics-3d-default-angular-damp"><span class="std std-ref">ProjectSettings.physics/3d/default_angular_damp</span></a> project setting or any value override set by an <a class="reference internal" href="class_area3d.html#class-area3d"><span class="std std-ref">Area3D</span></a> the body is in. Depending on <a class="reference internal" href="#class-rigidbody3d-property-angular-damp-mode"><span class="std std-ref">angular_damp_mode</span></a>, you can set <a class="reference internal" href="#class-rigidbody3d-property-angular-damp"><span class="std std-ref">angular_damp</span></a> to be added to or to replace the body’s damping value.</p>
+<p>See <a class="reference internal" href="class_projectsettings.html#class-projectsettings-property-physics-3d-default-angular-damp"><span class="std std-ref">ProjectSettings.physics/3d/default_angular_damp</span></a> for more details about damping.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-rigidbody3d-property-angular-damp-mode"><a class="reference internal" href="#enum-rigidbody3d-dampmode"><span class="std std-ref">DampMode</span></a> <strong>angular_damp_mode</strong> = <code class="docutils literal notranslate"><span class="pre">0</span></code> <a class="reference internal" href="#class-rigidbody3d-property-angular-damp-mode"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_angular_damp_mode</strong>(value: <a class="reference internal" href="#enum-rigidbody3d-dampmode"><span class="std std-ref">DampMode</span></a>)</p></li>
+<li><p><a class="reference internal" href="#enum-rigidbody3d-dampmode"><span class="std std-ref">DampMode</span></a> <strong>get_angular_damp_mode</strong>()</p></li>
+</ul>
+<p>Defines how <a class="reference internal" href="#class-rigidbody3d-property-angular-damp"><span class="std std-ref">angular_damp</span></a> is applied.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-rigidbody3d-property-angular-velocity"><a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a> <strong>angular_velocity</strong> = <code class="docutils literal notranslate"><span class="pre">Vector3(0,</span> <span class="pre">0,</span> <span class="pre">0)</span></code> <a class="reference internal" href="#class-rigidbody3d-property-angular-velocity"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_angular_velocity</strong>(value: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a> <strong>get_angular_velocity</strong>()</p></li>
+</ul>
+<p>The RigidBody3D’s rotational velocity in <em>radians</em> per second.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-rigidbody3d-property-can-sleep"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>can_sleep</strong> = <code class="docutils literal notranslate"><span class="pre">true</span></code> <a class="reference internal" href="#class-rigidbody3d-property-can-sleep"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_can_sleep</strong>(value: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_able_to_sleep</strong>()</p></li>
+</ul>
+<p>If <code class="docutils literal notranslate"><span class="pre">true</span></code>, the body can enter sleep mode when there is no movement. See <a class="reference internal" href="#class-rigidbody3d-property-sleeping"><span class="std std-ref">sleeping</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-rigidbody3d-property-center-of-mass"><a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a> <strong>center_of_mass</strong> = <code class="docutils literal notranslate"><span class="pre">Vector3(0,</span> <span class="pre">0,</span> <span class="pre">0)</span></code> <a class="reference internal" href="#class-rigidbody3d-property-center-of-mass"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_center_of_mass</strong>(value: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a> <strong>get_center_of_mass</strong>()</p></li>
+</ul>
+<p>The body’s custom center of mass, relative to the body’s origin position, when <a class="reference internal" href="#class-rigidbody3d-property-center-of-mass-mode"><span class="std std-ref">center_of_mass_mode</span></a> is set to <a class="reference internal" href="#class-rigidbody3d-constant-center-of-mass-mode-custom"><span class="std std-ref">CENTER_OF_MASS_MODE_CUSTOM</span></a>. This is the balanced point of the body, where applied forces only cause linear acceleration. Applying forces outside of the center of mass causes angular acceleration.</p>
+<p>When <a class="reference internal" href="#class-rigidbody3d-property-center-of-mass-mode"><span class="std std-ref">center_of_mass_mode</span></a> is set to <a class="reference internal" href="#class-rigidbody3d-constant-center-of-mass-mode-auto"><span class="std std-ref">CENTER_OF_MASS_MODE_AUTO</span></a> (default value), the center of mass is automatically determined, but this does not update the value of <a class="reference internal" href="#class-rigidbody3d-property-center-of-mass"><span class="std std-ref">center_of_mass</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-rigidbody3d-property-center-of-mass-mode"><a class="reference internal" href="#enum-rigidbody3d-centerofmassmode"><span class="std std-ref">CenterOfMassMode</span></a> <strong>center_of_mass_mode</strong> = <code class="docutils literal notranslate"><span class="pre">0</span></code> <a class="reference internal" href="#class-rigidbody3d-property-center-of-mass-mode"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_center_of_mass_mode</strong>(value: <a class="reference internal" href="#enum-rigidbody3d-centerofmassmode"><span class="std std-ref">CenterOfMassMode</span></a>)</p></li>
+<li><p><a class="reference internal" href="#enum-rigidbody3d-centerofmassmode"><span class="std std-ref">CenterOfMassMode</span></a> <strong>get_center_of_mass_mode</strong>()</p></li>
+</ul>
+<p>Defines the way the body’s center of mass is set.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-rigidbody3d-property-constant-force"><a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a> <strong>constant_force</strong> = <code class="docutils literal notranslate"><span class="pre">Vector3(0,</span> <span class="pre">0,</span> <span class="pre">0)</span></code> <a class="reference internal" href="#class-rigidbody3d-property-constant-force"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_constant_force</strong>(value: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a> <strong>get_constant_force</strong>()</p></li>
+</ul>
+<p>The body’s total constant positional forces applied during each physics update.</p>
+<p>See <a class="reference internal" href="#class-rigidbody3d-method-add-constant-force"><span class="std std-ref">add_constant_force()</span></a> and <a class="reference internal" href="#class-rigidbody3d-method-add-constant-central-force"><span class="std std-ref">add_constant_central_force()</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-rigidbody3d-property-constant-torque"><a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a> <strong>constant_torque</strong> = <code class="docutils literal notranslate"><span class="pre">Vector3(0,</span> <span class="pre">0,</span> <span class="pre">0)</span></code> <a class="reference internal" href="#class-rigidbody3d-property-constant-torque"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_constant_torque</strong>(value: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a> <strong>get_constant_torque</strong>()</p></li>
+</ul>
+<p>The body’s total constant rotational forces applied during each physics update.</p>
+<p>See <a class="reference internal" href="#class-rigidbody3d-method-add-constant-torque"><span class="std std-ref">add_constant_torque()</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-rigidbody3d-property-contact-monitor"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>contact_monitor</strong> = <code class="docutils literal notranslate"><span class="pre">false</span></code> <a class="reference internal" href="#class-rigidbody3d-property-contact-monitor"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_contact_monitor</strong>(value: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_contact_monitor_enabled</strong>()</p></li>
+</ul>
+<p>If <code class="docutils literal notranslate"><span class="pre">true</span></code>, the RigidBody3D will emit signals when it collides with another body.</p>
+<p><strong>Note:</strong> By default the maximum contacts reported is set to 0, meaning nothing will be recorded, see <a class="reference internal" href="#class-rigidbody3d-property-max-contacts-reported"><span class="std std-ref">max_contacts_reported</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-rigidbody3d-property-continuous-cd"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>continuous_cd</strong> = <code class="docutils literal notranslate"><span class="pre">false</span></code> <a class="reference internal" href="#class-rigidbody3d-property-continuous-cd"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_use_continuous_collision_detection</strong>(value: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_using_continuous_collision_detection</strong>()</p></li>
+</ul>
+<p>If <code class="docutils literal notranslate"><span class="pre">true</span></code>, continuous collision detection is used.</p>
+<p>Continuous collision detection tries to predict where a moving body will collide, instead of moving it and correcting its movement if it collided. Continuous collision detection is more precise, and misses fewer impacts by small, fast-moving objects. Not using continuous collision detection is faster to compute, but can miss small, fast-moving objects.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-rigidbody3d-property-custom-integrator"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>custom_integrator</strong> = <code class="docutils literal notranslate"><span class="pre">false</span></code> <a class="reference internal" href="#class-rigidbody3d-property-custom-integrator"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_use_custom_integrator</strong>(value: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_using_custom_integrator</strong>()</p></li>
+</ul>
+<p>If <code class="docutils literal notranslate"><span class="pre">true</span></code>, the standard force integration (like gravity or damping) will be disabled for this body. Other than collision response, the body will only move as determined by the <a class="reference internal" href="#class-rigidbody3d-private-method-integrate-forces"><span class="std std-ref">_integrate_forces()</span></a> method, if that virtual method is overridden.</p>
+<p>Setting this property will call the method <a class="reference internal" href="class_physicsserver3d.html#class-physicsserver3d-method-body-set-omit-force-integration"><span class="std std-ref">PhysicsServer3D.body_set_omit_force_integration()</span></a> internally.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-rigidbody3d-property-freeze"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>freeze</strong> = <code class="docutils literal notranslate"><span class="pre">false</span></code> <a class="reference internal" href="#class-rigidbody3d-property-freeze"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_freeze_enabled</strong>(value: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_freeze_enabled</strong>()</p></li>
+</ul>
+<p>If <code class="docutils literal notranslate"><span class="pre">true</span></code>, the body is frozen. Gravity and forces are not applied anymore.</p>
+<p>See <a class="reference internal" href="#class-rigidbody3d-property-freeze-mode"><span class="std std-ref">freeze_mode</span></a> to set the body’s behavior when frozen.</p>
+<p><strong>Note:</strong> For a body that is always frozen, use <a class="reference internal" href="class_staticbody3d.html#class-staticbody3d"><span class="std std-ref">StaticBody3D</span></a> or <a class="reference internal" href="class_animatablebody3d.html#class-animatablebody3d"><span class="std std-ref">AnimatableBody3D</span></a> instead.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-rigidbody3d-property-freeze-mode"><a class="reference internal" href="#enum-rigidbody3d-freezemode"><span class="std std-ref">FreezeMode</span></a> <strong>freeze_mode</strong> = <code class="docutils literal notranslate"><span class="pre">0</span></code> <a class="reference internal" href="#class-rigidbody3d-property-freeze-mode"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_freeze_mode</strong>(value: <a class="reference internal" href="#enum-rigidbody3d-freezemode"><span class="std std-ref">FreezeMode</span></a>)</p></li>
+<li><p><a class="reference internal" href="#enum-rigidbody3d-freezemode"><span class="std std-ref">FreezeMode</span></a> <strong>get_freeze_mode</strong>()</p></li>
+</ul>
+<p>The body’s freeze mode. Determines the body’s behavior when <a class="reference internal" href="#class-rigidbody3d-property-freeze"><span class="std std-ref">freeze</span></a> is <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p>
+<p><strong>Note:</strong> For a body that is always frozen, use <a class="reference internal" href="class_staticbody3d.html#class-staticbody3d"><span class="std std-ref">StaticBody3D</span></a> or <a class="reference internal" href="class_animatablebody3d.html#class-animatablebody3d"><span class="std std-ref">AnimatableBody3D</span></a> instead.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-rigidbody3d-property-gravity-scale"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>gravity_scale</strong> = <code class="docutils literal notranslate"><span class="pre">1.0</span></code> <a class="reference internal" href="#class-rigidbody3d-property-gravity-scale"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_gravity_scale</strong>(value: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>get_gravity_scale</strong>()</p></li>
+</ul>
+<p>This is multiplied by <a class="reference internal" href="class_projectsettings.html#class-projectsettings-property-physics-3d-default-gravity"><span class="std std-ref">ProjectSettings.physics/3d/default_gravity</span></a> to produce this body’s gravity. For example, a value of <code class="docutils literal notranslate"><span class="pre">1.0</span></code> will apply normal gravity, <code class="docutils literal notranslate"><span class="pre">2.0</span></code> will apply double the gravity, and <code class="docutils literal notranslate"><span class="pre">0.5</span></code> will apply half the gravity to this body.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-rigidbody3d-property-inertia"><a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a> <strong>inertia</strong> = <code class="docutils literal notranslate"><span class="pre">Vector3(0,</span> <span class="pre">0,</span> <span class="pre">0)</span></code> <a class="reference internal" href="#class-rigidbody3d-property-inertia"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_inertia</strong>(value: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a> <strong>get_inertia</strong>()</p></li>
+</ul>
+<p>The body’s moment of inertia. This is like mass, but for rotation: it determines how much torque it takes to rotate the body on each axis. The moment of inertia is usually computed automatically from the mass and the shapes, but this property allows you to set a custom value.</p>
+<p>If set to <a class="reference internal" href="class_vector3.html#class-vector3-constant-zero"><span class="std std-ref">Vector3.ZERO</span></a>, inertia is automatically computed (default value).</p>
+<p><strong>Note:</strong> This value does not change when inertia is automatically computed. Use <a class="reference internal" href="class_physicsserver3d.html#class-physicsserver3d"><span class="std std-ref">PhysicsServer3D</span></a> to get the computed inertia.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-rigidbody3d-property-linear-damp"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>linear_damp</strong> = <code class="docutils literal notranslate"><span class="pre">0.0</span></code> <a class="reference internal" href="#class-rigidbody3d-property-linear-damp"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_linear_damp</strong>(value: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>get_linear_damp</strong>()</p></li>
+</ul>
+<p>Damps the body’s movement. By default, the body will use the <a class="reference internal" href="class_projectsettings.html#class-projectsettings-property-physics-3d-default-linear-damp"><span class="std std-ref">ProjectSettings.physics/3d/default_linear_damp</span></a> project setting or any value override set by an <a class="reference internal" href="class_area3d.html#class-area3d"><span class="std std-ref">Area3D</span></a> the body is in. Depending on <a class="reference internal" href="#class-rigidbody3d-property-linear-damp-mode"><span class="std std-ref">linear_damp_mode</span></a>, you can set <a class="reference internal" href="#class-rigidbody3d-property-linear-damp"><span class="std std-ref">linear_damp</span></a> to be added to or to replace the body’s damping value.</p>
+<p>See <a class="reference internal" href="class_projectsettings.html#class-projectsettings-property-physics-3d-default-linear-damp"><span class="std std-ref">ProjectSettings.physics/3d/default_linear_damp</span></a> for more details about damping.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-rigidbody3d-property-linear-damp-mode"><a class="reference internal" href="#enum-rigidbody3d-dampmode"><span class="std std-ref">DampMode</span></a> <strong>linear_damp_mode</strong> = <code class="docutils literal notranslate"><span class="pre">0</span></code> <a class="reference internal" href="#class-rigidbody3d-property-linear-damp-mode"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_linear_damp_mode</strong>(value: <a class="reference internal" href="#enum-rigidbody3d-dampmode"><span class="std std-ref">DampMode</span></a>)</p></li>
+<li><p><a class="reference internal" href="#enum-rigidbody3d-dampmode"><span class="std std-ref">DampMode</span></a> <strong>get_linear_damp_mode</strong>()</p></li>
+</ul>
+<p>Defines how <a class="reference internal" href="#class-rigidbody3d-property-linear-damp"><span class="std std-ref">linear_damp</span></a> is applied.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-rigidbody3d-property-linear-velocity"><a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a> <strong>linear_velocity</strong> = <code class="docutils literal notranslate"><span class="pre">Vector3(0,</span> <span class="pre">0,</span> <span class="pre">0)</span></code> <a class="reference internal" href="#class-rigidbody3d-property-linear-velocity"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_linear_velocity</strong>(value: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a> <strong>get_linear_velocity</strong>()</p></li>
+</ul>
+<p>The body’s linear velocity in units per second. Can be used sporadically, but <strong>don’t set this every frame</strong>, because physics may run in another thread and runs at a different granularity. Use <a class="reference internal" href="#class-rigidbody3d-private-method-integrate-forces"><span class="std std-ref">_integrate_forces()</span></a> as your process loop for precise control of the body state.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-rigidbody3d-property-lock-rotation"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>lock_rotation</strong> = <code class="docutils literal notranslate"><span class="pre">false</span></code> <a class="reference internal" href="#class-rigidbody3d-property-lock-rotation"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_lock_rotation_enabled</strong>(value: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_lock_rotation_enabled</strong>()</p></li>
+</ul>
+<p>If <code class="docutils literal notranslate"><span class="pre">true</span></code>, the body cannot rotate. Gravity and forces only apply linear movement.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-rigidbody3d-property-mass"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>mass</strong> = <code class="docutils literal notranslate"><span class="pre">1.0</span></code> <a class="reference internal" href="#class-rigidbody3d-property-mass"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_mass</strong>(value: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>get_mass</strong>()</p></li>
+</ul>
+<p>The body’s mass.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-rigidbody3d-property-max-contacts-reported"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>max_contacts_reported</strong> = <code class="docutils literal notranslate"><span class="pre">0</span></code> <a class="reference internal" href="#class-rigidbody3d-property-max-contacts-reported"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_max_contacts_reported</strong>(value: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>get_max_contacts_reported</strong>()</p></li>
+</ul>
+<p>The maximum number of contacts that will be recorded. Requires a value greater than 0 and <a class="reference internal" href="#class-rigidbody3d-property-contact-monitor"><span class="std std-ref">contact_monitor</span></a> to be set to <code class="docutils literal notranslate"><span class="pre">true</span></code> to start to register contacts. Use <a class="reference internal" href="#class-rigidbody3d-method-get-contact-count"><span class="std std-ref">get_contact_count()</span></a> to retrieve the count or <a class="reference internal" href="#class-rigidbody3d-method-get-colliding-bodies"><span class="std std-ref">get_colliding_bodies()</span></a> to retrieve bodies that have been collided with.</p>
+<p><strong>Note:</strong> The number of contacts is different from the number of collisions. Collisions between parallel edges will result in two contacts (one at each end), and collisions between parallel faces will result in four contacts (one at each corner).</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-rigidbody3d-property-physics-material-override"><a class="reference internal" href="class_physicsmaterial.html#class-physicsmaterial"><span class="std std-ref">PhysicsMaterial</span></a> <strong>physics_material_override</strong> <a class="reference internal" href="#class-rigidbody3d-property-physics-material-override"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_physics_material_override</strong>(value: <a class="reference internal" href="class_physicsmaterial.html#class-physicsmaterial"><span class="std std-ref">PhysicsMaterial</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_physicsmaterial.html#class-physicsmaterial"><span class="std std-ref">PhysicsMaterial</span></a> <strong>get_physics_material_override</strong>()</p></li>
+</ul>
+<p>The physics material override for the body.</p>
+<p>If a material is assigned to this property, it will be used instead of any other physics material, such as an inherited one.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-rigidbody3d-property-sleeping"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>sleeping</strong> = <code class="docutils literal notranslate"><span class="pre">false</span></code> <a class="reference internal" href="#class-rigidbody3d-property-sleeping"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_sleeping</strong>(value: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_sleeping</strong>()</p></li>
+</ul>
+<p>If <code class="docutils literal notranslate"><span class="pre">true</span></code>, the body will not move and will not calculate forces until woken up by another body through, for example, a collision, or by using the <a class="reference internal" href="#class-rigidbody3d-method-apply-impulse"><span class="std std-ref">apply_impulse()</span></a> or <a class="reference internal" href="#class-rigidbody3d-method-apply-force"><span class="std std-ref">apply_force()</span></a> methods.</p>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="method-descriptions">
+<h2>Method Descriptions<a class="headerlink" href="#method-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-method" id="class-rigidbody3d-private-method-integrate-forces"><abbr title="No return value.">void</abbr> <strong>_integrate_forces</strong>(state: <a class="reference internal" href="class_physicsdirectbodystate3d.html#class-physicsdirectbodystate3d"><span class="std std-ref">PhysicsDirectBodyState3D</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <a class="reference internal" href="#class-rigidbody3d-private-method-integrate-forces"><span class="std std-ref">🔗</span></a></p>
+<p>Called during physics processing, allowing you to read and safely modify the simulation state for the object. By default, it is called before the standard force integration, but the <a class="reference internal" href="#class-rigidbody3d-property-custom-integrator"><span class="std std-ref">custom_integrator</span></a> property allows you to disable the standard force integration and do fully custom force integration for a body.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-rigidbody3d-method-add-constant-central-force"><abbr title="No return value.">void</abbr> <strong>add_constant_central_force</strong>(force: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>) <a class="reference internal" href="#class-rigidbody3d-method-add-constant-central-force"><span class="std std-ref">🔗</span></a></p>
+<p>Adds a constant directional force without affecting rotation that keeps being applied over time until cleared with <code class="docutils literal notranslate"><span class="pre">constant_force</span> <span class="pre">=</span> <span class="pre">Vector3(0,</span> <span class="pre">0,</span> <span class="pre">0)</span></code>.</p>
+<p>This is equivalent to using <a class="reference internal" href="#class-rigidbody3d-method-add-constant-force"><span class="std std-ref">add_constant_force()</span></a> at the body’s center of mass.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-rigidbody3d-method-add-constant-force"><abbr title="No return value.">void</abbr> <strong>add_constant_force</strong>(force: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>, position: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a> = Vector3(0, 0, 0)) <a class="reference internal" href="#class-rigidbody3d-method-add-constant-force"><span class="std std-ref">🔗</span></a></p>
+<p>Adds a constant positioned force to the body that keeps being applied over time until cleared with <code class="docutils literal notranslate"><span class="pre">constant_force</span> <span class="pre">=</span> <span class="pre">Vector3(0,</span> <span class="pre">0,</span> <span class="pre">0)</span></code>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">position</span></code> is the offset from the body origin in global coordinates.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-rigidbody3d-method-add-constant-torque"><abbr title="No return value.">void</abbr> <strong>add_constant_torque</strong>(torque: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>) <a class="reference internal" href="#class-rigidbody3d-method-add-constant-torque"><span class="std std-ref">🔗</span></a></p>
+<p>Adds a constant rotational force without affecting position that keeps being applied over time until cleared with <code class="docutils literal notranslate"><span class="pre">constant_torque</span> <span class="pre">=</span> <span class="pre">Vector3(0,</span> <span class="pre">0,</span> <span class="pre">0)</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-rigidbody3d-method-apply-central-force"><abbr title="No return value.">void</abbr> <strong>apply_central_force</strong>(force: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>) <a class="reference internal" href="#class-rigidbody3d-method-apply-central-force"><span class="std std-ref">🔗</span></a></p>
+<p>Applies a directional force without affecting rotation. A force is time dependent and meant to be applied every physics update.</p>
+<p>This is equivalent to using <a class="reference internal" href="#class-rigidbody3d-method-apply-force"><span class="std std-ref">apply_force()</span></a> at the body’s center of mass.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-rigidbody3d-method-apply-central-impulse"><abbr title="No return value.">void</abbr> <strong>apply_central_impulse</strong>(impulse: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>) <a class="reference internal" href="#class-rigidbody3d-method-apply-central-impulse"><span class="std std-ref">🔗</span></a></p>
+<p>Applies a directional impulse without affecting rotation.</p>
+<p>An impulse is time-independent! Applying an impulse every frame would result in a framerate-dependent force. For this reason, it should only be used when simulating one-time impacts (use the “_force” functions otherwise).</p>
+<p>This is equivalent to using <a class="reference internal" href="#class-rigidbody3d-method-apply-impulse"><span class="std std-ref">apply_impulse()</span></a> at the body’s center of mass.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-rigidbody3d-method-apply-force"><abbr title="No return value.">void</abbr> <strong>apply_force</strong>(force: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>, position: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a> = Vector3(0, 0, 0)) <a class="reference internal" href="#class-rigidbody3d-method-apply-force"><span class="std std-ref">🔗</span></a></p>
+<p>Applies a positioned force to the body. A force is time dependent and meant to be applied every physics update.</p>
+<p><code class="docutils literal notranslate"><span class="pre">position</span></code> is the offset from the body origin in global coordinates.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-rigidbody3d-method-apply-impulse"><abbr title="No return value.">void</abbr> <strong>apply_impulse</strong>(impulse: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>, position: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a> = Vector3(0, 0, 0)) <a class="reference internal" href="#class-rigidbody3d-method-apply-impulse"><span class="std std-ref">🔗</span></a></p>
+<p>Applies a positioned impulse to the body.</p>
+<p>An impulse is time-independent! Applying an impulse every frame would result in a framerate-dependent force. For this reason, it should only be used when simulating one-time impacts (use the “_force” functions otherwise).</p>
+<p><code class="docutils literal notranslate"><span class="pre">position</span></code> is the offset from the body origin in global coordinates.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-rigidbody3d-method-apply-torque"><abbr title="No return value.">void</abbr> <strong>apply_torque</strong>(torque: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>) <a class="reference internal" href="#class-rigidbody3d-method-apply-torque"><span class="std std-ref">🔗</span></a></p>
+<p>Applies a rotational force without affecting position. A force is time dependent and meant to be applied every physics update.</p>
+<p><strong>Note:</strong> <a class="reference internal" href="#class-rigidbody3d-property-inertia"><span class="std std-ref">inertia</span></a> is required for this to work. To have <a class="reference internal" href="#class-rigidbody3d-property-inertia"><span class="std std-ref">inertia</span></a>, an active <a class="reference internal" href="class_collisionshape3d.html#class-collisionshape3d"><span class="std std-ref">CollisionShape3D</span></a> must be a child of the node, or you can manually set <a class="reference internal" href="#class-rigidbody3d-property-inertia"><span class="std std-ref">inertia</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-rigidbody3d-method-apply-torque-impulse"><abbr title="No return value.">void</abbr> <strong>apply_torque_impulse</strong>(impulse: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>) <a class="reference internal" href="#class-rigidbody3d-method-apply-torque-impulse"><span class="std std-ref">🔗</span></a></p>
+<p>Applies a rotational impulse to the body without affecting the position.</p>
+<p>An impulse is time-independent! Applying an impulse every frame would result in a framerate-dependent force. For this reason, it should only be used when simulating one-time impacts (use the “_force” functions otherwise).</p>
+<p><strong>Note:</strong> <a class="reference internal" href="#class-rigidbody3d-property-inertia"><span class="std std-ref">inertia</span></a> is required for this to work. To have <a class="reference internal" href="#class-rigidbody3d-property-inertia"><span class="std std-ref">inertia</span></a>, an active <a class="reference internal" href="class_collisionshape3d.html#class-collisionshape3d"><span class="std std-ref">CollisionShape3D</span></a> must be a child of the node, or you can manually set <a class="reference internal" href="#class-rigidbody3d-property-inertia"><span class="std std-ref">inertia</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-rigidbody3d-method-get-colliding-bodies"><a class="reference internal" href="class_array.html#class-array"><span class="std std-ref">Array</span></a>[<a class="reference internal" href="class_node3d.html#class-node3d"><span class="std std-ref">Node3D</span></a>] <strong>get_colliding_bodies</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-rigidbody3d-method-get-colliding-bodies"><span class="std std-ref">🔗</span></a></p>
+<p>Returns a list of the bodies colliding with this one. Requires <a class="reference internal" href="#class-rigidbody3d-property-contact-monitor"><span class="std std-ref">contact_monitor</span></a> to be set to <code class="docutils literal notranslate"><span class="pre">true</span></code> and <a class="reference internal" href="#class-rigidbody3d-property-max-contacts-reported"><span class="std std-ref">max_contacts_reported</span></a> to be set high enough to detect all the collisions.</p>
+<p><strong>Note:</strong> The result of this test is not immediate after moving objects. For performance, list of collisions is updated once per frame and before the physics step. Consider using signals instead.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-rigidbody3d-method-get-contact-count"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>get_contact_count</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-rigidbody3d-method-get-contact-count"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the number of contacts this body has with other bodies. By default, this returns 0 unless bodies are configured to monitor contacts (see <a class="reference internal" href="#class-rigidbody3d-property-contact-monitor"><span class="std std-ref">contact_monitor</span></a>).</p>
+<p><strong>Note:</strong> To retrieve the colliding bodies, use <a class="reference internal" href="#class-rigidbody3d-method-get-colliding-bodies"><span class="std std-ref">get_colliding_bodies()</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-rigidbody3d-method-get-inverse-inertia-tensor"><a class="reference internal" href="class_basis.html#class-basis"><span class="std std-ref">Basis</span></a> <strong>get_inverse_inertia_tensor</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-rigidbody3d-method-get-inverse-inertia-tensor"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the inverse inertia tensor basis. This is used to calculate the angular acceleration resulting from a torque applied to the <strong>RigidBody3D</strong>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-rigidbody3d-method-set-axis-velocity"><abbr title="No return value.">void</abbr> <strong>set_axis_velocity</strong>(axis_velocity: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>) <a class="reference internal" href="#class-rigidbody3d-method-set-axis-velocity"><span class="std std-ref">🔗</span></a></p>
+<p>Sets an axis velocity. The velocity in the given vector axis will be set as the given vector length. This is useful for jumping behavior.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, MUmarShahbaz.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

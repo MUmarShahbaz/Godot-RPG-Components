@@ -1,0 +1,234 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ResourceFormatLoader &mdash; RPG Components 2D 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=d45e8c67"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            RPG Components 2D
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">ResourceFormatLoader</a><ul>
+<li><a class="reference internal" href="#description">Description</a></li>
+<li><a class="reference internal" href="#methods">Methods</a></li>
+<li><a class="reference internal" href="#enumerations">Enumerations</a></li>
+<li><a class="reference internal" href="#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">RPG Components 2D</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">ResourceFormatLoader</li>
+      <li class="wy-breadcrumbs-aside">
+              <!-- User defined GitHub URL -->
+              <a href="hide" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="resourceformatloader">
+<span id="class-resourceformatloader"></span><h1>ResourceFormatLoader<a class="headerlink" href="#resourceformatloader" title="Link to this heading"></a></h1>
+<p><strong>Inherits:</strong> <a class="reference internal" href="class_refcounted.html#class-refcounted"><span class="std std-ref">RefCounted</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_object.html#class-object"><span class="std std-ref">Object</span></a></p>
+<p>Loads a specific resource type from a file.</p>
+<section class="classref-introduction-group" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
+<p>Godot loads resources in the editor or in exported games using ResourceFormatLoaders. They are queried automatically via the <a class="reference internal" href="class_resourceloader.html#class-resourceloader"><span class="std std-ref">ResourceLoader</span></a> singleton, or when a resource with internal dependencies is loaded. Each file type may load as a different resource type, so multiple ResourceFormatLoaders are registered in the engine.</p>
+<p>Extending this class allows you to define your own loader. Be sure to respect the documented return types and values. You should give it a global class name with <code class="docutils literal notranslate"><span class="pre">class_name</span></code> for it to be registered. Like built-in ResourceFormatLoaders, it will be called automatically when loading resources of its handled type(s). You may also implement a <a class="reference internal" href="class_resourceformatsaver.html#class-resourceformatsaver"><span class="std std-ref">ResourceFormatSaver</span></a>.</p>
+<p><strong>Note:</strong> You can also extend <a class="reference internal" href="class_editorimportplugin.html#class-editorimportplugin"><span class="std std-ref">EditorImportPlugin</span></a> if the resource type you need exists but Godot is unable to load its format. Choosing one way over another depends on if the format is suitable or not for the final exported game. For example, it’s better to import <code class="docutils literal notranslate"><span class="pre">.png</span></code> textures as <code class="docutils literal notranslate"><span class="pre">.ctex</span></code> (<a class="reference internal" href="class_compressedtexture2d.html#class-compressedtexture2d"><span class="std std-ref">CompressedTexture2D</span></a>) first, so they can be loaded with better efficiency on the graphics card.</p>
+</section>
+<section class="classref-reftable-group" id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-resourceformatloader-private-method-exists"><span class="std std-ref">_exists</span></a>(path: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_packedstringarray.html#class-packedstringarray"><span class="std std-ref">PackedStringArray</span></a></p></td>
+<td><p><a class="reference internal" href="#class-resourceformatloader-private-method-get-classes-used"><span class="std std-ref">_get_classes_used</span></a>(path: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_packedstringarray.html#class-packedstringarray"><span class="std std-ref">PackedStringArray</span></a></p></td>
+<td><p><a class="reference internal" href="#class-resourceformatloader-private-method-get-dependencies"><span class="std std-ref">_get_dependencies</span></a>(path: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, add_types: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_packedstringarray.html#class-packedstringarray"><span class="std std-ref">PackedStringArray</span></a></p></td>
+<td><p><a class="reference internal" href="#class-resourceformatloader-private-method-get-recognized-extensions"><span class="std std-ref">_get_recognized_extensions</span></a>() <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a></p></td>
+<td><p><a class="reference internal" href="#class-resourceformatloader-private-method-get-resource-script-class"><span class="std std-ref">_get_resource_script_class</span></a>(path: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a></p></td>
+<td><p><a class="reference internal" href="#class-resourceformatloader-private-method-get-resource-type"><span class="std std-ref">_get_resource_type</span></a>(path: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-resourceformatloader-private-method-get-resource-uid"><span class="std std-ref">_get_resource_uid</span></a>(path: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-resourceformatloader-private-method-handles-type"><span class="std std-ref">_handles_type</span></a>(type: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a></p></td>
+<td><p><a class="reference internal" href="#class-resourceformatloader-private-method-load"><span class="std std-ref">_load</span></a>(path: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, original_path: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, use_sub_threads: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>, cache_mode: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method is required to be overridden when extending its base class.">required</abbr> <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-resourceformatloader-private-method-recognize-path"><span class="std std-ref">_recognize_path</span></a>(path: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, type: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_%40globalscope.html#enum-globalscope-error"><span class="std std-ref">Error</span></a></p></td>
+<td><p><a class="reference internal" href="#class-resourceformatloader-private-method-rename-dependencies"><span class="std std-ref">_rename_dependencies</span></a>(path: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, renames: <a class="reference internal" href="class_dictionary.html#class-dictionary"><span class="std std-ref">Dictionary</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="enumerations">
+<h2>Enumerations<a class="headerlink" href="#enumerations" title="Link to this heading"></a></h2>
+<p class="classref-enumeration" id="enum-resourceformatloader-cachemode">enum <strong>CacheMode</strong>: <a class="reference internal" href="#enum-resourceformatloader-cachemode"><span class="std std-ref">🔗</span></a></p>
+<p class="classref-enumeration-constant" id="class-resourceformatloader-constant-cache-mode-ignore"><a class="reference internal" href="#enum-resourceformatloader-cachemode"><span class="std std-ref">CacheMode</span></a> <strong>CACHE_MODE_IGNORE</strong> = <code class="docutils literal notranslate"><span class="pre">0</span></code></p>
+<p>Neither the main resource (the one requested to be loaded) nor any of its subresources are retrieved from cache nor stored into it. Dependencies (external resources) are loaded with <a class="reference internal" href="#class-resourceformatloader-constant-cache-mode-reuse"><span class="std std-ref">CACHE_MODE_REUSE</span></a>.</p>
+<p class="classref-enumeration-constant" id="class-resourceformatloader-constant-cache-mode-reuse"><a class="reference internal" href="#enum-resourceformatloader-cachemode"><span class="std std-ref">CacheMode</span></a> <strong>CACHE_MODE_REUSE</strong> = <code class="docutils literal notranslate"><span class="pre">1</span></code></p>
+<p>The main resource (the one requested to be loaded), its subresources, and its dependencies (external resources) are retrieved from cache if present, instead of loaded. Those not cached are loaded and then stored into the cache. The same rules are propagated recursively down the tree of dependencies (external resources).</p>
+<p class="classref-enumeration-constant" id="class-resourceformatloader-constant-cache-mode-replace"><a class="reference internal" href="#enum-resourceformatloader-cachemode"><span class="std std-ref">CacheMode</span></a> <strong>CACHE_MODE_REPLACE</strong> = <code class="docutils literal notranslate"><span class="pre">2</span></code></p>
+<p>Like <a class="reference internal" href="#class-resourceformatloader-constant-cache-mode-reuse"><span class="std std-ref">CACHE_MODE_REUSE</span></a>, but the cache is checked for the main resource (the one requested to be loaded) as well as for each of its subresources. Those already in the cache, as long as the loaded and cached types match, have their data refreshed from storage into the already existing instances. Otherwise, they are recreated as completely new objects.</p>
+<p class="classref-enumeration-constant" id="class-resourceformatloader-constant-cache-mode-ignore-deep"><a class="reference internal" href="#enum-resourceformatloader-cachemode"><span class="std std-ref">CacheMode</span></a> <strong>CACHE_MODE_IGNORE_DEEP</strong> = <code class="docutils literal notranslate"><span class="pre">3</span></code></p>
+<p>Like <a class="reference internal" href="#class-resourceformatloader-constant-cache-mode-ignore"><span class="std std-ref">CACHE_MODE_IGNORE</span></a>, but propagated recursively down the tree of dependencies (external resources).</p>
+<p class="classref-enumeration-constant" id="class-resourceformatloader-constant-cache-mode-replace-deep"><a class="reference internal" href="#enum-resourceformatloader-cachemode"><span class="std std-ref">CacheMode</span></a> <strong>CACHE_MODE_REPLACE_DEEP</strong> = <code class="docutils literal notranslate"><span class="pre">4</span></code></p>
+<p>Like <a class="reference internal" href="#class-resourceformatloader-constant-cache-mode-replace"><span class="std std-ref">CACHE_MODE_REPLACE</span></a>, but propagated recursively down the tree of dependencies (external resources).</p>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="method-descriptions">
+<h2>Method Descriptions<a class="headerlink" href="#method-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-method" id="class-resourceformatloader-private-method-exists"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>_exists</strong>(path: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-resourceformatloader-private-method-exists"><span class="std std-ref">🔗</span></a></p>
+<div class="contribute docutils container">
+<p>There is currently no description for this method. Please help us by <a class="reference external" href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+</div>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-resourceformatloader-private-method-get-classes-used"><a class="reference internal" href="class_packedstringarray.html#class-packedstringarray"><span class="std std-ref">PackedStringArray</span></a> <strong>_get_classes_used</strong>(path: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-resourceformatloader-private-method-get-classes-used"><span class="std std-ref">🔗</span></a></p>
+<div class="contribute docutils container">
+<p>There is currently no description for this method. Please help us by <a class="reference external" href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+</div>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-resourceformatloader-private-method-get-dependencies"><a class="reference internal" href="class_packedstringarray.html#class-packedstringarray"><span class="std std-ref">PackedStringArray</span></a> <strong>_get_dependencies</strong>(path: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, add_types: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-resourceformatloader-private-method-get-dependencies"><span class="std std-ref">🔗</span></a></p>
+<p>Should return the dependencies for the resource at the given <code class="docutils literal notranslate"><span class="pre">path</span></code>. Each dependency is a string composed of one to three sections separated by <code class="docutils literal notranslate"><span class="pre">::</span></code>, with trailing empty sections omitted:</p>
+<ul class="simple">
+<li><p>The first section should contain the UID if the resource has one. Otherwise, it should contain the file path.</p></li>
+<li><p>The second section should contain the class name of the dependency if <code class="docutils literal notranslate"><span class="pre">add_types</span></code> is <code class="docutils literal notranslate"><span class="pre">true</span></code>. Otherwise, it should be empty.</p></li>
+<li><p>The third section should contain the fallback path if the resource has a UID. Otherwise, it should be empty.</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">func</span> <span class="n">_get_dependencies</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">add_types</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">[</span>
+        <span class="s2">&quot;uid://fqgvuwrkuixh::Script::res://script.gd&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;uid://fqgvuwrkuixh::::res://script.gd&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;res://script.gd::Script&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;res://script.gd&quot;</span><span class="p">,</span>
+    <span class="p">]</span>
+</pre></div>
+</div>
+<p><strong>Note:</strong> Custom resource types defined by scripts aren’t known by the <a class="reference internal" href="class_classdb.html#class-classdb"><span class="std std-ref">ClassDB</span></a>, so <code class="docutils literal notranslate"><span class="pre">&quot;Resource&quot;</span></code> can be used for the class name.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-resourceformatloader-private-method-get-recognized-extensions"><a class="reference internal" href="class_packedstringarray.html#class-packedstringarray"><span class="std std-ref">PackedStringArray</span></a> <strong>_get_recognized_extensions</strong>() <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-resourceformatloader-private-method-get-recognized-extensions"><span class="std std-ref">🔗</span></a></p>
+<p>Gets the list of extensions for files this loader is able to read.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-resourceformatloader-private-method-get-resource-script-class"><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a> <strong>_get_resource_script_class</strong>(path: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-resourceformatloader-private-method-get-resource-script-class"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the script class name associated with the <a class="reference internal" href="class_resource.html#class-resource"><span class="std std-ref">Resource</span></a> under the given <code class="docutils literal notranslate"><span class="pre">path</span></code>. If the resource has no script or the script isn’t a named class, it should return <code class="docutils literal notranslate"><span class="pre">&quot;&quot;</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-resourceformatloader-private-method-get-resource-type"><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a> <strong>_get_resource_type</strong>(path: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-resourceformatloader-private-method-get-resource-type"><span class="std std-ref">🔗</span></a></p>
+<p>Gets the class name of the resource associated with the given path. If the loader cannot handle it, it should return <code class="docutils literal notranslate"><span class="pre">&quot;&quot;</span></code>.</p>
+<p><strong>Note:</strong> Custom resource types defined by scripts aren’t known by the <a class="reference internal" href="class_classdb.html#class-classdb"><span class="std std-ref">ClassDB</span></a>, so you might just return <code class="docutils literal notranslate"><span class="pre">&quot;Resource&quot;</span></code> for them.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-resourceformatloader-private-method-get-resource-uid"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>_get_resource_uid</strong>(path: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-resourceformatloader-private-method-get-resource-uid"><span class="std std-ref">🔗</span></a></p>
+<p>Should return the unique ID for the resource associated with the given path. If this method is not overridden, a <code class="docutils literal notranslate"><span class="pre">.uid</span></code> file is generated along with the resource file, containing the unique ID.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-resourceformatloader-private-method-handles-type"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>_handles_type</strong>(type: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-resourceformatloader-private-method-handles-type"><span class="std std-ref">🔗</span></a></p>
+<p>Tells which resource class this loader can load.</p>
+<p><strong>Note:</strong> Custom resource types defined by scripts aren’t known by the <a class="reference internal" href="class_classdb.html#class-classdb"><span class="std std-ref">ClassDB</span></a>, so you might just handle <code class="docutils literal notranslate"><span class="pre">&quot;Resource&quot;</span></code> for them.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-resourceformatloader-private-method-load"><a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a> <strong>_load</strong>(path: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, original_path: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, use_sub_threads: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>, cache_mode: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method is required to be overridden when extending its base class.">required</abbr> <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-resourceformatloader-private-method-load"><span class="std std-ref">🔗</span></a></p>
+<p>Loads a resource when the engine finds this loader to be compatible. If the loaded resource is the result of an import, <code class="docutils literal notranslate"><span class="pre">original_path</span></code> will target the source file. Returns a <a class="reference internal" href="class_resource.html#class-resource"><span class="std std-ref">Resource</span></a> object on success, or an <a class="reference internal" href="class_%40globalscope.html#enum-globalscope-error"><span class="std std-ref">Error</span></a> constant in case of failure.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">cache_mode</span></code> property defines whether and how the cache should be used or updated when loading the resource. See <a class="reference internal" href="#enum-resourceformatloader-cachemode"><span class="std std-ref">CacheMode</span></a> for details.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-resourceformatloader-private-method-recognize-path"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>_recognize_path</strong>(path: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, type: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-resourceformatloader-private-method-recognize-path"><span class="std std-ref">🔗</span></a></p>
+<p>Tells whether or not this loader should load a resource from its resource path for a given type.</p>
+<p>If it is not implemented, the default behavior returns whether the path’s extension is within the ones provided by <a class="reference internal" href="#class-resourceformatloader-private-method-get-recognized-extensions"><span class="std std-ref">_get_recognized_extensions()</span></a>, and if the type is within the ones provided by <a class="reference internal" href="#class-resourceformatloader-private-method-get-resource-type"><span class="std std-ref">_get_resource_type()</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-resourceformatloader-private-method-rename-dependencies"><a class="reference internal" href="class_%40globalscope.html#enum-globalscope-error"><span class="std std-ref">Error</span></a> <strong>_rename_dependencies</strong>(path: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, renames: <a class="reference internal" href="class_dictionary.html#class-dictionary"><span class="std std-ref">Dictionary</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-resourceformatloader-private-method-rename-dependencies"><span class="std std-ref">🔗</span></a></p>
+<p>If implemented, renames dependencies within the given resource and saves it. <code class="docutils literal notranslate"><span class="pre">renames</span></code> is a dictionary <code class="docutils literal notranslate"><span class="pre">{</span> <span class="pre">String</span> <span class="pre">=&gt;</span> <span class="pre">String</span> <span class="pre">}</span></code> mapping old dependency paths to new paths.</p>
+<p>Returns <a class="reference internal" href="class_%40globalscope.html#class-globalscope-constant-ok"><span class="std std-ref">&#64;GlobalScope.OK</span></a> on success, or an <a class="reference internal" href="class_%40globalscope.html#enum-globalscope-error"><span class="std std-ref">Error</span></a> constant in case of failure.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, MUmarShahbaz.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

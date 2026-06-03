@@ -1,0 +1,180 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EditorDebuggerPlugin &mdash; RPG Components 2D 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=d45e8c67"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            RPG Components 2D
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">EditorDebuggerPlugin</a><ul>
+<li><a class="reference internal" href="#description">Description</a></li>
+<li><a class="reference internal" href="#methods">Methods</a></li>
+<li><a class="reference internal" href="#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">RPG Components 2D</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">EditorDebuggerPlugin</li>
+      <li class="wy-breadcrumbs-aside">
+              <!-- User defined GitHub URL -->
+              <a href="hide" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="editordebuggerplugin">
+<span id="class-editordebuggerplugin"></span><h1>EditorDebuggerPlugin<a class="headerlink" href="#editordebuggerplugin" title="Link to this heading"></a></h1>
+<p><strong>Inherits:</strong> <a class="reference internal" href="class_refcounted.html#class-refcounted"><span class="std std-ref">RefCounted</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_object.html#class-object"><span class="std std-ref">Object</span></a></p>
+<p>A base class to implement debugger plugins.</p>
+<section class="classref-introduction-group" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
+<p><strong>EditorDebuggerPlugin</strong> provides functions related to the editor side of the debugger.</p>
+<p>To interact with the debugger, an instance of this class must be added to the editor via <a class="reference internal" href="class_editorplugin.html#class-editorplugin-method-add-debugger-plugin"><span class="std std-ref">EditorPlugin.add_debugger_plugin()</span></a>.</p>
+<p>Once added, the <a class="reference internal" href="#class-editordebuggerplugin-private-method-setup-session"><span class="std std-ref">_setup_session()</span></a> callback will be called for every <a class="reference internal" href="class_editordebuggersession.html#class-editordebuggersession"><span class="std std-ref">EditorDebuggerSession</span></a> available to the plugin, and when new ones are created (the sessions may be inactive during this stage).</p>
+<p>You can retrieve the available <a class="reference internal" href="class_editordebuggersession.html#class-editordebuggersession"><span class="std std-ref">EditorDebuggerSession</span></a>s via <a class="reference internal" href="#class-editordebuggerplugin-method-get-sessions"><span class="std std-ref">get_sessions()</span></a> or get a specific one via <a class="reference internal" href="#class-editordebuggerplugin-method-get-session"><span class="std std-ref">get_session()</span></a>.</p>
+<p>To connect on the running game side, use the <a class="reference internal" href="class_enginedebugger.html#class-enginedebugger"><span class="std std-ref">EngineDebugger</span></a> singleton:</p>
+<p><strong>Note:</strong> While the game is running, <a class="reference internal" href="class_%40globalscope.html#class-globalscope-method-print"><span class="std std-ref">&#64;GlobalScope.print()</span></a> and similar functions <em>called in the editor</em> do not print anything, the Output Log prints only game messages.</p>
+</section>
+<section class="classref-reftable-group" id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-editordebuggerplugin-private-method-breakpoint-set-in-tree"><span class="std std-ref">_breakpoint_set_in_tree</span></a>(script: <a class="reference internal" href="class_script.html#class-script"><span class="std std-ref">Script</span></a>, line: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, enabled: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-editordebuggerplugin-private-method-breakpoints-cleared-in-tree"><span class="std std-ref">_breakpoints_cleared_in_tree</span></a>() <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-editordebuggerplugin-private-method-capture"><span class="std std-ref">_capture</span></a>(message: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, data: <a class="reference internal" href="class_array.html#class-array"><span class="std std-ref">Array</span></a>, session_id: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-editordebuggerplugin-private-method-goto-script-line"><span class="std std-ref">_goto_script_line</span></a>(script: <a class="reference internal" href="class_script.html#class-script"><span class="std std-ref">Script</span></a>, line: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-editordebuggerplugin-private-method-has-capture"><span class="std std-ref">_has_capture</span></a>(capture: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-editordebuggerplugin-private-method-setup-session"><span class="std std-ref">_setup_session</span></a>(session_id: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_editordebuggersession.html#class-editordebuggersession"><span class="std std-ref">EditorDebuggerSession</span></a></p></td>
+<td><p><a class="reference internal" href="#class-editordebuggerplugin-method-get-session"><span class="std std-ref">get_session</span></a>(id: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_array.html#class-array"><span class="std std-ref">Array</span></a></p></td>
+<td><p><a class="reference internal" href="#class-editordebuggerplugin-method-get-sessions"><span class="std std-ref">get_sessions</span></a>()</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="method-descriptions">
+<h2>Method Descriptions<a class="headerlink" href="#method-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-method" id="class-editordebuggerplugin-private-method-breakpoint-set-in-tree"><abbr title="No return value.">void</abbr> <strong>_breakpoint_set_in_tree</strong>(script: <a class="reference internal" href="class_script.html#class-script"><span class="std std-ref">Script</span></a>, line: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, enabled: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <a class="reference internal" href="#class-editordebuggerplugin-private-method-breakpoint-set-in-tree"><span class="std std-ref">🔗</span></a></p>
+<p>Override this method to be notified when a breakpoint is set in the editor.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-editordebuggerplugin-private-method-breakpoints-cleared-in-tree"><abbr title="No return value.">void</abbr> <strong>_breakpoints_cleared_in_tree</strong>() <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <a class="reference internal" href="#class-editordebuggerplugin-private-method-breakpoints-cleared-in-tree"><span class="std std-ref">🔗</span></a></p>
+<p>Override this method to be notified when all breakpoints are cleared in the editor.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-editordebuggerplugin-private-method-capture"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>_capture</strong>(message: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, data: <a class="reference internal" href="class_array.html#class-array"><span class="std std-ref">Array</span></a>, session_id: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <a class="reference internal" href="#class-editordebuggerplugin-private-method-capture"><span class="std std-ref">🔗</span></a></p>
+<p>Override this method to process incoming messages. The <code class="docutils literal notranslate"><span class="pre">session_id</span></code> is the ID of the <a class="reference internal" href="class_editordebuggersession.html#class-editordebuggersession"><span class="std std-ref">EditorDebuggerSession</span></a> that received the <code class="docutils literal notranslate"><span class="pre">message</span></code>. Use <a class="reference internal" href="#class-editordebuggerplugin-method-get-session"><span class="std std-ref">get_session()</span></a> to retrieve the session. This method should return <code class="docutils literal notranslate"><span class="pre">true</span></code> if the message is recognized.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-editordebuggerplugin-private-method-goto-script-line"><abbr title="No return value.">void</abbr> <strong>_goto_script_line</strong>(script: <a class="reference internal" href="class_script.html#class-script"><span class="std std-ref">Script</span></a>, line: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <a class="reference internal" href="#class-editordebuggerplugin-private-method-goto-script-line"><span class="std std-ref">🔗</span></a></p>
+<p>Override this method to be notified when a breakpoint line has been clicked in the debugger breakpoint panel.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-editordebuggerplugin-private-method-has-capture"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>_has_capture</strong>(capture: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-editordebuggerplugin-private-method-has-capture"><span class="std std-ref">🔗</span></a></p>
+<p>Override this method to enable receiving messages from the debugger. If <code class="docutils literal notranslate"><span class="pre">capture</span></code> is “my_message” then messages starting with “my_message:” will be passed to the <a class="reference internal" href="#class-editordebuggerplugin-private-method-capture"><span class="std std-ref">_capture()</span></a> method.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-editordebuggerplugin-private-method-setup-session"><abbr title="No return value.">void</abbr> <strong>_setup_session</strong>(session_id: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <a class="reference internal" href="#class-editordebuggerplugin-private-method-setup-session"><span class="std std-ref">🔗</span></a></p>
+<p>Override this method to be notified whenever a new <a class="reference internal" href="class_editordebuggersession.html#class-editordebuggersession"><span class="std std-ref">EditorDebuggerSession</span></a> is created. Note that the session may be inactive during this stage.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-editordebuggerplugin-method-get-session"><a class="reference internal" href="class_editordebuggersession.html#class-editordebuggersession"><span class="std std-ref">EditorDebuggerSession</span></a> <strong>get_session</strong>(id: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <a class="reference internal" href="#class-editordebuggerplugin-method-get-session"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the <a class="reference internal" href="class_editordebuggersession.html#class-editordebuggersession"><span class="std std-ref">EditorDebuggerSession</span></a> with the given <code class="docutils literal notranslate"><span class="pre">id</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-editordebuggerplugin-method-get-sessions"><a class="reference internal" href="class_array.html#class-array"><span class="std std-ref">Array</span></a> <strong>get_sessions</strong>() <a class="reference internal" href="#class-editordebuggerplugin-method-get-sessions"><span class="std std-ref">🔗</span></a></p>
+<p>Returns an array of <a class="reference internal" href="class_editordebuggersession.html#class-editordebuggersession"><span class="std std-ref">EditorDebuggerSession</span></a> currently available to this debugger plugin.</p>
+<p><strong>Note:</strong> Sessions in the array may be inactive, check their state via <a class="reference internal" href="class_editordebuggersession.html#class-editordebuggersession-method-is-active"><span class="std std-ref">EditorDebuggerSession.is_active()</span></a>.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, MUmarShahbaz.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,432 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Transform3D &mdash; RPG Components 2D 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=d45e8c67"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            RPG Components 2D
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">Transform3D</a><ul>
+<li><a class="reference internal" href="#description">Description</a></li>
+<li><a class="reference internal" href="#tutorials">Tutorials</a></li>
+<li><a class="reference internal" href="#properties">Properties</a></li>
+<li><a class="reference internal" href="#constructors">Constructors</a></li>
+<li><a class="reference internal" href="#methods">Methods</a></li>
+<li><a class="reference internal" href="#operators">Operators</a></li>
+<li><a class="reference internal" href="#constants">Constants</a></li>
+<li><a class="reference internal" href="#property-descriptions">Property Descriptions</a></li>
+<li><a class="reference internal" href="#constructor-descriptions">Constructor Descriptions</a></li>
+<li><a class="reference internal" href="#method-descriptions">Method Descriptions</a></li>
+<li><a class="reference internal" href="#operator-descriptions">Operator Descriptions</a></li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">RPG Components 2D</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Transform3D</li>
+      <li class="wy-breadcrumbs-aside">
+              <!-- User defined GitHub URL -->
+              <a href="hide" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="transform3d">
+<span id="class-transform3d"></span><h1>Transform3D<a class="headerlink" href="#transform3d" title="Link to this heading"></a></h1>
+<p>A 3×4 matrix representing a 3D transformation.</p>
+<section class="classref-introduction-group" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
+<p>The <strong>Transform3D</strong> built-in <a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a> type is a 3×4 matrix representing a transformation in 3D space. It contains a <a class="reference internal" href="class_basis.html#class-basis"><span class="std std-ref">Basis</span></a>, which on its own can represent rotation, scale, and shear. Additionally, combined with its own <a class="reference internal" href="#class-transform3d-property-origin"><span class="std std-ref">origin</span></a>, the transform can also represent a translation.</p>
+<p>For a general introduction, see the <span class="xref std std-doc">Matrices and transforms</span> tutorial.</p>
+<p><strong>Note:</strong> Godot uses a <a class="reference external" href="https://en.wikipedia.org/wiki/Right-hand_rule">right-handed coordinate system</a>, which is a common standard. For directions, the convention for built-in types like <a class="reference internal" href="class_camera3d.html#class-camera3d"><span class="std std-ref">Camera3D</span></a> is for -Z to point forward (+X is right, +Y is up, and +Z is back). Other objects may use different direction conventions. For more information, see the <a class="reference external" href="../tutorials/assets_pipeline/importing_3d_scenes/model_export_considerations.html#d-asset-direction-conventions">3D asset direction conventions</a> tutorial.</p>
+<p><strong>Note:</strong> In a boolean context, a Transform3D will evaluate to <code class="docutils literal notranslate"><span class="pre">false</span></code> if it’s equal to <a class="reference internal" href="#class-transform3d-constant-identity"><span class="std std-ref">IDENTITY</span></a>. Otherwise, a Transform3D will always evaluate to <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>There are notable differences when using this API with C#. See <span class="xref std std-ref">doc_c_sharp_differences</span> for more information.</p>
+</div>
+</section>
+<section class="classref-introduction-group" id="tutorials">
+<h2>Tutorials<a class="headerlink" href="#tutorials" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><span class="xref std std-doc">Math documentation index</span></p></li>
+<li><p><span class="xref std std-doc">Matrices and transforms</span></p></li>
+<li><p><span class="xref std std-doc">Using 3D transforms</span></p></li>
+<li><p><a class="reference external" href="https://godotengine.org/asset-library/asset/2787">Matrix Transform Demo</a></p></li>
+<li><p><a class="reference external" href="https://godotengine.org/asset-library/asset/2748">3D Platformer Demo</a></p></li>
+<li><p><a class="reference external" href="https://godotengine.org/asset-library/asset/2783">2.5D Game Demo</a></p></li>
+</ul>
+</section>
+<section class="classref-reftable-group" id="properties">
+<h2>Properties<a class="headerlink" href="#properties" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_basis.html#class-basis"><span class="std std-ref">Basis</span></a></p></td>
+<td><p><a class="reference internal" href="#class-transform3d-property-basis"><span class="std std-ref">basis</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Basis(1,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">1,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">1)</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a></p></td>
+<td><p><a class="reference internal" href="#class-transform3d-property-origin"><span class="std std-ref">origin</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Vector3(0,</span> <span class="pre">0,</span> <span class="pre">0)</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section class="classref-reftable-group" id="constructors">
+<h2>Constructors<a class="headerlink" href="#constructors" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#class-transform3d"><span class="std std-ref">Transform3D</span></a></p></td>
+<td><p><a class="reference internal" href="#class-transform3d-constructor-transform3d"><span class="std std-ref">Transform3D</span></a>()</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#class-transform3d"><span class="std std-ref">Transform3D</span></a></p></td>
+<td><p><a class="reference internal" href="#class-transform3d-constructor-transform3d"><span class="std std-ref">Transform3D</span></a>(from: <a class="reference internal" href="#class-transform3d"><span class="std std-ref">Transform3D</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#class-transform3d"><span class="std std-ref">Transform3D</span></a></p></td>
+<td><p><a class="reference internal" href="#class-transform3d-constructor-transform3d"><span class="std std-ref">Transform3D</span></a>(basis: <a class="reference internal" href="class_basis.html#class-basis"><span class="std std-ref">Basis</span></a>, origin: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#class-transform3d"><span class="std std-ref">Transform3D</span></a></p></td>
+<td><p><a class="reference internal" href="#class-transform3d-constructor-transform3d"><span class="std std-ref">Transform3D</span></a>(from: <a class="reference internal" href="class_projection.html#class-projection"><span class="std std-ref">Projection</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#class-transform3d"><span class="std std-ref">Transform3D</span></a></p></td>
+<td><p><a class="reference internal" href="#class-transform3d-constructor-transform3d"><span class="std std-ref">Transform3D</span></a>(x_axis: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>, y_axis: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>, z_axis: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>, origin: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>)</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section class="classref-reftable-group" id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#class-transform3d"><span class="std std-ref">Transform3D</span></a></p></td>
+<td><p><a class="reference internal" href="#class-transform3d-method-affine-inverse"><span class="std std-ref">affine_inverse</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#class-transform3d"><span class="std std-ref">Transform3D</span></a></p></td>
+<td><p><a class="reference internal" href="#class-transform3d-method-interpolate-with"><span class="std std-ref">interpolate_with</span></a>(xform: <a class="reference internal" href="#class-transform3d"><span class="std std-ref">Transform3D</span></a>, weight: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#class-transform3d"><span class="std std-ref">Transform3D</span></a></p></td>
+<td><p><a class="reference internal" href="#class-transform3d-method-inverse"><span class="std std-ref">inverse</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-transform3d-method-is-equal-approx"><span class="std std-ref">is_equal_approx</span></a>(xform: <a class="reference internal" href="#class-transform3d"><span class="std std-ref">Transform3D</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-transform3d-method-is-finite"><span class="std std-ref">is_finite</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#class-transform3d"><span class="std std-ref">Transform3D</span></a></p></td>
+<td><p><a class="reference internal" href="#class-transform3d-method-looking-at"><span class="std std-ref">looking_at</span></a>(target: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>, up: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a> = Vector3(0, 1, 0), use_model_front: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = false) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#class-transform3d"><span class="std std-ref">Transform3D</span></a></p></td>
+<td><p><a class="reference internal" href="#class-transform3d-method-orthonormalized"><span class="std std-ref">orthonormalized</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#class-transform3d"><span class="std std-ref">Transform3D</span></a></p></td>
+<td><p><a class="reference internal" href="#class-transform3d-method-rotated"><span class="std std-ref">rotated</span></a>(axis: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>, angle: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#class-transform3d"><span class="std std-ref">Transform3D</span></a></p></td>
+<td><p><a class="reference internal" href="#class-transform3d-method-rotated-local"><span class="std std-ref">rotated_local</span></a>(axis: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>, angle: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#class-transform3d"><span class="std std-ref">Transform3D</span></a></p></td>
+<td><p><a class="reference internal" href="#class-transform3d-method-scaled"><span class="std std-ref">scaled</span></a>(scale: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#class-transform3d"><span class="std std-ref">Transform3D</span></a></p></td>
+<td><p><a class="reference internal" href="#class-transform3d-method-scaled-local"><span class="std std-ref">scaled_local</span></a>(scale: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#class-transform3d"><span class="std std-ref">Transform3D</span></a></p></td>
+<td><p><a class="reference internal" href="#class-transform3d-method-translated"><span class="std std-ref">translated</span></a>(offset: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#class-transform3d"><span class="std std-ref">Transform3D</span></a></p></td>
+<td><p><a class="reference internal" href="#class-transform3d-method-translated-local"><span class="std std-ref">translated_local</span></a>(offset: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section class="classref-reftable-group" id="operators">
+<h2>Operators<a class="headerlink" href="#operators" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-transform3d-operator-neq-transform3d"><span class="std std-ref">operator !=</span></a>(right: <a class="reference internal" href="#class-transform3d"><span class="std std-ref">Transform3D</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_aabb.html#class-aabb"><span class="std std-ref">AABB</span></a></p></td>
+<td><p><a class="reference internal" href="#class-transform3d-operator-mul-aabb"><span class="std std-ref">operator *</span></a>(right: <a class="reference internal" href="class_aabb.html#class-aabb"><span class="std std-ref">AABB</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_packedvector3array.html#class-packedvector3array"><span class="std std-ref">PackedVector3Array</span></a></p></td>
+<td><p><a class="reference internal" href="#class-transform3d-operator-mul-packedvector3array"><span class="std std-ref">operator *</span></a>(right: <a class="reference internal" href="class_packedvector3array.html#class-packedvector3array"><span class="std std-ref">PackedVector3Array</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_plane.html#class-plane"><span class="std std-ref">Plane</span></a></p></td>
+<td><p><a class="reference internal" href="#class-transform3d-operator-mul-plane"><span class="std std-ref">operator *</span></a>(right: <a class="reference internal" href="class_plane.html#class-plane"><span class="std std-ref">Plane</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#class-transform3d"><span class="std std-ref">Transform3D</span></a></p></td>
+<td><p><a class="reference internal" href="#class-transform3d-operator-mul-transform3d"><span class="std std-ref">operator *</span></a>(right: <a class="reference internal" href="#class-transform3d"><span class="std std-ref">Transform3D</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a></p></td>
+<td><p><a class="reference internal" href="#class-transform3d-operator-mul-vector3"><span class="std std-ref">operator *</span></a>(right: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#class-transform3d"><span class="std std-ref">Transform3D</span></a></p></td>
+<td><p><a class="reference internal" href="#class-transform3d-operator-mul-float"><span class="std std-ref">operator *</span></a>(right: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#class-transform3d"><span class="std std-ref">Transform3D</span></a></p></td>
+<td><p><a class="reference internal" href="#class-transform3d-operator-mul-int"><span class="std std-ref">operator *</span></a>(right: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#class-transform3d"><span class="std std-ref">Transform3D</span></a></p></td>
+<td><p><a class="reference internal" href="#class-transform3d-operator-div-float"><span class="std std-ref">operator /</span></a>(right: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#class-transform3d"><span class="std std-ref">Transform3D</span></a></p></td>
+<td><p><a class="reference internal" href="#class-transform3d-operator-div-int"><span class="std std-ref">operator /</span></a>(right: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-transform3d-operator-eq-transform3d"><span class="std std-ref">operator ==</span></a>(right: <a class="reference internal" href="#class-transform3d"><span class="std std-ref">Transform3D</span></a>)</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="constants">
+<h2>Constants<a class="headerlink" href="#constants" title="Link to this heading"></a></h2>
+<p class="classref-constant" id="class-transform3d-constant-identity"><strong>IDENTITY</strong> = <code class="docutils literal notranslate"><span class="pre">Transform3D(1,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">1,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">1,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0)</span></code> <a class="reference internal" href="#class-transform3d-constant-identity"><span class="std std-ref">🔗</span></a></p>
+<p>The identity <strong>Transform3D</strong>. This is a transform with no translation, no rotation, and a scale of <a class="reference internal" href="class_vector3.html#class-vector3-constant-one"><span class="std std-ref">Vector3.ONE</span></a>. Its <a class="reference internal" href="#class-transform3d-property-basis"><span class="std std-ref">basis</span></a> is equal to <a class="reference internal" href="class_basis.html#class-basis-constant-identity"><span class="std std-ref">Basis.IDENTITY</span></a>. This also means that:</p>
+<ul class="simple">
+<li><p>Its <a class="reference internal" href="class_basis.html#class-basis-property-x"><span class="std std-ref">Basis.x</span></a> points right (<a class="reference internal" href="class_vector3.html#class-vector3-constant-right"><span class="std std-ref">Vector3.RIGHT</span></a>);</p></li>
+<li><p>Its <a class="reference internal" href="class_basis.html#class-basis-property-y"><span class="std std-ref">Basis.y</span></a> points up (<a class="reference internal" href="class_vector3.html#class-vector3-constant-up"><span class="std std-ref">Vector3.UP</span></a>);</p></li>
+<li><p>Its <a class="reference internal" href="class_basis.html#class-basis-property-z"><span class="std std-ref">Basis.z</span></a> points back (<a class="reference internal" href="class_vector3.html#class-vector3-constant-back"><span class="std std-ref">Vector3.BACK</span></a>).</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">transform</span> <span class="o">=</span> <span class="n">Transform3D</span><span class="o">.</span><span class="n">IDENTITY</span>
+<span class="n">var</span> <span class="n">basis</span> <span class="o">=</span> <span class="n">transform</span><span class="o">.</span><span class="n">basis</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;| X | Y | Z | Origin&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;| %.f | %.f | %.f | %.f&quot;</span> <span class="o">%</span> <span class="p">[</span><span class="n">basis</span><span class="o">.</span><span class="n">x</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">basis</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">basis</span><span class="o">.</span><span class="n">z</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">transform</span><span class="o">.</span><span class="n">origin</span><span class="o">.</span><span class="n">x</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;| %.f | %.f | %.f | %.f&quot;</span> <span class="o">%</span> <span class="p">[</span><span class="n">basis</span><span class="o">.</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="n">basis</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="n">basis</span><span class="o">.</span><span class="n">z</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="n">transform</span><span class="o">.</span><span class="n">origin</span><span class="o">.</span><span class="n">y</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;| %.f | %.f | %.f | %.f&quot;</span> <span class="o">%</span> <span class="p">[</span><span class="n">basis</span><span class="o">.</span><span class="n">x</span><span class="o">.</span><span class="n">z</span><span class="p">,</span> <span class="n">basis</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="p">,</span> <span class="n">basis</span><span class="o">.</span><span class="n">z</span><span class="o">.</span><span class="n">z</span><span class="p">,</span> <span class="n">transform</span><span class="o">.</span><span class="n">origin</span><span class="o">.</span><span class="n">z</span><span class="p">])</span>
+<span class="c1"># Prints:</span>
+<span class="c1"># | X | Y | Z | Origin</span>
+<span class="c1"># | 1 | 0 | 0 | 0</span>
+<span class="c1"># | 0 | 1 | 0 | 0</span>
+<span class="c1"># | 0 | 0 | 1 | 0</span>
+</pre></div>
+</div>
+<p>If a <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>, an <a class="reference internal" href="class_aabb.html#class-aabb"><span class="std std-ref">AABB</span></a>, a <a class="reference internal" href="class_plane.html#class-plane"><span class="std std-ref">Plane</span></a>, a <a class="reference internal" href="class_packedvector3array.html#class-packedvector3array"><span class="std std-ref">PackedVector3Array</span></a>, or another <strong>Transform3D</strong> is transformed (multiplied) by this constant, no transformation occurs.</p>
+<p><strong>Note:</strong> In GDScript, this constant is equivalent to creating a <a class="reference internal" href="#class-transform3d-constructor-transform3d"><span class="std std-ref">Transform3D</span></a> without any arguments. It can be used to make your code clearer, and for consistency with C#.</p>
+<p class="classref-constant" id="class-transform3d-constant-flip-x"><strong>FLIP_X</strong> = <code class="docutils literal notranslate"><span class="pre">Transform3D(-1,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">1,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">1,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0)</span></code> <a class="reference internal" href="#class-transform3d-constant-flip-x"><span class="std std-ref">🔗</span></a></p>
+<p><strong>Transform3D</strong> with mirroring applied perpendicular to the YZ plane. Its <a class="reference internal" href="#class-transform3d-property-basis"><span class="std std-ref">basis</span></a> is equal to <a class="reference internal" href="class_basis.html#class-basis-constant-flip-x"><span class="std std-ref">Basis.FLIP_X</span></a>.</p>
+<p class="classref-constant" id="class-transform3d-constant-flip-y"><strong>FLIP_Y</strong> = <code class="docutils literal notranslate"><span class="pre">Transform3D(1,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">-1,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">1,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0)</span></code> <a class="reference internal" href="#class-transform3d-constant-flip-y"><span class="std std-ref">🔗</span></a></p>
+<p><strong>Transform3D</strong> with mirroring applied perpendicular to the XZ plane. Its <a class="reference internal" href="#class-transform3d-property-basis"><span class="std std-ref">basis</span></a> is equal to <a class="reference internal" href="class_basis.html#class-basis-constant-flip-y"><span class="std std-ref">Basis.FLIP_Y</span></a>.</p>
+<p class="classref-constant" id="class-transform3d-constant-flip-z"><strong>FLIP_Z</strong> = <code class="docutils literal notranslate"><span class="pre">Transform3D(1,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">1,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">-1,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0)</span></code> <a class="reference internal" href="#class-transform3d-constant-flip-z"><span class="std std-ref">🔗</span></a></p>
+<p><strong>Transform3D</strong> with mirroring applied perpendicular to the XY plane. Its <a class="reference internal" href="#class-transform3d-property-basis"><span class="std std-ref">basis</span></a> is equal to <a class="reference internal" href="class_basis.html#class-basis-constant-flip-z"><span class="std std-ref">Basis.FLIP_Z</span></a>.</p>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="property-descriptions">
+<h2>Property Descriptions<a class="headerlink" href="#property-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-property" id="class-transform3d-property-basis"><a class="reference internal" href="class_basis.html#class-basis"><span class="std std-ref">Basis</span></a> <strong>basis</strong> = <code class="docutils literal notranslate"><span class="pre">Basis(1,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">1,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">1)</span></code> <a class="reference internal" href="#class-transform3d-property-basis"><span class="std std-ref">🔗</span></a></p>
+<p>The <a class="reference internal" href="class_basis.html#class-basis"><span class="std std-ref">Basis</span></a> of this transform. It is composed by 3 axes (<a class="reference internal" href="class_basis.html#class-basis-property-x"><span class="std std-ref">Basis.x</span></a>, <a class="reference internal" href="class_basis.html#class-basis-property-y"><span class="std std-ref">Basis.y</span></a>, and <a class="reference internal" href="class_basis.html#class-basis-property-z"><span class="std std-ref">Basis.z</span></a>). Together, these represent the transform’s rotation, scale, and shear.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-transform3d-property-origin"><a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a> <strong>origin</strong> = <code class="docutils literal notranslate"><span class="pre">Vector3(0,</span> <span class="pre">0,</span> <span class="pre">0)</span></code> <a class="reference internal" href="#class-transform3d-property-origin"><span class="std std-ref">🔗</span></a></p>
+<p>The translation offset of this transform. In 3D space, this can be seen as the position.</p>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="constructor-descriptions">
+<h2>Constructor Descriptions<a class="headerlink" href="#constructor-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-constructor" id="class-transform3d-constructor-transform3d"><a class="reference internal" href="#class-transform3d"><span class="std std-ref">Transform3D</span></a> <strong>Transform3D</strong>() <a class="reference internal" href="#class-transform3d-constructor-transform3d"><span class="std std-ref">🔗</span></a></p>
+<p>Constructs a <strong>Transform3D</strong> identical to <a class="reference internal" href="#class-transform3d-constant-identity"><span class="std std-ref">IDENTITY</span></a>.</p>
+<p><strong>Note:</strong> In C#, this constructs a <strong>Transform3D</strong> with its <a class="reference internal" href="#class-transform3d-property-origin"><span class="std std-ref">origin</span></a> and the components of its <a class="reference internal" href="#class-transform3d-property-basis"><span class="std std-ref">basis</span></a> set to <a class="reference internal" href="class_vector3.html#class-vector3-constant-zero"><span class="std std-ref">Vector3.ZERO</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-constructor"><a class="reference internal" href="#class-transform3d"><span class="std std-ref">Transform3D</span></a> <strong>Transform3D</strong>(from: <a class="reference internal" href="#class-transform3d"><span class="std std-ref">Transform3D</span></a>)</p>
+<p>Constructs a <strong>Transform3D</strong> as a copy of the given <strong>Transform3D</strong>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-constructor"><a class="reference internal" href="#class-transform3d"><span class="std std-ref">Transform3D</span></a> <strong>Transform3D</strong>(basis: <a class="reference internal" href="class_basis.html#class-basis"><span class="std std-ref">Basis</span></a>, origin: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>)</p>
+<p>Constructs a <strong>Transform3D</strong> from a <a class="reference internal" href="class_basis.html#class-basis"><span class="std std-ref">Basis</span></a> and <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-constructor"><a class="reference internal" href="#class-transform3d"><span class="std std-ref">Transform3D</span></a> <strong>Transform3D</strong>(from: <a class="reference internal" href="class_projection.html#class-projection"><span class="std std-ref">Projection</span></a>)</p>
+<p>Constructs a <strong>Transform3D</strong> from a <a class="reference internal" href="class_projection.html#class-projection"><span class="std std-ref">Projection</span></a>. Because <strong>Transform3D</strong> is a 3×4 matrix and <a class="reference internal" href="class_projection.html#class-projection"><span class="std std-ref">Projection</span></a> is a 4×4 matrix, this operation trims the last row of the projection matrix (<code class="docutils literal notranslate"><span class="pre">from.x.w</span></code>, <code class="docutils literal notranslate"><span class="pre">from.y.w</span></code>, <code class="docutils literal notranslate"><span class="pre">from.z.w</span></code>, and <code class="docutils literal notranslate"><span class="pre">from.w.w</span></code> are not included in the new transform).</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-constructor"><a class="reference internal" href="#class-transform3d"><span class="std std-ref">Transform3D</span></a> <strong>Transform3D</strong>(x_axis: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>, y_axis: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>, z_axis: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>, origin: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>)</p>
+<p>Constructs a <strong>Transform3D</strong> from four <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a> values (also called matrix columns).</p>
+<p>The first three arguments are the <a class="reference internal" href="#class-transform3d-property-basis"><span class="std std-ref">basis</span></a>’s axes (<a class="reference internal" href="class_basis.html#class-basis-property-x"><span class="std std-ref">Basis.x</span></a>, <a class="reference internal" href="class_basis.html#class-basis-property-y"><span class="std std-ref">Basis.y</span></a>, and <a class="reference internal" href="class_basis.html#class-basis-property-z"><span class="std std-ref">Basis.z</span></a>).</p>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="method-descriptions">
+<h2>Method Descriptions<a class="headerlink" href="#method-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-method" id="class-transform3d-method-affine-inverse"><a class="reference internal" href="#class-transform3d"><span class="std std-ref">Transform3D</span></a> <strong>affine_inverse</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-transform3d-method-affine-inverse"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the inverted version of this transform. Unlike <a class="reference internal" href="#class-transform3d-method-inverse"><span class="std std-ref">inverse()</span></a>, this method works with almost any <a class="reference internal" href="#class-transform3d-property-basis"><span class="std std-ref">basis</span></a>, including non-uniform ones, but is slower. See also <a class="reference internal" href="class_basis.html#class-basis-method-inverse"><span class="std std-ref">Basis.inverse()</span></a>.</p>
+<p><strong>Note:</strong> For this method to return correctly, the transform’s <a class="reference internal" href="#class-transform3d-property-basis"><span class="std std-ref">basis</span></a> needs to have a determinant that is not exactly <code class="docutils literal notranslate"><span class="pre">0.0</span></code> (see <a class="reference internal" href="class_basis.html#class-basis-method-determinant"><span class="std std-ref">Basis.determinant()</span></a>).</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-transform3d-method-interpolate-with"><a class="reference internal" href="#class-transform3d"><span class="std std-ref">Transform3D</span></a> <strong>interpolate_with</strong>(xform: <a class="reference internal" href="#class-transform3d"><span class="std std-ref">Transform3D</span></a>, weight: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-transform3d-method-interpolate-with"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the result of the linear interpolation between this transform and <code class="docutils literal notranslate"><span class="pre">xform</span></code> by the given <code class="docutils literal notranslate"><span class="pre">weight</span></code>.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">weight</span></code> should be between <code class="docutils literal notranslate"><span class="pre">0.0</span></code> and <code class="docutils literal notranslate"><span class="pre">1.0</span></code> (inclusive). Values outside this range are allowed and can be used to perform <em>extrapolation</em> instead.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-transform3d-method-inverse"><a class="reference internal" href="#class-transform3d"><span class="std std-ref">Transform3D</span></a> <strong>inverse</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-transform3d-method-inverse"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the <a class="reference external" href="https://en.wikipedia.org/wiki/Invertible_matrix">inverted version of this transform</a>. See also <a class="reference internal" href="class_basis.html#class-basis-method-inverse"><span class="std std-ref">Basis.inverse()</span></a>.</p>
+<p><strong>Note:</strong> For this method to return correctly, the transform’s <a class="reference internal" href="#class-transform3d-property-basis"><span class="std std-ref">basis</span></a> needs to be <em>orthonormal</em> (see <a class="reference internal" href="#class-transform3d-method-orthonormalized"><span class="std std-ref">orthonormalized()</span></a>). That means the basis should only represent a rotation. If it does not, use <a class="reference internal" href="#class-transform3d-method-affine-inverse"><span class="std std-ref">affine_inverse()</span></a> instead.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-transform3d-method-is-equal-approx"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_equal_approx</strong>(xform: <a class="reference internal" href="#class-transform3d"><span class="std std-ref">Transform3D</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-transform3d-method-is-equal-approx"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if this transform and <code class="docutils literal notranslate"><span class="pre">xform</span></code> are approximately equal, by running <a class="reference internal" href="class_%40globalscope.html#class-globalscope-method-is-equal-approx"><span class="std std-ref">&#64;GlobalScope.is_equal_approx()</span></a> on each component.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-transform3d-method-is-finite"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_finite</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-transform3d-method-is-finite"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if this transform is finite, by calling <a class="reference internal" href="class_%40globalscope.html#class-globalscope-method-is-finite"><span class="std std-ref">&#64;GlobalScope.is_finite()</span></a> on each component.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-transform3d-method-looking-at"><a class="reference internal" href="#class-transform3d"><span class="std std-ref">Transform3D</span></a> <strong>looking_at</strong>(target: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>, up: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a> = Vector3(0, 1, 0), use_model_front: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = false) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-transform3d-method-looking-at"><span class="std std-ref">🔗</span></a></p>
+<p>Returns a copy of this transform rotated so that the forward axis (-Z) points towards the <code class="docutils literal notranslate"><span class="pre">target</span></code> position.</p>
+<p>The up axis (+Y) points as close to the <code class="docutils literal notranslate"><span class="pre">up</span></code> vector as possible while staying perpendicular to the forward axis. The resulting transform is orthonormalized. The existing rotation, scale, and skew information from the original transform is discarded. The <code class="docutils literal notranslate"><span class="pre">target</span></code> and <code class="docutils literal notranslate"><span class="pre">up</span></code> vectors cannot be zero, cannot be parallel to each other, and are defined in global/parent space.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">use_model_front</span></code> is <code class="docutils literal notranslate"><span class="pre">true</span></code>, the +Z axis (asset front) is treated as forward (implies +X is left) and points toward the <code class="docutils literal notranslate"><span class="pre">target</span></code> position. By default, the -Z axis (camera forward) is treated as forward (implies +X is right).</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-transform3d-method-orthonormalized"><a class="reference internal" href="#class-transform3d"><span class="std std-ref">Transform3D</span></a> <strong>orthonormalized</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-transform3d-method-orthonormalized"><span class="std std-ref">🔗</span></a></p>
+<p>Returns a copy of this transform with its <a class="reference internal" href="#class-transform3d-property-basis"><span class="std std-ref">basis</span></a> orthonormalized. An orthonormal basis is both <em>orthogonal</em> (the axes are perpendicular to each other) and <em>normalized</em> (the axes have a length of <code class="docutils literal notranslate"><span class="pre">1.0</span></code>), which also means it can only represent a rotation. See also <a class="reference internal" href="class_basis.html#class-basis-method-orthonormalized"><span class="std std-ref">Basis.orthonormalized()</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-transform3d-method-rotated"><a class="reference internal" href="#class-transform3d"><span class="std std-ref">Transform3D</span></a> <strong>rotated</strong>(axis: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>, angle: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-transform3d-method-rotated"><span class="std std-ref">🔗</span></a></p>
+<p>Returns a copy of this transform rotated around the given <code class="docutils literal notranslate"><span class="pre">axis</span></code> by the given <code class="docutils literal notranslate"><span class="pre">angle</span></code> (in radians).</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">axis</span></code> must be a normalized vector (see <a class="reference internal" href="class_vector3.html#class-vector3-method-normalized"><span class="std std-ref">Vector3.normalized()</span></a>). If <code class="docutils literal notranslate"><span class="pre">angle</span></code> is positive, the basis is rotated counter-clockwise around the axis.</p>
+<p>This method is an optimized version of multiplying the given transform <code class="docutils literal notranslate"><span class="pre">X</span></code> with a corresponding rotation transform <code class="docutils literal notranslate"><span class="pre">R</span></code> from the left, i.e., <code class="docutils literal notranslate"><span class="pre">R</span> <span class="pre">*</span> <span class="pre">X</span></code>.</p>
+<p>This can be seen as transforming with respect to the global/parent frame.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-transform3d-method-rotated-local"><a class="reference internal" href="#class-transform3d"><span class="std std-ref">Transform3D</span></a> <strong>rotated_local</strong>(axis: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>, angle: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-transform3d-method-rotated-local"><span class="std std-ref">🔗</span></a></p>
+<p>Returns a copy of this transform rotated around the given <code class="docutils literal notranslate"><span class="pre">axis</span></code> by the given <code class="docutils literal notranslate"><span class="pre">angle</span></code> (in radians).</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">axis</span></code> must be a normalized vector in the transform’s local coordinate system. For example, to rotate around the local X-axis, use <a class="reference internal" href="class_vector3.html#class-vector3-constant-right"><span class="std std-ref">Vector3.RIGHT</span></a>.</p>
+<p>This method is an optimized version of multiplying the given transform <code class="docutils literal notranslate"><span class="pre">X</span></code> with a corresponding rotation transform <code class="docutils literal notranslate"><span class="pre">R</span></code> from the right, i.e., <code class="docutils literal notranslate"><span class="pre">X</span> <span class="pre">*</span> <span class="pre">R</span></code>.</p>
+<p>This can be seen as transforming with respect to the local frame.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-transform3d-method-scaled"><a class="reference internal" href="#class-transform3d"><span class="std std-ref">Transform3D</span></a> <strong>scaled</strong>(scale: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-transform3d-method-scaled"><span class="std std-ref">🔗</span></a></p>
+<p>Returns a copy of this transform scaled by the given <code class="docutils literal notranslate"><span class="pre">scale</span></code> factor.</p>
+<p>This method is an optimized version of multiplying the given transform <code class="docutils literal notranslate"><span class="pre">X</span></code> with a corresponding scaling transform <code class="docutils literal notranslate"><span class="pre">S</span></code> from the left, i.e., <code class="docutils literal notranslate"><span class="pre">S</span> <span class="pre">*</span> <span class="pre">X</span></code>.</p>
+<p>This can be seen as transforming with respect to the global/parent frame.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-transform3d-method-scaled-local"><a class="reference internal" href="#class-transform3d"><span class="std std-ref">Transform3D</span></a> <strong>scaled_local</strong>(scale: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-transform3d-method-scaled-local"><span class="std std-ref">🔗</span></a></p>
+<p>Returns a copy of this transform scaled by the given <code class="docutils literal notranslate"><span class="pre">scale</span></code> factor.</p>
+<p>This method is an optimized version of multiplying the given transform <code class="docutils literal notranslate"><span class="pre">X</span></code> with a corresponding scaling transform <code class="docutils literal notranslate"><span class="pre">S</span></code> from the right, i.e., <code class="docutils literal notranslate"><span class="pre">X</span> <span class="pre">*</span> <span class="pre">S</span></code>.</p>
+<p>This can be seen as transforming with respect to the local frame.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-transform3d-method-translated"><a class="reference internal" href="#class-transform3d"><span class="std std-ref">Transform3D</span></a> <strong>translated</strong>(offset: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-transform3d-method-translated"><span class="std std-ref">🔗</span></a></p>
+<p>Returns a copy of this transform translated by the given <code class="docutils literal notranslate"><span class="pre">offset</span></code>.</p>
+<p>This method is an optimized version of multiplying the given transform <code class="docutils literal notranslate"><span class="pre">X</span></code> with a corresponding translation transform <code class="docutils literal notranslate"><span class="pre">T</span></code> from the left, i.e., <code class="docutils literal notranslate"><span class="pre">T</span> <span class="pre">*</span> <span class="pre">X</span></code>.</p>
+<p>This can be seen as transforming with respect to the global/parent frame.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-transform3d-method-translated-local"><a class="reference internal" href="#class-transform3d"><span class="std std-ref">Transform3D</span></a> <strong>translated_local</strong>(offset: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-transform3d-method-translated-local"><span class="std std-ref">🔗</span></a></p>
+<p>Returns a copy of this transform translated by the given <code class="docutils literal notranslate"><span class="pre">offset</span></code>.</p>
+<p>This method is an optimized version of multiplying the given transform <code class="docutils literal notranslate"><span class="pre">X</span></code> with a corresponding translation transform <code class="docutils literal notranslate"><span class="pre">T</span></code> from the right, i.e., <code class="docutils literal notranslate"><span class="pre">X</span> <span class="pre">*</span> <span class="pre">T</span></code>.</p>
+<p>This can be seen as transforming with respect to the local frame.</p>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="operator-descriptions">
+<h2>Operator Descriptions<a class="headerlink" href="#operator-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-operator" id="class-transform3d-operator-neq-transform3d"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>operator !=</strong>(right: <a class="reference internal" href="#class-transform3d"><span class="std std-ref">Transform3D</span></a>) <a class="reference internal" href="#class-transform3d-operator-neq-transform3d"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if the components of both transforms are not equal.</p>
+<p><strong>Note:</strong> Due to floating-point precision errors, consider using <a class="reference internal" href="#class-transform3d-method-is-equal-approx"><span class="std std-ref">is_equal_approx()</span></a> instead, which is more reliable.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-operator" id="class-transform3d-operator-mul-aabb"><a class="reference internal" href="class_aabb.html#class-aabb"><span class="std std-ref">AABB</span></a> <strong>operator *</strong>(right: <a class="reference internal" href="class_aabb.html#class-aabb"><span class="std std-ref">AABB</span></a>) <a class="reference internal" href="#class-transform3d-operator-mul-aabb"><span class="std std-ref">🔗</span></a></p>
+<p>Transforms (multiplies) the <a class="reference internal" href="class_aabb.html#class-aabb"><span class="std std-ref">AABB</span></a> by this transformation matrix.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-operator" id="class-transform3d-operator-mul-packedvector3array"><a class="reference internal" href="class_packedvector3array.html#class-packedvector3array"><span class="std std-ref">PackedVector3Array</span></a> <strong>operator *</strong>(right: <a class="reference internal" href="class_packedvector3array.html#class-packedvector3array"><span class="std std-ref">PackedVector3Array</span></a>) <a class="reference internal" href="#class-transform3d-operator-mul-packedvector3array"><span class="std std-ref">🔗</span></a></p>
+<p>Transforms (multiplies) every <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a> element of the given <a class="reference internal" href="class_packedvector3array.html#class-packedvector3array"><span class="std std-ref">PackedVector3Array</span></a> by this transformation matrix.</p>
+<p>On larger arrays, this operation is much faster than transforming each <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a> individually.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-operator" id="class-transform3d-operator-mul-plane"><a class="reference internal" href="class_plane.html#class-plane"><span class="std std-ref">Plane</span></a> <strong>operator *</strong>(right: <a class="reference internal" href="class_plane.html#class-plane"><span class="std std-ref">Plane</span></a>) <a class="reference internal" href="#class-transform3d-operator-mul-plane"><span class="std std-ref">🔗</span></a></p>
+<p>Transforms (multiplies) the <a class="reference internal" href="class_plane.html#class-plane"><span class="std std-ref">Plane</span></a> by this transformation matrix.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-operator" id="class-transform3d-operator-mul-transform3d"><a class="reference internal" href="#class-transform3d"><span class="std std-ref">Transform3D</span></a> <strong>operator *</strong>(right: <a class="reference internal" href="#class-transform3d"><span class="std std-ref">Transform3D</span></a>) <a class="reference internal" href="#class-transform3d-operator-mul-transform3d"><span class="std std-ref">🔗</span></a></p>
+<p>Transforms (multiplies) this transform by the <code class="docutils literal notranslate"><span class="pre">right</span></code> transform.</p>
+<p>This is the operation performed between parent and child <a class="reference internal" href="class_node3d.html#class-node3d"><span class="std std-ref">Node3D</span></a>s.</p>
+<p><strong>Note:</strong> If you need to only modify one attribute of this transform, consider using one of the following methods, instead:</p>
+<ul class="simple">
+<li><p>For translation, see <a class="reference internal" href="#class-transform3d-method-translated"><span class="std std-ref">translated()</span></a> or <a class="reference internal" href="#class-transform3d-method-translated-local"><span class="std std-ref">translated_local()</span></a>.</p></li>
+<li><p>For rotation, see <a class="reference internal" href="#class-transform3d-method-rotated"><span class="std std-ref">rotated()</span></a> or <a class="reference internal" href="#class-transform3d-method-rotated-local"><span class="std std-ref">rotated_local()</span></a>.</p></li>
+<li><p>For scale, see <a class="reference internal" href="#class-transform3d-method-scaled"><span class="std std-ref">scaled()</span></a> or <a class="reference internal" href="#class-transform3d-method-scaled-local"><span class="std std-ref">scaled_local()</span></a>.</p></li>
+</ul>
+<hr class="classref-item-separator docutils" />
+<p class="classref-operator" id="class-transform3d-operator-mul-vector3"><a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a> <strong>operator *</strong>(right: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>) <a class="reference internal" href="#class-transform3d-operator-mul-vector3"><span class="std std-ref">🔗</span></a></p>
+<p>Transforms (multiplies) the <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a> by this transformation matrix.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-operator" id="class-transform3d-operator-mul-float"><a class="reference internal" href="#class-transform3d"><span class="std std-ref">Transform3D</span></a> <strong>operator *</strong>(right: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>) <a class="reference internal" href="#class-transform3d-operator-mul-float"><span class="std std-ref">🔗</span></a></p>
+<p>Multiplies all components of the <strong>Transform3D</strong> by the given <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, including the <a class="reference internal" href="#class-transform3d-property-origin"><span class="std std-ref">origin</span></a>. This affects the transform’s scale uniformly, scaling the <a class="reference internal" href="#class-transform3d-property-basis"><span class="std std-ref">basis</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-operator" id="class-transform3d-operator-mul-int"><a class="reference internal" href="#class-transform3d"><span class="std std-ref">Transform3D</span></a> <strong>operator *</strong>(right: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <a class="reference internal" href="#class-transform3d-operator-mul-int"><span class="std std-ref">🔗</span></a></p>
+<p>Multiplies all components of the <strong>Transform3D</strong> by the given <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, including the <a class="reference internal" href="#class-transform3d-property-origin"><span class="std std-ref">origin</span></a>. This affects the transform’s scale uniformly, scaling the <a class="reference internal" href="#class-transform3d-property-basis"><span class="std std-ref">basis</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-operator" id="class-transform3d-operator-div-float"><a class="reference internal" href="#class-transform3d"><span class="std std-ref">Transform3D</span></a> <strong>operator /</strong>(right: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>) <a class="reference internal" href="#class-transform3d-operator-div-float"><span class="std std-ref">🔗</span></a></p>
+<p>Divides all components of the <strong>Transform3D</strong> by the given <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, including the <a class="reference internal" href="#class-transform3d-property-origin"><span class="std std-ref">origin</span></a>. This affects the transform’s scale uniformly, scaling the <a class="reference internal" href="#class-transform3d-property-basis"><span class="std std-ref">basis</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-operator" id="class-transform3d-operator-div-int"><a class="reference internal" href="#class-transform3d"><span class="std std-ref">Transform3D</span></a> <strong>operator /</strong>(right: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <a class="reference internal" href="#class-transform3d-operator-div-int"><span class="std std-ref">🔗</span></a></p>
+<p>Divides all components of the <strong>Transform3D</strong> by the given <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, including the <a class="reference internal" href="#class-transform3d-property-origin"><span class="std std-ref">origin</span></a>. This affects the transform’s scale uniformly, scaling the <a class="reference internal" href="#class-transform3d-property-basis"><span class="std std-ref">basis</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-operator" id="class-transform3d-operator-eq-transform3d"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>operator ==</strong>(right: <a class="reference internal" href="#class-transform3d"><span class="std std-ref">Transform3D</span></a>) <a class="reference internal" href="#class-transform3d-operator-eq-transform3d"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if the components of both transforms are exactly equal.</p>
+<p><strong>Note:</strong> Due to floating-point precision errors, consider using <a class="reference internal" href="#class-transform3d-method-is-equal-approx"><span class="std std-ref">is_equal_approx()</span></a> instead, which is more reliable.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, MUmarShahbaz.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

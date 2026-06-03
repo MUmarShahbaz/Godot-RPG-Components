@@ -1,0 +1,178 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VehicleBody3D &mdash; RPG Components 2D 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=d45e8c67"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            RPG Components 2D
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">VehicleBody3D</a><ul>
+<li><a class="reference internal" href="#description">Description</a></li>
+<li><a class="reference internal" href="#tutorials">Tutorials</a></li>
+<li><a class="reference internal" href="#properties">Properties</a></li>
+<li><a class="reference internal" href="#property-descriptions">Property Descriptions</a></li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">RPG Components 2D</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">VehicleBody3D</li>
+      <li class="wy-breadcrumbs-aside">
+              <!-- User defined GitHub URL -->
+              <a href="hide" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="vehiclebody3d">
+<span id="class-vehiclebody3d"></span><h1>VehicleBody3D<a class="headerlink" href="#vehiclebody3d" title="Link to this heading"></a></h1>
+<p><strong>Inherits:</strong> <a class="reference internal" href="class_rigidbody3d.html#class-rigidbody3d"><span class="std std-ref">RigidBody3D</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_physicsbody3d.html#class-physicsbody3d"><span class="std std-ref">PhysicsBody3D</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_collisionobject3d.html#class-collisionobject3d"><span class="std std-ref">CollisionObject3D</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_node3d.html#class-node3d"><span class="std std-ref">Node3D</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_node.html#class-node"><span class="std std-ref">Node</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_object.html#class-object"><span class="std std-ref">Object</span></a></p>
+<p>A 3D physics body that simulates the behavior of a car.</p>
+<section class="classref-introduction-group" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
+<p>This physics body implements all the physics logic needed to simulate a car. It is based on the raycast vehicle system commonly found in physics engines. Aside from a <a class="reference internal" href="class_collisionshape3d.html#class-collisionshape3d"><span class="std std-ref">CollisionShape3D</span></a> for the main body of the vehicle, you must also add a <a class="reference internal" href="class_vehiclewheel3d.html#class-vehiclewheel3d"><span class="std std-ref">VehicleWheel3D</span></a> node for each wheel. You should also add a <a class="reference internal" href="class_meshinstance3d.html#class-meshinstance3d"><span class="std std-ref">MeshInstance3D</span></a> to this node for the 3D model of the vehicle, but this model should generally not include meshes for the wheels. You can control the vehicle by using the <a class="reference internal" href="#class-vehiclebody3d-property-brake"><span class="std std-ref">brake</span></a>, <a class="reference internal" href="#class-vehiclebody3d-property-engine-force"><span class="std std-ref">engine_force</span></a>, and <a class="reference internal" href="#class-vehiclebody3d-property-steering"><span class="std std-ref">steering</span></a> properties. The position or orientation of this node shouldn’t be changed directly.</p>
+<p><strong>Note:</strong> The local forward for this node is <a class="reference internal" href="class_vector3.html#class-vector3-constant-model-front"><span class="std std-ref">Vector3.MODEL_FRONT</span></a>.</p>
+<p><strong>Note:</strong> The origin point of your VehicleBody3D will determine the center of gravity of your vehicle. To make the vehicle more grounded, the origin point is usually kept low, moving the <a class="reference internal" href="class_collisionshape3d.html#class-collisionshape3d"><span class="std std-ref">CollisionShape3D</span></a> and <a class="reference internal" href="class_meshinstance3d.html#class-meshinstance3d"><span class="std std-ref">MeshInstance3D</span></a> upwards.</p>
+<p><strong>Note:</strong> This class has known issues and isn’t designed to provide realistic 3D vehicle physics. If you want advanced vehicle physics, you may have to write your own physics integration using <a class="reference internal" href="class_characterbody3d.html#class-characterbody3d"><span class="std std-ref">CharacterBody3D</span></a> or <a class="reference internal" href="class_rigidbody3d.html#class-rigidbody3d"><span class="std std-ref">RigidBody3D</span></a>.</p>
+</section>
+<section class="classref-introduction-group" id="tutorials">
+<h2>Tutorials<a class="headerlink" href="#tutorials" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><span class="xref std std-doc">Physics introduction</span></p></li>
+<li><p><span class="xref std std-doc">Troubleshooting physics issues</span></p></li>
+<li><p><a class="reference external" href="https://godotengine.org/asset-library/asset/2752">3D Truck Town Demo</a></p></li>
+</ul>
+</section>
+<section class="classref-reftable-group" id="properties">
+<h2>Properties<a class="headerlink" href="#properties" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-vehiclebody3d-property-brake"><span class="std std-ref">brake</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0.0</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-vehiclebody3d-property-engine-force"><span class="std std-ref">engine_force</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0.0</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p>mass</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">40.0</span></code> (overrides <a class="reference internal" href="class_rigidbody3d.html#class-rigidbody3d-property-mass"><span class="std std-ref">RigidBody3D</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-vehiclebody3d-property-steering"><span class="std std-ref">steering</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0.0</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="property-descriptions">
+<h2>Property Descriptions<a class="headerlink" href="#property-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-property" id="class-vehiclebody3d-property-brake"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>brake</strong> = <code class="docutils literal notranslate"><span class="pre">0.0</span></code> <a class="reference internal" href="#class-vehiclebody3d-property-brake"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_brake</strong>(value: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>get_brake</strong>()</p></li>
+</ul>
+<p>Slows down the vehicle by applying a braking force. The vehicle is only slowed down if the wheels are in contact with a surface. The force you need to apply to adequately slow down your vehicle depends on the <a class="reference internal" href="class_rigidbody3d.html#class-rigidbody3d-property-mass"><span class="std std-ref">RigidBody3D.mass</span></a> of the vehicle. For a vehicle with a mass set to 1000, try a value in the 25 - 30 range for hard braking.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-vehiclebody3d-property-engine-force"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>engine_force</strong> = <code class="docutils literal notranslate"><span class="pre">0.0</span></code> <a class="reference internal" href="#class-vehiclebody3d-property-engine-force"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_engine_force</strong>(value: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>get_engine_force</strong>()</p></li>
+</ul>
+<p>Accelerates the vehicle by applying an engine force. The vehicle is only sped up if the wheels that have <a class="reference internal" href="class_vehiclewheel3d.html#class-vehiclewheel3d-property-use-as-traction"><span class="std std-ref">VehicleWheel3D.use_as_traction</span></a> set to <code class="docutils literal notranslate"><span class="pre">true</span></code> and are in contact with a surface. The <a class="reference internal" href="class_rigidbody3d.html#class-rigidbody3d-property-mass"><span class="std std-ref">RigidBody3D.mass</span></a> of the vehicle has an effect on the acceleration of the vehicle. For a vehicle with a mass set to 1000, try a value in the 25 - 50 range for acceleration.</p>
+<p><strong>Note:</strong> The simulation does not take the effect of gears into account, you will need to add logic for this if you wish to simulate gears.</p>
+<p>A negative value will result in the vehicle reversing.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-vehiclebody3d-property-steering"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>steering</strong> = <code class="docutils literal notranslate"><span class="pre">0.0</span></code> <a class="reference internal" href="#class-vehiclebody3d-property-steering"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_steering</strong>(value: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>get_steering</strong>()</p></li>
+</ul>
+<p>The steering angle for the vehicle. Setting this to a non-zero value will result in the vehicle turning when it’s moving. Wheels that have <a class="reference internal" href="class_vehiclewheel3d.html#class-vehiclewheel3d-property-use-as-steering"><span class="std std-ref">VehicleWheel3D.use_as_steering</span></a> set to <code class="docutils literal notranslate"><span class="pre">true</span></code> will automatically be rotated.</p>
+<p><strong>Note:</strong> This property is edited in the inspector in degrees. In code the property is set in radians.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, MUmarShahbaz.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

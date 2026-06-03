@@ -1,0 +1,283 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JSON &mdash; RPG Components 2D 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=d45e8c67"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            RPG Components 2D
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">JSON</a><ul>
+<li><a class="reference internal" href="#description">Description</a></li>
+<li><a class="reference internal" href="#properties">Properties</a></li>
+<li><a class="reference internal" href="#methods">Methods</a></li>
+<li><a class="reference internal" href="#property-descriptions">Property Descriptions</a></li>
+<li><a class="reference internal" href="#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">RPG Components 2D</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">JSON</li>
+      <li class="wy-breadcrumbs-aside">
+              <!-- User defined GitHub URL -->
+              <a href="hide" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="json">
+<span id="class-json"></span><h1>JSON<a class="headerlink" href="#json" title="Link to this heading"></a></h1>
+<p><strong>Inherits:</strong> <a class="reference internal" href="class_resource.html#class-resource"><span class="std std-ref">Resource</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_refcounted.html#class-refcounted"><span class="std std-ref">RefCounted</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_object.html#class-object"><span class="std std-ref">Object</span></a></p>
+<p>Helper class for creating and parsing JSON data.</p>
+<section class="classref-introduction-group" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
+<p>The <strong>JSON</strong> class enables all data types to be converted to and from a JSON string. This is useful for serializing data, e.g. to save to a file or send over the network.</p>
+<p><a class="reference internal" href="#class-json-method-stringify"><span class="std std-ref">stringify()</span></a> is used to convert any data type into a JSON string.</p>
+<p><a class="reference internal" href="#class-json-method-parse"><span class="std std-ref">parse()</span></a> is used to convert any existing JSON data into a <a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a> that can be used within Godot. If successfully parsed, use <a class="reference internal" href="#class-json-property-data"><span class="std std-ref">data</span></a> to retrieve the <a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a>, and use <a class="reference internal" href="class_%40globalscope.html#class-globalscope-method-typeof"><span class="std std-ref">&#64;GlobalScope.typeof()</span></a> to check if the Variant’s type is what you expect. JSON Objects are converted into a <a class="reference internal" href="class_dictionary.html#class-dictionary"><span class="std std-ref">Dictionary</span></a>, but JSON data can be used to store <a class="reference internal" href="class_array.html#class-array"><span class="std std-ref">Array</span></a>s, numbers, <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>s and even just a boolean.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">data_to_send</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="s2">&quot;c&quot;</span><span class="p">]</span>
+<span class="n">var</span> <span class="n">json_string</span> <span class="o">=</span> <span class="n">JSON</span><span class="o">.</span><span class="n">stringify</span><span class="p">(</span><span class="n">data_to_send</span><span class="p">)</span>
+<span class="c1"># Save data</span>
+<span class="c1"># ...</span>
+<span class="c1"># Retrieve data</span>
+<span class="n">var</span> <span class="n">json</span> <span class="o">=</span> <span class="n">JSON</span><span class="o">.</span><span class="n">new</span><span class="p">()</span>
+<span class="n">var</span> <span class="n">error</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">json_string</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">error</span> <span class="o">==</span> <span class="n">OK</span><span class="p">:</span>
+    <span class="n">var</span> <span class="n">data_received</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">data</span>
+    <span class="k">if</span> <span class="n">typeof</span><span class="p">(</span><span class="n">data_received</span><span class="p">)</span> <span class="o">==</span> <span class="n">TYPE_ARRAY</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">data_received</span><span class="p">)</span> <span class="c1"># Prints the array.</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Unexpected data&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;JSON Parse Error: &quot;</span><span class="p">,</span> <span class="n">json</span><span class="o">.</span><span class="n">get_error_message</span><span class="p">(),</span> <span class="s2">&quot; in &quot;</span><span class="p">,</span> <span class="n">json_string</span><span class="p">,</span> <span class="s2">&quot; at line &quot;</span><span class="p">,</span> <span class="n">json</span><span class="o">.</span><span class="n">get_error_line</span><span class="p">())</span>
+</pre></div>
+</div>
+<p>Alternatively, you can parse strings using the static <a class="reference internal" href="#class-json-method-parse-string"><span class="std std-ref">parse_string()</span></a> method, but it doesn’t handle errors.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">data</span> <span class="o">=</span> <span class="n">JSON</span><span class="o">.</span><span class="n">parse_string</span><span class="p">(</span><span class="n">json_string</span><span class="p">)</span> <span class="c1"># Returns null if parsing failed.</span>
+</pre></div>
+</div>
+<p><strong>Note:</strong> Both parse methods do not fully comply with the JSON specification:</p>
+<ul class="simple">
+<li><p>Trailing commas in arrays or objects are ignored, instead of causing a parser error.</p></li>
+<li><p>New line and tab characters are accepted in string literals, and are treated like their corresponding escape sequences <code class="docutils literal notranslate"><span class="pre">\n</span></code> and <code class="docutils literal notranslate"><span class="pre">\t</span></code>.</p></li>
+<li><p>Numbers are parsed using <a class="reference internal" href="class_string.html#class-string-method-to-float"><span class="std std-ref">String.to_float()</span></a> which is generally more lax than the JSON specification.</p></li>
+<li><p>Certain errors, such as invalid Unicode sequences, do not cause a parser error. Instead, the string is cleaned up and an error is logged to the console.</p></li>
+</ul>
+</section>
+<section class="classref-reftable-group" id="properties">
+<h2>Properties<a class="headerlink" href="#properties" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a></p></td>
+<td><p><a class="reference internal" href="#class-json-property-data"><span class="std std-ref">data</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">null</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section class="classref-reftable-group" id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a></p></td>
+<td><p><a class="reference internal" href="#class-json-method-from-native"><span class="std std-ref">from_native</span></a>(variant: <a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a>, full_objects: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = false) <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-json-method-get-error-line"><span class="std std-ref">get_error_line</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a></p></td>
+<td><p><a class="reference internal" href="#class-json-method-get-error-message"><span class="std std-ref">get_error_message</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a></p></td>
+<td><p><a class="reference internal" href="#class-json-method-get-parsed-text"><span class="std std-ref">get_parsed_text</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_%40globalscope.html#enum-globalscope-error"><span class="std std-ref">Error</span></a></p></td>
+<td><p><a class="reference internal" href="#class-json-method-parse"><span class="std std-ref">parse</span></a>(json_text: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, keep_text: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = false)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a></p></td>
+<td><p><a class="reference internal" href="#class-json-method-parse-string"><span class="std std-ref">parse_string</span></a>(json_string: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a></p></td>
+<td><p><a class="reference internal" href="#class-json-method-stringify"><span class="std std-ref">stringify</span></a>(data: <a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a>, indent: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a> = “”, sort_keys: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = true, full_precision: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = false) <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a></p></td>
+<td><p><a class="reference internal" href="#class-json-method-to-native"><span class="std std-ref">to_native</span></a>(json: <a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a>, allow_objects: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = false) <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="property-descriptions">
+<h2>Property Descriptions<a class="headerlink" href="#property-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-property" id="class-json-property-data"><a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a> <strong>data</strong> = <code class="docutils literal notranslate"><span class="pre">null</span></code> <a class="reference internal" href="#class-json-property-data"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_data</strong>(value: <a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a> <strong>get_data</strong>()</p></li>
+</ul>
+<p>Contains the parsed JSON data in <a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a> form.</p>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="method-descriptions">
+<h2>Method Descriptions<a class="headerlink" href="#method-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-method" id="class-json-method-from-native"><a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a> <strong>from_native</strong>(variant: <a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a>, full_objects: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = false) <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr> <a class="reference internal" href="#class-json-method-from-native"><span class="std std-ref">🔗</span></a></p>
+<p>Converts a native engine type to a JSON-compliant value.</p>
+<p>By default, objects are ignored for security reasons, unless <code class="docutils literal notranslate"><span class="pre">full_objects</span></code> is <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p>
+<p>You can convert a native value to a JSON string like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">func</span> <span class="n">encode_data</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">full_objects</span> <span class="o">=</span> <span class="n">false</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">JSON</span><span class="o">.</span><span class="n">stringify</span><span class="p">(</span><span class="n">JSON</span><span class="o">.</span><span class="n">from_native</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">full_objects</span><span class="p">))</span>
+</pre></div>
+</div>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-json-method-get-error-line"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>get_error_line</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-json-method-get-error-line"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">0</span></code> if the last call to <a class="reference internal" href="#class-json-method-parse"><span class="std std-ref">parse()</span></a> was successful, or the line number where the parse failed.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-json-method-get-error-message"><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a> <strong>get_error_message</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-json-method-get-error-message"><span class="std std-ref">🔗</span></a></p>
+<p>Returns an empty string if the last call to <a class="reference internal" href="#class-json-method-parse"><span class="std std-ref">parse()</span></a> was successful, or the error message if it failed.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-json-method-get-parsed-text"><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a> <strong>get_parsed_text</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-json-method-get-parsed-text"><span class="std std-ref">🔗</span></a></p>
+<p>Return the text parsed by <a class="reference internal" href="#class-json-method-parse"><span class="std std-ref">parse()</span></a> (requires passing <code class="docutils literal notranslate"><span class="pre">keep_text</span></code> to <a class="reference internal" href="#class-json-method-parse"><span class="std std-ref">parse()</span></a>).</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-json-method-parse"><a class="reference internal" href="class_%40globalscope.html#enum-globalscope-error"><span class="std std-ref">Error</span></a> <strong>parse</strong>(json_text: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, keep_text: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = false) <a class="reference internal" href="#class-json-method-parse"><span class="std std-ref">🔗</span></a></p>
+<p>Attempts to parse the <code class="docutils literal notranslate"><span class="pre">json_text</span></code> provided.</p>
+<p>Returns an <a class="reference internal" href="class_%40globalscope.html#enum-globalscope-error"><span class="std std-ref">Error</span></a>. If the parse was successful, it returns <a class="reference internal" href="class_%40globalscope.html#class-globalscope-constant-ok"><span class="std std-ref">&#64;GlobalScope.OK</span></a> and the result can be retrieved using <a class="reference internal" href="#class-json-property-data"><span class="std std-ref">data</span></a>. If unsuccessful, use <a class="reference internal" href="#class-json-method-get-error-line"><span class="std std-ref">get_error_line()</span></a> and <a class="reference internal" href="#class-json-method-get-error-message"><span class="std std-ref">get_error_message()</span></a> to identify the source of the failure.</p>
+<p>Non-static variant of <a class="reference internal" href="#class-json-method-parse-string"><span class="std std-ref">parse_string()</span></a>, if you want custom error handling.</p>
+<p>The optional <code class="docutils literal notranslate"><span class="pre">keep_text</span></code> argument instructs the parser to keep a copy of the original text. This text can be obtained later by using the <a class="reference internal" href="#class-json-method-get-parsed-text"><span class="std std-ref">get_parsed_text()</span></a> function and is used when saving the resource (instead of generating new text from <a class="reference internal" href="#class-json-property-data"><span class="std std-ref">data</span></a>).</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-json-method-parse-string"><a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a> <strong>parse_string</strong>(json_string: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr> <a class="reference internal" href="#class-json-method-parse-string"><span class="std std-ref">🔗</span></a></p>
+<p>Attempts to parse the <code class="docutils literal notranslate"><span class="pre">json_string</span></code> provided and returns the parsed data. Returns <code class="docutils literal notranslate"><span class="pre">null</span></code> if parse failed.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-json-method-stringify"><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a> <strong>stringify</strong>(data: <a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a>, indent: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a> = “”, sort_keys: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = true, full_precision: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = false) <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr> <a class="reference internal" href="#class-json-method-stringify"><span class="std std-ref">🔗</span></a></p>
+<p>Converts a <a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a> var to JSON text and returns the result. Useful for serializing data to store or send over the network.</p>
+<p><strong>Note:</strong> The JSON specification does not define integer or float types, but only a <em>number</em> type. Therefore, converting a Variant to JSON text will convert all numerical values to <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> types.</p>
+<p><strong>Note:</strong> If <code class="docutils literal notranslate"><span class="pre">full_precision</span></code> is <code class="docutils literal notranslate"><span class="pre">true</span></code>, when stringifying floats, the unreliable digits are stringified in addition to the reliable digits to guarantee exact decoding.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">indent</span></code> parameter controls if and how something is indented; its contents will be used where there should be an indent in the output. Even spaces like <code class="docutils literal notranslate"><span class="pre">&quot;</span>&#160;&#160; <span class="pre">&quot;</span></code> will work. <code class="docutils literal notranslate"><span class="pre">\t</span></code> and <code class="docutils literal notranslate"><span class="pre">\n</span></code> can also be used for a tab indent, or to make a newline for each indent respectively.</p>
+<p><strong>Warning:</strong> Non-finite numbers are not supported in JSON. Any occurrences of <span class="xref std std-ref">&#64;GDScript.INF</span> will be replaced with <code class="docutils literal notranslate"><span class="pre">1e99999</span></code>, and negative <span class="xref std std-ref">&#64;GDScript.INF</span> will be replaced with <code class="docutils literal notranslate"><span class="pre">-1e99999</span></code>, but they will be interpreted correctly as infinity by most JSON parsers. <span class="xref std std-ref">&#64;GDScript.NAN</span> will be replaced with <code class="docutils literal notranslate"><span class="pre">null</span></code>, and it will not be interpreted as NaN in JSON parsers. If you expect non-finite numbers, consider passing your data through <a class="reference internal" href="#class-json-method-from-native"><span class="std std-ref">from_native()</span></a> first.</p>
+<p><strong>Example output:</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">## JSON.stringify(my_dictionary)</span>
+<span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="s2">&quot;my_dictionary&quot;</span><span class="p">,</span><span class="s2">&quot;version&quot;</span><span class="p">:</span><span class="s2">&quot;1.0.0&quot;</span><span class="p">,</span><span class="s2">&quot;entities&quot;</span><span class="p">:[{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="s2">&quot;entity_0&quot;</span><span class="p">,</span><span class="s2">&quot;value&quot;</span><span class="p">:</span><span class="s2">&quot;value_0&quot;</span><span class="p">},{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="s2">&quot;entity_1&quot;</span><span class="p">,</span><span class="s2">&quot;value&quot;</span><span class="p">:</span><span class="s2">&quot;value_1&quot;</span><span class="p">}]}</span>
+
+<span class="c1">## JSON.stringify(my_dictionary, &quot;\t&quot;)</span>
+<span class="p">{</span>
+    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;my_dictionary&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;1.0.0&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;entities&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;entity_0&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;value_0&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;entity_1&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;value_1&quot;</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+
+<span class="c1">## JSON.stringify(my_dictionary, &quot;...&quot;)</span>
+<span class="p">{</span>
+<span class="o">...</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;my_dictionary&quot;</span><span class="p">,</span>
+<span class="o">...</span><span class="s2">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;1.0.0&quot;</span><span class="p">,</span>
+<span class="o">...</span><span class="s2">&quot;entities&quot;</span><span class="p">:</span> <span class="p">[</span>
+<span class="o">......</span><span class="p">{</span>
+<span class="o">.........</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;entity_0&quot;</span><span class="p">,</span>
+<span class="o">.........</span><span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;value_0&quot;</span>
+<span class="o">......</span><span class="p">},</span>
+<span class="o">......</span><span class="p">{</span>
+<span class="o">.........</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;entity_1&quot;</span><span class="p">,</span>
+<span class="o">.........</span><span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;value_1&quot;</span>
+<span class="o">......</span><span class="p">}</span>
+<span class="o">...</span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-json-method-to-native"><a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a> <strong>to_native</strong>(json: <a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a>, allow_objects: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = false) <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr> <a class="reference internal" href="#class-json-method-to-native"><span class="std std-ref">🔗</span></a></p>
+<p>Converts a JSON-compliant value that was created with <a class="reference internal" href="#class-json-method-from-native"><span class="std std-ref">from_native()</span></a> back to native engine types.</p>
+<p>By default, objects are ignored for security reasons, unless <code class="docutils literal notranslate"><span class="pre">allow_objects</span></code> is <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p>
+<p>You can convert a JSON string back to a native value like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">func</span> <span class="n">decode_data</span><span class="p">(</span><span class="n">string</span><span class="p">,</span> <span class="n">allow_objects</span> <span class="o">=</span> <span class="n">false</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">JSON</span><span class="o">.</span><span class="n">to_native</span><span class="p">(</span><span class="n">JSON</span><span class="o">.</span><span class="n">parse_string</span><span class="p">(</span><span class="n">string</span><span class="p">),</span> <span class="n">allow_objects</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, MUmarShahbaz.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

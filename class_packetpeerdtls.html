@@ -1,0 +1,168 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PacketPeerDTLS &mdash; RPG Components 2D 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=d45e8c67"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            RPG Components 2D
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">PacketPeerDTLS</a><ul>
+<li><a class="reference internal" href="#description">Description</a></li>
+<li><a class="reference internal" href="#methods">Methods</a></li>
+<li><a class="reference internal" href="#enumerations">Enumerations</a></li>
+<li><a class="reference internal" href="#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">RPG Components 2D</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">PacketPeerDTLS</li>
+      <li class="wy-breadcrumbs-aside">
+              <!-- User defined GitHub URL -->
+              <a href="hide" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="packetpeerdtls">
+<span id="class-packetpeerdtls"></span><h1>PacketPeerDTLS<a class="headerlink" href="#packetpeerdtls" title="Link to this heading"></a></h1>
+<p><strong>Inherits:</strong> <a class="reference internal" href="class_packetpeer.html#class-packetpeer"><span class="std std-ref">PacketPeer</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_refcounted.html#class-refcounted"><span class="std std-ref">RefCounted</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_object.html#class-object"><span class="std std-ref">Object</span></a></p>
+<p>DTLS packet peer.</p>
+<section class="classref-introduction-group" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
+<p>This class represents a DTLS peer connection. It can be used to connect to a DTLS server, and is returned by <a class="reference internal" href="class_dtlsserver.html#class-dtlsserver-method-take-connection"><span class="std std-ref">DTLSServer.take_connection()</span></a>.</p>
+<p><strong>Note:</strong> When exporting to Android, make sure to enable the <code class="docutils literal notranslate"><span class="pre">INTERNET</span></code> permission in the Android export preset before exporting the project or using one-click deploy. Otherwise, network communication of any kind will be blocked by Android.</p>
+<p><strong>Warning:</strong> TLS certificate revocation and certificate pinning are currently not supported. Revoked certificates are accepted as long as they are otherwise valid. If this is a concern, you may want to use automatically managed certificates with a short validity period.</p>
+</section>
+<section class="classref-reftable-group" id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_%40globalscope.html#enum-globalscope-error"><span class="std std-ref">Error</span></a></p></td>
+<td><p><a class="reference internal" href="#class-packetpeerdtls-method-connect-to-peer"><span class="std std-ref">connect_to_peer</span></a>(packet_peer: <a class="reference internal" href="class_packetpeerudp.html#class-packetpeerudp"><span class="std std-ref">PacketPeerUDP</span></a>, hostname: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, client_options: <a class="reference internal" href="class_tlsoptions.html#class-tlsoptions"><span class="std std-ref">TLSOptions</span></a> = null)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-packetpeerdtls-method-disconnect-from-peer"><span class="std std-ref">disconnect_from_peer</span></a>()</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#enum-packetpeerdtls-status"><span class="std std-ref">Status</span></a></p></td>
+<td><p><a class="reference internal" href="#class-packetpeerdtls-method-get-status"><span class="std std-ref">get_status</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-packetpeerdtls-method-poll"><span class="std std-ref">poll</span></a>()</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="enumerations">
+<h2>Enumerations<a class="headerlink" href="#enumerations" title="Link to this heading"></a></h2>
+<p class="classref-enumeration" id="enum-packetpeerdtls-status">enum <strong>Status</strong>: <a class="reference internal" href="#enum-packetpeerdtls-status"><span class="std std-ref">🔗</span></a></p>
+<p class="classref-enumeration-constant" id="class-packetpeerdtls-constant-status-disconnected"><a class="reference internal" href="#enum-packetpeerdtls-status"><span class="std std-ref">Status</span></a> <strong>STATUS_DISCONNECTED</strong> = <code class="docutils literal notranslate"><span class="pre">0</span></code></p>
+<p>A status representing a <strong>PacketPeerDTLS</strong> that is disconnected.</p>
+<p class="classref-enumeration-constant" id="class-packetpeerdtls-constant-status-handshaking"><a class="reference internal" href="#enum-packetpeerdtls-status"><span class="std std-ref">Status</span></a> <strong>STATUS_HANDSHAKING</strong> = <code class="docutils literal notranslate"><span class="pre">1</span></code></p>
+<p>A status representing a <strong>PacketPeerDTLS</strong> that is currently performing the handshake with a remote peer.</p>
+<p class="classref-enumeration-constant" id="class-packetpeerdtls-constant-status-connected"><a class="reference internal" href="#enum-packetpeerdtls-status"><span class="std std-ref">Status</span></a> <strong>STATUS_CONNECTED</strong> = <code class="docutils literal notranslate"><span class="pre">2</span></code></p>
+<p>A status representing a <strong>PacketPeerDTLS</strong> that is connected to a remote peer.</p>
+<p class="classref-enumeration-constant" id="class-packetpeerdtls-constant-status-error"><a class="reference internal" href="#enum-packetpeerdtls-status"><span class="std std-ref">Status</span></a> <strong>STATUS_ERROR</strong> = <code class="docutils literal notranslate"><span class="pre">3</span></code></p>
+<p>A status representing a <strong>PacketPeerDTLS</strong> in a generic error state.</p>
+<p class="classref-enumeration-constant" id="class-packetpeerdtls-constant-status-error-hostname-mismatch"><a class="reference internal" href="#enum-packetpeerdtls-status"><span class="std std-ref">Status</span></a> <strong>STATUS_ERROR_HOSTNAME_MISMATCH</strong> = <code class="docutils literal notranslate"><span class="pre">4</span></code></p>
+<p>An error status that shows a mismatch in the DTLS certificate domain presented by the host and the domain requested for validation.</p>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="method-descriptions">
+<h2>Method Descriptions<a class="headerlink" href="#method-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-method" id="class-packetpeerdtls-method-connect-to-peer"><a class="reference internal" href="class_%40globalscope.html#enum-globalscope-error"><span class="std std-ref">Error</span></a> <strong>connect_to_peer</strong>(packet_peer: <a class="reference internal" href="class_packetpeerudp.html#class-packetpeerudp"><span class="std std-ref">PacketPeerUDP</span></a>, hostname: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, client_options: <a class="reference internal" href="class_tlsoptions.html#class-tlsoptions"><span class="std std-ref">TLSOptions</span></a> = null) <a class="reference internal" href="#class-packetpeerdtls-method-connect-to-peer"><span class="std std-ref">🔗</span></a></p>
+<p>Connects a <code class="docutils literal notranslate"><span class="pre">packet_peer</span></code> beginning the DTLS handshake using the underlying <a class="reference internal" href="class_packetpeerudp.html#class-packetpeerudp"><span class="std std-ref">PacketPeerUDP</span></a> which must be connected (see <a class="reference internal" href="class_packetpeerudp.html#class-packetpeerudp-method-connect-to-host"><span class="std std-ref">PacketPeerUDP.connect_to_host()</span></a>). You can optionally specify the <code class="docutils literal notranslate"><span class="pre">client_options</span></code> to be used while verifying the TLS connections. See <a class="reference internal" href="class_tlsoptions.html#class-tlsoptions-method-client"><span class="std std-ref">TLSOptions.client()</span></a> and <a class="reference internal" href="class_tlsoptions.html#class-tlsoptions-method-client-unsafe"><span class="std std-ref">TLSOptions.client_unsafe()</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-packetpeerdtls-method-disconnect-from-peer"><abbr title="No return value.">void</abbr> <strong>disconnect_from_peer</strong>() <a class="reference internal" href="#class-packetpeerdtls-method-disconnect-from-peer"><span class="std std-ref">🔗</span></a></p>
+<p>Disconnects this peer, terminating the DTLS session.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-packetpeerdtls-method-get-status"><a class="reference internal" href="#enum-packetpeerdtls-status"><span class="std std-ref">Status</span></a> <strong>get_status</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-packetpeerdtls-method-get-status"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the status of the connection.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-packetpeerdtls-method-poll"><abbr title="No return value.">void</abbr> <strong>poll</strong>() <a class="reference internal" href="#class-packetpeerdtls-method-poll"><span class="std std-ref">🔗</span></a></p>
+<p>Poll the connection to check for incoming packets. Call this frequently to update the status and keep the connection working.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, MUmarShahbaz.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

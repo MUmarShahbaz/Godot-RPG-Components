@@ -1,0 +1,468 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quaternion &mdash; RPG Components 2D 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=d45e8c67"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            RPG Components 2D
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">Quaternion</a><ul>
+<li><a class="reference internal" href="#description">Description</a></li>
+<li><a class="reference internal" href="#tutorials">Tutorials</a></li>
+<li><a class="reference internal" href="#properties">Properties</a></li>
+<li><a class="reference internal" href="#constructors">Constructors</a></li>
+<li><a class="reference internal" href="#methods">Methods</a></li>
+<li><a class="reference internal" href="#operators">Operators</a></li>
+<li><a class="reference internal" href="#constants">Constants</a></li>
+<li><a class="reference internal" href="#property-descriptions">Property Descriptions</a></li>
+<li><a class="reference internal" href="#constructor-descriptions">Constructor Descriptions</a></li>
+<li><a class="reference internal" href="#method-descriptions">Method Descriptions</a></li>
+<li><a class="reference internal" href="#operator-descriptions">Operator Descriptions</a></li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">RPG Components 2D</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Quaternion</li>
+      <li class="wy-breadcrumbs-aside">
+              <!-- User defined GitHub URL -->
+              <a href="hide" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="quaternion">
+<span id="class-quaternion"></span><h1>Quaternion<a class="headerlink" href="#quaternion" title="Link to this heading"></a></h1>
+<p>A unit quaternion used for representing 3D rotations.</p>
+<section class="classref-introduction-group" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
+<p>The <strong>Quaternion</strong> built-in <a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a> type is a 4D data structure that represents rotation in the form of a <a class="reference external" href="https://en.wikipedia.org/wiki/Quaternions_and_spatial_rotation">Hamilton convention quaternion</a>. Compared to the <a class="reference internal" href="class_basis.html#class-basis"><span class="std std-ref">Basis</span></a> type which can store both rotation and scale, quaternions can <em>only</em> store rotation.</p>
+<p>A <strong>Quaternion</strong> is composed by 4 floating-point components: <a class="reference internal" href="#class-quaternion-property-w"><span class="std std-ref">w</span></a>, <a class="reference internal" href="#class-quaternion-property-x"><span class="std std-ref">x</span></a>, <a class="reference internal" href="#class-quaternion-property-y"><span class="std std-ref">y</span></a>, and <a class="reference internal" href="#class-quaternion-property-z"><span class="std std-ref">z</span></a>. These components are very compact in memory, and because of this some operations are more efficient and less likely to cause floating-point errors. Methods such as <a class="reference internal" href="#class-quaternion-method-get-angle"><span class="std std-ref">get_angle()</span></a>, <a class="reference internal" href="#class-quaternion-method-get-axis"><span class="std std-ref">get_axis()</span></a>, and <a class="reference internal" href="#class-quaternion-method-slerp"><span class="std std-ref">slerp()</span></a> are faster than their <a class="reference internal" href="class_basis.html#class-basis"><span class="std std-ref">Basis</span></a> counterparts.</p>
+<p>For a great introduction to quaternions, see <a class="reference external" href="https://www.youtube.com/watch?v=d4EgbgTm0Bg">this video by 3Blue1Brown</a>. You do not need to know the math behind quaternions, as Godot provides several helper methods that handle it for you. These include <a class="reference internal" href="#class-quaternion-method-slerp"><span class="std std-ref">slerp()</span></a> and <a class="reference internal" href="#class-quaternion-method-spherical-cubic-interpolate"><span class="std std-ref">spherical_cubic_interpolate()</span></a>, as well as the <code class="docutils literal notranslate"><span class="pre">*</span></code> operator.</p>
+<p><strong>Note:</strong> Quaternions must be normalized before being used for rotation (see <a class="reference internal" href="#class-quaternion-method-normalized"><span class="std std-ref">normalized()</span></a>).</p>
+<p><strong>Note:</strong> Similarly to <a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a> and <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>, the components of a quaternion use 32-bit precision by default, unlike <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> which is always 64-bit. If double precision is needed, compile the engine with the option <code class="docutils literal notranslate"><span class="pre">precision=double</span></code>.</p>
+<p><strong>Note:</strong> In a boolean context, a quaternion will evaluate to <code class="docutils literal notranslate"><span class="pre">false</span></code> if it’s equal to <a class="reference internal" href="#class-quaternion-constant-identity"><span class="std std-ref">IDENTITY</span></a>. Otherwise, a quaternion will always evaluate to <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>There are notable differences when using this API with C#. See <span class="xref std std-ref">doc_c_sharp_differences</span> for more information.</p>
+</div>
+</section>
+<section class="classref-introduction-group" id="tutorials">
+<h2>Tutorials<a class="headerlink" href="#tutorials" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.youtube.com/watch?v=d4EgbgTm0Bg">3Blue1Brown’s video on Quaternions</a></p></li>
+<li><p><a class="reference external" href="https://quaternions.online/">Online Quaternion Visualization</a></p></li>
+<li><p><a class="reference external" href="../tutorials/3d/using_transforms.html#interpolating-with-quaternions">Using 3D transforms</a></p></li>
+<li><p><a class="reference external" href="https://godotengine.org/asset-library/asset/2710">Third Person Shooter (TPS) Demo</a></p></li>
+<li><p><a class="reference external" href="https://iwatake2222.github.io/rotation_master/rotation_master.html">Advanced Quaternion Visualization</a></p></li>
+</ul>
+</section>
+<section class="classref-reftable-group" id="properties">
+<h2>Properties<a class="headerlink" href="#properties" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-quaternion-property-w"><span class="std std-ref">w</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">1.0</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-quaternion-property-x"><span class="std std-ref">x</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0.0</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-quaternion-property-y"><span class="std std-ref">y</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0.0</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-quaternion-property-z"><span class="std std-ref">z</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0.0</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section class="classref-reftable-group" id="constructors">
+<h2>Constructors<a class="headerlink" href="#constructors" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#class-quaternion"><span class="std std-ref">Quaternion</span></a></p></td>
+<td><p><a class="reference internal" href="#class-quaternion-constructor-quaternion"><span class="std std-ref">Quaternion</span></a>()</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#class-quaternion"><span class="std std-ref">Quaternion</span></a></p></td>
+<td><p><a class="reference internal" href="#class-quaternion-constructor-quaternion"><span class="std std-ref">Quaternion</span></a>(from: <a class="reference internal" href="#class-quaternion"><span class="std std-ref">Quaternion</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#class-quaternion"><span class="std std-ref">Quaternion</span></a></p></td>
+<td><p><a class="reference internal" href="#class-quaternion-constructor-quaternion"><span class="std std-ref">Quaternion</span></a>(arc_from: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>, arc_to: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#class-quaternion"><span class="std std-ref">Quaternion</span></a></p></td>
+<td><p><a class="reference internal" href="#class-quaternion-constructor-quaternion"><span class="std std-ref">Quaternion</span></a>(axis: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>, angle: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#class-quaternion"><span class="std std-ref">Quaternion</span></a></p></td>
+<td><p><a class="reference internal" href="#class-quaternion-constructor-quaternion"><span class="std std-ref">Quaternion</span></a>(from: <a class="reference internal" href="class_basis.html#class-basis"><span class="std std-ref">Basis</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#class-quaternion"><span class="std std-ref">Quaternion</span></a></p></td>
+<td><p><a class="reference internal" href="#class-quaternion-constructor-quaternion"><span class="std std-ref">Quaternion</span></a>(x: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, y: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, z: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, w: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section class="classref-reftable-group" id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-quaternion-method-angle-to"><span class="std std-ref">angle_to</span></a>(to: <a class="reference internal" href="#class-quaternion"><span class="std std-ref">Quaternion</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-quaternion-method-dot"><span class="std std-ref">dot</span></a>(with: <a class="reference internal" href="#class-quaternion"><span class="std std-ref">Quaternion</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#class-quaternion"><span class="std std-ref">Quaternion</span></a></p></td>
+<td><p><a class="reference internal" href="#class-quaternion-method-exp"><span class="std std-ref">exp</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#class-quaternion"><span class="std std-ref">Quaternion</span></a></p></td>
+<td><p><a class="reference internal" href="#class-quaternion-method-from-euler"><span class="std std-ref">from_euler</span></a>(euler: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>) <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-quaternion-method-get-angle"><span class="std std-ref">get_angle</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a></p></td>
+<td><p><a class="reference internal" href="#class-quaternion-method-get-axis"><span class="std std-ref">get_axis</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a></p></td>
+<td><p><a class="reference internal" href="#class-quaternion-method-get-euler"><span class="std std-ref">get_euler</span></a>(order: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> = 2) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#class-quaternion"><span class="std std-ref">Quaternion</span></a></p></td>
+<td><p><a class="reference internal" href="#class-quaternion-method-inverse"><span class="std std-ref">inverse</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-quaternion-method-is-equal-approx"><span class="std std-ref">is_equal_approx</span></a>(to: <a class="reference internal" href="#class-quaternion"><span class="std std-ref">Quaternion</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-quaternion-method-is-finite"><span class="std std-ref">is_finite</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-quaternion-method-is-normalized"><span class="std std-ref">is_normalized</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-quaternion-method-length"><span class="std std-ref">length</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-quaternion-method-length-squared"><span class="std std-ref">length_squared</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#class-quaternion"><span class="std std-ref">Quaternion</span></a></p></td>
+<td><p><a class="reference internal" href="#class-quaternion-method-log"><span class="std std-ref">log</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#class-quaternion"><span class="std std-ref">Quaternion</span></a></p></td>
+<td><p><a class="reference internal" href="#class-quaternion-method-normalized"><span class="std std-ref">normalized</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#class-quaternion"><span class="std std-ref">Quaternion</span></a></p></td>
+<td><p><a class="reference internal" href="#class-quaternion-method-slerp"><span class="std std-ref">slerp</span></a>(to: <a class="reference internal" href="#class-quaternion"><span class="std std-ref">Quaternion</span></a>, weight: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#class-quaternion"><span class="std std-ref">Quaternion</span></a></p></td>
+<td><p><a class="reference internal" href="#class-quaternion-method-slerpni"><span class="std std-ref">slerpni</span></a>(to: <a class="reference internal" href="#class-quaternion"><span class="std std-ref">Quaternion</span></a>, weight: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#class-quaternion"><span class="std std-ref">Quaternion</span></a></p></td>
+<td><p><a class="reference internal" href="#class-quaternion-method-spherical-cubic-interpolate"><span class="std std-ref">spherical_cubic_interpolate</span></a>(b: <a class="reference internal" href="#class-quaternion"><span class="std std-ref">Quaternion</span></a>, pre_a: <a class="reference internal" href="#class-quaternion"><span class="std std-ref">Quaternion</span></a>, post_b: <a class="reference internal" href="#class-quaternion"><span class="std std-ref">Quaternion</span></a>, weight: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#class-quaternion"><span class="std std-ref">Quaternion</span></a></p></td>
+<td><p><a class="reference internal" href="#class-quaternion-method-spherical-cubic-interpolate-in-time"><span class="std std-ref">spherical_cubic_interpolate_in_time</span></a>(b: <a class="reference internal" href="#class-quaternion"><span class="std std-ref">Quaternion</span></a>, pre_a: <a class="reference internal" href="#class-quaternion"><span class="std std-ref">Quaternion</span></a>, post_b: <a class="reference internal" href="#class-quaternion"><span class="std std-ref">Quaternion</span></a>, weight: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, b_t: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, pre_a_t: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, post_b_t: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section class="classref-reftable-group" id="operators">
+<h2>Operators<a class="headerlink" href="#operators" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-quaternion-operator-neq-quaternion"><span class="std std-ref">operator !=</span></a>(right: <a class="reference internal" href="#class-quaternion"><span class="std std-ref">Quaternion</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#class-quaternion"><span class="std std-ref">Quaternion</span></a></p></td>
+<td><p><a class="reference internal" href="#class-quaternion-operator-mul-quaternion"><span class="std std-ref">operator *</span></a>(right: <a class="reference internal" href="#class-quaternion"><span class="std std-ref">Quaternion</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a></p></td>
+<td><p><a class="reference internal" href="#class-quaternion-operator-mul-vector3"><span class="std std-ref">operator *</span></a>(right: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#class-quaternion"><span class="std std-ref">Quaternion</span></a></p></td>
+<td><p><a class="reference internal" href="#class-quaternion-operator-mul-float"><span class="std std-ref">operator *</span></a>(right: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#class-quaternion"><span class="std std-ref">Quaternion</span></a></p></td>
+<td><p><a class="reference internal" href="#class-quaternion-operator-mul-int"><span class="std std-ref">operator *</span></a>(right: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#class-quaternion"><span class="std std-ref">Quaternion</span></a></p></td>
+<td><p><a class="reference internal" href="#class-quaternion-operator-sum-quaternion"><span class="std std-ref">operator +</span></a>(right: <a class="reference internal" href="#class-quaternion"><span class="std std-ref">Quaternion</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#class-quaternion"><span class="std std-ref">Quaternion</span></a></p></td>
+<td><p><a class="reference internal" href="#class-quaternion-operator-dif-quaternion"><span class="std std-ref">operator -</span></a>(right: <a class="reference internal" href="#class-quaternion"><span class="std std-ref">Quaternion</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#class-quaternion"><span class="std std-ref">Quaternion</span></a></p></td>
+<td><p><a class="reference internal" href="#class-quaternion-operator-div-float"><span class="std std-ref">operator /</span></a>(right: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#class-quaternion"><span class="std std-ref">Quaternion</span></a></p></td>
+<td><p><a class="reference internal" href="#class-quaternion-operator-div-int"><span class="std std-ref">operator /</span></a>(right: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-quaternion-operator-eq-quaternion"><span class="std std-ref">operator ==</span></a>(right: <a class="reference internal" href="#class-quaternion"><span class="std std-ref">Quaternion</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-quaternion-operator-idx-int"><span class="std std-ref">operator []</span></a>(index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#class-quaternion"><span class="std std-ref">Quaternion</span></a></p></td>
+<td><p><a class="reference internal" href="#class-quaternion-operator-unplus"><span class="std std-ref">operator unary+</span></a>()</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#class-quaternion"><span class="std std-ref">Quaternion</span></a></p></td>
+<td><p><a class="reference internal" href="#class-quaternion-operator-unminus"><span class="std std-ref">operator unary-</span></a>()</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="constants">
+<h2>Constants<a class="headerlink" href="#constants" title="Link to this heading"></a></h2>
+<p class="classref-constant" id="class-quaternion-constant-identity"><strong>IDENTITY</strong> = <code class="docutils literal notranslate"><span class="pre">Quaternion(0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">1)</span></code> <a class="reference internal" href="#class-quaternion-constant-identity"><span class="std std-ref">🔗</span></a></p>
+<p>The identity quaternion, representing no rotation. This has the same rotation as <a class="reference internal" href="class_basis.html#class-basis-constant-identity"><span class="std std-ref">Basis.IDENTITY</span></a>.</p>
+<p>If a <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a> is rotated (multiplied) by this quaternion, it does not change.</p>
+<p><strong>Note:</strong> In GDScript, this constant is equivalent to creating a <a class="reference internal" href="#class-quaternion-constructor-quaternion"><span class="std std-ref">Quaternion</span></a> without any arguments. It can be used to make your code clearer, and for consistency with C#.</p>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="property-descriptions">
+<h2>Property Descriptions<a class="headerlink" href="#property-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-property" id="class-quaternion-property-w"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>w</strong> = <code class="docutils literal notranslate"><span class="pre">1.0</span></code> <a class="reference internal" href="#class-quaternion-property-w"><span class="std std-ref">🔗</span></a></p>
+<p>W component of the quaternion. This is the “real” part.</p>
+<p><strong>Note:</strong> Quaternion components should usually not be manipulated directly.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-quaternion-property-x"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>x</strong> = <code class="docutils literal notranslate"><span class="pre">0.0</span></code> <a class="reference internal" href="#class-quaternion-property-x"><span class="std std-ref">🔗</span></a></p>
+<p>X component of the quaternion. This is the value along the “imaginary” <code class="docutils literal notranslate"><span class="pre">i</span></code> axis.</p>
+<p><strong>Note:</strong> Quaternion components should usually not be manipulated directly.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-quaternion-property-y"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>y</strong> = <code class="docutils literal notranslate"><span class="pre">0.0</span></code> <a class="reference internal" href="#class-quaternion-property-y"><span class="std std-ref">🔗</span></a></p>
+<p>Y component of the quaternion. This is the value along the “imaginary” <code class="docutils literal notranslate"><span class="pre">j</span></code> axis.</p>
+<p><strong>Note:</strong> Quaternion components should usually not be manipulated directly.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-quaternion-property-z"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>z</strong> = <code class="docutils literal notranslate"><span class="pre">0.0</span></code> <a class="reference internal" href="#class-quaternion-property-z"><span class="std std-ref">🔗</span></a></p>
+<p>Z component of the quaternion. This is the value along the “imaginary” <code class="docutils literal notranslate"><span class="pre">k</span></code> axis.</p>
+<p><strong>Note:</strong> Quaternion components should usually not be manipulated directly.</p>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="constructor-descriptions">
+<h2>Constructor Descriptions<a class="headerlink" href="#constructor-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-constructor" id="class-quaternion-constructor-quaternion"><a class="reference internal" href="#class-quaternion"><span class="std std-ref">Quaternion</span></a> <strong>Quaternion</strong>() <a class="reference internal" href="#class-quaternion-constructor-quaternion"><span class="std std-ref">🔗</span></a></p>
+<p>Constructs a <strong>Quaternion</strong> identical to <a class="reference internal" href="#class-quaternion-constant-identity"><span class="std std-ref">IDENTITY</span></a>.</p>
+<p><strong>Note:</strong> In C#, this constructs a <strong>Quaternion</strong> with all of its components set to <code class="docutils literal notranslate"><span class="pre">0.0</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-constructor"><a class="reference internal" href="#class-quaternion"><span class="std std-ref">Quaternion</span></a> <strong>Quaternion</strong>(from: <a class="reference internal" href="#class-quaternion"><span class="std std-ref">Quaternion</span></a>)</p>
+<p>Constructs a <strong>Quaternion</strong> as a copy of the given <strong>Quaternion</strong>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-constructor"><a class="reference internal" href="#class-quaternion"><span class="std std-ref">Quaternion</span></a> <strong>Quaternion</strong>(arc_from: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>, arc_to: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>)</p>
+<p>Constructs a <strong>Quaternion</strong> representing the shortest arc between <code class="docutils literal notranslate"><span class="pre">arc_from</span></code> and <code class="docutils literal notranslate"><span class="pre">arc_to</span></code>. These can be imagined as two points intersecting a sphere’s surface, with a radius of <code class="docutils literal notranslate"><span class="pre">1.0</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-constructor"><a class="reference internal" href="#class-quaternion"><span class="std std-ref">Quaternion</span></a> <strong>Quaternion</strong>(axis: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>, angle: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p>
+<p>Constructs a <strong>Quaternion</strong> representing rotation around the <code class="docutils literal notranslate"><span class="pre">axis</span></code> by the given <code class="docutils literal notranslate"><span class="pre">angle</span></code>, in radians. The axis must be a normalized vector.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-constructor"><a class="reference internal" href="#class-quaternion"><span class="std std-ref">Quaternion</span></a> <strong>Quaternion</strong>(from: <a class="reference internal" href="class_basis.html#class-basis"><span class="std std-ref">Basis</span></a>)</p>
+<p>Constructs a <strong>Quaternion</strong> from the given rotation <a class="reference internal" href="class_basis.html#class-basis"><span class="std std-ref">Basis</span></a>.</p>
+<p>This constructor is faster than <a class="reference internal" href="class_basis.html#class-basis-method-get-rotation-quaternion"><span class="std std-ref">Basis.get_rotation_quaternion()</span></a>, but the given basis must be <em>orthonormalized</em> (see <a class="reference internal" href="class_basis.html#class-basis-method-orthonormalized"><span class="std std-ref">Basis.orthonormalized()</span></a>). Otherwise, the constructor fails and returns <a class="reference internal" href="#class-quaternion-constant-identity"><span class="std std-ref">IDENTITY</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-constructor"><a class="reference internal" href="#class-quaternion"><span class="std std-ref">Quaternion</span></a> <strong>Quaternion</strong>(x: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, y: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, z: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, w: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p>
+<p>Constructs a <strong>Quaternion</strong> defined by the given values.</p>
+<p><strong>Note:</strong> Only normalized quaternions represent rotation; if these values are not normalized, the new <strong>Quaternion</strong> will not be a valid rotation.</p>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="method-descriptions">
+<h2>Method Descriptions<a class="headerlink" href="#method-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-method" id="class-quaternion-method-angle-to"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>angle_to</strong>(to: <a class="reference internal" href="#class-quaternion"><span class="std std-ref">Quaternion</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-quaternion-method-angle-to"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the angle between this quaternion and <code class="docutils literal notranslate"><span class="pre">to</span></code>. This is the magnitude of the angle you would need to rotate by to get from one to the other.</p>
+<p><strong>Note:</strong> The magnitude of the floating-point error for this method is abnormally high, so methods such as <code class="docutils literal notranslate"><span class="pre">is_zero_approx</span></code> will not work reliably.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-quaternion-method-dot"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>dot</strong>(with: <a class="reference internal" href="#class-quaternion"><span class="std std-ref">Quaternion</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-quaternion-method-dot"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the dot product between this quaternion and <code class="docutils literal notranslate"><span class="pre">with</span></code>.</p>
+<p>This is equivalent to <code class="docutils literal notranslate"><span class="pre">(quat.x</span> <span class="pre">*</span> <span class="pre">with.x)</span> <span class="pre">+</span> <span class="pre">(quat.y</span> <span class="pre">*</span> <span class="pre">with.y)</span> <span class="pre">+</span> <span class="pre">(quat.z</span> <span class="pre">*</span> <span class="pre">with.z)</span> <span class="pre">+</span> <span class="pre">(quat.w</span> <span class="pre">*</span> <span class="pre">with.w)</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-quaternion-method-exp"><a class="reference internal" href="#class-quaternion"><span class="std std-ref">Quaternion</span></a> <strong>exp</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-quaternion-method-exp"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the exponential of this quaternion. The rotation axis of the result is the normalized rotation axis of this quaternion, the angle of the result is the length of the vector part of this quaternion.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-quaternion-method-from-euler"><a class="reference internal" href="#class-quaternion"><span class="std std-ref">Quaternion</span></a> <strong>from_euler</strong>(euler: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>) <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr> <a class="reference internal" href="#class-quaternion-method-from-euler"><span class="std std-ref">🔗</span></a></p>
+<p>Constructs a new <strong>Quaternion</strong> from the given <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a> of <a class="reference external" href="https://en.wikipedia.org/wiki/Euler_angles">Euler angles</a>, in radians. In Godot, Euler angles always use intrinsic order. This method always uses the intrinsic YXZ convention (<a class="reference internal" href="class_%40globalscope.html#class-globalscope-constant-euler-order-yxz"><span class="std std-ref">&#64;GlobalScope.EULER_ORDER_YXZ</span></a>).</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-quaternion-method-get-angle"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>get_angle</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-quaternion-method-get-angle"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the angle of the rotation represented by this quaternion.</p>
+<p><strong>Note:</strong> The quaternion must be normalized.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-quaternion-method-get-axis"><a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a> <strong>get_axis</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-quaternion-method-get-axis"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the rotation axis of the rotation represented by this quaternion.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-quaternion-method-get-euler"><a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a> <strong>get_euler</strong>(order: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> = 2) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-quaternion-method-get-euler"><span class="std std-ref">🔗</span></a></p>
+<p>Returns this quaternion’s rotation as a <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a> of <a class="reference external" href="https://en.wikipedia.org/wiki/Euler_angles">Euler angles</a>, in radians.</p>
+<p>The order of each consecutive rotation can be changed with <code class="docutils literal notranslate"><span class="pre">order</span></code> (see <a class="reference internal" href="class_%40globalscope.html#enum-globalscope-eulerorder"><span class="std std-ref">EulerOrder</span></a> constants). In Godot, Euler angles always use intrinsic order. By default, the intrinsic YXZ convention is used (<a class="reference internal" href="class_%40globalscope.html#class-globalscope-constant-euler-order-yxz"><span class="std std-ref">&#64;GlobalScope.EULER_ORDER_YXZ</span></a>): since we are decomposing, local Z (roll) is calculated first, then local X (pitch), and lastly local Y (yaw). When using the opposite method <a class="reference internal" href="#class-quaternion-method-from-euler"><span class="std std-ref">from_euler()</span></a> to compose a rotation, this order is reversed.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-quaternion-method-inverse"><a class="reference internal" href="#class-quaternion"><span class="std std-ref">Quaternion</span></a> <strong>inverse</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-quaternion-method-inverse"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the inverse version of this quaternion, inverting the sign of every component except <a class="reference internal" href="#class-quaternion-property-w"><span class="std std-ref">w</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-quaternion-method-is-equal-approx"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_equal_approx</strong>(to: <a class="reference internal" href="#class-quaternion"><span class="std std-ref">Quaternion</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-quaternion-method-is-equal-approx"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if this quaternion and <code class="docutils literal notranslate"><span class="pre">to</span></code> are approximately equal, by calling <a class="reference internal" href="class_%40globalscope.html#class-globalscope-method-is-equal-approx"><span class="std std-ref">&#64;GlobalScope.is_equal_approx()</span></a> on each component.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-quaternion-method-is-finite"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_finite</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-quaternion-method-is-finite"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if this quaternion is finite, by calling <a class="reference internal" href="class_%40globalscope.html#class-globalscope-method-is-finite"><span class="std std-ref">&#64;GlobalScope.is_finite()</span></a> on each component.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-quaternion-method-is-normalized"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_normalized</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-quaternion-method-is-normalized"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if this quaternion is normalized. See also <a class="reference internal" href="#class-quaternion-method-normalized"><span class="std std-ref">normalized()</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-quaternion-method-length"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>length</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-quaternion-method-length"><span class="std std-ref">🔗</span></a></p>
+<p>Returns this quaternion’s length, also called magnitude.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-quaternion-method-length-squared"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>length_squared</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-quaternion-method-length-squared"><span class="std std-ref">🔗</span></a></p>
+<p>Returns this quaternion’s length, squared.</p>
+<p><strong>Note:</strong> This method is faster than <a class="reference internal" href="#class-quaternion-method-length"><span class="std std-ref">length()</span></a>, so prefer it if you only need to compare quaternion lengths.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-quaternion-method-log"><a class="reference internal" href="#class-quaternion"><span class="std std-ref">Quaternion</span></a> <strong>log</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-quaternion-method-log"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the logarithm of this quaternion. Multiplies this quaternion’s rotation axis by its rotation angle, and stores the result in the returned quaternion’s vector part (<a class="reference internal" href="#class-quaternion-property-x"><span class="std std-ref">x</span></a>, <a class="reference internal" href="#class-quaternion-property-y"><span class="std std-ref">y</span></a>, and <a class="reference internal" href="#class-quaternion-property-z"><span class="std std-ref">z</span></a>). The returned quaternion’s real part (<a class="reference internal" href="#class-quaternion-property-w"><span class="std std-ref">w</span></a>) is always <code class="docutils literal notranslate"><span class="pre">0.0</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-quaternion-method-normalized"><a class="reference internal" href="#class-quaternion"><span class="std std-ref">Quaternion</span></a> <strong>normalized</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-quaternion-method-normalized"><span class="std std-ref">🔗</span></a></p>
+<p>Returns a copy of this quaternion, normalized so that its length is <code class="docutils literal notranslate"><span class="pre">1.0</span></code>. See also <a class="reference internal" href="#class-quaternion-method-is-normalized"><span class="std std-ref">is_normalized()</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-quaternion-method-slerp"><a class="reference internal" href="#class-quaternion"><span class="std std-ref">Quaternion</span></a> <strong>slerp</strong>(to: <a class="reference internal" href="#class-quaternion"><span class="std std-ref">Quaternion</span></a>, weight: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-quaternion-method-slerp"><span class="std std-ref">🔗</span></a></p>
+<p>Performs a spherical-linear interpolation with the <code class="docutils literal notranslate"><span class="pre">to</span></code> quaternion, given a <code class="docutils literal notranslate"><span class="pre">weight</span></code> and returns the result. Both this quaternion and <code class="docutils literal notranslate"><span class="pre">to</span></code> must be normalized.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-quaternion-method-slerpni"><a class="reference internal" href="#class-quaternion"><span class="std std-ref">Quaternion</span></a> <strong>slerpni</strong>(to: <a class="reference internal" href="#class-quaternion"><span class="std std-ref">Quaternion</span></a>, weight: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-quaternion-method-slerpni"><span class="std std-ref">🔗</span></a></p>
+<p>Performs a spherical-linear interpolation with the <code class="docutils literal notranslate"><span class="pre">to</span></code> quaternion, given a <code class="docutils literal notranslate"><span class="pre">weight</span></code> and returns the result. Unlike <a class="reference internal" href="#class-quaternion-method-slerp"><span class="std std-ref">slerp()</span></a>, this method does not check if the rotation path is smaller than 90 degrees. Both this quaternion and <code class="docutils literal notranslate"><span class="pre">to</span></code> must be normalized.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-quaternion-method-spherical-cubic-interpolate"><a class="reference internal" href="#class-quaternion"><span class="std std-ref">Quaternion</span></a> <strong>spherical_cubic_interpolate</strong>(b: <a class="reference internal" href="#class-quaternion"><span class="std std-ref">Quaternion</span></a>, pre_a: <a class="reference internal" href="#class-quaternion"><span class="std std-ref">Quaternion</span></a>, post_b: <a class="reference internal" href="#class-quaternion"><span class="std std-ref">Quaternion</span></a>, weight: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-quaternion-method-spherical-cubic-interpolate"><span class="std std-ref">🔗</span></a></p>
+<p>Performs a spherical cubic interpolation between quaternions <code class="docutils literal notranslate"><span class="pre">pre_a</span></code>, this vector, <code class="docutils literal notranslate"><span class="pre">b</span></code>, and <code class="docutils literal notranslate"><span class="pre">post_b</span></code>, by the given amount <code class="docutils literal notranslate"><span class="pre">weight</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-quaternion-method-spherical-cubic-interpolate-in-time"><a class="reference internal" href="#class-quaternion"><span class="std std-ref">Quaternion</span></a> <strong>spherical_cubic_interpolate_in_time</strong>(b: <a class="reference internal" href="#class-quaternion"><span class="std std-ref">Quaternion</span></a>, pre_a: <a class="reference internal" href="#class-quaternion"><span class="std std-ref">Quaternion</span></a>, post_b: <a class="reference internal" href="#class-quaternion"><span class="std std-ref">Quaternion</span></a>, weight: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, b_t: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, pre_a_t: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, post_b_t: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-quaternion-method-spherical-cubic-interpolate-in-time"><span class="std std-ref">🔗</span></a></p>
+<p>Performs a spherical cubic interpolation between quaternions <code class="docutils literal notranslate"><span class="pre">pre_a</span></code>, this vector, <code class="docutils literal notranslate"><span class="pre">b</span></code>, and <code class="docutils literal notranslate"><span class="pre">post_b</span></code>, by the given amount <code class="docutils literal notranslate"><span class="pre">weight</span></code>.</p>
+<p>It can perform smoother interpolation than <a class="reference internal" href="#class-quaternion-method-spherical-cubic-interpolate"><span class="std std-ref">spherical_cubic_interpolate()</span></a> by the time values.</p>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="operator-descriptions">
+<h2>Operator Descriptions<a class="headerlink" href="#operator-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-operator" id="class-quaternion-operator-neq-quaternion"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>operator !=</strong>(right: <a class="reference internal" href="#class-quaternion"><span class="std std-ref">Quaternion</span></a>) <a class="reference internal" href="#class-quaternion-operator-neq-quaternion"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if the components of both quaternions are not exactly equal.</p>
+<p><strong>Note:</strong> Due to floating-point precision errors, consider using <a class="reference internal" href="#class-quaternion-method-is-equal-approx"><span class="std std-ref">is_equal_approx()</span></a> instead, which is more reliable.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-operator" id="class-quaternion-operator-mul-quaternion"><a class="reference internal" href="#class-quaternion"><span class="std std-ref">Quaternion</span></a> <strong>operator *</strong>(right: <a class="reference internal" href="#class-quaternion"><span class="std std-ref">Quaternion</span></a>) <a class="reference internal" href="#class-quaternion-operator-mul-quaternion"><span class="std std-ref">🔗</span></a></p>
+<p>Composes (multiplies) two quaternions. This rotates the <code class="docutils literal notranslate"><span class="pre">right</span></code> quaternion (the child) by this quaternion (the parent).</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-operator" id="class-quaternion-operator-mul-vector3"><a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a> <strong>operator *</strong>(right: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>) <a class="reference internal" href="#class-quaternion-operator-mul-vector3"><span class="std std-ref">🔗</span></a></p>
+<p>Rotates (multiplies) the <code class="docutils literal notranslate"><span class="pre">right</span></code> vector by this quaternion, returning a <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-operator" id="class-quaternion-operator-mul-float"><a class="reference internal" href="#class-quaternion"><span class="std std-ref">Quaternion</span></a> <strong>operator *</strong>(right: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>) <a class="reference internal" href="#class-quaternion-operator-mul-float"><span class="std std-ref">🔗</span></a></p>
+<p>Multiplies each component of the <strong>Quaternion</strong> by the right <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> value.</p>
+<p>This operation is not meaningful on its own, but it can be used as a part of a larger expression.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-operator" id="class-quaternion-operator-mul-int"><a class="reference internal" href="#class-quaternion"><span class="std std-ref">Quaternion</span></a> <strong>operator *</strong>(right: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <a class="reference internal" href="#class-quaternion-operator-mul-int"><span class="std std-ref">🔗</span></a></p>
+<p>Multiplies each component of the <strong>Quaternion</strong> by the right <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> value.</p>
+<p>This operation is not meaningful on its own, but it can be used as a part of a larger expression.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-operator" id="class-quaternion-operator-sum-quaternion"><a class="reference internal" href="#class-quaternion"><span class="std std-ref">Quaternion</span></a> <strong>operator +</strong>(right: <a class="reference internal" href="#class-quaternion"><span class="std std-ref">Quaternion</span></a>) <a class="reference internal" href="#class-quaternion-operator-sum-quaternion"><span class="std std-ref">🔗</span></a></p>
+<p>Adds each component of the left <strong>Quaternion</strong> to the right <strong>Quaternion</strong>.</p>
+<p>This operation is not meaningful on its own, but it can be used as a part of a larger expression, such as approximating an intermediate rotation between two nearby rotations.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-operator" id="class-quaternion-operator-dif-quaternion"><a class="reference internal" href="#class-quaternion"><span class="std std-ref">Quaternion</span></a> <strong>operator -</strong>(right: <a class="reference internal" href="#class-quaternion"><span class="std std-ref">Quaternion</span></a>) <a class="reference internal" href="#class-quaternion-operator-dif-quaternion"><span class="std std-ref">🔗</span></a></p>
+<p>Subtracts each component of the left <strong>Quaternion</strong> by the right <strong>Quaternion</strong>.</p>
+<p>This operation is not meaningful on its own, but it can be used as a part of a larger expression.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-operator" id="class-quaternion-operator-div-float"><a class="reference internal" href="#class-quaternion"><span class="std std-ref">Quaternion</span></a> <strong>operator /</strong>(right: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>) <a class="reference internal" href="#class-quaternion-operator-div-float"><span class="std std-ref">🔗</span></a></p>
+<p>Divides each component of the <strong>Quaternion</strong> by the right <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> value.</p>
+<p>This operation is not meaningful on its own, but it can be used as a part of a larger expression.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-operator" id="class-quaternion-operator-div-int"><a class="reference internal" href="#class-quaternion"><span class="std std-ref">Quaternion</span></a> <strong>operator /</strong>(right: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <a class="reference internal" href="#class-quaternion-operator-div-int"><span class="std std-ref">🔗</span></a></p>
+<p>Divides each component of the <strong>Quaternion</strong> by the right <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> value.</p>
+<p>This operation is not meaningful on its own, but it can be used as a part of a larger expression.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-operator" id="class-quaternion-operator-eq-quaternion"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>operator ==</strong>(right: <a class="reference internal" href="#class-quaternion"><span class="std std-ref">Quaternion</span></a>) <a class="reference internal" href="#class-quaternion-operator-eq-quaternion"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if the components of both quaternions are exactly equal.</p>
+<p><strong>Note:</strong> Due to floating-point precision errors, consider using <a class="reference internal" href="#class-quaternion-method-is-equal-approx"><span class="std std-ref">is_equal_approx()</span></a> instead, which is more reliable.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-operator" id="class-quaternion-operator-idx-int"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>operator []</strong>(index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <a class="reference internal" href="#class-quaternion-operator-idx-int"><span class="std std-ref">🔗</span></a></p>
+<p>Accesses each component of this quaternion by their index.</p>
+<p>Index <code class="docutils literal notranslate"><span class="pre">0</span></code> is the same as <a class="reference internal" href="#class-quaternion-property-x"><span class="std std-ref">x</span></a>, index <code class="docutils literal notranslate"><span class="pre">1</span></code> is the same as <a class="reference internal" href="#class-quaternion-property-y"><span class="std std-ref">y</span></a>, index <code class="docutils literal notranslate"><span class="pre">2</span></code> is the same as <a class="reference internal" href="#class-quaternion-property-z"><span class="std std-ref">z</span></a>, and index <code class="docutils literal notranslate"><span class="pre">3</span></code> is the same as <a class="reference internal" href="#class-quaternion-property-w"><span class="std std-ref">w</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-operator" id="class-quaternion-operator-unplus"><a class="reference internal" href="#class-quaternion"><span class="std std-ref">Quaternion</span></a> <strong>operator unary+</strong>() <a class="reference internal" href="#class-quaternion-operator-unplus"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the same value as if the <code class="docutils literal notranslate"><span class="pre">+</span></code> was not there. Unary <code class="docutils literal notranslate"><span class="pre">+</span></code> does nothing, but sometimes it can make your code more readable.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-operator" id="class-quaternion-operator-unminus"><a class="reference internal" href="#class-quaternion"><span class="std std-ref">Quaternion</span></a> <strong>operator unary-</strong>() <a class="reference internal" href="#class-quaternion-operator-unminus"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the negative value of the <strong>Quaternion</strong>. This is the same as multiplying all components by <code class="docutils literal notranslate"><span class="pre">-1</span></code>. This operation results in a quaternion that represents the same rotation.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, MUmarShahbaz.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

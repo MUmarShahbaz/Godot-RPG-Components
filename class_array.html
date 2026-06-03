@@ -1,0 +1,824 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Array &mdash; RPG Components 2D 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=d45e8c67"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            RPG Components 2D
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">Array</a><ul>
+<li><a class="reference internal" href="#description">Description</a></li>
+<li><a class="reference internal" href="#constructors">Constructors</a></li>
+<li><a class="reference internal" href="#methods">Methods</a></li>
+<li><a class="reference internal" href="#operators">Operators</a></li>
+<li><a class="reference internal" href="#constructor-descriptions">Constructor Descriptions</a></li>
+<li><a class="reference internal" href="#method-descriptions">Method Descriptions</a></li>
+<li><a class="reference internal" href="#operator-descriptions">Operator Descriptions</a></li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">RPG Components 2D</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Array</li>
+      <li class="wy-breadcrumbs-aside">
+              <!-- User defined GitHub URL -->
+              <a href="hide" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="array">
+<span id="class-array"></span><h1>Array<a class="headerlink" href="#array" title="Link to this heading"></a></h1>
+<p>A built-in data structure that holds a sequence of elements.</p>
+<section class="classref-introduction-group" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
+<p>An array data structure that can contain a sequence of elements of any <a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a> type by default. Values can optionally be constrained to a specific type by creating a <em>typed array</em>. Elements are accessed by a numerical index starting at <code class="docutils literal notranslate"><span class="pre">0</span></code>. Negative indices are used to count from the back (<code class="docutils literal notranslate"><span class="pre">-1</span></code> is the last element, <code class="docutils literal notranslate"><span class="pre">-2</span></code> is the second to last, etc.).</p>
+<p><strong>Note:</strong> Arrays are always passed by <strong>reference</strong>. To get a copy of an array that can be modified independently of the original array, use <a class="reference internal" href="#class-array-method-duplicate"><span class="std std-ref">duplicate()</span></a>.</p>
+<p><strong>Note:</strong> Erasing elements while iterating over arrays is <strong>not</strong> supported and will result in unpredictable behavior.</p>
+<p><strong>Note:</strong> In a boolean context, an array will evaluate to <code class="docutils literal notranslate"><span class="pre">false</span></code> if it’s empty (<code class="docutils literal notranslate"><span class="pre">[]</span></code>). Otherwise, an array will always evaluate to <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p>
+<p><strong>Differences between packed arrays, typed arrays, and untyped arrays:</strong> Packed arrays are generally faster to iterate on and modify compared to a typed array of the same type (e.g. <a class="reference internal" href="class_packedint64array.html#class-packedint64array"><span class="std std-ref">PackedInt64Array</span></a> versus <code class="docutils literal notranslate"><span class="pre">Array[int]</span></code>). Also, packed arrays consume less memory. As a downside, packed arrays are less flexible as they don’t offer as many convenience methods such as <a class="reference internal" href="#class-array-method-map"><span class="std std-ref">map()</span></a>. Typed arrays are in turn faster to iterate on and modify than untyped arrays.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>There are notable differences when using this API with C#. See <span class="xref std std-ref">doc_c_sharp_differences</span> for more information.</p>
+</div>
+</section>
+<section class="classref-reftable-group" id="constructors">
+<h2>Constructors<a class="headerlink" href="#constructors" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#class-array"><span class="std std-ref">Array</span></a></p></td>
+<td><p><a class="reference internal" href="#class-array-constructor-array"><span class="std std-ref">Array</span></a>()</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#class-array"><span class="std std-ref">Array</span></a></p></td>
+<td><p><a class="reference internal" href="#class-array-constructor-array"><span class="std std-ref">Array</span></a>(base: <a class="reference internal" href="#class-array"><span class="std std-ref">Array</span></a>, type: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, class_name: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>, script: <a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#class-array"><span class="std std-ref">Array</span></a></p></td>
+<td><p><a class="reference internal" href="#class-array-constructor-array"><span class="std std-ref">Array</span></a>(from: <a class="reference internal" href="#class-array"><span class="std std-ref">Array</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#class-array"><span class="std std-ref">Array</span></a></p></td>
+<td><p><a class="reference internal" href="#class-array-constructor-array"><span class="std std-ref">Array</span></a>(from: <a class="reference internal" href="class_packedbytearray.html#class-packedbytearray"><span class="std std-ref">PackedByteArray</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#class-array"><span class="std std-ref">Array</span></a></p></td>
+<td><p><a class="reference internal" href="#class-array-constructor-array"><span class="std std-ref">Array</span></a>(from: <a class="reference internal" href="class_packedcolorarray.html#class-packedcolorarray"><span class="std std-ref">PackedColorArray</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#class-array"><span class="std std-ref">Array</span></a></p></td>
+<td><p><a class="reference internal" href="#class-array-constructor-array"><span class="std std-ref">Array</span></a>(from: <a class="reference internal" href="class_packedfloat32array.html#class-packedfloat32array"><span class="std std-ref">PackedFloat32Array</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#class-array"><span class="std std-ref">Array</span></a></p></td>
+<td><p><a class="reference internal" href="#class-array-constructor-array"><span class="std std-ref">Array</span></a>(from: <a class="reference internal" href="class_packedfloat64array.html#class-packedfloat64array"><span class="std std-ref">PackedFloat64Array</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#class-array"><span class="std std-ref">Array</span></a></p></td>
+<td><p><a class="reference internal" href="#class-array-constructor-array"><span class="std std-ref">Array</span></a>(from: <a class="reference internal" href="class_packedint32array.html#class-packedint32array"><span class="std std-ref">PackedInt32Array</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#class-array"><span class="std std-ref">Array</span></a></p></td>
+<td><p><a class="reference internal" href="#class-array-constructor-array"><span class="std std-ref">Array</span></a>(from: <a class="reference internal" href="class_packedint64array.html#class-packedint64array"><span class="std std-ref">PackedInt64Array</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#class-array"><span class="std std-ref">Array</span></a></p></td>
+<td><p><a class="reference internal" href="#class-array-constructor-array"><span class="std std-ref">Array</span></a>(from: <a class="reference internal" href="class_packedstringarray.html#class-packedstringarray"><span class="std std-ref">PackedStringArray</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#class-array"><span class="std std-ref">Array</span></a></p></td>
+<td><p><a class="reference internal" href="#class-array-constructor-array"><span class="std std-ref">Array</span></a>(from: <a class="reference internal" href="class_packedvector2array.html#class-packedvector2array"><span class="std std-ref">PackedVector2Array</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#class-array"><span class="std std-ref">Array</span></a></p></td>
+<td><p><a class="reference internal" href="#class-array-constructor-array"><span class="std std-ref">Array</span></a>(from: <a class="reference internal" href="class_packedvector3array.html#class-packedvector3array"><span class="std std-ref">PackedVector3Array</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#class-array"><span class="std std-ref">Array</span></a></p></td>
+<td><p><a class="reference internal" href="#class-array-constructor-array"><span class="std std-ref">Array</span></a>(from: <a class="reference internal" href="class_packedvector4array.html#class-packedvector4array"><span class="std std-ref">PackedVector4Array</span></a>)</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section class="classref-reftable-group" id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-array-method-all"><span class="std std-ref">all</span></a>(method: <a class="reference internal" href="class_callable.html#class-callable"><span class="std std-ref">Callable</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-array-method-any"><span class="std std-ref">any</span></a>(method: <a class="reference internal" href="class_callable.html#class-callable"><span class="std std-ref">Callable</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-array-method-append"><span class="std std-ref">append</span></a>(value: <a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-array-method-append-array"><span class="std std-ref">append_array</span></a>(array: <a class="reference internal" href="#class-array"><span class="std std-ref">Array</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-array-method-assign"><span class="std std-ref">assign</span></a>(array: <a class="reference internal" href="#class-array"><span class="std std-ref">Array</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a></p></td>
+<td><p><a class="reference internal" href="#class-array-method-back"><span class="std std-ref">back</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-array-method-bsearch"><span class="std std-ref">bsearch</span></a>(value: <a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a>, before: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = true) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-array-method-bsearch-custom"><span class="std std-ref">bsearch_custom</span></a>(value: <a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a>, func: <a class="reference internal" href="class_callable.html#class-callable"><span class="std std-ref">Callable</span></a>, before: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = true) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-array-method-clear"><span class="std std-ref">clear</span></a>()</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-array-method-count"><span class="std std-ref">count</span></a>(value: <a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#class-array"><span class="std std-ref">Array</span></a></p></td>
+<td><p><a class="reference internal" href="#class-array-method-duplicate"><span class="std std-ref">duplicate</span></a>(deep: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = false) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#class-array"><span class="std std-ref">Array</span></a></p></td>
+<td><p><a class="reference internal" href="#class-array-method-duplicate-deep"><span class="std std-ref">duplicate_deep</span></a>(deep_subresources_mode: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> = 1) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-array-method-erase"><span class="std std-ref">erase</span></a>(value: <a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-array-method-fill"><span class="std std-ref">fill</span></a>(value: <a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#class-array"><span class="std std-ref">Array</span></a></p></td>
+<td><p><a class="reference internal" href="#class-array-method-filter"><span class="std std-ref">filter</span></a>(method: <a class="reference internal" href="class_callable.html#class-callable"><span class="std std-ref">Callable</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-array-method-find"><span class="std std-ref">find</span></a>(what: <a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a>, from: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> = 0) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-array-method-find-custom"><span class="std std-ref">find_custom</span></a>(method: <a class="reference internal" href="class_callable.html#class-callable"><span class="std std-ref">Callable</span></a>, from: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> = 0) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a></p></td>
+<td><p><a class="reference internal" href="#class-array-method-front"><span class="std std-ref">front</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a></p></td>
+<td><p><a class="reference internal" href="#class-array-method-get"><span class="std std-ref">get</span></a>(index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-array-method-get-typed-builtin"><span class="std std-ref">get_typed_builtin</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a></p></td>
+<td><p><a class="reference internal" href="#class-array-method-get-typed-class-name"><span class="std std-ref">get_typed_class_name</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a></p></td>
+<td><p><a class="reference internal" href="#class-array-method-get-typed-script"><span class="std std-ref">get_typed_script</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-array-method-has"><span class="std std-ref">has</span></a>(value: <a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-array-method-hash"><span class="std std-ref">hash</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-array-method-insert"><span class="std std-ref">insert</span></a>(position: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, value: <a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-array-method-is-empty"><span class="std std-ref">is_empty</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-array-method-is-read-only"><span class="std std-ref">is_read_only</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-array-method-is-same-typed"><span class="std std-ref">is_same_typed</span></a>(array: <a class="reference internal" href="#class-array"><span class="std std-ref">Array</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-array-method-is-typed"><span class="std std-ref">is_typed</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-array-method-make-read-only"><span class="std std-ref">make_read_only</span></a>()</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#class-array"><span class="std std-ref">Array</span></a></p></td>
+<td><p><a class="reference internal" href="#class-array-method-map"><span class="std std-ref">map</span></a>(method: <a class="reference internal" href="class_callable.html#class-callable"><span class="std std-ref">Callable</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a></p></td>
+<td><p><a class="reference internal" href="#class-array-method-max"><span class="std std-ref">max</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a></p></td>
+<td><p><a class="reference internal" href="#class-array-method-min"><span class="std std-ref">min</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a></p></td>
+<td><p><a class="reference internal" href="#class-array-method-pick-random"><span class="std std-ref">pick_random</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a></p></td>
+<td><p><a class="reference internal" href="#class-array-method-pop-at"><span class="std std-ref">pop_at</span></a>(position: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a></p></td>
+<td><p><a class="reference internal" href="#class-array-method-pop-back"><span class="std std-ref">pop_back</span></a>()</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a></p></td>
+<td><p><a class="reference internal" href="#class-array-method-pop-front"><span class="std std-ref">pop_front</span></a>()</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-array-method-push-back"><span class="std std-ref">push_back</span></a>(value: <a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-array-method-push-front"><span class="std std-ref">push_front</span></a>(value: <a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a></p></td>
+<td><p><a class="reference internal" href="#class-array-method-reduce"><span class="std std-ref">reduce</span></a>(method: <a class="reference internal" href="class_callable.html#class-callable"><span class="std std-ref">Callable</span></a>, accum: <a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a> = null) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-array-method-remove-at"><span class="std std-ref">remove_at</span></a>(position: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-array-method-resize"><span class="std std-ref">resize</span></a>(size: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-array-method-reverse"><span class="std std-ref">reverse</span></a>()</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-array-method-rfind"><span class="std std-ref">rfind</span></a>(what: <a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a>, from: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> = -1) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-array-method-rfind-custom"><span class="std std-ref">rfind_custom</span></a>(method: <a class="reference internal" href="class_callable.html#class-callable"><span class="std std-ref">Callable</span></a>, from: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> = -1) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-array-method-set"><span class="std std-ref">set</span></a>(index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, value: <a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-array-method-shuffle"><span class="std std-ref">shuffle</span></a>()</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-array-method-size"><span class="std std-ref">size</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#class-array"><span class="std std-ref">Array</span></a></p></td>
+<td><p><a class="reference internal" href="#class-array-method-slice"><span class="std std-ref">slice</span></a>(begin: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, end: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> = 2147483647, step: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> = 1, deep: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = false) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-array-method-sort"><span class="std std-ref">sort</span></a>()</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-array-method-sort-custom"><span class="std std-ref">sort_custom</span></a>(func: <a class="reference internal" href="class_callable.html#class-callable"><span class="std std-ref">Callable</span></a>)</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section class="classref-reftable-group" id="operators">
+<h2>Operators<a class="headerlink" href="#operators" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-array-operator-neq-array"><span class="std std-ref">operator !=</span></a>(right: <a class="reference internal" href="#class-array"><span class="std std-ref">Array</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#class-array"><span class="std std-ref">Array</span></a></p></td>
+<td><p><a class="reference internal" href="#class-array-operator-sum-array"><span class="std std-ref">operator +</span></a>(right: <a class="reference internal" href="#class-array"><span class="std std-ref">Array</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-array-operator-lt-array"><span class="std std-ref">operator &lt;</span></a>(right: <a class="reference internal" href="#class-array"><span class="std std-ref">Array</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-array-operator-lte-array"><span class="std std-ref">operator &lt;=</span></a>(right: <a class="reference internal" href="#class-array"><span class="std std-ref">Array</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-array-operator-eq-array"><span class="std std-ref">operator ==</span></a>(right: <a class="reference internal" href="#class-array"><span class="std std-ref">Array</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-array-operator-gt-array"><span class="std std-ref">operator &gt;</span></a>(right: <a class="reference internal" href="#class-array"><span class="std std-ref">Array</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-array-operator-gte-array"><span class="std std-ref">operator &gt;=</span></a>(right: <a class="reference internal" href="#class-array"><span class="std std-ref">Array</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a></p></td>
+<td><p><a class="reference internal" href="#class-array-operator-idx-int"><span class="std std-ref">operator []</span></a>(index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="constructor-descriptions">
+<h2>Constructor Descriptions<a class="headerlink" href="#constructor-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-constructor" id="class-array-constructor-array"><a class="reference internal" href="#class-array"><span class="std std-ref">Array</span></a> <strong>Array</strong>() <a class="reference internal" href="#class-array-constructor-array"><span class="std std-ref">🔗</span></a></p>
+<p>Constructs an empty <strong>Array</strong>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-constructor"><a class="reference internal" href="#class-array"><span class="std std-ref">Array</span></a> <strong>Array</strong>(base: <a class="reference internal" href="#class-array"><span class="std std-ref">Array</span></a>, type: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, class_name: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>, script: <a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a>)</p>
+<p>Creates a typed array from the <code class="docutils literal notranslate"><span class="pre">base</span></code> array. A typed array can only contain elements of the given type, or that inherit from the given class, as described by this constructor’s parameters:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">type</span></code> is the built-in <a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a> type, as one the <a class="reference internal" href="class_%40globalscope.html#enum-globalscope-variant-type"><span class="std std-ref">Variant.Type</span></a> constants.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">class_name</span></code> is the built-in class name (see <a class="reference internal" href="class_object.html#class-object-method-get-class"><span class="std std-ref">Object.get_class()</span></a>).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">script</span></code> is the associated script. It must be a <a class="reference internal" href="class_script.html#class-script"><span class="std std-ref">Script</span></a> instance or <code class="docutils literal notranslate"><span class="pre">null</span></code>.</p></li>
+</ul>
+<p>If <code class="docutils literal notranslate"><span class="pre">type</span></code> is not <a class="reference internal" href="class_%40globalscope.html#class-globalscope-constant-type-object"><span class="std std-ref">&#64;GlobalScope.TYPE_OBJECT</span></a>, <code class="docutils literal notranslate"><span class="pre">class_name</span></code> must be an empty <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a> and <code class="docutils literal notranslate"><span class="pre">script</span></code> must be <code class="docutils literal notranslate"><span class="pre">null</span></code>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">class_name</span> <span class="n">Sword</span>
+<span class="n">extends</span> <span class="n">Node</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Stats</span><span class="p">:</span>
+    <span class="k">pass</span>
+
+<span class="n">func</span> <span class="n">_ready</span><span class="p">():</span>
+    <span class="n">var</span> <span class="n">a</span> <span class="o">=</span> <span class="n">Array</span><span class="p">([],</span> <span class="n">TYPE_INT</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">null</span><span class="p">)</span>               <span class="c1"># Array[int]</span>
+    <span class="n">var</span> <span class="n">b</span> <span class="o">=</span> <span class="n">Array</span><span class="p">([],</span> <span class="n">TYPE_OBJECT</span><span class="p">,</span> <span class="s2">&quot;Node&quot;</span><span class="p">,</span> <span class="n">null</span><span class="p">)</span>        <span class="c1"># Array[Node]</span>
+    <span class="n">var</span> <span class="n">c</span> <span class="o">=</span> <span class="n">Array</span><span class="p">([],</span> <span class="n">TYPE_OBJECT</span><span class="p">,</span> <span class="s2">&quot;Node&quot;</span><span class="p">,</span> <span class="n">Sword</span><span class="p">)</span>       <span class="c1"># Array[Sword]</span>
+    <span class="n">var</span> <span class="n">d</span> <span class="o">=</span> <span class="n">Array</span><span class="p">([],</span> <span class="n">TYPE_OBJECT</span><span class="p">,</span> <span class="s2">&quot;RefCounted&quot;</span><span class="p">,</span> <span class="n">Stats</span><span class="p">)</span> <span class="c1"># Array[Stats]</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">base</span></code> array’s elements are converted when necessary. If this is not possible or <code class="docutils literal notranslate"><span class="pre">base</span></code> is already typed, this constructor fails and returns an empty <strong>Array</strong>.</p>
+<p>In GDScript, this constructor is usually not necessary, as it is possible to create a typed array through static typing:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>var numbers: Array[float] = []
+var children: Array[Node] = [$Node, $Sprite2D, $RigidBody3D]
+
+var integers: Array[int] = [0.2, 4.5, -2.0]
+print(integers) # Prints [0, 4, -2]
+</pre></div>
+</div>
+<hr class="classref-item-separator docutils" />
+<p class="classref-constructor"><a class="reference internal" href="#class-array"><span class="std std-ref">Array</span></a> <strong>Array</strong>(from: <a class="reference internal" href="#class-array"><span class="std std-ref">Array</span></a>)</p>
+<p>Returns the same array as <code class="docutils literal notranslate"><span class="pre">from</span></code>. If you need a copy of the array, use <a class="reference internal" href="#class-array-method-duplicate"><span class="std std-ref">duplicate()</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-constructor"><a class="reference internal" href="#class-array"><span class="std std-ref">Array</span></a> <strong>Array</strong>(from: <a class="reference internal" href="class_packedbytearray.html#class-packedbytearray"><span class="std std-ref">PackedByteArray</span></a>)</p>
+<p>Constructs an array from a <a class="reference internal" href="class_packedbytearray.html#class-packedbytearray"><span class="std std-ref">PackedByteArray</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-constructor"><a class="reference internal" href="#class-array"><span class="std std-ref">Array</span></a> <strong>Array</strong>(from: <a class="reference internal" href="class_packedcolorarray.html#class-packedcolorarray"><span class="std std-ref">PackedColorArray</span></a>)</p>
+<p>Constructs an array from a <a class="reference internal" href="class_packedcolorarray.html#class-packedcolorarray"><span class="std std-ref">PackedColorArray</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-constructor"><a class="reference internal" href="#class-array"><span class="std std-ref">Array</span></a> <strong>Array</strong>(from: <a class="reference internal" href="class_packedfloat32array.html#class-packedfloat32array"><span class="std std-ref">PackedFloat32Array</span></a>)</p>
+<p>Constructs an array from a <a class="reference internal" href="class_packedfloat32array.html#class-packedfloat32array"><span class="std std-ref">PackedFloat32Array</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-constructor"><a class="reference internal" href="#class-array"><span class="std std-ref">Array</span></a> <strong>Array</strong>(from: <a class="reference internal" href="class_packedfloat64array.html#class-packedfloat64array"><span class="std std-ref">PackedFloat64Array</span></a>)</p>
+<p>Constructs an array from a <a class="reference internal" href="class_packedfloat64array.html#class-packedfloat64array"><span class="std std-ref">PackedFloat64Array</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-constructor"><a class="reference internal" href="#class-array"><span class="std std-ref">Array</span></a> <strong>Array</strong>(from: <a class="reference internal" href="class_packedint32array.html#class-packedint32array"><span class="std std-ref">PackedInt32Array</span></a>)</p>
+<p>Constructs an array from a <a class="reference internal" href="class_packedint32array.html#class-packedint32array"><span class="std std-ref">PackedInt32Array</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-constructor"><a class="reference internal" href="#class-array"><span class="std std-ref">Array</span></a> <strong>Array</strong>(from: <a class="reference internal" href="class_packedint64array.html#class-packedint64array"><span class="std std-ref">PackedInt64Array</span></a>)</p>
+<p>Constructs an array from a <a class="reference internal" href="class_packedint64array.html#class-packedint64array"><span class="std std-ref">PackedInt64Array</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-constructor"><a class="reference internal" href="#class-array"><span class="std std-ref">Array</span></a> <strong>Array</strong>(from: <a class="reference internal" href="class_packedstringarray.html#class-packedstringarray"><span class="std std-ref">PackedStringArray</span></a>)</p>
+<p>Constructs an array from a <a class="reference internal" href="class_packedstringarray.html#class-packedstringarray"><span class="std std-ref">PackedStringArray</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-constructor"><a class="reference internal" href="#class-array"><span class="std std-ref">Array</span></a> <strong>Array</strong>(from: <a class="reference internal" href="class_packedvector2array.html#class-packedvector2array"><span class="std std-ref">PackedVector2Array</span></a>)</p>
+<p>Constructs an array from a <a class="reference internal" href="class_packedvector2array.html#class-packedvector2array"><span class="std std-ref">PackedVector2Array</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-constructor"><a class="reference internal" href="#class-array"><span class="std std-ref">Array</span></a> <strong>Array</strong>(from: <a class="reference internal" href="class_packedvector3array.html#class-packedvector3array"><span class="std std-ref">PackedVector3Array</span></a>)</p>
+<p>Constructs an array from a <a class="reference internal" href="class_packedvector3array.html#class-packedvector3array"><span class="std std-ref">PackedVector3Array</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-constructor"><a class="reference internal" href="#class-array"><span class="std std-ref">Array</span></a> <strong>Array</strong>(from: <a class="reference internal" href="class_packedvector4array.html#class-packedvector4array"><span class="std std-ref">PackedVector4Array</span></a>)</p>
+<p>Constructs an array from a <a class="reference internal" href="class_packedvector4array.html#class-packedvector4array"><span class="std std-ref">PackedVector4Array</span></a>.</p>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="method-descriptions">
+<h2>Method Descriptions<a class="headerlink" href="#method-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-method" id="class-array-method-all"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>all</strong>(method: <a class="reference internal" href="class_callable.html#class-callable"><span class="std std-ref">Callable</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-array-method-all"><span class="std std-ref">🔗</span></a></p>
+<p>Calls the given <a class="reference internal" href="class_callable.html#class-callable"><span class="std std-ref">Callable</span></a> on each element in the array and returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if the <a class="reference internal" href="class_callable.html#class-callable"><span class="std std-ref">Callable</span></a> returns <code class="docutils literal notranslate"><span class="pre">true</span></code> for <em>all</em> elements in the array. If the <a class="reference internal" href="class_callable.html#class-callable"><span class="std std-ref">Callable</span></a> returns <code class="docutils literal notranslate"><span class="pre">false</span></code> for one array element or more, this method returns <code class="docutils literal notranslate"><span class="pre">false</span></code>.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">method</span></code> should take one <a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a> parameter (the current array element) and return a <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>.</p>
+<p>See also <a class="reference internal" href="#class-array-method-any"><span class="std std-ref">any()</span></a>, <a class="reference internal" href="#class-array-method-filter"><span class="std std-ref">filter()</span></a>, <a class="reference internal" href="#class-array-method-map"><span class="std std-ref">map()</span></a> and <a class="reference internal" href="#class-array-method-reduce"><span class="std std-ref">reduce()</span></a>.</p>
+<p><strong>Note:</strong> Unlike relying on the size of an array returned by <a class="reference internal" href="#class-array-method-filter"><span class="std std-ref">filter()</span></a>, this method will return as early as possible to improve performance (especially with large arrays).</p>
+<p><strong>Note:</strong> For an empty array, this method <a class="reference external" href="https://en.wikipedia.org/wiki/Vacuous_truth">always</a> returns <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-array-method-any"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>any</strong>(method: <a class="reference internal" href="class_callable.html#class-callable"><span class="std std-ref">Callable</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-array-method-any"><span class="std std-ref">🔗</span></a></p>
+<p>Calls the given <a class="reference internal" href="class_callable.html#class-callable"><span class="std std-ref">Callable</span></a> on each element in the array and returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if the <a class="reference internal" href="class_callable.html#class-callable"><span class="std std-ref">Callable</span></a> returns <code class="docutils literal notranslate"><span class="pre">true</span></code> for <em>one or more</em> elements in the array. If the <a class="reference internal" href="class_callable.html#class-callable"><span class="std std-ref">Callable</span></a> returns <code class="docutils literal notranslate"><span class="pre">false</span></code> for all elements in the array, this method returns <code class="docutils literal notranslate"><span class="pre">false</span></code>.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">method</span></code> should take one <a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a> parameter (the current array element) and return a <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">func</span> <span class="n">greater_than_5</span><span class="p">(</span><span class="n">number</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">number</span> <span class="o">&gt;</span> <span class="mi">5</span>
+
+<span class="n">func</span> <span class="n">_ready</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">([</span><span class="mi">6</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">]</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="n">greater_than_5</span><span class="p">))</span> <span class="c1"># Prints true (3 elements evaluate to true).</span>
+    <span class="nb">print</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="n">greater_than_5</span><span class="p">))</span> <span class="c1"># Prints true (1 elements evaluate to true).</span>
+    <span class="nb">print</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="n">greater_than_5</span><span class="p">))</span>  <span class="c1"># Prints false (0 elements evaluate to true).</span>
+    <span class="nb">print</span><span class="p">([]</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="n">greater_than_5</span><span class="p">))</span>         <span class="c1"># Prints false (0 elements evaluate to true).</span>
+
+    <span class="c1"># Same as the first line above, but using a lambda function.</span>
+    <span class="nb">print</span><span class="p">([</span><span class="mi">6</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">]</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="n">func</span><span class="p">(</span><span class="n">number</span><span class="p">):</span> <span class="k">return</span> <span class="n">number</span> <span class="o">&gt;</span> <span class="mi">5</span><span class="p">))</span> <span class="c1"># Prints true</span>
+</pre></div>
+</div>
+<p>See also <a class="reference internal" href="#class-array-method-all"><span class="std std-ref">all()</span></a>, <a class="reference internal" href="#class-array-method-filter"><span class="std std-ref">filter()</span></a>, <a class="reference internal" href="#class-array-method-map"><span class="std std-ref">map()</span></a> and <a class="reference internal" href="#class-array-method-reduce"><span class="std std-ref">reduce()</span></a>.</p>
+<p><strong>Note:</strong> Unlike relying on the size of an array returned by <a class="reference internal" href="#class-array-method-filter"><span class="std std-ref">filter()</span></a>, this method will return as early as possible to improve performance (especially with large arrays).</p>
+<p><strong>Note:</strong> For an empty array, this method always returns <code class="docutils literal notranslate"><span class="pre">false</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-array-method-append"><abbr title="No return value.">void</abbr> <strong>append</strong>(value: <a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a>) <a class="reference internal" href="#class-array-method-append"><span class="std std-ref">🔗</span></a></p>
+<p>Appends <code class="docutils literal notranslate"><span class="pre">value</span></code> at the end of the array (alias of <a class="reference internal" href="#class-array-method-push-back"><span class="std std-ref">push_back()</span></a>).</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-array-method-append-array"><abbr title="No return value.">void</abbr> <strong>append_array</strong>(array: <a class="reference internal" href="#class-array"><span class="std std-ref">Array</span></a>) <a class="reference internal" href="#class-array-method-append-array"><span class="std std-ref">🔗</span></a></p>
+<p>Appends another <code class="docutils literal notranslate"><span class="pre">array</span></code> at the end of this array.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="n">var</span> <span class="n">extra</span> <span class="o">=</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]</span>
+<span class="n">numbers</span><span class="o">.</span><span class="n">append_array</span><span class="p">(</span><span class="n">extra</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">numbers</span><span class="p">)</span> <span class="c1"># Prints [1, 2, 3, 4, 5, 6]</span>
+</pre></div>
+</div>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-array-method-assign"><abbr title="No return value.">void</abbr> <strong>assign</strong>(array: <a class="reference internal" href="#class-array"><span class="std std-ref">Array</span></a>) <a class="reference internal" href="#class-array-method-assign"><span class="std std-ref">🔗</span></a></p>
+<p>Assigns elements of another <code class="docutils literal notranslate"><span class="pre">array</span></code> into the array. Resizes the array to match <code class="docutils literal notranslate"><span class="pre">array</span></code>. Performs type conversions if the array is typed.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-array-method-back"><a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a> <strong>back</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-array-method-back"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the last element of the array. If the array is empty, fails and returns <code class="docutils literal notranslate"><span class="pre">null</span></code>. See also <a class="reference internal" href="#class-array-method-front"><span class="std std-ref">front()</span></a>.</p>
+<p><strong>Note:</strong> Unlike with the <code class="docutils literal notranslate"><span class="pre">[]</span></code> operator (<code class="docutils literal notranslate"><span class="pre">array[-1]</span></code>), an error is generated without stopping project execution.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-array-method-bsearch"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>bsearch</strong>(value: <a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a>, before: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = true) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-array-method-bsearch"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the index of <code class="docutils literal notranslate"><span class="pre">value</span></code> in the sorted array. If it cannot be found, returns where <code class="docutils literal notranslate"><span class="pre">value</span></code> should be inserted to keep the array sorted. The algorithm used is <a class="reference external" href="https://en.wikipedia.org/wiki/Binary_search_algorithm">binary search</a>.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">before</span></code> is <code class="docutils literal notranslate"><span class="pre">true</span></code> (as by default), the returned index comes before all existing elements equal to <code class="docutils literal notranslate"><span class="pre">value</span></code> in the array.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">10</span><span class="p">]</span>
+<span class="n">var</span> <span class="n">idx</span> <span class="o">=</span> <span class="n">numbers</span><span class="o">.</span><span class="n">bsearch</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span>
+
+<span class="n">numbers</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">idx</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">numbers</span><span class="p">)</span> <span class="c1"># Prints [2, 4, 7, 8, 10]</span>
+
+<span class="n">var</span> <span class="n">fruits</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Apple&quot;</span><span class="p">,</span> <span class="s2">&quot;Lemon&quot;</span><span class="p">,</span> <span class="s2">&quot;Lemon&quot;</span><span class="p">,</span> <span class="s2">&quot;Orange&quot;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fruits</span><span class="o">.</span><span class="n">bsearch</span><span class="p">(</span><span class="s2">&quot;Lemon&quot;</span><span class="p">,</span> <span class="n">true</span><span class="p">))</span>  <span class="c1"># Prints 1, points at the first &quot;Lemon&quot;.</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fruits</span><span class="o">.</span><span class="n">bsearch</span><span class="p">(</span><span class="s2">&quot;Lemon&quot;</span><span class="p">,</span> <span class="n">false</span><span class="p">))</span> <span class="c1"># Prints 3, points at &quot;Orange&quot;.</span>
+</pre></div>
+</div>
+<p><strong>Note:</strong> Calling <a class="reference internal" href="#class-array-method-bsearch"><span class="std std-ref">bsearch()</span></a> on an <em>unsorted</em> array will result in unexpected behavior. Use <a class="reference internal" href="#class-array-method-sort"><span class="std std-ref">sort()</span></a> before calling this method.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-array-method-bsearch-custom"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>bsearch_custom</strong>(value: <a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a>, func: <a class="reference internal" href="class_callable.html#class-callable"><span class="std std-ref">Callable</span></a>, before: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = true) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-array-method-bsearch-custom"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the index of <code class="docutils literal notranslate"><span class="pre">value</span></code> in the sorted array. If it cannot be found, returns where <code class="docutils literal notranslate"><span class="pre">value</span></code> should be inserted to keep the array sorted (using <code class="docutils literal notranslate"><span class="pre">func</span></code> for the comparisons). The algorithm used is <a class="reference external" href="https://en.wikipedia.org/wiki/Binary_search_algorithm">binary search</a>.</p>
+<p>Similar to <a class="reference internal" href="#class-array-method-sort-custom"><span class="std std-ref">sort_custom()</span></a>, <code class="docutils literal notranslate"><span class="pre">func</span></code> is called as many times as necessary, receiving one array element and <code class="docutils literal notranslate"><span class="pre">value</span></code> as arguments. The function should return <code class="docutils literal notranslate"><span class="pre">true</span></code> if the array element should be <em>behind</em> <code class="docutils literal notranslate"><span class="pre">value</span></code>, otherwise it should return <code class="docutils literal notranslate"><span class="pre">false</span></code>.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">before</span></code> is <code class="docutils literal notranslate"><span class="pre">true</span></code> (as by default), the returned index comes before all existing elements equal to <code class="docutils literal notranslate"><span class="pre">value</span></code> in the array.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">func</span> <span class="n">sort_by_amount</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">b</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span>
+        <span class="k">return</span> <span class="n">true</span>
+    <span class="k">return</span> <span class="n">false</span>
+
+<span class="n">func</span> <span class="n">_ready</span><span class="p">():</span>
+    <span class="n">var</span> <span class="n">my_items</span> <span class="o">=</span> <span class="p">[[</span><span class="s2">&quot;Tomato&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="s2">&quot;Kiwi&quot;</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="p">[</span><span class="s2">&quot;Rice&quot;</span><span class="p">,</span> <span class="mi">9</span><span class="p">]]</span>
+
+    <span class="n">var</span> <span class="n">apple</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Apple&quot;</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+    <span class="c1"># &quot;Apple&quot; is inserted before &quot;Kiwi&quot;.</span>
+    <span class="n">my_items</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">my_items</span><span class="o">.</span><span class="n">bsearch_custom</span><span class="p">(</span><span class="n">apple</span><span class="p">,</span> <span class="n">sort_by_amount</span><span class="p">,</span> <span class="n">true</span><span class="p">),</span> <span class="n">apple</span><span class="p">)</span>
+
+    <span class="n">var</span> <span class="n">banana</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Banana&quot;</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+    <span class="c1"># &quot;Banana&quot; is inserted after &quot;Kiwi&quot;.</span>
+    <span class="n">my_items</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">my_items</span><span class="o">.</span><span class="n">bsearch_custom</span><span class="p">(</span><span class="n">banana</span><span class="p">,</span> <span class="n">sort_by_amount</span><span class="p">,</span> <span class="n">false</span><span class="p">),</span> <span class="n">banana</span><span class="p">)</span>
+
+    <span class="c1"># Prints [[&quot;Tomato&quot;, 2], [&quot;Apple&quot;, 5], [&quot;Kiwi&quot;, 5], [&quot;Banana&quot;, 5], [&quot;Rice&quot;, 9]]</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">my_items</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Note:</strong> Calling <a class="reference internal" href="#class-array-method-bsearch-custom"><span class="std std-ref">bsearch_custom()</span></a> on an <em>unsorted</em> array will result in unexpected behavior. Use <a class="reference internal" href="#class-array-method-sort-custom"><span class="std std-ref">sort_custom()</span></a> with <code class="docutils literal notranslate"><span class="pre">func</span></code> before calling this method.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-array-method-clear"><abbr title="No return value.">void</abbr> <strong>clear</strong>() <a class="reference internal" href="#class-array-method-clear"><span class="std std-ref">🔗</span></a></p>
+<p>Removes all elements from the array. This is equivalent to using <a class="reference internal" href="#class-array-method-resize"><span class="std std-ref">resize()</span></a> with a size of <code class="docutils literal notranslate"><span class="pre">0</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-array-method-count"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>count</strong>(value: <a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-array-method-count"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the number of times an element is in the array.</p>
+<p>To count how many elements in an array satisfy a condition, see <a class="reference internal" href="#class-array-method-reduce"><span class="std std-ref">reduce()</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-array-method-duplicate"><a class="reference internal" href="#class-array"><span class="std std-ref">Array</span></a> <strong>duplicate</strong>(deep: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = false) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-array-method-duplicate"><span class="std std-ref">🔗</span></a></p>
+<p>Returns a new copy of the array.</p>
+<p>By default, a <strong>shallow</strong> copy is returned: all nested <strong>Array</strong>, <a class="reference internal" href="class_dictionary.html#class-dictionary"><span class="std std-ref">Dictionary</span></a>, and <a class="reference internal" href="class_resource.html#class-resource"><span class="std std-ref">Resource</span></a> elements are shared with the original array. Modifying any of those in one array will also affect them in the other.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">deep</span></code> is <code class="docutils literal notranslate"><span class="pre">true</span></code>, a <strong>deep</strong> copy is returned: all nested arrays and dictionaries are also duplicated (recursively). Any <a class="reference internal" href="class_resource.html#class-resource"><span class="std std-ref">Resource</span></a> is still shared with the original array, though.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-array-method-duplicate-deep"><a class="reference internal" href="#class-array"><span class="std std-ref">Array</span></a> <strong>duplicate_deep</strong>(deep_subresources_mode: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> = 1) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-array-method-duplicate-deep"><span class="std std-ref">🔗</span></a></p>
+<p>Duplicates this array, deeply, like <a class="reference internal" href="#class-array-method-duplicate"><span class="std std-ref">duplicate()</span></a> when passing <code class="docutils literal notranslate"><span class="pre">true</span></code>, with extra control over how subresources are handled.</p>
+<p><code class="docutils literal notranslate"><span class="pre">deep_subresources_mode</span></code> must be one of the values from <a class="reference internal" href="class_resource.html#enum-resource-deepduplicatemode"><span class="std std-ref">DeepDuplicateMode</span></a>. By default, only internal resources will be duplicated (recursively).</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-array-method-erase"><abbr title="No return value.">void</abbr> <strong>erase</strong>(value: <a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a>) <a class="reference internal" href="#class-array-method-erase"><span class="std std-ref">🔗</span></a></p>
+<p>Finds and removes the first occurrence of <code class="docutils literal notranslate"><span class="pre">value</span></code> from the array. If <code class="docutils literal notranslate"><span class="pre">value</span></code> does not exist in the array, nothing happens. To remove an element by index, use <a class="reference internal" href="#class-array-method-remove-at"><span class="std std-ref">remove_at()</span></a> instead.</p>
+<p><strong>Note:</strong> This method shifts every element’s index after the removed <code class="docutils literal notranslate"><span class="pre">value</span></code> back, which may have a noticeable performance cost, especially on larger arrays.</p>
+<p><strong>Note:</strong> Erasing elements while iterating over arrays is <strong>not</strong> supported and will result in unpredictable behavior.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-array-method-fill"><abbr title="No return value.">void</abbr> <strong>fill</strong>(value: <a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a>) <a class="reference internal" href="#class-array-method-fill"><span class="std std-ref">🔗</span></a></p>
+<p>Assigns the given <code class="docutils literal notranslate"><span class="pre">value</span></code> to all elements in the array.</p>
+<p>This method can often be combined with <a class="reference internal" href="#class-array-method-resize"><span class="std std-ref">resize()</span></a> to create an array with a given size and initialized elements:</p>
+<p><strong>Note:</strong> If <code class="docutils literal notranslate"><span class="pre">value</span></code> is a <a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a> passed by reference (<a class="reference internal" href="class_object.html#class-object"><span class="std std-ref">Object</span></a>-derived, <strong>Array</strong>, <a class="reference internal" href="class_dictionary.html#class-dictionary"><span class="std std-ref">Dictionary</span></a>, etc.), the array will be filled with references to the same <code class="docutils literal notranslate"><span class="pre">value</span></code>, which are not duplicates.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-array-method-filter"><a class="reference internal" href="#class-array"><span class="std std-ref">Array</span></a> <strong>filter</strong>(method: <a class="reference internal" href="class_callable.html#class-callable"><span class="std std-ref">Callable</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-array-method-filter"><span class="std std-ref">🔗</span></a></p>
+<p>Calls the given <a class="reference internal" href="class_callable.html#class-callable"><span class="std std-ref">Callable</span></a> on each element in the array and returns a new, filtered <strong>Array</strong>.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">method</span></code> receives one of the array elements as an argument, and should return <code class="docutils literal notranslate"><span class="pre">true</span></code> to add the element to the filtered array, or <code class="docutils literal notranslate"><span class="pre">false</span></code> to exclude it.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">func</span> <span class="n">is_even</span><span class="p">(</span><span class="n">number</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">number</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span>
+
+<span class="n">func</span> <span class="n">_ready</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">]</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">is_even</span><span class="p">))</span> <span class="c1"># Prints [4, 8]</span>
+
+    <span class="c1"># Same as above, but using a lambda function.</span>
+    <span class="nb">print</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">]</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">func</span><span class="p">(</span><span class="n">number</span><span class="p">):</span> <span class="k">return</span> <span class="n">number</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>See also <a class="reference internal" href="#class-array-method-any"><span class="std std-ref">any()</span></a>, <a class="reference internal" href="#class-array-method-all"><span class="std std-ref">all()</span></a>, <a class="reference internal" href="#class-array-method-map"><span class="std std-ref">map()</span></a> and <a class="reference internal" href="#class-array-method-reduce"><span class="std std-ref">reduce()</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-array-method-find"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>find</strong>(what: <a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a>, from: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> = 0) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-array-method-find"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the index of the <strong>first</strong> occurrence of <code class="docutils literal notranslate"><span class="pre">what</span></code> in this array, or <code class="docutils literal notranslate"><span class="pre">-1</span></code> if there are none. The search’s start can be specified with <code class="docutils literal notranslate"><span class="pre">from</span></code>, continuing to the end of the array.</p>
+<p><strong>Note:</strong> If you just want to know whether the array contains <code class="docutils literal notranslate"><span class="pre">what</span></code>, use <a class="reference internal" href="#class-array-method-has"><span class="std std-ref">has()</span></a> (<code class="docutils literal notranslate"><span class="pre">Contains</span></code> in C#). In GDScript, you may also use the <code class="docutils literal notranslate"><span class="pre">in</span></code> operator.</p>
+<p><strong>Note:</strong> For performance reasons, the search is affected by <code class="docutils literal notranslate"><span class="pre">what</span></code>’s <a class="reference internal" href="class_%40globalscope.html#enum-globalscope-variant-type"><span class="std std-ref">Variant.Type</span></a>. For example, <code class="docutils literal notranslate"><span class="pre">7</span></code> (<a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) and <code class="docutils literal notranslate"><span class="pre">7.0</span></code> (<a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>) are not considered equal for this method.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-array-method-find-custom"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>find_custom</strong>(method: <a class="reference internal" href="class_callable.html#class-callable"><span class="std std-ref">Callable</span></a>, from: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> = 0) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-array-method-find-custom"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the index of the <strong>first</strong> element in the array that causes <code class="docutils literal notranslate"><span class="pre">method</span></code> to return <code class="docutils literal notranslate"><span class="pre">true</span></code>, or <code class="docutils literal notranslate"><span class="pre">-1</span></code> if there are none. The search’s start can be specified with <code class="docutils literal notranslate"><span class="pre">from</span></code>, continuing to the end of the array.</p>
+<p><code class="docutils literal notranslate"><span class="pre">method</span></code> is a callable that takes an element of the array, and returns a <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>.</p>
+<p><strong>Note:</strong> If you just want to know whether the array contains <em>anything</em> that satisfies <code class="docutils literal notranslate"><span class="pre">method</span></code>, use <a class="reference internal" href="#class-array-method-any"><span class="std std-ref">any()</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-array-method-front"><a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a> <strong>front</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-array-method-front"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the first element of the array. If the array is empty, fails and returns <code class="docutils literal notranslate"><span class="pre">null</span></code>. See also <a class="reference internal" href="#class-array-method-back"><span class="std std-ref">back()</span></a>.</p>
+<p><strong>Note:</strong> Unlike with the <code class="docutils literal notranslate"><span class="pre">[]</span></code> operator (<code class="docutils literal notranslate"><span class="pre">array[0]</span></code>), an error is generated without stopping project execution.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-array-method-get"><a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a> <strong>get</strong>(index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-array-method-get"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the element at the given <code class="docutils literal notranslate"><span class="pre">index</span></code> in the array. If <code class="docutils literal notranslate"><span class="pre">index</span></code> is out-of-bounds or negative, this method fails and returns <code class="docutils literal notranslate"><span class="pre">null</span></code>.</p>
+<p>This method is similar (but not identical) to the <code class="docutils literal notranslate"><span class="pre">[]</span></code> operator. Most notably, when this method fails, it doesn’t pause project execution if run from the editor.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-array-method-get-typed-builtin"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>get_typed_builtin</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-array-method-get-typed-builtin"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the built-in <a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a> type of the typed array as a <a class="reference internal" href="class_%40globalscope.html#enum-globalscope-variant-type"><span class="std std-ref">Variant.Type</span></a> constant. If the array is not typed, returns <a class="reference internal" href="class_%40globalscope.html#class-globalscope-constant-type-nil"><span class="std std-ref">&#64;GlobalScope.TYPE_NIL</span></a>. See also <a class="reference internal" href="#class-array-method-is-typed"><span class="std std-ref">is_typed()</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-array-method-get-typed-class-name"><a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a> <strong>get_typed_class_name</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-array-method-get-typed-class-name"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the <strong>built-in</strong> class name of the typed array, if the built-in <a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a> type <a class="reference internal" href="class_%40globalscope.html#class-globalscope-constant-type-object"><span class="std std-ref">&#64;GlobalScope.TYPE_OBJECT</span></a>. Otherwise, returns an empty <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>. See also <a class="reference internal" href="#class-array-method-is-typed"><span class="std std-ref">is_typed()</span></a> and <a class="reference internal" href="class_object.html#class-object-method-get-class"><span class="std std-ref">Object.get_class()</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-array-method-get-typed-script"><a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a> <strong>get_typed_script</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-array-method-get-typed-script"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the <a class="reference internal" href="class_script.html#class-script"><span class="std std-ref">Script</span></a> instance associated with this typed array, or <code class="docutils literal notranslate"><span class="pre">null</span></code> if it does not exist. See also <a class="reference internal" href="#class-array-method-is-typed"><span class="std std-ref">is_typed()</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-array-method-has"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>has</strong>(value: <a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-array-method-has"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if the array contains the given <code class="docutils literal notranslate"><span class="pre">value</span></code>.</p>
+<p>In GDScript, this is equivalent to the <code class="docutils literal notranslate"><span class="pre">in</span></code> operator:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="mi">4</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">]:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;4 is here!&quot;</span><span class="p">)</span> <span class="c1"># Will be printed.</span>
+</pre></div>
+</div>
+<p><strong>Note:</strong> For performance reasons, the search is affected by the <code class="docutils literal notranslate"><span class="pre">value</span></code>’s <a class="reference internal" href="class_%40globalscope.html#enum-globalscope-variant-type"><span class="std std-ref">Variant.Type</span></a>. For example, <code class="docutils literal notranslate"><span class="pre">7</span></code> (<a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) and <code class="docutils literal notranslate"><span class="pre">7.0</span></code> (<a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>) are not considered equal for this method.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-array-method-hash"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>hash</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-array-method-hash"><span class="std std-ref">🔗</span></a></p>
+<p>Returns a hashed 32-bit integer value representing the array and its contents.</p>
+<p><strong>Note:</strong> Arrays with equal hash values are <em>not</em> guaranteed to be the same, as a result of hash collisions. On the contrary, arrays with different hash values are guaranteed to be different.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-array-method-insert"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>insert</strong>(position: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, value: <a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a>) <a class="reference internal" href="#class-array-method-insert"><span class="std std-ref">🔗</span></a></p>
+<p>Inserts a new element (<code class="docutils literal notranslate"><span class="pre">value</span></code>) at a given index (<code class="docutils literal notranslate"><span class="pre">position</span></code>) in the array. <code class="docutils literal notranslate"><span class="pre">position</span></code> should be between <code class="docutils literal notranslate"><span class="pre">0</span></code> and the array’s <a class="reference internal" href="#class-array-method-size"><span class="std std-ref">size()</span></a>. If negative, <code class="docutils literal notranslate"><span class="pre">position</span></code> is considered relative to the end of the array.</p>
+<p>Returns <a class="reference internal" href="class_%40globalscope.html#class-globalscope-constant-ok"><span class="std std-ref">&#64;GlobalScope.OK</span></a> on success, or one of the other <a class="reference internal" href="class_%40globalscope.html#enum-globalscope-error"><span class="std std-ref">Error</span></a> constants if this method fails.</p>
+<p><strong>Note:</strong> Every element’s index after <code class="docutils literal notranslate"><span class="pre">position</span></code> needs to be shifted forward, which may have a noticeable performance cost, especially on larger arrays.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-array-method-is-empty"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_empty</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-array-method-is-empty"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if the array is empty (<code class="docutils literal notranslate"><span class="pre">[]</span></code>). See also <a class="reference internal" href="#class-array-method-size"><span class="std std-ref">size()</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-array-method-is-read-only"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_read_only</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-array-method-is-read-only"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if the array is read-only. See <a class="reference internal" href="#class-array-method-make-read-only"><span class="std std-ref">make_read_only()</span></a>.</p>
+<p>In GDScript, arrays are automatically read-only if declared with the <code class="docutils literal notranslate"><span class="pre">const</span></code> keyword.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-array-method-is-same-typed"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_same_typed</strong>(array: <a class="reference internal" href="#class-array"><span class="std std-ref">Array</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-array-method-is-same-typed"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if this array is typed the same as the given <code class="docutils literal notranslate"><span class="pre">array</span></code>. See also <a class="reference internal" href="#class-array-method-is-typed"><span class="std std-ref">is_typed()</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-array-method-is-typed"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_typed</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-array-method-is-typed"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if the array is typed. Typed arrays can only contain elements of a specific type, as defined by the typed array constructor. The methods of a typed array are still expected to return a generic <a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a>.</p>
+<p>In GDScript, it is possible to define a typed array with static typing:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">numbers</span><span class="p">:</span> <span class="n">Array</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">4.2</span><span class="p">,</span> <span class="o">-</span><span class="mf">2.0</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">numbers</span><span class="o">.</span><span class="n">is_typed</span><span class="p">())</span> <span class="c1"># Prints true</span>
+</pre></div>
+</div>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-array-method-make-read-only"><abbr title="No return value.">void</abbr> <strong>make_read_only</strong>() <a class="reference internal" href="#class-array-method-make-read-only"><span class="std std-ref">🔗</span></a></p>
+<p>Makes the array read-only. The array’s elements cannot be overridden with different values, and their order cannot change. Does not apply to nested elements, such as dictionaries.</p>
+<p>In GDScript, arrays are automatically read-only if declared with the <code class="docutils literal notranslate"><span class="pre">const</span></code> keyword.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-array-method-map"><a class="reference internal" href="#class-array"><span class="std std-ref">Array</span></a> <strong>map</strong>(method: <a class="reference internal" href="class_callable.html#class-callable"><span class="std std-ref">Callable</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-array-method-map"><span class="std std-ref">🔗</span></a></p>
+<p>Calls the given <a class="reference internal" href="class_callable.html#class-callable"><span class="std std-ref">Callable</span></a> for each element in the array and returns a new array filled with values returned by the <code class="docutils literal notranslate"><span class="pre">method</span></code>.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">method</span></code> should take one <a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a> parameter (the current array element) and can return any <a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">func</span> <span class="n">double</span><span class="p">(</span><span class="n">number</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">number</span> <span class="o">*</span> <span class="mi">2</span>
+
+<span class="n">func</span> <span class="n">_ready</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">double</span><span class="p">))</span> <span class="c1"># Prints [2, 4, 6]</span>
+
+    <span class="c1"># Same as above, but using a lambda function.</span>
+    <span class="nb">print</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">func</span><span class="p">(</span><span class="n">element</span><span class="p">):</span> <span class="k">return</span> <span class="n">element</span> <span class="o">*</span> <span class="mi">2</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>See also <a class="reference internal" href="#class-array-method-filter"><span class="std std-ref">filter()</span></a>, <a class="reference internal" href="#class-array-method-reduce"><span class="std std-ref">reduce()</span></a>, <a class="reference internal" href="#class-array-method-any"><span class="std std-ref">any()</span></a> and <a class="reference internal" href="#class-array-method-all"><span class="std std-ref">all()</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-array-method-max"><a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a> <strong>max</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-array-method-max"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the maximum value contained in the array, if all elements can be compared. Otherwise, returns <code class="docutils literal notranslate"><span class="pre">null</span></code>. See also <a class="reference internal" href="#class-array-method-min"><span class="std std-ref">min()</span></a>.</p>
+<p>To find the maximum value using a custom comparator, you can use <a class="reference internal" href="#class-array-method-reduce"><span class="std std-ref">reduce()</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-array-method-min"><a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a> <strong>min</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-array-method-min"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the minimum value contained in the array, if all elements can be compared. Otherwise, returns <code class="docutils literal notranslate"><span class="pre">null</span></code>. See also <a class="reference internal" href="#class-array-method-max"><span class="std std-ref">max()</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-array-method-pick-random"><a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a> <strong>pick_random</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-array-method-pick-random"><span class="std std-ref">🔗</span></a></p>
+<p>Returns a random element from the array. Generates an error and returns <code class="docutils literal notranslate"><span class="pre">null</span></code> if the array is empty.</p>
+<p><strong>Note:</strong> Like many similar functions in the engine (such as <a class="reference internal" href="class_%40globalscope.html#class-globalscope-method-randi"><span class="std std-ref">&#64;GlobalScope.randi()</span></a> or <a class="reference internal" href="#class-array-method-shuffle"><span class="std std-ref">shuffle()</span></a>), this method uses a common, global random seed. To get a predictable outcome from this method, see <a class="reference internal" href="class_%40globalscope.html#class-globalscope-method-seed"><span class="std std-ref">&#64;GlobalScope.seed()</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-array-method-pop-at"><a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a> <strong>pop_at</strong>(position: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <a class="reference internal" href="#class-array-method-pop-at"><span class="std std-ref">🔗</span></a></p>
+<p>Removes and returns the element of the array at index <code class="docutils literal notranslate"><span class="pre">position</span></code>. If negative, <code class="docutils literal notranslate"><span class="pre">position</span></code> is considered relative to the end of the array. Returns <code class="docutils literal notranslate"><span class="pre">null</span></code> if the array is empty. If <code class="docutils literal notranslate"><span class="pre">position</span></code> is out of bounds, an error message is also generated.</p>
+<p><strong>Note:</strong> This method shifts every element’s index after <code class="docutils literal notranslate"><span class="pre">position</span></code> back, which may have a noticeable performance cost, especially on larger arrays.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-array-method-pop-back"><a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a> <strong>pop_back</strong>() <a class="reference internal" href="#class-array-method-pop-back"><span class="std std-ref">🔗</span></a></p>
+<p>Removes and returns the last element of the array. Returns <code class="docutils literal notranslate"><span class="pre">null</span></code> if the array is empty, without generating an error. See also <a class="reference internal" href="#class-array-method-pop-front"><span class="std std-ref">pop_front()</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-array-method-pop-front"><a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a> <strong>pop_front</strong>() <a class="reference internal" href="#class-array-method-pop-front"><span class="std std-ref">🔗</span></a></p>
+<p>Removes and returns the first element of the array. Returns <code class="docutils literal notranslate"><span class="pre">null</span></code> if the array is empty, without generating an error. See also <a class="reference internal" href="#class-array-method-pop-back"><span class="std std-ref">pop_back()</span></a>.</p>
+<p><strong>Note:</strong> This method shifts every other element’s index back, which may have a noticeable performance cost, especially on larger arrays.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-array-method-push-back"><abbr title="No return value.">void</abbr> <strong>push_back</strong>(value: <a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a>) <a class="reference internal" href="#class-array-method-push-back"><span class="std std-ref">🔗</span></a></p>
+<p>Appends an element at the end of the array. See also <a class="reference internal" href="#class-array-method-push-front"><span class="std std-ref">push_front()</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-array-method-push-front"><abbr title="No return value.">void</abbr> <strong>push_front</strong>(value: <a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a>) <a class="reference internal" href="#class-array-method-push-front"><span class="std std-ref">🔗</span></a></p>
+<p>Adds an element at the beginning of the array. See also <a class="reference internal" href="#class-array-method-push-back"><span class="std std-ref">push_back()</span></a>.</p>
+<p><strong>Note:</strong> This method shifts every other element’s index forward, which may have a noticeable performance cost, especially on larger arrays.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-array-method-reduce"><a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a> <strong>reduce</strong>(method: <a class="reference internal" href="class_callable.html#class-callable"><span class="std std-ref">Callable</span></a>, accum: <a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a> = null) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-array-method-reduce"><span class="std std-ref">🔗</span></a></p>
+<p>Calls the given <a class="reference internal" href="class_callable.html#class-callable"><span class="std std-ref">Callable</span></a> for each element in array, accumulates the result in <code class="docutils literal notranslate"><span class="pre">accum</span></code>, then returns it.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">method</span></code> takes two arguments: the current value of <code class="docutils literal notranslate"><span class="pre">accum</span></code> and the current array element. If <code class="docutils literal notranslate"><span class="pre">accum</span></code> is <code class="docutils literal notranslate"><span class="pre">null</span></code> (as by default), the iteration will start from the second element, with the first one used as initial value of <code class="docutils literal notranslate"><span class="pre">accum</span></code>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">func</span> <span class="nb">sum</span><span class="p">(</span><span class="n">accum</span><span class="p">,</span> <span class="n">number</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">accum</span> <span class="o">+</span> <span class="n">number</span>
+
+<span class="n">func</span> <span class="n">_ready</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">reduce</span><span class="p">(</span><span class="nb">sum</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>  <span class="c1"># Prints 6</span>
+    <span class="nb">print</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">reduce</span><span class="p">(</span><span class="nb">sum</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span> <span class="c1"># Prints 16</span>
+
+    <span class="c1"># Same as above, but using a lambda function.</span>
+    <span class="nb">print</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">reduce</span><span class="p">(</span><span class="n">func</span><span class="p">(</span><span class="n">accum</span><span class="p">,</span> <span class="n">number</span><span class="p">):</span> <span class="k">return</span> <span class="n">accum</span> <span class="o">+</span> <span class="n">number</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>If <a class="reference internal" href="#class-array-method-max"><span class="std std-ref">max()</span></a> is not desirable, this method may also be used to implement a custom comparator:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">func</span> <span class="n">_ready</span><span class="p">():</span>
+    <span class="n">var</span> <span class="n">arr</span> <span class="o">=</span> <span class="p">[</span><span class="n">Vector2i</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">Vector2i</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="n">Vector2i</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)]</span>
+
+    <span class="n">var</span> <span class="n">longest_vec</span> <span class="o">=</span> <span class="n">arr</span><span class="o">.</span><span class="n">reduce</span><span class="p">(</span><span class="n">func</span><span class="p">(</span><span class="nb">max</span><span class="p">,</span> <span class="n">vec</span><span class="p">):</span> <span class="k">return</span> <span class="n">vec</span> <span class="k">if</span> <span class="n">is_length_greater</span><span class="p">(</span><span class="n">vec</span><span class="p">,</span> <span class="nb">max</span><span class="p">)</span> <span class="k">else</span> <span class="nb">max</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">longest_vec</span><span class="p">)</span> <span class="c1"># Prints (3, 4)</span>
+
+<span class="n">func</span> <span class="n">is_length_greater</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">a</span><span class="o">.</span><span class="n">length</span><span class="p">()</span> <span class="o">&gt;</span> <span class="n">b</span><span class="o">.</span><span class="n">length</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>This method can also be used to count how many elements in an array satisfy a certain condition, similar to <a class="reference internal" href="#class-array-method-count"><span class="std std-ref">count()</span></a>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">func</span> <span class="n">is_even</span><span class="p">(</span><span class="n">number</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">number</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span>
+
+<span class="n">func</span> <span class="n">_ready</span><span class="p">():</span>
+    <span class="n">var</span> <span class="n">arr</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+    <span class="c1"># If the current element is even, increment count, otherwise leave count the same.</span>
+    <span class="n">var</span> <span class="n">even_count</span> <span class="o">=</span> <span class="n">arr</span><span class="o">.</span><span class="n">reduce</span><span class="p">(</span><span class="n">func</span><span class="p">(</span><span class="n">count</span><span class="p">,</span> <span class="nb">next</span><span class="p">):</span> <span class="k">return</span> <span class="n">count</span> <span class="o">+</span> <span class="mi">1</span> <span class="k">if</span> <span class="n">is_even</span><span class="p">(</span><span class="nb">next</span><span class="p">)</span> <span class="k">else</span> <span class="n">count</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">even_count</span><span class="p">)</span> <span class="c1"># Prints 2</span>
+</pre></div>
+</div>
+<p>See also <a class="reference internal" href="#class-array-method-map"><span class="std std-ref">map()</span></a>, <a class="reference internal" href="#class-array-method-filter"><span class="std std-ref">filter()</span></a>, <a class="reference internal" href="#class-array-method-any"><span class="std std-ref">any()</span></a>, and <a class="reference internal" href="#class-array-method-all"><span class="std std-ref">all()</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-array-method-remove-at"><abbr title="No return value.">void</abbr> <strong>remove_at</strong>(position: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <a class="reference internal" href="#class-array-method-remove-at"><span class="std std-ref">🔗</span></a></p>
+<p>Removes the element from the array at the given index (<code class="docutils literal notranslate"><span class="pre">position</span></code>). If the index is out of bounds, this method fails. If the index is negative, <code class="docutils literal notranslate"><span class="pre">position</span></code> is considered relative to the end of the array.</p>
+<p>If you need to return the removed element, use <a class="reference internal" href="#class-array-method-pop-at"><span class="std std-ref">pop_at()</span></a>. To remove an element by value, use <a class="reference internal" href="#class-array-method-erase"><span class="std std-ref">erase()</span></a> instead.</p>
+<p><strong>Note:</strong> This method shifts every element’s index after <code class="docutils literal notranslate"><span class="pre">position</span></code> back, which may have a noticeable performance cost, especially on larger arrays.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-array-method-resize"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>resize</strong>(size: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <a class="reference internal" href="#class-array-method-resize"><span class="std std-ref">🔗</span></a></p>
+<p>Sets the array’s number of elements to <code class="docutils literal notranslate"><span class="pre">size</span></code>. If <code class="docutils literal notranslate"><span class="pre">size</span></code> is smaller than the array’s current size, the elements at the end are removed. If <code class="docutils literal notranslate"><span class="pre">size</span></code> is greater, new default elements (usually <code class="docutils literal notranslate"><span class="pre">null</span></code>) are added, depending on the array’s type.</p>
+<p>Returns <a class="reference internal" href="class_%40globalscope.html#class-globalscope-constant-ok"><span class="std std-ref">&#64;GlobalScope.OK</span></a> on success, or one of the following <a class="reference internal" href="class_%40globalscope.html#enum-globalscope-error"><span class="std std-ref">Error</span></a> constants if this method fails: <a class="reference internal" href="class_%40globalscope.html#class-globalscope-constant-err-locked"><span class="std std-ref">&#64;GlobalScope.ERR_LOCKED</span></a> if the array is read-only, <a class="reference internal" href="class_%40globalscope.html#class-globalscope-constant-err-invalid-parameter"><span class="std std-ref">&#64;GlobalScope.ERR_INVALID_PARAMETER</span></a> if the size is negative, or <a class="reference internal" href="class_%40globalscope.html#class-globalscope-constant-err-out-of-memory"><span class="std std-ref">&#64;GlobalScope.ERR_OUT_OF_MEMORY</span></a> if allocations fail. Use <a class="reference internal" href="#class-array-method-size"><span class="std std-ref">size()</span></a> to find the actual size of the array after resize.</p>
+<p><strong>Note:</strong> Calling this method once and assigning the new values is faster than calling <a class="reference internal" href="#class-array-method-append"><span class="std std-ref">append()</span></a> for every new element.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-array-method-reverse"><abbr title="No return value.">void</abbr> <strong>reverse</strong>() <a class="reference internal" href="#class-array-method-reverse"><span class="std std-ref">🔗</span></a></p>
+<p>Reverses the order of all elements in the array.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-array-method-rfind"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>rfind</strong>(what: <a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a>, from: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> = -1) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-array-method-rfind"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the index of the <strong>last</strong> occurrence of <code class="docutils literal notranslate"><span class="pre">what</span></code> in this array, or <code class="docutils literal notranslate"><span class="pre">-1</span></code> if there are none. The search’s start can be specified with <code class="docutils literal notranslate"><span class="pre">from</span></code>, continuing to the beginning of the array. This method is the reverse of <a class="reference internal" href="#class-array-method-find"><span class="std std-ref">find()</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-array-method-rfind-custom"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>rfind_custom</strong>(method: <a class="reference internal" href="class_callable.html#class-callable"><span class="std std-ref">Callable</span></a>, from: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> = -1) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-array-method-rfind-custom"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the index of the <strong>last</strong> element of the array that causes <code class="docutils literal notranslate"><span class="pre">method</span></code> to return <code class="docutils literal notranslate"><span class="pre">true</span></code>, or <code class="docutils literal notranslate"><span class="pre">-1</span></code> if there are none. The search’s start can be specified with <code class="docutils literal notranslate"><span class="pre">from</span></code>, continuing to the beginning of the array. This method is the reverse of <a class="reference internal" href="#class-array-method-find-custom"><span class="std std-ref">find_custom()</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-array-method-set"><abbr title="No return value.">void</abbr> <strong>set</strong>(index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, value: <a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a>) <a class="reference internal" href="#class-array-method-set"><span class="std std-ref">🔗</span></a></p>
+<p>Sets the value of the element at the given <code class="docutils literal notranslate"><span class="pre">index</span></code> to the given <code class="docutils literal notranslate"><span class="pre">value</span></code>. This will not change the size of the array, it only changes the value at an index already in the array. This is the same as using the <code class="docutils literal notranslate"><span class="pre">[]</span></code> operator (<code class="docutils literal notranslate"><span class="pre">array[index]</span> <span class="pre">=</span> <span class="pre">value</span></code>).</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-array-method-shuffle"><abbr title="No return value.">void</abbr> <strong>shuffle</strong>() <a class="reference internal" href="#class-array-method-shuffle"><span class="std std-ref">🔗</span></a></p>
+<p>Shuffles all elements of the array in a random order.</p>
+<p><strong>Note:</strong> Like many similar functions in the engine (such as <a class="reference internal" href="class_%40globalscope.html#class-globalscope-method-randi"><span class="std std-ref">&#64;GlobalScope.randi()</span></a> or <a class="reference internal" href="#class-array-method-pick-random"><span class="std std-ref">pick_random()</span></a>), this method uses a common, global random seed. To get a predictable outcome from this method, see <a class="reference internal" href="class_%40globalscope.html#class-globalscope-method-seed"><span class="std std-ref">&#64;GlobalScope.seed()</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-array-method-size"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>size</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-array-method-size"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the number of elements in the array. Empty arrays (<code class="docutils literal notranslate"><span class="pre">[]</span></code>) always return <code class="docutils literal notranslate"><span class="pre">0</span></code>. See also <a class="reference internal" href="#class-array-method-is-empty"><span class="std std-ref">is_empty()</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-array-method-slice"><a class="reference internal" href="#class-array"><span class="std std-ref">Array</span></a> <strong>slice</strong>(begin: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, end: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> = 2147483647, step: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> = 1, deep: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = false) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-array-method-slice"><span class="std std-ref">🔗</span></a></p>
+<p>Returns a new <strong>Array</strong> containing this array’s elements, from index <code class="docutils literal notranslate"><span class="pre">begin</span></code> (inclusive) to <code class="docutils literal notranslate"><span class="pre">end</span></code> (exclusive), every <code class="docutils literal notranslate"><span class="pre">step</span></code> elements.</p>
+<p>If either <code class="docutils literal notranslate"><span class="pre">begin</span></code> or <code class="docutils literal notranslate"><span class="pre">end</span></code> are negative, their value is relative to the end of the array.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">step</span></code> is negative, this method iterates through the array in reverse, returning a slice ordered backwards. For this to work, <code class="docutils literal notranslate"><span class="pre">begin</span></code> must be greater than <code class="docutils literal notranslate"><span class="pre">end</span></code>.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">deep</span></code> is <code class="docutils literal notranslate"><span class="pre">true</span></code>, all nested <strong>Array</strong> and <a class="reference internal" href="class_dictionary.html#class-dictionary"><span class="std std-ref">Dictionary</span></a> elements in the slice are duplicated from the original, recursively. See also <a class="reference internal" href="#class-array-method-duplicate"><span class="std std-ref">duplicate()</span></a>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">letters</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;C&quot;</span><span class="p">,</span> <span class="s2">&quot;D&quot;</span><span class="p">,</span> <span class="s2">&quot;E&quot;</span><span class="p">,</span> <span class="s2">&quot;F&quot;</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">letters</span><span class="o">.</span><span class="n">slice</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>  <span class="c1"># Prints [&quot;A&quot;, &quot;B&quot;]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">letters</span><span class="o">.</span><span class="n">slice</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">))</span> <span class="c1"># Prints [&quot;C&quot;, &quot;D&quot;]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">letters</span><span class="o">.</span><span class="n">slice</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span> <span class="c1"># Prints [&quot;E&quot;, &quot;F&quot;]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">letters</span><span class="o">.</span><span class="n">slice</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>  <span class="c1"># Prints [&quot;A&quot;, &quot;C&quot;, &quot;E&quot;]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">letters</span><span class="o">.</span><span class="n">slice</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">))</span> <span class="c1"># Prints [&quot;E&quot;, &quot;D&quot;, &quot;C&quot;]</span>
+</pre></div>
+</div>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-array-method-sort"><abbr title="No return value.">void</abbr> <strong>sort</strong>() <a class="reference internal" href="#class-array-method-sort"><span class="std std-ref">🔗</span></a></p>
+<p>Sorts the array in ascending order. The final order is dependent on the “less than” (<code class="docutils literal notranslate"><span class="pre">&lt;</span></code>) comparison between elements.</p>
+<p><strong>Note:</strong> The sorting algorithm used is not <a class="reference external" href="https://en.wikipedia.org/wiki/Sorting_algorithm#Stability">stable</a>. This means that equivalent elements (such as <code class="docutils literal notranslate"><span class="pre">2</span></code> and <code class="docutils literal notranslate"><span class="pre">2.0</span></code>) may have their order changed when calling <a class="reference internal" href="#class-array-method-sort"><span class="std std-ref">sort()</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-array-method-sort-custom"><abbr title="No return value.">void</abbr> <strong>sort_custom</strong>(func: <a class="reference internal" href="class_callable.html#class-callable"><span class="std std-ref">Callable</span></a>) <a class="reference internal" href="#class-array-method-sort-custom"><span class="std std-ref">🔗</span></a></p>
+<p>Sorts the array using a custom <a class="reference internal" href="class_callable.html#class-callable"><span class="std std-ref">Callable</span></a>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">func</span></code> is called as many times as necessary, receiving two array elements as arguments. The function should return <code class="docutils literal notranslate"><span class="pre">true</span></code> if the first element should be moved <em>before</em> the second one, otherwise it should return <code class="docutils literal notranslate"><span class="pre">false</span></code>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">func</span> <span class="n">sort_ascending</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">b</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span>
+        <span class="k">return</span> <span class="n">true</span>
+    <span class="k">return</span> <span class="n">false</span>
+
+<span class="n">func</span> <span class="n">_ready</span><span class="p">():</span>
+    <span class="n">var</span> <span class="n">my_items</span> <span class="o">=</span> <span class="p">[[</span><span class="s2">&quot;Tomato&quot;</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="p">[</span><span class="s2">&quot;Apple&quot;</span><span class="p">,</span> <span class="mi">9</span><span class="p">],</span> <span class="p">[</span><span class="s2">&quot;Rice&quot;</span><span class="p">,</span> <span class="mi">4</span><span class="p">]]</span>
+    <span class="n">my_items</span><span class="o">.</span><span class="n">sort_custom</span><span class="p">(</span><span class="n">sort_ascending</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">my_items</span><span class="p">)</span> <span class="c1"># Prints [[&quot;Rice&quot;, 4], [&quot;Tomato&quot;, 5], [&quot;Apple&quot;, 9]]</span>
+
+    <span class="c1"># Sort descending, using a lambda function.</span>
+    <span class="n">my_items</span><span class="o">.</span><span class="n">sort_custom</span><span class="p">(</span><span class="n">func</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span> <span class="k">return</span> <span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">b</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">my_items</span><span class="p">)</span> <span class="c1"># Prints [[&quot;Apple&quot;, 9], [&quot;Tomato&quot;, 5], [&quot;Rice&quot;, 4]]</span>
+</pre></div>
+</div>
+<p>It may also be necessary to use this method to sort strings by natural order, with <a class="reference internal" href="class_string.html#class-string-method-naturalnocasecmp-to"><span class="std std-ref">String.naturalnocasecmp_to()</span></a>, as in the following example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">files</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;newfile1&quot;</span><span class="p">,</span> <span class="s2">&quot;newfile2&quot;</span><span class="p">,</span> <span class="s2">&quot;newfile10&quot;</span><span class="p">,</span> <span class="s2">&quot;newfile11&quot;</span><span class="p">]</span>
+<span class="n">files</span><span class="o">.</span><span class="n">sort_custom</span><span class="p">(</span><span class="n">func</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span> <span class="k">return</span> <span class="n">a</span><span class="o">.</span><span class="n">naturalnocasecmp_to</span><span class="p">(</span><span class="n">b</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">files</span><span class="p">)</span> <span class="c1"># Prints [&quot;newfile1&quot;, &quot;newfile2&quot;, &quot;newfile10&quot;, &quot;newfile11&quot;]</span>
+</pre></div>
+</div>
+<p><strong>Note:</strong> In C#, this method is not supported.</p>
+<p><strong>Note:</strong> The sorting algorithm used is not <a class="reference external" href="https://en.wikipedia.org/wiki/Sorting_algorithm#Stability">stable</a>. This means that values considered equal may have their order changed when calling this method.</p>
+<p><strong>Note:</strong> You should not randomize the return value of <code class="docutils literal notranslate"><span class="pre">func</span></code>, as the heapsort algorithm expects a consistent result. Randomizing the return value will result in unexpected behavior.</p>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="operator-descriptions">
+<h2>Operator Descriptions<a class="headerlink" href="#operator-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-operator" id="class-array-operator-neq-array"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>operator !=</strong>(right: <a class="reference internal" href="#class-array"><span class="std std-ref">Array</span></a>) <a class="reference internal" href="#class-array-operator-neq-array"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if the array’s size or its elements are different than <code class="docutils literal notranslate"><span class="pre">right</span></code>’s.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-operator" id="class-array-operator-sum-array"><a class="reference internal" href="#class-array"><span class="std std-ref">Array</span></a> <strong>operator +</strong>(right: <a class="reference internal" href="#class-array"><span class="std std-ref">Array</span></a>) <a class="reference internal" href="#class-array-operator-sum-array"><span class="std std-ref">🔗</span></a></p>
+<p>Appends the <code class="docutils literal notranslate"><span class="pre">right</span></code> array to the left operand, creating a new <strong>Array</strong>. This is also known as an array concatenation.</p>
+<p><strong>Note:</strong> For existing arrays, <a class="reference internal" href="#class-array-method-append-array"><span class="std std-ref">append_array()</span></a> is much more efficient than concatenation and assignment with the <code class="docutils literal notranslate"><span class="pre">+=</span></code> operator.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-operator" id="class-array-operator-lt-array"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>operator &lt;</strong>(right: <a class="reference internal" href="#class-array"><span class="std std-ref">Array</span></a>) <a class="reference internal" href="#class-array-operator-lt-array"><span class="std std-ref">🔗</span></a></p>
+<p>Compares the elements of both arrays in order, starting from index <code class="docutils literal notranslate"><span class="pre">0</span></code> and ending on the last index in common between both arrays. For each pair of elements, returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if this array’s element is less than <code class="docutils literal notranslate"><span class="pre">right</span></code>’s, <code class="docutils literal notranslate"><span class="pre">false</span></code> if this element is greater. Otherwise, continues to the next pair.</p>
+<p>If all searched elements are equal, returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if this array’s size is less than <code class="docutils literal notranslate"><span class="pre">right</span></code>’s, otherwise returns <code class="docutils literal notranslate"><span class="pre">false</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-operator" id="class-array-operator-lte-array"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>operator &lt;=</strong>(right: <a class="reference internal" href="#class-array"><span class="std std-ref">Array</span></a>) <a class="reference internal" href="#class-array-operator-lte-array"><span class="std std-ref">🔗</span></a></p>
+<p>Compares the elements of both arrays in order, starting from index <code class="docutils literal notranslate"><span class="pre">0</span></code> and ending on the last index in common between both arrays. For each pair of elements, returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if this array’s element is less than <code class="docutils literal notranslate"><span class="pre">right</span></code>’s, <code class="docutils literal notranslate"><span class="pre">false</span></code> if this element is greater. Otherwise, continues to the next pair.</p>
+<p>If all searched elements are equal, returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if this array’s size is less or equal to <code class="docutils literal notranslate"><span class="pre">right</span></code>’s, otherwise returns <code class="docutils literal notranslate"><span class="pre">false</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-operator" id="class-array-operator-eq-array"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>operator ==</strong>(right: <a class="reference internal" href="#class-array"><span class="std std-ref">Array</span></a>) <a class="reference internal" href="#class-array-operator-eq-array"><span class="std std-ref">🔗</span></a></p>
+<p>Compares the left operand <strong>Array</strong> against the <code class="docutils literal notranslate"><span class="pre">right</span></code> <strong>Array</strong>. Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if the sizes and contents of the arrays are equal, <code class="docutils literal notranslate"><span class="pre">false</span></code> otherwise.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-operator" id="class-array-operator-gt-array"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>operator &gt;</strong>(right: <a class="reference internal" href="#class-array"><span class="std std-ref">Array</span></a>) <a class="reference internal" href="#class-array-operator-gt-array"><span class="std std-ref">🔗</span></a></p>
+<p>Compares the elements of both arrays in order, starting from index <code class="docutils literal notranslate"><span class="pre">0</span></code> and ending on the last index in common between both arrays. For each pair of elements, returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if this array’s element is greater than <code class="docutils literal notranslate"><span class="pre">right</span></code>’s, <code class="docutils literal notranslate"><span class="pre">false</span></code> if this element is less. Otherwise, continues to the next pair.</p>
+<p>If all searched elements are equal, returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if this array’s size is greater than <code class="docutils literal notranslate"><span class="pre">right</span></code>’s, otherwise returns <code class="docutils literal notranslate"><span class="pre">false</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-operator" id="class-array-operator-gte-array"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>operator &gt;=</strong>(right: <a class="reference internal" href="#class-array"><span class="std std-ref">Array</span></a>) <a class="reference internal" href="#class-array-operator-gte-array"><span class="std std-ref">🔗</span></a></p>
+<p>Compares the elements of both arrays in order, starting from index <code class="docutils literal notranslate"><span class="pre">0</span></code> and ending on the last index in common between both arrays. For each pair of elements, returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if this array’s element is greater than <code class="docutils literal notranslate"><span class="pre">right</span></code>’s, <code class="docutils literal notranslate"><span class="pre">false</span></code> if this element is less. Otherwise, continues to the next pair.</p>
+<p>If all searched elements are equal, returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if this array’s size is greater or equal to <code class="docutils literal notranslate"><span class="pre">right</span></code>’s, otherwise returns <code class="docutils literal notranslate"><span class="pre">false</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-operator" id="class-array-operator-idx-int"><a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a> <strong>operator []</strong>(index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <a class="reference internal" href="#class-array-operator-idx-int"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the <a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a> element at the specified <code class="docutils literal notranslate"><span class="pre">index</span></code>. Arrays start at index 0. If <code class="docutils literal notranslate"><span class="pre">index</span></code> is greater or equal to <code class="docutils literal notranslate"><span class="pre">0</span></code>, the element is fetched starting from the beginning of the array. If <code class="docutils literal notranslate"><span class="pre">index</span></code> is a negative value, the element is fetched starting from the end. Accessing an array out-of-bounds will cause a run-time error, pausing the project execution if run from the editor.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, MUmarShahbaz.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

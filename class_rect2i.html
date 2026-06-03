@@ -1,0 +1,322 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rect2i &mdash; RPG Components 2D 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=d45e8c67"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            RPG Components 2D
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">Rect2i</a><ul>
+<li><a class="reference internal" href="#description">Description</a></li>
+<li><a class="reference internal" href="#tutorials">Tutorials</a></li>
+<li><a class="reference internal" href="#properties">Properties</a></li>
+<li><a class="reference internal" href="#constructors">Constructors</a></li>
+<li><a class="reference internal" href="#methods">Methods</a></li>
+<li><a class="reference internal" href="#operators">Operators</a></li>
+<li><a class="reference internal" href="#property-descriptions">Property Descriptions</a></li>
+<li><a class="reference internal" href="#constructor-descriptions">Constructor Descriptions</a></li>
+<li><a class="reference internal" href="#method-descriptions">Method Descriptions</a></li>
+<li><a class="reference internal" href="#operator-descriptions">Operator Descriptions</a></li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">RPG Components 2D</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Rect2i</li>
+      <li class="wy-breadcrumbs-aside">
+              <!-- User defined GitHub URL -->
+              <a href="hide" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="rect2i">
+<span id="class-rect2i"></span><h1>Rect2i<a class="headerlink" href="#rect2i" title="Link to this heading"></a></h1>
+<p>A 2D axis-aligned bounding box using integer coordinates.</p>
+<section class="classref-introduction-group" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
+<p>The <strong>Rect2i</strong> built-in <a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a> type represents an axis-aligned rectangle in a 2D space, using integer coordinates. It is defined by its <a class="reference internal" href="#class-rect2i-property-position"><span class="std std-ref">position</span></a> and <a class="reference internal" href="#class-rect2i-property-size"><span class="std std-ref">size</span></a>, which are <a class="reference internal" href="class_vector2i.html#class-vector2i"><span class="std std-ref">Vector2i</span></a>. Because it does not rotate, it is frequently used for fast overlap tests (see <a class="reference internal" href="#class-rect2i-method-intersects"><span class="std std-ref">intersects()</span></a>).</p>
+<p>For floating-point coordinates, see <a class="reference internal" href="class_rect2.html#class-rect2"><span class="std std-ref">Rect2</span></a>.</p>
+<p><strong>Note:</strong> Negative values for <a class="reference internal" href="#class-rect2i-property-size"><span class="std std-ref">size</span></a> are not supported. With negative size, most <strong>Rect2i</strong> methods do not work correctly. Use <a class="reference internal" href="#class-rect2i-method-abs"><span class="std std-ref">abs()</span></a> to get an equivalent <strong>Rect2i</strong> with a non-negative size.</p>
+<p><strong>Note:</strong> In a boolean context, a <strong>Rect2i</strong> evaluates to <code class="docutils literal notranslate"><span class="pre">false</span></code> if both <a class="reference internal" href="#class-rect2i-property-position"><span class="std std-ref">position</span></a> and <a class="reference internal" href="#class-rect2i-property-size"><span class="std std-ref">size</span></a> are zero (equal to <a class="reference internal" href="class_vector2i.html#class-vector2i-constant-zero"><span class="std std-ref">Vector2i.ZERO</span></a>). Otherwise, it always evaluates to <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>There are notable differences when using this API with C#. See <span class="xref std std-ref">doc_c_sharp_differences</span> for more information.</p>
+</div>
+</section>
+<section class="classref-introduction-group" id="tutorials">
+<h2>Tutorials<a class="headerlink" href="#tutorials" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><span class="xref std std-doc">Math documentation index</span></p></li>
+<li><p><span class="xref std std-doc">Vector math</span></p></li>
+</ul>
+</section>
+<section class="classref-reftable-group" id="properties">
+<h2>Properties<a class="headerlink" href="#properties" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_vector2i.html#class-vector2i"><span class="std std-ref">Vector2i</span></a></p></td>
+<td><p><a class="reference internal" href="#class-rect2i-property-end"><span class="std std-ref">end</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Vector2i(0,</span> <span class="pre">0)</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_vector2i.html#class-vector2i"><span class="std std-ref">Vector2i</span></a></p></td>
+<td><p><a class="reference internal" href="#class-rect2i-property-position"><span class="std std-ref">position</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Vector2i(0,</span> <span class="pre">0)</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_vector2i.html#class-vector2i"><span class="std std-ref">Vector2i</span></a></p></td>
+<td><p><a class="reference internal" href="#class-rect2i-property-size"><span class="std std-ref">size</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Vector2i(0,</span> <span class="pre">0)</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section class="classref-reftable-group" id="constructors">
+<h2>Constructors<a class="headerlink" href="#constructors" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#class-rect2i"><span class="std std-ref">Rect2i</span></a></p></td>
+<td><p><a class="reference internal" href="#class-rect2i-constructor-rect2i"><span class="std std-ref">Rect2i</span></a>()</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#class-rect2i"><span class="std std-ref">Rect2i</span></a></p></td>
+<td><p><a class="reference internal" href="#class-rect2i-constructor-rect2i"><span class="std std-ref">Rect2i</span></a>(from: <a class="reference internal" href="#class-rect2i"><span class="std std-ref">Rect2i</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#class-rect2i"><span class="std std-ref">Rect2i</span></a></p></td>
+<td><p><a class="reference internal" href="#class-rect2i-constructor-rect2i"><span class="std std-ref">Rect2i</span></a>(from: <a class="reference internal" href="class_rect2.html#class-rect2"><span class="std std-ref">Rect2</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#class-rect2i"><span class="std std-ref">Rect2i</span></a></p></td>
+<td><p><a class="reference internal" href="#class-rect2i-constructor-rect2i"><span class="std std-ref">Rect2i</span></a>(position: <a class="reference internal" href="class_vector2i.html#class-vector2i"><span class="std std-ref">Vector2i</span></a>, size: <a class="reference internal" href="class_vector2i.html#class-vector2i"><span class="std std-ref">Vector2i</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#class-rect2i"><span class="std std-ref">Rect2i</span></a></p></td>
+<td><p><a class="reference internal" href="#class-rect2i-constructor-rect2i"><span class="std std-ref">Rect2i</span></a>(x: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, y: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, width: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, height: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section class="classref-reftable-group" id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#class-rect2i"><span class="std std-ref">Rect2i</span></a></p></td>
+<td><p><a class="reference internal" href="#class-rect2i-method-abs"><span class="std std-ref">abs</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-rect2i-method-encloses"><span class="std std-ref">encloses</span></a>(b: <a class="reference internal" href="#class-rect2i"><span class="std std-ref">Rect2i</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#class-rect2i"><span class="std std-ref">Rect2i</span></a></p></td>
+<td><p><a class="reference internal" href="#class-rect2i-method-expand"><span class="std std-ref">expand</span></a>(to: <a class="reference internal" href="class_vector2i.html#class-vector2i"><span class="std std-ref">Vector2i</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-rect2i-method-get-area"><span class="std std-ref">get_area</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_vector2i.html#class-vector2i"><span class="std std-ref">Vector2i</span></a></p></td>
+<td><p><a class="reference internal" href="#class-rect2i-method-get-center"><span class="std std-ref">get_center</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#class-rect2i"><span class="std std-ref">Rect2i</span></a></p></td>
+<td><p><a class="reference internal" href="#class-rect2i-method-grow"><span class="std std-ref">grow</span></a>(amount: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#class-rect2i"><span class="std std-ref">Rect2i</span></a></p></td>
+<td><p><a class="reference internal" href="#class-rect2i-method-grow-individual"><span class="std std-ref">grow_individual</span></a>(left: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, top: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, right: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, bottom: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#class-rect2i"><span class="std std-ref">Rect2i</span></a></p></td>
+<td><p><a class="reference internal" href="#class-rect2i-method-grow-side"><span class="std std-ref">grow_side</span></a>(side: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, amount: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-rect2i-method-has-area"><span class="std std-ref">has_area</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-rect2i-method-has-point"><span class="std std-ref">has_point</span></a>(point: <a class="reference internal" href="class_vector2i.html#class-vector2i"><span class="std std-ref">Vector2i</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#class-rect2i"><span class="std std-ref">Rect2i</span></a></p></td>
+<td><p><a class="reference internal" href="#class-rect2i-method-intersection"><span class="std std-ref">intersection</span></a>(b: <a class="reference internal" href="#class-rect2i"><span class="std std-ref">Rect2i</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-rect2i-method-intersects"><span class="std std-ref">intersects</span></a>(b: <a class="reference internal" href="#class-rect2i"><span class="std std-ref">Rect2i</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#class-rect2i"><span class="std std-ref">Rect2i</span></a></p></td>
+<td><p><a class="reference internal" href="#class-rect2i-method-merge"><span class="std std-ref">merge</span></a>(b: <a class="reference internal" href="#class-rect2i"><span class="std std-ref">Rect2i</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section class="classref-reftable-group" id="operators">
+<h2>Operators<a class="headerlink" href="#operators" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-rect2i-operator-neq-rect2i"><span class="std std-ref">operator !=</span></a>(right: <a class="reference internal" href="#class-rect2i"><span class="std std-ref">Rect2i</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-rect2i-operator-eq-rect2i"><span class="std std-ref">operator ==</span></a>(right: <a class="reference internal" href="#class-rect2i"><span class="std std-ref">Rect2i</span></a>)</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="property-descriptions">
+<h2>Property Descriptions<a class="headerlink" href="#property-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-property" id="class-rect2i-property-end"><a class="reference internal" href="class_vector2i.html#class-vector2i"><span class="std std-ref">Vector2i</span></a> <strong>end</strong> = <code class="docutils literal notranslate"><span class="pre">Vector2i(0,</span> <span class="pre">0)</span></code> <a class="reference internal" href="#class-rect2i-property-end"><span class="std std-ref">🔗</span></a></p>
+<p>The ending point. This is usually the bottom-right corner of the rectangle, and is equivalent to <code class="docutils literal notranslate"><span class="pre">position</span> <span class="pre">+</span> <span class="pre">size</span></code>. Setting this point affects the <a class="reference internal" href="#class-rect2i-property-size"><span class="std std-ref">size</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-rect2i-property-position"><a class="reference internal" href="class_vector2i.html#class-vector2i"><span class="std std-ref">Vector2i</span></a> <strong>position</strong> = <code class="docutils literal notranslate"><span class="pre">Vector2i(0,</span> <span class="pre">0)</span></code> <a class="reference internal" href="#class-rect2i-property-position"><span class="std std-ref">🔗</span></a></p>
+<p>The origin point. This is usually the top-left corner of the rectangle.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-rect2i-property-size"><a class="reference internal" href="class_vector2i.html#class-vector2i"><span class="std std-ref">Vector2i</span></a> <strong>size</strong> = <code class="docutils literal notranslate"><span class="pre">Vector2i(0,</span> <span class="pre">0)</span></code> <a class="reference internal" href="#class-rect2i-property-size"><span class="std std-ref">🔗</span></a></p>
+<p>The rectangle’s width and height, starting from <a class="reference internal" href="#class-rect2i-property-position"><span class="std std-ref">position</span></a>. Setting this value also affects the <a class="reference internal" href="#class-rect2i-property-end"><span class="std std-ref">end</span></a> point.</p>
+<p><strong>Note:</strong> It’s recommended setting the width and height to non-negative values, as most methods in Godot assume that the <a class="reference internal" href="#class-rect2i-property-position"><span class="std std-ref">position</span></a> is the top-left corner, and the <a class="reference internal" href="#class-rect2i-property-end"><span class="std std-ref">end</span></a> is the bottom-right corner. To get an equivalent rectangle with non-negative size, use <a class="reference internal" href="#class-rect2i-method-abs"><span class="std std-ref">abs()</span></a>.</p>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="constructor-descriptions">
+<h2>Constructor Descriptions<a class="headerlink" href="#constructor-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-constructor" id="class-rect2i-constructor-rect2i"><a class="reference internal" href="#class-rect2i"><span class="std std-ref">Rect2i</span></a> <strong>Rect2i</strong>() <a class="reference internal" href="#class-rect2i-constructor-rect2i"><span class="std std-ref">🔗</span></a></p>
+<p>Constructs a <strong>Rect2i</strong> with its <a class="reference internal" href="#class-rect2i-property-position"><span class="std std-ref">position</span></a> and <a class="reference internal" href="#class-rect2i-property-size"><span class="std std-ref">size</span></a> set to <a class="reference internal" href="class_vector2i.html#class-vector2i-constant-zero"><span class="std std-ref">Vector2i.ZERO</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-constructor"><a class="reference internal" href="#class-rect2i"><span class="std std-ref">Rect2i</span></a> <strong>Rect2i</strong>(from: <a class="reference internal" href="#class-rect2i"><span class="std std-ref">Rect2i</span></a>)</p>
+<p>Constructs a <strong>Rect2i</strong> as a copy of the given <strong>Rect2i</strong>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-constructor"><a class="reference internal" href="#class-rect2i"><span class="std std-ref">Rect2i</span></a> <strong>Rect2i</strong>(from: <a class="reference internal" href="class_rect2.html#class-rect2"><span class="std std-ref">Rect2</span></a>)</p>
+<p>Constructs a <strong>Rect2i</strong> from a <a class="reference internal" href="class_rect2.html#class-rect2"><span class="std std-ref">Rect2</span></a>. The floating-point coordinates are truncated.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-constructor"><a class="reference internal" href="#class-rect2i"><span class="std std-ref">Rect2i</span></a> <strong>Rect2i</strong>(position: <a class="reference internal" href="class_vector2i.html#class-vector2i"><span class="std std-ref">Vector2i</span></a>, size: <a class="reference internal" href="class_vector2i.html#class-vector2i"><span class="std std-ref">Vector2i</span></a>)</p>
+<p>Constructs a <strong>Rect2i</strong> by <code class="docutils literal notranslate"><span class="pre">position</span></code> and <code class="docutils literal notranslate"><span class="pre">size</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-constructor"><a class="reference internal" href="#class-rect2i"><span class="std std-ref">Rect2i</span></a> <strong>Rect2i</strong>(x: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, y: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, width: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, height: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p>
+<p>Constructs a <strong>Rect2i</strong> by setting its <a class="reference internal" href="#class-rect2i-property-position"><span class="std std-ref">position</span></a> to (<code class="docutils literal notranslate"><span class="pre">x</span></code>, <code class="docutils literal notranslate"><span class="pre">y</span></code>), and its <a class="reference internal" href="#class-rect2i-property-size"><span class="std std-ref">size</span></a> to (<code class="docutils literal notranslate"><span class="pre">width</span></code>, <code class="docutils literal notranslate"><span class="pre">height</span></code>).</p>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="method-descriptions">
+<h2>Method Descriptions<a class="headerlink" href="#method-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-method" id="class-rect2i-method-abs"><a class="reference internal" href="#class-rect2i"><span class="std std-ref">Rect2i</span></a> <strong>abs</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-rect2i-method-abs"><span class="std std-ref">🔗</span></a></p>
+<p>Returns a <strong>Rect2i</strong> equivalent to this rectangle, with its width and height modified to be non-negative values, and with its <a class="reference internal" href="#class-rect2i-property-position"><span class="std std-ref">position</span></a> being the top-left corner of the rectangle.</p>
+<p><strong>Note:</strong> It’s recommended to use this method when <a class="reference internal" href="#class-rect2i-property-size"><span class="std std-ref">size</span></a> is negative, as most other methods in Godot assume that the <a class="reference internal" href="#class-rect2i-property-position"><span class="std std-ref">position</span></a> is the top-left corner, and the <a class="reference internal" href="#class-rect2i-property-end"><span class="std std-ref">end</span></a> is the bottom-right corner.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-rect2i-method-encloses"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>encloses</strong>(b: <a class="reference internal" href="#class-rect2i"><span class="std std-ref">Rect2i</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-rect2i-method-encloses"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if this <strong>Rect2i</strong> completely encloses another one.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-rect2i-method-expand"><a class="reference internal" href="#class-rect2i"><span class="std std-ref">Rect2i</span></a> <strong>expand</strong>(to: <a class="reference internal" href="class_vector2i.html#class-vector2i"><span class="std std-ref">Vector2i</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-rect2i-method-expand"><span class="std std-ref">🔗</span></a></p>
+<p>Returns a copy of this rectangle expanded to align the edges with the given <code class="docutils literal notranslate"><span class="pre">to</span></code> point, if necessary.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-rect2i-method-get-area"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>get_area</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-rect2i-method-get-area"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the rectangle’s area. This is equivalent to <code class="docutils literal notranslate"><span class="pre">size.x</span> <span class="pre">*</span> <span class="pre">size.y</span></code>. See also <a class="reference internal" href="#class-rect2i-method-has-area"><span class="std std-ref">has_area()</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-rect2i-method-get-center"><a class="reference internal" href="class_vector2i.html#class-vector2i"><span class="std std-ref">Vector2i</span></a> <strong>get_center</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-rect2i-method-get-center"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the center point of the rectangle. This is the same as <code class="docutils literal notranslate"><span class="pre">position</span> <span class="pre">+</span> <span class="pre">(size</span> <span class="pre">/</span> <span class="pre">2)</span></code>.</p>
+<p><strong>Note:</strong> If the <a class="reference internal" href="#class-rect2i-property-size"><span class="std std-ref">size</span></a> is odd, the result will be rounded towards <a class="reference internal" href="#class-rect2i-property-position"><span class="std std-ref">position</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-rect2i-method-grow"><a class="reference internal" href="#class-rect2i"><span class="std std-ref">Rect2i</span></a> <strong>grow</strong>(amount: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-rect2i-method-grow"><span class="std std-ref">🔗</span></a></p>
+<p>Returns a copy of this rectangle extended on all sides by the given <code class="docutils literal notranslate"><span class="pre">amount</span></code>. A negative <code class="docutils literal notranslate"><span class="pre">amount</span></code> shrinks the rectangle instead. See also <a class="reference internal" href="#class-rect2i-method-grow-individual"><span class="std std-ref">grow_individual()</span></a> and <a class="reference internal" href="#class-rect2i-method-grow-side"><span class="std std-ref">grow_side()</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-rect2i-method-grow-individual"><a class="reference internal" href="#class-rect2i"><span class="std std-ref">Rect2i</span></a> <strong>grow_individual</strong>(left: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, top: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, right: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, bottom: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-rect2i-method-grow-individual"><span class="std std-ref">🔗</span></a></p>
+<p>Returns a copy of this rectangle with its <code class="docutils literal notranslate"><span class="pre">left</span></code>, <code class="docutils literal notranslate"><span class="pre">top</span></code>, <code class="docutils literal notranslate"><span class="pre">right</span></code>, and <code class="docutils literal notranslate"><span class="pre">bottom</span></code> sides extended by the given amounts. Negative values shrink the sides, instead. See also <a class="reference internal" href="#class-rect2i-method-grow"><span class="std std-ref">grow()</span></a> and <a class="reference internal" href="#class-rect2i-method-grow-side"><span class="std std-ref">grow_side()</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-rect2i-method-grow-side"><a class="reference internal" href="#class-rect2i"><span class="std std-ref">Rect2i</span></a> <strong>grow_side</strong>(side: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, amount: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-rect2i-method-grow-side"><span class="std std-ref">🔗</span></a></p>
+<p>Returns a copy of this rectangle with its <code class="docutils literal notranslate"><span class="pre">side</span></code> extended by the given <code class="docutils literal notranslate"><span class="pre">amount</span></code> (see <a class="reference internal" href="class_%40globalscope.html#enum-globalscope-side"><span class="std std-ref">Side</span></a> constants). A negative <code class="docutils literal notranslate"><span class="pre">amount</span></code> shrinks the rectangle, instead. See also <a class="reference internal" href="#class-rect2i-method-grow"><span class="std std-ref">grow()</span></a> and <a class="reference internal" href="#class-rect2i-method-grow-individual"><span class="std std-ref">grow_individual()</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-rect2i-method-has-area"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>has_area</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-rect2i-method-has-area"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if this rectangle has positive width and height. See also <a class="reference internal" href="#class-rect2i-method-get-area"><span class="std std-ref">get_area()</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-rect2i-method-has-point"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>has_point</strong>(point: <a class="reference internal" href="class_vector2i.html#class-vector2i"><span class="std std-ref">Vector2i</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-rect2i-method-has-point"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if the rectangle contains the given <code class="docutils literal notranslate"><span class="pre">point</span></code>. By convention, points on the right and bottom edges are <strong>not</strong> included.</p>
+<p><strong>Note:</strong> This method is not reliable for <strong>Rect2i</strong> with a <em>negative</em> <a class="reference internal" href="#class-rect2i-property-size"><span class="std std-ref">size</span></a>. Use <a class="reference internal" href="#class-rect2i-method-abs"><span class="std std-ref">abs()</span></a> first to get a valid rectangle.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-rect2i-method-intersection"><a class="reference internal" href="#class-rect2i"><span class="std std-ref">Rect2i</span></a> <strong>intersection</strong>(b: <a class="reference internal" href="#class-rect2i"><span class="std std-ref">Rect2i</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-rect2i-method-intersection"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the intersection between this rectangle and <code class="docutils literal notranslate"><span class="pre">b</span></code>. If the rectangles do not intersect, returns an empty <strong>Rect2i</strong>.</p>
+<p><strong>Note:</strong> If you only need to know whether two rectangles are overlapping, use <a class="reference internal" href="#class-rect2i-method-intersects"><span class="std std-ref">intersects()</span></a>, instead.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-rect2i-method-intersects"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>intersects</strong>(b: <a class="reference internal" href="#class-rect2i"><span class="std std-ref">Rect2i</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-rect2i-method-intersects"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if this rectangle overlaps with the <code class="docutils literal notranslate"><span class="pre">b</span></code> rectangle. The edges of both rectangles are excluded.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-rect2i-method-merge"><a class="reference internal" href="#class-rect2i"><span class="std std-ref">Rect2i</span></a> <strong>merge</strong>(b: <a class="reference internal" href="#class-rect2i"><span class="std std-ref">Rect2i</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-rect2i-method-merge"><span class="std std-ref">🔗</span></a></p>
+<p>Returns a <strong>Rect2i</strong> that encloses both this rectangle and <code class="docutils literal notranslate"><span class="pre">b</span></code> around the edges. See also <a class="reference internal" href="#class-rect2i-method-encloses"><span class="std std-ref">encloses()</span></a>.</p>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="operator-descriptions">
+<h2>Operator Descriptions<a class="headerlink" href="#operator-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-operator" id="class-rect2i-operator-neq-rect2i"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>operator !=</strong>(right: <a class="reference internal" href="#class-rect2i"><span class="std std-ref">Rect2i</span></a>) <a class="reference internal" href="#class-rect2i-operator-neq-rect2i"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if the <a class="reference internal" href="#class-rect2i-property-position"><span class="std std-ref">position</span></a> or <a class="reference internal" href="#class-rect2i-property-size"><span class="std std-ref">size</span></a> of both rectangles are not equal.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-operator" id="class-rect2i-operator-eq-rect2i"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>operator ==</strong>(right: <a class="reference internal" href="#class-rect2i"><span class="std std-ref">Rect2i</span></a>) <a class="reference internal" href="#class-rect2i-operator-eq-rect2i"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if both <a class="reference internal" href="#class-rect2i-property-position"><span class="std std-ref">position</span></a> and <a class="reference internal" href="#class-rect2i-property-size"><span class="std std-ref">size</span></a> of the rectangles are equal, respectively.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, MUmarShahbaz.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

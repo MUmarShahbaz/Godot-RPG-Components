@@ -1,0 +1,210 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CameraServer &mdash; RPG Components 2D 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=d45e8c67"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            RPG Components 2D
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">CameraServer</a><ul>
+<li><a class="reference internal" href="#description">Description</a></li>
+<li><a class="reference internal" href="#properties">Properties</a></li>
+<li><a class="reference internal" href="#methods">Methods</a></li>
+<li><a class="reference internal" href="#signals">Signals</a></li>
+<li><a class="reference internal" href="#enumerations">Enumerations</a></li>
+<li><a class="reference internal" href="#property-descriptions">Property Descriptions</a></li>
+<li><a class="reference internal" href="#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">RPG Components 2D</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">CameraServer</li>
+      <li class="wy-breadcrumbs-aside">
+              <!-- User defined GitHub URL -->
+              <a href="hide" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="cameraserver">
+<span id="class-cameraserver"></span><h1>CameraServer<a class="headerlink" href="#cameraserver" title="Link to this heading"></a></h1>
+<p><strong>Inherits:</strong> <a class="reference internal" href="class_object.html#class-object"><span class="std std-ref">Object</span></a></p>
+<p>Server keeping track of different cameras accessible in Godot.</p>
+<section class="classref-introduction-group" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
+<p>The <strong>CameraServer</strong> keeps track of different cameras accessible in Godot. These are external cameras such as webcams or the cameras on your phone.</p>
+<p>It is notably used to provide AR modules with a video feed from the camera.</p>
+<p><strong>Note:</strong> This class is currently only implemented on Linux, Android, macOS, and iOS. On other platforms no <a class="reference internal" href="class_camerafeed.html#class-camerafeed"><span class="std std-ref">CameraFeed</span></a>s will be available. To get a <a class="reference internal" href="class_camerafeed.html#class-camerafeed"><span class="std std-ref">CameraFeed</span></a> on iOS, enable <span class="xref std std-ref">EditorExportPlatformIOS.modules/camera</span>.</p>
+</section>
+<section class="classref-reftable-group" id="properties">
+<h2>Properties<a class="headerlink" href="#properties" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-cameraserver-property-monitoring-feeds"><span class="std std-ref">monitoring_feeds</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section class="classref-reftable-group" id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-cameraserver-method-add-feed"><span class="std std-ref">add_feed</span></a>(feed: <a class="reference internal" href="class_camerafeed.html#class-camerafeed"><span class="std std-ref">CameraFeed</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_array.html#class-array"><span class="std std-ref">Array</span></a>[<a class="reference internal" href="class_camerafeed.html#class-camerafeed"><span class="std std-ref">CameraFeed</span></a>]</p></td>
+<td><p><a class="reference internal" href="#class-cameraserver-method-feeds"><span class="std std-ref">feeds</span></a>()</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_camerafeed.html#class-camerafeed"><span class="std std-ref">CameraFeed</span></a></p></td>
+<td><p><a class="reference internal" href="#class-cameraserver-method-get-feed"><span class="std std-ref">get_feed</span></a>(index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-cameraserver-method-get-feed-count"><span class="std std-ref">get_feed_count</span></a>()</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-cameraserver-method-remove-feed"><span class="std std-ref">remove_feed</span></a>(feed: <a class="reference internal" href="class_camerafeed.html#class-camerafeed"><span class="std std-ref">CameraFeed</span></a>)</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="signals">
+<h2>Signals<a class="headerlink" href="#signals" title="Link to this heading"></a></h2>
+<p class="classref-signal" id="class-cameraserver-signal-camera-feed-added"><strong>camera_feed_added</strong>(id: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <a class="reference internal" href="#class-cameraserver-signal-camera-feed-added"><span class="std std-ref">🔗</span></a></p>
+<p>Emitted when a <a class="reference internal" href="class_camerafeed.html#class-camerafeed"><span class="std std-ref">CameraFeed</span></a> is added (e.g. a webcam is plugged in).</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-signal" id="class-cameraserver-signal-camera-feed-removed"><strong>camera_feed_removed</strong>(id: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <a class="reference internal" href="#class-cameraserver-signal-camera-feed-removed"><span class="std std-ref">🔗</span></a></p>
+<p>Emitted when a <a class="reference internal" href="class_camerafeed.html#class-camerafeed"><span class="std std-ref">CameraFeed</span></a> is removed (e.g. a webcam is unplugged).</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-signal" id="class-cameraserver-signal-camera-feeds-updated"><strong>camera_feeds_updated</strong>() <a class="reference internal" href="#class-cameraserver-signal-camera-feeds-updated"><span class="std std-ref">🔗</span></a></p>
+<p>Emitted when camera feeds are updated.</p>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="enumerations">
+<h2>Enumerations<a class="headerlink" href="#enumerations" title="Link to this heading"></a></h2>
+<p class="classref-enumeration" id="enum-cameraserver-feedimage">enum <strong>FeedImage</strong>: <a class="reference internal" href="#enum-cameraserver-feedimage"><span class="std std-ref">🔗</span></a></p>
+<p class="classref-enumeration-constant" id="class-cameraserver-constant-feed-rgba-image"><a class="reference internal" href="#enum-cameraserver-feedimage"><span class="std std-ref">FeedImage</span></a> <strong>FEED_RGBA_IMAGE</strong> = <code class="docutils literal notranslate"><span class="pre">0</span></code></p>
+<p>The RGBA camera image.</p>
+<p class="classref-enumeration-constant" id="class-cameraserver-constant-feed-ycbcr-image"><a class="reference internal" href="#enum-cameraserver-feedimage"><span class="std std-ref">FeedImage</span></a> <strong>FEED_YCBCR_IMAGE</strong> = <code class="docutils literal notranslate"><span class="pre">0</span></code></p>
+<p>The <a class="reference external" href="https://en.wikipedia.org/wiki/YCbCr">YCbCr</a> camera image.</p>
+<p class="classref-enumeration-constant" id="class-cameraserver-constant-feed-y-image"><a class="reference internal" href="#enum-cameraserver-feedimage"><span class="std std-ref">FeedImage</span></a> <strong>FEED_Y_IMAGE</strong> = <code class="docutils literal notranslate"><span class="pre">0</span></code></p>
+<p>The Y component camera image.</p>
+<p class="classref-enumeration-constant" id="class-cameraserver-constant-feed-cbcr-image"><a class="reference internal" href="#enum-cameraserver-feedimage"><span class="std std-ref">FeedImage</span></a> <strong>FEED_CBCR_IMAGE</strong> = <code class="docutils literal notranslate"><span class="pre">1</span></code></p>
+<p>The CbCr component camera image.</p>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="property-descriptions">
+<h2>Property Descriptions<a class="headerlink" href="#property-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-property" id="class-cameraserver-property-monitoring-feeds"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>monitoring_feeds</strong> = <code class="docutils literal notranslate"><span class="pre">false</span></code> <a class="reference internal" href="#class-cameraserver-property-monitoring-feeds"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_monitoring_feeds</strong>(value: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_monitoring_feeds</strong>()</p></li>
+</ul>
+<p>If <code class="docutils literal notranslate"><span class="pre">true</span></code>, the server is actively monitoring available camera feeds.</p>
+<p>This has a performance cost, so only set it to <code class="docutils literal notranslate"><span class="pre">true</span></code> when you’re actively accessing the camera.</p>
+<p><strong>Note:</strong> After setting it to <code class="docutils literal notranslate"><span class="pre">true</span></code>, you can receive updated camera feeds through the <a class="reference internal" href="#class-cameraserver-signal-camera-feeds-updated"><span class="std std-ref">camera_feeds_updated</span></a> signal.</p>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="method-descriptions">
+<h2>Method Descriptions<a class="headerlink" href="#method-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-method" id="class-cameraserver-method-add-feed"><abbr title="No return value.">void</abbr> <strong>add_feed</strong>(feed: <a class="reference internal" href="class_camerafeed.html#class-camerafeed"><span class="std std-ref">CameraFeed</span></a>) <a class="reference internal" href="#class-cameraserver-method-add-feed"><span class="std std-ref">🔗</span></a></p>
+<p>Adds the camera <code class="docutils literal notranslate"><span class="pre">feed</span></code> to the camera server.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-cameraserver-method-feeds"><a class="reference internal" href="class_array.html#class-array"><span class="std std-ref">Array</span></a>[<a class="reference internal" href="class_camerafeed.html#class-camerafeed"><span class="std std-ref">CameraFeed</span></a>] <strong>feeds</strong>() <a class="reference internal" href="#class-cameraserver-method-feeds"><span class="std std-ref">🔗</span></a></p>
+<p>Returns an array of <a class="reference internal" href="class_camerafeed.html#class-camerafeed"><span class="std std-ref">CameraFeed</span></a>s.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-cameraserver-method-get-feed"><a class="reference internal" href="class_camerafeed.html#class-camerafeed"><span class="std std-ref">CameraFeed</span></a> <strong>get_feed</strong>(index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <a class="reference internal" href="#class-cameraserver-method-get-feed"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the <a class="reference internal" href="class_camerafeed.html#class-camerafeed"><span class="std std-ref">CameraFeed</span></a> corresponding to the camera with the given <code class="docutils literal notranslate"><span class="pre">index</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-cameraserver-method-get-feed-count"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>get_feed_count</strong>() <a class="reference internal" href="#class-cameraserver-method-get-feed-count"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the number of <a class="reference internal" href="class_camerafeed.html#class-camerafeed"><span class="std std-ref">CameraFeed</span></a>s registered.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-cameraserver-method-remove-feed"><abbr title="No return value.">void</abbr> <strong>remove_feed</strong>(feed: <a class="reference internal" href="class_camerafeed.html#class-camerafeed"><span class="std std-ref">CameraFeed</span></a>) <a class="reference internal" href="#class-cameraserver-method-remove-feed"><span class="std std-ref">🔗</span></a></p>
+<p>Removes the specified camera <code class="docutils literal notranslate"><span class="pre">feed</span></code>.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, MUmarShahbaz.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

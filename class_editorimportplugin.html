@@ -1,0 +1,233 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EditorImportPlugin &mdash; RPG Components 2D 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=d45e8c67"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            RPG Components 2D
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">EditorImportPlugin</a><ul>
+<li><a class="reference internal" href="#description">Description</a></li>
+<li><a class="reference internal" href="#tutorials">Tutorials</a></li>
+<li><a class="reference internal" href="#methods">Methods</a></li>
+<li><a class="reference internal" href="#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">RPG Components 2D</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">EditorImportPlugin</li>
+      <li class="wy-breadcrumbs-aside">
+              <!-- User defined GitHub URL -->
+              <a href="hide" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="editorimportplugin">
+<span id="class-editorimportplugin"></span><h1>EditorImportPlugin<a class="headerlink" href="#editorimportplugin" title="Link to this heading"></a></h1>
+<p><strong>Inherits:</strong> <a class="reference internal" href="class_resourceimporter.html#class-resourceimporter"><span class="std std-ref">ResourceImporter</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_refcounted.html#class-refcounted"><span class="std std-ref">RefCounted</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_object.html#class-object"><span class="std std-ref">Object</span></a></p>
+<p>Registers a custom resource importer in the editor. Use the class to parse any file and import it as a new resource type.</p>
+<section class="classref-introduction-group" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
+<p><strong>EditorImportPlugin</strong>s provide a way to extend the editor’s resource import functionality. Use them to import resources from custom files or to provide alternatives to the editor’s existing importers.</p>
+<p>EditorImportPlugins work by associating with specific file extensions and a resource type. See <a class="reference internal" href="#class-editorimportplugin-private-method-get-recognized-extensions"><span class="std std-ref">_get_recognized_extensions()</span></a> and <a class="reference internal" href="#class-editorimportplugin-private-method-get-resource-type"><span class="std std-ref">_get_resource_type()</span></a>. They may optionally specify some import presets that affect the import process. EditorImportPlugins are responsible for creating the resources and saving them in the <code class="docutils literal notranslate"><span class="pre">.godot/imported</span></code> directory (see <a class="reference internal" href="class_projectsettings.html#class-projectsettings-property-application-config-use-hidden-project-data-directory"><span class="std std-ref">ProjectSettings.application/config/use_hidden_project_data_directory</span></a>).</p>
+<p>Below is an example EditorImportPlugin that imports a <a class="reference internal" href="class_mesh.html#class-mesh"><span class="std std-ref">Mesh</span></a> from a file with the extension “.special” or “.spec”:</p>
+<p>To use <strong>EditorImportPlugin</strong>, register it using the <a class="reference internal" href="class_editorplugin.html#class-editorplugin-method-add-import-plugin"><span class="std std-ref">EditorPlugin.add_import_plugin()</span></a> method first.</p>
+</section>
+<section class="classref-introduction-group" id="tutorials">
+<h2>Tutorials<a class="headerlink" href="#tutorials" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><span class="xref std std-doc">Import plugins</span></p></li>
+</ul>
+</section>
+<section class="classref-reftable-group" id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-editorimportplugin-private-method-can-import-threaded"><span class="std std-ref">_can_import_threaded</span></a>() <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-editorimportplugin-private-method-get-format-version"><span class="std std-ref">_get_format_version</span></a>() <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_array.html#class-array"><span class="std std-ref">Array</span></a>[<a class="reference internal" href="class_dictionary.html#class-dictionary"><span class="std std-ref">Dictionary</span></a>]</p></td>
+<td><p><a class="reference internal" href="#class-editorimportplugin-private-method-get-import-options"><span class="std std-ref">_get_import_options</span></a>(path: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, preset_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method is required to be overridden when extending its base class.">required</abbr> <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-editorimportplugin-private-method-get-import-order"><span class="std std-ref">_get_import_order</span></a>() <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a></p></td>
+<td><p><a class="reference internal" href="#class-editorimportplugin-private-method-get-importer-name"><span class="std std-ref">_get_importer_name</span></a>() <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method is required to be overridden when extending its base class.">required</abbr> <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-editorimportplugin-private-method-get-option-visibility"><span class="std std-ref">_get_option_visibility</span></a>(path: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, option_name: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>, options: <a class="reference internal" href="class_dictionary.html#class-dictionary"><span class="std std-ref">Dictionary</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-editorimportplugin-private-method-get-preset-count"><span class="std std-ref">_get_preset_count</span></a>() <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a></p></td>
+<td><p><a class="reference internal" href="#class-editorimportplugin-private-method-get-preset-name"><span class="std std-ref">_get_preset_name</span></a>(preset_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method is required to be overridden when extending its base class.">required</abbr> <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-editorimportplugin-private-method-get-priority"><span class="std std-ref">_get_priority</span></a>() <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_packedstringarray.html#class-packedstringarray"><span class="std std-ref">PackedStringArray</span></a></p></td>
+<td><p><a class="reference internal" href="#class-editorimportplugin-private-method-get-recognized-extensions"><span class="std std-ref">_get_recognized_extensions</span></a>() <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method is required to be overridden when extending its base class.">required</abbr> <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a></p></td>
+<td><p><a class="reference internal" href="#class-editorimportplugin-private-method-get-resource-type"><span class="std std-ref">_get_resource_type</span></a>() <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method is required to be overridden when extending its base class.">required</abbr> <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a></p></td>
+<td><p><a class="reference internal" href="#class-editorimportplugin-private-method-get-save-extension"><span class="std std-ref">_get_save_extension</span></a>() <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method is required to be overridden when extending its base class.">required</abbr> <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a></p></td>
+<td><p><a class="reference internal" href="#class-editorimportplugin-private-method-get-visible-name"><span class="std std-ref">_get_visible_name</span></a>() <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method is required to be overridden when extending its base class.">required</abbr> <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_%40globalscope.html#enum-globalscope-error"><span class="std std-ref">Error</span></a></p></td>
+<td><p><a class="reference internal" href="#class-editorimportplugin-private-method-import"><span class="std std-ref">_import</span></a>(source_file: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, save_path: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, options: <a class="reference internal" href="class_dictionary.html#class-dictionary"><span class="std std-ref">Dictionary</span></a>, platform_variants: <a class="reference internal" href="class_array.html#class-array"><span class="std std-ref">Array</span></a>[<a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>], gen_files: <a class="reference internal" href="class_array.html#class-array"><span class="std std-ref">Array</span></a>[<a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>]) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method is required to be overridden when extending its base class.">required</abbr> <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_%40globalscope.html#enum-globalscope-error"><span class="std std-ref">Error</span></a></p></td>
+<td><p><a class="reference internal" href="#class-editorimportplugin-method-append-import-external-resource"><span class="std std-ref">append_import_external_resource</span></a>(path: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, custom_options: <a class="reference internal" href="class_dictionary.html#class-dictionary"><span class="std std-ref">Dictionary</span></a> = {}, custom_importer: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a> = “”, generator_parameters: <a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a> = null)</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="method-descriptions">
+<h2>Method Descriptions<a class="headerlink" href="#method-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-method" id="class-editorimportplugin-private-method-can-import-threaded"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>_can_import_threaded</strong>() <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-editorimportplugin-private-method-can-import-threaded"><span class="std std-ref">🔗</span></a></p>
+<p>Tells whether this importer can be run in parallel on threads, or, on the contrary, it’s only safe for the editor to call it from the main thread, for one file at a time.</p>
+<p>If this importer’s implementation is thread-safe and can be run in parallel, override this with <code class="docutils literal notranslate"><span class="pre">true</span></code> to optimize for concurrency.</p>
+<p>If not overridden, returns <code class="docutils literal notranslate"><span class="pre">false</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-editorimportplugin-private-method-get-format-version"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>_get_format_version</strong>() <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-editorimportplugin-private-method-get-format-version"><span class="std std-ref">🔗</span></a></p>
+<p>Gets the format version of this importer. Increment this version when making incompatible changes to the format of the imported resources.</p>
+<p>If not overridden, the format version is <code class="docutils literal notranslate"><span class="pre">0</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-editorimportplugin-private-method-get-import-options"><a class="reference internal" href="class_array.html#class-array"><span class="std std-ref">Array</span></a>[<a class="reference internal" href="class_dictionary.html#class-dictionary"><span class="std std-ref">Dictionary</span></a>] <strong>_get_import_options</strong>(path: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, preset_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method is required to be overridden when extending its base class.">required</abbr> <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-editorimportplugin-private-method-get-import-options"><span class="std std-ref">🔗</span></a></p>
+<p>Gets the options and default values for the preset at this index. Returns an Array of Dictionaries with the following keys: <code class="docutils literal notranslate"><span class="pre">name</span></code>, <code class="docutils literal notranslate"><span class="pre">default_value</span></code>, <code class="docutils literal notranslate"><span class="pre">property_hint</span></code> (optional), <code class="docutils literal notranslate"><span class="pre">hint_string</span></code> (optional), <code class="docutils literal notranslate"><span class="pre">usage</span></code> (optional).</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-editorimportplugin-private-method-get-import-order"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>_get_import_order</strong>() <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-editorimportplugin-private-method-get-import-order"><span class="std std-ref">🔗</span></a></p>
+<p>Gets the order of this importer to be run when importing resources. Importers with <em>lower</em> import orders will be called first, and higher values will be called later. Use this to ensure the importer runs after the dependencies are already imported. The default import order is <code class="docutils literal notranslate"><span class="pre">0</span></code> unless overridden by a specific importer. See <a class="reference internal" href="class_resourceimporter.html#enum-resourceimporter-importorder"><span class="std std-ref">ImportOrder</span></a> for some predefined values.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-editorimportplugin-private-method-get-importer-name"><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a> <strong>_get_importer_name</strong>() <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method is required to be overridden when extending its base class.">required</abbr> <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-editorimportplugin-private-method-get-importer-name"><span class="std std-ref">🔗</span></a></p>
+<p>Gets the unique name of the importer.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-editorimportplugin-private-method-get-option-visibility"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>_get_option_visibility</strong>(path: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, option_name: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>, options: <a class="reference internal" href="class_dictionary.html#class-dictionary"><span class="std std-ref">Dictionary</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-editorimportplugin-private-method-get-option-visibility"><span class="std std-ref">🔗</span></a></p>
+<p>Gets whether the import option specified by <code class="docutils literal notranslate"><span class="pre">option_name</span></code> should be visible in the Import dock. The default implementation always returns <code class="docutils literal notranslate"><span class="pre">true</span></code>, making all options visible. This is mainly useful for hiding options that depend on others if one of them is disabled.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-editorimportplugin-private-method-get-preset-count"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>_get_preset_count</strong>() <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-editorimportplugin-private-method-get-preset-count"><span class="std std-ref">🔗</span></a></p>
+<p>Gets the number of initial presets defined by the plugin. Use <a class="reference internal" href="#class-editorimportplugin-private-method-get-import-options"><span class="std std-ref">_get_import_options()</span></a> to get the default options for the preset and <a class="reference internal" href="#class-editorimportplugin-private-method-get-preset-name"><span class="std std-ref">_get_preset_name()</span></a> to get the name of the preset.</p>
+<p>By default, there are no presets.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-editorimportplugin-private-method-get-preset-name"><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a> <strong>_get_preset_name</strong>(preset_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method is required to be overridden when extending its base class.">required</abbr> <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-editorimportplugin-private-method-get-preset-name"><span class="std std-ref">🔗</span></a></p>
+<p>Gets the name of the options preset at this index.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-editorimportplugin-private-method-get-priority"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>_get_priority</strong>() <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-editorimportplugin-private-method-get-priority"><span class="std std-ref">🔗</span></a></p>
+<p>Gets the priority of this plugin for the recognized extension. Higher priority plugins will be preferred. The default priority is <code class="docutils literal notranslate"><span class="pre">1.0</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-editorimportplugin-private-method-get-recognized-extensions"><a class="reference internal" href="class_packedstringarray.html#class-packedstringarray"><span class="std std-ref">PackedStringArray</span></a> <strong>_get_recognized_extensions</strong>() <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method is required to be overridden when extending its base class.">required</abbr> <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-editorimportplugin-private-method-get-recognized-extensions"><span class="std std-ref">🔗</span></a></p>
+<p>Gets the list of file extensions to associate with this loader (case-insensitive). e.g. <code class="docutils literal notranslate"><span class="pre">[&quot;obj&quot;]</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-editorimportplugin-private-method-get-resource-type"><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a> <strong>_get_resource_type</strong>() <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method is required to be overridden when extending its base class.">required</abbr> <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-editorimportplugin-private-method-get-resource-type"><span class="std std-ref">🔗</span></a></p>
+<p>Gets the Godot resource type associated with this loader. e.g. <code class="docutils literal notranslate"><span class="pre">&quot;Mesh&quot;</span></code> or <code class="docutils literal notranslate"><span class="pre">&quot;Animation&quot;</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-editorimportplugin-private-method-get-save-extension"><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a> <strong>_get_save_extension</strong>() <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method is required to be overridden when extending its base class.">required</abbr> <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-editorimportplugin-private-method-get-save-extension"><span class="std std-ref">🔗</span></a></p>
+<p>Gets the extension used to save this resource in the <code class="docutils literal notranslate"><span class="pre">.godot/imported</span></code> directory (see <a class="reference internal" href="class_projectsettings.html#class-projectsettings-property-application-config-use-hidden-project-data-directory"><span class="std std-ref">ProjectSettings.application/config/use_hidden_project_data_directory</span></a>).</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-editorimportplugin-private-method-get-visible-name"><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a> <strong>_get_visible_name</strong>() <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method is required to be overridden when extending its base class.">required</abbr> <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-editorimportplugin-private-method-get-visible-name"><span class="std std-ref">🔗</span></a></p>
+<p>Gets the name to display in the import window. You should choose this name as a continuation to “Import as”, e.g. “Import as Special Mesh”.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-editorimportplugin-private-method-import"><a class="reference internal" href="class_%40globalscope.html#enum-globalscope-error"><span class="std std-ref">Error</span></a> <strong>_import</strong>(source_file: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, save_path: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, options: <a class="reference internal" href="class_dictionary.html#class-dictionary"><span class="std std-ref">Dictionary</span></a>, platform_variants: <a class="reference internal" href="class_array.html#class-array"><span class="std std-ref">Array</span></a>[<a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>], gen_files: <a class="reference internal" href="class_array.html#class-array"><span class="std std-ref">Array</span></a>[<a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>]) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method is required to be overridden when extending its base class.">required</abbr> <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-editorimportplugin-private-method-import"><span class="std std-ref">🔗</span></a></p>
+<p>Imports <code class="docutils literal notranslate"><span class="pre">source_file</span></code> with the import <code class="docutils literal notranslate"><span class="pre">options</span></code> specified. Should return <a class="reference internal" href="class_%40globalscope.html#class-globalscope-constant-ok"><span class="std std-ref">&#64;GlobalScope.OK</span></a> if the import is successful, other values indicate failure.</p>
+<p>The imported resource is expected to be saved to <code class="docutils literal notranslate"><span class="pre">save_path</span> <span class="pre">+</span> <span class="pre">&quot;.&quot;</span> <span class="pre">+</span> <span class="pre">_get_save_extension()</span></code>. If a different variant is preferred for a <span class="xref std std-doc">feature tag</span>, save the variant to <code class="docutils literal notranslate"><span class="pre">save_path</span> <span class="pre">+</span> <span class="pre">&quot;.&quot;</span> <span class="pre">+</span> <span class="pre">tag</span> <span class="pre">+</span> <span class="pre">&quot;.&quot;</span> <span class="pre">+</span> <span class="pre">_get_save_extension()</span></code> and add the feature tag to <code class="docutils literal notranslate"><span class="pre">platform_variants</span></code>.</p>
+<p>If additional resource files are generated in the resource filesystem (<code class="docutils literal notranslate"><span class="pre">res://</span></code>), add their full path to <code class="docutils literal notranslate"><span class="pre">gen_files</span></code> so that the editor knows they depend on <code class="docutils literal notranslate"><span class="pre">source_file</span></code>.</p>
+<p>This method must be overridden to do the actual importing work. See this class’ description for an example of overriding this method.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-editorimportplugin-method-append-import-external-resource"><a class="reference internal" href="class_%40globalscope.html#enum-globalscope-error"><span class="std std-ref">Error</span></a> <strong>append_import_external_resource</strong>(path: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, custom_options: <a class="reference internal" href="class_dictionary.html#class-dictionary"><span class="std std-ref">Dictionary</span></a> = {}, custom_importer: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a> = “”, generator_parameters: <a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a> = null) <a class="reference internal" href="#class-editorimportplugin-method-append-import-external-resource"><span class="std std-ref">🔗</span></a></p>
+<p>This function can only be called during the <a class="reference internal" href="#class-editorimportplugin-private-method-import"><span class="std std-ref">_import()</span></a> callback and it allows manually importing resources from it. This is useful when the imported file generates external resources that require importing (as example, images). Custom parameters for the “.import” file can be passed via the <code class="docutils literal notranslate"><span class="pre">custom_options</span></code>. Additionally, in cases where multiple importers can handle a file, the <code class="docutils literal notranslate"><span class="pre">custom_importer</span></code> can be specified to force a specific one. This function performs a resource import and returns immediately with a success or error code. <code class="docutils literal notranslate"><span class="pre">generator_parameters</span></code> defines optional extra metadata which will be stored as <code class="docutils literal notranslate"><span class="pre">generator_parameters</span></code> in the <code class="docutils literal notranslate"><span class="pre">remap</span></code> section of the <code class="docutils literal notranslate"><span class="pre">.import</span></code> file, for example to store a md5 hash of the source data.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, MUmarShahbaz.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

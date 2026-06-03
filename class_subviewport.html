@@ -1,0 +1,234 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SubViewport &mdash; RPG Components 2D 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=d45e8c67"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            RPG Components 2D
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">SubViewport</a><ul>
+<li><a class="reference internal" href="#description">Description</a></li>
+<li><a class="reference internal" href="#tutorials">Tutorials</a></li>
+<li><a class="reference internal" href="#properties">Properties</a></li>
+<li><a class="reference internal" href="#enumerations">Enumerations</a></li>
+<li><a class="reference internal" href="#property-descriptions">Property Descriptions</a></li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">RPG Components 2D</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">SubViewport</li>
+      <li class="wy-breadcrumbs-aside">
+              <!-- User defined GitHub URL -->
+              <a href="hide" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="subviewport">
+<span id="class-subviewport"></span><h1>SubViewport<a class="headerlink" href="#subviewport" title="Link to this heading"></a></h1>
+<p><strong>Inherits:</strong> <a class="reference internal" href="class_viewport.html#class-viewport"><span class="std std-ref">Viewport</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_node.html#class-node"><span class="std std-ref">Node</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_object.html#class-object"><span class="std std-ref">Object</span></a></p>
+<p>An interface to a game world that doesn’t create a window or draw to the screen directly.</p>
+<section class="classref-introduction-group" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
+<p><strong>SubViewport</strong> Isolates a rectangular region of a scene to be displayed independently. This can be used, for example, to display UI in 3D space.</p>
+<p><strong>Note:</strong> <strong>SubViewport</strong> is a <a class="reference internal" href="class_viewport.html#class-viewport"><span class="std std-ref">Viewport</span></a> that isn’t a <a class="reference internal" href="class_window.html#class-window"><span class="std std-ref">Window</span></a>, i.e. it doesn’t draw anything by itself. To display anything, <strong>SubViewport</strong> must have a non-zero size and be either put inside a <a class="reference internal" href="class_subviewportcontainer.html#class-subviewportcontainer"><span class="std std-ref">SubViewportContainer</span></a> or assigned to a <a class="reference internal" href="class_viewporttexture.html#class-viewporttexture"><span class="std std-ref">ViewportTexture</span></a>.</p>
+<p><strong>Note:</strong> <a class="reference internal" href="class_inputevent.html#class-inputevent"><span class="std std-ref">InputEvent</span></a>s are not passed to a standalone <strong>SubViewport</strong> by default. To ensure <a class="reference internal" href="class_inputevent.html#class-inputevent"><span class="std std-ref">InputEvent</span></a> propagation, a <strong>SubViewport</strong> can be placed inside of a <a class="reference internal" href="class_subviewportcontainer.html#class-subviewportcontainer"><span class="std std-ref">SubViewportContainer</span></a>.</p>
+</section>
+<section class="classref-introduction-group" id="tutorials">
+<h2>Tutorials<a class="headerlink" href="#tutorials" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><span class="xref std std-doc">Using Viewports</span></p></li>
+<li><p><span class="xref std std-doc">Viewport and canvas transforms</span></p></li>
+<li><p><a class="reference external" href="https://godotengine.org/asset-library/asset/2807">GUI in 3D Viewport Demo</a></p></li>
+<li><p><a class="reference external" href="https://godotengine.org/asset-library/asset/2804">3D in 2D Viewport Demo</a></p></li>
+<li><p><a class="reference external" href="https://godotengine.org/asset-library/asset/2803">2D in 3D Viewport Demo</a></p></li>
+<li><p><a class="reference external" href="https://godotengine.org/asset-library/asset/2808">Screen Capture Demo</a></p></li>
+<li><p><a class="reference external" href="https://godotengine.org/asset-library/asset/2806">Dynamic Split Screen Demo</a></p></li>
+<li><p><a class="reference external" href="https://godotengine.org/asset-library/asset/2805">3D Resolution Scaling Demo</a></p></li>
+</ul>
+</section>
+<section class="classref-reftable-group" id="properties">
+<h2>Properties<a class="headerlink" href="#properties" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#enum-subviewport-clearmode"><span class="std std-ref">ClearMode</span></a></p></td>
+<td><p><a class="reference internal" href="#class-subviewport-property-render-target-clear-mode"><span class="std std-ref">render_target_clear_mode</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#enum-subviewport-updatemode"><span class="std std-ref">UpdateMode</span></a></p></td>
+<td><p><a class="reference internal" href="#class-subviewport-property-render-target-update-mode"><span class="std std-ref">render_target_update_mode</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">2</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_vector2i.html#class-vector2i"><span class="std std-ref">Vector2i</span></a></p></td>
+<td><p><a class="reference internal" href="#class-subviewport-property-size"><span class="std std-ref">size</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Vector2i(512,</span> <span class="pre">512)</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_vector2i.html#class-vector2i"><span class="std std-ref">Vector2i</span></a></p></td>
+<td><p><a class="reference internal" href="#class-subviewport-property-size-2d-override"><span class="std std-ref">size_2d_override</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Vector2i(0,</span> <span class="pre">0)</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-subviewport-property-size-2d-override-stretch"><span class="std std-ref">size_2d_override_stretch</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-subviewport-property-view-count"><span class="std std-ref">view_count</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">1</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="enumerations">
+<h2>Enumerations<a class="headerlink" href="#enumerations" title="Link to this heading"></a></h2>
+<p class="classref-enumeration" id="enum-subviewport-clearmode">enum <strong>ClearMode</strong>: <a class="reference internal" href="#enum-subviewport-clearmode"><span class="std std-ref">🔗</span></a></p>
+<p class="classref-enumeration-constant" id="class-subviewport-constant-clear-mode-always"><a class="reference internal" href="#enum-subviewport-clearmode"><span class="std std-ref">ClearMode</span></a> <strong>CLEAR_MODE_ALWAYS</strong> = <code class="docutils literal notranslate"><span class="pre">0</span></code></p>
+<p>Always clear the render target before drawing.</p>
+<p class="classref-enumeration-constant" id="class-subviewport-constant-clear-mode-never"><a class="reference internal" href="#enum-subviewport-clearmode"><span class="std std-ref">ClearMode</span></a> <strong>CLEAR_MODE_NEVER</strong> = <code class="docutils literal notranslate"><span class="pre">1</span></code></p>
+<p>Never clear the render target.</p>
+<p class="classref-enumeration-constant" id="class-subviewport-constant-clear-mode-once"><a class="reference internal" href="#enum-subviewport-clearmode"><span class="std std-ref">ClearMode</span></a> <strong>CLEAR_MODE_ONCE</strong> = <code class="docutils literal notranslate"><span class="pre">2</span></code></p>
+<p>Clear the render target on the next frame, then switch to <a class="reference internal" href="#class-subviewport-constant-clear-mode-never"><span class="std std-ref">CLEAR_MODE_NEVER</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-enumeration" id="enum-subviewport-updatemode">enum <strong>UpdateMode</strong>: <a class="reference internal" href="#enum-subviewport-updatemode"><span class="std std-ref">🔗</span></a></p>
+<p class="classref-enumeration-constant" id="class-subviewport-constant-update-disabled"><a class="reference internal" href="#enum-subviewport-updatemode"><span class="std std-ref">UpdateMode</span></a> <strong>UPDATE_DISABLED</strong> = <code class="docutils literal notranslate"><span class="pre">0</span></code></p>
+<p>Do not update the render target.</p>
+<p class="classref-enumeration-constant" id="class-subviewport-constant-update-once"><a class="reference internal" href="#enum-subviewport-updatemode"><span class="std std-ref">UpdateMode</span></a> <strong>UPDATE_ONCE</strong> = <code class="docutils literal notranslate"><span class="pre">1</span></code></p>
+<p>Update the render target once, then switch to <a class="reference internal" href="#class-subviewport-constant-update-disabled"><span class="std std-ref">UPDATE_DISABLED</span></a>.</p>
+<p class="classref-enumeration-constant" id="class-subviewport-constant-update-when-visible"><a class="reference internal" href="#enum-subviewport-updatemode"><span class="std std-ref">UpdateMode</span></a> <strong>UPDATE_WHEN_VISIBLE</strong> = <code class="docutils literal notranslate"><span class="pre">2</span></code></p>
+<p>Update the render target only when it is visible. This is the default value.</p>
+<p class="classref-enumeration-constant" id="class-subviewport-constant-update-when-parent-visible"><a class="reference internal" href="#enum-subviewport-updatemode"><span class="std std-ref">UpdateMode</span></a> <strong>UPDATE_WHEN_PARENT_VISIBLE</strong> = <code class="docutils literal notranslate"><span class="pre">3</span></code></p>
+<p>Update the render target only when its parent is visible.</p>
+<p class="classref-enumeration-constant" id="class-subviewport-constant-update-always"><a class="reference internal" href="#enum-subviewport-updatemode"><span class="std std-ref">UpdateMode</span></a> <strong>UPDATE_ALWAYS</strong> = <code class="docutils literal notranslate"><span class="pre">4</span></code></p>
+<p>Always update the render target.</p>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="property-descriptions">
+<h2>Property Descriptions<a class="headerlink" href="#property-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-property" id="class-subviewport-property-render-target-clear-mode"><a class="reference internal" href="#enum-subviewport-clearmode"><span class="std std-ref">ClearMode</span></a> <strong>render_target_clear_mode</strong> = <code class="docutils literal notranslate"><span class="pre">0</span></code> <a class="reference internal" href="#class-subviewport-property-render-target-clear-mode"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_clear_mode</strong>(value: <a class="reference internal" href="#enum-subviewport-clearmode"><span class="std std-ref">ClearMode</span></a>)</p></li>
+<li><p><a class="reference internal" href="#enum-subviewport-clearmode"><span class="std std-ref">ClearMode</span></a> <strong>get_clear_mode</strong>()</p></li>
+</ul>
+<p>The clear mode when the sub-viewport is used as a render target.</p>
+<p><strong>Note:</strong> This property is intended for 2D usage.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-subviewport-property-render-target-update-mode"><a class="reference internal" href="#enum-subviewport-updatemode"><span class="std std-ref">UpdateMode</span></a> <strong>render_target_update_mode</strong> = <code class="docutils literal notranslate"><span class="pre">2</span></code> <a class="reference internal" href="#class-subviewport-property-render-target-update-mode"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_update_mode</strong>(value: <a class="reference internal" href="#enum-subviewport-updatemode"><span class="std std-ref">UpdateMode</span></a>)</p></li>
+<li><p><a class="reference internal" href="#enum-subviewport-updatemode"><span class="std std-ref">UpdateMode</span></a> <strong>get_update_mode</strong>()</p></li>
+</ul>
+<p>The update mode when the sub-viewport is used as a render target.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-subviewport-property-size"><a class="reference internal" href="class_vector2i.html#class-vector2i"><span class="std std-ref">Vector2i</span></a> <strong>size</strong> = <code class="docutils literal notranslate"><span class="pre">Vector2i(512,</span> <span class="pre">512)</span></code> <a class="reference internal" href="#class-subviewport-property-size"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_size</strong>(value: <a class="reference internal" href="class_vector2i.html#class-vector2i"><span class="std std-ref">Vector2i</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_vector2i.html#class-vector2i"><span class="std std-ref">Vector2i</span></a> <strong>get_size</strong>()</p></li>
+</ul>
+<p>The width and height of the sub-viewport. Must be set to a value greater than or equal to 2 pixels on both dimensions. Otherwise, nothing will be displayed.</p>
+<p><strong>Note:</strong> If the parent node is a <a class="reference internal" href="class_subviewportcontainer.html#class-subviewportcontainer"><span class="std std-ref">SubViewportContainer</span></a> and its <a class="reference internal" href="class_subviewportcontainer.html#class-subviewportcontainer-property-stretch"><span class="std std-ref">SubViewportContainer.stretch</span></a> is <code class="docutils literal notranslate"><span class="pre">true</span></code>, the viewport size cannot be changed manually.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-subviewport-property-size-2d-override"><a class="reference internal" href="class_vector2i.html#class-vector2i"><span class="std std-ref">Vector2i</span></a> <strong>size_2d_override</strong> = <code class="docutils literal notranslate"><span class="pre">Vector2i(0,</span> <span class="pre">0)</span></code> <a class="reference internal" href="#class-subviewport-property-size-2d-override"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_size_2d_override</strong>(value: <a class="reference internal" href="class_vector2i.html#class-vector2i"><span class="std std-ref">Vector2i</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_vector2i.html#class-vector2i"><span class="std std-ref">Vector2i</span></a> <strong>get_size_2d_override</strong>()</p></li>
+</ul>
+<p>The 2D size override of the sub-viewport. If either the width or height is <code class="docutils literal notranslate"><span class="pre">0</span></code>, the override is disabled.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-subviewport-property-size-2d-override-stretch"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>size_2d_override_stretch</strong> = <code class="docutils literal notranslate"><span class="pre">false</span></code> <a class="reference internal" href="#class-subviewport-property-size-2d-override-stretch"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_size_2d_override_stretch</strong>(value: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_size_2d_override_stretch_enabled</strong>()</p></li>
+</ul>
+<p>If <code class="docutils literal notranslate"><span class="pre">true</span></code>, the 2D size override affects stretch as well.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-subviewport-property-view-count"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>view_count</strong> = <code class="docutils literal notranslate"><span class="pre">1</span></code> <a class="reference internal" href="#class-subviewport-property-view-count"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_view_count</strong>(value: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>get_view_count</strong>()</p></li>
+</ul>
+<p>The number of view layers we are rendering to. Set this to <code class="docutils literal notranslate"><span class="pre">2</span></code> to enable stereo rendering.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, MUmarShahbaz.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

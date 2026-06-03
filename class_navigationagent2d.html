@@ -1,0 +1,651 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NavigationAgent2D &mdash; RPG Components 2D 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=d45e8c67"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            RPG Components 2D
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">NavigationAgent2D</a><ul>
+<li><a class="reference internal" href="#description">Description</a></li>
+<li><a class="reference internal" href="#tutorials">Tutorials</a></li>
+<li><a class="reference internal" href="#properties">Properties</a></li>
+<li><a class="reference internal" href="#methods">Methods</a></li>
+<li><a class="reference internal" href="#signals">Signals</a></li>
+<li><a class="reference internal" href="#property-descriptions">Property Descriptions</a></li>
+<li><a class="reference internal" href="#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">RPG Components 2D</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">NavigationAgent2D</li>
+      <li class="wy-breadcrumbs-aside">
+              <!-- User defined GitHub URL -->
+              <a href="hide" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="navigationagent2d">
+<span id="class-navigationagent2d"></span><h1>NavigationAgent2D<a class="headerlink" href="#navigationagent2d" title="Link to this heading"></a></h1>
+<p><strong>Experimental:</strong> This class may be changed or removed in future versions.</p>
+<p><strong>Inherits:</strong> <a class="reference internal" href="class_node.html#class-node"><span class="std std-ref">Node</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_object.html#class-object"><span class="std std-ref">Object</span></a></p>
+<p>A 2D agent used to pathfind to a position while avoiding obstacles.</p>
+<section class="classref-introduction-group" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
+<p>A 2D agent used to pathfind to a position while avoiding static and dynamic obstacles. The calculation can be used by the parent node to dynamically move it along the path. Requires navigation data to work correctly.</p>
+<p>Dynamic obstacles are avoided using RVO collision avoidance. Avoidance is computed before physics, so the pathfinding information can be used safely in the physics step.</p>
+<p><strong>Note:</strong> After setting the <a class="reference internal" href="#class-navigationagent2d-property-target-position"><span class="std std-ref">target_position</span></a> property, the <a class="reference internal" href="#class-navigationagent2d-method-get-next-path-position"><span class="std std-ref">get_next_path_position()</span></a> method must be used once every physics frame to update the internal path logic of the navigation agent. The vector position it returns should be used as the next movement position for the agent’s parent node.</p>
+<p><strong>Note:</strong> Several methods of this class, such as <a class="reference internal" href="#class-navigationagent2d-method-get-next-path-position"><span class="std std-ref">get_next_path_position()</span></a>, can trigger a new path calculation. Calling these in your callback to an agent’s signal, such as <a class="reference internal" href="#class-navigationagent2d-signal-waypoint-reached"><span class="std std-ref">waypoint_reached</span></a>, can cause infinite recursion. It is recommended to call these methods in the physics step or, alternatively, delay their call until the end of the frame (see <a class="reference internal" href="class_object.html#class-object-method-call-deferred"><span class="std std-ref">Object.call_deferred()</span></a> or <a class="reference internal" href="class_object.html#class-object-constant-connect-deferred"><span class="std std-ref">Object.CONNECT_DEFERRED</span></a>).</p>
+</section>
+<section class="classref-introduction-group" id="tutorials">
+<h2>Tutorials<a class="headerlink" href="#tutorials" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><span class="xref std std-doc">Using NavigationAgents</span></p></li>
+</ul>
+</section>
+<section class="classref-reftable-group" id="properties">
+<h2>Properties<a class="headerlink" href="#properties" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-navigationagent2d-property-avoidance-enabled"><span class="std std-ref">avoidance_enabled</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-navigationagent2d-property-avoidance-layers"><span class="std std-ref">avoidance_layers</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">1</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-navigationagent2d-property-avoidance-mask"><span class="std std-ref">avoidance_mask</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">1</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-navigationagent2d-property-avoidance-priority"><span class="std std-ref">avoidance_priority</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">1.0</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-navigationagent2d-property-debug-enabled"><span class="std std-ref">debug_enabled</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_color.html#class-color"><span class="std std-ref">Color</span></a></p></td>
+<td><p><a class="reference internal" href="#class-navigationagent2d-property-debug-path-custom-color"><span class="std std-ref">debug_path_custom_color</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Color(1,</span> <span class="pre">1,</span> <span class="pre">1,</span> <span class="pre">1)</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-navigationagent2d-property-debug-path-custom-line-width"><span class="std std-ref">debug_path_custom_line_width</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">-1.0</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-navigationagent2d-property-debug-path-custom-point-size"><span class="std std-ref">debug_path_custom_point_size</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">4.0</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-navigationagent2d-property-debug-use-custom"><span class="std std-ref">debug_use_custom</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-navigationagent2d-property-max-neighbors"><span class="std std-ref">max_neighbors</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">10</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-navigationagent2d-property-max-speed"><span class="std std-ref">max_speed</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">100.0</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-navigationagent2d-property-navigation-layers"><span class="std std-ref">navigation_layers</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">1</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-navigationagent2d-property-neighbor-distance"><span class="std std-ref">neighbor_distance</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">500.0</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-navigationagent2d-property-path-desired-distance"><span class="std std-ref">path_desired_distance</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">20.0</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-navigationagent2d-property-path-max-distance"><span class="std std-ref">path_max_distance</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">100.0</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="This value is an integer composed as a bitmask of the following flags.">BitField</abbr>[<a class="reference internal" href="class_navigationpathqueryparameters2d.html#enum-navigationpathqueryparameters2d-pathmetadataflags"><span class="std std-ref">PathMetadataFlags</span></a>]</p></td>
+<td><p><a class="reference internal" href="#class-navigationagent2d-property-path-metadata-flags"><span class="std std-ref">path_metadata_flags</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">7</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_navigationpathqueryparameters2d.html#enum-navigationpathqueryparameters2d-pathpostprocessing"><span class="std std-ref">PathPostProcessing</span></a></p></td>
+<td><p><a class="reference internal" href="#class-navigationagent2d-property-path-postprocessing"><span class="std std-ref">path_postprocessing</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-navigationagent2d-property-path-return-max-length"><span class="std std-ref">path_return_max_length</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0.0</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-navigationagent2d-property-path-return-max-radius"><span class="std std-ref">path_return_max_radius</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0.0</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-navigationagent2d-property-path-search-max-distance"><span class="std std-ref">path_search_max_distance</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0.0</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-navigationagent2d-property-path-search-max-polygons"><span class="std std-ref">path_search_max_polygons</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">4096</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_navigationpathqueryparameters2d.html#enum-navigationpathqueryparameters2d-pathfindingalgorithm"><span class="std std-ref">PathfindingAlgorithm</span></a></p></td>
+<td><p><a class="reference internal" href="#class-navigationagent2d-property-pathfinding-algorithm"><span class="std std-ref">pathfinding_algorithm</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-navigationagent2d-property-radius"><span class="std std-ref">radius</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">10.0</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-navigationagent2d-property-simplify-epsilon"><span class="std std-ref">simplify_epsilon</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0.0</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-navigationagent2d-property-simplify-path"><span class="std std-ref">simplify_path</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-navigationagent2d-property-target-desired-distance"><span class="std std-ref">target_desired_distance</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">10.0</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a></p></td>
+<td><p><a class="reference internal" href="#class-navigationagent2d-property-target-position"><span class="std std-ref">target_position</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Vector2(0,</span> <span class="pre">0)</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-navigationagent2d-property-time-horizon-agents"><span class="std std-ref">time_horizon_agents</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">1.0</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-navigationagent2d-property-time-horizon-obstacles"><span class="std std-ref">time_horizon_obstacles</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0.0</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a></p></td>
+<td><p><a class="reference internal" href="#class-navigationagent2d-property-velocity"><span class="std std-ref">velocity</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Vector2(0,</span> <span class="pre">0)</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section class="classref-reftable-group" id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-navigationagent2d-method-distance-to-target"><span class="std std-ref">distance_to_target</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-navigationagent2d-method-get-avoidance-layer-value"><span class="std std-ref">get_avoidance_layer_value</span></a>(layer_number: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-navigationagent2d-method-get-avoidance-mask-value"><span class="std std-ref">get_avoidance_mask_value</span></a>(mask_number: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_packedvector2array.html#class-packedvector2array"><span class="std std-ref">PackedVector2Array</span></a></p></td>
+<td><p><a class="reference internal" href="#class-navigationagent2d-method-get-current-navigation-path"><span class="std std-ref">get_current_navigation_path</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-navigationagent2d-method-get-current-navigation-path-index"><span class="std std-ref">get_current_navigation_path_index</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_navigationpathqueryresult2d.html#class-navigationpathqueryresult2d"><span class="std std-ref">NavigationPathQueryResult2D</span></a></p></td>
+<td><p><a class="reference internal" href="#class-navigationagent2d-method-get-current-navigation-result"><span class="std std-ref">get_current_navigation_result</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a></p></td>
+<td><p><a class="reference internal" href="#class-navigationagent2d-method-get-final-position"><span class="std std-ref">get_final_position</span></a>()</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-navigationagent2d-method-get-navigation-layer-value"><span class="std std-ref">get_navigation_layer_value</span></a>(layer_number: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_rid.html#class-rid"><span class="std std-ref">RID</span></a></p></td>
+<td><p><a class="reference internal" href="#class-navigationagent2d-method-get-navigation-map"><span class="std std-ref">get_navigation_map</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a></p></td>
+<td><p><a class="reference internal" href="#class-navigationagent2d-method-get-next-path-position"><span class="std std-ref">get_next_path_position</span></a>()</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-navigationagent2d-method-get-path-length"><span class="std std-ref">get_path_length</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_rid.html#class-rid"><span class="std std-ref">RID</span></a></p></td>
+<td><p><a class="reference internal" href="#class-navigationagent2d-method-get-rid"><span class="std std-ref">get_rid</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-navigationagent2d-method-is-navigation-finished"><span class="std std-ref">is_navigation_finished</span></a>()</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-navigationagent2d-method-is-target-reachable"><span class="std std-ref">is_target_reachable</span></a>()</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-navigationagent2d-method-is-target-reached"><span class="std std-ref">is_target_reached</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-navigationagent2d-method-set-avoidance-layer-value"><span class="std std-ref">set_avoidance_layer_value</span></a>(layer_number: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, value: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-navigationagent2d-method-set-avoidance-mask-value"><span class="std std-ref">set_avoidance_mask_value</span></a>(mask_number: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, value: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-navigationagent2d-method-set-navigation-layer-value"><span class="std std-ref">set_navigation_layer_value</span></a>(layer_number: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, value: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-navigationagent2d-method-set-navigation-map"><span class="std std-ref">set_navigation_map</span></a>(navigation_map: <a class="reference internal" href="class_rid.html#class-rid"><span class="std std-ref">RID</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-navigationagent2d-method-set-velocity-forced"><span class="std std-ref">set_velocity_forced</span></a>(velocity: <a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a>)</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="signals">
+<h2>Signals<a class="headerlink" href="#signals" title="Link to this heading"></a></h2>
+<p class="classref-signal" id="class-navigationagent2d-signal-link-reached"><strong>link_reached</strong>(details: <a class="reference internal" href="class_dictionary.html#class-dictionary"><span class="std std-ref">Dictionary</span></a>) <a class="reference internal" href="#class-navigationagent2d-signal-link-reached"><span class="std std-ref">🔗</span></a></p>
+<p>Signals that the agent reached a navigation link. Emitted when the agent moves within <a class="reference internal" href="#class-navigationagent2d-property-path-desired-distance"><span class="std std-ref">path_desired_distance</span></a> of the next position of the path when that position is a navigation link.</p>
+<p>The details dictionary may contain the following keys depending on the value of <a class="reference internal" href="#class-navigationagent2d-property-path-metadata-flags"><span class="std std-ref">path_metadata_flags</span></a>:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">position</span></code>: The start position of the link that was reached.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">type</span></code>: Always <a class="reference internal" href="class_navigationpathqueryresult2d.html#class-navigationpathqueryresult2d-constant-path-segment-type-link"><span class="std std-ref">NavigationPathQueryResult2D.PATH_SEGMENT_TYPE_LINK</span></a>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">rid</span></code>: The <a class="reference internal" href="class_rid.html#class-rid"><span class="std std-ref">RID</span></a> of the link.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">owner</span></code>: The object which manages the link (usually <a class="reference internal" href="class_navigationlink2d.html#class-navigationlink2d"><span class="std std-ref">NavigationLink2D</span></a>).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">link_entry_position</span></code>: If <code class="docutils literal notranslate"><span class="pre">owner</span></code> is available and the owner is a <a class="reference internal" href="class_navigationlink2d.html#class-navigationlink2d"><span class="std std-ref">NavigationLink2D</span></a>, it will contain the global position of the link’s point the agent is entering.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">link_exit_position</span></code>: If <code class="docutils literal notranslate"><span class="pre">owner</span></code> is available and the owner is a <a class="reference internal" href="class_navigationlink2d.html#class-navigationlink2d"><span class="std std-ref">NavigationLink2D</span></a>, it will contain the global position of the link’s point which the agent is exiting.</p></li>
+</ul>
+<hr class="classref-item-separator docutils" />
+<p class="classref-signal" id="class-navigationagent2d-signal-navigation-finished"><strong>navigation_finished</strong>() <a class="reference internal" href="#class-navigationagent2d-signal-navigation-finished"><span class="std std-ref">🔗</span></a></p>
+<p>Signals that the agent’s navigation has finished. If the target is reachable, navigation ends when the target is reached. If the target is unreachable, navigation ends when the last waypoint of the path is reached. This signal is emitted only once per loaded path.</p>
+<p>This signal will be emitted just after <a class="reference internal" href="#class-navigationagent2d-signal-target-reached"><span class="std std-ref">target_reached</span></a> when the target is reachable.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-signal" id="class-navigationagent2d-signal-path-changed"><strong>path_changed</strong>() <a class="reference internal" href="#class-navigationagent2d-signal-path-changed"><span class="std std-ref">🔗</span></a></p>
+<p>Emitted when the agent had to update the loaded path:</p>
+<ul class="simple">
+<li><p>because path was previously empty.</p></li>
+<li><p>because navigation map has changed.</p></li>
+<li><p>because agent pushed further away from the current path segment than the <a class="reference internal" href="#class-navigationagent2d-property-path-max-distance"><span class="std std-ref">path_max_distance</span></a>.</p></li>
+</ul>
+<hr class="classref-item-separator docutils" />
+<p class="classref-signal" id="class-navigationagent2d-signal-target-reached"><strong>target_reached</strong>() <a class="reference internal" href="#class-navigationagent2d-signal-target-reached"><span class="std std-ref">🔗</span></a></p>
+<p>Signals that the agent reached the target, i.e. the agent moved within <a class="reference internal" href="#class-navigationagent2d-property-target-desired-distance"><span class="std std-ref">target_desired_distance</span></a> of the <a class="reference internal" href="#class-navigationagent2d-property-target-position"><span class="std std-ref">target_position</span></a>. This signal is emitted only once per loaded path.</p>
+<p>This signal will be emitted just before <a class="reference internal" href="#class-navigationagent2d-signal-navigation-finished"><span class="std std-ref">navigation_finished</span></a> when the target is reachable.</p>
+<p>It may not always be possible to reach the target but it should always be possible to reach the final position. See <a class="reference internal" href="#class-navigationagent2d-method-get-final-position"><span class="std std-ref">get_final_position()</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-signal" id="class-navigationagent2d-signal-velocity-computed"><strong>velocity_computed</strong>(safe_velocity: <a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a>) <a class="reference internal" href="#class-navigationagent2d-signal-velocity-computed"><span class="std std-ref">🔗</span></a></p>
+<p>Notifies when the collision avoidance velocity is calculated. Emitted every update as long as <a class="reference internal" href="#class-navigationagent2d-property-avoidance-enabled"><span class="std std-ref">avoidance_enabled</span></a> is <code class="docutils literal notranslate"><span class="pre">true</span></code> and the agent has a navigation map.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-signal" id="class-navigationagent2d-signal-waypoint-reached"><strong>waypoint_reached</strong>(details: <a class="reference internal" href="class_dictionary.html#class-dictionary"><span class="std std-ref">Dictionary</span></a>) <a class="reference internal" href="#class-navigationagent2d-signal-waypoint-reached"><span class="std std-ref">🔗</span></a></p>
+<p>Signals that the agent reached a waypoint. Emitted when the agent moves within <a class="reference internal" href="#class-navigationagent2d-property-path-desired-distance"><span class="std std-ref">path_desired_distance</span></a> of the next position of the path.</p>
+<p>The details dictionary may contain the following keys depending on the value of <a class="reference internal" href="#class-navigationagent2d-property-path-metadata-flags"><span class="std std-ref">path_metadata_flags</span></a>:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">position</span></code>: The position of the waypoint that was reached.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">type</span></code>: The type of navigation primitive (region or link) that contains this waypoint.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">rid</span></code>: The <a class="reference internal" href="class_rid.html#class-rid"><span class="std std-ref">RID</span></a> of the containing navigation primitive (region or link).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">owner</span></code>: The object which manages the containing navigation primitive (region or link).</p></li>
+</ul>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="property-descriptions">
+<h2>Property Descriptions<a class="headerlink" href="#property-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-property" id="class-navigationagent2d-property-avoidance-enabled"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>avoidance_enabled</strong> = <code class="docutils literal notranslate"><span class="pre">false</span></code> <a class="reference internal" href="#class-navigationagent2d-property-avoidance-enabled"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_avoidance_enabled</strong>(value: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>get_avoidance_enabled</strong>()</p></li>
+</ul>
+<p>If <code class="docutils literal notranslate"><span class="pre">true</span></code> the agent is registered for an RVO avoidance callback on the <a class="reference internal" href="class_navigationserver2d.html#class-navigationserver2d"><span class="std std-ref">NavigationServer2D</span></a>. When <a class="reference internal" href="#class-navigationagent2d-property-velocity"><span class="std std-ref">velocity</span></a> is used and the processing is completed a <code class="docutils literal notranslate"><span class="pre">safe_velocity</span></code> Vector2 is received with a signal connection to <a class="reference internal" href="#class-navigationagent2d-signal-velocity-computed"><span class="std std-ref">velocity_computed</span></a>. Avoidance processing with many registered agents has a significant performance cost and should only be enabled on agents that currently require it.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-navigationagent2d-property-avoidance-layers"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>avoidance_layers</strong> = <code class="docutils literal notranslate"><span class="pre">1</span></code> <a class="reference internal" href="#class-navigationagent2d-property-avoidance-layers"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_avoidance_layers</strong>(value: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>get_avoidance_layers</strong>()</p></li>
+</ul>
+<p>A bitfield determining the avoidance layers for this NavigationAgent. Other agents with a matching bit on the <a class="reference internal" href="#class-navigationagent2d-property-avoidance-mask"><span class="std std-ref">avoidance_mask</span></a> will avoid this agent.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-navigationagent2d-property-avoidance-mask"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>avoidance_mask</strong> = <code class="docutils literal notranslate"><span class="pre">1</span></code> <a class="reference internal" href="#class-navigationagent2d-property-avoidance-mask"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_avoidance_mask</strong>(value: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>get_avoidance_mask</strong>()</p></li>
+</ul>
+<p>A bitfield determining what other avoidance agents and obstacles this NavigationAgent will avoid when a bit matches at least one of their <a class="reference internal" href="#class-navigationagent2d-property-avoidance-layers"><span class="std std-ref">avoidance_layers</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-navigationagent2d-property-avoidance-priority"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>avoidance_priority</strong> = <code class="docutils literal notranslate"><span class="pre">1.0</span></code> <a class="reference internal" href="#class-navigationagent2d-property-avoidance-priority"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_avoidance_priority</strong>(value: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>get_avoidance_priority</strong>()</p></li>
+</ul>
+<p>The agent does not adjust the velocity for other agents that would match the <a class="reference internal" href="#class-navigationagent2d-property-avoidance-mask"><span class="std std-ref">avoidance_mask</span></a> but have a lower <a class="reference internal" href="#class-navigationagent2d-property-avoidance-priority"><span class="std std-ref">avoidance_priority</span></a>. This in turn makes the other agents with lower priority adjust their velocities even more to avoid collision with this agent.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-navigationagent2d-property-debug-enabled"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>debug_enabled</strong> = <code class="docutils literal notranslate"><span class="pre">false</span></code> <a class="reference internal" href="#class-navigationagent2d-property-debug-enabled"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_debug_enabled</strong>(value: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>get_debug_enabled</strong>()</p></li>
+</ul>
+<p>If <code class="docutils literal notranslate"><span class="pre">true</span></code> shows debug visuals for this agent.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-navigationagent2d-property-debug-path-custom-color"><a class="reference internal" href="class_color.html#class-color"><span class="std std-ref">Color</span></a> <strong>debug_path_custom_color</strong> = <code class="docutils literal notranslate"><span class="pre">Color(1,</span> <span class="pre">1,</span> <span class="pre">1,</span> <span class="pre">1)</span></code> <a class="reference internal" href="#class-navigationagent2d-property-debug-path-custom-color"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_debug_path_custom_color</strong>(value: <a class="reference internal" href="class_color.html#class-color"><span class="std std-ref">Color</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_color.html#class-color"><span class="std std-ref">Color</span></a> <strong>get_debug_path_custom_color</strong>()</p></li>
+</ul>
+<p>If <a class="reference internal" href="#class-navigationagent2d-property-debug-use-custom"><span class="std std-ref">debug_use_custom</span></a> is <code class="docutils literal notranslate"><span class="pre">true</span></code> uses this color for this agent instead of global color.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-navigationagent2d-property-debug-path-custom-line-width"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>debug_path_custom_line_width</strong> = <code class="docutils literal notranslate"><span class="pre">-1.0</span></code> <a class="reference internal" href="#class-navigationagent2d-property-debug-path-custom-line-width"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_debug_path_custom_line_width</strong>(value: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>get_debug_path_custom_line_width</strong>()</p></li>
+</ul>
+<p>If <a class="reference internal" href="#class-navigationagent2d-property-debug-use-custom"><span class="std std-ref">debug_use_custom</span></a> is <code class="docutils literal notranslate"><span class="pre">true</span></code> uses this line width for rendering paths for this agent instead of global line width.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-navigationagent2d-property-debug-path-custom-point-size"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>debug_path_custom_point_size</strong> = <code class="docutils literal notranslate"><span class="pre">4.0</span></code> <a class="reference internal" href="#class-navigationagent2d-property-debug-path-custom-point-size"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_debug_path_custom_point_size</strong>(value: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>get_debug_path_custom_point_size</strong>()</p></li>
+</ul>
+<p>If <a class="reference internal" href="#class-navigationagent2d-property-debug-use-custom"><span class="std std-ref">debug_use_custom</span></a> is <code class="docutils literal notranslate"><span class="pre">true</span></code> uses this rasterized point size for rendering path points for this agent instead of global point size.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-navigationagent2d-property-debug-use-custom"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>debug_use_custom</strong> = <code class="docutils literal notranslate"><span class="pre">false</span></code> <a class="reference internal" href="#class-navigationagent2d-property-debug-use-custom"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_debug_use_custom</strong>(value: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>get_debug_use_custom</strong>()</p></li>
+</ul>
+<p>If <code class="docutils literal notranslate"><span class="pre">true</span></code> uses the defined <a class="reference internal" href="#class-navigationagent2d-property-debug-path-custom-color"><span class="std std-ref">debug_path_custom_color</span></a> for this agent instead of global color.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-navigationagent2d-property-max-neighbors"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>max_neighbors</strong> = <code class="docutils literal notranslate"><span class="pre">10</span></code> <a class="reference internal" href="#class-navigationagent2d-property-max-neighbors"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_max_neighbors</strong>(value: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>get_max_neighbors</strong>()</p></li>
+</ul>
+<p>The maximum number of neighbors for the agent to consider.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-navigationagent2d-property-max-speed"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>max_speed</strong> = <code class="docutils literal notranslate"><span class="pre">100.0</span></code> <a class="reference internal" href="#class-navigationagent2d-property-max-speed"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_max_speed</strong>(value: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>get_max_speed</strong>()</p></li>
+</ul>
+<p>The maximum speed that an agent can move.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-navigationagent2d-property-navigation-layers"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>navigation_layers</strong> = <code class="docutils literal notranslate"><span class="pre">1</span></code> <a class="reference internal" href="#class-navigationagent2d-property-navigation-layers"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_navigation_layers</strong>(value: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>get_navigation_layers</strong>()</p></li>
+</ul>
+<p>A bitfield determining which navigation layers of navigation regions this agent will use to calculate a path. Changing it during runtime will clear the current navigation path and generate a new one, according to the new navigation layers.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-navigationagent2d-property-neighbor-distance"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>neighbor_distance</strong> = <code class="docutils literal notranslate"><span class="pre">500.0</span></code> <a class="reference internal" href="#class-navigationagent2d-property-neighbor-distance"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_neighbor_distance</strong>(value: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>get_neighbor_distance</strong>()</p></li>
+</ul>
+<p>The distance to search for other agents.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-navigationagent2d-property-path-desired-distance"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>path_desired_distance</strong> = <code class="docutils literal notranslate"><span class="pre">20.0</span></code> <a class="reference internal" href="#class-navigationagent2d-property-path-desired-distance"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_path_desired_distance</strong>(value: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>get_path_desired_distance</strong>()</p></li>
+</ul>
+<p>The distance threshold before a path point is considered to be reached. This allows agents to not have to hit a path point on the path exactly, but only to reach its general area. If this value is set too high, the NavigationAgent will skip points on the path, which can lead to it leaving the navigation mesh. If this value is set too low, the NavigationAgent will be stuck in a repath loop because it will constantly overshoot the distance to the next point on each physics frame update.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-navigationagent2d-property-path-max-distance"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>path_max_distance</strong> = <code class="docutils literal notranslate"><span class="pre">100.0</span></code> <a class="reference internal" href="#class-navigationagent2d-property-path-max-distance"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_path_max_distance</strong>(value: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>get_path_max_distance</strong>()</p></li>
+</ul>
+<p>The maximum distance the agent is allowed away from the ideal path to the final position. This can happen due to trying to avoid collisions. When the maximum distance is exceeded, it recalculates the ideal path.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-navigationagent2d-property-path-metadata-flags"><abbr title="This value is an integer composed as a bitmask of the following flags.">BitField</abbr>[<a class="reference internal" href="class_navigationpathqueryparameters2d.html#enum-navigationpathqueryparameters2d-pathmetadataflags"><span class="std std-ref">PathMetadataFlags</span></a>] <strong>path_metadata_flags</strong> = <code class="docutils literal notranslate"><span class="pre">7</span></code> <a class="reference internal" href="#class-navigationagent2d-property-path-metadata-flags"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_path_metadata_flags</strong>(value: <abbr title="This value is an integer composed as a bitmask of the following flags.">BitField</abbr>[<a class="reference internal" href="class_navigationpathqueryparameters2d.html#enum-navigationpathqueryparameters2d-pathmetadataflags"><span class="std std-ref">PathMetadataFlags</span></a>])</p></li>
+<li><p><abbr title="This value is an integer composed as a bitmask of the following flags.">BitField</abbr>[<a class="reference internal" href="class_navigationpathqueryparameters2d.html#enum-navigationpathqueryparameters2d-pathmetadataflags"><span class="std std-ref">PathMetadataFlags</span></a>] <strong>get_path_metadata_flags</strong>()</p></li>
+</ul>
+<p>Additional information to return with the navigation path.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-navigationagent2d-property-path-postprocessing"><a class="reference internal" href="class_navigationpathqueryparameters2d.html#enum-navigationpathqueryparameters2d-pathpostprocessing"><span class="std std-ref">PathPostProcessing</span></a> <strong>path_postprocessing</strong> = <code class="docutils literal notranslate"><span class="pre">0</span></code> <a class="reference internal" href="#class-navigationagent2d-property-path-postprocessing"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_path_postprocessing</strong>(value: <a class="reference internal" href="class_navigationpathqueryparameters2d.html#enum-navigationpathqueryparameters2d-pathpostprocessing"><span class="std std-ref">PathPostProcessing</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_navigationpathqueryparameters2d.html#enum-navigationpathqueryparameters2d-pathpostprocessing"><span class="std std-ref">PathPostProcessing</span></a> <strong>get_path_postprocessing</strong>()</p></li>
+</ul>
+<p>The path postprocessing applied to the raw path corridor found by the <a class="reference internal" href="#class-navigationagent2d-property-pathfinding-algorithm"><span class="std std-ref">pathfinding_algorithm</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-navigationagent2d-property-path-return-max-length"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>path_return_max_length</strong> = <code class="docutils literal notranslate"><span class="pre">0.0</span></code> <a class="reference internal" href="#class-navigationagent2d-property-path-return-max-length"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_path_return_max_length</strong>(value: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>get_path_return_max_length</strong>()</p></li>
+</ul>
+<p>The maximum allowed length of the returned path in world units. A path will be clipped when going over this length.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-navigationagent2d-property-path-return-max-radius"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>path_return_max_radius</strong> = <code class="docutils literal notranslate"><span class="pre">0.0</span></code> <a class="reference internal" href="#class-navigationagent2d-property-path-return-max-radius"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_path_return_max_radius</strong>(value: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>get_path_return_max_radius</strong>()</p></li>
+</ul>
+<p>The maximum allowed radius in world units that the returned path can be from the path start. The path will be clipped when going over this radius. Compared to <a class="reference internal" href="#class-navigationagent2d-property-path-return-max-length"><span class="std std-ref">path_return_max_length</span></a>, this allows the agent to go that much further, if they need to walk around a corner.</p>
+<p><strong>Note:</strong> This will perform a sphere clip considering only the actual navigation mesh path points with the first path position being the sphere’s center.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-navigationagent2d-property-path-search-max-distance"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>path_search_max_distance</strong> = <code class="docutils literal notranslate"><span class="pre">0.0</span></code> <a class="reference internal" href="#class-navigationagent2d-property-path-search-max-distance"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_path_search_max_distance</strong>(value: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>get_path_search_max_distance</strong>()</p></li>
+</ul>
+<p>The maximum distance a searched polygon can be away from the start polygon before the pathfinding cancels the search for a path to the (possibly unreachable or very far away) target position polygon. In this case the pathfinding resets and builds a path from the start polygon to the polygon that was found closest to the target position so far. A value of <code class="docutils literal notranslate"><span class="pre">0</span></code> or below counts as unlimited. In case of unlimited the pathfinding will search all polygons connected with the start polygon until either the target position polygon is found or all available polygon search options are exhausted.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-navigationagent2d-property-path-search-max-polygons"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>path_search_max_polygons</strong> = <code class="docutils literal notranslate"><span class="pre">4096</span></code> <a class="reference internal" href="#class-navigationagent2d-property-path-search-max-polygons"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_path_search_max_polygons</strong>(value: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>get_path_search_max_polygons</strong>()</p></li>
+</ul>
+<p>The maximum number of polygons that are searched before the pathfinding cancels the search for a path to the (possibly unreachable or very far away) target position polygon. In this case the pathfinding resets and builds a path from the start polygon to the polygon that was found closest to the target position so far. A value of <code class="docutils literal notranslate"><span class="pre">0</span></code> or below counts as unlimited. In case of unlimited the pathfinding will search all polygons connected with the start polygon until either the target position polygon is found or all available polygon search options are exhausted.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-navigationagent2d-property-pathfinding-algorithm"><a class="reference internal" href="class_navigationpathqueryparameters2d.html#enum-navigationpathqueryparameters2d-pathfindingalgorithm"><span class="std std-ref">PathfindingAlgorithm</span></a> <strong>pathfinding_algorithm</strong> = <code class="docutils literal notranslate"><span class="pre">0</span></code> <a class="reference internal" href="#class-navigationagent2d-property-pathfinding-algorithm"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_pathfinding_algorithm</strong>(value: <a class="reference internal" href="class_navigationpathqueryparameters2d.html#enum-navigationpathqueryparameters2d-pathfindingalgorithm"><span class="std std-ref">PathfindingAlgorithm</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_navigationpathqueryparameters2d.html#enum-navigationpathqueryparameters2d-pathfindingalgorithm"><span class="std std-ref">PathfindingAlgorithm</span></a> <strong>get_pathfinding_algorithm</strong>()</p></li>
+</ul>
+<p>The pathfinding algorithm used in the path query.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-navigationagent2d-property-radius"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>radius</strong> = <code class="docutils literal notranslate"><span class="pre">10.0</span></code> <a class="reference internal" href="#class-navigationagent2d-property-radius"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_radius</strong>(value: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>get_radius</strong>()</p></li>
+</ul>
+<p>The radius of the avoidance agent. This is the “body” of the avoidance agent and not the avoidance maneuver starting radius (which is controlled by <a class="reference internal" href="#class-navigationagent2d-property-neighbor-distance"><span class="std std-ref">neighbor_distance</span></a>).</p>
+<p>Does not affect normal pathfinding. To change an actor’s pathfinding radius bake <a class="reference internal" href="class_navigationpolygon.html#class-navigationpolygon"><span class="std std-ref">NavigationPolygon</span></a> resources with a different <a class="reference internal" href="class_navigationpolygon.html#class-navigationpolygon-property-agent-radius"><span class="std std-ref">NavigationPolygon.agent_radius</span></a> property and use different navigation maps for each actor size.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-navigationagent2d-property-simplify-epsilon"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>simplify_epsilon</strong> = <code class="docutils literal notranslate"><span class="pre">0.0</span></code> <a class="reference internal" href="#class-navigationagent2d-property-simplify-epsilon"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_simplify_epsilon</strong>(value: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>get_simplify_epsilon</strong>()</p></li>
+</ul>
+<p>The path simplification amount in worlds units.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-navigationagent2d-property-simplify-path"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>simplify_path</strong> = <code class="docutils literal notranslate"><span class="pre">false</span></code> <a class="reference internal" href="#class-navigationagent2d-property-simplify-path"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_simplify_path</strong>(value: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>get_simplify_path</strong>()</p></li>
+</ul>
+<p>If <code class="docutils literal notranslate"><span class="pre">true</span></code> a simplified version of the path will be returned with less critical path points removed. The simplification amount is controlled by <a class="reference internal" href="#class-navigationagent2d-property-simplify-epsilon"><span class="std std-ref">simplify_epsilon</span></a>. The simplification uses a variant of Ramer-Douglas-Peucker algorithm for curve point decimation.</p>
+<p>Path simplification can be helpful to mitigate various path following issues that can arise with certain agent types and script behaviors. E.g. “steering” agents or avoidance in “open fields”.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-navigationagent2d-property-target-desired-distance"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>target_desired_distance</strong> = <code class="docutils literal notranslate"><span class="pre">10.0</span></code> <a class="reference internal" href="#class-navigationagent2d-property-target-desired-distance"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_target_desired_distance</strong>(value: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>get_target_desired_distance</strong>()</p></li>
+</ul>
+<p>The distance threshold before the target is considered to be reached. On reaching the target, <a class="reference internal" href="#class-navigationagent2d-signal-target-reached"><span class="std std-ref">target_reached</span></a> is emitted and navigation ends (see <a class="reference internal" href="#class-navigationagent2d-method-is-navigation-finished"><span class="std std-ref">is_navigation_finished()</span></a> and <a class="reference internal" href="#class-navigationagent2d-signal-navigation-finished"><span class="std std-ref">navigation_finished</span></a>).</p>
+<p>You can make navigation end early by setting this property to a value greater than <a class="reference internal" href="#class-navigationagent2d-property-path-desired-distance"><span class="std std-ref">path_desired_distance</span></a> (navigation will end before reaching the last waypoint).</p>
+<p>You can also make navigation end closer to the target than each individual path position by setting this property to a value lower than <a class="reference internal" href="#class-navigationagent2d-property-path-desired-distance"><span class="std std-ref">path_desired_distance</span></a> (navigation won’t immediately end when reaching the last waypoint). However, if the value set is too low, the agent will be stuck in a repath loop because it will constantly overshoot the distance to the target on each physics frame update.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-navigationagent2d-property-target-position"><a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a> <strong>target_position</strong> = <code class="docutils literal notranslate"><span class="pre">Vector2(0,</span> <span class="pre">0)</span></code> <a class="reference internal" href="#class-navigationagent2d-property-target-position"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_target_position</strong>(value: <a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a> <strong>get_target_position</strong>()</p></li>
+</ul>
+<p>If set, a new navigation path from the current agent position to the <a class="reference internal" href="#class-navigationagent2d-property-target-position"><span class="std std-ref">target_position</span></a> is requested from the NavigationServer.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-navigationagent2d-property-time-horizon-agents"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>time_horizon_agents</strong> = <code class="docutils literal notranslate"><span class="pre">1.0</span></code> <a class="reference internal" href="#class-navigationagent2d-property-time-horizon-agents"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_time_horizon_agents</strong>(value: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>get_time_horizon_agents</strong>()</p></li>
+</ul>
+<p>The minimal amount of time for which this agent’s velocities, that are computed with the collision avoidance algorithm, are safe with respect to other agents. The larger the number, the sooner the agent will respond to other agents, but less freedom in choosing its velocities. A too high value will slow down agents movement considerably. Must be positive.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-navigationagent2d-property-time-horizon-obstacles"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>time_horizon_obstacles</strong> = <code class="docutils literal notranslate"><span class="pre">0.0</span></code> <a class="reference internal" href="#class-navigationagent2d-property-time-horizon-obstacles"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_time_horizon_obstacles</strong>(value: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>get_time_horizon_obstacles</strong>()</p></li>
+</ul>
+<p>The minimal amount of time for which this agent’s velocities, that are computed with the collision avoidance algorithm, are safe with respect to static avoidance obstacles. The larger the number, the sooner the agent will respond to static avoidance obstacles, but less freedom in choosing its velocities. A too high value will slow down agents movement considerably. Must be positive.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-navigationagent2d-property-velocity"><a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a> <strong>velocity</strong> = <code class="docutils literal notranslate"><span class="pre">Vector2(0,</span> <span class="pre">0)</span></code> <a class="reference internal" href="#class-navigationagent2d-property-velocity"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_velocity</strong>(value: <a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a> <strong>get_velocity</strong>()</p></li>
+</ul>
+<p>Sets the new wanted velocity for the agent. The avoidance simulation will try to fulfill this velocity if possible but will modify it to avoid collision with other agents and obstacles. When an agent is teleported to a new position, use <a class="reference internal" href="#class-navigationagent2d-method-set-velocity-forced"><span class="std std-ref">set_velocity_forced()</span></a> as well to reset the internal simulation velocity.</p>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="method-descriptions">
+<h2>Method Descriptions<a class="headerlink" href="#method-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-method" id="class-navigationagent2d-method-distance-to-target"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>distance_to_target</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-navigationagent2d-method-distance-to-target"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the distance to the target position, using the agent’s global position. The user must set <a class="reference internal" href="#class-navigationagent2d-property-target-position"><span class="std std-ref">target_position</span></a> in order for this to be accurate.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-navigationagent2d-method-get-avoidance-layer-value"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>get_avoidance_layer_value</strong>(layer_number: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-navigationagent2d-method-get-avoidance-layer-value"><span class="std std-ref">🔗</span></a></p>
+<p>Returns whether or not the specified layer of the <a class="reference internal" href="#class-navigationagent2d-property-avoidance-layers"><span class="std std-ref">avoidance_layers</span></a> bitmask is enabled, given a <code class="docutils literal notranslate"><span class="pre">layer_number</span></code> between 1 and 32.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-navigationagent2d-method-get-avoidance-mask-value"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>get_avoidance_mask_value</strong>(mask_number: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-navigationagent2d-method-get-avoidance-mask-value"><span class="std std-ref">🔗</span></a></p>
+<p>Returns whether or not the specified mask of the <a class="reference internal" href="#class-navigationagent2d-property-avoidance-mask"><span class="std std-ref">avoidance_mask</span></a> bitmask is enabled, given a <code class="docutils literal notranslate"><span class="pre">mask_number</span></code> between 1 and 32.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-navigationagent2d-method-get-current-navigation-path"><a class="reference internal" href="class_packedvector2array.html#class-packedvector2array"><span class="std std-ref">PackedVector2Array</span></a> <strong>get_current_navigation_path</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-navigationagent2d-method-get-current-navigation-path"><span class="std std-ref">🔗</span></a></p>
+<p>Returns this agent’s current path from start to finish in global coordinates. The path only updates when the target position is changed or the agent requires a repath. The path array is not intended to be used in direct path movement as the agent has its own internal path logic that would get corrupted by changing the path array manually. Use the intended <a class="reference internal" href="#class-navigationagent2d-method-get-next-path-position"><span class="std std-ref">get_next_path_position()</span></a> once every physics frame to receive the next path point for the agents movement as this function also updates the internal path logic.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-navigationagent2d-method-get-current-navigation-path-index"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>get_current_navigation_path_index</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-navigationagent2d-method-get-current-navigation-path-index"><span class="std std-ref">🔗</span></a></p>
+<p>Returns which index the agent is currently on in the navigation path’s <a class="reference internal" href="class_packedvector2array.html#class-packedvector2array"><span class="std std-ref">PackedVector2Array</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-navigationagent2d-method-get-current-navigation-result"><a class="reference internal" href="class_navigationpathqueryresult2d.html#class-navigationpathqueryresult2d"><span class="std std-ref">NavigationPathQueryResult2D</span></a> <strong>get_current_navigation_result</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-navigationagent2d-method-get-current-navigation-result"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the path query result for the path the agent is currently following.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-navigationagent2d-method-get-final-position"><a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a> <strong>get_final_position</strong>() <a class="reference internal" href="#class-navigationagent2d-method-get-final-position"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the reachable final position of the current navigation path in global coordinates. This position can change if the agent needs to update the navigation path which makes the agent emit the <a class="reference internal" href="#class-navigationagent2d-signal-path-changed"><span class="std std-ref">path_changed</span></a> signal.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-navigationagent2d-method-get-navigation-layer-value"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>get_navigation_layer_value</strong>(layer_number: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-navigationagent2d-method-get-navigation-layer-value"><span class="std std-ref">🔗</span></a></p>
+<p>Returns whether or not the specified layer of the <a class="reference internal" href="#class-navigationagent2d-property-navigation-layers"><span class="std std-ref">navigation_layers</span></a> bitmask is enabled, given a <code class="docutils literal notranslate"><span class="pre">layer_number</span></code> between 1 and 32.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-navigationagent2d-method-get-navigation-map"><a class="reference internal" href="class_rid.html#class-rid"><span class="std std-ref">RID</span></a> <strong>get_navigation_map</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-navigationagent2d-method-get-navigation-map"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the <a class="reference internal" href="class_rid.html#class-rid"><span class="std std-ref">RID</span></a> of the navigation map for this NavigationAgent node. This function returns always the map set on the NavigationAgent node and not the map of the abstract agent on the NavigationServer. If the agent map is changed directly with the NavigationServer API the NavigationAgent node will not be aware of the map change. Use <a class="reference internal" href="#class-navigationagent2d-method-set-navigation-map"><span class="std std-ref">set_navigation_map()</span></a> to change the navigation map for the NavigationAgent and also update the agent on the NavigationServer.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-navigationagent2d-method-get-next-path-position"><a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a> <strong>get_next_path_position</strong>() <a class="reference internal" href="#class-navigationagent2d-method-get-next-path-position"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the next position in global coordinates that can be moved to, making sure that there are no static objects in the way. If the agent does not have a navigation path, it will return the position of the agent’s parent. The use of this function once every physics frame is required to update the internal path logic of the NavigationAgent.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-navigationagent2d-method-get-path-length"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>get_path_length</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-navigationagent2d-method-get-path-length"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the length of the currently calculated path. The returned value is <code class="docutils literal notranslate"><span class="pre">0.0</span></code>, if the path is still calculating or no calculation has been requested yet.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-navigationagent2d-method-get-rid"><a class="reference internal" href="class_rid.html#class-rid"><span class="std std-ref">RID</span></a> <strong>get_rid</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-navigationagent2d-method-get-rid"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the <a class="reference internal" href="class_rid.html#class-rid"><span class="std std-ref">RID</span></a> of this agent on the <a class="reference internal" href="class_navigationserver2d.html#class-navigationserver2d"><span class="std std-ref">NavigationServer2D</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-navigationagent2d-method-is-navigation-finished"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_navigation_finished</strong>() <a class="reference internal" href="#class-navigationagent2d-method-is-navigation-finished"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if the agent’s navigation has finished. If the target is reachable, navigation ends when the target is reached. If the target is unreachable, navigation ends when the last waypoint of the path is reached.</p>
+<p><strong>Note:</strong> While <code class="docutils literal notranslate"><span class="pre">true</span></code> prefer to stop calling update functions like <a class="reference internal" href="#class-navigationagent2d-method-get-next-path-position"><span class="std std-ref">get_next_path_position()</span></a>. This avoids jittering the standing agent due to calling repeated path updates.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-navigationagent2d-method-is-target-reachable"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_target_reachable</strong>() <a class="reference internal" href="#class-navigationagent2d-method-is-target-reachable"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if <a class="reference internal" href="#class-navigationagent2d-method-get-final-position"><span class="std std-ref">get_final_position()</span></a> is within <a class="reference internal" href="#class-navigationagent2d-property-target-desired-distance"><span class="std std-ref">target_desired_distance</span></a> of the <a class="reference internal" href="#class-navigationagent2d-property-target-position"><span class="std std-ref">target_position</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-navigationagent2d-method-is-target-reached"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_target_reached</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-navigationagent2d-method-is-target-reached"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if the agent reached the target, i.e. the agent moved within <a class="reference internal" href="#class-navigationagent2d-property-target-desired-distance"><span class="std std-ref">target_desired_distance</span></a> of the <a class="reference internal" href="#class-navigationagent2d-property-target-position"><span class="std std-ref">target_position</span></a>. It may not always be possible to reach the target but it should always be possible to reach the final position. See <a class="reference internal" href="#class-navigationagent2d-method-get-final-position"><span class="std std-ref">get_final_position()</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-navigationagent2d-method-set-avoidance-layer-value"><abbr title="No return value.">void</abbr> <strong>set_avoidance_layer_value</strong>(layer_number: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, value: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>) <a class="reference internal" href="#class-navigationagent2d-method-set-avoidance-layer-value"><span class="std std-ref">🔗</span></a></p>
+<p>Based on <code class="docutils literal notranslate"><span class="pre">value</span></code>, enables or disables the specified layer in the <a class="reference internal" href="#class-navigationagent2d-property-avoidance-layers"><span class="std std-ref">avoidance_layers</span></a> bitmask, given a <code class="docutils literal notranslate"><span class="pre">layer_number</span></code> between 1 and 32.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-navigationagent2d-method-set-avoidance-mask-value"><abbr title="No return value.">void</abbr> <strong>set_avoidance_mask_value</strong>(mask_number: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, value: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>) <a class="reference internal" href="#class-navigationagent2d-method-set-avoidance-mask-value"><span class="std std-ref">🔗</span></a></p>
+<p>Based on <code class="docutils literal notranslate"><span class="pre">value</span></code>, enables or disables the specified mask in the <a class="reference internal" href="#class-navigationagent2d-property-avoidance-mask"><span class="std std-ref">avoidance_mask</span></a> bitmask, given a <code class="docutils literal notranslate"><span class="pre">mask_number</span></code> between 1 and 32.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-navigationagent2d-method-set-navigation-layer-value"><abbr title="No return value.">void</abbr> <strong>set_navigation_layer_value</strong>(layer_number: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, value: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>) <a class="reference internal" href="#class-navigationagent2d-method-set-navigation-layer-value"><span class="std std-ref">🔗</span></a></p>
+<p>Based on <code class="docutils literal notranslate"><span class="pre">value</span></code>, enables or disables the specified layer in the <a class="reference internal" href="#class-navigationagent2d-property-navigation-layers"><span class="std std-ref">navigation_layers</span></a> bitmask, given a <code class="docutils literal notranslate"><span class="pre">layer_number</span></code> between 1 and 32.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-navigationagent2d-method-set-navigation-map"><abbr title="No return value.">void</abbr> <strong>set_navigation_map</strong>(navigation_map: <a class="reference internal" href="class_rid.html#class-rid"><span class="std std-ref">RID</span></a>) <a class="reference internal" href="#class-navigationagent2d-method-set-navigation-map"><span class="std std-ref">🔗</span></a></p>
+<p>Sets the <a class="reference internal" href="class_rid.html#class-rid"><span class="std std-ref">RID</span></a> of the navigation map this NavigationAgent node should use and also updates the <code class="docutils literal notranslate"><span class="pre">agent</span></code> on the NavigationServer.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-navigationagent2d-method-set-velocity-forced"><abbr title="No return value.">void</abbr> <strong>set_velocity_forced</strong>(velocity: <a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a>) <a class="reference internal" href="#class-navigationagent2d-method-set-velocity-forced"><span class="std std-ref">🔗</span></a></p>
+<p>Replaces the internal velocity in the collision avoidance simulation with <code class="docutils literal notranslate"><span class="pre">velocity</span></code>. When an agent is teleported to a new position this function should be used in the same frame. If called frequently this function can get agents stuck.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, MUmarShahbaz.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

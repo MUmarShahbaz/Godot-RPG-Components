@@ -1,0 +1,398 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>float &mdash; RPG Components 2D 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=d45e8c67"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            RPG Components 2D
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">float</a><ul>
+<li><a class="reference internal" href="#description">Description</a></li>
+<li><a class="reference internal" href="#tutorials">Tutorials</a></li>
+<li><a class="reference internal" href="#constructors">Constructors</a></li>
+<li><a class="reference internal" href="#operators">Operators</a></li>
+<li><a class="reference internal" href="#constructor-descriptions">Constructor Descriptions</a></li>
+<li><a class="reference internal" href="#operator-descriptions">Operator Descriptions</a></li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">RPG Components 2D</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">float</li>
+      <li class="wy-breadcrumbs-aside">
+              <!-- User defined GitHub URL -->
+              <a href="hide" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="float">
+<span id="class-float"></span><h1>float<a class="headerlink" href="#float" title="Link to this heading"></a></h1>
+<p>A built-in type for floating-point numbers.</p>
+<section class="classref-introduction-group" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
+<p>The <strong>float</strong> built-in type is a 64-bit double-precision floating-point number, equivalent to <code class="docutils literal notranslate"><span class="pre">double</span></code> in C++. This type has 14 reliable decimal digits of precision. The maximum value of <strong>float</strong> is approximately <code class="docutils literal notranslate"><span class="pre">1.79769e308</span></code>, and the minimum is approximately <code class="docutils literal notranslate"><span class="pre">-1.79769e308</span></code>.</p>
+<p>Many methods and properties in the engine use 32-bit single-precision floating-point numbers instead, equivalent to <code class="docutils literal notranslate"><span class="pre">float</span></code> in C++, which have 6 reliable decimal digits of precision. For data structures such as <a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a> and <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>, Godot uses 32-bit floating-point numbers by default, but it can be changed to use 64-bit doubles if Godot is compiled with the <code class="docutils literal notranslate"><span class="pre">precision=double</span></code> option.</p>
+<p>Math done using the <strong>float</strong> type is not guaranteed to be exact and will often result in small errors. You should usually use the <a class="reference internal" href="class_%40globalscope.html#class-globalscope-method-is-equal-approx"><span class="std std-ref">&#64;GlobalScope.is_equal_approx()</span></a> and <a class="reference internal" href="class_%40globalscope.html#class-globalscope-method-is-zero-approx"><span class="std std-ref">&#64;GlobalScope.is_zero_approx()</span></a> methods instead of <code class="docutils literal notranslate"><span class="pre">==</span></code> to compare <strong>float</strong> values for equality.</p>
+<p><strong>Note:</strong> In a boolean context, a <strong>float</strong> will evaluate to <code class="docutils literal notranslate"><span class="pre">false</span></code> if it’s exactly equal to <code class="docutils literal notranslate"><span class="pre">0.0</span></code>, and to <code class="docutils literal notranslate"><span class="pre">true</span></code> otherwise.</p>
+</section>
+<section class="classref-introduction-group" id="tutorials">
+<h2>Tutorials<a class="headerlink" href="#tutorials" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Double-precision_floating-point_format">Wikipedia: Double-precision floating-point format</a></p></li>
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Single-precision_floating-point_format">Wikipedia: Single-precision floating-point format</a></p></li>
+</ul>
+</section>
+<section class="classref-reftable-group" id="constructors">
+<h2>Constructors<a class="headerlink" href="#constructors" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-float-constructor-float"><span class="std std-ref">float</span></a>()</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-float-constructor-float"><span class="std std-ref">float</span></a>(from: <a class="reference internal" href="#class-float"><span class="std std-ref">float</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-float-constructor-float"><span class="std std-ref">float</span></a>(from: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-float-constructor-float"><span class="std std-ref">float</span></a>(from: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-float-constructor-float"><span class="std std-ref">float</span></a>(from: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section class="classref-reftable-group" id="operators">
+<h2>Operators<a class="headerlink" href="#operators" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-float-operator-neq-float"><span class="std std-ref">operator !=</span></a>(right: <a class="reference internal" href="#class-float"><span class="std std-ref">float</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-float-operator-neq-int"><span class="std std-ref">operator !=</span></a>(right: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_color.html#class-color"><span class="std std-ref">Color</span></a></p></td>
+<td><p><a class="reference internal" href="#class-float-operator-mul-color"><span class="std std-ref">operator *</span></a>(right: <a class="reference internal" href="class_color.html#class-color"><span class="std std-ref">Color</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_quaternion.html#class-quaternion"><span class="std std-ref">Quaternion</span></a></p></td>
+<td><p><a class="reference internal" href="#class-float-operator-mul-quaternion"><span class="std std-ref">operator *</span></a>(right: <a class="reference internal" href="class_quaternion.html#class-quaternion"><span class="std std-ref">Quaternion</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a></p></td>
+<td><p><a class="reference internal" href="#class-float-operator-mul-vector2"><span class="std std-ref">operator *</span></a>(right: <a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a></p></td>
+<td><p><a class="reference internal" href="#class-float-operator-mul-vector2i"><span class="std std-ref">operator *</span></a>(right: <a class="reference internal" href="class_vector2i.html#class-vector2i"><span class="std std-ref">Vector2i</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a></p></td>
+<td><p><a class="reference internal" href="#class-float-operator-mul-vector3"><span class="std std-ref">operator *</span></a>(right: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a></p></td>
+<td><p><a class="reference internal" href="#class-float-operator-mul-vector3i"><span class="std std-ref">operator *</span></a>(right: <a class="reference internal" href="class_vector3i.html#class-vector3i"><span class="std std-ref">Vector3i</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_vector4.html#class-vector4"><span class="std std-ref">Vector4</span></a></p></td>
+<td><p><a class="reference internal" href="#class-float-operator-mul-vector4"><span class="std std-ref">operator *</span></a>(right: <a class="reference internal" href="class_vector4.html#class-vector4"><span class="std std-ref">Vector4</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_vector4.html#class-vector4"><span class="std std-ref">Vector4</span></a></p></td>
+<td><p><a class="reference internal" href="#class-float-operator-mul-vector4i"><span class="std std-ref">operator *</span></a>(right: <a class="reference internal" href="class_vector4i.html#class-vector4i"><span class="std std-ref">Vector4i</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-float-operator-mul-float"><span class="std std-ref">operator *</span></a>(right: <a class="reference internal" href="#class-float"><span class="std std-ref">float</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-float-operator-mul-int"><span class="std std-ref">operator *</span></a>(right: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-float-operator-pow-float"><span class="std std-ref">operator **</span></a>(right: <a class="reference internal" href="#class-float"><span class="std std-ref">float</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-float-operator-pow-int"><span class="std std-ref">operator **</span></a>(right: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-float-operator-sum-float"><span class="std std-ref">operator +</span></a>(right: <a class="reference internal" href="#class-float"><span class="std std-ref">float</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-float-operator-sum-int"><span class="std std-ref">operator +</span></a>(right: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-float-operator-dif-float"><span class="std std-ref">operator -</span></a>(right: <a class="reference internal" href="#class-float"><span class="std std-ref">float</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-float-operator-dif-int"><span class="std std-ref">operator -</span></a>(right: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-float-operator-div-float"><span class="std std-ref">operator /</span></a>(right: <a class="reference internal" href="#class-float"><span class="std std-ref">float</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-float-operator-div-int"><span class="std std-ref">operator /</span></a>(right: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-float-operator-lt-float"><span class="std std-ref">operator &lt;</span></a>(right: <a class="reference internal" href="#class-float"><span class="std std-ref">float</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-float-operator-lt-int"><span class="std std-ref">operator &lt;</span></a>(right: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-float-operator-lte-float"><span class="std std-ref">operator &lt;=</span></a>(right: <a class="reference internal" href="#class-float"><span class="std std-ref">float</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-float-operator-lte-int"><span class="std std-ref">operator &lt;=</span></a>(right: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-float-operator-eq-float"><span class="std std-ref">operator ==</span></a>(right: <a class="reference internal" href="#class-float"><span class="std std-ref">float</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-float-operator-eq-int"><span class="std std-ref">operator ==</span></a>(right: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-float-operator-gt-float"><span class="std std-ref">operator &gt;</span></a>(right: <a class="reference internal" href="#class-float"><span class="std std-ref">float</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-float-operator-gt-int"><span class="std std-ref">operator &gt;</span></a>(right: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-float-operator-gte-float"><span class="std std-ref">operator &gt;=</span></a>(right: <a class="reference internal" href="#class-float"><span class="std std-ref">float</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-float-operator-gte-int"><span class="std std-ref">operator &gt;=</span></a>(right: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-float-operator-unplus"><span class="std std-ref">operator unary+</span></a>()</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-float-operator-unminus"><span class="std std-ref">operator unary-</span></a>()</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="constructor-descriptions">
+<h2>Constructor Descriptions<a class="headerlink" href="#constructor-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-constructor" id="class-float-constructor-float"><a class="reference internal" href="#class-float"><span class="std std-ref">float</span></a> <strong>float</strong>() <a class="reference internal" href="#class-float-constructor-float"><span class="std std-ref">🔗</span></a></p>
+<p>Constructs a default-initialized <strong>float</strong> set to <code class="docutils literal notranslate"><span class="pre">0.0</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-constructor"><a class="reference internal" href="#class-float"><span class="std std-ref">float</span></a> <strong>float</strong>(from: <a class="reference internal" href="#class-float"><span class="std std-ref">float</span></a>)</p>
+<p>Constructs a <strong>float</strong> as a copy of the given <strong>float</strong>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-constructor"><a class="reference internal" href="#class-float"><span class="std std-ref">float</span></a> <strong>float</strong>(from: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>)</p>
+<p>Converts a <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a> to a <strong>float</strong>, following the same rules as <a class="reference internal" href="class_string.html#class-string-method-to-float"><span class="std std-ref">String.to_float()</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-constructor"><a class="reference internal" href="#class-float"><span class="std std-ref">float</span></a> <strong>float</strong>(from: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>)</p>
+<p>Cast a <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> value to a floating-point value, <code class="docutils literal notranslate"><span class="pre">float(true)</span></code> will be equal to 1.0 and <code class="docutils literal notranslate"><span class="pre">float(false)</span></code> will be equal to 0.0.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-constructor"><a class="reference internal" href="#class-float"><span class="std std-ref">float</span></a> <strong>float</strong>(from: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p>
+<p>Cast an <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> value to a floating-point value, <code class="docutils literal notranslate"><span class="pre">float(1)</span></code> will be equal to <code class="docutils literal notranslate"><span class="pre">1.0</span></code>.</p>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="operator-descriptions">
+<h2>Operator Descriptions<a class="headerlink" href="#operator-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-operator" id="class-float-operator-neq-float"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>operator !=</strong>(right: <a class="reference internal" href="#class-float"><span class="std std-ref">float</span></a>) <a class="reference internal" href="#class-float-operator-neq-float"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if two floats are different from each other.</p>
+<p><strong>Note:</strong> <span class="xref std std-ref">&#64;GDScript.NAN</span> doesn’t behave the same as other numbers. Therefore, the results from this operator may not be accurate if NaNs are included.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-operator" id="class-float-operator-neq-int"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>operator !=</strong>(right: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <a class="reference internal" href="#class-float-operator-neq-int"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if the integer has different value than the float.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-operator" id="class-float-operator-mul-color"><a class="reference internal" href="class_color.html#class-color"><span class="std std-ref">Color</span></a> <strong>operator *</strong>(right: <a class="reference internal" href="class_color.html#class-color"><span class="std std-ref">Color</span></a>) <a class="reference internal" href="#class-float-operator-mul-color"><span class="std std-ref">🔗</span></a></p>
+<p>Multiplies each component of the <a class="reference internal" href="class_color.html#class-color"><span class="std std-ref">Color</span></a>, including the alpha, by the given <strong>float</strong>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="mf">1.5</span> <span class="o">*</span> <span class="n">Color</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">))</span> <span class="c1"># Prints (0.75, 0.75, 0.75, 1.5)</span>
+</pre></div>
+</div>
+<hr class="classref-item-separator docutils" />
+<p class="classref-operator" id="class-float-operator-mul-quaternion"><a class="reference internal" href="class_quaternion.html#class-quaternion"><span class="std std-ref">Quaternion</span></a> <strong>operator *</strong>(right: <a class="reference internal" href="class_quaternion.html#class-quaternion"><span class="std std-ref">Quaternion</span></a>) <a class="reference internal" href="#class-float-operator-mul-quaternion"><span class="std std-ref">🔗</span></a></p>
+<p>Multiplies each component of the <a class="reference internal" href="class_quaternion.html#class-quaternion"><span class="std std-ref">Quaternion</span></a> by the given <strong>float</strong>. This operation is not meaningful on its own, but it can be used as a part of a larger expression.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-operator" id="class-float-operator-mul-vector2"><a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a> <strong>operator *</strong>(right: <a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a>) <a class="reference internal" href="#class-float-operator-mul-vector2"><span class="std std-ref">🔗</span></a></p>
+<p>Multiplies each component of the <a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a> by the given <strong>float</strong>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="mf">2.5</span> <span class="o">*</span> <span class="n">Vector2</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span> <span class="c1"># Prints (2.5, 7.5)</span>
+</pre></div>
+</div>
+<hr class="classref-item-separator docutils" />
+<p class="classref-operator" id="class-float-operator-mul-vector2i"><a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a> <strong>operator *</strong>(right: <a class="reference internal" href="class_vector2i.html#class-vector2i"><span class="std std-ref">Vector2i</span></a>) <a class="reference internal" href="#class-float-operator-mul-vector2i"><span class="std std-ref">🔗</span></a></p>
+<p>Multiplies each component of the <a class="reference internal" href="class_vector2i.html#class-vector2i"><span class="std std-ref">Vector2i</span></a> by the given <strong>float</strong>. Returns a <a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="mf">0.9</span> <span class="o">*</span> <span class="n">Vector2i</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">15</span><span class="p">))</span> <span class="c1"># Prints (9.0, 13.5)</span>
+</pre></div>
+</div>
+<hr class="classref-item-separator docutils" />
+<p class="classref-operator" id="class-float-operator-mul-vector3"><a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a> <strong>operator *</strong>(right: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>) <a class="reference internal" href="#class-float-operator-mul-vector3"><span class="std std-ref">🔗</span></a></p>
+<p>Multiplies each component of the <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a> by the given <strong>float</strong>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-operator" id="class-float-operator-mul-vector3i"><a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a> <strong>operator *</strong>(right: <a class="reference internal" href="class_vector3i.html#class-vector3i"><span class="std std-ref">Vector3i</span></a>) <a class="reference internal" href="#class-float-operator-mul-vector3i"><span class="std std-ref">🔗</span></a></p>
+<p>Multiplies each component of the <a class="reference internal" href="class_vector3i.html#class-vector3i"><span class="std std-ref">Vector3i</span></a> by the given <strong>float</strong>. Returns a <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="mf">0.9</span> <span class="o">*</span> <span class="n">Vector3i</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">20</span><span class="p">))</span> <span class="c1"># Prints (9.0, 13.5, 18.0)</span>
+</pre></div>
+</div>
+<hr class="classref-item-separator docutils" />
+<p class="classref-operator" id="class-float-operator-mul-vector4"><a class="reference internal" href="class_vector4.html#class-vector4"><span class="std std-ref">Vector4</span></a> <strong>operator *</strong>(right: <a class="reference internal" href="class_vector4.html#class-vector4"><span class="std std-ref">Vector4</span></a>) <a class="reference internal" href="#class-float-operator-mul-vector4"><span class="std std-ref">🔗</span></a></p>
+<p>Multiplies each component of the <a class="reference internal" href="class_vector4.html#class-vector4"><span class="std std-ref">Vector4</span></a> by the given <strong>float</strong>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-operator" id="class-float-operator-mul-vector4i"><a class="reference internal" href="class_vector4.html#class-vector4"><span class="std std-ref">Vector4</span></a> <strong>operator *</strong>(right: <a class="reference internal" href="class_vector4i.html#class-vector4i"><span class="std std-ref">Vector4i</span></a>) <a class="reference internal" href="#class-float-operator-mul-vector4i"><span class="std std-ref">🔗</span></a></p>
+<p>Multiplies each component of the <a class="reference internal" href="class_vector4i.html#class-vector4i"><span class="std std-ref">Vector4i</span></a> by the given <strong>float</strong>. Returns a <a class="reference internal" href="class_vector4.html#class-vector4"><span class="std std-ref">Vector4</span></a>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="mf">0.9</span> <span class="o">*</span> <span class="n">Vector4i</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="o">-</span><span class="mi">10</span><span class="p">))</span> <span class="c1"># Prints (9.0, 13.5, 18.0, -9.0)</span>
+</pre></div>
+</div>
+<hr class="classref-item-separator docutils" />
+<p class="classref-operator" id="class-float-operator-mul-float"><a class="reference internal" href="#class-float"><span class="std std-ref">float</span></a> <strong>operator *</strong>(right: <a class="reference internal" href="#class-float"><span class="std std-ref">float</span></a>) <a class="reference internal" href="#class-float-operator-mul-float"><span class="std std-ref">🔗</span></a></p>
+<p>Multiplies two <strong>float</strong>s.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-operator" id="class-float-operator-mul-int"><a class="reference internal" href="#class-float"><span class="std std-ref">float</span></a> <strong>operator *</strong>(right: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <a class="reference internal" href="#class-float-operator-mul-int"><span class="std std-ref">🔗</span></a></p>
+<p>Multiplies a <strong>float</strong> and an <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>. The result is a <strong>float</strong>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-operator" id="class-float-operator-pow-float"><a class="reference internal" href="#class-float"><span class="std std-ref">float</span></a> <strong>operator **</strong>(right: <a class="reference internal" href="#class-float"><span class="std std-ref">float</span></a>) <a class="reference internal" href="#class-float-operator-pow-float"><span class="std std-ref">🔗</span></a></p>
+<p>Raises a <strong>float</strong> to a power of a <strong>float</strong>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="mf">39.0625</span><span class="o">**</span><span class="mf">0.25</span><span class="p">)</span> <span class="c1"># 2.5</span>
+</pre></div>
+</div>
+<hr class="classref-item-separator docutils" />
+<p class="classref-operator" id="class-float-operator-pow-int"><a class="reference internal" href="#class-float"><span class="std std-ref">float</span></a> <strong>operator **</strong>(right: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <a class="reference internal" href="#class-float-operator-pow-int"><span class="std std-ref">🔗</span></a></p>
+<p>Raises a <strong>float</strong> to a power of an <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>. The result is a <strong>float</strong>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="mf">0.9</span><span class="o">**</span><span class="mi">3</span><span class="p">)</span> <span class="c1"># 0.729</span>
+</pre></div>
+</div>
+<hr class="classref-item-separator docutils" />
+<p class="classref-operator" id="class-float-operator-sum-float"><a class="reference internal" href="#class-float"><span class="std std-ref">float</span></a> <strong>operator +</strong>(right: <a class="reference internal" href="#class-float"><span class="std std-ref">float</span></a>) <a class="reference internal" href="#class-float-operator-sum-float"><span class="std std-ref">🔗</span></a></p>
+<p>Adds two floats.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-operator" id="class-float-operator-sum-int"><a class="reference internal" href="#class-float"><span class="std std-ref">float</span></a> <strong>operator +</strong>(right: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <a class="reference internal" href="#class-float-operator-sum-int"><span class="std std-ref">🔗</span></a></p>
+<p>Adds a <strong>float</strong> and an <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>. The result is a <strong>float</strong>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-operator" id="class-float-operator-dif-float"><a class="reference internal" href="#class-float"><span class="std std-ref">float</span></a> <strong>operator -</strong>(right: <a class="reference internal" href="#class-float"><span class="std std-ref">float</span></a>) <a class="reference internal" href="#class-float-operator-dif-float"><span class="std std-ref">🔗</span></a></p>
+<p>Subtracts a float from a float.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-operator" id="class-float-operator-dif-int"><a class="reference internal" href="#class-float"><span class="std std-ref">float</span></a> <strong>operator -</strong>(right: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <a class="reference internal" href="#class-float-operator-dif-int"><span class="std std-ref">🔗</span></a></p>
+<p>Subtracts an <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> from a <strong>float</strong>. The result is a <strong>float</strong>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-operator" id="class-float-operator-div-float"><a class="reference internal" href="#class-float"><span class="std std-ref">float</span></a> <strong>operator /</strong>(right: <a class="reference internal" href="#class-float"><span class="std std-ref">float</span></a>) <a class="reference internal" href="#class-float-operator-div-float"><span class="std std-ref">🔗</span></a></p>
+<p>Divides two floats.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-operator" id="class-float-operator-div-int"><a class="reference internal" href="#class-float"><span class="std std-ref">float</span></a> <strong>operator /</strong>(right: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <a class="reference internal" href="#class-float-operator-div-int"><span class="std std-ref">🔗</span></a></p>
+<p>Divides a <strong>float</strong> by an <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>. The result is a <strong>float</strong>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-operator" id="class-float-operator-lt-float"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>operator &lt;</strong>(right: <a class="reference internal" href="#class-float"><span class="std std-ref">float</span></a>) <a class="reference internal" href="#class-float-operator-lt-float"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if the left float is less than the right one.</p>
+<p><strong>Note:</strong> <span class="xref std std-ref">&#64;GDScript.NAN</span> doesn’t behave the same as other numbers. Therefore, the results from this operator may not be accurate if NaNs are included.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-operator" id="class-float-operator-lt-int"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>operator &lt;</strong>(right: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <a class="reference internal" href="#class-float-operator-lt-int"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if this <strong>float</strong> is less than the given <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-operator" id="class-float-operator-lte-float"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>operator &lt;=</strong>(right: <a class="reference internal" href="#class-float"><span class="std std-ref">float</span></a>) <a class="reference internal" href="#class-float-operator-lte-float"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if the left float is less than or equal to the right one.</p>
+<p><strong>Note:</strong> <span class="xref std std-ref">&#64;GDScript.NAN</span> doesn’t behave the same as other numbers. Therefore, the results from this operator may not be accurate if NaNs are included.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-operator" id="class-float-operator-lte-int"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>operator &lt;=</strong>(right: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <a class="reference internal" href="#class-float-operator-lte-int"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if this <strong>float</strong> is less than or equal to the given <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-operator" id="class-float-operator-eq-float"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>operator ==</strong>(right: <a class="reference internal" href="#class-float"><span class="std std-ref">float</span></a>) <a class="reference internal" href="#class-float-operator-eq-float"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if both floats are exactly equal.</p>
+<p><strong>Note:</strong> Due to floating-point precision errors, consider using <a class="reference internal" href="class_%40globalscope.html#class-globalscope-method-is-equal-approx"><span class="std std-ref">&#64;GlobalScope.is_equal_approx()</span></a> or <a class="reference internal" href="class_%40globalscope.html#class-globalscope-method-is-zero-approx"><span class="std std-ref">&#64;GlobalScope.is_zero_approx()</span></a> instead, which are more reliable.</p>
+<p><strong>Note:</strong> <span class="xref std std-ref">&#64;GDScript.NAN</span> doesn’t behave the same as other numbers. Therefore, the results from this operator may not be accurate if NaNs are included.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-operator" id="class-float-operator-eq-int"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>operator ==</strong>(right: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <a class="reference internal" href="#class-float-operator-eq-int"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if the <strong>float</strong> and the given <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> are equal.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-operator" id="class-float-operator-gt-float"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>operator &gt;</strong>(right: <a class="reference internal" href="#class-float"><span class="std std-ref">float</span></a>) <a class="reference internal" href="#class-float-operator-gt-float"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if the left float is greater than the right one.</p>
+<p><strong>Note:</strong> <span class="xref std std-ref">&#64;GDScript.NAN</span> doesn’t behave the same as other numbers. Therefore, the results from this operator may not be accurate if NaNs are included.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-operator" id="class-float-operator-gt-int"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>operator &gt;</strong>(right: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <a class="reference internal" href="#class-float-operator-gt-int"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if this <strong>float</strong> is greater than the given <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-operator" id="class-float-operator-gte-float"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>operator &gt;=</strong>(right: <a class="reference internal" href="#class-float"><span class="std std-ref">float</span></a>) <a class="reference internal" href="#class-float-operator-gte-float"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if the left float is greater than or equal to the right one.</p>
+<p><strong>Note:</strong> <span class="xref std std-ref">&#64;GDScript.NAN</span> doesn’t behave the same as other numbers. Therefore, the results from this operator may not be accurate if NaNs are included.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-operator" id="class-float-operator-gte-int"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>operator &gt;=</strong>(right: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <a class="reference internal" href="#class-float-operator-gte-int"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if this <strong>float</strong> is greater than or equal to the given <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-operator" id="class-float-operator-unplus"><a class="reference internal" href="#class-float"><span class="std std-ref">float</span></a> <strong>operator unary+</strong>() <a class="reference internal" href="#class-float-operator-unplus"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the same value as if the <code class="docutils literal notranslate"><span class="pre">+</span></code> was not there. Unary <code class="docutils literal notranslate"><span class="pre">+</span></code> does nothing, but sometimes it can make your code more readable.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-operator" id="class-float-operator-unminus"><a class="reference internal" href="#class-float"><span class="std std-ref">float</span></a> <strong>operator unary-</strong>() <a class="reference internal" href="#class-float-operator-unminus"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the negative value of the <strong>float</strong>. If positive, turns the number negative. If negative, turns the number positive. With floats, the number zero can be either positive or negative.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, MUmarShahbaz.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

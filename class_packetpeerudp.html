@@ -1,0 +1,239 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PacketPeerUDP &mdash; RPG Components 2D 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=d45e8c67"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            RPG Components 2D
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">PacketPeerUDP</a><ul>
+<li><a class="reference internal" href="#description">Description</a></li>
+<li><a class="reference internal" href="#methods">Methods</a></li>
+<li><a class="reference internal" href="#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">RPG Components 2D</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">PacketPeerUDP</li>
+      <li class="wy-breadcrumbs-aside">
+              <!-- User defined GitHub URL -->
+              <a href="hide" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="packetpeerudp">
+<span id="class-packetpeerudp"></span><h1>PacketPeerUDP<a class="headerlink" href="#packetpeerudp" title="Link to this heading"></a></h1>
+<p><strong>Inherits:</strong> <a class="reference internal" href="class_packetpeer.html#class-packetpeer"><span class="std std-ref">PacketPeer</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_refcounted.html#class-refcounted"><span class="std std-ref">RefCounted</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_object.html#class-object"><span class="std std-ref">Object</span></a></p>
+<p>UDP packet peer.</p>
+<section class="classref-introduction-group" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
+<p>UDP packet peer. Can be used to send and receive raw UDP packets as well as <a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a>s.</p>
+<p><strong>Example:</strong> Send a packet:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">peer</span> <span class="o">=</span> <span class="n">PacketPeerUDP</span><span class="o">.</span><span class="n">new</span><span class="p">()</span>
+
+<span class="c1"># Optionally, you can select the local port used to send the packet.</span>
+<span class="n">peer</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="mi">4444</span><span class="p">)</span>
+
+<span class="n">peer</span><span class="o">.</span><span class="n">set_dest_address</span><span class="p">(</span><span class="s2">&quot;1.1.1.1&quot;</span><span class="p">,</span> <span class="mi">4433</span><span class="p">)</span>
+<span class="n">peer</span><span class="o">.</span><span class="n">put_packet</span><span class="p">(</span><span class="s2">&quot;hello&quot;</span><span class="o">.</span><span class="n">to_utf8_buffer</span><span class="p">())</span>
+</pre></div>
+</div>
+<p><strong>Example:</strong> Listen for packets:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">peer</span>
+
+<span class="n">func</span> <span class="n">_ready</span><span class="p">():</span>
+    <span class="n">peer</span> <span class="o">=</span> <span class="n">PacketPeerUDP</span><span class="o">.</span><span class="n">new</span><span class="p">()</span>
+    <span class="n">peer</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="mi">4433</span><span class="p">)</span>
+
+
+<span class="n">func</span> <span class="n">_process</span><span class="p">(</span><span class="n">_delta</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">peer</span><span class="o">.</span><span class="n">get_available_packet_count</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">var</span> <span class="n">array_bytes</span> <span class="o">=</span> <span class="n">peer</span><span class="o">.</span><span class="n">get_packet</span><span class="p">()</span>
+        <span class="n">var</span> <span class="n">packet_string</span> <span class="o">=</span> <span class="n">array_bytes</span><span class="o">.</span><span class="n">get_string_from_ascii</span><span class="p">()</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Received message: &quot;</span><span class="p">,</span> <span class="n">packet_string</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Note:</strong> When exporting to Android, make sure to enable the <code class="docutils literal notranslate"><span class="pre">INTERNET</span></code> permission in the Android export preset before exporting the project or using one-click deploy. Otherwise, network communication of any kind will be blocked by Android.</p>
+</section>
+<section class="classref-reftable-group" id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_%40globalscope.html#enum-globalscope-error"><span class="std std-ref">Error</span></a></p></td>
+<td><p><a class="reference internal" href="#class-packetpeerudp-method-bind"><span class="std std-ref">bind</span></a>(port: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, bind_address: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a> = “*”, recv_buf_size: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> = 65536)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-packetpeerudp-method-close"><span class="std std-ref">close</span></a>()</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_%40globalscope.html#enum-globalscope-error"><span class="std std-ref">Error</span></a></p></td>
+<td><p><a class="reference internal" href="#class-packetpeerudp-method-connect-to-host"><span class="std std-ref">connect_to_host</span></a>(host: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, port: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-packetpeerudp-method-get-local-port"><span class="std std-ref">get_local_port</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a></p></td>
+<td><p><a class="reference internal" href="#class-packetpeerudp-method-get-packet-ip"><span class="std std-ref">get_packet_ip</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-packetpeerudp-method-get-packet-port"><span class="std std-ref">get_packet_port</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-packetpeerudp-method-is-bound"><span class="std std-ref">is_bound</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-packetpeerudp-method-is-socket-connected"><span class="std std-ref">is_socket_connected</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_%40globalscope.html#enum-globalscope-error"><span class="std std-ref">Error</span></a></p></td>
+<td><p><a class="reference internal" href="#class-packetpeerudp-method-join-multicast-group"><span class="std std-ref">join_multicast_group</span></a>(multicast_address: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, interface_name: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_%40globalscope.html#enum-globalscope-error"><span class="std std-ref">Error</span></a></p></td>
+<td><p><a class="reference internal" href="#class-packetpeerudp-method-leave-multicast-group"><span class="std std-ref">leave_multicast_group</span></a>(multicast_address: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, interface_name: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-packetpeerudp-method-set-broadcast-enabled"><span class="std std-ref">set_broadcast_enabled</span></a>(enabled: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_%40globalscope.html#enum-globalscope-error"><span class="std std-ref">Error</span></a></p></td>
+<td><p><a class="reference internal" href="#class-packetpeerudp-method-set-dest-address"><span class="std std-ref">set_dest_address</span></a>(host: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, port: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_%40globalscope.html#enum-globalscope-error"><span class="std std-ref">Error</span></a></p></td>
+<td><p><a class="reference internal" href="#class-packetpeerudp-method-wait"><span class="std std-ref">wait</span></a>()</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="method-descriptions">
+<h2>Method Descriptions<a class="headerlink" href="#method-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-method" id="class-packetpeerudp-method-bind"><a class="reference internal" href="class_%40globalscope.html#enum-globalscope-error"><span class="std std-ref">Error</span></a> <strong>bind</strong>(port: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, bind_address: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a> = “*”, recv_buf_size: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> = 65536) <a class="reference internal" href="#class-packetpeerudp-method-bind"><span class="std std-ref">🔗</span></a></p>
+<p>Binds this <strong>PacketPeerUDP</strong> to the specified <code class="docutils literal notranslate"><span class="pre">port</span></code> and <code class="docutils literal notranslate"><span class="pre">bind_address</span></code> with a buffer size <code class="docutils literal notranslate"><span class="pre">recv_buf_size</span></code>, allowing it to receive incoming packets.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">bind_address</span></code> is set to <code class="docutils literal notranslate"><span class="pre">&quot;*&quot;</span></code> (default), the peer will be bound on all available addresses (both IPv4 and IPv6).</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">bind_address</span></code> is set to <code class="docutils literal notranslate"><span class="pre">&quot;0.0.0.0&quot;</span></code> (for IPv4) or <code class="docutils literal notranslate"><span class="pre">&quot;::&quot;</span></code> (for IPv6), the peer will be bound to all available addresses matching that IP type.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">bind_address</span></code> is set to any valid address (e.g. <code class="docutils literal notranslate"><span class="pre">&quot;192.168.1.101&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;::1&quot;</span></code>, etc.), the peer will only be bound to the interface with that address (or fail if no interface with the given address exists).</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-packetpeerudp-method-close"><abbr title="No return value.">void</abbr> <strong>close</strong>() <a class="reference internal" href="#class-packetpeerudp-method-close"><span class="std std-ref">🔗</span></a></p>
+<p>Closes the <strong>PacketPeerUDP</strong>’s underlying UDP socket.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-packetpeerudp-method-connect-to-host"><a class="reference internal" href="class_%40globalscope.html#enum-globalscope-error"><span class="std std-ref">Error</span></a> <strong>connect_to_host</strong>(host: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, port: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <a class="reference internal" href="#class-packetpeerudp-method-connect-to-host"><span class="std std-ref">🔗</span></a></p>
+<p>Calling this method connects this UDP peer to the given <code class="docutils literal notranslate"><span class="pre">host</span></code>/<code class="docutils literal notranslate"><span class="pre">port</span></code> pair. UDP is in reality connectionless, so this option only means that incoming packets from different addresses are automatically discarded, and that outgoing packets are always sent to the connected address (future calls to <a class="reference internal" href="#class-packetpeerudp-method-set-dest-address"><span class="std std-ref">set_dest_address()</span></a> are not allowed). This method does not send any data to the remote peer, to do that, use <a class="reference internal" href="class_packetpeer.html#class-packetpeer-method-put-var"><span class="std std-ref">PacketPeer.put_var()</span></a> or <a class="reference internal" href="class_packetpeer.html#class-packetpeer-method-put-packet"><span class="std std-ref">PacketPeer.put_packet()</span></a> as usual. See also <a class="reference internal" href="class_udpserver.html#class-udpserver"><span class="std std-ref">UDPServer</span></a>.</p>
+<p><strong>Note:</strong> Connecting to the remote peer does not help to protect from malicious attacks like IP spoofing, etc. Think about using an encryption technique like TLS or DTLS if you feel like your application is transferring sensitive information.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-packetpeerudp-method-get-local-port"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>get_local_port</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-packetpeerudp-method-get-local-port"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the local port to which this peer is bound.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-packetpeerudp-method-get-packet-ip"><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a> <strong>get_packet_ip</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-packetpeerudp-method-get-packet-ip"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the IP of the remote peer that sent the last packet(that was received with <a class="reference internal" href="class_packetpeer.html#class-packetpeer-method-get-packet"><span class="std std-ref">PacketPeer.get_packet()</span></a> or <a class="reference internal" href="class_packetpeer.html#class-packetpeer-method-get-var"><span class="std std-ref">PacketPeer.get_var()</span></a>).</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-packetpeerudp-method-get-packet-port"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>get_packet_port</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-packetpeerudp-method-get-packet-port"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the port of the remote peer that sent the last packet(that was received with <a class="reference internal" href="class_packetpeer.html#class-packetpeer-method-get-packet"><span class="std std-ref">PacketPeer.get_packet()</span></a> or <a class="reference internal" href="class_packetpeer.html#class-packetpeer-method-get-var"><span class="std std-ref">PacketPeer.get_var()</span></a>).</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-packetpeerudp-method-is-bound"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_bound</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-packetpeerudp-method-is-bound"><span class="std std-ref">🔗</span></a></p>
+<p>Returns whether this <strong>PacketPeerUDP</strong> is bound to an address and can receive packets.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-packetpeerudp-method-is-socket-connected"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_socket_connected</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-packetpeerudp-method-is-socket-connected"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if the UDP socket is open and has been connected to a remote address. See <a class="reference internal" href="#class-packetpeerudp-method-connect-to-host"><span class="std std-ref">connect_to_host()</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-packetpeerudp-method-join-multicast-group"><a class="reference internal" href="class_%40globalscope.html#enum-globalscope-error"><span class="std std-ref">Error</span></a> <strong>join_multicast_group</strong>(multicast_address: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, interface_name: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <a class="reference internal" href="#class-packetpeerudp-method-join-multicast-group"><span class="std std-ref">🔗</span></a></p>
+<p>Joins the multicast group specified by <code class="docutils literal notranslate"><span class="pre">multicast_address</span></code> using the interface identified by <code class="docutils literal notranslate"><span class="pre">interface_name</span></code>.</p>
+<p>You can join the same multicast group with multiple interfaces. Use <a class="reference internal" href="class_ip.html#class-ip-method-get-local-interfaces"><span class="std std-ref">IP.get_local_interfaces()</span></a> to know which are available.</p>
+<p><strong>Note:</strong> Some Android devices might require the <code class="docutils literal notranslate"><span class="pre">CHANGE_WIFI_MULTICAST_STATE</span></code> permission for multicast to work.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-packetpeerudp-method-leave-multicast-group"><a class="reference internal" href="class_%40globalscope.html#enum-globalscope-error"><span class="std std-ref">Error</span></a> <strong>leave_multicast_group</strong>(multicast_address: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, interface_name: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <a class="reference internal" href="#class-packetpeerudp-method-leave-multicast-group"><span class="std std-ref">🔗</span></a></p>
+<p>Removes the interface identified by <code class="docutils literal notranslate"><span class="pre">interface_name</span></code> from the multicast group specified by <code class="docutils literal notranslate"><span class="pre">multicast_address</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-packetpeerudp-method-set-broadcast-enabled"><abbr title="No return value.">void</abbr> <strong>set_broadcast_enabled</strong>(enabled: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>) <a class="reference internal" href="#class-packetpeerudp-method-set-broadcast-enabled"><span class="std std-ref">🔗</span></a></p>
+<p>Enable or disable sending of broadcast packets (e.g. <code class="docutils literal notranslate"><span class="pre">set_dest_address(&quot;255.255.255.255&quot;,</span> <span class="pre">4343)</span></code>. This option is disabled by default.</p>
+<p><strong>Note:</strong> Some Android devices might require the <code class="docutils literal notranslate"><span class="pre">CHANGE_WIFI_MULTICAST_STATE</span></code> permission and this option to be enabled to receive broadcast packets too.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-packetpeerudp-method-set-dest-address"><a class="reference internal" href="class_%40globalscope.html#enum-globalscope-error"><span class="std std-ref">Error</span></a> <strong>set_dest_address</strong>(host: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, port: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <a class="reference internal" href="#class-packetpeerudp-method-set-dest-address"><span class="std std-ref">🔗</span></a></p>
+<p>Sets the destination address and port for sending packets and variables. A hostname will be resolved using DNS if needed.</p>
+<p><strong>Note:</strong> <a class="reference internal" href="#class-packetpeerudp-method-set-broadcast-enabled"><span class="std std-ref">set_broadcast_enabled()</span></a> must be enabled before sending packets to a broadcast address (e.g. <code class="docutils literal notranslate"><span class="pre">255.255.255.255</span></code>).</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-packetpeerudp-method-wait"><a class="reference internal" href="class_%40globalscope.html#enum-globalscope-error"><span class="std std-ref">Error</span></a> <strong>wait</strong>() <a class="reference internal" href="#class-packetpeerudp-method-wait"><span class="std std-ref">🔗</span></a></p>
+<p>Waits for a packet to arrive on the bound address. See <a class="reference internal" href="#class-packetpeerudp-method-bind"><span class="std std-ref">bind()</span></a>.</p>
+<p><strong>Note:</strong> <a class="reference internal" href="#class-packetpeerudp-method-wait"><span class="std std-ref">wait()</span></a> can’t be interrupted once it has been called. This can be worked around by allowing the other party to send a specific “death pill” packet like this:</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, MUmarShahbaz.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

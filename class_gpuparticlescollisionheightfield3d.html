@@ -1,0 +1,238 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GPUParticlesCollisionHeightField3D &mdash; RPG Components 2D 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=d45e8c67"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            RPG Components 2D
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">GPUParticlesCollisionHeightField3D</a><ul>
+<li><a class="reference internal" href="#description">Description</a></li>
+<li><a class="reference internal" href="#properties">Properties</a></li>
+<li><a class="reference internal" href="#methods">Methods</a></li>
+<li><a class="reference internal" href="#enumerations">Enumerations</a></li>
+<li><a class="reference internal" href="#property-descriptions">Property Descriptions</a></li>
+<li><a class="reference internal" href="#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">RPG Components 2D</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">GPUParticlesCollisionHeightField3D</li>
+      <li class="wy-breadcrumbs-aside">
+              <!-- User defined GitHub URL -->
+              <a href="hide" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="gpuparticlescollisionheightfield3d">
+<span id="class-gpuparticlescollisionheightfield3d"></span><h1>GPUParticlesCollisionHeightField3D<a class="headerlink" href="#gpuparticlescollisionheightfield3d" title="Link to this heading"></a></h1>
+<p><strong>Inherits:</strong> <a class="reference internal" href="class_gpuparticlescollision3d.html#class-gpuparticlescollision3d"><span class="std std-ref">GPUParticlesCollision3D</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_visualinstance3d.html#class-visualinstance3d"><span class="std std-ref">VisualInstance3D</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_node3d.html#class-node3d"><span class="std std-ref">Node3D</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_node.html#class-node"><span class="std std-ref">Node</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_object.html#class-object"><span class="std std-ref">Object</span></a></p>
+<p>A real-time heightmap-shaped 3D particle collision shape affecting <a class="reference internal" href="class_gpuparticles3d.html#class-gpuparticles3d"><span class="std std-ref">GPUParticles3D</span></a> nodes.</p>
+<section class="classref-introduction-group" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
+<p>A real-time heightmap-shaped 3D particle collision shape affecting <a class="reference internal" href="class_gpuparticles3d.html#class-gpuparticles3d"><span class="std std-ref">GPUParticles3D</span></a> nodes.</p>
+<p>Heightmap shapes allow for efficiently representing collisions for convex and concave objects with a single “floor” (such as terrain). This is less flexible than <a class="reference internal" href="class_gpuparticlescollisionsdf3d.html#class-gpuparticlescollisionsdf3d"><span class="std std-ref">GPUParticlesCollisionSDF3D</span></a>, but it doesn’t require a baking step.</p>
+<p><strong>GPUParticlesCollisionHeightField3D</strong> can also be regenerated in real-time when it is moved, when the camera moves, or even continuously. This makes <strong>GPUParticlesCollisionHeightField3D</strong> a good choice for weather effects such as rain and snow and games with highly dynamic geometry. However, this class is limited since heightmaps cannot represent overhangs (e.g. indoors or caves).</p>
+<p><strong>Note:</strong> <a class="reference internal" href="class_particleprocessmaterial.html#class-particleprocessmaterial-property-collision-mode"><span class="std std-ref">ParticleProcessMaterial.collision_mode</span></a> must be <code class="docutils literal notranslate"><span class="pre">true</span></code> on the <a class="reference internal" href="class_gpuparticles3d.html#class-gpuparticles3d"><span class="std std-ref">GPUParticles3D</span></a>’s process material for collision to work.</p>
+<p><strong>Note:</strong> Particle collision only affects <a class="reference internal" href="class_gpuparticles3d.html#class-gpuparticles3d"><span class="std std-ref">GPUParticles3D</span></a>, not <a class="reference internal" href="class_cpuparticles3d.html#class-cpuparticles3d"><span class="std std-ref">CPUParticles3D</span></a>.</p>
+</section>
+<section class="classref-reftable-group" id="properties">
+<h2>Properties<a class="headerlink" href="#properties" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-gpuparticlescollisionheightfield3d-property-follow-camera-enabled"><span class="std std-ref">follow_camera_enabled</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-gpuparticlescollisionheightfield3d-property-heightfield-mask"><span class="std std-ref">heightfield_mask</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">1048575</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#enum-gpuparticlescollisionheightfield3d-resolution"><span class="std std-ref">Resolution</span></a></p></td>
+<td><p><a class="reference internal" href="#class-gpuparticlescollisionheightfield3d-property-resolution"><span class="std std-ref">resolution</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">2</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a></p></td>
+<td><p><a class="reference internal" href="#class-gpuparticlescollisionheightfield3d-property-size"><span class="std std-ref">size</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Vector3(2,</span> <span class="pre">2,</span> <span class="pre">2)</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#enum-gpuparticlescollisionheightfield3d-updatemode"><span class="std std-ref">UpdateMode</span></a></p></td>
+<td><p><a class="reference internal" href="#class-gpuparticlescollisionheightfield3d-property-update-mode"><span class="std std-ref">update_mode</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section class="classref-reftable-group" id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-gpuparticlescollisionheightfield3d-method-get-heightfield-mask-value"><span class="std std-ref">get_heightfield_mask_value</span></a>(layer_number: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-gpuparticlescollisionheightfield3d-method-set-heightfield-mask-value"><span class="std std-ref">set_heightfield_mask_value</span></a>(layer_number: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, value: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>)</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="enumerations">
+<h2>Enumerations<a class="headerlink" href="#enumerations" title="Link to this heading"></a></h2>
+<p class="classref-enumeration" id="enum-gpuparticlescollisionheightfield3d-resolution">enum <strong>Resolution</strong>: <a class="reference internal" href="#enum-gpuparticlescollisionheightfield3d-resolution"><span class="std std-ref">🔗</span></a></p>
+<p class="classref-enumeration-constant" id="class-gpuparticlescollisionheightfield3d-constant-resolution-256"><a class="reference internal" href="#enum-gpuparticlescollisionheightfield3d-resolution"><span class="std std-ref">Resolution</span></a> <strong>RESOLUTION_256</strong> = <code class="docutils literal notranslate"><span class="pre">0</span></code></p>
+<p>Generate a 256×256 heightmap. Intended for small-scale scenes, or larger scenes with no distant particles.</p>
+<p class="classref-enumeration-constant" id="class-gpuparticlescollisionheightfield3d-constant-resolution-512"><a class="reference internal" href="#enum-gpuparticlescollisionheightfield3d-resolution"><span class="std std-ref">Resolution</span></a> <strong>RESOLUTION_512</strong> = <code class="docutils literal notranslate"><span class="pre">1</span></code></p>
+<p>Generate a 512×512 heightmap. Intended for medium-scale scenes, or larger scenes with no distant particles.</p>
+<p class="classref-enumeration-constant" id="class-gpuparticlescollisionheightfield3d-constant-resolution-1024"><a class="reference internal" href="#enum-gpuparticlescollisionheightfield3d-resolution"><span class="std std-ref">Resolution</span></a> <strong>RESOLUTION_1024</strong> = <code class="docutils literal notranslate"><span class="pre">2</span></code></p>
+<p>Generate a 1024×1024 heightmap. Intended for large scenes with distant particles.</p>
+<p class="classref-enumeration-constant" id="class-gpuparticlescollisionheightfield3d-constant-resolution-2048"><a class="reference internal" href="#enum-gpuparticlescollisionheightfield3d-resolution"><span class="std std-ref">Resolution</span></a> <strong>RESOLUTION_2048</strong> = <code class="docutils literal notranslate"><span class="pre">3</span></code></p>
+<p>Generate a 2048×2048 heightmap. Intended for very large scenes with distant particles.</p>
+<p class="classref-enumeration-constant" id="class-gpuparticlescollisionheightfield3d-constant-resolution-4096"><a class="reference internal" href="#enum-gpuparticlescollisionheightfield3d-resolution"><span class="std std-ref">Resolution</span></a> <strong>RESOLUTION_4096</strong> = <code class="docutils literal notranslate"><span class="pre">4</span></code></p>
+<p>Generate a 4096×4096 heightmap. Intended for huge scenes with distant particles.</p>
+<p class="classref-enumeration-constant" id="class-gpuparticlescollisionheightfield3d-constant-resolution-8192"><a class="reference internal" href="#enum-gpuparticlescollisionheightfield3d-resolution"><span class="std std-ref">Resolution</span></a> <strong>RESOLUTION_8192</strong> = <code class="docutils literal notranslate"><span class="pre">5</span></code></p>
+<p>Generate a 8192×8192 heightmap. Intended for gigantic scenes with distant particles.</p>
+<p class="classref-enumeration-constant" id="class-gpuparticlescollisionheightfield3d-constant-resolution-max"><a class="reference internal" href="#enum-gpuparticlescollisionheightfield3d-resolution"><span class="std std-ref">Resolution</span></a> <strong>RESOLUTION_MAX</strong> = <code class="docutils literal notranslate"><span class="pre">6</span></code></p>
+<p>Represents the size of the <a class="reference internal" href="#enum-gpuparticlescollisionheightfield3d-resolution"><span class="std std-ref">Resolution</span></a> enum.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-enumeration" id="enum-gpuparticlescollisionheightfield3d-updatemode">enum <strong>UpdateMode</strong>: <a class="reference internal" href="#enum-gpuparticlescollisionheightfield3d-updatemode"><span class="std std-ref">🔗</span></a></p>
+<p class="classref-enumeration-constant" id="class-gpuparticlescollisionheightfield3d-constant-update-mode-when-moved"><a class="reference internal" href="#enum-gpuparticlescollisionheightfield3d-updatemode"><span class="std std-ref">UpdateMode</span></a> <strong>UPDATE_MODE_WHEN_MOVED</strong> = <code class="docutils literal notranslate"><span class="pre">0</span></code></p>
+<p>Only update the heightmap when the <strong>GPUParticlesCollisionHeightField3D</strong> node is moved, or when the camera moves if <a class="reference internal" href="#class-gpuparticlescollisionheightfield3d-property-follow-camera-enabled"><span class="std std-ref">follow_camera_enabled</span></a> is <code class="docutils literal notranslate"><span class="pre">true</span></code>. An update can be forced by slightly moving the <strong>GPUParticlesCollisionHeightField3D</strong> in any direction, or by calling <a class="reference internal" href="class_renderingserver.html#class-renderingserver-method-particles-collision-height-field-update"><span class="std std-ref">RenderingServer.particles_collision_height_field_update()</span></a>.</p>
+<p class="classref-enumeration-constant" id="class-gpuparticlescollisionheightfield3d-constant-update-mode-always"><a class="reference internal" href="#enum-gpuparticlescollisionheightfield3d-updatemode"><span class="std std-ref">UpdateMode</span></a> <strong>UPDATE_MODE_ALWAYS</strong> = <code class="docutils literal notranslate"><span class="pre">1</span></code></p>
+<p>Update the heightmap every frame. This has a significant performance cost. This update should only be used when geometry that particles can collide with changes significantly during gameplay.</p>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="property-descriptions">
+<h2>Property Descriptions<a class="headerlink" href="#property-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-property" id="class-gpuparticlescollisionheightfield3d-property-follow-camera-enabled"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>follow_camera_enabled</strong> = <code class="docutils literal notranslate"><span class="pre">false</span></code> <a class="reference internal" href="#class-gpuparticlescollisionheightfield3d-property-follow-camera-enabled"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_follow_camera_enabled</strong>(value: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_follow_camera_enabled</strong>()</p></li>
+</ul>
+<p>If <code class="docutils literal notranslate"><span class="pre">true</span></code>, the <strong>GPUParticlesCollisionHeightField3D</strong> will follow the current camera in global space. The <strong>GPUParticlesCollisionHeightField3D</strong> does not need to be a child of the <a class="reference internal" href="class_camera3d.html#class-camera3d"><span class="std std-ref">Camera3D</span></a> node for this to work.</p>
+<p>Following the camera has a performance cost, as it will force the heightmap to update whenever the camera moves. Consider lowering <a class="reference internal" href="#class-gpuparticlescollisionheightfield3d-property-resolution"><span class="std std-ref">resolution</span></a> to improve performance if <a class="reference internal" href="#class-gpuparticlescollisionheightfield3d-property-follow-camera-enabled"><span class="std std-ref">follow_camera_enabled</span></a> is <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-gpuparticlescollisionheightfield3d-property-heightfield-mask"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>heightfield_mask</strong> = <code class="docutils literal notranslate"><span class="pre">1048575</span></code> <a class="reference internal" href="#class-gpuparticlescollisionheightfield3d-property-heightfield-mask"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_heightfield_mask</strong>(value: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>get_heightfield_mask</strong>()</p></li>
+</ul>
+<p>The visual layers to account for when updating the heightmap. Only <a class="reference internal" href="class_meshinstance3d.html#class-meshinstance3d"><span class="std std-ref">MeshInstance3D</span></a>s whose <a class="reference internal" href="class_visualinstance3d.html#class-visualinstance3d-property-layers"><span class="std std-ref">VisualInstance3D.layers</span></a> match with this <a class="reference internal" href="#class-gpuparticlescollisionheightfield3d-property-heightfield-mask"><span class="std std-ref">heightfield_mask</span></a> will be included in the heightmap collision update. By default, all 20 user-visible layers are taken into account for updating the heightmap collision.</p>
+<p><strong>Note:</strong> Since the <a class="reference internal" href="#class-gpuparticlescollisionheightfield3d-property-heightfield-mask"><span class="std std-ref">heightfield_mask</span></a> allows for 32 layers to be stored in total, there are an additional 12 layers that are only used internally by the engine and aren’t exposed in the editor. Setting <a class="reference internal" href="#class-gpuparticlescollisionheightfield3d-property-heightfield-mask"><span class="std std-ref">heightfield_mask</span></a> using a script allows you to toggle those reserved layers, which can be useful for editor plugins.</p>
+<p>To adjust <a class="reference internal" href="#class-gpuparticlescollisionheightfield3d-property-heightfield-mask"><span class="std std-ref">heightfield_mask</span></a> more easily using a script, use <a class="reference internal" href="#class-gpuparticlescollisionheightfield3d-method-get-heightfield-mask-value"><span class="std std-ref">get_heightfield_mask_value()</span></a> and <a class="reference internal" href="#class-gpuparticlescollisionheightfield3d-method-set-heightfield-mask-value"><span class="std std-ref">set_heightfield_mask_value()</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-gpuparticlescollisionheightfield3d-property-resolution"><a class="reference internal" href="#enum-gpuparticlescollisionheightfield3d-resolution"><span class="std std-ref">Resolution</span></a> <strong>resolution</strong> = <code class="docutils literal notranslate"><span class="pre">2</span></code> <a class="reference internal" href="#class-gpuparticlescollisionheightfield3d-property-resolution"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_resolution</strong>(value: <a class="reference internal" href="#enum-gpuparticlescollisionheightfield3d-resolution"><span class="std std-ref">Resolution</span></a>)</p></li>
+<li><p><a class="reference internal" href="#enum-gpuparticlescollisionheightfield3d-resolution"><span class="std std-ref">Resolution</span></a> <strong>get_resolution</strong>()</p></li>
+</ul>
+<p>Higher resolutions can represent small details more accurately in large scenes, at the cost of lower performance. If <a class="reference internal" href="#class-gpuparticlescollisionheightfield3d-property-update-mode"><span class="std std-ref">update_mode</span></a> is <a class="reference internal" href="#class-gpuparticlescollisionheightfield3d-constant-update-mode-always"><span class="std std-ref">UPDATE_MODE_ALWAYS</span></a>, consider using the lowest resolution possible.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-gpuparticlescollisionheightfield3d-property-size"><a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a> <strong>size</strong> = <code class="docutils literal notranslate"><span class="pre">Vector3(2,</span> <span class="pre">2,</span> <span class="pre">2)</span></code> <a class="reference internal" href="#class-gpuparticlescollisionheightfield3d-property-size"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_size</strong>(value: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a> <strong>get_size</strong>()</p></li>
+</ul>
+<p>The collision heightmap’s size in 3D units. To improve heightmap quality, <a class="reference internal" href="#class-gpuparticlescollisionheightfield3d-property-size"><span class="std std-ref">size</span></a> should be set as small as possible while covering the parts of the scene you need.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-gpuparticlescollisionheightfield3d-property-update-mode"><a class="reference internal" href="#enum-gpuparticlescollisionheightfield3d-updatemode"><span class="std std-ref">UpdateMode</span></a> <strong>update_mode</strong> = <code class="docutils literal notranslate"><span class="pre">0</span></code> <a class="reference internal" href="#class-gpuparticlescollisionheightfield3d-property-update-mode"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_update_mode</strong>(value: <a class="reference internal" href="#enum-gpuparticlescollisionheightfield3d-updatemode"><span class="std std-ref">UpdateMode</span></a>)</p></li>
+<li><p><a class="reference internal" href="#enum-gpuparticlescollisionheightfield3d-updatemode"><span class="std std-ref">UpdateMode</span></a> <strong>get_update_mode</strong>()</p></li>
+</ul>
+<p>The update policy to use for the generated heightmap.</p>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="method-descriptions">
+<h2>Method Descriptions<a class="headerlink" href="#method-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-method" id="class-gpuparticlescollisionheightfield3d-method-get-heightfield-mask-value"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>get_heightfield_mask_value</strong>(layer_number: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-gpuparticlescollisionheightfield3d-method-get-heightfield-mask-value"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if the specified layer of the <a class="reference internal" href="#class-gpuparticlescollisionheightfield3d-property-heightfield-mask"><span class="std std-ref">heightfield_mask</span></a> is enabled, given a <code class="docutils literal notranslate"><span class="pre">layer_number</span></code> between <code class="docutils literal notranslate"><span class="pre">1</span></code> and <code class="docutils literal notranslate"><span class="pre">20</span></code>, inclusive.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-gpuparticlescollisionheightfield3d-method-set-heightfield-mask-value"><abbr title="No return value.">void</abbr> <strong>set_heightfield_mask_value</strong>(layer_number: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, value: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>) <a class="reference internal" href="#class-gpuparticlescollisionheightfield3d-method-set-heightfield-mask-value"><span class="std std-ref">🔗</span></a></p>
+<p>Based on <code class="docutils literal notranslate"><span class="pre">value</span></code>, enables or disables the specified layer in the <a class="reference internal" href="#class-gpuparticlescollisionheightfield3d-property-heightfield-mask"><span class="std std-ref">heightfield_mask</span></a>, given a <code class="docutils literal notranslate"><span class="pre">layer_number</span></code> between <code class="docutils literal notranslate"><span class="pre">1</span></code> and <code class="docutils literal notranslate"><span class="pre">20</span></code>, inclusive.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, MUmarShahbaz.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,265 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TextureButton &mdash; RPG Components 2D 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=d45e8c67"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            RPG Components 2D
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">TextureButton</a><ul>
+<li><a class="reference internal" href="#description">Description</a></li>
+<li><a class="reference internal" href="#tutorials">Tutorials</a></li>
+<li><a class="reference internal" href="#properties">Properties</a></li>
+<li><a class="reference internal" href="#enumerations">Enumerations</a></li>
+<li><a class="reference internal" href="#property-descriptions">Property Descriptions</a></li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">RPG Components 2D</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">TextureButton</li>
+      <li class="wy-breadcrumbs-aside">
+              <!-- User defined GitHub URL -->
+              <a href="hide" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="texturebutton">
+<span id="class-texturebutton"></span><h1>TextureButton<a class="headerlink" href="#texturebutton" title="Link to this heading"></a></h1>
+<p><strong>Inherits:</strong> <a class="reference internal" href="class_basebutton.html#class-basebutton"><span class="std std-ref">BaseButton</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_control.html#class-control"><span class="std std-ref">Control</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_canvasitem.html#class-canvasitem"><span class="std std-ref">CanvasItem</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_node.html#class-node"><span class="std std-ref">Node</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_object.html#class-object"><span class="std std-ref">Object</span></a></p>
+<p>Texture-based button. Supports Pressed, Hover, Disabled and Focused states.</p>
+<section class="classref-introduction-group" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
+<p><strong>TextureButton</strong> has the same functionality as <a class="reference internal" href="class_button.html#class-button"><span class="std std-ref">Button</span></a>, except it uses sprites instead of Godot’s <a class="reference internal" href="class_theme.html#class-theme"><span class="std std-ref">Theme</span></a> resource. It is faster to create, but it doesn’t support localization like more complex <a class="reference internal" href="class_control.html#class-control"><span class="std std-ref">Control</span></a>s.</p>
+<p>See also <a class="reference internal" href="class_basebutton.html#class-basebutton"><span class="std std-ref">BaseButton</span></a> which contains common properties and methods associated with this node.</p>
+<p><strong>Note:</strong> Setting a texture for the “normal” state (<a class="reference internal" href="#class-texturebutton-property-texture-normal"><span class="std std-ref">texture_normal</span></a>) is recommended. If <a class="reference internal" href="#class-texturebutton-property-texture-normal"><span class="std std-ref">texture_normal</span></a> is not set, the <strong>TextureButton</strong> will still receive input events and be clickable, but the user will not be able to see it unless they activate another one of its states with a texture assigned (e.g., hover over it to show <a class="reference internal" href="#class-texturebutton-property-texture-hover"><span class="std std-ref">texture_hover</span></a>).</p>
+</section>
+<section class="classref-introduction-group" id="tutorials">
+<h2>Tutorials<a class="headerlink" href="#tutorials" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://godotengine.org/asset-library/asset/2755">3D Voxel Demo</a></p></li>
+</ul>
+</section>
+<section class="classref-reftable-group" id="properties">
+<h2>Properties<a class="headerlink" href="#properties" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-texturebutton-property-flip-h"><span class="std std-ref">flip_h</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-texturebutton-property-flip-v"><span class="std std-ref">flip_v</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-texturebutton-property-ignore-texture-size"><span class="std std-ref">ignore_texture_size</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#enum-texturebutton-stretchmode"><span class="std std-ref">StretchMode</span></a></p></td>
+<td><p><a class="reference internal" href="#class-texturebutton-property-stretch-mode"><span class="std std-ref">stretch_mode</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">2</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bitmap.html#class-bitmap"><span class="std std-ref">BitMap</span></a></p></td>
+<td><p><a class="reference internal" href="#class-texturebutton-property-texture-click-mask"><span class="std std-ref">texture_click_mask</span></a></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_texture2d.html#class-texture2d"><span class="std std-ref">Texture2D</span></a></p></td>
+<td><p><a class="reference internal" href="#class-texturebutton-property-texture-disabled"><span class="std std-ref">texture_disabled</span></a></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_texture2d.html#class-texture2d"><span class="std std-ref">Texture2D</span></a></p></td>
+<td><p><a class="reference internal" href="#class-texturebutton-property-texture-focused"><span class="std std-ref">texture_focused</span></a></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_texture2d.html#class-texture2d"><span class="std std-ref">Texture2D</span></a></p></td>
+<td><p><a class="reference internal" href="#class-texturebutton-property-texture-hover"><span class="std std-ref">texture_hover</span></a></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_texture2d.html#class-texture2d"><span class="std std-ref">Texture2D</span></a></p></td>
+<td><p><a class="reference internal" href="#class-texturebutton-property-texture-normal"><span class="std std-ref">texture_normal</span></a></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_texture2d.html#class-texture2d"><span class="std std-ref">Texture2D</span></a></p></td>
+<td><p><a class="reference internal" href="#class-texturebutton-property-texture-pressed"><span class="std std-ref">texture_pressed</span></a></p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="enumerations">
+<h2>Enumerations<a class="headerlink" href="#enumerations" title="Link to this heading"></a></h2>
+<p class="classref-enumeration" id="enum-texturebutton-stretchmode">enum <strong>StretchMode</strong>: <a class="reference internal" href="#enum-texturebutton-stretchmode"><span class="std std-ref">🔗</span></a></p>
+<p class="classref-enumeration-constant" id="class-texturebutton-constant-stretch-scale"><a class="reference internal" href="#enum-texturebutton-stretchmode"><span class="std std-ref">StretchMode</span></a> <strong>STRETCH_SCALE</strong> = <code class="docutils literal notranslate"><span class="pre">0</span></code></p>
+<p>Scale to fit the node’s bounding rectangle.</p>
+<p class="classref-enumeration-constant" id="class-texturebutton-constant-stretch-tile"><a class="reference internal" href="#enum-texturebutton-stretchmode"><span class="std std-ref">StretchMode</span></a> <strong>STRETCH_TILE</strong> = <code class="docutils literal notranslate"><span class="pre">1</span></code></p>
+<p>Tile inside the node’s bounding rectangle.</p>
+<p class="classref-enumeration-constant" id="class-texturebutton-constant-stretch-keep"><a class="reference internal" href="#enum-texturebutton-stretchmode"><span class="std std-ref">StretchMode</span></a> <strong>STRETCH_KEEP</strong> = <code class="docutils literal notranslate"><span class="pre">2</span></code></p>
+<p>The texture keeps its original size and stays in the bounding rectangle’s top-left corner.</p>
+<p class="classref-enumeration-constant" id="class-texturebutton-constant-stretch-keep-centered"><a class="reference internal" href="#enum-texturebutton-stretchmode"><span class="std std-ref">StretchMode</span></a> <strong>STRETCH_KEEP_CENTERED</strong> = <code class="docutils literal notranslate"><span class="pre">3</span></code></p>
+<p>The texture keeps its original size and stays centered in the node’s bounding rectangle.</p>
+<p class="classref-enumeration-constant" id="class-texturebutton-constant-stretch-keep-aspect"><a class="reference internal" href="#enum-texturebutton-stretchmode"><span class="std std-ref">StretchMode</span></a> <strong>STRETCH_KEEP_ASPECT</strong> = <code class="docutils literal notranslate"><span class="pre">4</span></code></p>
+<p>Scale the texture to fit the node’s bounding rectangle, but maintain the texture’s aspect ratio.</p>
+<p class="classref-enumeration-constant" id="class-texturebutton-constant-stretch-keep-aspect-centered"><a class="reference internal" href="#enum-texturebutton-stretchmode"><span class="std std-ref">StretchMode</span></a> <strong>STRETCH_KEEP_ASPECT_CENTERED</strong> = <code class="docutils literal notranslate"><span class="pre">5</span></code></p>
+<p>Scale the texture to fit the node’s bounding rectangle, center it, and maintain its aspect ratio.</p>
+<p class="classref-enumeration-constant" id="class-texturebutton-constant-stretch-keep-aspect-covered"><a class="reference internal" href="#enum-texturebutton-stretchmode"><span class="std std-ref">StretchMode</span></a> <strong>STRETCH_KEEP_ASPECT_COVERED</strong> = <code class="docutils literal notranslate"><span class="pre">6</span></code></p>
+<p>Scale the texture so that the shorter side fits the bounding rectangle. The other side clips to the node’s limits.</p>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="property-descriptions">
+<h2>Property Descriptions<a class="headerlink" href="#property-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-property" id="class-texturebutton-property-flip-h"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>flip_h</strong> = <code class="docutils literal notranslate"><span class="pre">false</span></code> <a class="reference internal" href="#class-texturebutton-property-flip-h"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_flip_h</strong>(value: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_flipped_h</strong>()</p></li>
+</ul>
+<p>If <code class="docutils literal notranslate"><span class="pre">true</span></code>, texture is flipped horizontally.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-texturebutton-property-flip-v"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>flip_v</strong> = <code class="docutils literal notranslate"><span class="pre">false</span></code> <a class="reference internal" href="#class-texturebutton-property-flip-v"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_flip_v</strong>(value: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_flipped_v</strong>()</p></li>
+</ul>
+<p>If <code class="docutils literal notranslate"><span class="pre">true</span></code>, texture is flipped vertically.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-texturebutton-property-ignore-texture-size"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>ignore_texture_size</strong> = <code class="docutils literal notranslate"><span class="pre">false</span></code> <a class="reference internal" href="#class-texturebutton-property-ignore-texture-size"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_ignore_texture_size</strong>(value: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>get_ignore_texture_size</strong>()</p></li>
+</ul>
+<p>If <code class="docutils literal notranslate"><span class="pre">true</span></code>, the size of the texture won’t be considered for minimum size calculation, so the <strong>TextureButton</strong> can be shrunk down past the texture size.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-texturebutton-property-stretch-mode"><a class="reference internal" href="#enum-texturebutton-stretchmode"><span class="std std-ref">StretchMode</span></a> <strong>stretch_mode</strong> = <code class="docutils literal notranslate"><span class="pre">2</span></code> <a class="reference internal" href="#class-texturebutton-property-stretch-mode"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_stretch_mode</strong>(value: <a class="reference internal" href="#enum-texturebutton-stretchmode"><span class="std std-ref">StretchMode</span></a>)</p></li>
+<li><p><a class="reference internal" href="#enum-texturebutton-stretchmode"><span class="std std-ref">StretchMode</span></a> <strong>get_stretch_mode</strong>()</p></li>
+</ul>
+<p>Controls the texture’s behavior when you resize the node’s bounding rectangle. See the <a class="reference internal" href="#enum-texturebutton-stretchmode"><span class="std std-ref">StretchMode</span></a> constants for available options.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-texturebutton-property-texture-click-mask"><a class="reference internal" href="class_bitmap.html#class-bitmap"><span class="std std-ref">BitMap</span></a> <strong>texture_click_mask</strong> <a class="reference internal" href="#class-texturebutton-property-texture-click-mask"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_click_mask</strong>(value: <a class="reference internal" href="class_bitmap.html#class-bitmap"><span class="std std-ref">BitMap</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_bitmap.html#class-bitmap"><span class="std std-ref">BitMap</span></a> <strong>get_click_mask</strong>()</p></li>
+</ul>
+<p>Pure black and white <a class="reference internal" href="class_bitmap.html#class-bitmap"><span class="std std-ref">BitMap</span></a> image to use for click detection. On the mask, white pixels represent the button’s clickable area. Use it to create buttons with curved shapes.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-texturebutton-property-texture-disabled"><a class="reference internal" href="class_texture2d.html#class-texture2d"><span class="std std-ref">Texture2D</span></a> <strong>texture_disabled</strong> <a class="reference internal" href="#class-texturebutton-property-texture-disabled"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_texture_disabled</strong>(value: <a class="reference internal" href="class_texture2d.html#class-texture2d"><span class="std std-ref">Texture2D</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_texture2d.html#class-texture2d"><span class="std std-ref">Texture2D</span></a> <strong>get_texture_disabled</strong>()</p></li>
+</ul>
+<p>Texture to display when the node is disabled. See <a class="reference internal" href="class_basebutton.html#class-basebutton-property-disabled"><span class="std std-ref">BaseButton.disabled</span></a>. If not assigned, the <strong>TextureButton</strong> displays <a class="reference internal" href="#class-texturebutton-property-texture-normal"><span class="std std-ref">texture_normal</span></a> instead.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-texturebutton-property-texture-focused"><a class="reference internal" href="class_texture2d.html#class-texture2d"><span class="std std-ref">Texture2D</span></a> <strong>texture_focused</strong> <a class="reference internal" href="#class-texturebutton-property-texture-focused"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_texture_focused</strong>(value: <a class="reference internal" href="class_texture2d.html#class-texture2d"><span class="std std-ref">Texture2D</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_texture2d.html#class-texture2d"><span class="std std-ref">Texture2D</span></a> <strong>get_texture_focused</strong>()</p></li>
+</ul>
+<p>Texture to <em>overlay on the base texture</em> when the node has mouse or keyboard focus. Because <a class="reference internal" href="#class-texturebutton-property-texture-focused"><span class="std std-ref">texture_focused</span></a> is displayed on top of the base texture, a partially transparent texture should be used to ensure the base texture remains visible. A texture that represents an outline or an underline works well for this purpose. To disable the focus visual effect, assign a fully transparent texture of any size. Note that disabling the focus visual effect will harm keyboard/controller navigation usability, so this is not recommended for accessibility reasons.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-texturebutton-property-texture-hover"><a class="reference internal" href="class_texture2d.html#class-texture2d"><span class="std std-ref">Texture2D</span></a> <strong>texture_hover</strong> <a class="reference internal" href="#class-texturebutton-property-texture-hover"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_texture_hover</strong>(value: <a class="reference internal" href="class_texture2d.html#class-texture2d"><span class="std std-ref">Texture2D</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_texture2d.html#class-texture2d"><span class="std std-ref">Texture2D</span></a> <strong>get_texture_hover</strong>()</p></li>
+</ul>
+<p>Texture to display when the mouse hovers over the node. If not assigned, the <strong>TextureButton</strong> displays <a class="reference internal" href="#class-texturebutton-property-texture-normal"><span class="std std-ref">texture_normal</span></a> instead when hovered over.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-texturebutton-property-texture-normal"><a class="reference internal" href="class_texture2d.html#class-texture2d"><span class="std std-ref">Texture2D</span></a> <strong>texture_normal</strong> <a class="reference internal" href="#class-texturebutton-property-texture-normal"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_texture_normal</strong>(value: <a class="reference internal" href="class_texture2d.html#class-texture2d"><span class="std std-ref">Texture2D</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_texture2d.html#class-texture2d"><span class="std std-ref">Texture2D</span></a> <strong>get_texture_normal</strong>()</p></li>
+</ul>
+<p>Texture to display by default, when the node is <strong>not</strong> in the disabled, hover or pressed state. This texture is still displayed in the focused state, with <a class="reference internal" href="#class-texturebutton-property-texture-focused"><span class="std std-ref">texture_focused</span></a> drawn on top.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-texturebutton-property-texture-pressed"><a class="reference internal" href="class_texture2d.html#class-texture2d"><span class="std std-ref">Texture2D</span></a> <strong>texture_pressed</strong> <a class="reference internal" href="#class-texturebutton-property-texture-pressed"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_texture_pressed</strong>(value: <a class="reference internal" href="class_texture2d.html#class-texture2d"><span class="std std-ref">Texture2D</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_texture2d.html#class-texture2d"><span class="std std-ref">Texture2D</span></a> <strong>get_texture_pressed</strong>()</p></li>
+</ul>
+<p>Texture to display on mouse down over the node, if the node has keyboard focus and the player presses the Enter key or if the player presses the <a class="reference internal" href="class_basebutton.html#class-basebutton-property-shortcut"><span class="std std-ref">BaseButton.shortcut</span></a> key. If not assigned, the <strong>TextureButton</strong> displays <a class="reference internal" href="#class-texturebutton-property-texture-hover"><span class="std std-ref">texture_hover</span></a> instead when pressed.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, MUmarShahbaz.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

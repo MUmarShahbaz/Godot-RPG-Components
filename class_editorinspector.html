@@ -1,0 +1,236 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EditorInspector &mdash; RPG Components 2D 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=d45e8c67"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            RPG Components 2D
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">EditorInspector</a><ul>
+<li><a class="reference internal" href="#description">Description</a></li>
+<li><a class="reference internal" href="#properties">Properties</a></li>
+<li><a class="reference internal" href="#methods">Methods</a></li>
+<li><a class="reference internal" href="#signals">Signals</a></li>
+<li><a class="reference internal" href="#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">RPG Components 2D</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">EditorInspector</li>
+      <li class="wy-breadcrumbs-aside">
+              <!-- User defined GitHub URL -->
+              <a href="hide" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="editorinspector">
+<span id="class-editorinspector"></span><h1>EditorInspector<a class="headerlink" href="#editorinspector" title="Link to this heading"></a></h1>
+<p><strong>Inherits:</strong> <a class="reference internal" href="class_scrollcontainer.html#class-scrollcontainer"><span class="std std-ref">ScrollContainer</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_container.html#class-container"><span class="std std-ref">Container</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_control.html#class-control"><span class="std std-ref">Control</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_canvasitem.html#class-canvasitem"><span class="std std-ref">CanvasItem</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_node.html#class-node"><span class="std std-ref">Node</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_object.html#class-object"><span class="std std-ref">Object</span></a></p>
+<p>A control used to edit properties of an object.</p>
+<section class="classref-introduction-group" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
+<p>This is the control that implements property editing in the editor’s Settings dialogs, the Inspector dock, etc. To get the <strong>EditorInspector</strong> used in the editor’s Inspector dock, use <a class="reference internal" href="class_editorinterface.html#class-editorinterface-method-get-inspector"><span class="std std-ref">EditorInterface.get_inspector()</span></a>.</p>
+<p><strong>EditorInspector</strong> will show properties in the same order as the array returned by <a class="reference internal" href="class_object.html#class-object-method-get-property-list"><span class="std std-ref">Object.get_property_list()</span></a>.</p>
+<p>If a property’s name is path-like (i.e. if it contains forward slashes), <strong>EditorInspector</strong> will create nested sections for “directories” along the path. For example, if a property is named <code class="docutils literal notranslate"><span class="pre">highlighting/gdscript/node_path_color</span></code>, it will be shown as “Node Path Color” inside the “GDScript” section nested inside the “Highlighting” section.</p>
+<p>If a property has <a class="reference internal" href="class_%40globalscope.html#class-globalscope-constant-property-usage-group"><span class="std std-ref">&#64;GlobalScope.PROPERTY_USAGE_GROUP</span></a> usage, it will group subsequent properties whose name starts with the property’s hint string. The group ends when a property does not start with that hint string or when a new group starts. An empty group name effectively ends the current group. <strong>EditorInspector</strong> will create a top-level section for each group. For example, if a property with group usage is named <code class="docutils literal notranslate"><span class="pre">Collide</span> <span class="pre">With</span></code> and its hint string is <code class="docutils literal notranslate"><span class="pre">collide_with_</span></code>, a subsequent <code class="docutils literal notranslate"><span class="pre">collide_with_area</span></code> property will be shown as “Area” inside the “Collide With” section. There is also a special case: when the hint string contains the name of a property, that property is grouped too. This is mainly to help grouping properties like <code class="docutils literal notranslate"><span class="pre">font</span></code>, <code class="docutils literal notranslate"><span class="pre">font_color</span></code> and <code class="docutils literal notranslate"><span class="pre">font_size</span></code> (using the hint string <code class="docutils literal notranslate"><span class="pre">font_</span></code>).</p>
+<p>If a property has <a class="reference internal" href="class_%40globalscope.html#class-globalscope-constant-property-usage-subgroup"><span class="std std-ref">&#64;GlobalScope.PROPERTY_USAGE_SUBGROUP</span></a> usage, a subgroup will be created in the same way as a group, and a second-level section will be created for each subgroup.</p>
+<p><strong>Note:</strong> Unlike sections created from path-like property names, <strong>EditorInspector</strong> won’t capitalize the name for sections created from groups. So properties with group usage usually use capitalized names instead of snake_cased names.</p>
+</section>
+<section class="classref-reftable-group" id="properties">
+<h2>Properties<a class="headerlink" href="#properties" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p>draw_focus_border</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">true</span></code> (overrides <a class="reference internal" href="class_scrollcontainer.html#class-scrollcontainer-property-draw-focus-border"><span class="std std-ref">ScrollContainer</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_control.html#enum-control-focusmode"><span class="std std-ref">FocusMode</span></a></p></td>
+<td><p>focus_mode</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">2</span></code> (overrides <a class="reference internal" href="class_control.html#class-control-property-focus-mode"><span class="std std-ref">Control</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p>follow_focus</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">true</span></code> (overrides <a class="reference internal" href="class_scrollcontainer.html#class-scrollcontainer-property-follow-focus"><span class="std std-ref">ScrollContainer</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_scrollcontainer.html#enum-scrollcontainer-scrollmode"><span class="std std-ref">ScrollMode</span></a></p></td>
+<td><p>horizontal_scroll_mode</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code> (overrides <a class="reference internal" href="class_scrollcontainer.html#class-scrollcontainer-property-horizontal-scroll-mode"><span class="std std-ref">ScrollContainer</span></a>)</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section class="classref-reftable-group" id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-editorinspector-method-collapse-all-folding"><span class="std std-ref">collapse_all_folding</span></a>()</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#class-editorinspector"><span class="std std-ref">EditorInspector</span></a></p></td>
+<td><p><a class="reference internal" href="#class-editorinspector-method-create-default-inspector"><span class="std std-ref">create_default_inspector</span></a>(filter_line_edit: <a class="reference internal" href="class_lineedit.html#class-lineedit"><span class="std std-ref">LineEdit</span></a> = null) <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-editorinspector-method-edit"><span class="std std-ref">edit</span></a>(object: <a class="reference internal" href="class_object.html#class-object"><span class="std std-ref">Object</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-editorinspector-method-expand-all-folding"><span class="std std-ref">expand_all_folding</span></a>()</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-editorinspector-method-expand-revertable"><span class="std std-ref">expand_revertable</span></a>()</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_object.html#class-object"><span class="std std-ref">Object</span></a></p></td>
+<td><p><a class="reference internal" href="#class-editorinspector-method-get-edited-object"><span class="std std-ref">get_edited_object</span></a>()</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a></p></td>
+<td><p><a class="reference internal" href="#class-editorinspector-method-get-selected-path"><span class="std std-ref">get_selected_path</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_editorproperty.html#class-editorproperty"><span class="std std-ref">EditorProperty</span></a></p></td>
+<td><p><a class="reference internal" href="#class-editorinspector-method-instantiate-property-editor"><span class="std std-ref">instantiate_property_editor</span></a>(object: <a class="reference internal" href="class_object.html#class-object"><span class="std std-ref">Object</span></a>, type: <a class="reference internal" href="class_%40globalscope.html#enum-globalscope-variant-type"><span class="std std-ref">Variant.Type</span></a>, path: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, hint: <a class="reference internal" href="class_%40globalscope.html#enum-globalscope-propertyhint"><span class="std std-ref">PropertyHint</span></a>, hint_text: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, usage: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, wide: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = false) <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="signals">
+<h2>Signals<a class="headerlink" href="#signals" title="Link to this heading"></a></h2>
+<p class="classref-signal" id="class-editorinspector-signal-edited-object-changed"><strong>edited_object_changed</strong>() <a class="reference internal" href="#class-editorinspector-signal-edited-object-changed"><span class="std std-ref">🔗</span></a></p>
+<p>Emitted when the object being edited by the inspector has changed.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-signal" id="class-editorinspector-signal-object-id-selected"><strong>object_id_selected</strong>(id: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <a class="reference internal" href="#class-editorinspector-signal-object-id-selected"><span class="std std-ref">🔗</span></a></p>
+<p>Emitted when the Edit button of an <a class="reference internal" href="class_object.html#class-object"><span class="std std-ref">Object</span></a> has been pressed in the inspector. This is mainly used in the remote scene tree Inspector.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-signal" id="class-editorinspector-signal-property-deleted"><strong>property_deleted</strong>(property: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <a class="reference internal" href="#class-editorinspector-signal-property-deleted"><span class="std std-ref">🔗</span></a></p>
+<p>Emitted when a property is removed from the inspector.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-signal" id="class-editorinspector-signal-property-edited"><strong>property_edited</strong>(property: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <a class="reference internal" href="#class-editorinspector-signal-property-edited"><span class="std std-ref">🔗</span></a></p>
+<p>Emitted when a property is edited in the inspector.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-signal" id="class-editorinspector-signal-property-keyed"><strong>property_keyed</strong>(property: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, value: <a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a>, advance: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>) <a class="reference internal" href="#class-editorinspector-signal-property-keyed"><span class="std std-ref">🔗</span></a></p>
+<p>Emitted when a property is keyed in the inspector. Properties can be keyed by clicking the “key” icon next to a property when the Animation panel is toggled.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-signal" id="class-editorinspector-signal-property-selected"><strong>property_selected</strong>(property: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <a class="reference internal" href="#class-editorinspector-signal-property-selected"><span class="std std-ref">🔗</span></a></p>
+<p>Emitted when a property is selected in the inspector.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-signal" id="class-editorinspector-signal-property-toggled"><strong>property_toggled</strong>(property: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, checked: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>) <a class="reference internal" href="#class-editorinspector-signal-property-toggled"><span class="std std-ref">🔗</span></a></p>
+<p>Emitted when a boolean property is toggled in the inspector.</p>
+<p><strong>Note:</strong> This signal is never emitted if the internal <code class="docutils literal notranslate"><span class="pre">autoclear</span></code> property enabled. Since this property is always enabled in the editor inspector, this signal is never emitted by the editor itself.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-signal" id="class-editorinspector-signal-resource-selected"><strong>resource_selected</strong>(resource: <a class="reference internal" href="class_resource.html#class-resource"><span class="std std-ref">Resource</span></a>, path: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <a class="reference internal" href="#class-editorinspector-signal-resource-selected"><span class="std std-ref">🔗</span></a></p>
+<p>Emitted when a resource is selected in the inspector.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-signal" id="class-editorinspector-signal-restart-requested"><strong>restart_requested</strong>() <a class="reference internal" href="#class-editorinspector-signal-restart-requested"><span class="std std-ref">🔗</span></a></p>
+<p>Emitted when a property that requires a restart to be applied is edited in the inspector. This is only used in the Project Settings and Editor Settings.</p>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="method-descriptions">
+<h2>Method Descriptions<a class="headerlink" href="#method-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-method" id="class-editorinspector-method-collapse-all-folding"><abbr title="No return value.">void</abbr> <strong>collapse_all_folding</strong>() <a class="reference internal" href="#class-editorinspector-method-collapse-all-folding"><span class="std std-ref">🔗</span></a></p>
+<p>Collapses all foldable sections.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-editorinspector-method-create-default-inspector"><a class="reference internal" href="#class-editorinspector"><span class="std std-ref">EditorInspector</span></a> <strong>create_default_inspector</strong>(filter_line_edit: <a class="reference internal" href="class_lineedit.html#class-lineedit"><span class="std std-ref">LineEdit</span></a> = null) <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr> <a class="reference internal" href="#class-editorinspector-method-create-default-inspector"><span class="std std-ref">🔗</span></a></p>
+<p>Creates an inspector with the same configuration as the one used in the editor’s Inspector dock. When passing a <a class="reference internal" href="class_lineedit.html#class-lineedit"><span class="std std-ref">LineEdit</span></a> into <code class="docutils literal notranslate"><span class="pre">filter_line_edit</span></code>, the inspector will filter its properties based on <a class="reference internal" href="class_lineedit.html#class-lineedit-property-text"><span class="std std-ref">LineEdit.text</span></a> whenever <a class="reference internal" href="class_lineedit.html#class-lineedit-signal-text-changed"><span class="std std-ref">LineEdit.text_changed</span></a> is emitted.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-editorinspector-method-edit"><abbr title="No return value.">void</abbr> <strong>edit</strong>(object: <a class="reference internal" href="class_object.html#class-object"><span class="std std-ref">Object</span></a>) <a class="reference internal" href="#class-editorinspector-method-edit"><span class="std std-ref">🔗</span></a></p>
+<p>Shows the properties of the given <code class="docutils literal notranslate"><span class="pre">object</span></code> in this inspector for editing. To clear the inspector, call this method with <code class="docutils literal notranslate"><span class="pre">null</span></code>.</p>
+<p><strong>Note:</strong> If you want to edit an object in the editor’s main inspector, use the <code class="docutils literal notranslate"><span class="pre">edit_*</span></code> methods in <a class="reference internal" href="class_editorinterface.html#class-editorinterface"><span class="std std-ref">EditorInterface</span></a> instead.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-editorinspector-method-expand-all-folding"><abbr title="No return value.">void</abbr> <strong>expand_all_folding</strong>() <a class="reference internal" href="#class-editorinspector-method-expand-all-folding"><span class="std std-ref">🔗</span></a></p>
+<p>Expands all foldable sections.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-editorinspector-method-expand-revertable"><abbr title="No return value.">void</abbr> <strong>expand_revertable</strong>() <a class="reference internal" href="#class-editorinspector-method-expand-revertable"><span class="std std-ref">🔗</span></a></p>
+<p>Expands only the foldable sections that contain a revertable (i.e. non-default) property.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-editorinspector-method-get-edited-object"><a class="reference internal" href="class_object.html#class-object"><span class="std std-ref">Object</span></a> <strong>get_edited_object</strong>() <a class="reference internal" href="#class-editorinspector-method-get-edited-object"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the object currently selected in this inspector.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-editorinspector-method-get-selected-path"><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a> <strong>get_selected_path</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-editorinspector-method-get-selected-path"><span class="std std-ref">🔗</span></a></p>
+<p>Gets the path of the currently selected property.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-editorinspector-method-instantiate-property-editor"><a class="reference internal" href="class_editorproperty.html#class-editorproperty"><span class="std std-ref">EditorProperty</span></a> <strong>instantiate_property_editor</strong>(object: <a class="reference internal" href="class_object.html#class-object"><span class="std std-ref">Object</span></a>, type: <a class="reference internal" href="class_%40globalscope.html#enum-globalscope-variant-type"><span class="std std-ref">Variant.Type</span></a>, path: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, hint: <a class="reference internal" href="class_%40globalscope.html#enum-globalscope-propertyhint"><span class="std std-ref">PropertyHint</span></a>, hint_text: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, usage: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, wide: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = false) <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr> <a class="reference internal" href="#class-editorinspector-method-instantiate-property-editor"><span class="std std-ref">🔗</span></a></p>
+<p>Creates a property editor that can be used by plugin UI to edit the specified property of an <code class="docutils literal notranslate"><span class="pre">object</span></code>.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, MUmarShahbaz.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

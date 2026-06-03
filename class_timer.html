@@ -1,0 +1,270 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Timer &mdash; RPG Components 2D 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=d45e8c67"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            RPG Components 2D
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">Timer</a><ul>
+<li><a class="reference internal" href="#description">Description</a></li>
+<li><a class="reference internal" href="#tutorials">Tutorials</a></li>
+<li><a class="reference internal" href="#properties">Properties</a></li>
+<li><a class="reference internal" href="#methods">Methods</a></li>
+<li><a class="reference internal" href="#signals">Signals</a></li>
+<li><a class="reference internal" href="#enumerations">Enumerations</a></li>
+<li><a class="reference internal" href="#property-descriptions">Property Descriptions</a></li>
+<li><a class="reference internal" href="#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">RPG Components 2D</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Timer</li>
+      <li class="wy-breadcrumbs-aside">
+              <!-- User defined GitHub URL -->
+              <a href="hide" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="timer">
+<span id="class-timer"></span><h1>Timer<a class="headerlink" href="#timer" title="Link to this heading"></a></h1>
+<p><strong>Inherits:</strong> <a class="reference internal" href="class_node.html#class-node"><span class="std std-ref">Node</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_object.html#class-object"><span class="std std-ref">Object</span></a></p>
+<p>A countdown timer.</p>
+<section class="classref-introduction-group" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
+<p>The <strong>Timer</strong> node is a countdown timer and is the simplest way to handle time-based logic in the engine. When a timer reaches the end of its <a class="reference internal" href="#class-timer-property-wait-time"><span class="std std-ref">wait_time</span></a>, it will emit the <a class="reference internal" href="#class-timer-signal-timeout"><span class="std std-ref">timeout</span></a> signal.</p>
+<p>After a timer enters the scene tree, it can be manually started with <a class="reference internal" href="#class-timer-method-start"><span class="std std-ref">start()</span></a>. A timer node is also started automatically if <a class="reference internal" href="#class-timer-property-autostart"><span class="std std-ref">autostart</span></a> is <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p>
+<p>Without requiring much code, a timer node can be added and configured in the editor. The <a class="reference internal" href="#class-timer-signal-timeout"><span class="std std-ref">timeout</span></a> signal it emits can also be connected through the Signals dock in the editor:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">func</span> <span class="n">_on_timer_timeout</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Time to attack!&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Note:</strong> To create a one-shot timer without instantiating a node, use <a class="reference internal" href="class_scenetree.html#class-scenetree-method-create-timer"><span class="std std-ref">SceneTree.create_timer()</span></a>.</p>
+<p><strong>Note:</strong> Timers are affected by <a class="reference internal" href="class_engine.html#class-engine-property-time-scale"><span class="std std-ref">Engine.time_scale</span></a> unless <a class="reference internal" href="#class-timer-property-ignore-time-scale"><span class="std std-ref">ignore_time_scale</span></a> is <code class="docutils literal notranslate"><span class="pre">true</span></code>. The higher the time scale, the sooner timers will end. How often a timer processes may depend on the framerate or <a class="reference internal" href="class_engine.html#class-engine-property-physics-ticks-per-second"><span class="std std-ref">Engine.physics_ticks_per_second</span></a>.</p>
+</section>
+<section class="classref-introduction-group" id="tutorials">
+<h2>Tutorials<a class="headerlink" href="#tutorials" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://godotengine.org/asset-library/asset/2712">2D Dodge The Creeps Demo</a></p></li>
+</ul>
+</section>
+<section class="classref-reftable-group" id="properties">
+<h2>Properties<a class="headerlink" href="#properties" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-timer-property-autostart"><span class="std std-ref">autostart</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-timer-property-ignore-time-scale"><span class="std std-ref">ignore_time_scale</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-timer-property-one-shot"><span class="std std-ref">one_shot</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-timer-property-paused"><span class="std std-ref">paused</span></a></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#enum-timer-timerprocesscallback"><span class="std std-ref">TimerProcessCallback</span></a></p></td>
+<td><p><a class="reference internal" href="#class-timer-property-process-callback"><span class="std std-ref">process_callback</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">1</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-timer-property-time-left"><span class="std std-ref">time_left</span></a></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-timer-property-wait-time"><span class="std std-ref">wait_time</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">1.0</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section class="classref-reftable-group" id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-timer-method-is-stopped"><span class="std std-ref">is_stopped</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-timer-method-start"><span class="std std-ref">start</span></a>(time_sec: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> = -1)</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-timer-method-stop"><span class="std std-ref">stop</span></a>()</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="signals">
+<h2>Signals<a class="headerlink" href="#signals" title="Link to this heading"></a></h2>
+<p class="classref-signal" id="class-timer-signal-timeout"><strong>timeout</strong>() <a class="reference internal" href="#class-timer-signal-timeout"><span class="std std-ref">🔗</span></a></p>
+<p>Emitted when the timer reaches the end.</p>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="enumerations">
+<h2>Enumerations<a class="headerlink" href="#enumerations" title="Link to this heading"></a></h2>
+<p class="classref-enumeration" id="enum-timer-timerprocesscallback">enum <strong>TimerProcessCallback</strong>: <a class="reference internal" href="#enum-timer-timerprocesscallback"><span class="std std-ref">🔗</span></a></p>
+<p class="classref-enumeration-constant" id="class-timer-constant-timer-process-physics"><a class="reference internal" href="#enum-timer-timerprocesscallback"><span class="std std-ref">TimerProcessCallback</span></a> <strong>TIMER_PROCESS_PHYSICS</strong> = <code class="docutils literal notranslate"><span class="pre">0</span></code></p>
+<p>Update the timer every physics process frame (see <a class="reference internal" href="class_node.html#class-node-constant-notification-internal-physics-process"><span class="std std-ref">Node.NOTIFICATION_INTERNAL_PHYSICS_PROCESS</span></a>).</p>
+<p class="classref-enumeration-constant" id="class-timer-constant-timer-process-idle"><a class="reference internal" href="#enum-timer-timerprocesscallback"><span class="std std-ref">TimerProcessCallback</span></a> <strong>TIMER_PROCESS_IDLE</strong> = <code class="docutils literal notranslate"><span class="pre">1</span></code></p>
+<p>Update the timer every process (rendered) frame (see <a class="reference internal" href="class_node.html#class-node-constant-notification-internal-process"><span class="std std-ref">Node.NOTIFICATION_INTERNAL_PROCESS</span></a>).</p>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="property-descriptions">
+<h2>Property Descriptions<a class="headerlink" href="#property-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-property" id="class-timer-property-autostart"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>autostart</strong> = <code class="docutils literal notranslate"><span class="pre">false</span></code> <a class="reference internal" href="#class-timer-property-autostart"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_autostart</strong>(value: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>has_autostart</strong>()</p></li>
+</ul>
+<p>If <code class="docutils literal notranslate"><span class="pre">true</span></code>, the timer will start immediately when it enters the scene tree.</p>
+<p><strong>Note:</strong> After the timer enters the tree, this property is automatically set to <code class="docutils literal notranslate"><span class="pre">false</span></code>.</p>
+<p><strong>Note:</strong> This property does nothing when the timer is running in the editor.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-timer-property-ignore-time-scale"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>ignore_time_scale</strong> = <code class="docutils literal notranslate"><span class="pre">false</span></code> <a class="reference internal" href="#class-timer-property-ignore-time-scale"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_ignore_time_scale</strong>(value: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_ignoring_time_scale</strong>()</p></li>
+</ul>
+<p>If <code class="docutils literal notranslate"><span class="pre">true</span></code>, the timer will ignore <a class="reference internal" href="class_engine.html#class-engine-property-time-scale"><span class="std std-ref">Engine.time_scale</span></a> and update with the real, elapsed time.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-timer-property-one-shot"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>one_shot</strong> = <code class="docutils literal notranslate"><span class="pre">false</span></code> <a class="reference internal" href="#class-timer-property-one-shot"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_one_shot</strong>(value: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_one_shot</strong>()</p></li>
+</ul>
+<p>If <code class="docutils literal notranslate"><span class="pre">true</span></code>, the timer will stop after reaching the end. Otherwise, as by default, the timer will automatically restart.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-timer-property-paused"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>paused</strong> <a class="reference internal" href="#class-timer-property-paused"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_paused</strong>(value: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_paused</strong>()</p></li>
+</ul>
+<p>If <code class="docutils literal notranslate"><span class="pre">true</span></code>, the timer is paused. A paused timer does not process until this property is set back to <code class="docutils literal notranslate"><span class="pre">false</span></code>, even when <a class="reference internal" href="#class-timer-method-start"><span class="std std-ref">start()</span></a> is called. See also <a class="reference internal" href="#class-timer-method-stop"><span class="std std-ref">stop()</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-timer-property-process-callback"><a class="reference internal" href="#enum-timer-timerprocesscallback"><span class="std std-ref">TimerProcessCallback</span></a> <strong>process_callback</strong> = <code class="docutils literal notranslate"><span class="pre">1</span></code> <a class="reference internal" href="#class-timer-property-process-callback"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_timer_process_callback</strong>(value: <a class="reference internal" href="#enum-timer-timerprocesscallback"><span class="std std-ref">TimerProcessCallback</span></a>)</p></li>
+<li><p><a class="reference internal" href="#enum-timer-timerprocesscallback"><span class="std std-ref">TimerProcessCallback</span></a> <strong>get_timer_process_callback</strong>()</p></li>
+</ul>
+<p>Specifies when the timer is updated during the main loop.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-timer-property-time-left"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>time_left</strong> <a class="reference internal" href="#class-timer-property-time-left"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>get_time_left</strong>()</p></li>
+</ul>
+<p>The timer’s remaining time in seconds. This is always <code class="docutils literal notranslate"><span class="pre">0</span></code> if the timer is stopped.</p>
+<p><strong>Note:</strong> This property is read-only and cannot be modified. It is based on <a class="reference internal" href="#class-timer-property-wait-time"><span class="std std-ref">wait_time</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-timer-property-wait-time"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>wait_time</strong> = <code class="docutils literal notranslate"><span class="pre">1.0</span></code> <a class="reference internal" href="#class-timer-property-wait-time"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_wait_time</strong>(value: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>get_wait_time</strong>()</p></li>
+</ul>
+<p>The time required for the timer to end, in seconds. This property can also be set every time <a class="reference internal" href="#class-timer-method-start"><span class="std std-ref">start()</span></a> is called.</p>
+<p><strong>Note:</strong> Timers can only process once per physics or process frame (depending on the <a class="reference internal" href="#class-timer-property-process-callback"><span class="std std-ref">process_callback</span></a>). An unstable framerate may cause the timer to end inconsistently, which is especially noticeable if the wait time is lower than roughly <code class="docutils literal notranslate"><span class="pre">0.05</span></code> seconds. For very short timers, it is recommended to write your own code instead of using a <strong>Timer</strong> node. Timers are also affected by <a class="reference internal" href="class_engine.html#class-engine-property-time-scale"><span class="std std-ref">Engine.time_scale</span></a>.</p>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="method-descriptions">
+<h2>Method Descriptions<a class="headerlink" href="#method-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-method" id="class-timer-method-is-stopped"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_stopped</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-timer-method-is-stopped"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if the timer is stopped or has not started.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-timer-method-start"><abbr title="No return value.">void</abbr> <strong>start</strong>(time_sec: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> = -1) <a class="reference internal" href="#class-timer-method-start"><span class="std std-ref">🔗</span></a></p>
+<p>Starts the timer, or resets the timer if it was started already. Fails if the timer is not inside the scene tree. If <code class="docutils literal notranslate"><span class="pre">time_sec</span></code> is greater than <code class="docutils literal notranslate"><span class="pre">0</span></code>, this value is used for the <a class="reference internal" href="#class-timer-property-wait-time"><span class="std std-ref">wait_time</span></a>.</p>
+<p><strong>Note:</strong> This method does not resume a paused timer. See <a class="reference internal" href="#class-timer-property-paused"><span class="std std-ref">paused</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-timer-method-stop"><abbr title="No return value.">void</abbr> <strong>stop</strong>() <a class="reference internal" href="#class-timer-method-stop"><span class="std std-ref">🔗</span></a></p>
+<p>Stops the timer. See also <a class="reference internal" href="#class-timer-property-paused"><span class="std std-ref">paused</span></a>. Unlike <a class="reference internal" href="#class-timer-method-start"><span class="std std-ref">start()</span></a>, this can safely be called if the timer is not inside the scene tree.</p>
+<p><strong>Note:</strong> Calling <a class="reference internal" href="#class-timer-method-stop"><span class="std std-ref">stop()</span></a> does not emit the <a class="reference internal" href="#class-timer-signal-timeout"><span class="std std-ref">timeout</span></a> signal, as the timer is not considered to have timed out. If this is desired, use <code class="docutils literal notranslate"><span class="pre">$Timer.timeout.emit()</span></code> after calling <a class="reference internal" href="#class-timer-method-stop"><span class="std std-ref">stop()</span></a> to manually emit the signal.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, MUmarShahbaz.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

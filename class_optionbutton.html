@@ -1,0 +1,508 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta content="select, dropdown" name="keywords" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OptionButton &mdash; RPG Components 2D 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=d45e8c67"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            RPG Components 2D
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">OptionButton</a><ul>
+<li><a class="reference internal" href="#description">Description</a></li>
+<li><a class="reference internal" href="#properties">Properties</a></li>
+<li><a class="reference internal" href="#methods">Methods</a></li>
+<li><a class="reference internal" href="#theme-properties">Theme Properties</a></li>
+<li><a class="reference internal" href="#signals">Signals</a></li>
+<li><a class="reference internal" href="#property-descriptions">Property Descriptions</a></li>
+<li><a class="reference internal" href="#method-descriptions">Method Descriptions</a></li>
+<li><a class="reference internal" href="#theme-property-descriptions">Theme Property Descriptions</a></li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">RPG Components 2D</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">OptionButton</li>
+      <li class="wy-breadcrumbs-aside">
+              <!-- User defined GitHub URL -->
+              <a href="hide" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="optionbutton">
+<span id="class-optionbutton"></span><h1>OptionButton<a class="headerlink" href="#optionbutton" title="Link to this heading"></a></h1>
+<p><strong>Inherits:</strong> <a class="reference internal" href="class_button.html#class-button"><span class="std std-ref">Button</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_basebutton.html#class-basebutton"><span class="std std-ref">BaseButton</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_control.html#class-control"><span class="std std-ref">Control</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_canvasitem.html#class-canvasitem"><span class="std std-ref">CanvasItem</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_node.html#class-node"><span class="std std-ref">Node</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_object.html#class-object"><span class="std std-ref">Object</span></a></p>
+<p>A button that brings up a dropdown with selectable options when pressed.</p>
+<section class="classref-introduction-group" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
+<p><strong>OptionButton</strong> is a type of button that brings up a dropdown with selectable items when pressed. The item selected becomes the “current” item and is displayed as the button text.</p>
+<p>See also <a class="reference internal" href="class_basebutton.html#class-basebutton"><span class="std std-ref">BaseButton</span></a> which contains common properties and methods associated with this node.</p>
+<p><strong>Note:</strong> The IDs used for items are limited to signed 32-bit integers, not the full 64 bits of <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>. These have a range of <code class="docutils literal notranslate"><span class="pre">-2^31</span></code> to <code class="docutils literal notranslate"><span class="pre">2^31</span> <span class="pre">-</span> <span class="pre">1</span></code>, that is, <code class="docutils literal notranslate"><span class="pre">-2147483648</span></code> to <code class="docutils literal notranslate"><span class="pre">2147483647</span></code>.</p>
+<p><strong>Note:</strong> The <a class="reference internal" href="class_button.html#class-button-property-text"><span class="std std-ref">Button.text</span></a> and <a class="reference internal" href="class_button.html#class-button-property-icon"><span class="std std-ref">Button.icon</span></a> properties are set automatically based on the selected item. They shouldn’t be changed manually.</p>
+</section>
+<section class="classref-reftable-group" id="properties">
+<h2>Properties<a class="headerlink" href="#properties" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_basebutton.html#enum-basebutton-actionmode"><span class="std std-ref">ActionMode</span></a></p></td>
+<td><p>action_mode</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code> (overrides <a class="reference internal" href="class_basebutton.html#class-basebutton-property-action-mode"><span class="std std-ref">BaseButton</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_%40globalscope.html#enum-globalscope-horizontalalignment"><span class="std std-ref">HorizontalAlignment</span></a></p></td>
+<td><p>alignment</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code> (overrides <a class="reference internal" href="class_button.html#class-button-property-alignment"><span class="std std-ref">Button</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-optionbutton-property-allow-reselect"><span class="std std-ref">allow_reselect</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-optionbutton-property-fit-to-longest-item"><span class="std std-ref">fit_to_longest_item</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-optionbutton-property-item-count"><span class="std std-ref">item_count</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-optionbutton-property-popup-item-index-disabled"><span class="std std-ref">popup/item_{index}/disabled</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_texture2d.html#class-texture2d"><span class="std std-ref">Texture2D</span></a></p></td>
+<td><p><a class="reference internal" href="#class-optionbutton-property-popup-item-index-icon"><span class="std std-ref">popup/item_{index}/icon</span></a></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-optionbutton-property-popup-item-index-id"><span class="std std-ref">popup/item_{index}/id</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-optionbutton-property-popup-item-index-separator"><span class="std std-ref">popup/item_{index}/separator</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a></p></td>
+<td><p><a class="reference internal" href="#class-optionbutton-property-popup-item-index-text"><span class="std std-ref">popup/item_{index}/text</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&quot;&quot;</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-optionbutton-property-search-bar-enabled"><span class="std std-ref">search_bar_enabled</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-optionbutton-property-search-bar-fuzzy-search-enabled"><span class="std std-ref">search_bar_fuzzy_search_enabled</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-optionbutton-property-search-bar-fuzzy-search-max-misses"><span class="std std-ref">search_bar_fuzzy_search_max_misses</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">2</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-optionbutton-property-search-bar-min-item-count"><span class="std std-ref">search_bar_min_item_count</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-optionbutton-property-selected"><span class="std std-ref">selected</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">-1</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p>toggle_mode</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">true</span></code> (overrides <a class="reference internal" href="class_basebutton.html#class-basebutton-property-toggle-mode"><span class="std std-ref">BaseButton</span></a>)</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section class="classref-reftable-group" id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-optionbutton-method-add-icon-item"><span class="std std-ref">add_icon_item</span></a>(texture: <a class="reference internal" href="class_texture2d.html#class-texture2d"><span class="std std-ref">Texture2D</span></a>, label: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, id: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> = -1)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-optionbutton-method-add-item"><span class="std std-ref">add_item</span></a>(label: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, id: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> = -1)</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-optionbutton-method-add-separator"><span class="std std-ref">add_separator</span></a>(text: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a> = “”)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-optionbutton-method-clear"><span class="std std-ref">clear</span></a>()</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_node.html#enum-node-autotranslatemode"><span class="std std-ref">AutoTranslateMode</span></a></p></td>
+<td><p><a class="reference internal" href="#class-optionbutton-method-get-item-auto-translate-mode"><span class="std std-ref">get_item_auto_translate_mode</span></a>(idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_texture2d.html#class-texture2d"><span class="std std-ref">Texture2D</span></a></p></td>
+<td><p><a class="reference internal" href="#class-optionbutton-method-get-item-icon"><span class="std std-ref">get_item_icon</span></a>(idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-optionbutton-method-get-item-id"><span class="std std-ref">get_item_id</span></a>(idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-optionbutton-method-get-item-index"><span class="std std-ref">get_item_index</span></a>(id: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a></p></td>
+<td><p><a class="reference internal" href="#class-optionbutton-method-get-item-metadata"><span class="std std-ref">get_item_metadata</span></a>(idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a></p></td>
+<td><p><a class="reference internal" href="#class-optionbutton-method-get-item-text"><span class="std std-ref">get_item_text</span></a>(idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a></p></td>
+<td><p><a class="reference internal" href="#class-optionbutton-method-get-item-tooltip"><span class="std std-ref">get_item_tooltip</span></a>(idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_popupmenu.html#class-popupmenu"><span class="std std-ref">PopupMenu</span></a></p></td>
+<td><p><a class="reference internal" href="#class-optionbutton-method-get-popup"><span class="std std-ref">get_popup</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-optionbutton-method-get-selectable-item"><span class="std std-ref">get_selectable_item</span></a>(from_last: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = false) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-optionbutton-method-get-selected-id"><span class="std std-ref">get_selected_id</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a></p></td>
+<td><p><a class="reference internal" href="#class-optionbutton-method-get-selected-metadata"><span class="std std-ref">get_selected_metadata</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-optionbutton-method-has-selectable-items"><span class="std std-ref">has_selectable_items</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-optionbutton-method-is-item-disabled"><span class="std std-ref">is_item_disabled</span></a>(idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-optionbutton-method-is-item-separator"><span class="std std-ref">is_item_separator</span></a>(idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-optionbutton-method-remove-item"><span class="std std-ref">remove_item</span></a>(idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-optionbutton-method-select"><span class="std std-ref">select</span></a>(idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-optionbutton-method-set-disable-shortcuts"><span class="std std-ref">set_disable_shortcuts</span></a>(disabled: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-optionbutton-method-set-item-auto-translate-mode"><span class="std std-ref">set_item_auto_translate_mode</span></a>(idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, mode: <a class="reference internal" href="class_node.html#enum-node-autotranslatemode"><span class="std std-ref">AutoTranslateMode</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-optionbutton-method-set-item-disabled"><span class="std std-ref">set_item_disabled</span></a>(idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, disabled: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-optionbutton-method-set-item-icon"><span class="std std-ref">set_item_icon</span></a>(idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, texture: <a class="reference internal" href="class_texture2d.html#class-texture2d"><span class="std std-ref">Texture2D</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-optionbutton-method-set-item-id"><span class="std std-ref">set_item_id</span></a>(idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, id: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-optionbutton-method-set-item-metadata"><span class="std std-ref">set_item_metadata</span></a>(idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, metadata: <a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-optionbutton-method-set-item-text"><span class="std std-ref">set_item_text</span></a>(idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, text: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-optionbutton-method-set-item-tooltip"><span class="std std-ref">set_item_tooltip</span></a>(idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, tooltip: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-optionbutton-method-show-popup"><span class="std std-ref">show_popup</span></a>()</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section class="classref-reftable-group" id="theme-properties">
+<h2>Theme Properties<a class="headerlink" href="#theme-properties" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-optionbutton-theme-constant-arrow-margin"><span class="std std-ref">arrow_margin</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">4</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-optionbutton-theme-constant-modulate-arrow"><span class="std std-ref">modulate_arrow</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_texture2d.html#class-texture2d"><span class="std std-ref">Texture2D</span></a></p></td>
+<td><p><a class="reference internal" href="#class-optionbutton-theme-icon-arrow"><span class="std std-ref">arrow</span></a></p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="signals">
+<h2>Signals<a class="headerlink" href="#signals" title="Link to this heading"></a></h2>
+<p class="classref-signal" id="class-optionbutton-signal-item-focused"><strong>item_focused</strong>(index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <a class="reference internal" href="#class-optionbutton-signal-item-focused"><span class="std std-ref">🔗</span></a></p>
+<p>Emitted when the user navigates to an item using the <a class="reference internal" href="class_projectsettings.html#class-projectsettings-property-input-ui-up"><span class="std std-ref">ProjectSettings.input/ui_up</span></a> or <a class="reference internal" href="class_projectsettings.html#class-projectsettings-property-input-ui-down"><span class="std std-ref">ProjectSettings.input/ui_down</span></a> input actions. The index of the item focused is passed as argument.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-signal" id="class-optionbutton-signal-item-selected"><strong>item_selected</strong>(index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <a class="reference internal" href="#class-optionbutton-signal-item-selected"><span class="std std-ref">🔗</span></a></p>
+<p>Emitted when the current item has been changed by the user. The index of the item selected is passed as argument.</p>
+<p><a class="reference internal" href="#class-optionbutton-property-allow-reselect"><span class="std std-ref">allow_reselect</span></a> must be enabled to reselect an item.</p>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="property-descriptions">
+<h2>Property Descriptions<a class="headerlink" href="#property-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-property" id="class-optionbutton-property-allow-reselect"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>allow_reselect</strong> = <code class="docutils literal notranslate"><span class="pre">false</span></code> <a class="reference internal" href="#class-optionbutton-property-allow-reselect"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_allow_reselect</strong>(value: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>get_allow_reselect</strong>()</p></li>
+</ul>
+<p>If <code class="docutils literal notranslate"><span class="pre">true</span></code>, the currently selected item can be selected again.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-optionbutton-property-fit-to-longest-item"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>fit_to_longest_item</strong> = <code class="docutils literal notranslate"><span class="pre">true</span></code> <a class="reference internal" href="#class-optionbutton-property-fit-to-longest-item"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_fit_to_longest_item</strong>(value: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_fit_to_longest_item</strong>()</p></li>
+</ul>
+<p>If <code class="docutils literal notranslate"><span class="pre">true</span></code>, minimum size will be determined by the longest item’s text, instead of the currently selected one’s.</p>
+<p><strong>Note:</strong> For performance reasons, the minimum size doesn’t update immediately when adding, removing or modifying items.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-optionbutton-property-item-count"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>item_count</strong> = <code class="docutils literal notranslate"><span class="pre">0</span></code> <a class="reference internal" href="#class-optionbutton-property-item-count"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_item_count</strong>(value: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>get_item_count</strong>()</p></li>
+</ul>
+<p>The number of items to select from.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-optionbutton-property-popup-item-index-disabled"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>popup/item_{index}/disabled</strong> = <code class="docutils literal notranslate"><span class="pre">false</span></code> <a class="reference internal" href="#class-optionbutton-property-popup-item-index-disabled"><span class="std std-ref">🔗</span></a></p>
+<p>If <code class="docutils literal notranslate"><span class="pre">true</span></code>, the item at <code class="docutils literal notranslate"><span class="pre">index</span></code> is disabled.</p>
+<p><strong>Note:</strong> <code class="docutils literal notranslate"><span class="pre">index</span></code> is a value in the <code class="docutils literal notranslate"><span class="pre">0</span> <span class="pre">..</span> <span class="pre">item_count</span> <span class="pre">-</span> <span class="pre">1</span></code> range.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-optionbutton-property-popup-item-index-icon"><a class="reference internal" href="class_texture2d.html#class-texture2d"><span class="std std-ref">Texture2D</span></a> <strong>popup/item_{index}/icon</strong> <a class="reference internal" href="#class-optionbutton-property-popup-item-index-icon"><span class="std std-ref">🔗</span></a></p>
+<p>The icon of the item at <code class="docutils literal notranslate"><span class="pre">index</span></code>.</p>
+<p><strong>Note:</strong> <code class="docutils literal notranslate"><span class="pre">index</span></code> is a value in the <code class="docutils literal notranslate"><span class="pre">0</span> <span class="pre">..</span> <span class="pre">item_count</span> <span class="pre">-</span> <span class="pre">1</span></code> range.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-optionbutton-property-popup-item-index-id"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>popup/item_{index}/id</strong> = <code class="docutils literal notranslate"><span class="pre">0</span></code> <a class="reference internal" href="#class-optionbutton-property-popup-item-index-id"><span class="std std-ref">🔗</span></a></p>
+<p>The ID of the item at <code class="docutils literal notranslate"><span class="pre">index</span></code>.</p>
+<p><strong>Note:</strong> <code class="docutils literal notranslate"><span class="pre">index</span></code> is a value in the <code class="docutils literal notranslate"><span class="pre">0</span> <span class="pre">..</span> <span class="pre">item_count</span> <span class="pre">-</span> <span class="pre">1</span></code> range.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-optionbutton-property-popup-item-index-separator"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>popup/item_{index}/separator</strong> = <code class="docutils literal notranslate"><span class="pre">false</span></code> <a class="reference internal" href="#class-optionbutton-property-popup-item-index-separator"><span class="std std-ref">🔗</span></a></p>
+<p>If <code class="docutils literal notranslate"><span class="pre">true</span></code>, the item at <code class="docutils literal notranslate"><span class="pre">index</span></code> is a separator.</p>
+<p><strong>Note:</strong> <code class="docutils literal notranslate"><span class="pre">index</span></code> is a value in the <code class="docutils literal notranslate"><span class="pre">0</span> <span class="pre">..</span> <span class="pre">item_count</span> <span class="pre">-</span> <span class="pre">1</span></code> range.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-optionbutton-property-popup-item-index-text"><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a> <strong>popup/item_{index}/text</strong> = <code class="docutils literal notranslate"><span class="pre">&quot;&quot;</span></code> <a class="reference internal" href="#class-optionbutton-property-popup-item-index-text"><span class="std std-ref">🔗</span></a></p>
+<p>The text of the item at <code class="docutils literal notranslate"><span class="pre">index</span></code>.</p>
+<p><strong>Note:</strong> <code class="docutils literal notranslate"><span class="pre">index</span></code> is a value in the <code class="docutils literal notranslate"><span class="pre">0</span> <span class="pre">..</span> <span class="pre">item_count</span> <span class="pre">-</span> <span class="pre">1</span></code> range.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-optionbutton-property-search-bar-enabled"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>search_bar_enabled</strong> = <code class="docutils literal notranslate"><span class="pre">false</span></code> <a class="reference internal" href="#class-optionbutton-property-search-bar-enabled"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_search_bar_enabled</strong>(value: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_search_bar_enabled</strong>()</p></li>
+</ul>
+<p>If <code class="docutils literal notranslate"><span class="pre">true</span></code>, shows a search bar at the top of the <a class="reference internal" href="class_popupmenu.html#class-popupmenu"><span class="std std-ref">PopupMenu</span></a> for filtering items. See <a class="reference internal" href="#class-optionbutton-property-search-bar-min-item-count"><span class="std std-ref">search_bar_min_item_count</span></a> for dynamically controlling its visibility based on the number of items.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-optionbutton-property-search-bar-fuzzy-search-enabled"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>search_bar_fuzzy_search_enabled</strong> = <code class="docutils literal notranslate"><span class="pre">true</span></code> <a class="reference internal" href="#class-optionbutton-property-search-bar-fuzzy-search-enabled"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_search_bar_fuzzy_search_enabled</strong>(value: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_search_bar_fuzzy_search_enabled</strong>()</p></li>
+</ul>
+<p>If <code class="docutils literal notranslate"><span class="pre">true</span></code>, enables fuzzy searching in the <a class="reference internal" href="class_popupmenu.html#class-popupmenu"><span class="std std-ref">PopupMenu</span></a> search bar. This allows the search results to include items that almost match the search query, as well items that match the individual characters of the search query, but not in sequence.</p>
+<p>Use <a class="reference internal" href="#class-optionbutton-property-search-bar-fuzzy-search-max-misses"><span class="std std-ref">search_bar_fuzzy_search_max_misses</span></a> to set the maximum number of mismatches allowed in the search results.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-optionbutton-property-search-bar-fuzzy-search-max-misses"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>search_bar_fuzzy_search_max_misses</strong> = <code class="docutils literal notranslate"><span class="pre">2</span></code> <a class="reference internal" href="#class-optionbutton-property-search-bar-fuzzy-search-max-misses"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_search_bar_fuzzy_search_max_misses</strong>(value: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>get_search_bar_fuzzy_search_max_misses</strong>()</p></li>
+</ul>
+<p>Sets the maximum number of mismatches allowed in each search result when fuzzy searching is enabled for the <a class="reference internal" href="class_popupmenu.html#class-popupmenu"><span class="std std-ref">PopupMenu</span></a> search bar. Any item with more mismatches will be hidden from the search results.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-optionbutton-property-search-bar-min-item-count"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>search_bar_min_item_count</strong> = <code class="docutils literal notranslate"><span class="pre">0</span></code> <a class="reference internal" href="#class-optionbutton-property-search-bar-min-item-count"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_search_bar_min_item_count</strong>(value: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>get_search_bar_min_item_count</strong>()</p></li>
+</ul>
+<p>Sets the minimum number of items required for the <a class="reference internal" href="class_popupmenu.html#class-popupmenu"><span class="std std-ref">PopupMenu</span></a> search bar to be visible. <a class="reference internal" href="#class-optionbutton-property-search-bar-enabled"><span class="std std-ref">search_bar_enabled</span></a> must be <code class="docutils literal notranslate"><span class="pre">true</span></code> for this to have any effect.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-optionbutton-property-selected"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>selected</strong> = <code class="docutils literal notranslate"><span class="pre">-1</span></code> <a class="reference internal" href="#class-optionbutton-property-selected"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>get_selected</strong>()</p></li>
+</ul>
+<p>The index of the currently selected item, or <code class="docutils literal notranslate"><span class="pre">-1</span></code> if no item is selected.</p>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="method-descriptions">
+<h2>Method Descriptions<a class="headerlink" href="#method-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-method" id="class-optionbutton-method-add-icon-item"><abbr title="No return value.">void</abbr> <strong>add_icon_item</strong>(texture: <a class="reference internal" href="class_texture2d.html#class-texture2d"><span class="std std-ref">Texture2D</span></a>, label: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, id: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> = -1) <a class="reference internal" href="#class-optionbutton-method-add-icon-item"><span class="std std-ref">🔗</span></a></p>
+<p>Adds an item, with a <code class="docutils literal notranslate"><span class="pre">texture</span></code> icon, text <code class="docutils literal notranslate"><span class="pre">label</span></code> and (optionally) <code class="docutils literal notranslate"><span class="pre">id</span></code>. If no <code class="docutils literal notranslate"><span class="pre">id</span></code> is passed, the item index will be used as the item’s ID. New items are appended at the end.</p>
+<p><strong>Note:</strong> The item will be selected if there are no other items.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-optionbutton-method-add-item"><abbr title="No return value.">void</abbr> <strong>add_item</strong>(label: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, id: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> = -1) <a class="reference internal" href="#class-optionbutton-method-add-item"><span class="std std-ref">🔗</span></a></p>
+<p>Adds an item, with text <code class="docutils literal notranslate"><span class="pre">label</span></code> and (optionally) <code class="docutils literal notranslate"><span class="pre">id</span></code>. If no <code class="docutils literal notranslate"><span class="pre">id</span></code> is passed, the item index will be used as the item’s ID. New items are appended at the end.</p>
+<p><strong>Note:</strong> The item will be selected if there are no other items.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-optionbutton-method-add-separator"><abbr title="No return value.">void</abbr> <strong>add_separator</strong>(text: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a> = “”) <a class="reference internal" href="#class-optionbutton-method-add-separator"><span class="std std-ref">🔗</span></a></p>
+<p>Adds a separator to the list of items. Separators help to group items, and can optionally be given a <code class="docutils literal notranslate"><span class="pre">text</span></code> header. A separator also gets an index assigned, and is appended at the end of the item list.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-optionbutton-method-clear"><abbr title="No return value.">void</abbr> <strong>clear</strong>() <a class="reference internal" href="#class-optionbutton-method-clear"><span class="std std-ref">🔗</span></a></p>
+<p>Clears all the items in the <strong>OptionButton</strong>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-optionbutton-method-get-item-auto-translate-mode"><a class="reference internal" href="class_node.html#enum-node-autotranslatemode"><span class="std std-ref">AutoTranslateMode</span></a> <strong>get_item_auto_translate_mode</strong>(idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-optionbutton-method-get-item-auto-translate-mode"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the auto translate mode of the item at index <code class="docutils literal notranslate"><span class="pre">idx</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-optionbutton-method-get-item-icon"><a class="reference internal" href="class_texture2d.html#class-texture2d"><span class="std std-ref">Texture2D</span></a> <strong>get_item_icon</strong>(idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-optionbutton-method-get-item-icon"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the icon of the item at index <code class="docutils literal notranslate"><span class="pre">idx</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-optionbutton-method-get-item-id"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>get_item_id</strong>(idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-optionbutton-method-get-item-id"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the ID of the item at index <code class="docutils literal notranslate"><span class="pre">idx</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-optionbutton-method-get-item-index"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>get_item_index</strong>(id: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-optionbutton-method-get-item-index"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the index of the item with the given <code class="docutils literal notranslate"><span class="pre">id</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-optionbutton-method-get-item-metadata"><a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a> <strong>get_item_metadata</strong>(idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-optionbutton-method-get-item-metadata"><span class="std std-ref">🔗</span></a></p>
+<p>Retrieves the metadata of an item. Metadata may be any type and can be used to store extra information about an item, such as an external string ID.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-optionbutton-method-get-item-text"><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a> <strong>get_item_text</strong>(idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-optionbutton-method-get-item-text"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the text of the item at index <code class="docutils literal notranslate"><span class="pre">idx</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-optionbutton-method-get-item-tooltip"><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a> <strong>get_item_tooltip</strong>(idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-optionbutton-method-get-item-tooltip"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the tooltip of the item at index <code class="docutils literal notranslate"><span class="pre">idx</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-optionbutton-method-get-popup"><a class="reference internal" href="class_popupmenu.html#class-popupmenu"><span class="std std-ref">PopupMenu</span></a> <strong>get_popup</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-optionbutton-method-get-popup"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the <a class="reference internal" href="class_popupmenu.html#class-popupmenu"><span class="std std-ref">PopupMenu</span></a> contained in this button.</p>
+<p><strong>Warning:</strong> This is a required internal node, removing and freeing it may cause a crash. If you wish to hide it or any of its children, use their <a class="reference internal" href="class_window.html#class-window-property-visible"><span class="std std-ref">Window.visible</span></a> property.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-optionbutton-method-get-selectable-item"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>get_selectable_item</strong>(from_last: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = false) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-optionbutton-method-get-selectable-item"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the index of the first item which is not disabled, or marked as a separator. If <code class="docutils literal notranslate"><span class="pre">from_last</span></code> is <code class="docutils literal notranslate"><span class="pre">true</span></code>, the items will be searched in reverse order.</p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">-1</span></code> if no item is found.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-optionbutton-method-get-selected-id"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>get_selected_id</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-optionbutton-method-get-selected-id"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the ID of the selected item, or <code class="docutils literal notranslate"><span class="pre">-1</span></code> if no item is selected.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-optionbutton-method-get-selected-metadata"><a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a> <strong>get_selected_metadata</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-optionbutton-method-get-selected-metadata"><span class="std std-ref">🔗</span></a></p>
+<p>Gets the metadata of the selected item. Metadata for items can be set using <a class="reference internal" href="#class-optionbutton-method-set-item-metadata"><span class="std std-ref">set_item_metadata()</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-optionbutton-method-has-selectable-items"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>has_selectable_items</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-optionbutton-method-has-selectable-items"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if this button contains at least one item which is not disabled, or marked as a separator.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-optionbutton-method-is-item-disabled"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_item_disabled</strong>(idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-optionbutton-method-is-item-disabled"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if the item at index <code class="docutils literal notranslate"><span class="pre">idx</span></code> is disabled.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-optionbutton-method-is-item-separator"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_item_separator</strong>(idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-optionbutton-method-is-item-separator"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if the item at index <code class="docutils literal notranslate"><span class="pre">idx</span></code> is marked as a separator.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-optionbutton-method-remove-item"><abbr title="No return value.">void</abbr> <strong>remove_item</strong>(idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <a class="reference internal" href="#class-optionbutton-method-remove-item"><span class="std std-ref">🔗</span></a></p>
+<p>Removes the item at index <code class="docutils literal notranslate"><span class="pre">idx</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-optionbutton-method-select"><abbr title="No return value.">void</abbr> <strong>select</strong>(idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <a class="reference internal" href="#class-optionbutton-method-select"><span class="std std-ref">🔗</span></a></p>
+<p>Selects an item by index and makes it the current item. This will work even if the item is disabled.</p>
+<p>Passing <code class="docutils literal notranslate"><span class="pre">-1</span></code> as the index deselects any currently selected item.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-optionbutton-method-set-disable-shortcuts"><abbr title="No return value.">void</abbr> <strong>set_disable_shortcuts</strong>(disabled: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>) <a class="reference internal" href="#class-optionbutton-method-set-disable-shortcuts"><span class="std std-ref">🔗</span></a></p>
+<p>If <code class="docutils literal notranslate"><span class="pre">true</span></code>, shortcuts are disabled and cannot be used to trigger the button.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-optionbutton-method-set-item-auto-translate-mode"><abbr title="No return value.">void</abbr> <strong>set_item_auto_translate_mode</strong>(idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, mode: <a class="reference internal" href="class_node.html#enum-node-autotranslatemode"><span class="std std-ref">AutoTranslateMode</span></a>) <a class="reference internal" href="#class-optionbutton-method-set-item-auto-translate-mode"><span class="std std-ref">🔗</span></a></p>
+<p>Sets the auto translate mode of the item at index <code class="docutils literal notranslate"><span class="pre">idx</span></code>.</p>
+<p>Items use <a class="reference internal" href="class_node.html#class-node-constant-auto-translate-mode-inherit"><span class="std std-ref">Node.AUTO_TRANSLATE_MODE_INHERIT</span></a> by default, which uses the same auto translate mode as the <strong>OptionButton</strong> itself.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-optionbutton-method-set-item-disabled"><abbr title="No return value.">void</abbr> <strong>set_item_disabled</strong>(idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, disabled: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>) <a class="reference internal" href="#class-optionbutton-method-set-item-disabled"><span class="std std-ref">🔗</span></a></p>
+<p>Sets whether the item at index <code class="docutils literal notranslate"><span class="pre">idx</span></code> is disabled.</p>
+<p>Disabled items are drawn differently in the dropdown and are not selectable by the user. If the current selected item is set as disabled, it will remain selected.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-optionbutton-method-set-item-icon"><abbr title="No return value.">void</abbr> <strong>set_item_icon</strong>(idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, texture: <a class="reference internal" href="class_texture2d.html#class-texture2d"><span class="std std-ref">Texture2D</span></a>) <a class="reference internal" href="#class-optionbutton-method-set-item-icon"><span class="std std-ref">🔗</span></a></p>
+<p>Sets the icon of the item at index <code class="docutils literal notranslate"><span class="pre">idx</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-optionbutton-method-set-item-id"><abbr title="No return value.">void</abbr> <strong>set_item_id</strong>(idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, id: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <a class="reference internal" href="#class-optionbutton-method-set-item-id"><span class="std std-ref">🔗</span></a></p>
+<p>Sets the ID of the item at index <code class="docutils literal notranslate"><span class="pre">idx</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-optionbutton-method-set-item-metadata"><abbr title="No return value.">void</abbr> <strong>set_item_metadata</strong>(idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, metadata: <a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a>) <a class="reference internal" href="#class-optionbutton-method-set-item-metadata"><span class="std std-ref">🔗</span></a></p>
+<p>Sets the metadata of an item. Metadata may be of any type and can be used to store extra information about an item, such as an external string ID.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-optionbutton-method-set-item-text"><abbr title="No return value.">void</abbr> <strong>set_item_text</strong>(idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, text: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <a class="reference internal" href="#class-optionbutton-method-set-item-text"><span class="std std-ref">🔗</span></a></p>
+<p>Sets the text of the item at index <code class="docutils literal notranslate"><span class="pre">idx</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-optionbutton-method-set-item-tooltip"><abbr title="No return value.">void</abbr> <strong>set_item_tooltip</strong>(idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, tooltip: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <a class="reference internal" href="#class-optionbutton-method-set-item-tooltip"><span class="std std-ref">🔗</span></a></p>
+<p>Sets the tooltip of the item at index <code class="docutils literal notranslate"><span class="pre">idx</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-optionbutton-method-show-popup"><abbr title="No return value.">void</abbr> <strong>show_popup</strong>() <a class="reference internal" href="#class-optionbutton-method-show-popup"><span class="std std-ref">🔗</span></a></p>
+<p>Adjusts popup position and sizing for the <strong>OptionButton</strong>, then shows the <a class="reference internal" href="class_popupmenu.html#class-popupmenu"><span class="std std-ref">PopupMenu</span></a>. Prefer this over using <code class="docutils literal notranslate"><span class="pre">get_popup().popup()</span></code>.</p>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="theme-property-descriptions">
+<h2>Theme Property Descriptions<a class="headerlink" href="#theme-property-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-themeproperty" id="class-optionbutton-theme-constant-arrow-margin"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>arrow_margin</strong> = <code class="docutils literal notranslate"><span class="pre">4</span></code> <a class="reference internal" href="#class-optionbutton-theme-constant-arrow-margin"><span class="std std-ref">🔗</span></a></p>
+<p>The horizontal space between the arrow icon and the right edge of the button.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-themeproperty" id="class-optionbutton-theme-constant-modulate-arrow"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>modulate_arrow</strong> = <code class="docutils literal notranslate"><span class="pre">0</span></code> <a class="reference internal" href="#class-optionbutton-theme-constant-modulate-arrow"><span class="std std-ref">🔗</span></a></p>
+<p>If different than <code class="docutils literal notranslate"><span class="pre">0</span></code>, the arrow icon will be modulated to the font color.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-themeproperty" id="class-optionbutton-theme-icon-arrow"><a class="reference internal" href="class_texture2d.html#class-texture2d"><span class="std std-ref">Texture2D</span></a> <strong>arrow</strong> <a class="reference internal" href="#class-optionbutton-theme-icon-arrow"><span class="std std-ref">🔗</span></a></p>
+<p>The arrow icon to be drawn on the right end of the button.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, MUmarShahbaz.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

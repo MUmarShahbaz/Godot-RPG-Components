@@ -1,0 +1,195 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EditorInspectorPlugin &mdash; RPG Components 2D 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=d45e8c67"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            RPG Components 2D
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">EditorInspectorPlugin</a><ul>
+<li><a class="reference internal" href="#description">Description</a></li>
+<li><a class="reference internal" href="#tutorials">Tutorials</a></li>
+<li><a class="reference internal" href="#methods">Methods</a></li>
+<li><a class="reference internal" href="#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">RPG Components 2D</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">EditorInspectorPlugin</li>
+      <li class="wy-breadcrumbs-aside">
+              <!-- User defined GitHub URL -->
+              <a href="hide" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="editorinspectorplugin">
+<span id="class-editorinspectorplugin"></span><h1>EditorInspectorPlugin<a class="headerlink" href="#editorinspectorplugin" title="Link to this heading"></a></h1>
+<p><strong>Inherits:</strong> <a class="reference internal" href="class_refcounted.html#class-refcounted"><span class="std std-ref">RefCounted</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_object.html#class-object"><span class="std std-ref">Object</span></a></p>
+<p>Plugin for adding custom property editors on the inspector.</p>
+<section class="classref-introduction-group" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
+<p><strong>EditorInspectorPlugin</strong> allows adding custom property editors to <a class="reference internal" href="class_editorinspector.html#class-editorinspector"><span class="std std-ref">EditorInspector</span></a>.</p>
+<p>When an object is edited, the <a class="reference internal" href="#class-editorinspectorplugin-private-method-can-handle"><span class="std std-ref">_can_handle()</span></a> function is called and must return <code class="docutils literal notranslate"><span class="pre">true</span></code> if the object type is supported.</p>
+<p>If supported, the function <a class="reference internal" href="#class-editorinspectorplugin-private-method-parse-begin"><span class="std std-ref">_parse_begin()</span></a> will be called, allowing to place custom controls at the beginning of the class.</p>
+<p>Subsequently, the <a class="reference internal" href="#class-editorinspectorplugin-private-method-parse-category"><span class="std std-ref">_parse_category()</span></a> and <a class="reference internal" href="#class-editorinspectorplugin-private-method-parse-property"><span class="std std-ref">_parse_property()</span></a> are called for every category and property. They offer the ability to add custom controls to the inspector too.</p>
+<p>Finally, <a class="reference internal" href="#class-editorinspectorplugin-private-method-parse-end"><span class="std std-ref">_parse_end()</span></a> will be called.</p>
+<p>On each of these calls, the “add” functions can be called.</p>
+<p>To use <strong>EditorInspectorPlugin</strong>, register it using the <a class="reference internal" href="class_editorplugin.html#class-editorplugin-method-add-inspector-plugin"><span class="std std-ref">EditorPlugin.add_inspector_plugin()</span></a> method first.</p>
+</section>
+<section class="classref-introduction-group" id="tutorials">
+<h2>Tutorials<a class="headerlink" href="#tutorials" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><span class="xref std std-doc">Inspector plugins</span></p></li>
+</ul>
+</section>
+<section class="classref-reftable-group" id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-editorinspectorplugin-private-method-can-handle"><span class="std std-ref">_can_handle</span></a>(object: <a class="reference internal" href="class_object.html#class-object"><span class="std std-ref">Object</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-editorinspectorplugin-private-method-parse-begin"><span class="std std-ref">_parse_begin</span></a>(object: <a class="reference internal" href="class_object.html#class-object"><span class="std std-ref">Object</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-editorinspectorplugin-private-method-parse-category"><span class="std std-ref">_parse_category</span></a>(object: <a class="reference internal" href="class_object.html#class-object"><span class="std std-ref">Object</span></a>, category: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-editorinspectorplugin-private-method-parse-end"><span class="std std-ref">_parse_end</span></a>(object: <a class="reference internal" href="class_object.html#class-object"><span class="std std-ref">Object</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-editorinspectorplugin-private-method-parse-group"><span class="std std-ref">_parse_group</span></a>(object: <a class="reference internal" href="class_object.html#class-object"><span class="std std-ref">Object</span></a>, group: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-editorinspectorplugin-private-method-parse-property"><span class="std std-ref">_parse_property</span></a>(object: <a class="reference internal" href="class_object.html#class-object"><span class="std std-ref">Object</span></a>, type: <a class="reference internal" href="class_%40globalscope.html#enum-globalscope-variant-type"><span class="std std-ref">Variant.Type</span></a>, name: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, hint_type: <a class="reference internal" href="class_%40globalscope.html#enum-globalscope-propertyhint"><span class="std std-ref">PropertyHint</span></a>, hint_string: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, usage_flags: <abbr title="This value is an integer composed as a bitmask of the following flags.">BitField</abbr>[<a class="reference internal" href="class_%40globalscope.html#enum-globalscope-propertyusageflags"><span class="std std-ref">PropertyUsageFlags</span></a>], wide: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-editorinspectorplugin-method-add-custom-control"><span class="std std-ref">add_custom_control</span></a>(control: <a class="reference internal" href="class_control.html#class-control"><span class="std std-ref">Control</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-editorinspectorplugin-method-add-property-editor"><span class="std std-ref">add_property_editor</span></a>(property: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, editor: <a class="reference internal" href="class_control.html#class-control"><span class="std std-ref">Control</span></a>, add_to_end: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = false, label: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a> = “”)</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-editorinspectorplugin-method-add-property-editor-for-multiple-properties"><span class="std std-ref">add_property_editor_for_multiple_properties</span></a>(label: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, properties: <a class="reference internal" href="class_packedstringarray.html#class-packedstringarray"><span class="std std-ref">PackedStringArray</span></a>, editor: <a class="reference internal" href="class_control.html#class-control"><span class="std std-ref">Control</span></a>)</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="method-descriptions">
+<h2>Method Descriptions<a class="headerlink" href="#method-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-method" id="class-editorinspectorplugin-private-method-can-handle"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>_can_handle</strong>(object: <a class="reference internal" href="class_object.html#class-object"><span class="std std-ref">Object</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-editorinspectorplugin-private-method-can-handle"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if this object can be handled by this plugin.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-editorinspectorplugin-private-method-parse-begin"><abbr title="No return value.">void</abbr> <strong>_parse_begin</strong>(object: <a class="reference internal" href="class_object.html#class-object"><span class="std std-ref">Object</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <a class="reference internal" href="#class-editorinspectorplugin-private-method-parse-begin"><span class="std std-ref">🔗</span></a></p>
+<p>Called to allow adding controls at the beginning of the property list for <code class="docutils literal notranslate"><span class="pre">object</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-editorinspectorplugin-private-method-parse-category"><abbr title="No return value.">void</abbr> <strong>_parse_category</strong>(object: <a class="reference internal" href="class_object.html#class-object"><span class="std std-ref">Object</span></a>, category: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <a class="reference internal" href="#class-editorinspectorplugin-private-method-parse-category"><span class="std std-ref">🔗</span></a></p>
+<p>Called to allow adding controls at the beginning of a category in the property list for <code class="docutils literal notranslate"><span class="pre">object</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-editorinspectorplugin-private-method-parse-end"><abbr title="No return value.">void</abbr> <strong>_parse_end</strong>(object: <a class="reference internal" href="class_object.html#class-object"><span class="std std-ref">Object</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <a class="reference internal" href="#class-editorinspectorplugin-private-method-parse-end"><span class="std std-ref">🔗</span></a></p>
+<p>Called to allow adding controls at the end of the property list for <code class="docutils literal notranslate"><span class="pre">object</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-editorinspectorplugin-private-method-parse-group"><abbr title="No return value.">void</abbr> <strong>_parse_group</strong>(object: <a class="reference internal" href="class_object.html#class-object"><span class="std std-ref">Object</span></a>, group: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <a class="reference internal" href="#class-editorinspectorplugin-private-method-parse-group"><span class="std std-ref">🔗</span></a></p>
+<p>Called to allow adding controls at the beginning of a group or a sub-group in the property list for <code class="docutils literal notranslate"><span class="pre">object</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-editorinspectorplugin-private-method-parse-property"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>_parse_property</strong>(object: <a class="reference internal" href="class_object.html#class-object"><span class="std std-ref">Object</span></a>, type: <a class="reference internal" href="class_%40globalscope.html#enum-globalscope-variant-type"><span class="std std-ref">Variant.Type</span></a>, name: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, hint_type: <a class="reference internal" href="class_%40globalscope.html#enum-globalscope-propertyhint"><span class="std std-ref">PropertyHint</span></a>, hint_string: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, usage_flags: <abbr title="This value is an integer composed as a bitmask of the following flags.">BitField</abbr>[<a class="reference internal" href="class_%40globalscope.html#enum-globalscope-propertyusageflags"><span class="std std-ref">PropertyUsageFlags</span></a>], wide: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <a class="reference internal" href="#class-editorinspectorplugin-private-method-parse-property"><span class="std std-ref">🔗</span></a></p>
+<p>Called to allow adding property-specific editors to the property list for <code class="docutils literal notranslate"><span class="pre">object</span></code>. The added editor control must extend <a class="reference internal" href="class_editorproperty.html#class-editorproperty"><span class="std std-ref">EditorProperty</span></a>. Returning <code class="docutils literal notranslate"><span class="pre">true</span></code> removes the built-in editor for this property, otherwise allows to insert a custom editor before the built-in one.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-editorinspectorplugin-method-add-custom-control"><abbr title="No return value.">void</abbr> <strong>add_custom_control</strong>(control: <a class="reference internal" href="class_control.html#class-control"><span class="std std-ref">Control</span></a>) <a class="reference internal" href="#class-editorinspectorplugin-method-add-custom-control"><span class="std std-ref">🔗</span></a></p>
+<p>Adds a custom control, which is not necessarily a property editor.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-editorinspectorplugin-method-add-property-editor"><abbr title="No return value.">void</abbr> <strong>add_property_editor</strong>(property: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, editor: <a class="reference internal" href="class_control.html#class-control"><span class="std std-ref">Control</span></a>, add_to_end: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = false, label: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a> = “”) <a class="reference internal" href="#class-editorinspectorplugin-method-add-property-editor"><span class="std std-ref">🔗</span></a></p>
+<p>Adds a property editor for an individual property. The <code class="docutils literal notranslate"><span class="pre">editor</span></code> control must extend <a class="reference internal" href="class_editorproperty.html#class-editorproperty"><span class="std std-ref">EditorProperty</span></a>.</p>
+<p>There can be multiple property editors for a property. If <code class="docutils literal notranslate"><span class="pre">add_to_end</span></code> is <code class="docutils literal notranslate"><span class="pre">true</span></code>, this newly added editor will be displayed after all the other editors of the property whose <code class="docutils literal notranslate"><span class="pre">add_to_end</span></code> is <code class="docutils literal notranslate"><span class="pre">false</span></code>. For example, the editor uses this parameter to add an “Edit Region” button for <a class="reference internal" href="class_sprite2d.html#class-sprite2d-property-region-rect"><span class="std std-ref">Sprite2D.region_rect</span></a> below the regular <a class="reference internal" href="class_rect2.html#class-rect2"><span class="std std-ref">Rect2</span></a> editor.</p>
+<p><code class="docutils literal notranslate"><span class="pre">label</span></code> can be used to choose a custom label for the property editor in the inspector. If left empty, the label is computed from the name of the property instead.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-editorinspectorplugin-method-add-property-editor-for-multiple-properties"><abbr title="No return value.">void</abbr> <strong>add_property_editor_for_multiple_properties</strong>(label: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, properties: <a class="reference internal" href="class_packedstringarray.html#class-packedstringarray"><span class="std std-ref">PackedStringArray</span></a>, editor: <a class="reference internal" href="class_control.html#class-control"><span class="std std-ref">Control</span></a>) <a class="reference internal" href="#class-editorinspectorplugin-method-add-property-editor-for-multiple-properties"><span class="std std-ref">🔗</span></a></p>
+<p>Adds an editor that allows modifying multiple properties. The <code class="docutils literal notranslate"><span class="pre">editor</span></code> control must extend <a class="reference internal" href="class_editorproperty.html#class-editorproperty"><span class="std std-ref">EditorProperty</span></a>.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, MUmarShahbaz.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

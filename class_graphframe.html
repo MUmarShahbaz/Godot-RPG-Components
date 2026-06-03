@@ -1,0 +1,270 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GraphFrame &mdash; RPG Components 2D 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=d45e8c67"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            RPG Components 2D
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">GraphFrame</a><ul>
+<li><a class="reference internal" href="#description">Description</a></li>
+<li><a class="reference internal" href="#properties">Properties</a></li>
+<li><a class="reference internal" href="#methods">Methods</a></li>
+<li><a class="reference internal" href="#theme-properties">Theme Properties</a></li>
+<li><a class="reference internal" href="#signals">Signals</a></li>
+<li><a class="reference internal" href="#property-descriptions">Property Descriptions</a></li>
+<li><a class="reference internal" href="#method-descriptions">Method Descriptions</a></li>
+<li><a class="reference internal" href="#theme-property-descriptions">Theme Property Descriptions</a></li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">RPG Components 2D</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">GraphFrame</li>
+      <li class="wy-breadcrumbs-aside">
+              <!-- User defined GitHub URL -->
+              <a href="hide" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="graphframe">
+<span id="class-graphframe"></span><h1>GraphFrame<a class="headerlink" href="#graphframe" title="Link to this heading"></a></h1>
+<p><strong>Inherits:</strong> <a class="reference internal" href="class_graphelement.html#class-graphelement"><span class="std std-ref">GraphElement</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_container.html#class-container"><span class="std std-ref">Container</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_control.html#class-control"><span class="std std-ref">Control</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_canvasitem.html#class-canvasitem"><span class="std std-ref">CanvasItem</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_node.html#class-node"><span class="std std-ref">Node</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_object.html#class-object"><span class="std std-ref">Object</span></a></p>
+<p>GraphFrame is a special <a class="reference internal" href="class_graphelement.html#class-graphelement"><span class="std std-ref">GraphElement</span></a> that can be used to organize other <a class="reference internal" href="class_graphelement.html#class-graphelement"><span class="std std-ref">GraphElement</span></a>s inside a <a class="reference internal" href="class_graphedit.html#class-graphedit"><span class="std std-ref">GraphEdit</span></a>.</p>
+<section class="classref-introduction-group" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
+<p>GraphFrame is a special <a class="reference internal" href="class_graphelement.html#class-graphelement"><span class="std std-ref">GraphElement</span></a> to which other <a class="reference internal" href="class_graphelement.html#class-graphelement"><span class="std std-ref">GraphElement</span></a>s can be attached. It can be configured to automatically resize to enclose all attached <a class="reference internal" href="class_graphelement.html#class-graphelement"><span class="std std-ref">GraphElement</span></a>s. If the frame is moved, all the attached <a class="reference internal" href="class_graphelement.html#class-graphelement"><span class="std std-ref">GraphElement</span></a>s inside it will be moved as well.</p>
+<p>A GraphFrame is always kept behind the connection layer and other <a class="reference internal" href="class_graphelement.html#class-graphelement"><span class="std std-ref">GraphElement</span></a>s inside a <a class="reference internal" href="class_graphedit.html#class-graphedit"><span class="std std-ref">GraphEdit</span></a>.</p>
+</section>
+<section class="classref-reftable-group" id="properties">
+<h2>Properties<a class="headerlink" href="#properties" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-graphframe-property-autoshrink-enabled"><span class="std std-ref">autoshrink_enabled</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-graphframe-property-autoshrink-margin"><span class="std std-ref">autoshrink_margin</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">40</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-graphframe-property-drag-margin"><span class="std std-ref">drag_margin</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">16</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_control.html#enum-control-mousefilter"><span class="std std-ref">MouseFilter</span></a></p></td>
+<td><p>mouse_filter</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code> (overrides <a class="reference internal" href="class_control.html#class-control-property-mouse-filter"><span class="std std-ref">Control</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_color.html#class-color"><span class="std std-ref">Color</span></a></p></td>
+<td><p><a class="reference internal" href="#class-graphframe-property-tint-color"><span class="std std-ref">tint_color</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Color(0.3,</span> <span class="pre">0.3,</span> <span class="pre">0.3,</span> <span class="pre">0.75)</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-graphframe-property-tint-color-enabled"><span class="std std-ref">tint_color_enabled</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a></p></td>
+<td><p><a class="reference internal" href="#class-graphframe-property-title"><span class="std std-ref">title</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&quot;&quot;</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section class="classref-reftable-group" id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_hboxcontainer.html#class-hboxcontainer"><span class="std std-ref">HBoxContainer</span></a></p></td>
+<td><p><a class="reference internal" href="#class-graphframe-method-get-titlebar-hbox"><span class="std std-ref">get_titlebar_hbox</span></a>()</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section class="classref-reftable-group" id="theme-properties">
+<h2>Theme Properties<a class="headerlink" href="#theme-properties" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_color.html#class-color"><span class="std std-ref">Color</span></a></p></td>
+<td><p><a class="reference internal" href="#class-graphframe-theme-color-resizer-color"><span class="std std-ref">resizer_color</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Color(0.875,</span> <span class="pre">0.875,</span> <span class="pre">0.875,</span> <span class="pre">1)</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_stylebox.html#class-stylebox"><span class="std std-ref">StyleBox</span></a></p></td>
+<td><p><a class="reference internal" href="#class-graphframe-theme-style-panel"><span class="std std-ref">panel</span></a></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_stylebox.html#class-stylebox"><span class="std std-ref">StyleBox</span></a></p></td>
+<td><p><a class="reference internal" href="#class-graphframe-theme-style-panel-selected"><span class="std std-ref">panel_selected</span></a></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_stylebox.html#class-stylebox"><span class="std std-ref">StyleBox</span></a></p></td>
+<td><p><a class="reference internal" href="#class-graphframe-theme-style-titlebar"><span class="std std-ref">titlebar</span></a></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_stylebox.html#class-stylebox"><span class="std std-ref">StyleBox</span></a></p></td>
+<td><p><a class="reference internal" href="#class-graphframe-theme-style-titlebar-selected"><span class="std std-ref">titlebar_selected</span></a></p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="signals">
+<h2>Signals<a class="headerlink" href="#signals" title="Link to this heading"></a></h2>
+<p class="classref-signal" id="class-graphframe-signal-autoshrink-changed"><strong>autoshrink_changed</strong>() <a class="reference internal" href="#class-graphframe-signal-autoshrink-changed"><span class="std std-ref">🔗</span></a></p>
+<p>Emitted when <a class="reference internal" href="#class-graphframe-property-autoshrink-enabled"><span class="std std-ref">autoshrink_enabled</span></a> or <a class="reference internal" href="#class-graphframe-property-autoshrink-margin"><span class="std std-ref">autoshrink_margin</span></a> changes.</p>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="property-descriptions">
+<h2>Property Descriptions<a class="headerlink" href="#property-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-property" id="class-graphframe-property-autoshrink-enabled"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>autoshrink_enabled</strong> = <code class="docutils literal notranslate"><span class="pre">true</span></code> <a class="reference internal" href="#class-graphframe-property-autoshrink-enabled"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_autoshrink_enabled</strong>(value: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_autoshrink_enabled</strong>()</p></li>
+</ul>
+<p>If <code class="docutils literal notranslate"><span class="pre">true</span></code>, the frame’s rect will be adjusted automatically to enclose all attached <a class="reference internal" href="class_graphelement.html#class-graphelement"><span class="std std-ref">GraphElement</span></a>s.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-graphframe-property-autoshrink-margin"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>autoshrink_margin</strong> = <code class="docutils literal notranslate"><span class="pre">40</span></code> <a class="reference internal" href="#class-graphframe-property-autoshrink-margin"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_autoshrink_margin</strong>(value: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>get_autoshrink_margin</strong>()</p></li>
+</ul>
+<p>The margin around the attached nodes that is used to calculate the size of the frame when <a class="reference internal" href="#class-graphframe-property-autoshrink-enabled"><span class="std std-ref">autoshrink_enabled</span></a> is <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-graphframe-property-drag-margin"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>drag_margin</strong> = <code class="docutils literal notranslate"><span class="pre">16</span></code> <a class="reference internal" href="#class-graphframe-property-drag-margin"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_drag_margin</strong>(value: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>get_drag_margin</strong>()</p></li>
+</ul>
+<p>The margin inside the frame that can be used to drag the frame.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-graphframe-property-tint-color"><a class="reference internal" href="class_color.html#class-color"><span class="std std-ref">Color</span></a> <strong>tint_color</strong> = <code class="docutils literal notranslate"><span class="pre">Color(0.3,</span> <span class="pre">0.3,</span> <span class="pre">0.3,</span> <span class="pre">0.75)</span></code> <a class="reference internal" href="#class-graphframe-property-tint-color"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_tint_color</strong>(value: <a class="reference internal" href="class_color.html#class-color"><span class="std std-ref">Color</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_color.html#class-color"><span class="std std-ref">Color</span></a> <strong>get_tint_color</strong>()</p></li>
+</ul>
+<p>The color of the frame when <a class="reference internal" href="#class-graphframe-property-tint-color-enabled"><span class="std std-ref">tint_color_enabled</span></a> is <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-graphframe-property-tint-color-enabled"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>tint_color_enabled</strong> = <code class="docutils literal notranslate"><span class="pre">false</span></code> <a class="reference internal" href="#class-graphframe-property-tint-color-enabled"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_tint_color_enabled</strong>(value: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_tint_color_enabled</strong>()</p></li>
+</ul>
+<p>If <code class="docutils literal notranslate"><span class="pre">true</span></code>, the tint color will be used to tint the frame.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-graphframe-property-title"><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a> <strong>title</strong> = <code class="docutils literal notranslate"><span class="pre">&quot;&quot;</span></code> <a class="reference internal" href="#class-graphframe-property-title"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_title</strong>(value: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a> <strong>get_title</strong>()</p></li>
+</ul>
+<p>Title of the frame.</p>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="method-descriptions">
+<h2>Method Descriptions<a class="headerlink" href="#method-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-method" id="class-graphframe-method-get-titlebar-hbox"><a class="reference internal" href="class_hboxcontainer.html#class-hboxcontainer"><span class="std std-ref">HBoxContainer</span></a> <strong>get_titlebar_hbox</strong>() <a class="reference internal" href="#class-graphframe-method-get-titlebar-hbox"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the <a class="reference internal" href="class_hboxcontainer.html#class-hboxcontainer"><span class="std std-ref">HBoxContainer</span></a> used for the title bar, only containing a <a class="reference internal" href="class_label.html#class-label"><span class="std std-ref">Label</span></a> for displaying the title by default.</p>
+<p>This can be used to add custom controls to the title bar such as option or close buttons.</p>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="theme-property-descriptions">
+<h2>Theme Property Descriptions<a class="headerlink" href="#theme-property-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-themeproperty" id="class-graphframe-theme-color-resizer-color"><a class="reference internal" href="class_color.html#class-color"><span class="std std-ref">Color</span></a> <strong>resizer_color</strong> = <code class="docutils literal notranslate"><span class="pre">Color(0.875,</span> <span class="pre">0.875,</span> <span class="pre">0.875,</span> <span class="pre">1)</span></code> <a class="reference internal" href="#class-graphframe-theme-color-resizer-color"><span class="std std-ref">🔗</span></a></p>
+<p>The color modulation applied to the resizer icon.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-themeproperty" id="class-graphframe-theme-style-panel"><a class="reference internal" href="class_stylebox.html#class-stylebox"><span class="std std-ref">StyleBox</span></a> <strong>panel</strong> <a class="reference internal" href="#class-graphframe-theme-style-panel"><span class="std std-ref">🔗</span></a></p>
+<p>The default <a class="reference internal" href="class_stylebox.html#class-stylebox"><span class="std std-ref">StyleBox</span></a> used for the background of the <strong>GraphFrame</strong>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-themeproperty" id="class-graphframe-theme-style-panel-selected"><a class="reference internal" href="class_stylebox.html#class-stylebox"><span class="std std-ref">StyleBox</span></a> <strong>panel_selected</strong> <a class="reference internal" href="#class-graphframe-theme-style-panel-selected"><span class="std std-ref">🔗</span></a></p>
+<p>The <a class="reference internal" href="class_stylebox.html#class-stylebox"><span class="std std-ref">StyleBox</span></a> used for the background of the <strong>GraphFrame</strong> when it is selected.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-themeproperty" id="class-graphframe-theme-style-titlebar"><a class="reference internal" href="class_stylebox.html#class-stylebox"><span class="std std-ref">StyleBox</span></a> <strong>titlebar</strong> <a class="reference internal" href="#class-graphframe-theme-style-titlebar"><span class="std std-ref">🔗</span></a></p>
+<p>The <a class="reference internal" href="class_stylebox.html#class-stylebox"><span class="std std-ref">StyleBox</span></a> used for the title bar of the <strong>GraphFrame</strong>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-themeproperty" id="class-graphframe-theme-style-titlebar-selected"><a class="reference internal" href="class_stylebox.html#class-stylebox"><span class="std std-ref">StyleBox</span></a> <strong>titlebar_selected</strong> <a class="reference internal" href="#class-graphframe-theme-style-titlebar-selected"><span class="std std-ref">🔗</span></a></p>
+<p>The <a class="reference internal" href="class_stylebox.html#class-stylebox"><span class="std std-ref">StyleBox</span></a> used for the title bar of the <strong>GraphFrame</strong> when it is selected.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, MUmarShahbaz.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

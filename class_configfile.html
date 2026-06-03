@@ -1,0 +1,248 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ConfigFile &mdash; RPG Components 2D 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=d45e8c67"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            RPG Components 2D
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">ConfigFile</a><ul>
+<li><a class="reference internal" href="#description">Description</a></li>
+<li><a class="reference internal" href="#methods">Methods</a></li>
+<li><a class="reference internal" href="#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">RPG Components 2D</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">ConfigFile</li>
+      <li class="wy-breadcrumbs-aside">
+              <!-- User defined GitHub URL -->
+              <a href="hide" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="configfile">
+<span id="class-configfile"></span><h1>ConfigFile<a class="headerlink" href="#configfile" title="Link to this heading"></a></h1>
+<p><strong>Inherits:</strong> <a class="reference internal" href="class_refcounted.html#class-refcounted"><span class="std std-ref">RefCounted</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_object.html#class-object"><span class="std std-ref">Object</span></a></p>
+<p>Helper class to handle INI-style files.</p>
+<section class="classref-introduction-group" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
+<p>This helper class can be used to store <a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a> values on the filesystem using INI-style formatting. The stored values are identified by a section and a key:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>[section]
+some_key=42
+string_example=&quot;Hello World3D!&quot;
+a_vector=Vector3(1, 0, 2)
+</pre></div>
+</div>
+<p>The stored data can be saved to or parsed from a file, though ConfigFile objects can also be used directly without accessing the filesystem.</p>
+<p>The following example shows how to create a simple <strong>ConfigFile</strong> and save it on disc:</p>
+<p>This example shows how the above file could be loaded:</p>
+<p>Any operation that mutates the ConfigFile such as <a class="reference internal" href="#class-configfile-method-set-value"><span class="std std-ref">set_value()</span></a>, <a class="reference internal" href="#class-configfile-method-clear"><span class="std std-ref">clear()</span></a>, or <a class="reference internal" href="#class-configfile-method-erase-section"><span class="std std-ref">erase_section()</span></a>, only changes what is loaded in memory. If you want to write the change to a file, you have to save the changes with <a class="reference internal" href="#class-configfile-method-save"><span class="std std-ref">save()</span></a>, <a class="reference internal" href="#class-configfile-method-save-encrypted"><span class="std std-ref">save_encrypted()</span></a>, or <a class="reference internal" href="#class-configfile-method-save-encrypted-pass"><span class="std std-ref">save_encrypted_pass()</span></a>.</p>
+<p>Keep in mind that section and property names can’t contain spaces. Anything after a space will be ignored on save and on load.</p>
+<p>ConfigFiles can also contain manually written comment lines starting with a semicolon (<code class="docutils literal notranslate"><span class="pre">;</span></code>). Those lines will be ignored when parsing the file. Note that comments will be lost when saving the ConfigFile. This can still be useful for dedicated server configuration files, which are typically never overwritten without explicit user action.</p>
+<p><strong>Note:</strong> The file extension given to a ConfigFile does not have any impact on its formatting or behavior. By convention, the <code class="docutils literal notranslate"><span class="pre">.cfg</span></code> extension is used here, but any other extension such as <code class="docutils literal notranslate"><span class="pre">.ini</span></code> is also valid. Since neither <code class="docutils literal notranslate"><span class="pre">.cfg</span></code> nor <code class="docutils literal notranslate"><span class="pre">.ini</span></code> are standardized, Godot’s ConfigFile formatting may differ from files written by other programs.</p>
+</section>
+<section class="classref-reftable-group" id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-configfile-method-clear"><span class="std std-ref">clear</span></a>()</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a></p></td>
+<td><p><a class="reference internal" href="#class-configfile-method-encode-to-text"><span class="std std-ref">encode_to_text</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-configfile-method-erase-section"><span class="std std-ref">erase_section</span></a>(section: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-configfile-method-erase-section-key"><span class="std std-ref">erase_section_key</span></a>(section: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, key: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_packedstringarray.html#class-packedstringarray"><span class="std std-ref">PackedStringArray</span></a></p></td>
+<td><p><a class="reference internal" href="#class-configfile-method-get-section-keys"><span class="std std-ref">get_section_keys</span></a>(section: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_packedstringarray.html#class-packedstringarray"><span class="std std-ref">PackedStringArray</span></a></p></td>
+<td><p><a class="reference internal" href="#class-configfile-method-get-sections"><span class="std std-ref">get_sections</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a></p></td>
+<td><p><a class="reference internal" href="#class-configfile-method-get-value"><span class="std std-ref">get_value</span></a>(section: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, key: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, default: <a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a> = null) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-configfile-method-has-section"><span class="std std-ref">has_section</span></a>(section: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-configfile-method-has-section-key"><span class="std std-ref">has_section_key</span></a>(section: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, key: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_%40globalscope.html#enum-globalscope-error"><span class="std std-ref">Error</span></a></p></td>
+<td><p><a class="reference internal" href="#class-configfile-method-load"><span class="std std-ref">load</span></a>(path: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_%40globalscope.html#enum-globalscope-error"><span class="std std-ref">Error</span></a></p></td>
+<td><p><a class="reference internal" href="#class-configfile-method-load-encrypted"><span class="std std-ref">load_encrypted</span></a>(path: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, key: <a class="reference internal" href="class_packedbytearray.html#class-packedbytearray"><span class="std std-ref">PackedByteArray</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_%40globalscope.html#enum-globalscope-error"><span class="std std-ref">Error</span></a></p></td>
+<td><p><a class="reference internal" href="#class-configfile-method-load-encrypted-pass"><span class="std std-ref">load_encrypted_pass</span></a>(path: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, password: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_%40globalscope.html#enum-globalscope-error"><span class="std std-ref">Error</span></a></p></td>
+<td><p><a class="reference internal" href="#class-configfile-method-parse"><span class="std std-ref">parse</span></a>(data: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_%40globalscope.html#enum-globalscope-error"><span class="std std-ref">Error</span></a></p></td>
+<td><p><a class="reference internal" href="#class-configfile-method-save"><span class="std std-ref">save</span></a>(path: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_%40globalscope.html#enum-globalscope-error"><span class="std std-ref">Error</span></a></p></td>
+<td><p><a class="reference internal" href="#class-configfile-method-save-encrypted"><span class="std std-ref">save_encrypted</span></a>(path: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, key: <a class="reference internal" href="class_packedbytearray.html#class-packedbytearray"><span class="std std-ref">PackedByteArray</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_%40globalscope.html#enum-globalscope-error"><span class="std std-ref">Error</span></a></p></td>
+<td><p><a class="reference internal" href="#class-configfile-method-save-encrypted-pass"><span class="std std-ref">save_encrypted_pass</span></a>(path: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, password: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-configfile-method-set-value"><span class="std std-ref">set_value</span></a>(section: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, key: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, value: <a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a>)</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="method-descriptions">
+<h2>Method Descriptions<a class="headerlink" href="#method-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-method" id="class-configfile-method-clear"><abbr title="No return value.">void</abbr> <strong>clear</strong>() <a class="reference internal" href="#class-configfile-method-clear"><span class="std std-ref">🔗</span></a></p>
+<p>Removes the entire contents of the config.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-configfile-method-encode-to-text"><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a> <strong>encode_to_text</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-configfile-method-encode-to-text"><span class="std std-ref">🔗</span></a></p>
+<p>Obtain the text version of this config file (the same text that would be written to a file).</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-configfile-method-erase-section"><abbr title="No return value.">void</abbr> <strong>erase_section</strong>(section: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <a class="reference internal" href="#class-configfile-method-erase-section"><span class="std std-ref">🔗</span></a></p>
+<p>Deletes the specified section along with all the key-value pairs inside. Raises an error if the section does not exist.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-configfile-method-erase-section-key"><abbr title="No return value.">void</abbr> <strong>erase_section_key</strong>(section: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, key: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <a class="reference internal" href="#class-configfile-method-erase-section-key"><span class="std std-ref">🔗</span></a></p>
+<p>Deletes the specified key in a section. Raises an error if either the section or the key do not exist.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-configfile-method-get-section-keys"><a class="reference internal" href="class_packedstringarray.html#class-packedstringarray"><span class="std std-ref">PackedStringArray</span></a> <strong>get_section_keys</strong>(section: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-configfile-method-get-section-keys"><span class="std std-ref">🔗</span></a></p>
+<p>Returns an array of all defined key identifiers in the specified section. Raises an error and returns an empty array if the section does not exist.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-configfile-method-get-sections"><a class="reference internal" href="class_packedstringarray.html#class-packedstringarray"><span class="std std-ref">PackedStringArray</span></a> <strong>get_sections</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-configfile-method-get-sections"><span class="std std-ref">🔗</span></a></p>
+<p>Returns an array of all defined section identifiers.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-configfile-method-get-value"><a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a> <strong>get_value</strong>(section: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, key: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, default: <a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a> = null) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-configfile-method-get-value"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the current value for the specified section and key. If either the section or the key do not exist, the method returns the fallback <code class="docutils literal notranslate"><span class="pre">default</span></code> value. If <code class="docutils literal notranslate"><span class="pre">default</span></code> is not specified or set to <code class="docutils literal notranslate"><span class="pre">null</span></code>, an error is also raised.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-configfile-method-has-section"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>has_section</strong>(section: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-configfile-method-has-section"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if the specified section exists.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-configfile-method-has-section-key"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>has_section_key</strong>(section: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, key: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-configfile-method-has-section-key"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if the specified section-key pair exists.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-configfile-method-load"><a class="reference internal" href="class_%40globalscope.html#enum-globalscope-error"><span class="std std-ref">Error</span></a> <strong>load</strong>(path: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <a class="reference internal" href="#class-configfile-method-load"><span class="std std-ref">🔗</span></a></p>
+<p>Loads the config file specified as a parameter. The file’s contents are parsed and loaded in the <strong>ConfigFile</strong> object which the method was called on.</p>
+<p>Returns <a class="reference internal" href="class_%40globalscope.html#class-globalscope-constant-ok"><span class="std std-ref">&#64;GlobalScope.OK</span></a> on success, or one of the other <a class="reference internal" href="class_%40globalscope.html#enum-globalscope-error"><span class="std std-ref">Error</span></a> values if the operation failed.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-configfile-method-load-encrypted"><a class="reference internal" href="class_%40globalscope.html#enum-globalscope-error"><span class="std std-ref">Error</span></a> <strong>load_encrypted</strong>(path: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, key: <a class="reference internal" href="class_packedbytearray.html#class-packedbytearray"><span class="std std-ref">PackedByteArray</span></a>) <a class="reference internal" href="#class-configfile-method-load-encrypted"><span class="std std-ref">🔗</span></a></p>
+<p>Loads the encrypted config file specified as a parameter, using the provided <code class="docutils literal notranslate"><span class="pre">key</span></code> to decrypt it. The file’s contents are parsed and loaded in the <strong>ConfigFile</strong> object which the method was called on.</p>
+<p>Returns <a class="reference internal" href="class_%40globalscope.html#class-globalscope-constant-ok"><span class="std std-ref">&#64;GlobalScope.OK</span></a> on success, or one of the other <a class="reference internal" href="class_%40globalscope.html#enum-globalscope-error"><span class="std std-ref">Error</span></a> values if the operation failed.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-configfile-method-load-encrypted-pass"><a class="reference internal" href="class_%40globalscope.html#enum-globalscope-error"><span class="std std-ref">Error</span></a> <strong>load_encrypted_pass</strong>(path: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, password: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <a class="reference internal" href="#class-configfile-method-load-encrypted-pass"><span class="std std-ref">🔗</span></a></p>
+<p>Loads the encrypted config file specified as a parameter, using the provided <code class="docutils literal notranslate"><span class="pre">password</span></code> to decrypt it. The file’s contents are parsed and loaded in the <strong>ConfigFile</strong> object which the method was called on.</p>
+<p>Returns <a class="reference internal" href="class_%40globalscope.html#class-globalscope-constant-ok"><span class="std std-ref">&#64;GlobalScope.OK</span></a> on success, or one of the other <a class="reference internal" href="class_%40globalscope.html#enum-globalscope-error"><span class="std std-ref">Error</span></a> values if the operation failed.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-configfile-method-parse"><a class="reference internal" href="class_%40globalscope.html#enum-globalscope-error"><span class="std std-ref">Error</span></a> <strong>parse</strong>(data: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <a class="reference internal" href="#class-configfile-method-parse"><span class="std std-ref">🔗</span></a></p>
+<p>Parses the passed string as the contents of a config file. The string is parsed and loaded in the ConfigFile object which the method was called on.</p>
+<p>Returns <a class="reference internal" href="class_%40globalscope.html#class-globalscope-constant-ok"><span class="std std-ref">&#64;GlobalScope.OK</span></a> on success, or one of the other <a class="reference internal" href="class_%40globalscope.html#enum-globalscope-error"><span class="std std-ref">Error</span></a> values if the operation failed.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-configfile-method-save"><a class="reference internal" href="class_%40globalscope.html#enum-globalscope-error"><span class="std std-ref">Error</span></a> <strong>save</strong>(path: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <a class="reference internal" href="#class-configfile-method-save"><span class="std std-ref">🔗</span></a></p>
+<p>Saves the contents of the <strong>ConfigFile</strong> object to the file specified as a parameter. The output file uses an INI-style structure.</p>
+<p>Returns <a class="reference internal" href="class_%40globalscope.html#class-globalscope-constant-ok"><span class="std std-ref">&#64;GlobalScope.OK</span></a> on success, or one of the other <a class="reference internal" href="class_%40globalscope.html#enum-globalscope-error"><span class="std std-ref">Error</span></a> values if the operation failed.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-configfile-method-save-encrypted"><a class="reference internal" href="class_%40globalscope.html#enum-globalscope-error"><span class="std std-ref">Error</span></a> <strong>save_encrypted</strong>(path: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, key: <a class="reference internal" href="class_packedbytearray.html#class-packedbytearray"><span class="std std-ref">PackedByteArray</span></a>) <a class="reference internal" href="#class-configfile-method-save-encrypted"><span class="std std-ref">🔗</span></a></p>
+<p>Saves the contents of the <strong>ConfigFile</strong> object to the AES-256 encrypted file specified as a parameter, using the provided <code class="docutils literal notranslate"><span class="pre">key</span></code> to encrypt it. The output file uses an INI-style structure.</p>
+<p>Returns <a class="reference internal" href="class_%40globalscope.html#class-globalscope-constant-ok"><span class="std std-ref">&#64;GlobalScope.OK</span></a> on success, or one of the other <a class="reference internal" href="class_%40globalscope.html#enum-globalscope-error"><span class="std std-ref">Error</span></a> values if the operation failed.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-configfile-method-save-encrypted-pass"><a class="reference internal" href="class_%40globalscope.html#enum-globalscope-error"><span class="std std-ref">Error</span></a> <strong>save_encrypted_pass</strong>(path: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, password: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <a class="reference internal" href="#class-configfile-method-save-encrypted-pass"><span class="std std-ref">🔗</span></a></p>
+<p>Saves the contents of the <strong>ConfigFile</strong> object to the AES-256 encrypted file specified as a parameter, using the provided <code class="docutils literal notranslate"><span class="pre">password</span></code> to encrypt it. The output file uses an INI-style structure.</p>
+<p>Returns <a class="reference internal" href="class_%40globalscope.html#class-globalscope-constant-ok"><span class="std std-ref">&#64;GlobalScope.OK</span></a> on success, or one of the other <a class="reference internal" href="class_%40globalscope.html#enum-globalscope-error"><span class="std std-ref">Error</span></a> values if the operation failed.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-configfile-method-set-value"><abbr title="No return value.">void</abbr> <strong>set_value</strong>(section: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, key: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, value: <a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a>) <a class="reference internal" href="#class-configfile-method-set-value"><span class="std std-ref">🔗</span></a></p>
+<p>Assigns a value to the specified key of the specified section. If either the section or the key do not exist, they are created. Passing a <code class="docutils literal notranslate"><span class="pre">null</span></code> value deletes the specified key if it exists, and deletes the section if it ends up empty once the key has been removed.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, MUmarShahbaz.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

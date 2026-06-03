@@ -1,0 +1,147 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>InstancePlaceholder &mdash; RPG Components 2D 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=d45e8c67"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            RPG Components 2D
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">InstancePlaceholder</a><ul>
+<li><a class="reference internal" href="#description">Description</a></li>
+<li><a class="reference internal" href="#methods">Methods</a></li>
+<li><a class="reference internal" href="#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">RPG Components 2D</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">InstancePlaceholder</li>
+      <li class="wy-breadcrumbs-aside">
+              <!-- User defined GitHub URL -->
+              <a href="hide" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="instanceplaceholder">
+<span id="class-instanceplaceholder"></span><h1>InstancePlaceholder<a class="headerlink" href="#instanceplaceholder" title="Link to this heading"></a></h1>
+<p><strong>Inherits:</strong> <a class="reference internal" href="class_node.html#class-node"><span class="std std-ref">Node</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_object.html#class-object"><span class="std std-ref">Object</span></a></p>
+<p>Placeholder for the root <a class="reference internal" href="class_node.html#class-node"><span class="std std-ref">Node</span></a> of a <a class="reference internal" href="class_packedscene.html#class-packedscene"><span class="std std-ref">PackedScene</span></a>.</p>
+<section class="classref-introduction-group" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
+<p>Turning on the option <strong>Load As Placeholder</strong> for an instantiated scene in the editor causes it to be replaced by an <strong>InstancePlaceholder</strong> when running the game, this will not replace the node in the editor. This makes it possible to delay actually loading the scene until calling <a class="reference internal" href="#class-instanceplaceholder-method-create-instance"><span class="std std-ref">create_instance()</span></a>. This is useful to avoid loading large scenes all at once by loading parts of it selectively.</p>
+<p><strong>Note:</strong> Like <a class="reference internal" href="class_node.html#class-node"><span class="std std-ref">Node</span></a>, <strong>InstancePlaceholder</strong> does not have a transform. This causes any child nodes to be positioned relatively to the <a class="reference internal" href="class_viewport.html#class-viewport"><span class="std std-ref">Viewport</span></a> origin, rather than their parent as displayed in the editor. Replacing the placeholder with a scene with a transform will transform children relatively to their parent again.</p>
+</section>
+<section class="classref-reftable-group" id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_node.html#class-node"><span class="std std-ref">Node</span></a></p></td>
+<td><p><a class="reference internal" href="#class-instanceplaceholder-method-create-instance"><span class="std std-ref">create_instance</span></a>(replace: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = false, custom_scene: <a class="reference internal" href="class_packedscene.html#class-packedscene"><span class="std std-ref">PackedScene</span></a> = null)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a></p></td>
+<td><p><a class="reference internal" href="#class-instanceplaceholder-method-get-instance-path"><span class="std std-ref">get_instance_path</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_dictionary.html#class-dictionary"><span class="std std-ref">Dictionary</span></a></p></td>
+<td><p><a class="reference internal" href="#class-instanceplaceholder-method-get-stored-values"><span class="std std-ref">get_stored_values</span></a>(with_order: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = false)</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="method-descriptions">
+<h2>Method Descriptions<a class="headerlink" href="#method-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-method" id="class-instanceplaceholder-method-create-instance"><a class="reference internal" href="class_node.html#class-node"><span class="std std-ref">Node</span></a> <strong>create_instance</strong>(replace: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = false, custom_scene: <a class="reference internal" href="class_packedscene.html#class-packedscene"><span class="std std-ref">PackedScene</span></a> = null) <a class="reference internal" href="#class-instanceplaceholder-method-create-instance"><span class="std std-ref">🔗</span></a></p>
+<p>Call this method to actually load in the node. The created node will be placed as a sibling <em>above</em> the <strong>InstancePlaceholder</strong> in the scene tree. The <a class="reference internal" href="class_node.html#class-node"><span class="std std-ref">Node</span></a>’s reference is also returned for convenience.</p>
+<p><strong>Note:</strong> <a class="reference internal" href="#class-instanceplaceholder-method-create-instance"><span class="std std-ref">create_instance()</span></a> is not thread-safe. Use <a class="reference internal" href="class_object.html#class-object-method-call-deferred"><span class="std std-ref">Object.call_deferred()</span></a> if calling from a thread.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-instanceplaceholder-method-get-instance-path"><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a> <strong>get_instance_path</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-instanceplaceholder-method-get-instance-path"><span class="std std-ref">🔗</span></a></p>
+<p>Gets the path to the <a class="reference internal" href="class_packedscene.html#class-packedscene"><span class="std std-ref">PackedScene</span></a> resource file that is loaded by default when calling <a class="reference internal" href="#class-instanceplaceholder-method-create-instance"><span class="std std-ref">create_instance()</span></a>. Not thread-safe. Use <a class="reference internal" href="class_object.html#class-object-method-call-deferred"><span class="std std-ref">Object.call_deferred()</span></a> if calling from a thread.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-instanceplaceholder-method-get-stored-values"><a class="reference internal" href="class_dictionary.html#class-dictionary"><span class="std std-ref">Dictionary</span></a> <strong>get_stored_values</strong>(with_order: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = false) <a class="reference internal" href="#class-instanceplaceholder-method-get-stored-values"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the list of properties that will be applied to the node when <a class="reference internal" href="#class-instanceplaceholder-method-create-instance"><span class="std std-ref">create_instance()</span></a> is called.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">with_order</span></code> is <code class="docutils literal notranslate"><span class="pre">true</span></code>, a key named <code class="docutils literal notranslate"><span class="pre">.order</span></code> (note the leading period) is added to the dictionary. This <code class="docutils literal notranslate"><span class="pre">.order</span></code> key is an <a class="reference internal" href="class_array.html#class-array"><span class="std std-ref">Array</span></a> of <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a> property names specifying the order in which properties will be applied (with index 0 being the first).</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, MUmarShahbaz.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

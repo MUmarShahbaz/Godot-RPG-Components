@@ -1,0 +1,321 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RDPipelineColorBlendStateAttachment &mdash; RPG Components 2D 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=d45e8c67"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            RPG Components 2D
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">RDPipelineColorBlendStateAttachment</a><ul>
+<li><a class="reference internal" href="#description">Description</a></li>
+<li><a class="reference internal" href="#properties">Properties</a></li>
+<li><a class="reference internal" href="#methods">Methods</a></li>
+<li><a class="reference internal" href="#property-descriptions">Property Descriptions</a></li>
+<li><a class="reference internal" href="#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">RPG Components 2D</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">RDPipelineColorBlendStateAttachment</li>
+      <li class="wy-breadcrumbs-aside">
+              <!-- User defined GitHub URL -->
+              <a href="hide" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="rdpipelinecolorblendstateattachment">
+<span id="class-rdpipelinecolorblendstateattachment"></span><h1>RDPipelineColorBlendStateAttachment<a class="headerlink" href="#rdpipelinecolorblendstateattachment" title="Link to this heading"></a></h1>
+<p><strong>Inherits:</strong> <a class="reference internal" href="class_refcounted.html#class-refcounted"><span class="std std-ref">RefCounted</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_object.html#class-object"><span class="std std-ref">Object</span></a></p>
+<p>Pipeline color blend state attachment (used by <a class="reference internal" href="class_renderingdevice.html#class-renderingdevice"><span class="std std-ref">RenderingDevice</span></a>).</p>
+<section class="classref-introduction-group" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
+<p>Controls how blending between source and destination fragments is performed when using <a class="reference internal" href="class_renderingdevice.html#class-renderingdevice"><span class="std std-ref">RenderingDevice</span></a>.</p>
+<p>For reference, this is how common user-facing blend modes are implemented in Godot’s 2D renderer:</p>
+<p><strong>Mix:</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">attachment</span> <span class="o">=</span> <span class="n">RDPipelineColorBlendStateAttachment</span><span class="o">.</span><span class="n">new</span><span class="p">()</span>
+<span class="n">attachment</span><span class="o">.</span><span class="n">enable_blend</span> <span class="o">=</span> <span class="n">true</span>
+<span class="n">attachment</span><span class="o">.</span><span class="n">color_blend_op</span> <span class="o">=</span> <span class="n">RenderingDevice</span><span class="o">.</span><span class="n">BLEND_OP_ADD</span>
+<span class="n">attachment</span><span class="o">.</span><span class="n">src_color_blend_factor</span> <span class="o">=</span> <span class="n">RenderingDevice</span><span class="o">.</span><span class="n">BLEND_FACTOR_SRC_ALPHA</span>
+<span class="n">attachment</span><span class="o">.</span><span class="n">dst_color_blend_factor</span> <span class="o">=</span> <span class="n">RenderingDevice</span><span class="o">.</span><span class="n">BLEND_FACTOR_ONE_MINUS_SRC_ALPHA</span>
+<span class="n">attachment</span><span class="o">.</span><span class="n">alpha_blend_op</span> <span class="o">=</span> <span class="n">RenderingDevice</span><span class="o">.</span><span class="n">BLEND_OP_ADD</span>
+<span class="n">attachment</span><span class="o">.</span><span class="n">src_alpha_blend_factor</span> <span class="o">=</span> <span class="n">RenderingDevice</span><span class="o">.</span><span class="n">BLEND_FACTOR_ONE</span>
+<span class="n">attachment</span><span class="o">.</span><span class="n">dst_alpha_blend_factor</span> <span class="o">=</span> <span class="n">RenderingDevice</span><span class="o">.</span><span class="n">BLEND_FACTOR_ONE_MINUS_SRC_ALPHA</span>
+</pre></div>
+</div>
+<p><strong>Add:</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">attachment</span> <span class="o">=</span> <span class="n">RDPipelineColorBlendStateAttachment</span><span class="o">.</span><span class="n">new</span><span class="p">()</span>
+<span class="n">attachment</span><span class="o">.</span><span class="n">enable_blend</span> <span class="o">=</span> <span class="n">true</span>
+<span class="n">attachment</span><span class="o">.</span><span class="n">alpha_blend_op</span> <span class="o">=</span> <span class="n">RenderingDevice</span><span class="o">.</span><span class="n">BLEND_OP_ADD</span>
+<span class="n">attachment</span><span class="o">.</span><span class="n">color_blend_op</span> <span class="o">=</span> <span class="n">RenderingDevice</span><span class="o">.</span><span class="n">BLEND_OP_ADD</span>
+<span class="n">attachment</span><span class="o">.</span><span class="n">src_color_blend_factor</span> <span class="o">=</span> <span class="n">RenderingDevice</span><span class="o">.</span><span class="n">BLEND_FACTOR_SRC_ALPHA</span>
+<span class="n">attachment</span><span class="o">.</span><span class="n">dst_color_blend_factor</span> <span class="o">=</span> <span class="n">RenderingDevice</span><span class="o">.</span><span class="n">BLEND_FACTOR_ONE</span>
+<span class="n">attachment</span><span class="o">.</span><span class="n">src_alpha_blend_factor</span> <span class="o">=</span> <span class="n">RenderingDevice</span><span class="o">.</span><span class="n">BLEND_FACTOR_SRC_ALPHA</span>
+<span class="n">attachment</span><span class="o">.</span><span class="n">dst_alpha_blend_factor</span> <span class="o">=</span> <span class="n">RenderingDevice</span><span class="o">.</span><span class="n">BLEND_FACTOR_ONE</span>
+</pre></div>
+</div>
+<p><strong>Subtract:</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">attachment</span> <span class="o">=</span> <span class="n">RDPipelineColorBlendStateAttachment</span><span class="o">.</span><span class="n">new</span><span class="p">()</span>
+<span class="n">attachment</span><span class="o">.</span><span class="n">enable_blend</span> <span class="o">=</span> <span class="n">true</span>
+<span class="n">attachment</span><span class="o">.</span><span class="n">alpha_blend_op</span> <span class="o">=</span> <span class="n">RenderingDevice</span><span class="o">.</span><span class="n">BLEND_OP_REVERSE_SUBTRACT</span>
+<span class="n">attachment</span><span class="o">.</span><span class="n">color_blend_op</span> <span class="o">=</span> <span class="n">RenderingDevice</span><span class="o">.</span><span class="n">BLEND_OP_REVERSE_SUBTRACT</span>
+<span class="n">attachment</span><span class="o">.</span><span class="n">src_color_blend_factor</span> <span class="o">=</span> <span class="n">RenderingDevice</span><span class="o">.</span><span class="n">BLEND_FACTOR_SRC_ALPHA</span>
+<span class="n">attachment</span><span class="o">.</span><span class="n">dst_color_blend_factor</span> <span class="o">=</span> <span class="n">RenderingDevice</span><span class="o">.</span><span class="n">BLEND_FACTOR_ONE</span>
+<span class="n">attachment</span><span class="o">.</span><span class="n">src_alpha_blend_factor</span> <span class="o">=</span> <span class="n">RenderingDevice</span><span class="o">.</span><span class="n">BLEND_FACTOR_SRC_ALPHA</span>
+<span class="n">attachment</span><span class="o">.</span><span class="n">dst_alpha_blend_factor</span> <span class="o">=</span> <span class="n">RenderingDevice</span><span class="o">.</span><span class="n">BLEND_FACTOR_ONE</span>
+</pre></div>
+</div>
+<p><strong>Multiply:</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">attachment</span> <span class="o">=</span> <span class="n">RDPipelineColorBlendStateAttachment</span><span class="o">.</span><span class="n">new</span><span class="p">()</span>
+<span class="n">attachment</span><span class="o">.</span><span class="n">enable_blend</span> <span class="o">=</span> <span class="n">true</span>
+<span class="n">attachment</span><span class="o">.</span><span class="n">alpha_blend_op</span> <span class="o">=</span> <span class="n">RenderingDevice</span><span class="o">.</span><span class="n">BLEND_OP_ADD</span>
+<span class="n">attachment</span><span class="o">.</span><span class="n">color_blend_op</span> <span class="o">=</span> <span class="n">RenderingDevice</span><span class="o">.</span><span class="n">BLEND_OP_ADD</span>
+<span class="n">attachment</span><span class="o">.</span><span class="n">src_color_blend_factor</span> <span class="o">=</span> <span class="n">RenderingDevice</span><span class="o">.</span><span class="n">BLEND_FACTOR_DST_COLOR</span>
+<span class="n">attachment</span><span class="o">.</span><span class="n">dst_color_blend_factor</span> <span class="o">=</span> <span class="n">RenderingDevice</span><span class="o">.</span><span class="n">BLEND_FACTOR_ZERO</span>
+<span class="n">attachment</span><span class="o">.</span><span class="n">src_alpha_blend_factor</span> <span class="o">=</span> <span class="n">RenderingDevice</span><span class="o">.</span><span class="n">BLEND_FACTOR_DST_ALPHA</span>
+<span class="n">attachment</span><span class="o">.</span><span class="n">dst_alpha_blend_factor</span> <span class="o">=</span> <span class="n">RenderingDevice</span><span class="o">.</span><span class="n">BLEND_FACTOR_ZERO</span>
+</pre></div>
+</div>
+<p><strong>Pre-multiplied alpha:</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">attachment</span> <span class="o">=</span> <span class="n">RDPipelineColorBlendStateAttachment</span><span class="o">.</span><span class="n">new</span><span class="p">()</span>
+<span class="n">attachment</span><span class="o">.</span><span class="n">enable_blend</span> <span class="o">=</span> <span class="n">true</span>
+<span class="n">attachment</span><span class="o">.</span><span class="n">alpha_blend_op</span> <span class="o">=</span> <span class="n">RenderingDevice</span><span class="o">.</span><span class="n">BLEND_OP_ADD</span>
+<span class="n">attachment</span><span class="o">.</span><span class="n">color_blend_op</span> <span class="o">=</span> <span class="n">RenderingDevice</span><span class="o">.</span><span class="n">BLEND_OP_ADD</span>
+<span class="n">attachment</span><span class="o">.</span><span class="n">src_color_blend_factor</span> <span class="o">=</span> <span class="n">RenderingDevice</span><span class="o">.</span><span class="n">BLEND_FACTOR_ONE</span>
+<span class="n">attachment</span><span class="o">.</span><span class="n">dst_color_blend_factor</span> <span class="o">=</span> <span class="n">RenderingDevice</span><span class="o">.</span><span class="n">BLEND_FACTOR_ONE_MINUS_SRC_ALPHA</span>
+<span class="n">attachment</span><span class="o">.</span><span class="n">src_alpha_blend_factor</span> <span class="o">=</span> <span class="n">RenderingDevice</span><span class="o">.</span><span class="n">BLEND_FACTOR_ONE</span>
+<span class="n">attachment</span><span class="o">.</span><span class="n">dst_alpha_blend_factor</span> <span class="o">=</span> <span class="n">RenderingDevice</span><span class="o">.</span><span class="n">BLEND_FACTOR_ONE_MINUS_SRC_ALPHA</span>
+</pre></div>
+</div>
+</section>
+<section class="classref-reftable-group" id="properties">
+<h2>Properties<a class="headerlink" href="#properties" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_renderingdevice.html#enum-renderingdevice-blendoperation"><span class="std std-ref">BlendOperation</span></a></p></td>
+<td><p><a class="reference internal" href="#class-rdpipelinecolorblendstateattachment-property-alpha-blend-op"><span class="std std-ref">alpha_blend_op</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_renderingdevice.html#enum-renderingdevice-blendoperation"><span class="std std-ref">BlendOperation</span></a></p></td>
+<td><p><a class="reference internal" href="#class-rdpipelinecolorblendstateattachment-property-color-blend-op"><span class="std std-ref">color_blend_op</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_renderingdevice.html#enum-renderingdevice-blendfactor"><span class="std std-ref">BlendFactor</span></a></p></td>
+<td><p><a class="reference internal" href="#class-rdpipelinecolorblendstateattachment-property-dst-alpha-blend-factor"><span class="std std-ref">dst_alpha_blend_factor</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_renderingdevice.html#enum-renderingdevice-blendfactor"><span class="std std-ref">BlendFactor</span></a></p></td>
+<td><p><a class="reference internal" href="#class-rdpipelinecolorblendstateattachment-property-dst-color-blend-factor"><span class="std std-ref">dst_color_blend_factor</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-rdpipelinecolorblendstateattachment-property-enable-blend"><span class="std std-ref">enable_blend</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_renderingdevice.html#enum-renderingdevice-blendfactor"><span class="std std-ref">BlendFactor</span></a></p></td>
+<td><p><a class="reference internal" href="#class-rdpipelinecolorblendstateattachment-property-src-alpha-blend-factor"><span class="std std-ref">src_alpha_blend_factor</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_renderingdevice.html#enum-renderingdevice-blendfactor"><span class="std std-ref">BlendFactor</span></a></p></td>
+<td><p><a class="reference internal" href="#class-rdpipelinecolorblendstateattachment-property-src-color-blend-factor"><span class="std std-ref">src_color_blend_factor</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-rdpipelinecolorblendstateattachment-property-write-a"><span class="std std-ref">write_a</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-rdpipelinecolorblendstateattachment-property-write-b"><span class="std std-ref">write_b</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-rdpipelinecolorblendstateattachment-property-write-g"><span class="std std-ref">write_g</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-rdpipelinecolorblendstateattachment-property-write-r"><span class="std std-ref">write_r</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section class="classref-reftable-group" id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-rdpipelinecolorblendstateattachment-method-set-as-mix"><span class="std std-ref">set_as_mix</span></a>()</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="property-descriptions">
+<h2>Property Descriptions<a class="headerlink" href="#property-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-property" id="class-rdpipelinecolorblendstateattachment-property-alpha-blend-op"><a class="reference internal" href="class_renderingdevice.html#enum-renderingdevice-blendoperation"><span class="std std-ref">BlendOperation</span></a> <strong>alpha_blend_op</strong> = <code class="docutils literal notranslate"><span class="pre">0</span></code> <a class="reference internal" href="#class-rdpipelinecolorblendstateattachment-property-alpha-blend-op"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_alpha_blend_op</strong>(value: <a class="reference internal" href="class_renderingdevice.html#enum-renderingdevice-blendoperation"><span class="std std-ref">BlendOperation</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_renderingdevice.html#enum-renderingdevice-blendoperation"><span class="std std-ref">BlendOperation</span></a> <strong>get_alpha_blend_op</strong>()</p></li>
+</ul>
+<p>The blend mode to use for the alpha channel.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-rdpipelinecolorblendstateattachment-property-color-blend-op"><a class="reference internal" href="class_renderingdevice.html#enum-renderingdevice-blendoperation"><span class="std std-ref">BlendOperation</span></a> <strong>color_blend_op</strong> = <code class="docutils literal notranslate"><span class="pre">0</span></code> <a class="reference internal" href="#class-rdpipelinecolorblendstateattachment-property-color-blend-op"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_color_blend_op</strong>(value: <a class="reference internal" href="class_renderingdevice.html#enum-renderingdevice-blendoperation"><span class="std std-ref">BlendOperation</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_renderingdevice.html#enum-renderingdevice-blendoperation"><span class="std std-ref">BlendOperation</span></a> <strong>get_color_blend_op</strong>()</p></li>
+</ul>
+<p>The blend mode to use for the red/green/blue color channels.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-rdpipelinecolorblendstateattachment-property-dst-alpha-blend-factor"><a class="reference internal" href="class_renderingdevice.html#enum-renderingdevice-blendfactor"><span class="std std-ref">BlendFactor</span></a> <strong>dst_alpha_blend_factor</strong> = <code class="docutils literal notranslate"><span class="pre">0</span></code> <a class="reference internal" href="#class-rdpipelinecolorblendstateattachment-property-dst-alpha-blend-factor"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_dst_alpha_blend_factor</strong>(value: <a class="reference internal" href="class_renderingdevice.html#enum-renderingdevice-blendfactor"><span class="std std-ref">BlendFactor</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_renderingdevice.html#enum-renderingdevice-blendfactor"><span class="std std-ref">BlendFactor</span></a> <strong>get_dst_alpha_blend_factor</strong>()</p></li>
+</ul>
+<p>Controls how the blend factor for the alpha channel is determined based on the destination’s fragments.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-rdpipelinecolorblendstateattachment-property-dst-color-blend-factor"><a class="reference internal" href="class_renderingdevice.html#enum-renderingdevice-blendfactor"><span class="std std-ref">BlendFactor</span></a> <strong>dst_color_blend_factor</strong> = <code class="docutils literal notranslate"><span class="pre">0</span></code> <a class="reference internal" href="#class-rdpipelinecolorblendstateattachment-property-dst-color-blend-factor"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_dst_color_blend_factor</strong>(value: <a class="reference internal" href="class_renderingdevice.html#enum-renderingdevice-blendfactor"><span class="std std-ref">BlendFactor</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_renderingdevice.html#enum-renderingdevice-blendfactor"><span class="std std-ref">BlendFactor</span></a> <strong>get_dst_color_blend_factor</strong>()</p></li>
+</ul>
+<p>Controls how the blend factor for the color channels is determined based on the destination’s fragments.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-rdpipelinecolorblendstateattachment-property-enable-blend"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>enable_blend</strong> = <code class="docutils literal notranslate"><span class="pre">false</span></code> <a class="reference internal" href="#class-rdpipelinecolorblendstateattachment-property-enable-blend"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_enable_blend</strong>(value: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>get_enable_blend</strong>()</p></li>
+</ul>
+<p>If <code class="docutils literal notranslate"><span class="pre">true</span></code>, performs blending between the source and destination according to the factors defined in <a class="reference internal" href="#class-rdpipelinecolorblendstateattachment-property-src-color-blend-factor"><span class="std std-ref">src_color_blend_factor</span></a>, <a class="reference internal" href="#class-rdpipelinecolorblendstateattachment-property-dst-color-blend-factor"><span class="std std-ref">dst_color_blend_factor</span></a>, <a class="reference internal" href="#class-rdpipelinecolorblendstateattachment-property-src-alpha-blend-factor"><span class="std std-ref">src_alpha_blend_factor</span></a> and <a class="reference internal" href="#class-rdpipelinecolorblendstateattachment-property-dst-alpha-blend-factor"><span class="std std-ref">dst_alpha_blend_factor</span></a>. The blend modes <a class="reference internal" href="#class-rdpipelinecolorblendstateattachment-property-color-blend-op"><span class="std std-ref">color_blend_op</span></a> and <a class="reference internal" href="#class-rdpipelinecolorblendstateattachment-property-alpha-blend-op"><span class="std std-ref">alpha_blend_op</span></a> are also taken into account, with <a class="reference internal" href="#class-rdpipelinecolorblendstateattachment-property-write-r"><span class="std std-ref">write_r</span></a>, <a class="reference internal" href="#class-rdpipelinecolorblendstateattachment-property-write-g"><span class="std std-ref">write_g</span></a>, <a class="reference internal" href="#class-rdpipelinecolorblendstateattachment-property-write-b"><span class="std std-ref">write_b</span></a> and <a class="reference internal" href="#class-rdpipelinecolorblendstateattachment-property-write-a"><span class="std std-ref">write_a</span></a> controlling the output.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-rdpipelinecolorblendstateattachment-property-src-alpha-blend-factor"><a class="reference internal" href="class_renderingdevice.html#enum-renderingdevice-blendfactor"><span class="std std-ref">BlendFactor</span></a> <strong>src_alpha_blend_factor</strong> = <code class="docutils literal notranslate"><span class="pre">0</span></code> <a class="reference internal" href="#class-rdpipelinecolorblendstateattachment-property-src-alpha-blend-factor"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_src_alpha_blend_factor</strong>(value: <a class="reference internal" href="class_renderingdevice.html#enum-renderingdevice-blendfactor"><span class="std std-ref">BlendFactor</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_renderingdevice.html#enum-renderingdevice-blendfactor"><span class="std std-ref">BlendFactor</span></a> <strong>get_src_alpha_blend_factor</strong>()</p></li>
+</ul>
+<p>Controls how the blend factor for the alpha channel is determined based on the source’s fragments.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-rdpipelinecolorblendstateattachment-property-src-color-blend-factor"><a class="reference internal" href="class_renderingdevice.html#enum-renderingdevice-blendfactor"><span class="std std-ref">BlendFactor</span></a> <strong>src_color_blend_factor</strong> = <code class="docutils literal notranslate"><span class="pre">0</span></code> <a class="reference internal" href="#class-rdpipelinecolorblendstateattachment-property-src-color-blend-factor"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_src_color_blend_factor</strong>(value: <a class="reference internal" href="class_renderingdevice.html#enum-renderingdevice-blendfactor"><span class="std std-ref">BlendFactor</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_renderingdevice.html#enum-renderingdevice-blendfactor"><span class="std std-ref">BlendFactor</span></a> <strong>get_src_color_blend_factor</strong>()</p></li>
+</ul>
+<p>Controls how the blend factor for the color channels is determined based on the source’s fragments.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-rdpipelinecolorblendstateattachment-property-write-a"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>write_a</strong> = <code class="docutils literal notranslate"><span class="pre">true</span></code> <a class="reference internal" href="#class-rdpipelinecolorblendstateattachment-property-write-a"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_write_a</strong>(value: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>get_write_a</strong>()</p></li>
+</ul>
+<p>If <code class="docutils literal notranslate"><span class="pre">true</span></code>, writes the new alpha channel to the final result.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-rdpipelinecolorblendstateattachment-property-write-b"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>write_b</strong> = <code class="docutils literal notranslate"><span class="pre">true</span></code> <a class="reference internal" href="#class-rdpipelinecolorblendstateattachment-property-write-b"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_write_b</strong>(value: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>get_write_b</strong>()</p></li>
+</ul>
+<p>If <code class="docutils literal notranslate"><span class="pre">true</span></code>, writes the new blue color channel to the final result.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-rdpipelinecolorblendstateattachment-property-write-g"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>write_g</strong> = <code class="docutils literal notranslate"><span class="pre">true</span></code> <a class="reference internal" href="#class-rdpipelinecolorblendstateattachment-property-write-g"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_write_g</strong>(value: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>get_write_g</strong>()</p></li>
+</ul>
+<p>If <code class="docutils literal notranslate"><span class="pre">true</span></code>, writes the new green color channel to the final result.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-rdpipelinecolorblendstateattachment-property-write-r"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>write_r</strong> = <code class="docutils literal notranslate"><span class="pre">true</span></code> <a class="reference internal" href="#class-rdpipelinecolorblendstateattachment-property-write-r"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_write_r</strong>(value: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>get_write_r</strong>()</p></li>
+</ul>
+<p>If <code class="docutils literal notranslate"><span class="pre">true</span></code>, writes the new red color channel to the final result.</p>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="method-descriptions">
+<h2>Method Descriptions<a class="headerlink" href="#method-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-method" id="class-rdpipelinecolorblendstateattachment-method-set-as-mix"><abbr title="No return value.">void</abbr> <strong>set_as_mix</strong>() <a class="reference internal" href="#class-rdpipelinecolorblendstateattachment-method-set-as-mix"><span class="std std-ref">🔗</span></a></p>
+<p>Convenience method to perform standard mix blending with straight (non-premultiplied) alpha. This sets <a class="reference internal" href="#class-rdpipelinecolorblendstateattachment-property-enable-blend"><span class="std std-ref">enable_blend</span></a> to <code class="docutils literal notranslate"><span class="pre">true</span></code>, <a class="reference internal" href="#class-rdpipelinecolorblendstateattachment-property-src-color-blend-factor"><span class="std std-ref">src_color_blend_factor</span></a> to <a class="reference internal" href="class_renderingdevice.html#class-renderingdevice-constant-blend-factor-src-alpha"><span class="std std-ref">RenderingDevice.BLEND_FACTOR_SRC_ALPHA</span></a>, <a class="reference internal" href="#class-rdpipelinecolorblendstateattachment-property-dst-color-blend-factor"><span class="std std-ref">dst_color_blend_factor</span></a> to <a class="reference internal" href="class_renderingdevice.html#class-renderingdevice-constant-blend-factor-one-minus-src-alpha"><span class="std std-ref">RenderingDevice.BLEND_FACTOR_ONE_MINUS_SRC_ALPHA</span></a>, <a class="reference internal" href="#class-rdpipelinecolorblendstateattachment-property-src-alpha-blend-factor"><span class="std std-ref">src_alpha_blend_factor</span></a> to <a class="reference internal" href="class_renderingdevice.html#class-renderingdevice-constant-blend-factor-src-alpha"><span class="std std-ref">RenderingDevice.BLEND_FACTOR_SRC_ALPHA</span></a> and <a class="reference internal" href="#class-rdpipelinecolorblendstateattachment-property-dst-alpha-blend-factor"><span class="std std-ref">dst_alpha_blend_factor</span></a> to <a class="reference internal" href="class_renderingdevice.html#class-renderingdevice-constant-blend-factor-one-minus-src-alpha"><span class="std std-ref">RenderingDevice.BLEND_FACTOR_ONE_MINUS_SRC_ALPHA</span></a>.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, MUmarShahbaz.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

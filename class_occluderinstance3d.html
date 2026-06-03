@@ -1,0 +1,201 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OccluderInstance3D &mdash; RPG Components 2D 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=d45e8c67"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            RPG Components 2D
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">OccluderInstance3D</a><ul>
+<li><a class="reference internal" href="#description">Description</a></li>
+<li><a class="reference internal" href="#tutorials">Tutorials</a></li>
+<li><a class="reference internal" href="#properties">Properties</a></li>
+<li><a class="reference internal" href="#methods">Methods</a></li>
+<li><a class="reference internal" href="#property-descriptions">Property Descriptions</a></li>
+<li><a class="reference internal" href="#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">RPG Components 2D</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">OccluderInstance3D</li>
+      <li class="wy-breadcrumbs-aside">
+              <!-- User defined GitHub URL -->
+              <a href="hide" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="occluderinstance3d">
+<span id="class-occluderinstance3d"></span><h1>OccluderInstance3D<a class="headerlink" href="#occluderinstance3d" title="Link to this heading"></a></h1>
+<p><strong>Inherits:</strong> <a class="reference internal" href="class_visualinstance3d.html#class-visualinstance3d"><span class="std std-ref">VisualInstance3D</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_node3d.html#class-node3d"><span class="std std-ref">Node3D</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_node.html#class-node"><span class="std std-ref">Node</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_object.html#class-object"><span class="std std-ref">Object</span></a></p>
+<p>Provides occlusion culling for 3D nodes, which improves performance in closed areas.</p>
+<section class="classref-introduction-group" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
+<p>Occlusion culling can improve rendering performance in closed/semi-open areas by hiding geometry that is occluded by other objects.</p>
+<p>The occlusion culling system is mostly static. <strong>OccluderInstance3D</strong>s can be moved or hidden at run-time, but doing so will trigger a background recomputation that can take several frames. It is recommended to only move <strong>OccluderInstance3D</strong>s sporadically (e.g. for procedural generation purposes), rather than doing so every frame.</p>
+<p>The occlusion culling system works by rendering the occluders on the CPU in parallel using <a class="reference external" href="https://www.embree.org/">Embree</a>, drawing the result to a low-resolution buffer then using this to cull 3D nodes individually. In the 3D editor, you can preview the occlusion culling buffer by choosing <strong>Perspective &gt; Display Advanced… &gt; Occlusion Culling Buffer</strong> in the top-left corner of the 3D viewport. The occlusion culling buffer quality can be adjusted in the Project Settings.</p>
+<p><strong>Baking:</strong> Select an <strong>OccluderInstance3D</strong> node, then use the <strong>Bake Occluders</strong> button at the top of the 3D editor. Only opaque materials will be taken into account; transparent materials (alpha-blended or alpha-tested) will be ignored by the occluder generation.</p>
+<p><strong>Note:</strong> Occlusion culling is only effective if <a class="reference internal" href="class_projectsettings.html#class-projectsettings-property-rendering-occlusion-culling-use-occlusion-culling"><span class="std std-ref">ProjectSettings.rendering/occlusion_culling/use_occlusion_culling</span></a> is <code class="docutils literal notranslate"><span class="pre">true</span></code>. Enabling occlusion culling has a cost on the CPU. Only enable occlusion culling if you actually plan to use it. Large open scenes with few or no objects blocking the view will generally not benefit much from occlusion culling. Large open scenes generally benefit more from mesh LOD and visibility ranges (<a class="reference internal" href="class_geometryinstance3d.html#class-geometryinstance3d-property-visibility-range-begin"><span class="std std-ref">GeometryInstance3D.visibility_range_begin</span></a> and <a class="reference internal" href="class_geometryinstance3d.html#class-geometryinstance3d-property-visibility-range-end"><span class="std std-ref">GeometryInstance3D.visibility_range_end</span></a>) compared to occlusion culling.</p>
+<p><strong>Note:</strong> Due to memory constraints, occlusion culling is not supported by default in Web export templates. It can be enabled by compiling custom Web export templates with <code class="docutils literal notranslate"><span class="pre">module_raycast_enabled=yes</span></code>.</p>
+</section>
+<section class="classref-introduction-group" id="tutorials">
+<h2>Tutorials<a class="headerlink" href="#tutorials" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><span class="xref std std-doc">Occlusion culling</span></p></li>
+</ul>
+</section>
+<section class="classref-reftable-group" id="properties">
+<h2>Properties<a class="headerlink" href="#properties" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-occluderinstance3d-property-bake-mask"><span class="std std-ref">bake_mask</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">4294967295</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-occluderinstance3d-property-bake-simplification-distance"><span class="std std-ref">bake_simplification_distance</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0.1</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_occluder3d.html#class-occluder3d"><span class="std std-ref">Occluder3D</span></a></p></td>
+<td><p><a class="reference internal" href="#class-occluderinstance3d-property-occluder"><span class="std std-ref">occluder</span></a></p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section class="classref-reftable-group" id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-occluderinstance3d-method-get-bake-mask-value"><span class="std std-ref">get_bake_mask_value</span></a>(layer_number: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-occluderinstance3d-method-set-bake-mask-value"><span class="std std-ref">set_bake_mask_value</span></a>(layer_number: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, value: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>)</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="property-descriptions">
+<h2>Property Descriptions<a class="headerlink" href="#property-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-property" id="class-occluderinstance3d-property-bake-mask"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>bake_mask</strong> = <code class="docutils literal notranslate"><span class="pre">4294967295</span></code> <a class="reference internal" href="#class-occluderinstance3d-property-bake-mask"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_bake_mask</strong>(value: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>get_bake_mask</strong>()</p></li>
+</ul>
+<p>The visual layers to account for when baking for occluders. Only <a class="reference internal" href="class_meshinstance3d.html#class-meshinstance3d"><span class="std std-ref">MeshInstance3D</span></a>s whose <a class="reference internal" href="class_visualinstance3d.html#class-visualinstance3d-property-layers"><span class="std std-ref">VisualInstance3D.layers</span></a> match with this <a class="reference internal" href="#class-occluderinstance3d-property-bake-mask"><span class="std std-ref">bake_mask</span></a> will be included in the generated occluder mesh. By default, all objects with <em>opaque</em> materials are taken into account for the occluder baking.</p>
+<p>To improve performance and avoid artifacts, it is recommended to exclude dynamic objects, small objects and fixtures from the baking process by moving them to a separate visual layer and excluding this layer in <a class="reference internal" href="#class-occluderinstance3d-property-bake-mask"><span class="std std-ref">bake_mask</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-occluderinstance3d-property-bake-simplification-distance"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>bake_simplification_distance</strong> = <code class="docutils literal notranslate"><span class="pre">0.1</span></code> <a class="reference internal" href="#class-occluderinstance3d-property-bake-simplification-distance"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_bake_simplification_distance</strong>(value: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>get_bake_simplification_distance</strong>()</p></li>
+</ul>
+<p>The simplification distance to use for simplifying the generated occluder polygon (in 3D units). Higher values result in a less detailed occluder mesh, which improves performance but reduces culling accuracy.</p>
+<p>The occluder geometry is rendered on the CPU, so it is important to keep its geometry as simple as possible. Since the buffer is rendered at a low resolution, less detailed occluder meshes generally still work well. The default value is fairly aggressive, so you may have to decrease it if you run into false negatives (objects being occluded even though they are visible by the camera). A value of <code class="docutils literal notranslate"><span class="pre">0.01</span></code> will act conservatively, and will keep geometry <em>perceptually</em> unaffected in the occlusion culling buffer. Depending on the scene, a value of <code class="docutils literal notranslate"><span class="pre">0.01</span></code> may still simplify the mesh noticeably compared to disabling simplification entirely.</p>
+<p>Setting this to <code class="docutils literal notranslate"><span class="pre">0.0</span></code> disables simplification entirely, but vertices in the exact same position will still be merged. The mesh will also be re-indexed to reduce both the number of vertices and indices.</p>
+<p><strong>Note:</strong> This uses the <a class="reference external" href="https://meshoptimizer.org/">meshoptimizer</a> library under the hood, similar to LOD generation.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-occluderinstance3d-property-occluder"><a class="reference internal" href="class_occluder3d.html#class-occluder3d"><span class="std std-ref">Occluder3D</span></a> <strong>occluder</strong> <a class="reference internal" href="#class-occluderinstance3d-property-occluder"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_occluder</strong>(value: <a class="reference internal" href="class_occluder3d.html#class-occluder3d"><span class="std std-ref">Occluder3D</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_occluder3d.html#class-occluder3d"><span class="std std-ref">Occluder3D</span></a> <strong>get_occluder</strong>()</p></li>
+</ul>
+<p>The occluder resource for this <strong>OccluderInstance3D</strong>. You can generate an occluder resource by selecting an <strong>OccluderInstance3D</strong> node then using the <strong>Bake Occluders</strong> button at the top of the editor.</p>
+<p>You can also draw your own 2D occluder polygon by adding a new <a class="reference internal" href="class_polygonoccluder3d.html#class-polygonoccluder3d"><span class="std std-ref">PolygonOccluder3D</span></a> resource to the <a class="reference internal" href="#class-occluderinstance3d-property-occluder"><span class="std std-ref">occluder</span></a> property in the Inspector.</p>
+<p>Alternatively, you can select a primitive occluder to use: <a class="reference internal" href="class_quadoccluder3d.html#class-quadoccluder3d"><span class="std std-ref">QuadOccluder3D</span></a>, <a class="reference internal" href="class_boxoccluder3d.html#class-boxoccluder3d"><span class="std std-ref">BoxOccluder3D</span></a> or <a class="reference internal" href="class_sphereoccluder3d.html#class-sphereoccluder3d"><span class="std std-ref">SphereOccluder3D</span></a>.</p>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="method-descriptions">
+<h2>Method Descriptions<a class="headerlink" href="#method-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-method" id="class-occluderinstance3d-method-get-bake-mask-value"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>get_bake_mask_value</strong>(layer_number: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-occluderinstance3d-method-get-bake-mask-value"><span class="std std-ref">🔗</span></a></p>
+<p>Returns whether or not the specified layer of the <a class="reference internal" href="#class-occluderinstance3d-property-bake-mask"><span class="std std-ref">bake_mask</span></a> is enabled, given a <code class="docutils literal notranslate"><span class="pre">layer_number</span></code> between 1 and 32.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-occluderinstance3d-method-set-bake-mask-value"><abbr title="No return value.">void</abbr> <strong>set_bake_mask_value</strong>(layer_number: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, value: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>) <a class="reference internal" href="#class-occluderinstance3d-method-set-bake-mask-value"><span class="std std-ref">🔗</span></a></p>
+<p>Based on <code class="docutils literal notranslate"><span class="pre">value</span></code>, enables or disables the specified layer in the <a class="reference internal" href="#class-occluderinstance3d-property-bake-mask"><span class="std std-ref">bake_mask</span></a>, given a <code class="docutils literal notranslate"><span class="pre">layer_number</span></code> between 1 and 32.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, MUmarShahbaz.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

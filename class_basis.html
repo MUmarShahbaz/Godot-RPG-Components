@@ -1,0 +1,511 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Basis &mdash; RPG Components 2D 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=d45e8c67"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            RPG Components 2D
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">Basis</a><ul>
+<li><a class="reference internal" href="#description">Description</a></li>
+<li><a class="reference internal" href="#tutorials">Tutorials</a></li>
+<li><a class="reference internal" href="#properties">Properties</a></li>
+<li><a class="reference internal" href="#constructors">Constructors</a></li>
+<li><a class="reference internal" href="#methods">Methods</a></li>
+<li><a class="reference internal" href="#operators">Operators</a></li>
+<li><a class="reference internal" href="#constants">Constants</a></li>
+<li><a class="reference internal" href="#property-descriptions">Property Descriptions</a></li>
+<li><a class="reference internal" href="#constructor-descriptions">Constructor Descriptions</a></li>
+<li><a class="reference internal" href="#method-descriptions">Method Descriptions</a></li>
+<li><a class="reference internal" href="#operator-descriptions">Operator Descriptions</a></li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">RPG Components 2D</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Basis</li>
+      <li class="wy-breadcrumbs-aside">
+              <!-- User defined GitHub URL -->
+              <a href="hide" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="basis">
+<span id="class-basis"></span><h1>Basis<a class="headerlink" href="#basis" title="Link to this heading"></a></h1>
+<p>A 3×3 matrix for representing 3D rotation and scale.</p>
+<section class="classref-introduction-group" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
+<p>The <strong>Basis</strong> built-in <a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a> type is a 3×3 <a class="reference external" href="https://en.wikipedia.org/wiki/Matrix_(mathematics)">matrix</a> used to represent 3D rotation, scale, and shear. It is frequently used within a <a class="reference internal" href="class_transform3d.html#class-transform3d"><span class="std std-ref">Transform3D</span></a>.</p>
+<p>A <strong>Basis</strong> is composed by 3 axis vectors, each representing a column of the matrix: <a class="reference internal" href="#class-basis-property-x"><span class="std std-ref">x</span></a>, <a class="reference internal" href="#class-basis-property-y"><span class="std std-ref">y</span></a>, and <a class="reference internal" href="#class-basis-property-z"><span class="std std-ref">z</span></a>. The length of each axis (<a class="reference internal" href="class_vector3.html#class-vector3-method-length"><span class="std std-ref">Vector3.length()</span></a>) influences the basis’s scale, while the direction of all axes influence the rotation. Usually, these axes are perpendicular to one another. However, when you rotate any axis individually, the basis becomes sheared. Applying a sheared basis to a 3D model will make the model appear distorted.</p>
+<p>A <strong>Basis</strong> is:</p>
+<ul class="simple">
+<li><p><strong>Orthogonal</strong> if its axes are perpendicular to each other.</p></li>
+<li><p><strong>Normalized</strong> if the length of every axis is <code class="docutils literal notranslate"><span class="pre">1.0</span></code>.</p></li>
+<li><p><strong>Uniform</strong> if all axes share the same length (see <a class="reference internal" href="#class-basis-method-get-scale"><span class="std std-ref">get_scale()</span></a>).</p></li>
+<li><p><strong>Orthonormal</strong> if it is both orthogonal and normalized, which allows it to only represent rotations (see <a class="reference internal" href="#class-basis-method-orthonormalized"><span class="std std-ref">orthonormalized()</span></a>).</p></li>
+<li><p><strong>Conformal</strong> if it is both orthogonal and uniform, which ensures it is not distorted.</p></li>
+</ul>
+<p>For a general introduction, see the <span class="xref std std-doc">Matrices and transforms</span> tutorial.</p>
+<p><strong>Note:</strong> Godot uses a <a class="reference external" href="https://en.wikipedia.org/wiki/Right-hand_rule">right-handed coordinate system</a>, which is a common standard. For directions, the convention for built-in types like <a class="reference internal" href="class_camera3d.html#class-camera3d"><span class="std std-ref">Camera3D</span></a> is for -Z to point forward (+X is right, +Y is up, and +Z is back). Other objects may use different direction conventions. For more information, see the <a class="reference external" href="../tutorials/assets_pipeline/importing_3d_scenes/model_export_considerations.html#d-asset-direction-conventions">3D asset direction conventions</a> tutorial.</p>
+<p><strong>Note:</strong> The basis matrices are exposed as <a class="reference external" href="https://www.mindcontrol.org/~hplus/graphics/matrix-layout.html">column-major</a> order, which is the same as OpenGL. However, they are stored internally in row-major order, which is the same as DirectX.</p>
+<p><strong>Note:</strong> In a boolean context, a basis will evaluate to <code class="docutils literal notranslate"><span class="pre">false</span></code> if it’s equal to <a class="reference internal" href="#class-basis-constant-identity"><span class="std std-ref">IDENTITY</span></a>. Otherwise, a basis will always evaluate to <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>There are notable differences when using this API with C#. See <span class="xref std std-ref">doc_c_sharp_differences</span> for more information.</p>
+</div>
+</section>
+<section class="classref-introduction-group" id="tutorials">
+<h2>Tutorials<a class="headerlink" href="#tutorials" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><span class="xref std std-doc">Math documentation index</span></p></li>
+<li><p><span class="xref std std-doc">Matrices and transforms</span></p></li>
+<li><p><span class="xref std std-doc">Using 3D transforms</span></p></li>
+<li><p><a class="reference external" href="https://godotengine.org/asset-library/asset/2787">Matrix Transform Demo</a></p></li>
+<li><p><a class="reference external" href="https://godotengine.org/asset-library/asset/2748">3D Platformer Demo</a></p></li>
+<li><p><a class="reference external" href="https://godotengine.org/asset-library/asset/2755">3D Voxel Demo</a></p></li>
+<li><p><a class="reference external" href="https://godotengine.org/asset-library/asset/2783">2.5D Game Demo</a></p></li>
+</ul>
+</section>
+<section class="classref-reftable-group" id="properties">
+<h2>Properties<a class="headerlink" href="#properties" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a></p></td>
+<td><p><a class="reference internal" href="#class-basis-property-x"><span class="std std-ref">x</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Vector3(1,</span> <span class="pre">0,</span> <span class="pre">0)</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a></p></td>
+<td><p><a class="reference internal" href="#class-basis-property-y"><span class="std std-ref">y</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Vector3(0,</span> <span class="pre">1,</span> <span class="pre">0)</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a></p></td>
+<td><p><a class="reference internal" href="#class-basis-property-z"><span class="std std-ref">z</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Vector3(0,</span> <span class="pre">0,</span> <span class="pre">1)</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section class="classref-reftable-group" id="constructors">
+<h2>Constructors<a class="headerlink" href="#constructors" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#class-basis"><span class="std std-ref">Basis</span></a></p></td>
+<td><p><a class="reference internal" href="#class-basis-constructor-basis"><span class="std std-ref">Basis</span></a>()</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#class-basis"><span class="std std-ref">Basis</span></a></p></td>
+<td><p><a class="reference internal" href="#class-basis-constructor-basis"><span class="std std-ref">Basis</span></a>(from: <a class="reference internal" href="#class-basis"><span class="std std-ref">Basis</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#class-basis"><span class="std std-ref">Basis</span></a></p></td>
+<td><p><a class="reference internal" href="#class-basis-constructor-basis"><span class="std std-ref">Basis</span></a>(axis: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>, angle: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#class-basis"><span class="std std-ref">Basis</span></a></p></td>
+<td><p><a class="reference internal" href="#class-basis-constructor-basis"><span class="std std-ref">Basis</span></a>(from: <a class="reference internal" href="class_quaternion.html#class-quaternion"><span class="std std-ref">Quaternion</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#class-basis"><span class="std std-ref">Basis</span></a></p></td>
+<td><p><a class="reference internal" href="#class-basis-constructor-basis"><span class="std std-ref">Basis</span></a>(x_axis: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>, y_axis: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>, z_axis: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>)</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section class="classref-reftable-group" id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-basis-method-determinant"><span class="std std-ref">determinant</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#class-basis"><span class="std std-ref">Basis</span></a></p></td>
+<td><p><a class="reference internal" href="#class-basis-method-from-euler"><span class="std std-ref">from_euler</span></a>(euler: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>, order: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> = 2) <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#class-basis"><span class="std std-ref">Basis</span></a></p></td>
+<td><p><a class="reference internal" href="#class-basis-method-from-scale"><span class="std std-ref">from_scale</span></a>(scale: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>) <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a></p></td>
+<td><p><a class="reference internal" href="#class-basis-method-get-euler"><span class="std std-ref">get_euler</span></a>(order: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> = 2) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_quaternion.html#class-quaternion"><span class="std std-ref">Quaternion</span></a></p></td>
+<td><p><a class="reference internal" href="#class-basis-method-get-rotation-quaternion"><span class="std std-ref">get_rotation_quaternion</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a></p></td>
+<td><p><a class="reference internal" href="#class-basis-method-get-scale"><span class="std std-ref">get_scale</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#class-basis"><span class="std std-ref">Basis</span></a></p></td>
+<td><p><a class="reference internal" href="#class-basis-method-inverse"><span class="std std-ref">inverse</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-basis-method-is-conformal"><span class="std std-ref">is_conformal</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-basis-method-is-equal-approx"><span class="std std-ref">is_equal_approx</span></a>(b: <a class="reference internal" href="#class-basis"><span class="std std-ref">Basis</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-basis-method-is-finite"><span class="std std-ref">is_finite</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-basis-method-is-orthonormal"><span class="std std-ref">is_orthonormal</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#class-basis"><span class="std std-ref">Basis</span></a></p></td>
+<td><p><a class="reference internal" href="#class-basis-method-looking-at"><span class="std std-ref">looking_at</span></a>(target: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>, up: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a> = Vector3(0, 1, 0), use_model_front: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = false) <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#class-basis"><span class="std std-ref">Basis</span></a></p></td>
+<td><p><a class="reference internal" href="#class-basis-method-orthonormalized"><span class="std std-ref">orthonormalized</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#class-basis"><span class="std std-ref">Basis</span></a></p></td>
+<td><p><a class="reference internal" href="#class-basis-method-rotated"><span class="std std-ref">rotated</span></a>(axis: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>, angle: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#class-basis"><span class="std std-ref">Basis</span></a></p></td>
+<td><p><a class="reference internal" href="#class-basis-method-scaled"><span class="std std-ref">scaled</span></a>(scale: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#class-basis"><span class="std std-ref">Basis</span></a></p></td>
+<td><p><a class="reference internal" href="#class-basis-method-scaled-local"><span class="std std-ref">scaled_local</span></a>(scale: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#class-basis"><span class="std std-ref">Basis</span></a></p></td>
+<td><p><a class="reference internal" href="#class-basis-method-slerp"><span class="std std-ref">slerp</span></a>(to: <a class="reference internal" href="#class-basis"><span class="std std-ref">Basis</span></a>, weight: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-basis-method-tdotx"><span class="std std-ref">tdotx</span></a>(with: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-basis-method-tdoty"><span class="std std-ref">tdoty</span></a>(with: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-basis-method-tdotz"><span class="std std-ref">tdotz</span></a>(with: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#class-basis"><span class="std std-ref">Basis</span></a></p></td>
+<td><p><a class="reference internal" href="#class-basis-method-transposed"><span class="std std-ref">transposed</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section class="classref-reftable-group" id="operators">
+<h2>Operators<a class="headerlink" href="#operators" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-basis-operator-neq-basis"><span class="std std-ref">operator !=</span></a>(right: <a class="reference internal" href="#class-basis"><span class="std std-ref">Basis</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#class-basis"><span class="std std-ref">Basis</span></a></p></td>
+<td><p><a class="reference internal" href="#class-basis-operator-mul-basis"><span class="std std-ref">operator *</span></a>(right: <a class="reference internal" href="#class-basis"><span class="std std-ref">Basis</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a></p></td>
+<td><p><a class="reference internal" href="#class-basis-operator-mul-vector3"><span class="std std-ref">operator *</span></a>(right: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#class-basis"><span class="std std-ref">Basis</span></a></p></td>
+<td><p><a class="reference internal" href="#class-basis-operator-mul-float"><span class="std std-ref">operator *</span></a>(right: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#class-basis"><span class="std std-ref">Basis</span></a></p></td>
+<td><p><a class="reference internal" href="#class-basis-operator-mul-int"><span class="std std-ref">operator *</span></a>(right: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#class-basis"><span class="std std-ref">Basis</span></a></p></td>
+<td><p><a class="reference internal" href="#class-basis-operator-div-float"><span class="std std-ref">operator /</span></a>(right: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#class-basis"><span class="std std-ref">Basis</span></a></p></td>
+<td><p><a class="reference internal" href="#class-basis-operator-div-int"><span class="std std-ref">operator /</span></a>(right: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-basis-operator-eq-basis"><span class="std std-ref">operator ==</span></a>(right: <a class="reference internal" href="#class-basis"><span class="std std-ref">Basis</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a></p></td>
+<td><p><a class="reference internal" href="#class-basis-operator-idx-int"><span class="std std-ref">operator []</span></a>(index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="constants">
+<h2>Constants<a class="headerlink" href="#constants" title="Link to this heading"></a></h2>
+<p class="classref-constant" id="class-basis-constant-identity"><strong>IDENTITY</strong> = <code class="docutils literal notranslate"><span class="pre">Basis(1,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">1,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">1)</span></code> <a class="reference internal" href="#class-basis-constant-identity"><span class="std std-ref">🔗</span></a></p>
+<p>The identity <strong>Basis</strong>. This is an orthonormal basis with no rotation, no shear, and a scale of <a class="reference internal" href="class_vector3.html#class-vector3-constant-one"><span class="std std-ref">Vector3.ONE</span></a>. This also means that:</p>
+<ul class="simple">
+<li><p>The <a class="reference internal" href="#class-basis-property-x"><span class="std std-ref">x</span></a> points right (<a class="reference internal" href="class_vector3.html#class-vector3-constant-right"><span class="std std-ref">Vector3.RIGHT</span></a>);</p></li>
+<li><p>The <a class="reference internal" href="#class-basis-property-y"><span class="std std-ref">y</span></a> points up (<a class="reference internal" href="class_vector3.html#class-vector3-constant-up"><span class="std std-ref">Vector3.UP</span></a>);</p></li>
+<li><p>The <a class="reference internal" href="#class-basis-property-z"><span class="std std-ref">z</span></a> points back (<a class="reference internal" href="class_vector3.html#class-vector3-constant-back"><span class="std std-ref">Vector3.BACK</span></a>).</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">basis</span> <span class="o">=</span> <span class="n">Basis</span><span class="o">.</span><span class="n">IDENTITY</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;| X | Y | Z&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;| %.f | %.f | %.f&quot;</span> <span class="o">%</span> <span class="p">[</span><span class="n">basis</span><span class="o">.</span><span class="n">x</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">basis</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">basis</span><span class="o">.</span><span class="n">z</span><span class="o">.</span><span class="n">x</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;| %.f | %.f | %.f&quot;</span> <span class="o">%</span> <span class="p">[</span><span class="n">basis</span><span class="o">.</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="n">basis</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="n">basis</span><span class="o">.</span><span class="n">z</span><span class="o">.</span><span class="n">y</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;| %.f | %.f | %.f&quot;</span> <span class="o">%</span> <span class="p">[</span><span class="n">basis</span><span class="o">.</span><span class="n">x</span><span class="o">.</span><span class="n">z</span><span class="p">,</span> <span class="n">basis</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="p">,</span> <span class="n">basis</span><span class="o">.</span><span class="n">z</span><span class="o">.</span><span class="n">z</span><span class="p">])</span>
+<span class="c1"># Prints:</span>
+<span class="c1"># | X | Y | Z</span>
+<span class="c1"># | 1 | 0 | 0</span>
+<span class="c1"># | 0 | 1 | 0</span>
+<span class="c1"># | 0 | 0 | 1</span>
+</pre></div>
+</div>
+<p>If a <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a> or another <strong>Basis</strong> is transformed (multiplied) by this constant, no transformation occurs.</p>
+<p><strong>Note:</strong> In GDScript, this constant is equivalent to creating a <a class="reference internal" href="#class-basis-constructor-basis"><span class="std std-ref">Basis</span></a> without any arguments. It can be used to make your code clearer, and for consistency with C#.</p>
+<p class="classref-constant" id="class-basis-constant-flip-x"><strong>FLIP_X</strong> = <code class="docutils literal notranslate"><span class="pre">Basis(-1,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">1,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">1)</span></code> <a class="reference internal" href="#class-basis-constant-flip-x"><span class="std std-ref">🔗</span></a></p>
+<p>When any basis is multiplied by <a class="reference internal" href="#class-basis-constant-flip-x"><span class="std std-ref">FLIP_X</span></a>, it negates all components of the <a class="reference internal" href="#class-basis-property-x"><span class="std std-ref">x</span></a> axis (the X column).</p>
+<p>When <a class="reference internal" href="#class-basis-constant-flip-x"><span class="std std-ref">FLIP_X</span></a> is multiplied by any basis, it negates the <a class="reference internal" href="class_vector3.html#class-vector3-property-x"><span class="std std-ref">Vector3.x</span></a> component of all axes (the X row).</p>
+<p class="classref-constant" id="class-basis-constant-flip-y"><strong>FLIP_Y</strong> = <code class="docutils literal notranslate"><span class="pre">Basis(1,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">-1,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">1)</span></code> <a class="reference internal" href="#class-basis-constant-flip-y"><span class="std std-ref">🔗</span></a></p>
+<p>When any basis is multiplied by <a class="reference internal" href="#class-basis-constant-flip-y"><span class="std std-ref">FLIP_Y</span></a>, it negates all components of the <a class="reference internal" href="#class-basis-property-y"><span class="std std-ref">y</span></a> axis (the Y column).</p>
+<p>When <a class="reference internal" href="#class-basis-constant-flip-y"><span class="std std-ref">FLIP_Y</span></a> is multiplied by any basis, it negates the <a class="reference internal" href="class_vector3.html#class-vector3-property-y"><span class="std std-ref">Vector3.y</span></a> component of all axes (the Y row).</p>
+<p class="classref-constant" id="class-basis-constant-flip-z"><strong>FLIP_Z</strong> = <code class="docutils literal notranslate"><span class="pre">Basis(1,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">1,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">-1)</span></code> <a class="reference internal" href="#class-basis-constant-flip-z"><span class="std std-ref">🔗</span></a></p>
+<p>When any basis is multiplied by <a class="reference internal" href="#class-basis-constant-flip-z"><span class="std std-ref">FLIP_Z</span></a>, it negates all components of the <a class="reference internal" href="#class-basis-property-z"><span class="std std-ref">z</span></a> axis (the Z column).</p>
+<p>When <a class="reference internal" href="#class-basis-constant-flip-z"><span class="std std-ref">FLIP_Z</span></a> is multiplied by any basis, it negates the <a class="reference internal" href="class_vector3.html#class-vector3-property-z"><span class="std std-ref">Vector3.z</span></a> component of all axes (the Z row).</p>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="property-descriptions">
+<h2>Property Descriptions<a class="headerlink" href="#property-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-property" id="class-basis-property-x"><a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a> <strong>x</strong> = <code class="docutils literal notranslate"><span class="pre">Vector3(1,</span> <span class="pre">0,</span> <span class="pre">0)</span></code> <a class="reference internal" href="#class-basis-property-x"><span class="std std-ref">🔗</span></a></p>
+<p>The basis’s X axis, and the column <code class="docutils literal notranslate"><span class="pre">0</span></code> of the matrix.</p>
+<p>On the identity basis, this vector points right (<a class="reference internal" href="class_vector3.html#class-vector3-constant-right"><span class="std std-ref">Vector3.RIGHT</span></a>).</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-basis-property-y"><a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a> <strong>y</strong> = <code class="docutils literal notranslate"><span class="pre">Vector3(0,</span> <span class="pre">1,</span> <span class="pre">0)</span></code> <a class="reference internal" href="#class-basis-property-y"><span class="std std-ref">🔗</span></a></p>
+<p>The basis’s Y axis, and the column <code class="docutils literal notranslate"><span class="pre">1</span></code> of the matrix.</p>
+<p>On the identity basis, this vector points up (<a class="reference internal" href="class_vector3.html#class-vector3-constant-up"><span class="std std-ref">Vector3.UP</span></a>).</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-basis-property-z"><a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a> <strong>z</strong> = <code class="docutils literal notranslate"><span class="pre">Vector3(0,</span> <span class="pre">0,</span> <span class="pre">1)</span></code> <a class="reference internal" href="#class-basis-property-z"><span class="std std-ref">🔗</span></a></p>
+<p>The basis’s Z axis, and the column <code class="docutils literal notranslate"><span class="pre">2</span></code> of the matrix.</p>
+<p>On the identity basis, this vector points back (<a class="reference internal" href="class_vector3.html#class-vector3-constant-back"><span class="std std-ref">Vector3.BACK</span></a>).</p>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="constructor-descriptions">
+<h2>Constructor Descriptions<a class="headerlink" href="#constructor-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-constructor" id="class-basis-constructor-basis"><a class="reference internal" href="#class-basis"><span class="std std-ref">Basis</span></a> <strong>Basis</strong>() <a class="reference internal" href="#class-basis-constructor-basis"><span class="std std-ref">🔗</span></a></p>
+<p>Constructs a <strong>Basis</strong> identical to <a class="reference internal" href="#class-basis-constant-identity"><span class="std std-ref">IDENTITY</span></a>.</p>
+<p><strong>Note:</strong> In C#, this constructs a <strong>Basis</strong> with all of its components set to <a class="reference internal" href="class_vector3.html#class-vector3-constant-zero"><span class="std std-ref">Vector3.ZERO</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-constructor"><a class="reference internal" href="#class-basis"><span class="std std-ref">Basis</span></a> <strong>Basis</strong>(from: <a class="reference internal" href="#class-basis"><span class="std std-ref">Basis</span></a>)</p>
+<p>Constructs a <strong>Basis</strong> as a copy of the given <strong>Basis</strong>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-constructor"><a class="reference internal" href="#class-basis"><span class="std std-ref">Basis</span></a> <strong>Basis</strong>(axis: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>, angle: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p>
+<p>Constructs a <strong>Basis</strong> that only represents rotation, rotated around the <code class="docutils literal notranslate"><span class="pre">axis</span></code> by the given <code class="docutils literal notranslate"><span class="pre">angle</span></code>, in radians. The axis must be a normalized vector.</p>
+<p><strong>Note:</strong> This is the same as using <a class="reference internal" href="#class-basis-method-rotated"><span class="std std-ref">rotated()</span></a> on the <a class="reference internal" href="#class-basis-constant-identity"><span class="std std-ref">IDENTITY</span></a> basis. With more than one angle consider using <a class="reference internal" href="#class-basis-method-from-euler"><span class="std std-ref">from_euler()</span></a>, instead.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-constructor"><a class="reference internal" href="#class-basis"><span class="std std-ref">Basis</span></a> <strong>Basis</strong>(from: <a class="reference internal" href="class_quaternion.html#class-quaternion"><span class="std std-ref">Quaternion</span></a>)</p>
+<p>Constructs a <strong>Basis</strong> that only represents rotation from the given <a class="reference internal" href="class_quaternion.html#class-quaternion"><span class="std std-ref">Quaternion</span></a>.</p>
+<p><strong>Note:</strong> Quaternions <em>only</em> store rotation, not scale. Because of this, conversions from <strong>Basis</strong> to <a class="reference internal" href="class_quaternion.html#class-quaternion"><span class="std std-ref">Quaternion</span></a> cannot always be reversed.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-constructor"><a class="reference internal" href="#class-basis"><span class="std std-ref">Basis</span></a> <strong>Basis</strong>(x_axis: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>, y_axis: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>, z_axis: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>)</p>
+<p>Constructs a <strong>Basis</strong> from 3 axis vectors. These are the columns of the basis matrix.</p>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="method-descriptions">
+<h2>Method Descriptions<a class="headerlink" href="#method-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-method" id="class-basis-method-determinant"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>determinant</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-basis-method-determinant"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the <a class="reference external" href="https://en.wikipedia.org/wiki/Determinant">determinant</a> of this basis’s matrix. For advanced math, this number can be used to determine a few attributes:</p>
+<ul class="simple">
+<li><p>If the determinant is exactly <code class="docutils literal notranslate"><span class="pre">0.0</span></code>, the basis is not invertible (see <a class="reference internal" href="#class-basis-method-inverse"><span class="std std-ref">inverse()</span></a>).</p></li>
+<li><p>If the determinant is a negative number, the basis represents a negative scale.</p></li>
+</ul>
+<p><strong>Note:</strong> If the basis’s scale is the same for every axis, its determinant is always that scale by the power of 3.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-basis-method-from-euler"><a class="reference internal" href="#class-basis"><span class="std std-ref">Basis</span></a> <strong>from_euler</strong>(euler: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>, order: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> = 2) <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr> <a class="reference internal" href="#class-basis-method-from-euler"><span class="std std-ref">🔗</span></a></p>
+<p>Constructs a new <strong>Basis</strong> that only represents rotation from the given <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a> of <a class="reference external" href="https://en.wikipedia.org/wiki/Euler_angles">Euler angles</a>, in radians.</p>
+<ul class="simple">
+<li><p>The <a class="reference internal" href="class_vector3.html#class-vector3-property-x"><span class="std std-ref">Vector3.x</span></a> should contain the angle around the <a class="reference internal" href="#class-basis-property-x"><span class="std std-ref">x</span></a> axis (pitch);</p></li>
+<li><p>The <a class="reference internal" href="class_vector3.html#class-vector3-property-y"><span class="std std-ref">Vector3.y</span></a> should contain the angle around the <a class="reference internal" href="#class-basis-property-y"><span class="std std-ref">y</span></a> axis (yaw);</p></li>
+<li><p>The <a class="reference internal" href="class_vector3.html#class-vector3-property-z"><span class="std std-ref">Vector3.z</span></a> should contain the angle around the <a class="reference internal" href="#class-basis-property-z"><span class="std std-ref">z</span></a> axis (roll).</p></li>
+</ul>
+<p>The order of each consecutive rotation can be changed with <code class="docutils literal notranslate"><span class="pre">order</span></code> (see <a class="reference internal" href="class_%40globalscope.html#enum-globalscope-eulerorder"><span class="std std-ref">EulerOrder</span></a> constants). In Godot, Euler angles always use intrinsic order. By default, the intrinsic YXZ convention is used (<a class="reference internal" href="class_%40globalscope.html#class-globalscope-constant-euler-order-yxz"><span class="std std-ref">&#64;GlobalScope.EULER_ORDER_YXZ</span></a>): the basis rotates first around the local Y axis (yaw), then local X (pitch), and lastly local Z (roll). When using the opposite method <a class="reference internal" href="#class-basis-method-get-euler"><span class="std std-ref">get_euler()</span></a> to decompose a rotation, this order is reversed.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-basis-method-from-scale"><a class="reference internal" href="#class-basis"><span class="std std-ref">Basis</span></a> <strong>from_scale</strong>(scale: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>) <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr> <a class="reference internal" href="#class-basis-method-from-scale"><span class="std std-ref">🔗</span></a></p>
+<p>Constructs a new <strong>Basis</strong> that only represents scale, with no rotation or shear, from the given <code class="docutils literal notranslate"><span class="pre">scale</span></code> vector.</p>
+<p><strong>Note:</strong> In linear algebra, the matrix of this basis is also known as a <a class="reference external" href="https://en.wikipedia.org/wiki/Diagonal_matrix">diagonal matrix</a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-basis-method-get-euler"><a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a> <strong>get_euler</strong>(order: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> = 2) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-basis-method-get-euler"><span class="std std-ref">🔗</span></a></p>
+<p>Returns this basis’s rotation as a <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a> of <a class="reference external" href="https://en.wikipedia.org/wiki/Euler_angles">Euler angles</a>, in radians. For the returned value:</p>
+<ul class="simple">
+<li><p>The <a class="reference internal" href="class_vector3.html#class-vector3-property-x"><span class="std std-ref">Vector3.x</span></a> contains the angle around the <a class="reference internal" href="#class-basis-property-x"><span class="std std-ref">x</span></a> axis (pitch);</p></li>
+<li><p>The <a class="reference internal" href="class_vector3.html#class-vector3-property-y"><span class="std std-ref">Vector3.y</span></a> contains the angle around the <a class="reference internal" href="#class-basis-property-y"><span class="std std-ref">y</span></a> axis (yaw);</p></li>
+<li><p>The <a class="reference internal" href="class_vector3.html#class-vector3-property-z"><span class="std std-ref">Vector3.z</span></a> contains the angle around the <a class="reference internal" href="#class-basis-property-z"><span class="std std-ref">z</span></a> axis (roll).</p></li>
+</ul>
+<p>The order of each consecutive rotation can be changed with <code class="docutils literal notranslate"><span class="pre">order</span></code> (see <a class="reference internal" href="class_%40globalscope.html#enum-globalscope-eulerorder"><span class="std std-ref">EulerOrder</span></a> constants). In Godot, Euler angles always use intrinsic order. By default, the intrinsic YXZ convention is used (<a class="reference internal" href="class_%40globalscope.html#class-globalscope-constant-euler-order-yxz"><span class="std std-ref">&#64;GlobalScope.EULER_ORDER_YXZ</span></a>): since we are decomposing, local Z (roll) is calculated first, then local X (pitch), and lastly local Y (yaw). When using the opposite method <a class="reference internal" href="#class-basis-method-from-euler"><span class="std std-ref">from_euler()</span></a> to compose a rotation, this order is reversed.</p>
+<p><strong>Note:</strong> For this method to return correctly, the basis needs to be <em>orthonormal</em> (see <a class="reference internal" href="#class-basis-method-orthonormalized"><span class="std std-ref">orthonormalized()</span></a>).</p>
+<p><strong>Note:</strong> Euler angles are much more intuitive but are not suitable for 3D math. Because of this, consider using the <a class="reference internal" href="#class-basis-method-get-rotation-quaternion"><span class="std std-ref">get_rotation_quaternion()</span></a> method instead, which returns a <a class="reference internal" href="class_quaternion.html#class-quaternion"><span class="std std-ref">Quaternion</span></a>.</p>
+<p><strong>Note:</strong> In the Inspector dock, a basis’s rotation is often displayed in Euler angles (in degrees), as is the case with the <a class="reference internal" href="class_node3d.html#class-node3d-property-rotation"><span class="std std-ref">Node3D.rotation</span></a> property.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-basis-method-get-rotation-quaternion"><a class="reference internal" href="class_quaternion.html#class-quaternion"><span class="std std-ref">Quaternion</span></a> <strong>get_rotation_quaternion</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-basis-method-get-rotation-quaternion"><span class="std std-ref">🔗</span></a></p>
+<p>Returns this basis’s rotation as a <a class="reference internal" href="class_quaternion.html#class-quaternion"><span class="std std-ref">Quaternion</span></a>.</p>
+<p><strong>Note:</strong> Quaternions are much more suitable for 3D math but are less intuitive. For user interfaces, consider using the <a class="reference internal" href="#class-basis-method-get-euler"><span class="std std-ref">get_euler()</span></a> method, which returns Euler angles.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-basis-method-get-scale"><a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a> <strong>get_scale</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-basis-method-get-scale"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the length of each axis of this basis, as a <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>. If the basis is not sheared, this value is the scaling factor. It is not affected by rotation.</p>
+<p><strong>Note:</strong> If the value returned by <a class="reference internal" href="#class-basis-method-determinant"><span class="std std-ref">determinant()</span></a> is negative, the scale is also negative.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-basis-method-inverse"><a class="reference internal" href="#class-basis"><span class="std std-ref">Basis</span></a> <strong>inverse</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-basis-method-inverse"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the <a class="reference external" href="https://en.wikipedia.org/wiki/Invertible_matrix">inverse of this basis’s matrix</a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-basis-method-is-conformal"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_conformal</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-basis-method-is-conformal"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if this basis is conformal. A conformal basis is both <em>orthogonal</em> (the axes are perpendicular to each other) and <em>uniform</em> (the axes share the same length). This method can be especially useful during physics calculations.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-basis-method-is-equal-approx"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_equal_approx</strong>(b: <a class="reference internal" href="#class-basis"><span class="std std-ref">Basis</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-basis-method-is-equal-approx"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if this basis and <code class="docutils literal notranslate"><span class="pre">b</span></code> are approximately equal, by calling <a class="reference internal" href="class_%40globalscope.html#class-globalscope-method-is-equal-approx"><span class="std std-ref">&#64;GlobalScope.is_equal_approx()</span></a> on all vector components.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-basis-method-is-finite"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_finite</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-basis-method-is-finite"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if this basis is finite, by calling <a class="reference internal" href="class_%40globalscope.html#class-globalscope-method-is-finite"><span class="std std-ref">&#64;GlobalScope.is_finite()</span></a> on all vector components.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-basis-method-is-orthonormal"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_orthonormal</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-basis-method-is-orthonormal"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if this basis is orthonormal. An orthonormal basis is both <em>orthogonal</em> (the axes are perpendicular to each other) and <em>normalized</em> (the length of every axis is <code class="docutils literal notranslate"><span class="pre">1.0</span></code>). This method can be especially useful during physics calculations.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-basis-method-looking-at"><a class="reference internal" href="#class-basis"><span class="std std-ref">Basis</span></a> <strong>looking_at</strong>(target: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>, up: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a> = Vector3(0, 1, 0), use_model_front: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = false) <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr> <a class="reference internal" href="#class-basis-method-looking-at"><span class="std std-ref">🔗</span></a></p>
+<p>Creates a new <strong>Basis</strong> with a rotation such that the forward axis (-Z) points towards the <code class="docutils literal notranslate"><span class="pre">target</span></code> position.</p>
+<p>By default, the -Z axis (camera forward) is treated as forward (implies +X is right). If <code class="docutils literal notranslate"><span class="pre">use_model_front</span></code> is <code class="docutils literal notranslate"><span class="pre">true</span></code>, the +Z axis (asset front) is treated as forward (implies +X is left) and points toward the <code class="docutils literal notranslate"><span class="pre">target</span></code> position.</p>
+<p>The up axis (+Y) points as close to the <code class="docutils literal notranslate"><span class="pre">up</span></code> vector as possible while staying perpendicular to the forward axis. The returned basis is orthonormalized (see <a class="reference internal" href="#class-basis-method-orthonormalized"><span class="std std-ref">orthonormalized()</span></a>).</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">target</span></code> and the <code class="docutils literal notranslate"><span class="pre">up</span></code> cannot be <a class="reference internal" href="class_vector3.html#class-vector3-constant-zero"><span class="std std-ref">Vector3.ZERO</span></a>, and shouldn’t be colinear to avoid unintended rotation around local Z axis.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-basis-method-orthonormalized"><a class="reference internal" href="#class-basis"><span class="std std-ref">Basis</span></a> <strong>orthonormalized</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-basis-method-orthonormalized"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the orthonormalized version of this basis. An orthonormal basis is both <em>orthogonal</em> (the axes are perpendicular to each other) and <em>normalized</em> (the axes have a length of <code class="docutils literal notranslate"><span class="pre">1.0</span></code>), which also means it can only represent a rotation.</p>
+<p>It is often useful to call this method to avoid rounding errors on a rotating basis:</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-basis-method-rotated"><a class="reference internal" href="#class-basis"><span class="std std-ref">Basis</span></a> <strong>rotated</strong>(axis: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>, angle: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-basis-method-rotated"><span class="std std-ref">🔗</span></a></p>
+<p>Returns a copy of this basis rotated around the given <code class="docutils literal notranslate"><span class="pre">axis</span></code> by the given <code class="docutils literal notranslate"><span class="pre">angle</span></code> (in radians).</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">axis</span></code> must be a normalized vector (see <a class="reference internal" href="class_vector3.html#class-vector3-method-normalized"><span class="std std-ref">Vector3.normalized()</span></a>). If <code class="docutils literal notranslate"><span class="pre">angle</span></code> is positive, the basis is rotated counter-clockwise around the axis.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-basis-method-scaled"><a class="reference internal" href="#class-basis"><span class="std std-ref">Basis</span></a> <strong>scaled</strong>(scale: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-basis-method-scaled"><span class="std std-ref">🔗</span></a></p>
+<p>Returns this basis with each axis’s components scaled by the given <code class="docutils literal notranslate"><span class="pre">scale</span></code>’s components.</p>
+<p>The basis matrix’s rows are multiplied by <code class="docutils literal notranslate"><span class="pre">scale</span></code>’s components. This operation is a global scale (relative to the parent).</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-basis-method-scaled-local"><a class="reference internal" href="#class-basis"><span class="std std-ref">Basis</span></a> <strong>scaled_local</strong>(scale: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-basis-method-scaled-local"><span class="std std-ref">🔗</span></a></p>
+<p>Returns this basis with each axis scaled by the corresponding component in the given <code class="docutils literal notranslate"><span class="pre">scale</span></code>.</p>
+<p>The basis matrix’s columns are multiplied by <code class="docutils literal notranslate"><span class="pre">scale</span></code>’s components. This operation is a local scale (relative to self).</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-basis-method-slerp"><a class="reference internal" href="#class-basis"><span class="std std-ref">Basis</span></a> <strong>slerp</strong>(to: <a class="reference internal" href="#class-basis"><span class="std std-ref">Basis</span></a>, weight: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-basis-method-slerp"><span class="std std-ref">🔗</span></a></p>
+<p>Performs a spherical-linear interpolation with the <code class="docutils literal notranslate"><span class="pre">to</span></code> basis, given a <code class="docutils literal notranslate"><span class="pre">weight</span></code>. Both this basis and <code class="docutils literal notranslate"><span class="pre">to</span></code> should represent a rotation.</p>
+<p><strong>Example:</strong> Smoothly rotate a <a class="reference internal" href="class_node3d.html#class-node3d"><span class="std std-ref">Node3D</span></a> to the target basis over time, with a <a class="reference internal" href="class_tween.html#class-tween"><span class="std std-ref">Tween</span></a>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">start_basis</span> <span class="o">=</span> <span class="n">Basis</span><span class="o">.</span><span class="n">IDENTITY</span>
+<span class="n">var</span> <span class="n">target_basis</span> <span class="o">=</span> <span class="n">Basis</span><span class="o">.</span><span class="n">IDENTITY</span><span class="o">.</span><span class="n">rotated</span><span class="p">(</span><span class="n">Vector3</span><span class="o">.</span><span class="n">UP</span><span class="p">,</span> <span class="n">TAU</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="n">func</span> <span class="n">_ready</span><span class="p">():</span>
+    <span class="n">create_tween</span><span class="p">()</span><span class="o">.</span><span class="n">tween_method</span><span class="p">(</span><span class="n">interpolate</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">5.0</span><span class="p">)</span><span class="o">.</span><span class="n">set_trans</span><span class="p">(</span><span class="n">Tween</span><span class="o">.</span><span class="n">TRANS_EXPO</span><span class="p">)</span>
+
+<span class="n">func</span> <span class="n">interpolate</span><span class="p">(</span><span class="n">weight</span><span class="p">):</span>
+    <span class="n">basis</span> <span class="o">=</span> <span class="n">start_basis</span><span class="o">.</span><span class="n">slerp</span><span class="p">(</span><span class="n">target_basis</span><span class="p">,</span> <span class="n">weight</span><span class="p">)</span>
+</pre></div>
+</div>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-basis-method-tdotx"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>tdotx</strong>(with: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-basis-method-tdotx"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the transposed dot product between <code class="docutils literal notranslate"><span class="pre">with</span></code> and the <a class="reference internal" href="#class-basis-property-x"><span class="std std-ref">x</span></a> axis (see <a class="reference internal" href="#class-basis-method-transposed"><span class="std std-ref">transposed()</span></a>).</p>
+<p>This is equivalent to <code class="docutils literal notranslate"><span class="pre">basis.x.dot(vector)</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-basis-method-tdoty"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>tdoty</strong>(with: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-basis-method-tdoty"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the transposed dot product between <code class="docutils literal notranslate"><span class="pre">with</span></code> and the <a class="reference internal" href="#class-basis-property-y"><span class="std std-ref">y</span></a> axis (see <a class="reference internal" href="#class-basis-method-transposed"><span class="std std-ref">transposed()</span></a>).</p>
+<p>This is equivalent to <code class="docutils literal notranslate"><span class="pre">basis.y.dot(vector)</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-basis-method-tdotz"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>tdotz</strong>(with: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-basis-method-tdotz"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the transposed dot product between <code class="docutils literal notranslate"><span class="pre">with</span></code> and the <a class="reference internal" href="#class-basis-property-z"><span class="std std-ref">z</span></a> axis (see <a class="reference internal" href="#class-basis-method-transposed"><span class="std std-ref">transposed()</span></a>).</p>
+<p>This is equivalent to <code class="docutils literal notranslate"><span class="pre">basis.z.dot(vector)</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-basis-method-transposed"><a class="reference internal" href="#class-basis"><span class="std std-ref">Basis</span></a> <strong>transposed</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-basis-method-transposed"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the transposed version of this basis. This turns the basis matrix’s columns into rows, and its rows into columns.</p>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="operator-descriptions">
+<h2>Operator Descriptions<a class="headerlink" href="#operator-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-operator" id="class-basis-operator-neq-basis"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>operator !=</strong>(right: <a class="reference internal" href="#class-basis"><span class="std std-ref">Basis</span></a>) <a class="reference internal" href="#class-basis-operator-neq-basis"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if the components of both <strong>Basis</strong> matrices are not equal.</p>
+<p><strong>Note:</strong> Due to floating-point precision errors, consider using <a class="reference internal" href="#class-basis-method-is-equal-approx"><span class="std std-ref">is_equal_approx()</span></a> instead, which is more reliable.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-operator" id="class-basis-operator-mul-basis"><a class="reference internal" href="#class-basis"><span class="std std-ref">Basis</span></a> <strong>operator *</strong>(right: <a class="reference internal" href="#class-basis"><span class="std std-ref">Basis</span></a>) <a class="reference internal" href="#class-basis-operator-mul-basis"><span class="std std-ref">🔗</span></a></p>
+<p>Transforms (multiplies) the <code class="docutils literal notranslate"><span class="pre">right</span></code> basis by this basis.</p>
+<p>This is the operation performed between parent and child <a class="reference internal" href="class_node3d.html#class-node3d"><span class="std std-ref">Node3D</span></a>s.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-operator" id="class-basis-operator-mul-vector3"><a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a> <strong>operator *</strong>(right: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>) <a class="reference internal" href="#class-basis-operator-mul-vector3"><span class="std std-ref">🔗</span></a></p>
+<p>Transforms (multiplies) the <code class="docutils literal notranslate"><span class="pre">right</span></code> vector by this basis, returning a <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-operator" id="class-basis-operator-mul-float"><a class="reference internal" href="#class-basis"><span class="std std-ref">Basis</span></a> <strong>operator *</strong>(right: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>) <a class="reference internal" href="#class-basis-operator-mul-float"><span class="std std-ref">🔗</span></a></p>
+<p>Multiplies all components of the <strong>Basis</strong> by the given <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>. This affects the basis’s scale uniformly, resizing all 3 axes by the <code class="docutils literal notranslate"><span class="pre">right</span></code> value.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-operator" id="class-basis-operator-mul-int"><a class="reference internal" href="#class-basis"><span class="std std-ref">Basis</span></a> <strong>operator *</strong>(right: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <a class="reference internal" href="#class-basis-operator-mul-int"><span class="std std-ref">🔗</span></a></p>
+<p>Multiplies all components of the <strong>Basis</strong> by the given <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>. This affects the basis’s scale uniformly, resizing all 3 axes by the <code class="docutils literal notranslate"><span class="pre">right</span></code> value.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-operator" id="class-basis-operator-div-float"><a class="reference internal" href="#class-basis"><span class="std std-ref">Basis</span></a> <strong>operator /</strong>(right: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>) <a class="reference internal" href="#class-basis-operator-div-float"><span class="std std-ref">🔗</span></a></p>
+<p>Divides all components of the <strong>Basis</strong> by the given <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>. This affects the basis’s scale uniformly, resizing all 3 axes by the <code class="docutils literal notranslate"><span class="pre">right</span></code> value.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-operator" id="class-basis-operator-div-int"><a class="reference internal" href="#class-basis"><span class="std std-ref">Basis</span></a> <strong>operator /</strong>(right: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <a class="reference internal" href="#class-basis-operator-div-int"><span class="std std-ref">🔗</span></a></p>
+<p>Divides all components of the <strong>Basis</strong> by the given <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>. This affects the basis’s scale uniformly, resizing all 3 axes by the <code class="docutils literal notranslate"><span class="pre">right</span></code> value.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-operator" id="class-basis-operator-eq-basis"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>operator ==</strong>(right: <a class="reference internal" href="#class-basis"><span class="std std-ref">Basis</span></a>) <a class="reference internal" href="#class-basis-operator-eq-basis"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if the components of both <strong>Basis</strong> matrices are exactly equal.</p>
+<p><strong>Note:</strong> Due to floating-point precision errors, consider using <a class="reference internal" href="#class-basis-method-is-equal-approx"><span class="std std-ref">is_equal_approx()</span></a> instead, which is more reliable.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-operator" id="class-basis-operator-idx-int"><a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a> <strong>operator []</strong>(index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <a class="reference internal" href="#class-basis-operator-idx-int"><span class="std std-ref">🔗</span></a></p>
+<p>Accesses each axis (column) of this basis by their index. Index <code class="docutils literal notranslate"><span class="pre">0</span></code> is the same as <a class="reference internal" href="#class-basis-property-x"><span class="std std-ref">x</span></a>, index <code class="docutils literal notranslate"><span class="pre">1</span></code> is the same as <a class="reference internal" href="#class-basis-property-y"><span class="std std-ref">y</span></a>, and index <code class="docutils literal notranslate"><span class="pre">2</span></code> is the same as <a class="reference internal" href="#class-basis-property-z"><span class="std std-ref">z</span></a>.</p>
+<p><strong>Note:</strong> In C++, this operator accesses the rows of the basis matrix, <em>not</em> the columns. For the same behavior as scripting languages, use the <code class="docutils literal notranslate"><span class="pre">set_column</span></code> and <code class="docutils literal notranslate"><span class="pre">get_column</span></code> methods.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, MUmarShahbaz.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

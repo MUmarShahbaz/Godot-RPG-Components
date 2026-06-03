@@ -1,0 +1,573 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vector4 &mdash; RPG Components 2D 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=d45e8c67"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            RPG Components 2D
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">Vector4</a><ul>
+<li><a class="reference internal" href="#description">Description</a></li>
+<li><a class="reference internal" href="#properties">Properties</a></li>
+<li><a class="reference internal" href="#constructors">Constructors</a></li>
+<li><a class="reference internal" href="#methods">Methods</a></li>
+<li><a class="reference internal" href="#operators">Operators</a></li>
+<li><a class="reference internal" href="#enumerations">Enumerations</a></li>
+<li><a class="reference internal" href="#constants">Constants</a></li>
+<li><a class="reference internal" href="#property-descriptions">Property Descriptions</a></li>
+<li><a class="reference internal" href="#constructor-descriptions">Constructor Descriptions</a></li>
+<li><a class="reference internal" href="#method-descriptions">Method Descriptions</a></li>
+<li><a class="reference internal" href="#operator-descriptions">Operator Descriptions</a></li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">RPG Components 2D</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Vector4</li>
+      <li class="wy-breadcrumbs-aside">
+              <!-- User defined GitHub URL -->
+              <a href="hide" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="vector4">
+<span id="class-vector4"></span><h1>Vector4<a class="headerlink" href="#vector4" title="Link to this heading"></a></h1>
+<p>A 4D vector using floating-point coordinates.</p>
+<section class="classref-introduction-group" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
+<p>A 4-element structure that can be used to represent 4D coordinates or any other quadruplet of numeric values.</p>
+<p>It uses floating-point coordinates. By default, these floating-point values use 32-bit precision, unlike <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> which is always 64-bit. If double precision is needed, compile the engine with the option <code class="docutils literal notranslate"><span class="pre">precision=double</span></code>.</p>
+<p>See <a class="reference internal" href="class_vector4i.html#class-vector4i"><span class="std std-ref">Vector4i</span></a> for its integer counterpart.</p>
+<p><strong>Note:</strong> In a boolean context, a Vector4 will evaluate to <code class="docutils literal notranslate"><span class="pre">false</span></code> if it’s equal to <code class="docutils literal notranslate"><span class="pre">Vector4(0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0)</span></code>. Otherwise, a Vector4 will always evaluate to <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p>
+</section>
+<section class="classref-reftable-group" id="properties">
+<h2>Properties<a class="headerlink" href="#properties" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-vector4-property-w"><span class="std std-ref">w</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0.0</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-vector4-property-x"><span class="std std-ref">x</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0.0</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-vector4-property-y"><span class="std std-ref">y</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0.0</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-vector4-property-z"><span class="std std-ref">z</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0.0</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section class="classref-reftable-group" id="constructors">
+<h2>Constructors<a class="headerlink" href="#constructors" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#class-vector4"><span class="std std-ref">Vector4</span></a></p></td>
+<td><p><a class="reference internal" href="#class-vector4-constructor-vector4"><span class="std std-ref">Vector4</span></a>()</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#class-vector4"><span class="std std-ref">Vector4</span></a></p></td>
+<td><p><a class="reference internal" href="#class-vector4-constructor-vector4"><span class="std std-ref">Vector4</span></a>(from: <a class="reference internal" href="#class-vector4"><span class="std std-ref">Vector4</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#class-vector4"><span class="std std-ref">Vector4</span></a></p></td>
+<td><p><a class="reference internal" href="#class-vector4-constructor-vector4"><span class="std std-ref">Vector4</span></a>(from: <a class="reference internal" href="class_vector4i.html#class-vector4i"><span class="std std-ref">Vector4i</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#class-vector4"><span class="std std-ref">Vector4</span></a></p></td>
+<td><p><a class="reference internal" href="#class-vector4-constructor-vector4"><span class="std std-ref">Vector4</span></a>(x: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, y: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, z: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, w: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section class="classref-reftable-group" id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#class-vector4"><span class="std std-ref">Vector4</span></a></p></td>
+<td><p><a class="reference internal" href="#class-vector4-method-abs"><span class="std std-ref">abs</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#class-vector4"><span class="std std-ref">Vector4</span></a></p></td>
+<td><p><a class="reference internal" href="#class-vector4-method-ceil"><span class="std std-ref">ceil</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#class-vector4"><span class="std std-ref">Vector4</span></a></p></td>
+<td><p><a class="reference internal" href="#class-vector4-method-clamp"><span class="std std-ref">clamp</span></a>(min: <a class="reference internal" href="#class-vector4"><span class="std std-ref">Vector4</span></a>, max: <a class="reference internal" href="#class-vector4"><span class="std std-ref">Vector4</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#class-vector4"><span class="std std-ref">Vector4</span></a></p></td>
+<td><p><a class="reference internal" href="#class-vector4-method-clampf"><span class="std std-ref">clampf</span></a>(min: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, max: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#class-vector4"><span class="std std-ref">Vector4</span></a></p></td>
+<td><p><a class="reference internal" href="#class-vector4-method-cubic-interpolate"><span class="std std-ref">cubic_interpolate</span></a>(b: <a class="reference internal" href="#class-vector4"><span class="std std-ref">Vector4</span></a>, pre_a: <a class="reference internal" href="#class-vector4"><span class="std std-ref">Vector4</span></a>, post_b: <a class="reference internal" href="#class-vector4"><span class="std std-ref">Vector4</span></a>, weight: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#class-vector4"><span class="std std-ref">Vector4</span></a></p></td>
+<td><p><a class="reference internal" href="#class-vector4-method-cubic-interpolate-in-time"><span class="std std-ref">cubic_interpolate_in_time</span></a>(b: <a class="reference internal" href="#class-vector4"><span class="std std-ref">Vector4</span></a>, pre_a: <a class="reference internal" href="#class-vector4"><span class="std std-ref">Vector4</span></a>, post_b: <a class="reference internal" href="#class-vector4"><span class="std std-ref">Vector4</span></a>, weight: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, b_t: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, pre_a_t: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, post_b_t: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#class-vector4"><span class="std std-ref">Vector4</span></a></p></td>
+<td><p><a class="reference internal" href="#class-vector4-method-direction-to"><span class="std std-ref">direction_to</span></a>(to: <a class="reference internal" href="#class-vector4"><span class="std std-ref">Vector4</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-vector4-method-distance-squared-to"><span class="std std-ref">distance_squared_to</span></a>(to: <a class="reference internal" href="#class-vector4"><span class="std std-ref">Vector4</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-vector4-method-distance-to"><span class="std std-ref">distance_to</span></a>(to: <a class="reference internal" href="#class-vector4"><span class="std std-ref">Vector4</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-vector4-method-dot"><span class="std std-ref">dot</span></a>(with: <a class="reference internal" href="#class-vector4"><span class="std std-ref">Vector4</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#class-vector4"><span class="std std-ref">Vector4</span></a></p></td>
+<td><p><a class="reference internal" href="#class-vector4-method-floor"><span class="std std-ref">floor</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#class-vector4"><span class="std std-ref">Vector4</span></a></p></td>
+<td><p><a class="reference internal" href="#class-vector4-method-inverse"><span class="std std-ref">inverse</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-vector4-method-is-equal-approx"><span class="std std-ref">is_equal_approx</span></a>(to: <a class="reference internal" href="#class-vector4"><span class="std std-ref">Vector4</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-vector4-method-is-finite"><span class="std std-ref">is_finite</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-vector4-method-is-normalized"><span class="std std-ref">is_normalized</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-vector4-method-is-zero-approx"><span class="std std-ref">is_zero_approx</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-vector4-method-length"><span class="std std-ref">length</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-vector4-method-length-squared"><span class="std std-ref">length_squared</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#class-vector4"><span class="std std-ref">Vector4</span></a></p></td>
+<td><p><a class="reference internal" href="#class-vector4-method-lerp"><span class="std std-ref">lerp</span></a>(to: <a class="reference internal" href="#class-vector4"><span class="std std-ref">Vector4</span></a>, weight: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#class-vector4"><span class="std std-ref">Vector4</span></a></p></td>
+<td><p><a class="reference internal" href="#class-vector4-method-max"><span class="std std-ref">max</span></a>(with: <a class="reference internal" href="#class-vector4"><span class="std std-ref">Vector4</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-vector4-method-max-axis-index"><span class="std std-ref">max_axis_index</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#class-vector4"><span class="std std-ref">Vector4</span></a></p></td>
+<td><p><a class="reference internal" href="#class-vector4-method-maxf"><span class="std std-ref">maxf</span></a>(with: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#class-vector4"><span class="std std-ref">Vector4</span></a></p></td>
+<td><p><a class="reference internal" href="#class-vector4-method-min"><span class="std std-ref">min</span></a>(with: <a class="reference internal" href="#class-vector4"><span class="std std-ref">Vector4</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-vector4-method-min-axis-index"><span class="std std-ref">min_axis_index</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#class-vector4"><span class="std std-ref">Vector4</span></a></p></td>
+<td><p><a class="reference internal" href="#class-vector4-method-minf"><span class="std std-ref">minf</span></a>(with: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#class-vector4"><span class="std std-ref">Vector4</span></a></p></td>
+<td><p><a class="reference internal" href="#class-vector4-method-normalized"><span class="std std-ref">normalized</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#class-vector4"><span class="std std-ref">Vector4</span></a></p></td>
+<td><p><a class="reference internal" href="#class-vector4-method-posmod"><span class="std std-ref">posmod</span></a>(mod: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#class-vector4"><span class="std std-ref">Vector4</span></a></p></td>
+<td><p><a class="reference internal" href="#class-vector4-method-posmodv"><span class="std std-ref">posmodv</span></a>(modv: <a class="reference internal" href="#class-vector4"><span class="std std-ref">Vector4</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#class-vector4"><span class="std std-ref">Vector4</span></a></p></td>
+<td><p><a class="reference internal" href="#class-vector4-method-round"><span class="std std-ref">round</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#class-vector4"><span class="std std-ref">Vector4</span></a></p></td>
+<td><p><a class="reference internal" href="#class-vector4-method-sign"><span class="std std-ref">sign</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#class-vector4"><span class="std std-ref">Vector4</span></a></p></td>
+<td><p><a class="reference internal" href="#class-vector4-method-snapped"><span class="std std-ref">snapped</span></a>(step: <a class="reference internal" href="#class-vector4"><span class="std std-ref">Vector4</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#class-vector4"><span class="std std-ref">Vector4</span></a></p></td>
+<td><p><a class="reference internal" href="#class-vector4-method-snappedf"><span class="std std-ref">snappedf</span></a>(step: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section class="classref-reftable-group" id="operators">
+<h2>Operators<a class="headerlink" href="#operators" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-vector4-operator-neq-vector4"><span class="std std-ref">operator !=</span></a>(right: <a class="reference internal" href="#class-vector4"><span class="std std-ref">Vector4</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#class-vector4"><span class="std std-ref">Vector4</span></a></p></td>
+<td><p><a class="reference internal" href="#class-vector4-operator-mul-projection"><span class="std std-ref">operator *</span></a>(right: <a class="reference internal" href="class_projection.html#class-projection"><span class="std std-ref">Projection</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#class-vector4"><span class="std std-ref">Vector4</span></a></p></td>
+<td><p><a class="reference internal" href="#class-vector4-operator-mul-vector4"><span class="std std-ref">operator *</span></a>(right: <a class="reference internal" href="#class-vector4"><span class="std std-ref">Vector4</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#class-vector4"><span class="std std-ref">Vector4</span></a></p></td>
+<td><p><a class="reference internal" href="#class-vector4-operator-mul-float"><span class="std std-ref">operator *</span></a>(right: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#class-vector4"><span class="std std-ref">Vector4</span></a></p></td>
+<td><p><a class="reference internal" href="#class-vector4-operator-mul-int"><span class="std std-ref">operator *</span></a>(right: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#class-vector4"><span class="std std-ref">Vector4</span></a></p></td>
+<td><p><a class="reference internal" href="#class-vector4-operator-sum-vector4"><span class="std std-ref">operator +</span></a>(right: <a class="reference internal" href="#class-vector4"><span class="std std-ref">Vector4</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#class-vector4"><span class="std std-ref">Vector4</span></a></p></td>
+<td><p><a class="reference internal" href="#class-vector4-operator-dif-vector4"><span class="std std-ref">operator -</span></a>(right: <a class="reference internal" href="#class-vector4"><span class="std std-ref">Vector4</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#class-vector4"><span class="std std-ref">Vector4</span></a></p></td>
+<td><p><a class="reference internal" href="#class-vector4-operator-div-vector4"><span class="std std-ref">operator /</span></a>(right: <a class="reference internal" href="#class-vector4"><span class="std std-ref">Vector4</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#class-vector4"><span class="std std-ref">Vector4</span></a></p></td>
+<td><p><a class="reference internal" href="#class-vector4-operator-div-float"><span class="std std-ref">operator /</span></a>(right: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#class-vector4"><span class="std std-ref">Vector4</span></a></p></td>
+<td><p><a class="reference internal" href="#class-vector4-operator-div-int"><span class="std std-ref">operator /</span></a>(right: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-vector4-operator-lt-vector4"><span class="std std-ref">operator &lt;</span></a>(right: <a class="reference internal" href="#class-vector4"><span class="std std-ref">Vector4</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-vector4-operator-lte-vector4"><span class="std std-ref">operator &lt;=</span></a>(right: <a class="reference internal" href="#class-vector4"><span class="std std-ref">Vector4</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-vector4-operator-eq-vector4"><span class="std std-ref">operator ==</span></a>(right: <a class="reference internal" href="#class-vector4"><span class="std std-ref">Vector4</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-vector4-operator-gt-vector4"><span class="std std-ref">operator &gt;</span></a>(right: <a class="reference internal" href="#class-vector4"><span class="std std-ref">Vector4</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-vector4-operator-gte-vector4"><span class="std std-ref">operator &gt;=</span></a>(right: <a class="reference internal" href="#class-vector4"><span class="std std-ref">Vector4</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-vector4-operator-idx-int"><span class="std std-ref">operator []</span></a>(index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#class-vector4"><span class="std std-ref">Vector4</span></a></p></td>
+<td><p><a class="reference internal" href="#class-vector4-operator-unplus"><span class="std std-ref">operator unary+</span></a>()</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#class-vector4"><span class="std std-ref">Vector4</span></a></p></td>
+<td><p><a class="reference internal" href="#class-vector4-operator-unminus"><span class="std std-ref">operator unary-</span></a>()</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="enumerations">
+<h2>Enumerations<a class="headerlink" href="#enumerations" title="Link to this heading"></a></h2>
+<p class="classref-enumeration" id="enum-vector4-axis">enum <strong>Axis</strong>: <a class="reference internal" href="#enum-vector4-axis"><span class="std std-ref">🔗</span></a></p>
+<p class="classref-enumeration-constant" id="class-vector4-constant-axis-x"><a class="reference internal" href="#enum-vector4-axis"><span class="std std-ref">Axis</span></a> <strong>AXIS_X</strong> = <code class="docutils literal notranslate"><span class="pre">0</span></code></p>
+<p>Enumerated value for the X axis. Returned by <a class="reference internal" href="#class-vector4-method-max-axis-index"><span class="std std-ref">max_axis_index()</span></a> and <a class="reference internal" href="#class-vector4-method-min-axis-index"><span class="std std-ref">min_axis_index()</span></a>.</p>
+<p class="classref-enumeration-constant" id="class-vector4-constant-axis-y"><a class="reference internal" href="#enum-vector4-axis"><span class="std std-ref">Axis</span></a> <strong>AXIS_Y</strong> = <code class="docutils literal notranslate"><span class="pre">1</span></code></p>
+<p>Enumerated value for the Y axis. Returned by <a class="reference internal" href="#class-vector4-method-max-axis-index"><span class="std std-ref">max_axis_index()</span></a> and <a class="reference internal" href="#class-vector4-method-min-axis-index"><span class="std std-ref">min_axis_index()</span></a>.</p>
+<p class="classref-enumeration-constant" id="class-vector4-constant-axis-z"><a class="reference internal" href="#enum-vector4-axis"><span class="std std-ref">Axis</span></a> <strong>AXIS_Z</strong> = <code class="docutils literal notranslate"><span class="pre">2</span></code></p>
+<p>Enumerated value for the Z axis. Returned by <a class="reference internal" href="#class-vector4-method-max-axis-index"><span class="std std-ref">max_axis_index()</span></a> and <a class="reference internal" href="#class-vector4-method-min-axis-index"><span class="std std-ref">min_axis_index()</span></a>.</p>
+<p class="classref-enumeration-constant" id="class-vector4-constant-axis-w"><a class="reference internal" href="#enum-vector4-axis"><span class="std std-ref">Axis</span></a> <strong>AXIS_W</strong> = <code class="docutils literal notranslate"><span class="pre">3</span></code></p>
+<p>Enumerated value for the W axis. Returned by <a class="reference internal" href="#class-vector4-method-max-axis-index"><span class="std std-ref">max_axis_index()</span></a> and <a class="reference internal" href="#class-vector4-method-min-axis-index"><span class="std std-ref">min_axis_index()</span></a>.</p>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="constants">
+<h2>Constants<a class="headerlink" href="#constants" title="Link to this heading"></a></h2>
+<p class="classref-constant" id="class-vector4-constant-zero"><strong>ZERO</strong> = <code class="docutils literal notranslate"><span class="pre">Vector4(0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0)</span></code> <a class="reference internal" href="#class-vector4-constant-zero"><span class="std std-ref">🔗</span></a></p>
+<p>Zero vector, a vector with all components set to <code class="docutils literal notranslate"><span class="pre">0</span></code>.</p>
+<p class="classref-constant" id="class-vector4-constant-one"><strong>ONE</strong> = <code class="docutils literal notranslate"><span class="pre">Vector4(1,</span> <span class="pre">1,</span> <span class="pre">1,</span> <span class="pre">1)</span></code> <a class="reference internal" href="#class-vector4-constant-one"><span class="std std-ref">🔗</span></a></p>
+<p>One vector, a vector with all components set to <code class="docutils literal notranslate"><span class="pre">1</span></code>.</p>
+<p class="classref-constant" id="class-vector4-constant-inf"><strong>INF</strong> = <code class="docutils literal notranslate"><span class="pre">Vector4(inf,</span> <span class="pre">inf,</span> <span class="pre">inf,</span> <span class="pre">inf)</span></code> <a class="reference internal" href="#class-vector4-constant-inf"><span class="std std-ref">🔗</span></a></p>
+<p>Infinity vector, a vector with all components set to <span class="xref std std-ref">&#64;GDScript.INF</span>.</p>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="property-descriptions">
+<h2>Property Descriptions<a class="headerlink" href="#property-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-property" id="class-vector4-property-w"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>w</strong> = <code class="docutils literal notranslate"><span class="pre">0.0</span></code> <a class="reference internal" href="#class-vector4-property-w"><span class="std std-ref">🔗</span></a></p>
+<p>The vector’s W component. Also accessible by using the index position <code class="docutils literal notranslate"><span class="pre">[3]</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-vector4-property-x"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>x</strong> = <code class="docutils literal notranslate"><span class="pre">0.0</span></code> <a class="reference internal" href="#class-vector4-property-x"><span class="std std-ref">🔗</span></a></p>
+<p>The vector’s X component. Also accessible by using the index position <code class="docutils literal notranslate"><span class="pre">[0]</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-vector4-property-y"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>y</strong> = <code class="docutils literal notranslate"><span class="pre">0.0</span></code> <a class="reference internal" href="#class-vector4-property-y"><span class="std std-ref">🔗</span></a></p>
+<p>The vector’s Y component. Also accessible by using the index position <code class="docutils literal notranslate"><span class="pre">[1]</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-vector4-property-z"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>z</strong> = <code class="docutils literal notranslate"><span class="pre">0.0</span></code> <a class="reference internal" href="#class-vector4-property-z"><span class="std std-ref">🔗</span></a></p>
+<p>The vector’s Z component. Also accessible by using the index position <code class="docutils literal notranslate"><span class="pre">[2]</span></code>.</p>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="constructor-descriptions">
+<h2>Constructor Descriptions<a class="headerlink" href="#constructor-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-constructor" id="class-vector4-constructor-vector4"><a class="reference internal" href="#class-vector4"><span class="std std-ref">Vector4</span></a> <strong>Vector4</strong>() <a class="reference internal" href="#class-vector4-constructor-vector4"><span class="std std-ref">🔗</span></a></p>
+<p>Constructs a default-initialized <strong>Vector4</strong> with all components set to <code class="docutils literal notranslate"><span class="pre">0</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-constructor"><a class="reference internal" href="#class-vector4"><span class="std std-ref">Vector4</span></a> <strong>Vector4</strong>(from: <a class="reference internal" href="#class-vector4"><span class="std std-ref">Vector4</span></a>)</p>
+<p>Constructs a <strong>Vector4</strong> as a copy of the given <strong>Vector4</strong>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-constructor"><a class="reference internal" href="#class-vector4"><span class="std std-ref">Vector4</span></a> <strong>Vector4</strong>(from: <a class="reference internal" href="class_vector4i.html#class-vector4i"><span class="std std-ref">Vector4i</span></a>)</p>
+<p>Constructs a new <strong>Vector4</strong> from the given <a class="reference internal" href="class_vector4i.html#class-vector4i"><span class="std std-ref">Vector4i</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-constructor"><a class="reference internal" href="#class-vector4"><span class="std std-ref">Vector4</span></a> <strong>Vector4</strong>(x: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, y: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, z: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, w: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p>
+<p>Returns a <strong>Vector4</strong> with the given components.</p>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="method-descriptions">
+<h2>Method Descriptions<a class="headerlink" href="#method-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-method" id="class-vector4-method-abs"><a class="reference internal" href="#class-vector4"><span class="std std-ref">Vector4</span></a> <strong>abs</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-vector4-method-abs"><span class="std std-ref">🔗</span></a></p>
+<p>Returns a new vector with all components in absolute values (i.e. positive).</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-vector4-method-ceil"><a class="reference internal" href="#class-vector4"><span class="std std-ref">Vector4</span></a> <strong>ceil</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-vector4-method-ceil"><span class="std std-ref">🔗</span></a></p>
+<p>Returns a new vector with all components rounded up (towards positive infinity).</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-vector4-method-clamp"><a class="reference internal" href="#class-vector4"><span class="std std-ref">Vector4</span></a> <strong>clamp</strong>(min: <a class="reference internal" href="#class-vector4"><span class="std std-ref">Vector4</span></a>, max: <a class="reference internal" href="#class-vector4"><span class="std std-ref">Vector4</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-vector4-method-clamp"><span class="std std-ref">🔗</span></a></p>
+<p>Returns a new vector with all components clamped between the components of <code class="docutils literal notranslate"><span class="pre">min</span></code> and <code class="docutils literal notranslate"><span class="pre">max</span></code>, by running <a class="reference internal" href="class_%40globalscope.html#class-globalscope-method-clamp"><span class="std std-ref">&#64;GlobalScope.clamp()</span></a> on each component.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-vector4-method-clampf"><a class="reference internal" href="#class-vector4"><span class="std std-ref">Vector4</span></a> <strong>clampf</strong>(min: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, max: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-vector4-method-clampf"><span class="std std-ref">🔗</span></a></p>
+<p>Returns a new vector with all components clamped between <code class="docutils literal notranslate"><span class="pre">min</span></code> and <code class="docutils literal notranslate"><span class="pre">max</span></code>, by running <a class="reference internal" href="class_%40globalscope.html#class-globalscope-method-clamp"><span class="std std-ref">&#64;GlobalScope.clamp()</span></a> on each component.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-vector4-method-cubic-interpolate"><a class="reference internal" href="#class-vector4"><span class="std std-ref">Vector4</span></a> <strong>cubic_interpolate</strong>(b: <a class="reference internal" href="#class-vector4"><span class="std std-ref">Vector4</span></a>, pre_a: <a class="reference internal" href="#class-vector4"><span class="std std-ref">Vector4</span></a>, post_b: <a class="reference internal" href="#class-vector4"><span class="std std-ref">Vector4</span></a>, weight: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-vector4-method-cubic-interpolate"><span class="std std-ref">🔗</span></a></p>
+<p>Performs a cubic interpolation between this vector and <code class="docutils literal notranslate"><span class="pre">b</span></code> using <code class="docutils literal notranslate"><span class="pre">pre_a</span></code> and <code class="docutils literal notranslate"><span class="pre">post_b</span></code> as handles, and returns the result at position <code class="docutils literal notranslate"><span class="pre">weight</span></code>. <code class="docutils literal notranslate"><span class="pre">weight</span></code> is on the range of 0.0 to 1.0, representing the amount of interpolation.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-vector4-method-cubic-interpolate-in-time"><a class="reference internal" href="#class-vector4"><span class="std std-ref">Vector4</span></a> <strong>cubic_interpolate_in_time</strong>(b: <a class="reference internal" href="#class-vector4"><span class="std std-ref">Vector4</span></a>, pre_a: <a class="reference internal" href="#class-vector4"><span class="std std-ref">Vector4</span></a>, post_b: <a class="reference internal" href="#class-vector4"><span class="std std-ref">Vector4</span></a>, weight: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, b_t: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, pre_a_t: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, post_b_t: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-vector4-method-cubic-interpolate-in-time"><span class="std std-ref">🔗</span></a></p>
+<p>Performs a cubic interpolation between this vector and <code class="docutils literal notranslate"><span class="pre">b</span></code> using <code class="docutils literal notranslate"><span class="pre">pre_a</span></code> and <code class="docutils literal notranslate"><span class="pre">post_b</span></code> as handles, and returns the result at position <code class="docutils literal notranslate"><span class="pre">weight</span></code>. <code class="docutils literal notranslate"><span class="pre">weight</span></code> is on the range of 0.0 to 1.0, representing the amount of interpolation.</p>
+<p>It can perform smoother interpolation than <a class="reference internal" href="#class-vector4-method-cubic-interpolate"><span class="std std-ref">cubic_interpolate()</span></a> by the time values.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-vector4-method-direction-to"><a class="reference internal" href="#class-vector4"><span class="std std-ref">Vector4</span></a> <strong>direction_to</strong>(to: <a class="reference internal" href="#class-vector4"><span class="std std-ref">Vector4</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-vector4-method-direction-to"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the normalized vector pointing from this vector to <code class="docutils literal notranslate"><span class="pre">to</span></code>. This is equivalent to using <code class="docutils literal notranslate"><span class="pre">(b</span> <span class="pre">-</span> <span class="pre">a).normalized()</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-vector4-method-distance-squared-to"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>distance_squared_to</strong>(to: <a class="reference internal" href="#class-vector4"><span class="std std-ref">Vector4</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-vector4-method-distance-squared-to"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the squared <a class="reference external" href="https://en.wikipedia.org/wiki/Euclidean_distance">Euclidean distance</a> between this vector and <code class="docutils literal notranslate"><span class="pre">to</span></code>.</p>
+<p>This method runs faster than <a class="reference internal" href="#class-vector4-method-distance-to"><span class="std std-ref">distance_to()</span></a>, so prefer it if you need to compare vectors or need the squared distance for some formula.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-vector4-method-distance-to"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>distance_to</strong>(to: <a class="reference internal" href="#class-vector4"><span class="std std-ref">Vector4</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-vector4-method-distance-to"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the <a class="reference external" href="https://en.wikipedia.org/wiki/Euclidean_distance">Euclidean distance</a> between this vector and <code class="docutils literal notranslate"><span class="pre">to</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-vector4-method-dot"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>dot</strong>(with: <a class="reference internal" href="#class-vector4"><span class="std std-ref">Vector4</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-vector4-method-dot"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the dot product of this vector and <code class="docutils literal notranslate"><span class="pre">with</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-vector4-method-floor"><a class="reference internal" href="#class-vector4"><span class="std std-ref">Vector4</span></a> <strong>floor</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-vector4-method-floor"><span class="std std-ref">🔗</span></a></p>
+<p>Returns a new vector with all components rounded down (towards negative infinity).</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-vector4-method-inverse"><a class="reference internal" href="#class-vector4"><span class="std std-ref">Vector4</span></a> <strong>inverse</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-vector4-method-inverse"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the inverse of the vector. This is the same as <code class="docutils literal notranslate"><span class="pre">Vector4(1.0</span> <span class="pre">/</span> <span class="pre">v.x,</span> <span class="pre">1.0</span> <span class="pre">/</span> <span class="pre">v.y,</span> <span class="pre">1.0</span> <span class="pre">/</span> <span class="pre">v.z,</span> <span class="pre">1.0</span> <span class="pre">/</span> <span class="pre">v.w)</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-vector4-method-is-equal-approx"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_equal_approx</strong>(to: <a class="reference internal" href="#class-vector4"><span class="std std-ref">Vector4</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-vector4-method-is-equal-approx"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if this vector and <code class="docutils literal notranslate"><span class="pre">to</span></code> are approximately equal, by running <a class="reference internal" href="class_%40globalscope.html#class-globalscope-method-is-equal-approx"><span class="std std-ref">&#64;GlobalScope.is_equal_approx()</span></a> on each component.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-vector4-method-is-finite"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_finite</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-vector4-method-is-finite"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if this vector is finite, by calling <a class="reference internal" href="class_%40globalscope.html#class-globalscope-method-is-finite"><span class="std std-ref">&#64;GlobalScope.is_finite()</span></a> on each component.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-vector4-method-is-normalized"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_normalized</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-vector4-method-is-normalized"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if the vector is normalized, i.e. its length is approximately equal to 1.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-vector4-method-is-zero-approx"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_zero_approx</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-vector4-method-is-zero-approx"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if this vector’s values are approximately zero, by running <a class="reference internal" href="class_%40globalscope.html#class-globalscope-method-is-zero-approx"><span class="std std-ref">&#64;GlobalScope.is_zero_approx()</span></a> on each component.</p>
+<p>This method is faster than using <a class="reference internal" href="#class-vector4-method-is-equal-approx"><span class="std std-ref">is_equal_approx()</span></a> with one value as a zero vector.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-vector4-method-length"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>length</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-vector4-method-length"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the length (magnitude) of this vector.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-vector4-method-length-squared"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>length_squared</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-vector4-method-length-squared"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the squared length (squared magnitude) of this vector.</p>
+<p>This method runs faster than <a class="reference internal" href="#class-vector4-method-length"><span class="std std-ref">length()</span></a>, so prefer it if you need to compare vectors or need the squared distance for some formula.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-vector4-method-lerp"><a class="reference internal" href="#class-vector4"><span class="std std-ref">Vector4</span></a> <strong>lerp</strong>(to: <a class="reference internal" href="#class-vector4"><span class="std std-ref">Vector4</span></a>, weight: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-vector4-method-lerp"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the result of the linear interpolation between this vector and <code class="docutils literal notranslate"><span class="pre">to</span></code> by amount <code class="docutils literal notranslate"><span class="pre">weight</span></code>. <code class="docutils literal notranslate"><span class="pre">weight</span></code> is on the range of <code class="docutils literal notranslate"><span class="pre">0.0</span></code> to <code class="docutils literal notranslate"><span class="pre">1.0</span></code>, representing the amount of interpolation.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-vector4-method-max"><a class="reference internal" href="#class-vector4"><span class="std std-ref">Vector4</span></a> <strong>max</strong>(with: <a class="reference internal" href="#class-vector4"><span class="std std-ref">Vector4</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-vector4-method-max"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the component-wise maximum of this and <code class="docutils literal notranslate"><span class="pre">with</span></code>, equivalent to <code class="docutils literal notranslate"><span class="pre">Vector4(maxf(x,</span> <span class="pre">with.x),</span> <span class="pre">maxf(y,</span> <span class="pre">with.y),</span> <span class="pre">maxf(z,</span> <span class="pre">with.z),</span> <span class="pre">maxf(w,</span> <span class="pre">with.w))</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-vector4-method-max-axis-index"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>max_axis_index</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-vector4-method-max-axis-index"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the axis of the vector’s highest value. See <code class="docutils literal notranslate"><span class="pre">AXIS_*</span></code> constants. If all components are equal, this method returns <a class="reference internal" href="#class-vector4-constant-axis-x"><span class="std std-ref">AXIS_X</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-vector4-method-maxf"><a class="reference internal" href="#class-vector4"><span class="std std-ref">Vector4</span></a> <strong>maxf</strong>(with: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-vector4-method-maxf"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the component-wise maximum of this and <code class="docutils literal notranslate"><span class="pre">with</span></code>, equivalent to <code class="docutils literal notranslate"><span class="pre">Vector4(maxf(x,</span> <span class="pre">with),</span> <span class="pre">maxf(y,</span> <span class="pre">with),</span> <span class="pre">maxf(z,</span> <span class="pre">with),</span> <span class="pre">maxf(w,</span> <span class="pre">with))</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-vector4-method-min"><a class="reference internal" href="#class-vector4"><span class="std std-ref">Vector4</span></a> <strong>min</strong>(with: <a class="reference internal" href="#class-vector4"><span class="std std-ref">Vector4</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-vector4-method-min"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the component-wise minimum of this and <code class="docutils literal notranslate"><span class="pre">with</span></code>, equivalent to <code class="docutils literal notranslate"><span class="pre">Vector4(minf(x,</span> <span class="pre">with.x),</span> <span class="pre">minf(y,</span> <span class="pre">with.y),</span> <span class="pre">minf(z,</span> <span class="pre">with.z),</span> <span class="pre">minf(w,</span> <span class="pre">with.w))</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-vector4-method-min-axis-index"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>min_axis_index</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-vector4-method-min-axis-index"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the axis of the vector’s lowest value. See <code class="docutils literal notranslate"><span class="pre">AXIS_*</span></code> constants. If all components are equal, this method returns <a class="reference internal" href="#class-vector4-constant-axis-w"><span class="std std-ref">AXIS_W</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-vector4-method-minf"><a class="reference internal" href="#class-vector4"><span class="std std-ref">Vector4</span></a> <strong>minf</strong>(with: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-vector4-method-minf"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the component-wise minimum of this and <code class="docutils literal notranslate"><span class="pre">with</span></code>, equivalent to <code class="docutils literal notranslate"><span class="pre">Vector4(minf(x,</span> <span class="pre">with),</span> <span class="pre">minf(y,</span> <span class="pre">with),</span> <span class="pre">minf(z,</span> <span class="pre">with),</span> <span class="pre">minf(w,</span> <span class="pre">with))</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-vector4-method-normalized"><a class="reference internal" href="#class-vector4"><span class="std std-ref">Vector4</span></a> <strong>normalized</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-vector4-method-normalized"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the result of scaling the vector to unit length. Equivalent to <code class="docutils literal notranslate"><span class="pre">v</span> <span class="pre">/</span> <span class="pre">v.length()</span></code>. Returns <code class="docutils literal notranslate"><span class="pre">(0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0)</span></code> if <code class="docutils literal notranslate"><span class="pre">v.length()</span> <span class="pre">==</span> <span class="pre">0</span></code>. See also <a class="reference internal" href="#class-vector4-method-is-normalized"><span class="std std-ref">is_normalized()</span></a>.</p>
+<p><strong>Note:</strong> This function may return incorrect values if the input vector length is near zero.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-vector4-method-posmod"><a class="reference internal" href="#class-vector4"><span class="std std-ref">Vector4</span></a> <strong>posmod</strong>(mod: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-vector4-method-posmod"><span class="std std-ref">🔗</span></a></p>
+<p>Returns a vector composed of the <a class="reference internal" href="class_%40globalscope.html#class-globalscope-method-fposmod"><span class="std std-ref">&#64;GlobalScope.fposmod()</span></a> of this vector’s components and <code class="docutils literal notranslate"><span class="pre">mod</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-vector4-method-posmodv"><a class="reference internal" href="#class-vector4"><span class="std std-ref">Vector4</span></a> <strong>posmodv</strong>(modv: <a class="reference internal" href="#class-vector4"><span class="std std-ref">Vector4</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-vector4-method-posmodv"><span class="std std-ref">🔗</span></a></p>
+<p>Returns a vector composed of the <a class="reference internal" href="class_%40globalscope.html#class-globalscope-method-fposmod"><span class="std std-ref">&#64;GlobalScope.fposmod()</span></a> of this vector’s components and <code class="docutils literal notranslate"><span class="pre">modv</span></code>’s components.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-vector4-method-round"><a class="reference internal" href="#class-vector4"><span class="std std-ref">Vector4</span></a> <strong>round</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-vector4-method-round"><span class="std std-ref">🔗</span></a></p>
+<p>Returns a new vector with all components rounded to the nearest integer, with halfway cases rounded away from zero.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-vector4-method-sign"><a class="reference internal" href="#class-vector4"><span class="std std-ref">Vector4</span></a> <strong>sign</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-vector4-method-sign"><span class="std std-ref">🔗</span></a></p>
+<p>Returns a new vector with each component set to <code class="docutils literal notranslate"><span class="pre">1.0</span></code> if it’s positive, <code class="docutils literal notranslate"><span class="pre">-1.0</span></code> if it’s negative, and <code class="docutils literal notranslate"><span class="pre">0.0</span></code> if it’s zero. The result is identical to calling <a class="reference internal" href="class_%40globalscope.html#class-globalscope-method-sign"><span class="std std-ref">&#64;GlobalScope.sign()</span></a> on each component.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-vector4-method-snapped"><a class="reference internal" href="#class-vector4"><span class="std std-ref">Vector4</span></a> <strong>snapped</strong>(step: <a class="reference internal" href="#class-vector4"><span class="std std-ref">Vector4</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-vector4-method-snapped"><span class="std std-ref">🔗</span></a></p>
+<p>Returns a new vector with each component snapped to the nearest multiple of the corresponding component in <code class="docutils literal notranslate"><span class="pre">step</span></code>. This can also be used to round the components to an arbitrary number of decimals.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-vector4-method-snappedf"><a class="reference internal" href="#class-vector4"><span class="std std-ref">Vector4</span></a> <strong>snappedf</strong>(step: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-vector4-method-snappedf"><span class="std std-ref">🔗</span></a></p>
+<p>Returns a new vector with each component snapped to the nearest multiple of <code class="docutils literal notranslate"><span class="pre">step</span></code>. This can also be used to round the components to an arbitrary number of decimals.</p>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="operator-descriptions">
+<h2>Operator Descriptions<a class="headerlink" href="#operator-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-operator" id="class-vector4-operator-neq-vector4"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>operator !=</strong>(right: <a class="reference internal" href="#class-vector4"><span class="std std-ref">Vector4</span></a>) <a class="reference internal" href="#class-vector4-operator-neq-vector4"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if the vectors are not equal.</p>
+<p><strong>Note:</strong> Due to floating-point precision errors, consider using <a class="reference internal" href="#class-vector4-method-is-equal-approx"><span class="std std-ref">is_equal_approx()</span></a> instead, which is more reliable.</p>
+<p><strong>Note:</strong> Vectors with <span class="xref std std-ref">&#64;GDScript.NAN</span> elements don’t behave the same as other vectors. Therefore, the results from this operator may not be accurate if NaNs are included.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-operator" id="class-vector4-operator-mul-projection"><a class="reference internal" href="#class-vector4"><span class="std std-ref">Vector4</span></a> <strong>operator *</strong>(right: <a class="reference internal" href="class_projection.html#class-projection"><span class="std std-ref">Projection</span></a>) <a class="reference internal" href="#class-vector4-operator-mul-projection"><span class="std std-ref">🔗</span></a></p>
+<p>Transforms (multiplies) the <strong>Vector4</strong> by the transpose of the given <a class="reference internal" href="class_projection.html#class-projection"><span class="std std-ref">Projection</span></a> matrix.</p>
+<p>For transforming by inverse of a projection <code class="docutils literal notranslate"><span class="pre">projection.inverse()</span> <span class="pre">*</span> <span class="pre">vector</span></code> can be used instead. See <a class="reference internal" href="class_projection.html#class-projection-method-inverse"><span class="std std-ref">Projection.inverse()</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-operator" id="class-vector4-operator-mul-vector4"><a class="reference internal" href="#class-vector4"><span class="std std-ref">Vector4</span></a> <strong>operator *</strong>(right: <a class="reference internal" href="#class-vector4"><span class="std std-ref">Vector4</span></a>) <a class="reference internal" href="#class-vector4-operator-mul-vector4"><span class="std std-ref">🔗</span></a></p>
+<p>Multiplies each component of the <strong>Vector4</strong> by the components of the given <strong>Vector4</strong>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">Vector4</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">)</span> <span class="o">*</span> <span class="n">Vector4</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span> <span class="c1"># Prints (30.0, 80.0, 150.0, 240.0)</span>
+</pre></div>
+</div>
+<hr class="classref-item-separator docutils" />
+<p class="classref-operator" id="class-vector4-operator-mul-float"><a class="reference internal" href="#class-vector4"><span class="std std-ref">Vector4</span></a> <strong>operator *</strong>(right: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>) <a class="reference internal" href="#class-vector4-operator-mul-float"><span class="std std-ref">🔗</span></a></p>
+<p>Multiplies each component of the <strong>Vector4</strong> by the given <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">Vector4</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">)</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span> <span class="c1"># Prints (20.0, 40.0, 60.0, 80.0)</span>
+</pre></div>
+</div>
+<hr class="classref-item-separator docutils" />
+<p class="classref-operator" id="class-vector4-operator-mul-int"><a class="reference internal" href="#class-vector4"><span class="std std-ref">Vector4</span></a> <strong>operator *</strong>(right: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <a class="reference internal" href="#class-vector4-operator-mul-int"><span class="std std-ref">🔗</span></a></p>
+<p>Multiplies each component of the <strong>Vector4</strong> by the given <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-operator" id="class-vector4-operator-sum-vector4"><a class="reference internal" href="#class-vector4"><span class="std std-ref">Vector4</span></a> <strong>operator +</strong>(right: <a class="reference internal" href="#class-vector4"><span class="std std-ref">Vector4</span></a>) <a class="reference internal" href="#class-vector4-operator-sum-vector4"><span class="std std-ref">🔗</span></a></p>
+<p>Adds each component of the <strong>Vector4</strong> by the components of the given <strong>Vector4</strong>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">Vector4</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">)</span> <span class="o">+</span> <span class="n">Vector4</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span> <span class="c1"># Prints (13.0, 24.0, 35.0, 46.0)</span>
+</pre></div>
+</div>
+<hr class="classref-item-separator docutils" />
+<p class="classref-operator" id="class-vector4-operator-dif-vector4"><a class="reference internal" href="#class-vector4"><span class="std std-ref">Vector4</span></a> <strong>operator -</strong>(right: <a class="reference internal" href="#class-vector4"><span class="std std-ref">Vector4</span></a>) <a class="reference internal" href="#class-vector4-operator-dif-vector4"><span class="std std-ref">🔗</span></a></p>
+<p>Subtracts each component of the <strong>Vector4</strong> by the components of the given <strong>Vector4</strong>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">Vector4</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">)</span> <span class="o">-</span> <span class="n">Vector4</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span> <span class="c1"># Prints (7.0, 16.0, 25.0, 34.0)</span>
+</pre></div>
+</div>
+<hr class="classref-item-separator docutils" />
+<p class="classref-operator" id="class-vector4-operator-div-vector4"><a class="reference internal" href="#class-vector4"><span class="std std-ref">Vector4</span></a> <strong>operator /</strong>(right: <a class="reference internal" href="#class-vector4"><span class="std std-ref">Vector4</span></a>) <a class="reference internal" href="#class-vector4-operator-div-vector4"><span class="std std-ref">🔗</span></a></p>
+<p>Divides each component of the <strong>Vector4</strong> by the components of the given <strong>Vector4</strong>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">Vector4</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">)</span> <span class="o">/</span> <span class="n">Vector4</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span> <span class="c1"># Prints (5.0, 4.0, 10.0, 10.0)</span>
+</pre></div>
+</div>
+<hr class="classref-item-separator docutils" />
+<p class="classref-operator" id="class-vector4-operator-div-float"><a class="reference internal" href="#class-vector4"><span class="std std-ref">Vector4</span></a> <strong>operator /</strong>(right: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>) <a class="reference internal" href="#class-vector4-operator-div-float"><span class="std std-ref">🔗</span></a></p>
+<p>Divides each component of the <strong>Vector4</strong> by the given <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">Vector4</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span> <span class="c1"># Prints (5.0, 10.0, 15.0, 20.0)</span>
+</pre></div>
+</div>
+<hr class="classref-item-separator docutils" />
+<p class="classref-operator" id="class-vector4-operator-div-int"><a class="reference internal" href="#class-vector4"><span class="std std-ref">Vector4</span></a> <strong>operator /</strong>(right: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <a class="reference internal" href="#class-vector4-operator-div-int"><span class="std std-ref">🔗</span></a></p>
+<p>Divides each component of the <strong>Vector4</strong> by the given <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-operator" id="class-vector4-operator-lt-vector4"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>operator &lt;</strong>(right: <a class="reference internal" href="#class-vector4"><span class="std std-ref">Vector4</span></a>) <a class="reference internal" href="#class-vector4-operator-lt-vector4"><span class="std std-ref">🔗</span></a></p>
+<p>Compares two <strong>Vector4</strong> vectors by first checking if the X value of the left vector is less than the X value of the <code class="docutils literal notranslate"><span class="pre">right</span></code> vector. If the X values are exactly equal, then it repeats this check with the Y values of the two vectors, Z values of the two vectors, and then with the W values. This operator is useful for sorting vectors.</p>
+<p><strong>Note:</strong> Vectors with <span class="xref std std-ref">&#64;GDScript.NAN</span> elements don’t behave the same as other vectors. Therefore, the results from this operator may not be accurate if NaNs are included.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-operator" id="class-vector4-operator-lte-vector4"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>operator &lt;=</strong>(right: <a class="reference internal" href="#class-vector4"><span class="std std-ref">Vector4</span></a>) <a class="reference internal" href="#class-vector4-operator-lte-vector4"><span class="std std-ref">🔗</span></a></p>
+<p>Compares two <strong>Vector4</strong> vectors by first checking if the X value of the left vector is less than or equal to the X value of the <code class="docutils literal notranslate"><span class="pre">right</span></code> vector. If the X values are exactly equal, then it repeats this check with the Y values of the two vectors, Z values of the two vectors, and then with the W values. This operator is useful for sorting vectors.</p>
+<p><strong>Note:</strong> Vectors with <span class="xref std std-ref">&#64;GDScript.NAN</span> elements don’t behave the same as other vectors. Therefore, the results from this operator may not be accurate if NaNs are included.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-operator" id="class-vector4-operator-eq-vector4"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>operator ==</strong>(right: <a class="reference internal" href="#class-vector4"><span class="std std-ref">Vector4</span></a>) <a class="reference internal" href="#class-vector4-operator-eq-vector4"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if the vectors are exactly equal.</p>
+<p><strong>Note:</strong> Due to floating-point precision errors, consider using <a class="reference internal" href="#class-vector4-method-is-equal-approx"><span class="std std-ref">is_equal_approx()</span></a> instead, which is more reliable.</p>
+<p><strong>Note:</strong> Vectors with <span class="xref std std-ref">&#64;GDScript.NAN</span> elements don’t behave the same as other vectors. Therefore, the results from this operator may not be accurate if NaNs are included.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-operator" id="class-vector4-operator-gt-vector4"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>operator &gt;</strong>(right: <a class="reference internal" href="#class-vector4"><span class="std std-ref">Vector4</span></a>) <a class="reference internal" href="#class-vector4-operator-gt-vector4"><span class="std std-ref">🔗</span></a></p>
+<p>Compares two <strong>Vector4</strong> vectors by first checking if the X value of the left vector is greater than the X value of the <code class="docutils literal notranslate"><span class="pre">right</span></code> vector. If the X values are exactly equal, then it repeats this check with the Y values of the two vectors, Z values of the two vectors, and then with the W values. This operator is useful for sorting vectors.</p>
+<p><strong>Note:</strong> Vectors with <span class="xref std std-ref">&#64;GDScript.NAN</span> elements don’t behave the same as other vectors. Therefore, the results from this operator may not be accurate if NaNs are included.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-operator" id="class-vector4-operator-gte-vector4"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>operator &gt;=</strong>(right: <a class="reference internal" href="#class-vector4"><span class="std std-ref">Vector4</span></a>) <a class="reference internal" href="#class-vector4-operator-gte-vector4"><span class="std std-ref">🔗</span></a></p>
+<p>Compares two <strong>Vector4</strong> vectors by first checking if the X value of the left vector is greater than or equal to the X value of the <code class="docutils literal notranslate"><span class="pre">right</span></code> vector. If the X values are exactly equal, then it repeats this check with the Y values of the two vectors, Z values of the two vectors, and then with the W values. This operator is useful for sorting vectors.</p>
+<p><strong>Note:</strong> Vectors with <span class="xref std std-ref">&#64;GDScript.NAN</span> elements don’t behave the same as other vectors. Therefore, the results from this operator may not be accurate if NaNs are included.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-operator" id="class-vector4-operator-idx-int"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>operator []</strong>(index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <a class="reference internal" href="#class-vector4-operator-idx-int"><span class="std std-ref">🔗</span></a></p>
+<p>Access vector components using their <code class="docutils literal notranslate"><span class="pre">index</span></code>. <code class="docutils literal notranslate"><span class="pre">v[0]</span></code> is equivalent to <code class="docutils literal notranslate"><span class="pre">v.x</span></code>, <code class="docutils literal notranslate"><span class="pre">v[1]</span></code> is equivalent to <code class="docutils literal notranslate"><span class="pre">v.y</span></code>, <code class="docutils literal notranslate"><span class="pre">v[2]</span></code> is equivalent to <code class="docutils literal notranslate"><span class="pre">v.z</span></code>, and <code class="docutils literal notranslate"><span class="pre">v[3]</span></code> is equivalent to <code class="docutils literal notranslate"><span class="pre">v.w</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-operator" id="class-vector4-operator-unplus"><a class="reference internal" href="#class-vector4"><span class="std std-ref">Vector4</span></a> <strong>operator unary+</strong>() <a class="reference internal" href="#class-vector4-operator-unplus"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the same value as if the <code class="docutils literal notranslate"><span class="pre">+</span></code> was not there. Unary <code class="docutils literal notranslate"><span class="pre">+</span></code> does nothing, but sometimes it can make your code more readable.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-operator" id="class-vector4-operator-unminus"><a class="reference internal" href="#class-vector4"><span class="std std-ref">Vector4</span></a> <strong>operator unary-</strong>() <a class="reference internal" href="#class-vector4-operator-unminus"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the negative value of the <strong>Vector4</strong>. This is the same as writing <code class="docutils literal notranslate"><span class="pre">Vector4(-v.x,</span> <span class="pre">-v.y,</span> <span class="pre">-v.z,</span> <span class="pre">-v.w)</span></code>. This operation flips the direction of the vector while keeping the same magnitude. With floats, the number zero can be either positive or negative.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, MUmarShahbaz.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

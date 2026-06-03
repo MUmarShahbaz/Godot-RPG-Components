@@ -1,0 +1,265 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta content="network" name="keywords" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MultiplayerPeerExtension &mdash; RPG Components 2D 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=d45e8c67"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            RPG Components 2D
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">MultiplayerPeerExtension</a><ul>
+<li><a class="reference internal" href="#description">Description</a></li>
+<li><a class="reference internal" href="#methods">Methods</a></li>
+<li><a class="reference internal" href="#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">RPG Components 2D</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">MultiplayerPeerExtension</li>
+      <li class="wy-breadcrumbs-aside">
+              <!-- User defined GitHub URL -->
+              <a href="hide" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="multiplayerpeerextension">
+<span id="class-multiplayerpeerextension"></span><h1>MultiplayerPeerExtension<a class="headerlink" href="#multiplayerpeerextension" title="Link to this heading"></a></h1>
+<p><strong>Inherits:</strong> <a class="reference internal" href="class_multiplayerpeer.html#class-multiplayerpeer"><span class="std std-ref">MultiplayerPeer</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_packetpeer.html#class-packetpeer"><span class="std std-ref">PacketPeer</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_refcounted.html#class-refcounted"><span class="std std-ref">RefCounted</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_object.html#class-object"><span class="std std-ref">Object</span></a></p>
+<p>Class that can be inherited to implement custom multiplayer API networking layers via GDExtension.</p>
+<section class="classref-introduction-group" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
+<p>This class is designed to be inherited from a GDExtension plugin to implement custom networking layers for the multiplayer API (such as WebRTC). All the methods below <strong>must</strong> be implemented to have a working custom multiplayer implementation. See also <a class="reference internal" href="class_multiplayerapi.html#class-multiplayerapi"><span class="std std-ref">MultiplayerAPI</span></a>.</p>
+</section>
+<section class="classref-reftable-group" id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-multiplayerpeerextension-private-method-close"><span class="std std-ref">_close</span></a>() <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method is required to be overridden when extending its base class.">required</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-multiplayerpeerextension-private-method-disconnect-peer"><span class="std std-ref">_disconnect_peer</span></a>(peer: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, force: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method is required to be overridden when extending its base class.">required</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-multiplayerpeerextension-private-method-get-available-packet-count"><span class="std std-ref">_get_available_packet_count</span></a>() <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method is required to be overridden when extending its base class.">required</abbr> <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_multiplayerpeer.html#enum-multiplayerpeer-connectionstatus"><span class="std std-ref">ConnectionStatus</span></a></p></td>
+<td><p><a class="reference internal" href="#class-multiplayerpeerextension-private-method-get-connection-status"><span class="std std-ref">_get_connection_status</span></a>() <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method is required to be overridden when extending its base class.">required</abbr> <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-multiplayerpeerextension-private-method-get-max-packet-size"><span class="std std-ref">_get_max_packet_size</span></a>() <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method is required to be overridden when extending its base class.">required</abbr> <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_%40globalscope.html#enum-globalscope-error"><span class="std std-ref">Error</span></a></p></td>
+<td><p><a class="reference internal" href="#class-multiplayerpeerextension-private-method-get-packet"><span class="std std-ref">_get_packet</span></a>(r_buffer: <code class="docutils literal notranslate"><span class="pre">const</span> <span class="pre">uint8_t</span> <span class="pre">**</span></code>, r_buffer_size: <code class="docutils literal notranslate"><span class="pre">int32_t*</span></code>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-multiplayerpeerextension-private-method-get-packet-channel"><span class="std std-ref">_get_packet_channel</span></a>() <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method is required to be overridden when extending its base class.">required</abbr> <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_multiplayerpeer.html#enum-multiplayerpeer-transfermode"><span class="std std-ref">TransferMode</span></a></p></td>
+<td><p><a class="reference internal" href="#class-multiplayerpeerextension-private-method-get-packet-mode"><span class="std std-ref">_get_packet_mode</span></a>() <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method is required to be overridden when extending its base class.">required</abbr> <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-multiplayerpeerextension-private-method-get-packet-peer"><span class="std std-ref">_get_packet_peer</span></a>() <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method is required to be overridden when extending its base class.">required</abbr> <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_packedbytearray.html#class-packedbytearray"><span class="std std-ref">PackedByteArray</span></a></p></td>
+<td><p><a class="reference internal" href="#class-multiplayerpeerextension-private-method-get-packet-script"><span class="std std-ref">_get_packet_script</span></a>() <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-multiplayerpeerextension-private-method-get-transfer-channel"><span class="std std-ref">_get_transfer_channel</span></a>() <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method is required to be overridden when extending its base class.">required</abbr> <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_multiplayerpeer.html#enum-multiplayerpeer-transfermode"><span class="std std-ref">TransferMode</span></a></p></td>
+<td><p><a class="reference internal" href="#class-multiplayerpeerextension-private-method-get-transfer-mode"><span class="std std-ref">_get_transfer_mode</span></a>() <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method is required to be overridden when extending its base class.">required</abbr> <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-multiplayerpeerextension-private-method-get-unique-id"><span class="std std-ref">_get_unique_id</span></a>() <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method is required to be overridden when extending its base class.">required</abbr> <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-multiplayerpeerextension-private-method-is-refusing-new-connections"><span class="std std-ref">_is_refusing_new_connections</span></a>() <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-multiplayerpeerextension-private-method-is-server"><span class="std std-ref">_is_server</span></a>() <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method is required to be overridden when extending its base class.">required</abbr> <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-multiplayerpeerextension-private-method-is-server-relay-supported"><span class="std std-ref">_is_server_relay_supported</span></a>() <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-multiplayerpeerextension-private-method-poll"><span class="std std-ref">_poll</span></a>() <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method is required to be overridden when extending its base class.">required</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_%40globalscope.html#enum-globalscope-error"><span class="std std-ref">Error</span></a></p></td>
+<td><p><a class="reference internal" href="#class-multiplayerpeerextension-private-method-put-packet"><span class="std std-ref">_put_packet</span></a>(buffer: <code class="docutils literal notranslate"><span class="pre">const</span> <span class="pre">uint8_t*</span></code>, buffer_size: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_%40globalscope.html#enum-globalscope-error"><span class="std std-ref">Error</span></a></p></td>
+<td><p><a class="reference internal" href="#class-multiplayerpeerextension-private-method-put-packet-script"><span class="std std-ref">_put_packet_script</span></a>(buffer: <a class="reference internal" href="class_packedbytearray.html#class-packedbytearray"><span class="std std-ref">PackedByteArray</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-multiplayerpeerextension-private-method-set-refuse-new-connections"><span class="std std-ref">_set_refuse_new_connections</span></a>(enable: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-multiplayerpeerextension-private-method-set-target-peer"><span class="std std-ref">_set_target_peer</span></a>(peer: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method is required to be overridden when extending its base class.">required</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-multiplayerpeerextension-private-method-set-transfer-channel"><span class="std std-ref">_set_transfer_channel</span></a>(channel: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method is required to be overridden when extending its base class.">required</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-multiplayerpeerextension-private-method-set-transfer-mode"><span class="std std-ref">_set_transfer_mode</span></a>(mode: <a class="reference internal" href="class_multiplayerpeer.html#enum-multiplayerpeer-transfermode"><span class="std std-ref">TransferMode</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method is required to be overridden when extending its base class.">required</abbr></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="method-descriptions">
+<h2>Method Descriptions<a class="headerlink" href="#method-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-method" id="class-multiplayerpeerextension-private-method-close"><abbr title="No return value.">void</abbr> <strong>_close</strong>() <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method is required to be overridden when extending its base class.">required</abbr> <a class="reference internal" href="#class-multiplayerpeerextension-private-method-close"><span class="std std-ref">🔗</span></a></p>
+<p>Called when the multiplayer peer should be immediately closed (see <a class="reference internal" href="class_multiplayerpeer.html#class-multiplayerpeer-method-close"><span class="std std-ref">MultiplayerPeer.close()</span></a>).</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-multiplayerpeerextension-private-method-disconnect-peer"><abbr title="No return value.">void</abbr> <strong>_disconnect_peer</strong>(peer: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, force: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method is required to be overridden when extending its base class.">required</abbr> <a class="reference internal" href="#class-multiplayerpeerextension-private-method-disconnect-peer"><span class="std std-ref">🔗</span></a></p>
+<p>Called when the connected <code class="docutils literal notranslate"><span class="pre">peer</span></code> should be forcibly disconnected (see <a class="reference internal" href="class_multiplayerpeer.html#class-multiplayerpeer-method-disconnect-peer"><span class="std std-ref">MultiplayerPeer.disconnect_peer()</span></a>).</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-multiplayerpeerextension-private-method-get-available-packet-count"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>_get_available_packet_count</strong>() <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method is required to be overridden when extending its base class.">required</abbr> <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-multiplayerpeerextension-private-method-get-available-packet-count"><span class="std std-ref">🔗</span></a></p>
+<p>Called when the available packet count is internally requested by the <a class="reference internal" href="class_multiplayerapi.html#class-multiplayerapi"><span class="std std-ref">MultiplayerAPI</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-multiplayerpeerextension-private-method-get-connection-status"><a class="reference internal" href="class_multiplayerpeer.html#enum-multiplayerpeer-connectionstatus"><span class="std std-ref">ConnectionStatus</span></a> <strong>_get_connection_status</strong>() <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method is required to be overridden when extending its base class.">required</abbr> <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-multiplayerpeerextension-private-method-get-connection-status"><span class="std std-ref">🔗</span></a></p>
+<p>Called when the connection status is requested on the <a class="reference internal" href="class_multiplayerpeer.html#class-multiplayerpeer"><span class="std std-ref">MultiplayerPeer</span></a> (see <a class="reference internal" href="class_multiplayerpeer.html#class-multiplayerpeer-method-get-connection-status"><span class="std std-ref">MultiplayerPeer.get_connection_status()</span></a>).</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-multiplayerpeerextension-private-method-get-max-packet-size"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>_get_max_packet_size</strong>() <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method is required to be overridden when extending its base class.">required</abbr> <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-multiplayerpeerextension-private-method-get-max-packet-size"><span class="std std-ref">🔗</span></a></p>
+<p>Called when the maximum allowed packet size (in bytes) is requested by the <a class="reference internal" href="class_multiplayerapi.html#class-multiplayerapi"><span class="std std-ref">MultiplayerAPI</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-multiplayerpeerextension-private-method-get-packet"><a class="reference internal" href="class_%40globalscope.html#enum-globalscope-error"><span class="std std-ref">Error</span></a> <strong>_get_packet</strong>(r_buffer: <code class="docutils literal notranslate"><span class="pre">const</span> <span class="pre">uint8_t</span> <span class="pre">**</span></code>, r_buffer_size: <code class="docutils literal notranslate"><span class="pre">int32_t*</span></code>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <a class="reference internal" href="#class-multiplayerpeerextension-private-method-get-packet"><span class="std std-ref">🔗</span></a></p>
+<p>Called when a packet needs to be received by the <a class="reference internal" href="class_multiplayerapi.html#class-multiplayerapi"><span class="std std-ref">MultiplayerAPI</span></a>, with <code class="docutils literal notranslate"><span class="pre">r_buffer_size</span></code> being the size of the binary <code class="docutils literal notranslate"><span class="pre">r_buffer</span></code> in bytes.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-multiplayerpeerextension-private-method-get-packet-channel"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>_get_packet_channel</strong>() <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method is required to be overridden when extending its base class.">required</abbr> <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-multiplayerpeerextension-private-method-get-packet-channel"><span class="std std-ref">🔗</span></a></p>
+<p>Called to get the channel over which the next available packet was received. See <a class="reference internal" href="class_multiplayerpeer.html#class-multiplayerpeer-method-get-packet-channel"><span class="std std-ref">MultiplayerPeer.get_packet_channel()</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-multiplayerpeerextension-private-method-get-packet-mode"><a class="reference internal" href="class_multiplayerpeer.html#enum-multiplayerpeer-transfermode"><span class="std std-ref">TransferMode</span></a> <strong>_get_packet_mode</strong>() <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method is required to be overridden when extending its base class.">required</abbr> <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-multiplayerpeerextension-private-method-get-packet-mode"><span class="std std-ref">🔗</span></a></p>
+<p>Called to get the transfer mode the remote peer used to send the next available packet. See <a class="reference internal" href="class_multiplayerpeer.html#class-multiplayerpeer-method-get-packet-mode"><span class="std std-ref">MultiplayerPeer.get_packet_mode()</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-multiplayerpeerextension-private-method-get-packet-peer"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>_get_packet_peer</strong>() <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method is required to be overridden when extending its base class.">required</abbr> <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-multiplayerpeerextension-private-method-get-packet-peer"><span class="std std-ref">🔗</span></a></p>
+<p>Called when the ID of the <a class="reference internal" href="class_multiplayerpeer.html#class-multiplayerpeer"><span class="std std-ref">MultiplayerPeer</span></a> who sent the most recent packet is requested (see <a class="reference internal" href="class_multiplayerpeer.html#class-multiplayerpeer-method-get-packet-peer"><span class="std std-ref">MultiplayerPeer.get_packet_peer()</span></a>).</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-multiplayerpeerextension-private-method-get-packet-script"><a class="reference internal" href="class_packedbytearray.html#class-packedbytearray"><span class="std std-ref">PackedByteArray</span></a> <strong>_get_packet_script</strong>() <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <a class="reference internal" href="#class-multiplayerpeerextension-private-method-get-packet-script"><span class="std std-ref">🔗</span></a></p>
+<p>Called when a packet needs to be received by the <a class="reference internal" href="class_multiplayerapi.html#class-multiplayerapi"><span class="std std-ref">MultiplayerAPI</span></a>, if <a class="reference internal" href="#class-multiplayerpeerextension-private-method-get-packet"><span class="std std-ref">_get_packet()</span></a> isn’t implemented. Use this when extending this class via GDScript.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-multiplayerpeerextension-private-method-get-transfer-channel"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>_get_transfer_channel</strong>() <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method is required to be overridden when extending its base class.">required</abbr> <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-multiplayerpeerextension-private-method-get-transfer-channel"><span class="std std-ref">🔗</span></a></p>
+<p>Called when the transfer channel to use is read on this <a class="reference internal" href="class_multiplayerpeer.html#class-multiplayerpeer"><span class="std std-ref">MultiplayerPeer</span></a> (see <a class="reference internal" href="class_multiplayerpeer.html#class-multiplayerpeer-property-transfer-channel"><span class="std std-ref">MultiplayerPeer.transfer_channel</span></a>).</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-multiplayerpeerextension-private-method-get-transfer-mode"><a class="reference internal" href="class_multiplayerpeer.html#enum-multiplayerpeer-transfermode"><span class="std std-ref">TransferMode</span></a> <strong>_get_transfer_mode</strong>() <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method is required to be overridden when extending its base class.">required</abbr> <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-multiplayerpeerextension-private-method-get-transfer-mode"><span class="std std-ref">🔗</span></a></p>
+<p>Called when the transfer mode to use is read on this <a class="reference internal" href="class_multiplayerpeer.html#class-multiplayerpeer"><span class="std std-ref">MultiplayerPeer</span></a> (see <a class="reference internal" href="class_multiplayerpeer.html#class-multiplayerpeer-property-transfer-mode"><span class="std std-ref">MultiplayerPeer.transfer_mode</span></a>).</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-multiplayerpeerextension-private-method-get-unique-id"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>_get_unique_id</strong>() <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method is required to be overridden when extending its base class.">required</abbr> <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-multiplayerpeerextension-private-method-get-unique-id"><span class="std std-ref">🔗</span></a></p>
+<p>Called when the unique ID of this <a class="reference internal" href="class_multiplayerpeer.html#class-multiplayerpeer"><span class="std std-ref">MultiplayerPeer</span></a> is requested (see <a class="reference internal" href="class_multiplayerpeer.html#class-multiplayerpeer-method-get-unique-id"><span class="std std-ref">MultiplayerPeer.get_unique_id()</span></a>). The value must be between <code class="docutils literal notranslate"><span class="pre">1</span></code> and <code class="docutils literal notranslate"><span class="pre">2147483647</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-multiplayerpeerextension-private-method-is-refusing-new-connections"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>_is_refusing_new_connections</strong>() <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-multiplayerpeerextension-private-method-is-refusing-new-connections"><span class="std std-ref">🔗</span></a></p>
+<p>Called when the “refuse new connections” status is requested on this <a class="reference internal" href="class_multiplayerpeer.html#class-multiplayerpeer"><span class="std std-ref">MultiplayerPeer</span></a> (see <a class="reference internal" href="class_multiplayerpeer.html#class-multiplayerpeer-property-refuse-new-connections"><span class="std std-ref">MultiplayerPeer.refuse_new_connections</span></a>).</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-multiplayerpeerextension-private-method-is-server"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>_is_server</strong>() <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method is required to be overridden when extending its base class.">required</abbr> <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-multiplayerpeerextension-private-method-is-server"><span class="std std-ref">🔗</span></a></p>
+<p>Called when the “is server” status is requested on the <a class="reference internal" href="class_multiplayerapi.html#class-multiplayerapi"><span class="std std-ref">MultiplayerAPI</span></a>. See <a class="reference internal" href="class_multiplayerapi.html#class-multiplayerapi-method-is-server"><span class="std std-ref">MultiplayerAPI.is_server()</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-multiplayerpeerextension-private-method-is-server-relay-supported"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>_is_server_relay_supported</strong>() <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-multiplayerpeerextension-private-method-is-server-relay-supported"><span class="std std-ref">🔗</span></a></p>
+<p>Called to check if the server can act as a relay in the current configuration. See <a class="reference internal" href="class_multiplayerpeer.html#class-multiplayerpeer-method-is-server-relay-supported"><span class="std std-ref">MultiplayerPeer.is_server_relay_supported()</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-multiplayerpeerextension-private-method-poll"><abbr title="No return value.">void</abbr> <strong>_poll</strong>() <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method is required to be overridden when extending its base class.">required</abbr> <a class="reference internal" href="#class-multiplayerpeerextension-private-method-poll"><span class="std std-ref">🔗</span></a></p>
+<p>Called when the <a class="reference internal" href="class_multiplayerapi.html#class-multiplayerapi"><span class="std std-ref">MultiplayerAPI</span></a> is polled. See <a class="reference internal" href="class_multiplayerapi.html#class-multiplayerapi-method-poll"><span class="std std-ref">MultiplayerAPI.poll()</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-multiplayerpeerextension-private-method-put-packet"><a class="reference internal" href="class_%40globalscope.html#enum-globalscope-error"><span class="std std-ref">Error</span></a> <strong>_put_packet</strong>(buffer: <code class="docutils literal notranslate"><span class="pre">const</span> <span class="pre">uint8_t*</span></code>, buffer_size: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <a class="reference internal" href="#class-multiplayerpeerextension-private-method-put-packet"><span class="std std-ref">🔗</span></a></p>
+<p>Called when a packet needs to be sent by the <a class="reference internal" href="class_multiplayerapi.html#class-multiplayerapi"><span class="std std-ref">MultiplayerAPI</span></a>, with <code class="docutils literal notranslate"><span class="pre">buffer_size</span></code> being the size of the binary <code class="docutils literal notranslate"><span class="pre">buffer</span></code> in bytes.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-multiplayerpeerextension-private-method-put-packet-script"><a class="reference internal" href="class_%40globalscope.html#enum-globalscope-error"><span class="std std-ref">Error</span></a> <strong>_put_packet_script</strong>(buffer: <a class="reference internal" href="class_packedbytearray.html#class-packedbytearray"><span class="std std-ref">PackedByteArray</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <a class="reference internal" href="#class-multiplayerpeerextension-private-method-put-packet-script"><span class="std std-ref">🔗</span></a></p>
+<p>Called when a packet needs to be sent by the <a class="reference internal" href="class_multiplayerapi.html#class-multiplayerapi"><span class="std std-ref">MultiplayerAPI</span></a>, if <a class="reference internal" href="#class-multiplayerpeerextension-private-method-put-packet"><span class="std std-ref">_put_packet()</span></a> isn’t implemented. Use this when extending this class via GDScript.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-multiplayerpeerextension-private-method-set-refuse-new-connections"><abbr title="No return value.">void</abbr> <strong>_set_refuse_new_connections</strong>(enable: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <a class="reference internal" href="#class-multiplayerpeerextension-private-method-set-refuse-new-connections"><span class="std std-ref">🔗</span></a></p>
+<p>Called when the “refuse new connections” status is set on this <a class="reference internal" href="class_multiplayerpeer.html#class-multiplayerpeer"><span class="std std-ref">MultiplayerPeer</span></a> (see <a class="reference internal" href="class_multiplayerpeer.html#class-multiplayerpeer-property-refuse-new-connections"><span class="std std-ref">MultiplayerPeer.refuse_new_connections</span></a>).</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-multiplayerpeerextension-private-method-set-target-peer"><abbr title="No return value.">void</abbr> <strong>_set_target_peer</strong>(peer: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method is required to be overridden when extending its base class.">required</abbr> <a class="reference internal" href="#class-multiplayerpeerextension-private-method-set-target-peer"><span class="std std-ref">🔗</span></a></p>
+<p>Called when the target peer to use is set for this <a class="reference internal" href="class_multiplayerpeer.html#class-multiplayerpeer"><span class="std std-ref">MultiplayerPeer</span></a> (see <a class="reference internal" href="class_multiplayerpeer.html#class-multiplayerpeer-method-set-target-peer"><span class="std std-ref">MultiplayerPeer.set_target_peer()</span></a>).</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-multiplayerpeerextension-private-method-set-transfer-channel"><abbr title="No return value.">void</abbr> <strong>_set_transfer_channel</strong>(channel: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method is required to be overridden when extending its base class.">required</abbr> <a class="reference internal" href="#class-multiplayerpeerextension-private-method-set-transfer-channel"><span class="std std-ref">🔗</span></a></p>
+<p>Called when the channel to use is set for this <a class="reference internal" href="class_multiplayerpeer.html#class-multiplayerpeer"><span class="std std-ref">MultiplayerPeer</span></a> (see <a class="reference internal" href="class_multiplayerpeer.html#class-multiplayerpeer-property-transfer-channel"><span class="std std-ref">MultiplayerPeer.transfer_channel</span></a>).</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-multiplayerpeerextension-private-method-set-transfer-mode"><abbr title="No return value.">void</abbr> <strong>_set_transfer_mode</strong>(mode: <a class="reference internal" href="class_multiplayerpeer.html#enum-multiplayerpeer-transfermode"><span class="std std-ref">TransferMode</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method is required to be overridden when extending its base class.">required</abbr> <a class="reference internal" href="#class-multiplayerpeerextension-private-method-set-transfer-mode"><span class="std std-ref">🔗</span></a></p>
+<p>Called when the transfer mode is set on this <a class="reference internal" href="class_multiplayerpeer.html#class-multiplayerpeer"><span class="std std-ref">MultiplayerPeer</span></a> (see <a class="reference internal" href="class_multiplayerpeer.html#class-multiplayerpeer-property-transfer-mode"><span class="std std-ref">MultiplayerPeer.transfer_mode</span></a>).</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, MUmarShahbaz.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

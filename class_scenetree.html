@@ -1,0 +1,528 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SceneTree &mdash; RPG Components 2D 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=d45e8c67"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            RPG Components 2D
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">SceneTree</a><ul>
+<li><a class="reference internal" href="#description">Description</a></li>
+<li><a class="reference internal" href="#tutorials">Tutorials</a></li>
+<li><a class="reference internal" href="#properties">Properties</a></li>
+<li><a class="reference internal" href="#methods">Methods</a></li>
+<li><a class="reference internal" href="#signals">Signals</a></li>
+<li><a class="reference internal" href="#enumerations">Enumerations</a></li>
+<li><a class="reference internal" href="#property-descriptions">Property Descriptions</a></li>
+<li><a class="reference internal" href="#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">RPG Components 2D</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">SceneTree</li>
+      <li class="wy-breadcrumbs-aside">
+              <!-- User defined GitHub URL -->
+              <a href="hide" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="scenetree">
+<span id="class-scenetree"></span><h1>SceneTree<a class="headerlink" href="#scenetree" title="Link to this heading"></a></h1>
+<p><strong>Inherits:</strong> <a class="reference internal" href="class_mainloop.html#class-mainloop"><span class="std std-ref">MainLoop</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_object.html#class-object"><span class="std std-ref">Object</span></a></p>
+<p>Manages the game loop via a hierarchy of nodes.</p>
+<section class="classref-introduction-group" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
+<p>As one of the most important classes, the <strong>SceneTree</strong> manages the hierarchy of nodes in a scene, as well as scenes themselves. Nodes can be added, fetched and removed. The whole scene tree (and thus the current scene) can be paused. Scenes can be loaded, switched and reloaded.</p>
+<p>You can also use the <strong>SceneTree</strong> to organize your nodes into <strong>groups</strong>: every node can be added to as many groups as you want to create, e.g. an “enemy” group. You can then iterate these groups or even call methods and set properties on all the nodes belonging to any given group.</p>
+<p><strong>SceneTree</strong> is the default <a class="reference internal" href="class_mainloop.html#class-mainloop"><span class="std std-ref">MainLoop</span></a> implementation used by the engine, and is thus in charge of the game loop.</p>
+</section>
+<section class="classref-introduction-group" id="tutorials">
+<h2>Tutorials<a class="headerlink" href="#tutorials" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><span class="xref std std-doc">SceneTree</span></p></li>
+<li><p><span class="xref std std-doc">Multiple resolutions</span></p></li>
+</ul>
+</section>
+<section class="classref-reftable-group" id="properties">
+<h2>Properties<a class="headerlink" href="#properties" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-scenetree-property-auto-accept-quit"><span class="std std-ref">auto_accept_quit</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_node.html#class-node"><span class="std std-ref">Node</span></a></p></td>
+<td><p><a class="reference internal" href="#class-scenetree-property-current-scene"><span class="std std-ref">current_scene</span></a></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-scenetree-property-debug-collisions-hint"><span class="std std-ref">debug_collisions_hint</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-scenetree-property-debug-navigation-hint"><span class="std std-ref">debug_navigation_hint</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-scenetree-property-debug-paths-hint"><span class="std std-ref">debug_paths_hint</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_node.html#class-node"><span class="std std-ref">Node</span></a></p></td>
+<td><p><a class="reference internal" href="#class-scenetree-property-edited-scene-root"><span class="std std-ref">edited_scene_root</span></a></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-scenetree-property-multiplayer-poll"><span class="std std-ref">multiplayer_poll</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-scenetree-property-paused"><span class="std std-ref">paused</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-scenetree-property-physics-interpolation"><span class="std std-ref">physics_interpolation</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-scenetree-property-quit-on-go-back"><span class="std std-ref">quit_on_go_back</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_window.html#class-window"><span class="std std-ref">Window</span></a></p></td>
+<td><p><a class="reference internal" href="#class-scenetree-property-root"><span class="std std-ref">root</span></a></p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section class="classref-reftable-group" id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-scenetree-method-call-group"><span class="std std-ref">call_group</span></a>(group: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>, method: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>, …) <abbr title="This method accepts any number of arguments after the ones described here.">vararg</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-scenetree-method-call-group-flags"><span class="std std-ref">call_group_flags</span></a>(flags: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, group: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>, method: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>, …) <abbr title="This method accepts any number of arguments after the ones described here.">vararg</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_%40globalscope.html#enum-globalscope-error"><span class="std std-ref">Error</span></a></p></td>
+<td><p><a class="reference internal" href="#class-scenetree-method-change-scene-to-file"><span class="std std-ref">change_scene_to_file</span></a>(path: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_%40globalscope.html#enum-globalscope-error"><span class="std std-ref">Error</span></a></p></td>
+<td><p><a class="reference internal" href="#class-scenetree-method-change-scene-to-node"><span class="std std-ref">change_scene_to_node</span></a>(node: <a class="reference internal" href="class_node.html#class-node"><span class="std std-ref">Node</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_%40globalscope.html#enum-globalscope-error"><span class="std std-ref">Error</span></a></p></td>
+<td><p><a class="reference internal" href="#class-scenetree-method-change-scene-to-packed"><span class="std std-ref">change_scene_to_packed</span></a>(packed_scene: <a class="reference internal" href="class_packedscene.html#class-packedscene"><span class="std std-ref">PackedScene</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_scenetreetimer.html#class-scenetreetimer"><span class="std std-ref">SceneTreeTimer</span></a></p></td>
+<td><p><a class="reference internal" href="#class-scenetree-method-create-timer"><span class="std std-ref">create_timer</span></a>(time_sec: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, process_always: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = true, process_in_physics: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = false, ignore_time_scale: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = false)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_tween.html#class-tween"><span class="std std-ref">Tween</span></a></p></td>
+<td><p><a class="reference internal" href="#class-scenetree-method-create-tween"><span class="std std-ref">create_tween</span></a>()</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_node.html#class-node"><span class="std std-ref">Node</span></a></p></td>
+<td><p><a class="reference internal" href="#class-scenetree-method-get-first-node-in-group"><span class="std std-ref">get_first_node_in_group</span></a>(group: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-scenetree-method-get-frame"><span class="std std-ref">get_frame</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_multiplayerapi.html#class-multiplayerapi"><span class="std std-ref">MultiplayerAPI</span></a></p></td>
+<td><p><a class="reference internal" href="#class-scenetree-method-get-multiplayer"><span class="std std-ref">get_multiplayer</span></a>(for_path: <a class="reference internal" href="class_nodepath.html#class-nodepath"><span class="std std-ref">NodePath</span></a> = NodePath(“”)) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-scenetree-method-get-node-count"><span class="std std-ref">get_node_count</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-scenetree-method-get-node-count-in-group"><span class="std std-ref">get_node_count_in_group</span></a>(group: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_array.html#class-array"><span class="std std-ref">Array</span></a>[<a class="reference internal" href="class_node.html#class-node"><span class="std std-ref">Node</span></a>]</p></td>
+<td><p><a class="reference internal" href="#class-scenetree-method-get-nodes-in-group"><span class="std std-ref">get_nodes_in_group</span></a>(group: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_array.html#class-array"><span class="std std-ref">Array</span></a>[<a class="reference internal" href="class_tween.html#class-tween"><span class="std std-ref">Tween</span></a>]</p></td>
+<td><p><a class="reference internal" href="#class-scenetree-method-get-processed-tweens"><span class="std std-ref">get_processed_tweens</span></a>()</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-scenetree-method-has-group"><span class="std std-ref">has_group</span></a>(name: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-scenetree-method-is-accessibility-enabled"><span class="std std-ref">is_accessibility_enabled</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-scenetree-method-is-accessibility-supported"><span class="std std-ref">is_accessibility_supported</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-scenetree-method-notify-group"><span class="std std-ref">notify_group</span></a>(group: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>, notification: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-scenetree-method-notify-group-flags"><span class="std std-ref">notify_group_flags</span></a>(call_flags: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, group: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>, notification: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-scenetree-method-queue-delete"><span class="std std-ref">queue_delete</span></a>(obj: <a class="reference internal" href="class_object.html#class-object"><span class="std std-ref">Object</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-scenetree-method-quit"><span class="std std-ref">quit</span></a>(exit_code: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> = 0)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_%40globalscope.html#enum-globalscope-error"><span class="std std-ref">Error</span></a></p></td>
+<td><p><a class="reference internal" href="#class-scenetree-method-reload-current-scene"><span class="std std-ref">reload_current_scene</span></a>()</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-scenetree-method-set-group"><span class="std std-ref">set_group</span></a>(group: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>, property: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, value: <a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-scenetree-method-set-group-flags"><span class="std std-ref">set_group_flags</span></a>(call_flags: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, group: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>, property: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, value: <a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-scenetree-method-set-multiplayer"><span class="std std-ref">set_multiplayer</span></a>(multiplayer: <a class="reference internal" href="class_multiplayerapi.html#class-multiplayerapi"><span class="std std-ref">MultiplayerAPI</span></a>, root_path: <a class="reference internal" href="class_nodepath.html#class-nodepath"><span class="std std-ref">NodePath</span></a> = NodePath(“”))</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-scenetree-method-unload-current-scene"><span class="std std-ref">unload_current_scene</span></a>()</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="signals">
+<h2>Signals<a class="headerlink" href="#signals" title="Link to this heading"></a></h2>
+<p class="classref-signal" id="class-scenetree-signal-node-added"><strong>node_added</strong>(node: <a class="reference internal" href="class_node.html#class-node"><span class="std std-ref">Node</span></a>) <a class="reference internal" href="#class-scenetree-signal-node-added"><span class="std std-ref">🔗</span></a></p>
+<p>Emitted when the <code class="docutils literal notranslate"><span class="pre">node</span></code> enters this tree.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-signal" id="class-scenetree-signal-node-configuration-warning-changed"><strong>node_configuration_warning_changed</strong>(node: <a class="reference internal" href="class_node.html#class-node"><span class="std std-ref">Node</span></a>) <a class="reference internal" href="#class-scenetree-signal-node-configuration-warning-changed"><span class="std std-ref">🔗</span></a></p>
+<p>Emitted when the <code class="docutils literal notranslate"><span class="pre">node</span></code>’s <a class="reference internal" href="class_node.html#class-node-method-update-configuration-warnings"><span class="std std-ref">Node.update_configuration_warnings()</span></a> is called. Only emitted in the editor.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-signal" id="class-scenetree-signal-node-removed"><strong>node_removed</strong>(node: <a class="reference internal" href="class_node.html#class-node"><span class="std std-ref">Node</span></a>) <a class="reference internal" href="#class-scenetree-signal-node-removed"><span class="std std-ref">🔗</span></a></p>
+<p>Emitted when the <code class="docutils literal notranslate"><span class="pre">node</span></code> exits this tree.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-signal" id="class-scenetree-signal-node-renamed"><strong>node_renamed</strong>(node: <a class="reference internal" href="class_node.html#class-node"><span class="std std-ref">Node</span></a>) <a class="reference internal" href="#class-scenetree-signal-node-renamed"><span class="std std-ref">🔗</span></a></p>
+<p>Emitted when the <code class="docutils literal notranslate"><span class="pre">node</span></code>’s <a class="reference internal" href="class_node.html#class-node-property-name"><span class="std std-ref">Node.name</span></a> is changed.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-signal" id="class-scenetree-signal-physics-frame"><strong>physics_frame</strong>() <a class="reference internal" href="#class-scenetree-signal-physics-frame"><span class="std std-ref">🔗</span></a></p>
+<p>Emitted immediately before <a class="reference internal" href="class_node.html#class-node-private-method-physics-process"><span class="std std-ref">Node._physics_process()</span></a> is called on every node in this tree.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-signal" id="class-scenetree-signal-process-frame"><strong>process_frame</strong>() <a class="reference internal" href="#class-scenetree-signal-process-frame"><span class="std std-ref">🔗</span></a></p>
+<p>Emitted immediately before <a class="reference internal" href="class_node.html#class-node-private-method-process"><span class="std std-ref">Node._process()</span></a> is called on every node in this tree.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-signal" id="class-scenetree-signal-scene-changed"><strong>scene_changed</strong>() <a class="reference internal" href="#class-scenetree-signal-scene-changed"><span class="std std-ref">🔗</span></a></p>
+<p>Emitted after the new scene is added to scene tree and initialized. Can be used to reliably access <a class="reference internal" href="#class-scenetree-property-current-scene"><span class="std std-ref">current_scene</span></a> when changing scenes.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># This code should be inside an autoload.</span>
+<span class="n">get_tree</span><span class="p">()</span><span class="o">.</span><span class="n">change_scene_to_file</span><span class="p">(</span><span class="n">other_scene_path</span><span class="p">)</span>
+<span class="k">await</span> <span class="n">get_tree</span><span class="p">()</span><span class="o">.</span><span class="n">scene_changed</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">get_tree</span><span class="p">()</span><span class="o">.</span><span class="n">current_scene</span><span class="p">)</span> <span class="c1"># Prints the new scene.</span>
+</pre></div>
+</div>
+<hr class="classref-item-separator docutils" />
+<p class="classref-signal" id="class-scenetree-signal-tree-changed"><strong>tree_changed</strong>() <a class="reference internal" href="#class-scenetree-signal-tree-changed"><span class="std std-ref">🔗</span></a></p>
+<p>Emitted any time the tree’s hierarchy changes (nodes being moved, renamed, etc.).</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-signal" id="class-scenetree-signal-tree-process-mode-changed"><strong>tree_process_mode_changed</strong>() <a class="reference internal" href="#class-scenetree-signal-tree-process-mode-changed"><span class="std std-ref">🔗</span></a></p>
+<p>Emitted when the <a class="reference internal" href="class_node.html#class-node-property-process-mode"><span class="std std-ref">Node.process_mode</span></a> of any node inside the tree is changed. Only emitted in the editor, to update the visibility of disabled nodes.</p>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="enumerations">
+<h2>Enumerations<a class="headerlink" href="#enumerations" title="Link to this heading"></a></h2>
+<p class="classref-enumeration" id="enum-scenetree-groupcallflags">enum <strong>GroupCallFlags</strong>: <a class="reference internal" href="#enum-scenetree-groupcallflags"><span class="std std-ref">🔗</span></a></p>
+<p class="classref-enumeration-constant" id="class-scenetree-constant-group-call-default"><a class="reference internal" href="#enum-scenetree-groupcallflags"><span class="std std-ref">GroupCallFlags</span></a> <strong>GROUP_CALL_DEFAULT</strong> = <code class="docutils literal notranslate"><span class="pre">0</span></code></p>
+<p>Call nodes within a group with no special behavior (default).</p>
+<p class="classref-enumeration-constant" id="class-scenetree-constant-group-call-reverse"><a class="reference internal" href="#enum-scenetree-groupcallflags"><span class="std std-ref">GroupCallFlags</span></a> <strong>GROUP_CALL_REVERSE</strong> = <code class="docutils literal notranslate"><span class="pre">1</span></code></p>
+<p>Call nodes within a group in reverse tree hierarchy order (all nested children are called before their respective parent nodes).</p>
+<p class="classref-enumeration-constant" id="class-scenetree-constant-group-call-deferred"><a class="reference internal" href="#enum-scenetree-groupcallflags"><span class="std std-ref">GroupCallFlags</span></a> <strong>GROUP_CALL_DEFERRED</strong> = <code class="docutils literal notranslate"><span class="pre">2</span></code></p>
+<p>Call nodes within a group at the end of the current frame (can be either process or physics frame), similar to <a class="reference internal" href="class_object.html#class-object-method-call-deferred"><span class="std std-ref">Object.call_deferred()</span></a>.</p>
+<p class="classref-enumeration-constant" id="class-scenetree-constant-group-call-unique"><a class="reference internal" href="#enum-scenetree-groupcallflags"><span class="std std-ref">GroupCallFlags</span></a> <strong>GROUP_CALL_UNIQUE</strong> = <code class="docutils literal notranslate"><span class="pre">4</span></code></p>
+<p>Call nodes within a group only once, even if the call is executed many times in the same frame. Must be combined with <a class="reference internal" href="#class-scenetree-constant-group-call-deferred"><span class="std std-ref">GROUP_CALL_DEFERRED</span></a> to work.</p>
+<p><strong>Note:</strong> Different arguments are not taken into account. Therefore, when the same call is executed with different arguments, only the first call will be performed.</p>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="property-descriptions">
+<h2>Property Descriptions<a class="headerlink" href="#property-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-property" id="class-scenetree-property-auto-accept-quit"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>auto_accept_quit</strong> = <code class="docutils literal notranslate"><span class="pre">true</span></code> <a class="reference internal" href="#class-scenetree-property-auto-accept-quit"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_auto_accept_quit</strong>(value: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_auto_accept_quit</strong>()</p></li>
+</ul>
+<p>If <code class="docutils literal notranslate"><span class="pre">true</span></code>, the application automatically accepts quitting requests.</p>
+<p>For mobile platforms, see <a class="reference internal" href="#class-scenetree-property-quit-on-go-back"><span class="std std-ref">quit_on_go_back</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-scenetree-property-current-scene"><a class="reference internal" href="class_node.html#class-node"><span class="std std-ref">Node</span></a> <strong>current_scene</strong> <a class="reference internal" href="#class-scenetree-property-current-scene"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_current_scene</strong>(value: <a class="reference internal" href="class_node.html#class-node"><span class="std std-ref">Node</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_node.html#class-node"><span class="std std-ref">Node</span></a> <strong>get_current_scene</strong>()</p></li>
+</ul>
+<p>The root node of the currently loaded main scene, usually as a direct child of <a class="reference internal" href="#class-scenetree-property-root"><span class="std std-ref">root</span></a>. See also <a class="reference internal" href="#class-scenetree-method-change-scene-to-file"><span class="std std-ref">change_scene_to_file()</span></a>, <a class="reference internal" href="#class-scenetree-method-change-scene-to-packed"><span class="std std-ref">change_scene_to_packed()</span></a>, and <a class="reference internal" href="#class-scenetree-method-reload-current-scene"><span class="std std-ref">reload_current_scene()</span></a>.</p>
+<p><strong>Warning:</strong> Setting this property directly may not work as expected, as it does <em>not</em> add or remove any nodes from this tree.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-scenetree-property-debug-collisions-hint"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>debug_collisions_hint</strong> = <code class="docutils literal notranslate"><span class="pre">false</span></code> <a class="reference internal" href="#class-scenetree-property-debug-collisions-hint"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_debug_collisions_hint</strong>(value: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_debugging_collisions_hint</strong>()</p></li>
+</ul>
+<p>If <code class="docutils literal notranslate"><span class="pre">true</span></code>, collision shapes will be visible when running the game from the editor for debugging purposes.</p>
+<p><strong>Note:</strong> This property is not designed to be changed at run-time. Changing the value of <a class="reference internal" href="#class-scenetree-property-debug-collisions-hint"><span class="std std-ref">debug_collisions_hint</span></a> while the project is running will not have the desired effect.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-scenetree-property-debug-navigation-hint"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>debug_navigation_hint</strong> = <code class="docutils literal notranslate"><span class="pre">false</span></code> <a class="reference internal" href="#class-scenetree-property-debug-navigation-hint"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_debug_navigation_hint</strong>(value: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_debugging_navigation_hint</strong>()</p></li>
+</ul>
+<p>If <code class="docutils literal notranslate"><span class="pre">true</span></code>, navigation polygons will be visible when running the game from the editor for debugging purposes.</p>
+<p><strong>Note:</strong> This property is not designed to be changed at run-time. Changing the value of <a class="reference internal" href="#class-scenetree-property-debug-navigation-hint"><span class="std std-ref">debug_navigation_hint</span></a> while the project is running will not have the desired effect.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-scenetree-property-debug-paths-hint"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>debug_paths_hint</strong> = <code class="docutils literal notranslate"><span class="pre">false</span></code> <a class="reference internal" href="#class-scenetree-property-debug-paths-hint"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_debug_paths_hint</strong>(value: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_debugging_paths_hint</strong>()</p></li>
+</ul>
+<p>If <code class="docutils literal notranslate"><span class="pre">true</span></code>, curves from <a class="reference internal" href="class_path2d.html#class-path2d"><span class="std std-ref">Path2D</span></a> and <a class="reference internal" href="class_path3d.html#class-path3d"><span class="std std-ref">Path3D</span></a> nodes will be visible when running the game from the editor for debugging purposes.</p>
+<p><strong>Note:</strong> This property is not designed to be changed at run-time. Changing the value of <a class="reference internal" href="#class-scenetree-property-debug-paths-hint"><span class="std std-ref">debug_paths_hint</span></a> while the project is running will not have the desired effect.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-scenetree-property-edited-scene-root"><a class="reference internal" href="class_node.html#class-node"><span class="std std-ref">Node</span></a> <strong>edited_scene_root</strong> <a class="reference internal" href="#class-scenetree-property-edited-scene-root"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_edited_scene_root</strong>(value: <a class="reference internal" href="class_node.html#class-node"><span class="std std-ref">Node</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_node.html#class-node"><span class="std std-ref">Node</span></a> <strong>get_edited_scene_root</strong>()</p></li>
+</ul>
+<p>The root of the scene currently being edited in the editor. This is usually a direct child of <a class="reference internal" href="#class-scenetree-property-root"><span class="std std-ref">root</span></a>.</p>
+<p><strong>Note:</strong> This property does nothing in release builds.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-scenetree-property-multiplayer-poll"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>multiplayer_poll</strong> = <code class="docutils literal notranslate"><span class="pre">true</span></code> <a class="reference internal" href="#class-scenetree-property-multiplayer-poll"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_multiplayer_poll_enabled</strong>(value: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_multiplayer_poll_enabled</strong>()</p></li>
+</ul>
+<p>If <code class="docutils literal notranslate"><span class="pre">true</span></code> (default value), enables automatic polling of the <a class="reference internal" href="class_multiplayerapi.html#class-multiplayerapi"><span class="std std-ref">MultiplayerAPI</span></a> for this SceneTree during <a class="reference internal" href="#class-scenetree-signal-process-frame"><span class="std std-ref">process_frame</span></a>.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">false</span></code>, you need to manually call <a class="reference internal" href="class_multiplayerapi.html#class-multiplayerapi-method-poll"><span class="std std-ref">MultiplayerAPI.poll()</span></a> to process network packets and deliver RPCs. This allows running RPCs in a different loop (e.g. physics, thread, specific time step) and for manual <a class="reference internal" href="class_mutex.html#class-mutex"><span class="std std-ref">Mutex</span></a> protection when accessing the <a class="reference internal" href="class_multiplayerapi.html#class-multiplayerapi"><span class="std std-ref">MultiplayerAPI</span></a> from threads.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-scenetree-property-paused"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>paused</strong> = <code class="docutils literal notranslate"><span class="pre">false</span></code> <a class="reference internal" href="#class-scenetree-property-paused"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_pause</strong>(value: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_paused</strong>()</p></li>
+</ul>
+<p>If <code class="docutils literal notranslate"><span class="pre">true</span></code>, the scene tree is considered paused. This causes the following behavior:</p>
+<ul class="simple">
+<li><p>2D and 3D physics will be stopped, as well as collision detection and related signals.</p></li>
+<li><p>Depending on each node’s <a class="reference internal" href="class_node.html#class-node-property-process-mode"><span class="std std-ref">Node.process_mode</span></a>, their <a class="reference internal" href="class_node.html#class-node-private-method-process"><span class="std std-ref">Node._process()</span></a>, <a class="reference internal" href="class_node.html#class-node-private-method-physics-process"><span class="std std-ref">Node._physics_process()</span></a> and <a class="reference internal" href="class_node.html#class-node-private-method-input"><span class="std std-ref">Node._input()</span></a> callback methods may not called anymore.</p></li>
+</ul>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-scenetree-property-physics-interpolation"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>physics_interpolation</strong> = <code class="docutils literal notranslate"><span class="pre">false</span></code> <a class="reference internal" href="#class-scenetree-property-physics-interpolation"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_physics_interpolation_enabled</strong>(value: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_physics_interpolation_enabled</strong>()</p></li>
+</ul>
+<p>If <code class="docutils literal notranslate"><span class="pre">true</span></code>, the renderer will interpolate the transforms of objects (both physics and non-physics) between the last two transforms, so that smooth motion is seen even when physics ticks do not coincide with rendered frames.</p>
+<p>The default value of this property is controlled by <a class="reference internal" href="class_projectsettings.html#class-projectsettings-property-physics-common-physics-interpolation"><span class="std std-ref">ProjectSettings.physics/common/physics_interpolation</span></a>.</p>
+<p><strong>Note:</strong> Although this is a global setting, finer control of individual branches of the <strong>SceneTree</strong> is possible using <a class="reference internal" href="class_node.html#class-node-property-physics-interpolation-mode"><span class="std std-ref">Node.physics_interpolation_mode</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-scenetree-property-quit-on-go-back"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>quit_on_go_back</strong> = <code class="docutils literal notranslate"><span class="pre">true</span></code> <a class="reference internal" href="#class-scenetree-property-quit-on-go-back"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_quit_on_go_back</strong>(value: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_quit_on_go_back</strong>()</p></li>
+</ul>
+<p>If <code class="docutils literal notranslate"><span class="pre">true</span></code>, the application quits automatically when navigating back (e.g. using the system “Back” button on Android).</p>
+<p>To handle ‘Go Back’ button when this option is disabled, use <a class="reference internal" href="class_displayserver.html#class-displayserver-constant-window-event-go-back-request"><span class="std std-ref">DisplayServer.WINDOW_EVENT_GO_BACK_REQUEST</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-scenetree-property-root"><a class="reference internal" href="class_window.html#class-window"><span class="std std-ref">Window</span></a> <strong>root</strong> <a class="reference internal" href="#class-scenetree-property-root"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><a class="reference internal" href="class_window.html#class-window"><span class="std std-ref">Window</span></a> <strong>get_root</strong>()</p></li>
+</ul>
+<p>The tree’s root <a class="reference internal" href="class_window.html#class-window"><span class="std std-ref">Window</span></a>. This is top-most <a class="reference internal" href="class_node.html#class-node"><span class="std std-ref">Node</span></a> of the scene tree, and is always present. An absolute <a class="reference internal" href="class_nodepath.html#class-nodepath"><span class="std std-ref">NodePath</span></a> always starts from this node. Children of the root node may include the loaded <a class="reference internal" href="#class-scenetree-property-current-scene"><span class="std std-ref">current_scene</span></a>, as well as any <span class="xref std std-doc">AutoLoad</span> configured in the Project Settings.</p>
+<p><strong>Warning:</strong> Do not delete this node. This will result in unstable behavior, followed by a crash.</p>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="method-descriptions">
+<h2>Method Descriptions<a class="headerlink" href="#method-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-method" id="class-scenetree-method-call-group"><abbr title="No return value.">void</abbr> <strong>call_group</strong>(group: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>, method: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>, …) <abbr title="This method accepts any number of arguments after the ones described here.">vararg</abbr> <a class="reference internal" href="#class-scenetree-method-call-group"><span class="std std-ref">🔗</span></a></p>
+<p>Calls <code class="docutils literal notranslate"><span class="pre">method</span></code> on each node inside this tree added to the given <code class="docutils literal notranslate"><span class="pre">group</span></code>. You can pass arguments to <code class="docutils literal notranslate"><span class="pre">method</span></code> by specifying them at the end of this method call. Nodes that cannot call <code class="docutils literal notranslate"><span class="pre">method</span></code> (either because the method doesn’t exist or the arguments do not match) are ignored. See also <a class="reference internal" href="#class-scenetree-method-set-group"><span class="std std-ref">set_group()</span></a> and <a class="reference internal" href="#class-scenetree-method-notify-group"><span class="std std-ref">notify_group()</span></a>.</p>
+<p><strong>Note:</strong> This method acts immediately on all selected nodes at once, which may cause stuttering in some performance-intensive situations.</p>
+<p><strong>Note:</strong> In C#, <code class="docutils literal notranslate"><span class="pre">method</span></code> must be in snake_case when referring to built-in Godot methods. Prefer using the names exposed in the <code class="docutils literal notranslate"><span class="pre">MethodName</span></code> class to avoid allocating a new <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a> on each call.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-scenetree-method-call-group-flags"><abbr title="No return value.">void</abbr> <strong>call_group_flags</strong>(flags: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, group: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>, method: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>, …) <abbr title="This method accepts any number of arguments after the ones described here.">vararg</abbr> <a class="reference internal" href="#class-scenetree-method-call-group-flags"><span class="std std-ref">🔗</span></a></p>
+<p>Calls the given <code class="docutils literal notranslate"><span class="pre">method</span></code> on each node inside this tree added to the given <code class="docutils literal notranslate"><span class="pre">group</span></code>. Use <code class="docutils literal notranslate"><span class="pre">flags</span></code> to customize this method’s behavior (see <a class="reference internal" href="#enum-scenetree-groupcallflags"><span class="std std-ref">GroupCallFlags</span></a>). Additional arguments for <code class="docutils literal notranslate"><span class="pre">method</span></code> can be passed at the end of this method. Nodes that cannot call <code class="docutils literal notranslate"><span class="pre">method</span></code> (either because the method doesn’t exist or the arguments do not match) are ignored.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calls &quot;hide&quot; to all nodes of the &quot;enemies&quot; group, at the end of the frame and in reverse tree order.</span>
+<span class="n">get_tree</span><span class="p">()</span><span class="o">.</span><span class="n">call_group_flags</span><span class="p">(</span>
+        <span class="n">SceneTree</span><span class="o">.</span><span class="n">GROUP_CALL_DEFERRED</span> <span class="o">|</span> <span class="n">SceneTree</span><span class="o">.</span><span class="n">GROUP_CALL_REVERSE</span><span class="p">,</span>
+        <span class="s2">&quot;enemies&quot;</span><span class="p">,</span> <span class="s2">&quot;hide&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Note:</strong> In C#, <code class="docutils literal notranslate"><span class="pre">method</span></code> must be in snake_case when referring to built-in Godot methods. Prefer using the names exposed in the <code class="docutils literal notranslate"><span class="pre">MethodName</span></code> class to avoid allocating a new <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a> on each call.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-scenetree-method-change-scene-to-file"><a class="reference internal" href="class_%40globalscope.html#enum-globalscope-error"><span class="std std-ref">Error</span></a> <strong>change_scene_to_file</strong>(path: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <a class="reference internal" href="#class-scenetree-method-change-scene-to-file"><span class="std std-ref">🔗</span></a></p>
+<p>Changes the running scene to the one at the given <code class="docutils literal notranslate"><span class="pre">path</span></code>, after loading it into a <a class="reference internal" href="class_packedscene.html#class-packedscene"><span class="std std-ref">PackedScene</span></a> and creating a new instance.</p>
+<p>Returns <a class="reference internal" href="class_%40globalscope.html#class-globalscope-constant-ok"><span class="std std-ref">&#64;GlobalScope.OK</span></a> on success, <a class="reference internal" href="class_%40globalscope.html#class-globalscope-constant-err-cant-open"><span class="std std-ref">&#64;GlobalScope.ERR_CANT_OPEN</span></a> if the <code class="docutils literal notranslate"><span class="pre">path</span></code> cannot be loaded into a <a class="reference internal" href="class_packedscene.html#class-packedscene"><span class="std std-ref">PackedScene</span></a>, or <a class="reference internal" href="class_%40globalscope.html#class-globalscope-constant-err-cant-create"><span class="std std-ref">&#64;GlobalScope.ERR_CANT_CREATE</span></a> if that scene cannot be instantiated.</p>
+<p><strong>Note:</strong> See <a class="reference internal" href="#class-scenetree-method-change-scene-to-node"><span class="std std-ref">change_scene_to_node()</span></a> for details on the order of operations.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-scenetree-method-change-scene-to-node"><a class="reference internal" href="class_%40globalscope.html#enum-globalscope-error"><span class="std std-ref">Error</span></a> <strong>change_scene_to_node</strong>(node: <a class="reference internal" href="class_node.html#class-node"><span class="std std-ref">Node</span></a>) <a class="reference internal" href="#class-scenetree-method-change-scene-to-node"><span class="std std-ref">🔗</span></a></p>
+<p>Changes the running scene to the provided <a class="reference internal" href="class_node.html#class-node"><span class="std std-ref">Node</span></a>. Useful when you want to set up the new scene before changing.</p>
+<p>Returns <a class="reference internal" href="class_%40globalscope.html#class-globalscope-constant-ok"><span class="std std-ref">&#64;GlobalScope.OK</span></a> on success, <a class="reference internal" href="class_%40globalscope.html#class-globalscope-constant-err-invalid-parameter"><span class="std std-ref">&#64;GlobalScope.ERR_INVALID_PARAMETER</span></a> if the <code class="docutils literal notranslate"><span class="pre">node</span></code> is <code class="docutils literal notranslate"><span class="pre">null</span></code>, or <a class="reference internal" href="class_%40globalscope.html#class-globalscope-constant-err-unconfigured"><span class="std std-ref">&#64;GlobalScope.ERR_UNCONFIGURED</span></a> if the <code class="docutils literal notranslate"><span class="pre">node</span></code> is already inside the scene tree.</p>
+<p><strong>Note:</strong> Operations happen in the following order when <a class="reference internal" href="#class-scenetree-method-change-scene-to-node"><span class="std std-ref">change_scene_to_node()</span></a> is called:</p>
+<ol class="arabic simple">
+<li><p>The current scene node is immediately removed from the tree. From that point, <a class="reference internal" href="class_node.html#class-node-method-get-tree"><span class="std std-ref">Node.get_tree()</span></a> called on the current (outgoing) scene will return <code class="docutils literal notranslate"><span class="pre">null</span></code>. <a class="reference internal" href="#class-scenetree-property-current-scene"><span class="std std-ref">current_scene</span></a> will be <code class="docutils literal notranslate"><span class="pre">null</span></code> too, because the new scene is not available yet.</p></li>
+<li><p>At the end of the frame, the formerly current scene, already removed from the tree, will be deleted (freed from memory) and then the new scene node will be added to the tree. <a class="reference internal" href="class_node.html#class-node-method-get-tree"><span class="std std-ref">Node.get_tree()</span></a> and <a class="reference internal" href="#class-scenetree-property-current-scene"><span class="std std-ref">current_scene</span></a> will be back to working as usual.</p></li>
+</ol>
+<p>This ensures that both scenes aren’t running at the same time, while still freeing the previous scene in a safe way similar to <a class="reference internal" href="class_node.html#class-node-method-queue-free"><span class="std std-ref">Node.queue_free()</span></a>.</p>
+<p>If you want to reliably access the new scene, await the <a class="reference internal" href="#class-scenetree-signal-scene-changed"><span class="std std-ref">scene_changed</span></a> signal.</p>
+<p><strong>Warning:</strong> After using this method, the <strong>SceneTree</strong> will take ownership of the node and will free it automatically when changing scene again. Any references you had to that node will become invalid.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-scenetree-method-change-scene-to-packed"><a class="reference internal" href="class_%40globalscope.html#enum-globalscope-error"><span class="std std-ref">Error</span></a> <strong>change_scene_to_packed</strong>(packed_scene: <a class="reference internal" href="class_packedscene.html#class-packedscene"><span class="std std-ref">PackedScene</span></a>) <a class="reference internal" href="#class-scenetree-method-change-scene-to-packed"><span class="std std-ref">🔗</span></a></p>
+<p>Changes the running scene to a new instance of the given <a class="reference internal" href="class_packedscene.html#class-packedscene"><span class="std std-ref">PackedScene</span></a> (which must be valid).</p>
+<p>Returns <a class="reference internal" href="class_%40globalscope.html#class-globalscope-constant-ok"><span class="std std-ref">&#64;GlobalScope.OK</span></a> on success, <a class="reference internal" href="class_%40globalscope.html#class-globalscope-constant-err-cant-create"><span class="std std-ref">&#64;GlobalScope.ERR_CANT_CREATE</span></a> if the scene cannot be instantiated, or <a class="reference internal" href="class_%40globalscope.html#class-globalscope-constant-err-invalid-parameter"><span class="std std-ref">&#64;GlobalScope.ERR_INVALID_PARAMETER</span></a> if the scene is invalid.</p>
+<p><strong>Note:</strong> See <a class="reference internal" href="#class-scenetree-method-change-scene-to-node"><span class="std std-ref">change_scene_to_node()</span></a> for details on the order of operations.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-scenetree-method-create-timer"><a class="reference internal" href="class_scenetreetimer.html#class-scenetreetimer"><span class="std std-ref">SceneTreeTimer</span></a> <strong>create_timer</strong>(time_sec: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, process_always: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = true, process_in_physics: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = false, ignore_time_scale: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = false) <a class="reference internal" href="#class-scenetree-method-create-timer"><span class="std std-ref">🔗</span></a></p>
+<p>Returns a new <a class="reference internal" href="class_scenetreetimer.html#class-scenetreetimer"><span class="std std-ref">SceneTreeTimer</span></a>. After <code class="docutils literal notranslate"><span class="pre">time_sec</span></code> in seconds have passed, the timer will emit <a class="reference internal" href="class_scenetreetimer.html#class-scenetreetimer-signal-timeout"><span class="std std-ref">SceneTreeTimer.timeout</span></a> and will be automatically freed.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">process_always</span></code> is <code class="docutils literal notranslate"><span class="pre">false</span></code>, the timer will be paused when setting <a class="reference internal" href="#class-scenetree-property-paused"><span class="std std-ref">paused</span></a> to <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">process_in_physics</span></code> is <code class="docutils literal notranslate"><span class="pre">true</span></code>, the timer will update at the end of the physics frame, instead of the process frame.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">ignore_time_scale</span></code> is <code class="docutils literal notranslate"><span class="pre">true</span></code>, the timer will ignore <a class="reference internal" href="class_engine.html#class-engine-property-time-scale"><span class="std std-ref">Engine.time_scale</span></a> and update with the real, elapsed time.</p>
+<p>This method is commonly used to create a one-shot delay timer, as in the following example:</p>
+<p><strong>Note:</strong> The timer is always updated <em>after</em> all of the nodes in the tree. A node’s <a class="reference internal" href="class_node.html#class-node-private-method-process"><span class="std std-ref">Node._process()</span></a> method would be called before the timer updates (or <a class="reference internal" href="class_node.html#class-node-private-method-physics-process"><span class="std std-ref">Node._physics_process()</span></a> if <code class="docutils literal notranslate"><span class="pre">process_in_physics</span></code> is set to <code class="docutils literal notranslate"><span class="pre">true</span></code>).</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-scenetree-method-create-tween"><a class="reference internal" href="class_tween.html#class-tween"><span class="std std-ref">Tween</span></a> <strong>create_tween</strong>() <a class="reference internal" href="#class-scenetree-method-create-tween"><span class="std std-ref">🔗</span></a></p>
+<p>Creates and returns a new <a class="reference internal" href="class_tween.html#class-tween"><span class="std std-ref">Tween</span></a> processed in this tree. The Tween will start automatically on the next process frame or physics frame (depending on its <a class="reference internal" href="class_tween.html#enum-tween-tweenprocessmode"><span class="std std-ref">TweenProcessMode</span></a>).</p>
+<p><strong>Note:</strong> A <a class="reference internal" href="class_tween.html#class-tween"><span class="std std-ref">Tween</span></a> created using this method is not bound to any <a class="reference internal" href="class_node.html#class-node"><span class="std std-ref">Node</span></a>. It may keep working until there is nothing left to animate. If you want the <a class="reference internal" href="class_tween.html#class-tween"><span class="std std-ref">Tween</span></a> to be automatically killed when the <a class="reference internal" href="class_node.html#class-node"><span class="std std-ref">Node</span></a> is freed, use <a class="reference internal" href="class_node.html#class-node-method-create-tween"><span class="std std-ref">Node.create_tween()</span></a> or <a class="reference internal" href="class_tween.html#class-tween-method-bind-node"><span class="std std-ref">Tween.bind_node()</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-scenetree-method-get-first-node-in-group"><a class="reference internal" href="class_node.html#class-node"><span class="std std-ref">Node</span></a> <strong>get_first_node_in_group</strong>(group: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>) <a class="reference internal" href="#class-scenetree-method-get-first-node-in-group"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the first <a class="reference internal" href="class_node.html#class-node"><span class="std std-ref">Node</span></a> found inside the tree, that has been added to the given <code class="docutils literal notranslate"><span class="pre">group</span></code>, in scene hierarchy order. Returns <code class="docutils literal notranslate"><span class="pre">null</span></code> if no match is found. See also <a class="reference internal" href="#class-scenetree-method-get-nodes-in-group"><span class="std std-ref">get_nodes_in_group()</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-scenetree-method-get-frame"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>get_frame</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-scenetree-method-get-frame"><span class="std std-ref">🔗</span></a></p>
+<p>Returns how many physics process steps have been processed, since the application started. This is <em>not</em> a measurement of elapsed time. See also <a class="reference internal" href="#class-scenetree-signal-physics-frame"><span class="std std-ref">physics_frame</span></a>. For the number of frames rendered, see <a class="reference internal" href="class_engine.html#class-engine-method-get-process-frames"><span class="std std-ref">Engine.get_process_frames()</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-scenetree-method-get-multiplayer"><a class="reference internal" href="class_multiplayerapi.html#class-multiplayerapi"><span class="std std-ref">MultiplayerAPI</span></a> <strong>get_multiplayer</strong>(for_path: <a class="reference internal" href="class_nodepath.html#class-nodepath"><span class="std std-ref">NodePath</span></a> = NodePath(“”)) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-scenetree-method-get-multiplayer"><span class="std std-ref">🔗</span></a></p>
+<p>Searches for the <a class="reference internal" href="class_multiplayerapi.html#class-multiplayerapi"><span class="std std-ref">MultiplayerAPI</span></a> configured for the given path, if one does not exist it searches the parent paths until one is found. If the path is empty, or none is found, the default one is returned. See <a class="reference internal" href="#class-scenetree-method-set-multiplayer"><span class="std std-ref">set_multiplayer()</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-scenetree-method-get-node-count"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>get_node_count</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-scenetree-method-get-node-count"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the number of nodes inside this tree.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-scenetree-method-get-node-count-in-group"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>get_node_count_in_group</strong>(group: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-scenetree-method-get-node-count-in-group"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the number of nodes assigned to the given group.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-scenetree-method-get-nodes-in-group"><a class="reference internal" href="class_array.html#class-array"><span class="std std-ref">Array</span></a>[<a class="reference internal" href="class_node.html#class-node"><span class="std std-ref">Node</span></a>] <strong>get_nodes_in_group</strong>(group: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>) <a class="reference internal" href="#class-scenetree-method-get-nodes-in-group"><span class="std std-ref">🔗</span></a></p>
+<p>Returns an <a class="reference internal" href="class_array.html#class-array"><span class="std std-ref">Array</span></a> containing all nodes inside this tree, that have been added to the given <code class="docutils literal notranslate"><span class="pre">group</span></code>, in scene hierarchy order.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-scenetree-method-get-processed-tweens"><a class="reference internal" href="class_array.html#class-array"><span class="std std-ref">Array</span></a>[<a class="reference internal" href="class_tween.html#class-tween"><span class="std std-ref">Tween</span></a>] <strong>get_processed_tweens</strong>() <a class="reference internal" href="#class-scenetree-method-get-processed-tweens"><span class="std std-ref">🔗</span></a></p>
+<p>Returns an <a class="reference internal" href="class_array.html#class-array"><span class="std std-ref">Array</span></a> of currently existing <a class="reference internal" href="class_tween.html#class-tween"><span class="std std-ref">Tween</span></a>s in the tree, including paused tweens.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-scenetree-method-has-group"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>has_group</strong>(name: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-scenetree-method-has-group"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if a node added to the given group <code class="docutils literal notranslate"><span class="pre">name</span></code> exists in the tree.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-scenetree-method-is-accessibility-enabled"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_accessibility_enabled</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-scenetree-method-is-accessibility-enabled"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if accessibility features are enabled, and accessibility information updates are actively processed.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-scenetree-method-is-accessibility-supported"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_accessibility_supported</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-scenetree-method-is-accessibility-supported"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if accessibility features are supported by the OS and enabled in project settings.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-scenetree-method-notify-group"><abbr title="No return value.">void</abbr> <strong>notify_group</strong>(group: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>, notification: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <a class="reference internal" href="#class-scenetree-method-notify-group"><span class="std std-ref">🔗</span></a></p>
+<p>Calls <a class="reference internal" href="class_object.html#class-object-method-notification"><span class="std std-ref">Object.notification()</span></a> with the given <code class="docutils literal notranslate"><span class="pre">notification</span></code> to all nodes inside this tree added to the <code class="docutils literal notranslate"><span class="pre">group</span></code>. See also <span class="xref std std-doc">Godot notifications</span> and <a class="reference internal" href="#class-scenetree-method-call-group"><span class="std std-ref">call_group()</span></a> and <a class="reference internal" href="#class-scenetree-method-set-group"><span class="std std-ref">set_group()</span></a>.</p>
+<p><strong>Note:</strong> This method acts immediately on all selected nodes at once, which may cause stuttering in some performance-intensive situations.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-scenetree-method-notify-group-flags"><abbr title="No return value.">void</abbr> <strong>notify_group_flags</strong>(call_flags: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, group: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>, notification: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <a class="reference internal" href="#class-scenetree-method-notify-group-flags"><span class="std std-ref">🔗</span></a></p>
+<p>Calls <a class="reference internal" href="class_object.html#class-object-method-notification"><span class="std std-ref">Object.notification()</span></a> with the given <code class="docutils literal notranslate"><span class="pre">notification</span></code> to all nodes inside this tree added to the <code class="docutils literal notranslate"><span class="pre">group</span></code>. Use <code class="docutils literal notranslate"><span class="pre">call_flags</span></code> to customize this method’s behavior (see <a class="reference internal" href="#enum-scenetree-groupcallflags"><span class="std std-ref">GroupCallFlags</span></a>).</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-scenetree-method-queue-delete"><abbr title="No return value.">void</abbr> <strong>queue_delete</strong>(obj: <a class="reference internal" href="class_object.html#class-object"><span class="std std-ref">Object</span></a>) <a class="reference internal" href="#class-scenetree-method-queue-delete"><span class="std std-ref">🔗</span></a></p>
+<p>Queues the given <code class="docutils literal notranslate"><span class="pre">obj</span></code> to be deleted, calling its <a class="reference internal" href="class_object.html#class-object-method-free"><span class="std std-ref">Object.free()</span></a> at the end of the current frame. This method is similar to <a class="reference internal" href="class_node.html#class-node-method-queue-free"><span class="std std-ref">Node.queue_free()</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-scenetree-method-quit"><abbr title="No return value.">void</abbr> <strong>quit</strong>(exit_code: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> = 0) <a class="reference internal" href="#class-scenetree-method-quit"><span class="std std-ref">🔗</span></a></p>
+<p>Quits the application at the end of the current iteration, with the given <code class="docutils literal notranslate"><span class="pre">exit_code</span></code>.</p>
+<p>By convention, an exit code of <code class="docutils literal notranslate"><span class="pre">0</span></code> indicates success, whereas any other exit code indicates an error. For portability reasons, it should be between <code class="docutils literal notranslate"><span class="pre">0</span></code> and <code class="docutils literal notranslate"><span class="pre">125</span></code> (inclusive).</p>
+<p><strong>Note:</strong> On iOS this method doesn’t work. Instead, as recommended by the <a class="reference external" href="https://developer.apple.com/library/archive/qa/qa1561/_index.html">iOS Human Interface Guidelines</a>, the user is expected to close apps via the Home button.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-scenetree-method-reload-current-scene"><a class="reference internal" href="class_%40globalscope.html#enum-globalscope-error"><span class="std std-ref">Error</span></a> <strong>reload_current_scene</strong>() <a class="reference internal" href="#class-scenetree-method-reload-current-scene"><span class="std std-ref">🔗</span></a></p>
+<p>Reloads the currently active scene, replacing <a class="reference internal" href="#class-scenetree-property-current-scene"><span class="std std-ref">current_scene</span></a> with a new instance of its original <a class="reference internal" href="class_packedscene.html#class-packedscene"><span class="std std-ref">PackedScene</span></a>.</p>
+<p>Returns <a class="reference internal" href="class_%40globalscope.html#class-globalscope-constant-ok"><span class="std std-ref">&#64;GlobalScope.OK</span></a> on success, <a class="reference internal" href="class_%40globalscope.html#class-globalscope-constant-err-unconfigured"><span class="std std-ref">&#64;GlobalScope.ERR_UNCONFIGURED</span></a> if no <a class="reference internal" href="#class-scenetree-property-current-scene"><span class="std std-ref">current_scene</span></a> is defined, <a class="reference internal" href="class_%40globalscope.html#class-globalscope-constant-err-cant-open"><span class="std std-ref">&#64;GlobalScope.ERR_CANT_OPEN</span></a> if <a class="reference internal" href="#class-scenetree-property-current-scene"><span class="std std-ref">current_scene</span></a> cannot be loaded into a <a class="reference internal" href="class_packedscene.html#class-packedscene"><span class="std std-ref">PackedScene</span></a>, or <a class="reference internal" href="class_%40globalscope.html#class-globalscope-constant-err-cant-create"><span class="std std-ref">&#64;GlobalScope.ERR_CANT_CREATE</span></a> if the scene cannot be instantiated.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-scenetree-method-set-group"><abbr title="No return value.">void</abbr> <strong>set_group</strong>(group: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>, property: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, value: <a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a>) <a class="reference internal" href="#class-scenetree-method-set-group"><span class="std std-ref">🔗</span></a></p>
+<p>Sets the given <code class="docutils literal notranslate"><span class="pre">property</span></code> to <code class="docutils literal notranslate"><span class="pre">value</span></code> on all nodes inside this tree added to the given <code class="docutils literal notranslate"><span class="pre">group</span></code>. Nodes that do not have the <code class="docutils literal notranslate"><span class="pre">property</span></code> are ignored. See also <a class="reference internal" href="#class-scenetree-method-call-group"><span class="std std-ref">call_group()</span></a> and <a class="reference internal" href="#class-scenetree-method-notify-group"><span class="std std-ref">notify_group()</span></a>.</p>
+<p><strong>Note:</strong> This method acts immediately on all selected nodes at once, which may cause stuttering in some performance-intensive situations.</p>
+<p><strong>Note:</strong> In C#, <code class="docutils literal notranslate"><span class="pre">property</span></code> must be in snake_case when referring to built-in Godot properties. Prefer using the names exposed in the <code class="docutils literal notranslate"><span class="pre">PropertyName</span></code> class to avoid allocating a new <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a> on each call.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-scenetree-method-set-group-flags"><abbr title="No return value.">void</abbr> <strong>set_group_flags</strong>(call_flags: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, group: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>, property: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, value: <a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a>) <a class="reference internal" href="#class-scenetree-method-set-group-flags"><span class="std std-ref">🔗</span></a></p>
+<p>Sets the given <code class="docutils literal notranslate"><span class="pre">property</span></code> to <code class="docutils literal notranslate"><span class="pre">value</span></code> on all nodes inside this tree added to the given <code class="docutils literal notranslate"><span class="pre">group</span></code>. Nodes that do not have the <code class="docutils literal notranslate"><span class="pre">property</span></code> are ignored. Use <code class="docutils literal notranslate"><span class="pre">call_flags</span></code> to customize this method’s behavior (see <a class="reference internal" href="#enum-scenetree-groupcallflags"><span class="std std-ref">GroupCallFlags</span></a>).</p>
+<p><strong>Note:</strong> In C#, <code class="docutils literal notranslate"><span class="pre">property</span></code> must be in snake_case when referring to built-in Godot properties. Prefer using the names exposed in the <code class="docutils literal notranslate"><span class="pre">PropertyName</span></code> class to avoid allocating a new <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a> on each call.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-scenetree-method-set-multiplayer"><abbr title="No return value.">void</abbr> <strong>set_multiplayer</strong>(multiplayer: <a class="reference internal" href="class_multiplayerapi.html#class-multiplayerapi"><span class="std std-ref">MultiplayerAPI</span></a>, root_path: <a class="reference internal" href="class_nodepath.html#class-nodepath"><span class="std std-ref">NodePath</span></a> = NodePath(“”)) <a class="reference internal" href="#class-scenetree-method-set-multiplayer"><span class="std std-ref">🔗</span></a></p>
+<p>Sets a custom <a class="reference internal" href="class_multiplayerapi.html#class-multiplayerapi"><span class="std std-ref">MultiplayerAPI</span></a> with the given <code class="docutils literal notranslate"><span class="pre">root_path</span></code> (controlling also the relative subpaths), or override the default one if <code class="docutils literal notranslate"><span class="pre">root_path</span></code> is empty.</p>
+<p><strong>Note:</strong> No <a class="reference internal" href="class_multiplayerapi.html#class-multiplayerapi"><span class="std std-ref">MultiplayerAPI</span></a> must be configured for the subpath containing <code class="docutils literal notranslate"><span class="pre">root_path</span></code>, nested custom multiplayers are not allowed. I.e. if one is configured for <code class="docutils literal notranslate"><span class="pre">&quot;/root/Foo&quot;</span></code> setting one for <code class="docutils literal notranslate"><span class="pre">&quot;/root/Foo/Bar&quot;</span></code> will cause an error.</p>
+<p><strong>Note:</strong> <a class="reference internal" href="#class-scenetree-method-set-multiplayer"><span class="std std-ref">set_multiplayer()</span></a> should be called <em>before</em> the child nodes are ready at the given <code class="docutils literal notranslate"><span class="pre">root_path</span></code>. If multiplayer nodes like <code class="docutils literal notranslate"><span class="pre">MultiplayerSpawner</span></code> or <code class="docutils literal notranslate"><span class="pre">MultiplayerSynchronizer</span></code> are added to the tree before the custom multiplayer API is set, they will not work.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-scenetree-method-unload-current-scene"><abbr title="No return value.">void</abbr> <strong>unload_current_scene</strong>() <a class="reference internal" href="#class-scenetree-method-unload-current-scene"><span class="std std-ref">🔗</span></a></p>
+<p>If a current scene is loaded, calling this method will unload it.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, MUmarShahbaz.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

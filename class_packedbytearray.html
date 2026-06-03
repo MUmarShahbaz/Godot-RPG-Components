@@ -1,0 +1,639 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PackedByteArray &mdash; RPG Components 2D 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=d45e8c67"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            RPG Components 2D
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">PackedByteArray</a><ul>
+<li><a class="reference internal" href="#description">Description</a></li>
+<li><a class="reference internal" href="#constructors">Constructors</a></li>
+<li><a class="reference internal" href="#methods">Methods</a></li>
+<li><a class="reference internal" href="#operators">Operators</a></li>
+<li><a class="reference internal" href="#constructor-descriptions">Constructor Descriptions</a></li>
+<li><a class="reference internal" href="#method-descriptions">Method Descriptions</a></li>
+<li><a class="reference internal" href="#operator-descriptions">Operator Descriptions</a></li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">RPG Components 2D</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">PackedByteArray</li>
+      <li class="wy-breadcrumbs-aside">
+              <!-- User defined GitHub URL -->
+              <a href="hide" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="packedbytearray">
+<span id="class-packedbytearray"></span><h1>PackedByteArray<a class="headerlink" href="#packedbytearray" title="Link to this heading"></a></h1>
+<p>A packed array of bytes.</p>
+<section class="classref-introduction-group" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
+<p>An array specifically designed to hold bytes. Packs data tightly, so it saves memory for large array sizes.</p>
+<p><strong>PackedByteArray</strong> also provides methods to encode/decode various types to/from bytes. The way values are encoded is an implementation detail and shouldn’t be relied upon when interacting with external apps.</p>
+<p><strong>Note:</strong> Packed arrays are always passed by reference. To get a copy of an array that can be modified independently of the original array, use <a class="reference internal" href="#class-packedbytearray-method-duplicate"><span class="std std-ref">duplicate()</span></a>. This is <em>not</em> the case for built-in properties and methods. In these cases the returned packed array is a copy, and changing it will <em>not</em> affect the original value. To update a built-in property of this type, modify the returned array and then assign it to the property again.</p>
+<p><strong>Note:</strong> In a boolean context, a packed array will evaluate to <code class="docutils literal notranslate"><span class="pre">false</span></code> if it’s empty. Otherwise, a packed array will always evaluate to <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>There are notable differences when using this API with C#. See <span class="xref std std-ref">doc_c_sharp_differences</span> for more information.</p>
+</div>
+</section>
+<section class="classref-reftable-group" id="constructors">
+<h2>Constructors<a class="headerlink" href="#constructors" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#class-packedbytearray"><span class="std std-ref">PackedByteArray</span></a></p></td>
+<td><p><a class="reference internal" href="#class-packedbytearray-constructor-packedbytearray"><span class="std std-ref">PackedByteArray</span></a>()</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#class-packedbytearray"><span class="std std-ref">PackedByteArray</span></a></p></td>
+<td><p><a class="reference internal" href="#class-packedbytearray-constructor-packedbytearray"><span class="std std-ref">PackedByteArray</span></a>(from: <a class="reference internal" href="#class-packedbytearray"><span class="std std-ref">PackedByteArray</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#class-packedbytearray"><span class="std std-ref">PackedByteArray</span></a></p></td>
+<td><p><a class="reference internal" href="#class-packedbytearray-constructor-packedbytearray"><span class="std std-ref">PackedByteArray</span></a>(from: <a class="reference internal" href="class_array.html#class-array"><span class="std std-ref">Array</span></a>)</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section class="classref-reftable-group" id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-packedbytearray-method-append"><span class="std std-ref">append</span></a>(value: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-packedbytearray-method-append-array"><span class="std std-ref">append_array</span></a>(array: <a class="reference internal" href="#class-packedbytearray"><span class="std std-ref">PackedByteArray</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-packedbytearray-method-bsearch"><span class="std std-ref">bsearch</span></a>(value: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, before: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = true) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-packedbytearray-method-bswap16"><span class="std std-ref">bswap16</span></a>(offset: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> = 0, count: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> = -1)</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-packedbytearray-method-bswap32"><span class="std std-ref">bswap32</span></a>(offset: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> = 0, count: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> = -1)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-packedbytearray-method-bswap64"><span class="std std-ref">bswap64</span></a>(offset: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> = 0, count: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> = -1)</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-packedbytearray-method-clear"><span class="std std-ref">clear</span></a>()</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#class-packedbytearray"><span class="std std-ref">PackedByteArray</span></a></p></td>
+<td><p><a class="reference internal" href="#class-packedbytearray-method-compress"><span class="std std-ref">compress</span></a>(compression_mode: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> = 0) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-packedbytearray-method-count"><span class="std std-ref">count</span></a>(value: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-packedbytearray-method-decode-double"><span class="std std-ref">decode_double</span></a>(byte_offset: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-packedbytearray-method-decode-float"><span class="std std-ref">decode_float</span></a>(byte_offset: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-packedbytearray-method-decode-half"><span class="std std-ref">decode_half</span></a>(byte_offset: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-packedbytearray-method-decode-s8"><span class="std std-ref">decode_s8</span></a>(byte_offset: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-packedbytearray-method-decode-s16"><span class="std std-ref">decode_s16</span></a>(byte_offset: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-packedbytearray-method-decode-s32"><span class="std std-ref">decode_s32</span></a>(byte_offset: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-packedbytearray-method-decode-s64"><span class="std std-ref">decode_s64</span></a>(byte_offset: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-packedbytearray-method-decode-u8"><span class="std std-ref">decode_u8</span></a>(byte_offset: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-packedbytearray-method-decode-u16"><span class="std std-ref">decode_u16</span></a>(byte_offset: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-packedbytearray-method-decode-u32"><span class="std std-ref">decode_u32</span></a>(byte_offset: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-packedbytearray-method-decode-u64"><span class="std std-ref">decode_u64</span></a>(byte_offset: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a></p></td>
+<td><p><a class="reference internal" href="#class-packedbytearray-method-decode-var"><span class="std std-ref">decode_var</span></a>(byte_offset: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, allow_objects: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = false) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-packedbytearray-method-decode-var-size"><span class="std std-ref">decode_var_size</span></a>(byte_offset: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, allow_objects: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = false) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#class-packedbytearray"><span class="std std-ref">PackedByteArray</span></a></p></td>
+<td><p><a class="reference internal" href="#class-packedbytearray-method-decompress"><span class="std std-ref">decompress</span></a>(buffer_size: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, compression_mode: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> = 0) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#class-packedbytearray"><span class="std std-ref">PackedByteArray</span></a></p></td>
+<td><p><a class="reference internal" href="#class-packedbytearray-method-decompress-dynamic"><span class="std std-ref">decompress_dynamic</span></a>(max_output_size: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, compression_mode: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> = 0) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#class-packedbytearray"><span class="std std-ref">PackedByteArray</span></a></p></td>
+<td><p><a class="reference internal" href="#class-packedbytearray-method-duplicate"><span class="std std-ref">duplicate</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-packedbytearray-method-encode-double"><span class="std std-ref">encode_double</span></a>(byte_offset: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, value: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-packedbytearray-method-encode-float"><span class="std std-ref">encode_float</span></a>(byte_offset: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, value: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-packedbytearray-method-encode-half"><span class="std std-ref">encode_half</span></a>(byte_offset: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, value: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-packedbytearray-method-encode-s8"><span class="std std-ref">encode_s8</span></a>(byte_offset: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, value: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-packedbytearray-method-encode-s16"><span class="std std-ref">encode_s16</span></a>(byte_offset: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, value: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-packedbytearray-method-encode-s32"><span class="std std-ref">encode_s32</span></a>(byte_offset: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, value: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-packedbytearray-method-encode-s64"><span class="std std-ref">encode_s64</span></a>(byte_offset: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, value: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-packedbytearray-method-encode-u8"><span class="std std-ref">encode_u8</span></a>(byte_offset: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, value: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-packedbytearray-method-encode-u16"><span class="std std-ref">encode_u16</span></a>(byte_offset: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, value: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-packedbytearray-method-encode-u32"><span class="std std-ref">encode_u32</span></a>(byte_offset: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, value: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-packedbytearray-method-encode-u64"><span class="std std-ref">encode_u64</span></a>(byte_offset: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, value: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-packedbytearray-method-encode-var"><span class="std std-ref">encode_var</span></a>(byte_offset: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, value: <a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a>, allow_objects: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = false)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-packedbytearray-method-erase"><span class="std std-ref">erase</span></a>(value: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-packedbytearray-method-fill"><span class="std std-ref">fill</span></a>(value: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-packedbytearray-method-find"><span class="std std-ref">find</span></a>(value: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, from: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> = 0) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-packedbytearray-method-get"><span class="std std-ref">get</span></a>(index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a></p></td>
+<td><p><a class="reference internal" href="#class-packedbytearray-method-get-string-from-ascii"><span class="std std-ref">get_string_from_ascii</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a></p></td>
+<td><p><a class="reference internal" href="#class-packedbytearray-method-get-string-from-multibyte-char"><span class="std std-ref">get_string_from_multibyte_char</span></a>(encoding: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a> = “”) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a></p></td>
+<td><p><a class="reference internal" href="#class-packedbytearray-method-get-string-from-utf8"><span class="std std-ref">get_string_from_utf8</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a></p></td>
+<td><p><a class="reference internal" href="#class-packedbytearray-method-get-string-from-utf16"><span class="std std-ref">get_string_from_utf16</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a></p></td>
+<td><p><a class="reference internal" href="#class-packedbytearray-method-get-string-from-utf32"><span class="std std-ref">get_string_from_utf32</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a></p></td>
+<td><p><a class="reference internal" href="#class-packedbytearray-method-get-string-from-wchar"><span class="std std-ref">get_string_from_wchar</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-packedbytearray-method-has"><span class="std std-ref">has</span></a>(value: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-packedbytearray-method-has-encoded-var"><span class="std std-ref">has_encoded_var</span></a>(byte_offset: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, allow_objects: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = false) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a></p></td>
+<td><p><a class="reference internal" href="#class-packedbytearray-method-hex-encode"><span class="std std-ref">hex_encode</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-packedbytearray-method-insert"><span class="std std-ref">insert</span></a>(at_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, value: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-packedbytearray-method-is-empty"><span class="std std-ref">is_empty</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-packedbytearray-method-push-back"><span class="std std-ref">push_back</span></a>(value: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-packedbytearray-method-remove-at"><span class="std std-ref">remove_at</span></a>(index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-packedbytearray-method-resize"><span class="std std-ref">resize</span></a>(new_size: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-packedbytearray-method-reverse"><span class="std std-ref">reverse</span></a>()</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-packedbytearray-method-rfind"><span class="std std-ref">rfind</span></a>(value: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, from: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> = -1) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-packedbytearray-method-set"><span class="std std-ref">set</span></a>(index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, value: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-packedbytearray-method-size"><span class="std std-ref">size</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#class-packedbytearray"><span class="std std-ref">PackedByteArray</span></a></p></td>
+<td><p><a class="reference internal" href="#class-packedbytearray-method-slice"><span class="std std-ref">slice</span></a>(begin: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, end: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> = 2147483647) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-packedbytearray-method-sort"><span class="std std-ref">sort</span></a>()</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_packedcolorarray.html#class-packedcolorarray"><span class="std std-ref">PackedColorArray</span></a></p></td>
+<td><p><a class="reference internal" href="#class-packedbytearray-method-to-color-array"><span class="std std-ref">to_color_array</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_packedfloat32array.html#class-packedfloat32array"><span class="std std-ref">PackedFloat32Array</span></a></p></td>
+<td><p><a class="reference internal" href="#class-packedbytearray-method-to-float32-array"><span class="std std-ref">to_float32_array</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_packedfloat64array.html#class-packedfloat64array"><span class="std std-ref">PackedFloat64Array</span></a></p></td>
+<td><p><a class="reference internal" href="#class-packedbytearray-method-to-float64-array"><span class="std std-ref">to_float64_array</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_packedint32array.html#class-packedint32array"><span class="std std-ref">PackedInt32Array</span></a></p></td>
+<td><p><a class="reference internal" href="#class-packedbytearray-method-to-int32-array"><span class="std std-ref">to_int32_array</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_packedint64array.html#class-packedint64array"><span class="std std-ref">PackedInt64Array</span></a></p></td>
+<td><p><a class="reference internal" href="#class-packedbytearray-method-to-int64-array"><span class="std std-ref">to_int64_array</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_packedvector2array.html#class-packedvector2array"><span class="std std-ref">PackedVector2Array</span></a></p></td>
+<td><p><a class="reference internal" href="#class-packedbytearray-method-to-vector2-array"><span class="std std-ref">to_vector2_array</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_packedvector3array.html#class-packedvector3array"><span class="std std-ref">PackedVector3Array</span></a></p></td>
+<td><p><a class="reference internal" href="#class-packedbytearray-method-to-vector3-array"><span class="std std-ref">to_vector3_array</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_packedvector4array.html#class-packedvector4array"><span class="std std-ref">PackedVector4Array</span></a></p></td>
+<td><p><a class="reference internal" href="#class-packedbytearray-method-to-vector4-array"><span class="std std-ref">to_vector4_array</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section class="classref-reftable-group" id="operators">
+<h2>Operators<a class="headerlink" href="#operators" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-packedbytearray-operator-neq-packedbytearray"><span class="std std-ref">operator !=</span></a>(right: <a class="reference internal" href="#class-packedbytearray"><span class="std std-ref">PackedByteArray</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#class-packedbytearray"><span class="std std-ref">PackedByteArray</span></a></p></td>
+<td><p><a class="reference internal" href="#class-packedbytearray-operator-sum-packedbytearray"><span class="std std-ref">operator +</span></a>(right: <a class="reference internal" href="#class-packedbytearray"><span class="std std-ref">PackedByteArray</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-packedbytearray-operator-eq-packedbytearray"><span class="std std-ref">operator ==</span></a>(right: <a class="reference internal" href="#class-packedbytearray"><span class="std std-ref">PackedByteArray</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-packedbytearray-operator-idx-int"><span class="std std-ref">operator []</span></a>(index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="constructor-descriptions">
+<h2>Constructor Descriptions<a class="headerlink" href="#constructor-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-constructor" id="class-packedbytearray-constructor-packedbytearray"><a class="reference internal" href="#class-packedbytearray"><span class="std std-ref">PackedByteArray</span></a> <strong>PackedByteArray</strong>() <a class="reference internal" href="#class-packedbytearray-constructor-packedbytearray"><span class="std std-ref">🔗</span></a></p>
+<p>Constructs an empty <strong>PackedByteArray</strong>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-constructor"><a class="reference internal" href="#class-packedbytearray"><span class="std std-ref">PackedByteArray</span></a> <strong>PackedByteArray</strong>(from: <a class="reference internal" href="#class-packedbytearray"><span class="std std-ref">PackedByteArray</span></a>)</p>
+<p>Constructs a <strong>PackedByteArray</strong> as a copy of the given <strong>PackedByteArray</strong>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-constructor"><a class="reference internal" href="#class-packedbytearray"><span class="std std-ref">PackedByteArray</span></a> <strong>PackedByteArray</strong>(from: <a class="reference internal" href="class_array.html#class-array"><span class="std std-ref">Array</span></a>)</p>
+<p>Constructs a new <strong>PackedByteArray</strong>. Optionally, you can pass in a generic <a class="reference internal" href="class_array.html#class-array"><span class="std std-ref">Array</span></a> that will be converted.</p>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="method-descriptions">
+<h2>Method Descriptions<a class="headerlink" href="#method-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-method" id="class-packedbytearray-method-append"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>append</strong>(value: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <a class="reference internal" href="#class-packedbytearray-method-append"><span class="std std-ref">🔗</span></a></p>
+<p>Appends an element at the end of the array (alias of <a class="reference internal" href="#class-packedbytearray-method-push-back"><span class="std std-ref">push_back()</span></a>).</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-packedbytearray-method-append-array"><abbr title="No return value.">void</abbr> <strong>append_array</strong>(array: <a class="reference internal" href="#class-packedbytearray"><span class="std std-ref">PackedByteArray</span></a>) <a class="reference internal" href="#class-packedbytearray-method-append-array"><span class="std std-ref">🔗</span></a></p>
+<p>Appends a <strong>PackedByteArray</strong> at the end of this array.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-packedbytearray-method-bsearch"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>bsearch</strong>(value: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, before: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = true) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-packedbytearray-method-bsearch"><span class="std std-ref">🔗</span></a></p>
+<p>Finds the index of an existing value (or the insertion index that maintains sorting order, if the value is not yet present in the array) using binary search. Optionally, a <code class="docutils literal notranslate"><span class="pre">before</span></code> specifier can be passed. If <code class="docutils literal notranslate"><span class="pre">false</span></code>, the returned index comes after all existing entries of the value in the array.</p>
+<p><strong>Note:</strong> Calling <a class="reference internal" href="#class-packedbytearray-method-bsearch"><span class="std std-ref">bsearch()</span></a> on an unsorted array results in unexpected behavior.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-packedbytearray-method-bswap16"><abbr title="No return value.">void</abbr> <strong>bswap16</strong>(offset: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> = 0, count: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> = -1) <a class="reference internal" href="#class-packedbytearray-method-bswap16"><span class="std std-ref">🔗</span></a></p>
+<p>Swaps the byte order of <code class="docutils literal notranslate"><span class="pre">count</span></code> 16-bit segments of the array starting at <code class="docutils literal notranslate"><span class="pre">offset</span></code>. Swap is done in-place. If <code class="docutils literal notranslate"><span class="pre">count</span></code> is less than zero, all segments to the end of array are processed, if processed data size is not a multiple of 2, the byte after the last processed 16-bit segment is not modified.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-packedbytearray-method-bswap32"><abbr title="No return value.">void</abbr> <strong>bswap32</strong>(offset: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> = 0, count: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> = -1) <a class="reference internal" href="#class-packedbytearray-method-bswap32"><span class="std std-ref">🔗</span></a></p>
+<p>Swaps the byte order of <code class="docutils literal notranslate"><span class="pre">count</span></code> 32-bit segments of the array starting at <code class="docutils literal notranslate"><span class="pre">offset</span></code>. Swap is done in-place. If <code class="docutils literal notranslate"><span class="pre">count</span></code> is less than zero, all segments to the end of array are processed, if processed data size is not a multiple of 4, bytes after the last processed 32-bit segment are not modified.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-packedbytearray-method-bswap64"><abbr title="No return value.">void</abbr> <strong>bswap64</strong>(offset: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> = 0, count: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> = -1) <a class="reference internal" href="#class-packedbytearray-method-bswap64"><span class="std std-ref">🔗</span></a></p>
+<p>Swaps the byte order of <code class="docutils literal notranslate"><span class="pre">count</span></code> 64-bit segments of the array starting at <code class="docutils literal notranslate"><span class="pre">offset</span></code>. Swap is done in-place. If <code class="docutils literal notranslate"><span class="pre">count</span></code> is less than zero, all segments to the end of array are processed, if processed data size is not a multiple of 8, bytes after the last processed 64-bit segment are not modified.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-packedbytearray-method-clear"><abbr title="No return value.">void</abbr> <strong>clear</strong>() <a class="reference internal" href="#class-packedbytearray-method-clear"><span class="std std-ref">🔗</span></a></p>
+<p>Clears the array. This is equivalent to using <a class="reference internal" href="#class-packedbytearray-method-resize"><span class="std std-ref">resize()</span></a> with a size of <code class="docutils literal notranslate"><span class="pre">0</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-packedbytearray-method-compress"><a class="reference internal" href="#class-packedbytearray"><span class="std std-ref">PackedByteArray</span></a> <strong>compress</strong>(compression_mode: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> = 0) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-packedbytearray-method-compress"><span class="std std-ref">🔗</span></a></p>
+<p>Returns a new <strong>PackedByteArray</strong> with the data compressed. Set the compression mode using one of <a class="reference internal" href="class_fileaccess.html#enum-fileaccess-compressionmode"><span class="std std-ref">CompressionMode</span></a>’s constants.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-packedbytearray-method-count"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>count</strong>(value: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-packedbytearray-method-count"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the number of times an element is in the array.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-packedbytearray-method-decode-double"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>decode_double</strong>(byte_offset: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-packedbytearray-method-decode-double"><span class="std std-ref">🔗</span></a></p>
+<p>Decodes a 64-bit floating-point number from the bytes starting at <code class="docutils literal notranslate"><span class="pre">byte_offset</span></code>. Fails if the byte count is insufficient. Returns <code class="docutils literal notranslate"><span class="pre">0.0</span></code> if a valid number can’t be decoded.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-packedbytearray-method-decode-float"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>decode_float</strong>(byte_offset: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-packedbytearray-method-decode-float"><span class="std std-ref">🔗</span></a></p>
+<p>Decodes a 32-bit floating-point number from the bytes starting at <code class="docutils literal notranslate"><span class="pre">byte_offset</span></code>. Fails if the byte count is insufficient. Returns <code class="docutils literal notranslate"><span class="pre">0.0</span></code> if a valid number can’t be decoded.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-packedbytearray-method-decode-half"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>decode_half</strong>(byte_offset: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-packedbytearray-method-decode-half"><span class="std std-ref">🔗</span></a></p>
+<p>Decodes a 16-bit floating-point number from the bytes starting at <code class="docutils literal notranslate"><span class="pre">byte_offset</span></code>. Fails if the byte count is insufficient. Returns <code class="docutils literal notranslate"><span class="pre">0.0</span></code> if a valid number can’t be decoded.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-packedbytearray-method-decode-s8"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>decode_s8</strong>(byte_offset: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-packedbytearray-method-decode-s8"><span class="std std-ref">🔗</span></a></p>
+<p>Decodes a 8-bit signed integer number from the bytes starting at <code class="docutils literal notranslate"><span class="pre">byte_offset</span></code>. Fails if the byte count is insufficient. Returns <code class="docutils literal notranslate"><span class="pre">0</span></code> if a valid number can’t be decoded.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-packedbytearray-method-decode-s16"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>decode_s16</strong>(byte_offset: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-packedbytearray-method-decode-s16"><span class="std std-ref">🔗</span></a></p>
+<p>Decodes a 16-bit signed integer number from the bytes starting at <code class="docutils literal notranslate"><span class="pre">byte_offset</span></code>. Fails if the byte count is insufficient. Returns <code class="docutils literal notranslate"><span class="pre">0</span></code> if a valid number can’t be decoded.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-packedbytearray-method-decode-s32"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>decode_s32</strong>(byte_offset: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-packedbytearray-method-decode-s32"><span class="std std-ref">🔗</span></a></p>
+<p>Decodes a 32-bit signed integer number from the bytes starting at <code class="docutils literal notranslate"><span class="pre">byte_offset</span></code>. Fails if the byte count is insufficient. Returns <code class="docutils literal notranslate"><span class="pre">0</span></code> if a valid number can’t be decoded.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-packedbytearray-method-decode-s64"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>decode_s64</strong>(byte_offset: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-packedbytearray-method-decode-s64"><span class="std std-ref">🔗</span></a></p>
+<p>Decodes a 64-bit signed integer number from the bytes starting at <code class="docutils literal notranslate"><span class="pre">byte_offset</span></code>. Fails if the byte count is insufficient. Returns <code class="docutils literal notranslate"><span class="pre">0</span></code> if a valid number can’t be decoded.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-packedbytearray-method-decode-u8"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>decode_u8</strong>(byte_offset: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-packedbytearray-method-decode-u8"><span class="std std-ref">🔗</span></a></p>
+<p>Decodes a 8-bit unsigned integer number from the bytes starting at <code class="docutils literal notranslate"><span class="pre">byte_offset</span></code>. Fails if the byte count is insufficient. Returns <code class="docutils literal notranslate"><span class="pre">0</span></code> if a valid number can’t be decoded.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-packedbytearray-method-decode-u16"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>decode_u16</strong>(byte_offset: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-packedbytearray-method-decode-u16"><span class="std std-ref">🔗</span></a></p>
+<p>Decodes a 16-bit unsigned integer number from the bytes starting at <code class="docutils literal notranslate"><span class="pre">byte_offset</span></code>. Fails if the byte count is insufficient. Returns <code class="docutils literal notranslate"><span class="pre">0</span></code> if a valid number can’t be decoded.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-packedbytearray-method-decode-u32"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>decode_u32</strong>(byte_offset: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-packedbytearray-method-decode-u32"><span class="std std-ref">🔗</span></a></p>
+<p>Decodes a 32-bit unsigned integer number from the bytes starting at <code class="docutils literal notranslate"><span class="pre">byte_offset</span></code>. Fails if the byte count is insufficient. Returns <code class="docutils literal notranslate"><span class="pre">0</span></code> if a valid number can’t be decoded.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-packedbytearray-method-decode-u64"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>decode_u64</strong>(byte_offset: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-packedbytearray-method-decode-u64"><span class="std std-ref">🔗</span></a></p>
+<p>Decodes a 64-bit unsigned integer number from the bytes starting at <code class="docutils literal notranslate"><span class="pre">byte_offset</span></code>. Fails if the byte count is insufficient. Returns <code class="docutils literal notranslate"><span class="pre">0</span></code> if a valid number can’t be decoded.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-packedbytearray-method-decode-var"><a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a> <strong>decode_var</strong>(byte_offset: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, allow_objects: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = false) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-packedbytearray-method-decode-var"><span class="std std-ref">🔗</span></a></p>
+<p>Decodes a <a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a> from the bytes starting at <code class="docutils literal notranslate"><span class="pre">byte_offset</span></code>. Returns <code class="docutils literal notranslate"><span class="pre">null</span></code> if a valid variant can’t be decoded or the value is <a class="reference internal" href="class_object.html#class-object"><span class="std std-ref">Object</span></a>-derived and <code class="docutils literal notranslate"><span class="pre">allow_objects</span></code> is <code class="docutils literal notranslate"><span class="pre">false</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-packedbytearray-method-decode-var-size"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>decode_var_size</strong>(byte_offset: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, allow_objects: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = false) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-packedbytearray-method-decode-var-size"><span class="std std-ref">🔗</span></a></p>
+<p>Decodes a size of a <a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a> from the bytes starting at <code class="docutils literal notranslate"><span class="pre">byte_offset</span></code>. Requires at least 4 bytes of data starting at the offset, otherwise fails.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-packedbytearray-method-decompress"><a class="reference internal" href="#class-packedbytearray"><span class="std std-ref">PackedByteArray</span></a> <strong>decompress</strong>(buffer_size: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, compression_mode: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> = 0) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-packedbytearray-method-decompress"><span class="std std-ref">🔗</span></a></p>
+<p>Returns a new <strong>PackedByteArray</strong> with the data decompressed. Set <code class="docutils literal notranslate"><span class="pre">buffer_size</span></code> to the size of the uncompressed data. Set the compression mode using one of <a class="reference internal" href="class_fileaccess.html#enum-fileaccess-compressionmode"><span class="std std-ref">CompressionMode</span></a>’s constants.</p>
+<p><strong>Note:</strong> Decompression is not guaranteed to work with data not compressed by Godot, for example if data compressed with the deflate compression mode lacks a checksum or header.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-packedbytearray-method-decompress-dynamic"><a class="reference internal" href="#class-packedbytearray"><span class="std std-ref">PackedByteArray</span></a> <strong>decompress_dynamic</strong>(max_output_size: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, compression_mode: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> = 0) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-packedbytearray-method-decompress-dynamic"><span class="std std-ref">🔗</span></a></p>
+<p>Returns a new <strong>PackedByteArray</strong> with the data decompressed. Set the compression mode using one of <a class="reference internal" href="class_fileaccess.html#enum-fileaccess-compressionmode"><span class="std std-ref">CompressionMode</span></a>’s constants. <strong>This method only accepts brotli, gzip, and deflate compression modes.</strong></p>
+<p>This method is potentially slower than <a class="reference internal" href="#class-packedbytearray-method-decompress"><span class="std std-ref">decompress()</span></a>, as it may have to re-allocate its output buffer multiple times while decompressing, whereas <a class="reference internal" href="#class-packedbytearray-method-decompress"><span class="std std-ref">decompress()</span></a> knows it’s output buffer size from the beginning.</p>
+<p>GZIP has a maximal compression ratio of 1032:1, meaning it’s very possible for a small compressed payload to decompress to a potentially very large output. To guard against this, you may provide a maximum size this function is allowed to allocate in bytes via <code class="docutils literal notranslate"><span class="pre">max_output_size</span></code>. Passing -1 will allow for unbounded output. If any positive value is passed, and the decompression exceeds that amount in bytes, then an error will be returned.</p>
+<p><strong>Note:</strong> Decompression is not guaranteed to work with data not compressed by Godot, for example if data compressed with the deflate compression mode lacks a checksum or header.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-packedbytearray-method-duplicate"><a class="reference internal" href="#class-packedbytearray"><span class="std std-ref">PackedByteArray</span></a> <strong>duplicate</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-packedbytearray-method-duplicate"><span class="std std-ref">🔗</span></a></p>
+<p>Creates a copy of the array, and returns it.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-packedbytearray-method-encode-double"><abbr title="No return value.">void</abbr> <strong>encode_double</strong>(byte_offset: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, value: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>) <a class="reference internal" href="#class-packedbytearray-method-encode-double"><span class="std std-ref">🔗</span></a></p>
+<p>Encodes a 64-bit floating-point number as bytes at the index of <code class="docutils literal notranslate"><span class="pre">byte_offset</span></code> bytes. The array must have at least 8 bytes of allocated space, starting at the offset.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-packedbytearray-method-encode-float"><abbr title="No return value.">void</abbr> <strong>encode_float</strong>(byte_offset: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, value: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>) <a class="reference internal" href="#class-packedbytearray-method-encode-float"><span class="std std-ref">🔗</span></a></p>
+<p>Encodes a 32-bit floating-point number as bytes at the index of <code class="docutils literal notranslate"><span class="pre">byte_offset</span></code> bytes. The array must have at least 4 bytes of space, starting at the offset.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-packedbytearray-method-encode-half"><abbr title="No return value.">void</abbr> <strong>encode_half</strong>(byte_offset: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, value: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>) <a class="reference internal" href="#class-packedbytearray-method-encode-half"><span class="std std-ref">🔗</span></a></p>
+<p>Encodes a 16-bit floating-point number as bytes at the index of <code class="docutils literal notranslate"><span class="pre">byte_offset</span></code> bytes. The array must have at least 2 bytes of space, starting at the offset.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-packedbytearray-method-encode-s8"><abbr title="No return value.">void</abbr> <strong>encode_s8</strong>(byte_offset: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, value: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <a class="reference internal" href="#class-packedbytearray-method-encode-s8"><span class="std std-ref">🔗</span></a></p>
+<p>Encodes a 8-bit signed integer number (signed byte) at the index of <code class="docutils literal notranslate"><span class="pre">byte_offset</span></code> bytes. The array must have at least 1 byte of space, starting at the offset.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-packedbytearray-method-encode-s16"><abbr title="No return value.">void</abbr> <strong>encode_s16</strong>(byte_offset: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, value: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <a class="reference internal" href="#class-packedbytearray-method-encode-s16"><span class="std std-ref">🔗</span></a></p>
+<p>Encodes a 16-bit signed integer number as bytes at the index of <code class="docutils literal notranslate"><span class="pre">byte_offset</span></code> bytes. The array must have at least 2 bytes of space, starting at the offset.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-packedbytearray-method-encode-s32"><abbr title="No return value.">void</abbr> <strong>encode_s32</strong>(byte_offset: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, value: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <a class="reference internal" href="#class-packedbytearray-method-encode-s32"><span class="std std-ref">🔗</span></a></p>
+<p>Encodes a 32-bit signed integer number as bytes at the index of <code class="docutils literal notranslate"><span class="pre">byte_offset</span></code> bytes. The array must have at least 4 bytes of space, starting at the offset.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-packedbytearray-method-encode-s64"><abbr title="No return value.">void</abbr> <strong>encode_s64</strong>(byte_offset: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, value: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <a class="reference internal" href="#class-packedbytearray-method-encode-s64"><span class="std std-ref">🔗</span></a></p>
+<p>Encodes a 64-bit signed integer number as bytes at the index of <code class="docutils literal notranslate"><span class="pre">byte_offset</span></code> bytes. The array must have at least 8 bytes of space, starting at the offset.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-packedbytearray-method-encode-u8"><abbr title="No return value.">void</abbr> <strong>encode_u8</strong>(byte_offset: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, value: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <a class="reference internal" href="#class-packedbytearray-method-encode-u8"><span class="std std-ref">🔗</span></a></p>
+<p>Encodes a 8-bit unsigned integer number (byte) at the index of <code class="docutils literal notranslate"><span class="pre">byte_offset</span></code> bytes. The array must have at least 1 byte of space, starting at the offset.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-packedbytearray-method-encode-u16"><abbr title="No return value.">void</abbr> <strong>encode_u16</strong>(byte_offset: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, value: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <a class="reference internal" href="#class-packedbytearray-method-encode-u16"><span class="std std-ref">🔗</span></a></p>
+<p>Encodes a 16-bit unsigned integer number as bytes at the index of <code class="docutils literal notranslate"><span class="pre">byte_offset</span></code> bytes. The array must have at least 2 bytes of space, starting at the offset.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-packedbytearray-method-encode-u32"><abbr title="No return value.">void</abbr> <strong>encode_u32</strong>(byte_offset: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, value: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <a class="reference internal" href="#class-packedbytearray-method-encode-u32"><span class="std std-ref">🔗</span></a></p>
+<p>Encodes a 32-bit unsigned integer number as bytes at the index of <code class="docutils literal notranslate"><span class="pre">byte_offset</span></code> bytes. The array must have at least 4 bytes of space, starting at the offset.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-packedbytearray-method-encode-u64"><abbr title="No return value.">void</abbr> <strong>encode_u64</strong>(byte_offset: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, value: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <a class="reference internal" href="#class-packedbytearray-method-encode-u64"><span class="std std-ref">🔗</span></a></p>
+<p>Encodes a 64-bit unsigned integer number as bytes at the index of <code class="docutils literal notranslate"><span class="pre">byte_offset</span></code> bytes. The array must have at least 8 bytes of space, starting at the offset.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-packedbytearray-method-encode-var"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>encode_var</strong>(byte_offset: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, value: <a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a>, allow_objects: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = false) <a class="reference internal" href="#class-packedbytearray-method-encode-var"><span class="std std-ref">🔗</span></a></p>
+<p>Encodes a <a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a> at the index of <code class="docutils literal notranslate"><span class="pre">byte_offset</span></code> bytes. A sufficient space must be allocated, depending on the encoded variant’s size. If <code class="docutils literal notranslate"><span class="pre">allow_objects</span></code> is <code class="docutils literal notranslate"><span class="pre">false</span></code>, <a class="reference internal" href="class_object.html#class-object"><span class="std std-ref">Object</span></a>-derived values are not permitted and will instead be serialized as ID-only.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-packedbytearray-method-erase"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>erase</strong>(value: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <a class="reference internal" href="#class-packedbytearray-method-erase"><span class="std std-ref">🔗</span></a></p>
+<p>Removes the first occurrence of a value from the array and returns <code class="docutils literal notranslate"><span class="pre">true</span></code>. If the value does not exist in the array, nothing happens and <code class="docutils literal notranslate"><span class="pre">false</span></code> is returned. To remove an element by index, use <a class="reference internal" href="#class-packedbytearray-method-remove-at"><span class="std std-ref">remove_at()</span></a> instead.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-packedbytearray-method-fill"><abbr title="No return value.">void</abbr> <strong>fill</strong>(value: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <a class="reference internal" href="#class-packedbytearray-method-fill"><span class="std std-ref">🔗</span></a></p>
+<p>Assigns the given value to all elements in the array. This can typically be used together with <a class="reference internal" href="#class-packedbytearray-method-resize"><span class="std std-ref">resize()</span></a> to create an array with a given size and initialized elements.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-packedbytearray-method-find"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>find</strong>(value: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, from: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> = 0) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-packedbytearray-method-find"><span class="std std-ref">🔗</span></a></p>
+<p>Searches the array for a value and returns its index or <code class="docutils literal notranslate"><span class="pre">-1</span></code> if not found. Optionally, the initial search index can be passed.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-packedbytearray-method-get"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>get</strong>(index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-packedbytearray-method-get"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the byte at the given <code class="docutils literal notranslate"><span class="pre">index</span></code> in the array. If <code class="docutils literal notranslate"><span class="pre">index</span></code> is out-of-bounds or negative, this method fails and returns <code class="docutils literal notranslate"><span class="pre">0</span></code>.</p>
+<p>This method is similar (but not identical) to the <code class="docutils literal notranslate"><span class="pre">[]</span></code> operator. Most notably, when this method fails, it doesn’t pause project execution if run from the editor.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-packedbytearray-method-get-string-from-ascii"><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a> <strong>get_string_from_ascii</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-packedbytearray-method-get-string-from-ascii"><span class="std std-ref">🔗</span></a></p>
+<p>Converts ASCII/Latin-1 encoded array to <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>. Fast alternative to <a class="reference internal" href="#class-packedbytearray-method-get-string-from-utf8"><span class="std std-ref">get_string_from_utf8()</span></a> if the content is ASCII/Latin-1 only. Unlike the UTF-8 function this function maps every byte to a character in the array. Multibyte sequences will not be interpreted correctly. For parsing user input always use <a class="reference internal" href="#class-packedbytearray-method-get-string-from-utf8"><span class="std std-ref">get_string_from_utf8()</span></a>. This is the inverse of <a class="reference internal" href="class_string.html#class-string-method-to-ascii-buffer"><span class="std std-ref">String.to_ascii_buffer()</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-packedbytearray-method-get-string-from-multibyte-char"><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a> <strong>get_string_from_multibyte_char</strong>(encoding: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a> = “”) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-packedbytearray-method-get-string-from-multibyte-char"><span class="std std-ref">🔗</span></a></p>
+<p>Converts system multibyte code page encoded array to <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>. If conversion fails, empty string is returned. This is the inverse of <a class="reference internal" href="class_string.html#class-string-method-to-multibyte-char-buffer"><span class="std std-ref">String.to_multibyte_char_buffer()</span></a>.</p>
+<p>The values permitted for <code class="docutils literal notranslate"><span class="pre">encoding</span></code> are system dependent. If <code class="docutils literal notranslate"><span class="pre">encoding</span></code> is empty string, system default encoding is used.</p>
+<ul class="simple">
+<li><p>For Windows, see <a class="reference external" href="https://learn.microsoft.com/en-us/windows/win32/Intl/code-page-identifiers">Code Page Identifiers</a> .NET names.</p></li>
+<li><p>For macOS and Linux/BSD, see <code class="docutils literal notranslate"><span class="pre">libiconv</span></code> library documentation and <code class="docutils literal notranslate"><span class="pre">iconv</span> <span class="pre">--list</span></code> for a list of supported encodings.</p></li>
+</ul>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-packedbytearray-method-get-string-from-utf8"><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a> <strong>get_string_from_utf8</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-packedbytearray-method-get-string-from-utf8"><span class="std std-ref">🔗</span></a></p>
+<p>Converts UTF-8 encoded array to <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>. Slower than <a class="reference internal" href="#class-packedbytearray-method-get-string-from-ascii"><span class="std std-ref">get_string_from_ascii()</span></a> but supports UTF-8 encoded data. Use this function if you are unsure about the source of the data. For user input this function should always be preferred. Returns empty string if source array is not valid UTF-8 string. This is the inverse of <a class="reference internal" href="class_string.html#class-string-method-to-utf8-buffer"><span class="std std-ref">String.to_utf8_buffer()</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-packedbytearray-method-get-string-from-utf16"><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a> <strong>get_string_from_utf16</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-packedbytearray-method-get-string-from-utf16"><span class="std std-ref">🔗</span></a></p>
+<p>Converts UTF-16 encoded array to <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>. If the BOM is missing, little-endianness is assumed. Returns empty string if source array is not valid UTF-16 string. This is the inverse of <a class="reference internal" href="class_string.html#class-string-method-to-utf16-buffer"><span class="std std-ref">String.to_utf16_buffer()</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-packedbytearray-method-get-string-from-utf32"><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a> <strong>get_string_from_utf32</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-packedbytearray-method-get-string-from-utf32"><span class="std std-ref">🔗</span></a></p>
+<p>Converts UTF-32 encoded array to <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>. Returns empty string if source array is not valid UTF-32 string. This is the inverse of <a class="reference internal" href="class_string.html#class-string-method-to-utf32-buffer"><span class="std std-ref">String.to_utf32_buffer()</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-packedbytearray-method-get-string-from-wchar"><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a> <strong>get_string_from_wchar</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-packedbytearray-method-get-string-from-wchar"><span class="std std-ref">🔗</span></a></p>
+<p>Converts wide character (<code class="docutils literal notranslate"><span class="pre">wchar_t</span></code>, UTF-16 on Windows, UTF-32 on other platforms) encoded array to <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>. Returns empty string if source array is not valid wide string. This is the inverse of <a class="reference internal" href="class_string.html#class-string-method-to-wchar-buffer"><span class="std std-ref">String.to_wchar_buffer()</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-packedbytearray-method-has"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>has</strong>(value: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-packedbytearray-method-has"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if the array contains <code class="docutils literal notranslate"><span class="pre">value</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-packedbytearray-method-has-encoded-var"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>has_encoded_var</strong>(byte_offset: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, allow_objects: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = false) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-packedbytearray-method-has-encoded-var"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if a valid <a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a> value can be decoded at the <code class="docutils literal notranslate"><span class="pre">byte_offset</span></code>. Returns <code class="docutils literal notranslate"><span class="pre">false</span></code> otherwise or when the value is <a class="reference internal" href="class_object.html#class-object"><span class="std std-ref">Object</span></a>-derived and <code class="docutils literal notranslate"><span class="pre">allow_objects</span></code> is <code class="docutils literal notranslate"><span class="pre">false</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-packedbytearray-method-hex-encode"><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a> <strong>hex_encode</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-packedbytearray-method-hex-encode"><span class="std std-ref">🔗</span></a></p>
+<p>Returns a hexadecimal representation of this array as a <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-packedbytearray-method-insert"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>insert</strong>(at_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, value: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <a class="reference internal" href="#class-packedbytearray-method-insert"><span class="std std-ref">🔗</span></a></p>
+<p>Inserts a new element at a given position in the array. The position must be valid, or at the end of the array (<code class="docutils literal notranslate"><span class="pre">idx</span> <span class="pre">==</span> <span class="pre">size()</span></code>).</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-packedbytearray-method-is-empty"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_empty</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-packedbytearray-method-is-empty"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if the array is empty.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-packedbytearray-method-push-back"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>push_back</strong>(value: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <a class="reference internal" href="#class-packedbytearray-method-push-back"><span class="std std-ref">🔗</span></a></p>
+<p>Appends an element at the end of the array.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-packedbytearray-method-remove-at"><abbr title="No return value.">void</abbr> <strong>remove_at</strong>(index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <a class="reference internal" href="#class-packedbytearray-method-remove-at"><span class="std std-ref">🔗</span></a></p>
+<p>Removes an element from the array by index.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-packedbytearray-method-resize"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>resize</strong>(new_size: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <a class="reference internal" href="#class-packedbytearray-method-resize"><span class="std std-ref">🔗</span></a></p>
+<p>Sets the size of the array. If the array is grown, reserves elements at the end of the array. If the array is shrunk, truncates the array to the new size. Calling <a class="reference internal" href="#class-packedbytearray-method-resize"><span class="std std-ref">resize()</span></a> once and assigning the new values is faster than adding new elements one by one.</p>
+<p>Returns <a class="reference internal" href="class_%40globalscope.html#class-globalscope-constant-ok"><span class="std std-ref">&#64;GlobalScope.OK</span></a> on success, or one of the following <a class="reference internal" href="class_%40globalscope.html#enum-globalscope-error"><span class="std std-ref">Error</span></a> constants if this method fails: <a class="reference internal" href="class_%40globalscope.html#class-globalscope-constant-err-invalid-parameter"><span class="std std-ref">&#64;GlobalScope.ERR_INVALID_PARAMETER</span></a> if the size is negative, or <a class="reference internal" href="class_%40globalscope.html#class-globalscope-constant-err-out-of-memory"><span class="std std-ref">&#64;GlobalScope.ERR_OUT_OF_MEMORY</span></a> if allocations fail. Use <a class="reference internal" href="#class-packedbytearray-method-size"><span class="std std-ref">size()</span></a> to find the actual size of the array after resize.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-packedbytearray-method-reverse"><abbr title="No return value.">void</abbr> <strong>reverse</strong>() <a class="reference internal" href="#class-packedbytearray-method-reverse"><span class="std std-ref">🔗</span></a></p>
+<p>Reverses the order of the elements in the array.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-packedbytearray-method-rfind"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>rfind</strong>(value: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, from: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> = -1) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-packedbytearray-method-rfind"><span class="std std-ref">🔗</span></a></p>
+<p>Searches the array in reverse order. Optionally, a start search index can be passed. If negative, the start index is considered relative to the end of the array.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-packedbytearray-method-set"><abbr title="No return value.">void</abbr> <strong>set</strong>(index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, value: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <a class="reference internal" href="#class-packedbytearray-method-set"><span class="std std-ref">🔗</span></a></p>
+<p>Changes the byte at the given index.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-packedbytearray-method-size"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>size</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-packedbytearray-method-size"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the number of elements in the array.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-packedbytearray-method-slice"><a class="reference internal" href="#class-packedbytearray"><span class="std std-ref">PackedByteArray</span></a> <strong>slice</strong>(begin: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, end: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> = 2147483647) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-packedbytearray-method-slice"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the slice of the <strong>PackedByteArray</strong>, from <code class="docutils literal notranslate"><span class="pre">begin</span></code> (inclusive) to <code class="docutils literal notranslate"><span class="pre">end</span></code> (exclusive), as a new <strong>PackedByteArray</strong>.</p>
+<p>The absolute value of <code class="docutils literal notranslate"><span class="pre">begin</span></code> and <code class="docutils literal notranslate"><span class="pre">end</span></code> will be clamped to the array size, so the default value for <code class="docutils literal notranslate"><span class="pre">end</span></code> makes it slice to the size of the array by default (i.e. <code class="docutils literal notranslate"><span class="pre">arr.slice(1)</span></code> is a shorthand for <code class="docutils literal notranslate"><span class="pre">arr.slice(1,</span> <span class="pre">arr.size())</span></code>).</p>
+<p>If either <code class="docutils literal notranslate"><span class="pre">begin</span></code> or <code class="docutils literal notranslate"><span class="pre">end</span></code> are negative, they will be relative to the end of the array (i.e. <code class="docutils literal notranslate"><span class="pre">arr.slice(0,</span> <span class="pre">-2)</span></code> is a shorthand for <code class="docutils literal notranslate"><span class="pre">arr.slice(0,</span> <span class="pre">arr.size()</span> <span class="pre">-</span> <span class="pre">2)</span></code>).</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-packedbytearray-method-sort"><abbr title="No return value.">void</abbr> <strong>sort</strong>() <a class="reference internal" href="#class-packedbytearray-method-sort"><span class="std std-ref">🔗</span></a></p>
+<p>Sorts the elements of the array in ascending order.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-packedbytearray-method-to-color-array"><a class="reference internal" href="class_packedcolorarray.html#class-packedcolorarray"><span class="std std-ref">PackedColorArray</span></a> <strong>to_color_array</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-packedbytearray-method-to-color-array"><span class="std std-ref">🔗</span></a></p>
+<p>Returns a copy of the data converted to a <a class="reference internal" href="class_packedcolorarray.html#class-packedcolorarray"><span class="std std-ref">PackedColorArray</span></a>, where each block of 16 bytes has been converted to a <a class="reference internal" href="class_color.html#class-color"><span class="std std-ref">Color</span></a> variant.</p>
+<p><strong>Note:</strong> The size of the input array must be a multiple of 16 (size of four 32-bit float variables). The size of the new array will be <code class="docutils literal notranslate"><span class="pre">byte_array.size()</span> <span class="pre">/</span> <span class="pre">16</span></code>. If the original data can’t be converted to <a class="reference internal" href="class_color.html#class-color"><span class="std std-ref">Color</span></a> variants, the resulting data is undefined.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-packedbytearray-method-to-float32-array"><a class="reference internal" href="class_packedfloat32array.html#class-packedfloat32array"><span class="std std-ref">PackedFloat32Array</span></a> <strong>to_float32_array</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-packedbytearray-method-to-float32-array"><span class="std std-ref">🔗</span></a></p>
+<p>Returns a copy of the data converted to a <a class="reference internal" href="class_packedfloat32array.html#class-packedfloat32array"><span class="std std-ref">PackedFloat32Array</span></a>, where each block of 4 bytes has been converted to a 32-bit float (C++ <code class="docutils literal notranslate"><span class="pre">float</span></code>).</p>
+<p>The size of the input array must be a multiple of 4 (size of 32-bit float). The size of the new array will be <code class="docutils literal notranslate"><span class="pre">byte_array.size()</span> <span class="pre">/</span> <span class="pre">4</span></code>.</p>
+<p>If the original data can’t be converted to 32-bit floats, the resulting data is undefined.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-packedbytearray-method-to-float64-array"><a class="reference internal" href="class_packedfloat64array.html#class-packedfloat64array"><span class="std std-ref">PackedFloat64Array</span></a> <strong>to_float64_array</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-packedbytearray-method-to-float64-array"><span class="std std-ref">🔗</span></a></p>
+<p>Returns a copy of the data converted to a <a class="reference internal" href="class_packedfloat64array.html#class-packedfloat64array"><span class="std std-ref">PackedFloat64Array</span></a>, where each block of 8 bytes has been converted to a 64-bit float (C++ <code class="docutils literal notranslate"><span class="pre">double</span></code>, Godot <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>).</p>
+<p>The size of the input array must be a multiple of 8 (size of 64-bit double). The size of the new array will be <code class="docutils literal notranslate"><span class="pre">byte_array.size()</span> <span class="pre">/</span> <span class="pre">8</span></code>.</p>
+<p>If the original data can’t be converted to 64-bit floats, the resulting data is undefined.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-packedbytearray-method-to-int32-array"><a class="reference internal" href="class_packedint32array.html#class-packedint32array"><span class="std std-ref">PackedInt32Array</span></a> <strong>to_int32_array</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-packedbytearray-method-to-int32-array"><span class="std std-ref">🔗</span></a></p>
+<p>Returns a copy of the data converted to a <a class="reference internal" href="class_packedint32array.html#class-packedint32array"><span class="std std-ref">PackedInt32Array</span></a>, where each block of 4 bytes has been converted to a signed 32-bit integer (C++ <code class="docutils literal notranslate"><span class="pre">int32_t</span></code>).</p>
+<p>The size of the input array must be a multiple of 4 (size of 32-bit integer). The size of the new array will be <code class="docutils literal notranslate"><span class="pre">byte_array.size()</span> <span class="pre">/</span> <span class="pre">4</span></code>.</p>
+<p>If the original data can’t be converted to signed 32-bit integers, the resulting data is undefined.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-packedbytearray-method-to-int64-array"><a class="reference internal" href="class_packedint64array.html#class-packedint64array"><span class="std std-ref">PackedInt64Array</span></a> <strong>to_int64_array</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-packedbytearray-method-to-int64-array"><span class="std std-ref">🔗</span></a></p>
+<p>Returns a copy of the data converted to a <a class="reference internal" href="class_packedint64array.html#class-packedint64array"><span class="std std-ref">PackedInt64Array</span></a>, where each block of 8 bytes has been converted to a signed 64-bit integer (C++ <code class="docutils literal notranslate"><span class="pre">int64_t</span></code>, Godot <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>).</p>
+<p>The size of the input array must be a multiple of 8 (size of 64-bit integer). The size of the new array will be <code class="docutils literal notranslate"><span class="pre">byte_array.size()</span> <span class="pre">/</span> <span class="pre">8</span></code>.</p>
+<p>If the original data can’t be converted to signed 64-bit integers, the resulting data is undefined.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-packedbytearray-method-to-vector2-array"><a class="reference internal" href="class_packedvector2array.html#class-packedvector2array"><span class="std std-ref">PackedVector2Array</span></a> <strong>to_vector2_array</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-packedbytearray-method-to-vector2-array"><span class="std std-ref">🔗</span></a></p>
+<p>Returns a copy of the data converted to a <a class="reference internal" href="class_packedvector2array.html#class-packedvector2array"><span class="std std-ref">PackedVector2Array</span></a>, where each block of 8 bytes or 16 bytes (32-bit or 64-bit) has been converted to a <a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a> variant.</p>
+<p><strong>Note:</strong> The size of the input array must be a multiple of 8 or 16 (depending on the build settings, see <a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a> for more details). The size of the new array will be <code class="docutils literal notranslate"><span class="pre">byte_array.size()</span> <span class="pre">/</span> <span class="pre">(8</span> <span class="pre">or</span> <span class="pre">16)</span></code>. If the original data can’t be converted to <a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a> variants, the resulting data is undefined.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-packedbytearray-method-to-vector3-array"><a class="reference internal" href="class_packedvector3array.html#class-packedvector3array"><span class="std std-ref">PackedVector3Array</span></a> <strong>to_vector3_array</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-packedbytearray-method-to-vector3-array"><span class="std std-ref">🔗</span></a></p>
+<p>Returns a copy of the data converted to a <a class="reference internal" href="class_packedvector3array.html#class-packedvector3array"><span class="std std-ref">PackedVector3Array</span></a>, where each block of 12 or 24 bytes (32-bit or 64-bit) has been converted to a <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a> variant.</p>
+<p><strong>Note:</strong> The size of the input array must be a multiple of 12 or 24 (depending on the build settings, see <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a> for more details). The size of the new array will be <code class="docutils literal notranslate"><span class="pre">byte_array.size()</span> <span class="pre">/</span> <span class="pre">(12</span> <span class="pre">or</span> <span class="pre">24)</span></code>. If the original data can’t be converted to <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a> variants, the resulting data is undefined.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-packedbytearray-method-to-vector4-array"><a class="reference internal" href="class_packedvector4array.html#class-packedvector4array"><span class="std std-ref">PackedVector4Array</span></a> <strong>to_vector4_array</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-packedbytearray-method-to-vector4-array"><span class="std std-ref">🔗</span></a></p>
+<p>Returns a copy of the data converted to a <a class="reference internal" href="class_packedvector4array.html#class-packedvector4array"><span class="std std-ref">PackedVector4Array</span></a>, where each block of 16 or 32 bytes (32-bit or 64-bit) has been converted to a <a class="reference internal" href="class_vector4.html#class-vector4"><span class="std std-ref">Vector4</span></a> variant.</p>
+<p><strong>Note:</strong> The size of the input array must be a multiple of 16 or 32 (depending on the build settings, see <a class="reference internal" href="class_vector4.html#class-vector4"><span class="std std-ref">Vector4</span></a> for more details). The size of the new array will be <code class="docutils literal notranslate"><span class="pre">byte_array.size()</span> <span class="pre">/</span> <span class="pre">(16</span> <span class="pre">or</span> <span class="pre">32)</span></code>. If the original data can’t be converted to <a class="reference internal" href="class_vector4.html#class-vector4"><span class="std std-ref">Vector4</span></a> variants, the resulting data is undefined.</p>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="operator-descriptions">
+<h2>Operator Descriptions<a class="headerlink" href="#operator-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-operator" id="class-packedbytearray-operator-neq-packedbytearray"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>operator !=</strong>(right: <a class="reference internal" href="#class-packedbytearray"><span class="std std-ref">PackedByteArray</span></a>) <a class="reference internal" href="#class-packedbytearray-operator-neq-packedbytearray"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if contents of the arrays differ.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-operator" id="class-packedbytearray-operator-sum-packedbytearray"><a class="reference internal" href="#class-packedbytearray"><span class="std std-ref">PackedByteArray</span></a> <strong>operator +</strong>(right: <a class="reference internal" href="#class-packedbytearray"><span class="std std-ref">PackedByteArray</span></a>) <a class="reference internal" href="#class-packedbytearray-operator-sum-packedbytearray"><span class="std std-ref">🔗</span></a></p>
+<p>Returns a new <strong>PackedByteArray</strong> with contents of <code class="docutils literal notranslate"><span class="pre">right</span></code> added at the end of this array. For better performance, consider using <a class="reference internal" href="#class-packedbytearray-method-append-array"><span class="std std-ref">append_array()</span></a> instead.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-operator" id="class-packedbytearray-operator-eq-packedbytearray"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>operator ==</strong>(right: <a class="reference internal" href="#class-packedbytearray"><span class="std std-ref">PackedByteArray</span></a>) <a class="reference internal" href="#class-packedbytearray-operator-eq-packedbytearray"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if contents of both arrays are the same, i.e. they have all equal bytes at the corresponding indices.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-operator" id="class-packedbytearray-operator-idx-int"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>operator []</strong>(index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <a class="reference internal" href="#class-packedbytearray-operator-idx-int"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the byte at index <code class="docutils literal notranslate"><span class="pre">index</span></code>. Negative indices can be used to access the elements starting from the end. Using index out of array’s bounds will result in an error.</p>
+<p>Note that the byte is returned as a 64-bit <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, MUmarShahbaz.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

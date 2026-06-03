@@ -1,0 +1,367 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Callable &mdash; RPG Components 2D 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=d45e8c67"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            RPG Components 2D
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">Callable</a><ul>
+<li><a class="reference internal" href="#description">Description</a></li>
+<li><a class="reference internal" href="#constructors">Constructors</a></li>
+<li><a class="reference internal" href="#methods">Methods</a></li>
+<li><a class="reference internal" href="#operators">Operators</a></li>
+<li><a class="reference internal" href="#constructor-descriptions">Constructor Descriptions</a></li>
+<li><a class="reference internal" href="#method-descriptions">Method Descriptions</a></li>
+<li><a class="reference internal" href="#operator-descriptions">Operator Descriptions</a></li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">RPG Components 2D</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Callable</li>
+      <li class="wy-breadcrumbs-aside">
+              <!-- User defined GitHub URL -->
+              <a href="hide" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="callable">
+<span id="class-callable"></span><h1>Callable<a class="headerlink" href="#callable" title="Link to this heading"></a></h1>
+<p>A built-in type representing a method or a standalone function.</p>
+<section class="classref-introduction-group" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
+<p><strong>Callable</strong> is a built-in <a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a> type that represents a function. It can either be a method within an <a class="reference internal" href="class_object.html#class-object"><span class="std std-ref">Object</span></a> instance, or a custom callable used for different purposes (see <a class="reference internal" href="#class-callable-method-is-custom"><span class="std std-ref">is_custom()</span></a>). Like all <a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a> types, it can be stored in variables and passed to other functions. It is most commonly used for signal callbacks.</p>
+<p>In GDScript, it’s possible to create lambda functions within a method. Lambda functions are custom callables that are not associated with an <a class="reference internal" href="class_object.html#class-object"><span class="std std-ref">Object</span></a> instance. Optionally, lambda functions can also be named. The name will be displayed in the debugger, or when calling <a class="reference internal" href="#class-callable-method-get-method"><span class="std std-ref">get_method()</span></a>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">func</span> <span class="n">_init</span><span class="p">():</span>
+    <span class="n">var</span> <span class="n">my_lambda</span> <span class="o">=</span> <span class="n">func</span> <span class="p">(</span><span class="n">message</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
+
+    <span class="c1"># Prints &quot;Hello everyone!&quot;</span>
+    <span class="n">my_lambda</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="s2">&quot;Hello everyone!&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Prints &quot;Attack!&quot;, when the button_pressed signal is emitted.</span>
+    <span class="n">button_pressed</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">func</span><span class="p">():</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Attack!&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>In GDScript, you can access methods and global functions as <strong>Callable</strong>s:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tween</span><span class="o">.</span><span class="n">tween_callback</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">queue_free</span><span class="p">)</span>  <span class="c1"># Object methods.</span>
+<span class="n">tween</span><span class="o">.</span><span class="n">tween_callback</span><span class="p">(</span><span class="n">array</span><span class="o">.</span><span class="n">clear</span><span class="p">)</span>  <span class="c1"># Methods of built-in types.</span>
+<span class="n">tween</span><span class="o">.</span><span class="n">tween_callback</span><span class="p">(</span><span class="nb">print</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s2">&quot;Test&quot;</span><span class="p">))</span>  <span class="c1"># Global functions.</span>
+</pre></div>
+</div>
+<p><strong>Note:</strong> <a class="reference internal" href="class_dictionary.html#class-dictionary"><span class="std std-ref">Dictionary</span></a> does not support the above due to ambiguity with keys.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">dictionary</span> <span class="o">=</span> <span class="p">{</span> <span class="s2">&quot;hello&quot;</span><span class="p">:</span> <span class="s2">&quot;world&quot;</span> <span class="p">}</span>
+
+<span class="c1"># This will not work, `clear` is treated as a key.</span>
+<span class="n">tween</span><span class="o">.</span><span class="n">tween_callback</span><span class="p">(</span><span class="n">dictionary</span><span class="o">.</span><span class="n">clear</span><span class="p">)</span>
+
+<span class="c1"># This will work.</span>
+<span class="n">tween</span><span class="o">.</span><span class="n">tween_callback</span><span class="p">(</span><span class="n">Callable</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">dictionary</span><span class="p">,</span> <span class="s2">&quot;clear&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+<p><strong>Note:</strong> In a boolean context, a callable will evaluate to <code class="docutils literal notranslate"><span class="pre">false</span></code> if it’s null (see <a class="reference internal" href="#class-callable-method-is-null"><span class="std std-ref">is_null()</span></a>). Otherwise, a callable will always evaluate to <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>There are notable differences when using this API with C#. See <span class="xref std std-ref">doc_c_sharp_differences</span> for more information.</p>
+</div>
+</section>
+<section class="classref-reftable-group" id="constructors">
+<h2>Constructors<a class="headerlink" href="#constructors" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#class-callable"><span class="std std-ref">Callable</span></a></p></td>
+<td><p><a class="reference internal" href="#class-callable-constructor-callable"><span class="std std-ref">Callable</span></a>()</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#class-callable"><span class="std std-ref">Callable</span></a></p></td>
+<td><p><a class="reference internal" href="#class-callable-constructor-callable"><span class="std std-ref">Callable</span></a>(from: <a class="reference internal" href="#class-callable"><span class="std std-ref">Callable</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#class-callable"><span class="std std-ref">Callable</span></a></p></td>
+<td><p><a class="reference internal" href="#class-callable-constructor-callable"><span class="std std-ref">Callable</span></a>(object: <a class="reference internal" href="class_object.html#class-object"><span class="std std-ref">Object</span></a>, method: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>)</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section class="classref-reftable-group" id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#class-callable"><span class="std std-ref">Callable</span></a></p></td>
+<td><p><a class="reference internal" href="#class-callable-method-bind"><span class="std std-ref">bind</span></a>(…) <abbr title="This method accepts any number of arguments after the ones described here.">vararg</abbr> <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#class-callable"><span class="std std-ref">Callable</span></a></p></td>
+<td><p><a class="reference internal" href="#class-callable-method-bindv"><span class="std std-ref">bindv</span></a>(arguments: <a class="reference internal" href="class_array.html#class-array"><span class="std std-ref">Array</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a></p></td>
+<td><p><a class="reference internal" href="#class-callable-method-call"><span class="std std-ref">call</span></a>(…) <abbr title="This method accepts any number of arguments after the ones described here.">vararg</abbr> <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-callable-method-call-deferred"><span class="std std-ref">call_deferred</span></a>(…) <abbr title="This method accepts any number of arguments after the ones described here.">vararg</abbr> <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a></p></td>
+<td><p><a class="reference internal" href="#class-callable-method-callv"><span class="std std-ref">callv</span></a>(arguments: <a class="reference internal" href="class_array.html#class-array"><span class="std std-ref">Array</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#class-callable"><span class="std std-ref">Callable</span></a></p></td>
+<td><p><a class="reference internal" href="#class-callable-method-create"><span class="std std-ref">create</span></a>(variant: <a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a>, method: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>) <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-callable-method-get-argument-count"><span class="std std-ref">get_argument_count</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_array.html#class-array"><span class="std std-ref">Array</span></a></p></td>
+<td><p><a class="reference internal" href="#class-callable-method-get-bound-arguments"><span class="std std-ref">get_bound_arguments</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-callable-method-get-bound-arguments-count"><span class="std std-ref">get_bound_arguments_count</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a></p></td>
+<td><p><a class="reference internal" href="#class-callable-method-get-method"><span class="std std-ref">get_method</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_object.html#class-object"><span class="std std-ref">Object</span></a></p></td>
+<td><p><a class="reference internal" href="#class-callable-method-get-object"><span class="std std-ref">get_object</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-callable-method-get-object-id"><span class="std std-ref">get_object_id</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-callable-method-get-unbound-arguments-count"><span class="std std-ref">get_unbound_arguments_count</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-callable-method-hash"><span class="std std-ref">hash</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-callable-method-is-custom"><span class="std std-ref">is_custom</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-callable-method-is-null"><span class="std std-ref">is_null</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-callable-method-is-standard"><span class="std std-ref">is_standard</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-callable-method-is-valid"><span class="std std-ref">is_valid</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-callable-method-rpc"><span class="std std-ref">rpc</span></a>(…) <abbr title="This method accepts any number of arguments after the ones described here.">vararg</abbr> <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-callable-method-rpc-id"><span class="std std-ref">rpc_id</span></a>(peer_id: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, …) <abbr title="This method accepts any number of arguments after the ones described here.">vararg</abbr> <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#class-callable"><span class="std std-ref">Callable</span></a></p></td>
+<td><p><a class="reference internal" href="#class-callable-method-unbind"><span class="std std-ref">unbind</span></a>(argcount: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section class="classref-reftable-group" id="operators">
+<h2>Operators<a class="headerlink" href="#operators" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-callable-operator-neq-callable"><span class="std std-ref">operator !=</span></a>(right: <a class="reference internal" href="#class-callable"><span class="std std-ref">Callable</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-callable-operator-eq-callable"><span class="std std-ref">operator ==</span></a>(right: <a class="reference internal" href="#class-callable"><span class="std std-ref">Callable</span></a>)</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="constructor-descriptions">
+<h2>Constructor Descriptions<a class="headerlink" href="#constructor-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-constructor" id="class-callable-constructor-callable"><a class="reference internal" href="#class-callable"><span class="std std-ref">Callable</span></a> <strong>Callable</strong>() <a class="reference internal" href="#class-callable-constructor-callable"><span class="std std-ref">🔗</span></a></p>
+<p>Constructs an empty <strong>Callable</strong>, with no object nor method bound.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-constructor"><a class="reference internal" href="#class-callable"><span class="std std-ref">Callable</span></a> <strong>Callable</strong>(from: <a class="reference internal" href="#class-callable"><span class="std std-ref">Callable</span></a>)</p>
+<p>Constructs a <strong>Callable</strong> as a copy of the given <strong>Callable</strong>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-constructor"><a class="reference internal" href="#class-callable"><span class="std std-ref">Callable</span></a> <strong>Callable</strong>(object: <a class="reference internal" href="class_object.html#class-object"><span class="std std-ref">Object</span></a>, method: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>)</p>
+<p>Creates a new <strong>Callable</strong> for the method named <code class="docutils literal notranslate"><span class="pre">method</span></code> in the specified <code class="docutils literal notranslate"><span class="pre">object</span></code>.</p>
+<p><strong>Note:</strong> For methods of built-in <a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a> types, use <a class="reference internal" href="#class-callable-method-create"><span class="std std-ref">create()</span></a> instead.</p>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="method-descriptions">
+<h2>Method Descriptions<a class="headerlink" href="#method-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-method" id="class-callable-method-bind"><a class="reference internal" href="#class-callable"><span class="std std-ref">Callable</span></a> <strong>bind</strong>(…) <abbr title="This method accepts any number of arguments after the ones described here.">vararg</abbr> <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-callable-method-bind"><span class="std std-ref">🔗</span></a></p>
+<p>Returns a copy of this <strong>Callable</strong> with one or more arguments bound. When called, the bound arguments are passed <em>after</em> the arguments supplied by <a class="reference internal" href="#class-callable-method-call"><span class="std std-ref">call()</span></a>. See also <a class="reference internal" href="#class-callable-method-unbind"><span class="std std-ref">unbind()</span></a>.</p>
+<p><strong>Note:</strong> When this method is chained with other similar methods, the order in which the argument list is modified is read from right to left.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-callable-method-bindv"><a class="reference internal" href="#class-callable"><span class="std std-ref">Callable</span></a> <strong>bindv</strong>(arguments: <a class="reference internal" href="class_array.html#class-array"><span class="std std-ref">Array</span></a>) <a class="reference internal" href="#class-callable-method-bindv"><span class="std std-ref">🔗</span></a></p>
+<p>Returns a copy of this <strong>Callable</strong> with one or more arguments bound, reading them from an array. When called, the bound arguments are passed <em>after</em> the arguments supplied by <a class="reference internal" href="#class-callable-method-call"><span class="std std-ref">call()</span></a>. See also <a class="reference internal" href="#class-callable-method-unbind"><span class="std std-ref">unbind()</span></a>.</p>
+<p><strong>Note:</strong> When this method is chained with other similar methods, the order in which the argument list is modified is read from right to left.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-callable-method-call"><a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a> <strong>call</strong>(…) <abbr title="This method accepts any number of arguments after the ones described here.">vararg</abbr> <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-callable-method-call"><span class="std std-ref">🔗</span></a></p>
+<p>Calls the method represented by this <strong>Callable</strong>. Arguments can be passed and should match the method’s signature.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-callable-method-call-deferred"><abbr title="No return value.">void</abbr> <strong>call_deferred</strong>(…) <abbr title="This method accepts any number of arguments after the ones described here.">vararg</abbr> <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-callable-method-call-deferred"><span class="std std-ref">🔗</span></a></p>
+<p>Calls the method represented by this <strong>Callable</strong> in deferred mode, i.e. at the end of the current frame. Arguments can be passed and should match the method’s signature.</p>
+<p><strong>Note:</strong> Deferred calls are processed at idle time. Idle time happens mainly at the end of process and physics frames. In it, deferred calls will be run until there are none left, which means you can defer calls from other deferred calls and they’ll still be run in the current idle time cycle. This means you should not call a method deferred from itself (or from a method called by it), as this causes infinite recursion the same way as if you had called the method directly.</p>
+<p>See also <a class="reference internal" href="class_object.html#class-object-method-call-deferred"><span class="std std-ref">Object.call_deferred()</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-callable-method-callv"><a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a> <strong>callv</strong>(arguments: <a class="reference internal" href="class_array.html#class-array"><span class="std std-ref">Array</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-callable-method-callv"><span class="std std-ref">🔗</span></a></p>
+<p>Calls the method represented by this <strong>Callable</strong>. Unlike <a class="reference internal" href="#class-callable-method-call"><span class="std std-ref">call()</span></a>, this method expects all arguments to be contained inside the <code class="docutils literal notranslate"><span class="pre">arguments</span></code> <a class="reference internal" href="class_array.html#class-array"><span class="std std-ref">Array</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-callable-method-create"><a class="reference internal" href="#class-callable"><span class="std std-ref">Callable</span></a> <strong>create</strong>(variant: <a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a>, method: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>) <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr> <a class="reference internal" href="#class-callable-method-create"><span class="std std-ref">🔗</span></a></p>
+<p>Creates a new <strong>Callable</strong> for the method named <code class="docutils literal notranslate"><span class="pre">method</span></code> in the specified <code class="docutils literal notranslate"><span class="pre">variant</span></code>. To represent a method of a built-in <a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a> type, a custom callable is used (see <a class="reference internal" href="#class-callable-method-is-custom"><span class="std std-ref">is_custom()</span></a>). If <code class="docutils literal notranslate"><span class="pre">variant</span></code> is <a class="reference internal" href="class_object.html#class-object"><span class="std std-ref">Object</span></a>, then a standard callable will be created instead.</p>
+<p><strong>Note:</strong> This method is always necessary for the <a class="reference internal" href="class_dictionary.html#class-dictionary"><span class="std std-ref">Dictionary</span></a> type, as property syntax is used to access its entries. You may also use this method when <code class="docutils literal notranslate"><span class="pre">variant</span></code>’s type is not known in advance (for polymorphism).</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-callable-method-get-argument-count"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>get_argument_count</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-callable-method-get-argument-count"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the total number of arguments this <strong>Callable</strong> should take, including optional arguments. This means that any arguments bound with <a class="reference internal" href="#class-callable-method-bind"><span class="std std-ref">bind()</span></a> are <em>subtracted</em> from the result, and any arguments unbound with <a class="reference internal" href="#class-callable-method-unbind"><span class="std std-ref">unbind()</span></a> are <em>added</em> to the result.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-callable-method-get-bound-arguments"><a class="reference internal" href="class_array.html#class-array"><span class="std std-ref">Array</span></a> <strong>get_bound_arguments</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-callable-method-get-bound-arguments"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the array of arguments bound via successive <a class="reference internal" href="#class-callable-method-bind"><span class="std std-ref">bind()</span></a> or <a class="reference internal" href="#class-callable-method-unbind"><span class="std std-ref">unbind()</span></a> calls. These arguments will be added <em>after</em> the arguments passed to the call, from which <a class="reference internal" href="#class-callable-method-get-unbound-arguments-count"><span class="std std-ref">get_unbound_arguments_count()</span></a> arguments on the right have been previously excluded.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">func</span> <span class="n">get_effective_arguments</span><span class="p">(</span><span class="nb">callable</span><span class="p">,</span> <span class="n">call_args</span><span class="p">):</span>
+    <span class="k">assert</span><span class="p">(</span><span class="n">call_args</span><span class="o">.</span><span class="n">size</span><span class="p">()</span> <span class="o">-</span> <span class="nb">callable</span><span class="o">.</span><span class="n">get_unbound_arguments_count</span><span class="p">()</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">var</span> <span class="n">result</span> <span class="o">=</span> <span class="n">call_args</span><span class="o">.</span><span class="n">slice</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">call_args</span><span class="o">.</span><span class="n">size</span><span class="p">()</span> <span class="o">-</span> <span class="nb">callable</span><span class="o">.</span><span class="n">get_unbound_arguments_count</span><span class="p">())</span>
+    <span class="n">result</span><span class="o">.</span><span class="n">append_array</span><span class="p">(</span><span class="nb">callable</span><span class="o">.</span><span class="n">get_bound_arguments</span><span class="p">())</span>
+    <span class="k">return</span> <span class="n">result</span>
+</pre></div>
+</div>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-callable-method-get-bound-arguments-count"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>get_bound_arguments_count</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-callable-method-get-bound-arguments-count"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the total amount of arguments bound via successive <a class="reference internal" href="#class-callable-method-bind"><span class="std std-ref">bind()</span></a> or <a class="reference internal" href="#class-callable-method-unbind"><span class="std std-ref">unbind()</span></a> calls. This is the same as the size of the array returned by <a class="reference internal" href="#class-callable-method-get-bound-arguments"><span class="std std-ref">get_bound_arguments()</span></a>. See <a class="reference internal" href="#class-callable-method-get-bound-arguments"><span class="std std-ref">get_bound_arguments()</span></a> for details.</p>
+<p><strong>Note:</strong> The <a class="reference internal" href="#class-callable-method-get-bound-arguments-count"><span class="std std-ref">get_bound_arguments_count()</span></a> and <a class="reference internal" href="#class-callable-method-get-unbound-arguments-count"><span class="std std-ref">get_unbound_arguments_count()</span></a> methods can both return positive values.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-callable-method-get-method"><a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a> <strong>get_method</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-callable-method-get-method"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the name of the method represented by this <strong>Callable</strong>. If the callable is a GDScript lambda function, returns the function’s name or <code class="docutils literal notranslate"><span class="pre">&quot;&lt;anonymous</span> <span class="pre">lambda&gt;&quot;</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-callable-method-get-object"><a class="reference internal" href="class_object.html#class-object"><span class="std std-ref">Object</span></a> <strong>get_object</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-callable-method-get-object"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the object on which this <strong>Callable</strong> is called.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-callable-method-get-object-id"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>get_object_id</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-callable-method-get-object-id"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the ID of this <strong>Callable</strong>’s object (see <a class="reference internal" href="class_object.html#class-object-method-get-instance-id"><span class="std std-ref">Object.get_instance_id()</span></a>).</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-callable-method-get-unbound-arguments-count"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>get_unbound_arguments_count</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-callable-method-get-unbound-arguments-count"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the total amount of arguments unbound via successive <a class="reference internal" href="#class-callable-method-bind"><span class="std std-ref">bind()</span></a> or <a class="reference internal" href="#class-callable-method-unbind"><span class="std std-ref">unbind()</span></a> calls. See <a class="reference internal" href="#class-callable-method-get-bound-arguments"><span class="std std-ref">get_bound_arguments()</span></a> for details.</p>
+<p><strong>Note:</strong> The <a class="reference internal" href="#class-callable-method-get-bound-arguments-count"><span class="std std-ref">get_bound_arguments_count()</span></a> and <a class="reference internal" href="#class-callable-method-get-unbound-arguments-count"><span class="std std-ref">get_unbound_arguments_count()</span></a> methods can both return positive values.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-callable-method-hash"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>hash</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-callable-method-hash"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the 32-bit hash value of this <strong>Callable</strong>’s object.</p>
+<p><strong>Note:</strong> <strong>Callable</strong>s with equal content will always produce identical hash values. However, the reverse is not true. Returning identical hash values does <em>not</em> imply the callables are equal, because different callables can have identical hash values due to hash collisions. The engine uses a 32-bit hash algorithm for <a class="reference internal" href="#class-callable-method-hash"><span class="std std-ref">hash()</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-callable-method-is-custom"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_custom</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-callable-method-is-custom"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if this <strong>Callable</strong> is a custom callable. Custom callables are used:</p>
+<ul class="simple">
+<li><p>for binding/unbinding arguments (see <a class="reference internal" href="#class-callable-method-bind"><span class="std std-ref">bind()</span></a> and <a class="reference internal" href="#class-callable-method-unbind"><span class="std std-ref">unbind()</span></a>);</p></li>
+<li><p>for representing methods of built-in <a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a> types (see <a class="reference internal" href="#class-callable-method-create"><span class="std std-ref">create()</span></a>);</p></li>
+<li><p>for representing global, lambda, and RPC functions in GDScript;</p></li>
+<li><p>for other purposes in the core, GDExtension, and C#.</p></li>
+</ul>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-callable-method-is-null"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_null</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-callable-method-is-null"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if this <strong>Callable</strong> has no target to call the method on. Equivalent to <code class="docutils literal notranslate"><span class="pre">callable</span> <span class="pre">==</span> <span class="pre">Callable()</span></code>.</p>
+<p><strong>Note:</strong> This is <em>not</em> the same as <code class="docutils literal notranslate"><span class="pre">not</span> <span class="pre">is_valid()</span></code> and using <code class="docutils literal notranslate"><span class="pre">not</span> <span class="pre">is_null()</span></code> will <em>not</em> guarantee that this callable can be called. Use <a class="reference internal" href="#class-callable-method-is-valid"><span class="std std-ref">is_valid()</span></a> instead.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-callable-method-is-standard"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_standard</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-callable-method-is-standard"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if this <strong>Callable</strong> is a standard callable. This method is the opposite of <a class="reference internal" href="#class-callable-method-is-custom"><span class="std std-ref">is_custom()</span></a>. Returns <code class="docutils literal notranslate"><span class="pre">false</span></code> if this callable is a lambda function.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-callable-method-is-valid"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_valid</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-callable-method-is-valid"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if the callable’s object exists and has a valid method name assigned, or is a custom callable.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-callable-method-rpc"><abbr title="No return value.">void</abbr> <strong>rpc</strong>(…) <abbr title="This method accepts any number of arguments after the ones described here.">vararg</abbr> <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-callable-method-rpc"><span class="std std-ref">🔗</span></a></p>
+<p>Perform an RPC (Remote Procedure Call) on all connected peers. This is used for multiplayer and is normally not available, unless the function being called has been marked as <em>RPC</em> (using <span class="xref std std-ref">&#64;GDScript.&#64;rpc</span> or <a class="reference internal" href="class_node.html#class-node-method-rpc-config"><span class="std std-ref">Node.rpc_config()</span></a>). Calling this method on unsupported functions will result in an error. See <a class="reference internal" href="class_node.html#class-node-method-rpc"><span class="std std-ref">Node.rpc()</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-callable-method-rpc-id"><abbr title="No return value.">void</abbr> <strong>rpc_id</strong>(peer_id: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, …) <abbr title="This method accepts any number of arguments after the ones described here.">vararg</abbr> <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-callable-method-rpc-id"><span class="std std-ref">🔗</span></a></p>
+<p>Perform an RPC (Remote Procedure Call) on a specific peer ID (see multiplayer documentation for reference). This is used for multiplayer and is normally not available unless the function being called has been marked as <em>RPC</em> (using <span class="xref std std-ref">&#64;GDScript.&#64;rpc</span> or <a class="reference internal" href="class_node.html#class-node-method-rpc-config"><span class="std std-ref">Node.rpc_config()</span></a>). Calling this method on unsupported functions will result in an error. See <a class="reference internal" href="class_node.html#class-node-method-rpc-id"><span class="std std-ref">Node.rpc_id()</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-callable-method-unbind"><a class="reference internal" href="#class-callable"><span class="std std-ref">Callable</span></a> <strong>unbind</strong>(argcount: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-callable-method-unbind"><span class="std std-ref">🔗</span></a></p>
+<p>Returns a copy of this <strong>Callable</strong> with a number of arguments unbound. In other words, when the new callable is called the last few arguments supplied by the user are ignored, according to <code class="docutils literal notranslate"><span class="pre">argcount</span></code>. The remaining arguments are passed to the callable. This allows to use the original callable in a context that attempts to pass more arguments than this callable can handle, e.g. a signal with a fixed number of arguments. See also <a class="reference internal" href="#class-callable-method-bind"><span class="std std-ref">bind()</span></a>.</p>
+<p><strong>Note:</strong> When this method is chained with other similar methods, the order in which the argument list is modified is read from right to left.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">func</span> <span class="n">_ready</span><span class="p">():</span>
+    <span class="n">foo</span><span class="o">.</span><span class="n">unbind</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="c1"># Calls foo(1).</span>
+    <span class="n">foo</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span><span class="o">.</span><span class="n">unbind</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="c1"># Calls foo(1, 3, 4), note that it does not change the arguments from bind.</span>
+</pre></div>
+</div>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="operator-descriptions">
+<h2>Operator Descriptions<a class="headerlink" href="#operator-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-operator" id="class-callable-operator-neq-callable"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>operator !=</strong>(right: <a class="reference internal" href="#class-callable"><span class="std std-ref">Callable</span></a>) <a class="reference internal" href="#class-callable-operator-neq-callable"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if both <strong>Callable</strong>s invoke different targets.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-operator" id="class-callable-operator-eq-callable"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>operator ==</strong>(right: <a class="reference internal" href="#class-callable"><span class="std std-ref">Callable</span></a>) <a class="reference internal" href="#class-callable-operator-eq-callable"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if both <strong>Callable</strong>s invoke the same custom target.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, MUmarShahbaz.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

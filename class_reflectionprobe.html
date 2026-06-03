@@ -1,0 +1,326 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta content="environment, envmap" name="keywords" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ReflectionProbe &mdash; RPG Components 2D 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=d45e8c67"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            RPG Components 2D
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">ReflectionProbe</a><ul>
+<li><a class="reference internal" href="#description">Description</a></li>
+<li><a class="reference internal" href="#tutorials">Tutorials</a></li>
+<li><a class="reference internal" href="#properties">Properties</a></li>
+<li><a class="reference internal" href="#enumerations">Enumerations</a></li>
+<li><a class="reference internal" href="#property-descriptions">Property Descriptions</a></li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">RPG Components 2D</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">ReflectionProbe</li>
+      <li class="wy-breadcrumbs-aside">
+              <!-- User defined GitHub URL -->
+              <a href="hide" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="reflectionprobe">
+<span id="class-reflectionprobe"></span><h1>ReflectionProbe<a class="headerlink" href="#reflectionprobe" title="Link to this heading"></a></h1>
+<p><strong>Inherits:</strong> <a class="reference internal" href="class_visualinstance3d.html#class-visualinstance3d"><span class="std std-ref">VisualInstance3D</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_node3d.html#class-node3d"><span class="std std-ref">Node3D</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_node.html#class-node"><span class="std std-ref">Node</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_object.html#class-object"><span class="std std-ref">Object</span></a></p>
+<p>Captures its surroundings to create fast, accurate reflections from a given point.</p>
+<section class="classref-introduction-group" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
+<p>Captures its surroundings as a cubemap, and stores versions of it with increasing levels of blur to simulate different material roughnesses.</p>
+<p>The <strong>ReflectionProbe</strong> is used to create high-quality reflections at a low performance cost (when <a class="reference internal" href="#class-reflectionprobe-property-update-mode"><span class="std std-ref">update_mode</span></a> is <a class="reference internal" href="#class-reflectionprobe-constant-update-once"><span class="std std-ref">UPDATE_ONCE</span></a>). <strong>ReflectionProbe</strong>s can be blended together and with the rest of the scene smoothly. <strong>ReflectionProbe</strong>s can also be combined with <a class="reference internal" href="class_voxelgi.html#class-voxelgi"><span class="std std-ref">VoxelGI</span></a>, SDFGI (<a class="reference internal" href="class_environment.html#class-environment-property-sdfgi-enabled"><span class="std std-ref">Environment.sdfgi_enabled</span></a>) and screen-space reflections (<a class="reference internal" href="class_environment.html#class-environment-property-ssr-enabled"><span class="std std-ref">Environment.ssr_enabled</span></a>) to get more accurate reflections in specific areas. <strong>ReflectionProbe</strong>s render all objects within their <a class="reference internal" href="#class-reflectionprobe-property-cull-mask"><span class="std std-ref">cull_mask</span></a>, so updating them can be quite expensive. It is best to update them once with the important static objects and then leave them as-is.</p>
+<p><strong>Note:</strong> Unlike <a class="reference internal" href="class_voxelgi.html#class-voxelgi"><span class="std std-ref">VoxelGI</span></a> and SDFGI, <strong>ReflectionProbe</strong>s only source their environment from a <a class="reference internal" href="class_worldenvironment.html#class-worldenvironment"><span class="std std-ref">WorldEnvironment</span></a> node. If you specify an <a class="reference internal" href="class_environment.html#class-environment"><span class="std std-ref">Environment</span></a> resource within a <a class="reference internal" href="class_camera3d.html#class-camera3d"><span class="std std-ref">Camera3D</span></a> node, it will be ignored by the <strong>ReflectionProbe</strong>. This can lead to incorrect lighting within the <strong>ReflectionProbe</strong>.</p>
+<p><strong>Note:</strong> When using the Mobile rendering method, only <code class="docutils literal notranslate"><span class="pre">8</span></code> reflection probes can be displayed on each mesh resource, while the Compatibility rendering method only supports up to <code class="docutils literal notranslate"><span class="pre">2</span></code> reflection probes on each mesh. Attempting to display more than <code class="docutils literal notranslate"><span class="pre">8</span></code> reflection probes on a single mesh resource using the Mobile renderer will result in reflection probes flickering in and out as the camera moves, while the Compatibility renderer will not render any additional probes if more than <code class="docutils literal notranslate"><span class="pre">2</span></code> reflection probes are being used.</p>
+<p><strong>Note:</strong> When using the Mobile rendering method, reflection probes will only correctly affect meshes whose visibility AABB intersects with the reflection probe’s AABB. If using a shader to deform the mesh in a way that makes it go outside its AABB, <a class="reference internal" href="class_geometryinstance3d.html#class-geometryinstance3d-property-extra-cull-margin"><span class="std std-ref">GeometryInstance3D.extra_cull_margin</span></a> must be increased on the mesh. Otherwise, the reflection probe may not be visible on the mesh.</p>
+</section>
+<section class="classref-introduction-group" id="tutorials">
+<h2>Tutorials<a class="headerlink" href="#tutorials" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><span class="xref std std-doc">Reflection probes</span></p></li>
+</ul>
+</section>
+<section class="classref-reftable-group" id="properties">
+<h2>Properties<a class="headerlink" href="#properties" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_color.html#class-color"><span class="std std-ref">Color</span></a></p></td>
+<td><p><a class="reference internal" href="#class-reflectionprobe-property-ambient-color"><span class="std std-ref">ambient_color</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Color(0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">1)</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-reflectionprobe-property-ambient-color-energy"><span class="std std-ref">ambient_color_energy</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">1.0</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#enum-reflectionprobe-ambientmode"><span class="std std-ref">AmbientMode</span></a></p></td>
+<td><p><a class="reference internal" href="#class-reflectionprobe-property-ambient-mode"><span class="std std-ref">ambient_mode</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">1</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-reflectionprobe-property-blend-distance"><span class="std std-ref">blend_distance</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">1.0</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-reflectionprobe-property-box-projection"><span class="std std-ref">box_projection</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-reflectionprobe-property-cull-mask"><span class="std std-ref">cull_mask</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">1048575</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-reflectionprobe-property-enable-shadows"><span class="std std-ref">enable_shadows</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-reflectionprobe-property-intensity"><span class="std std-ref">intensity</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">1.0</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-reflectionprobe-property-interior"><span class="std std-ref">interior</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-reflectionprobe-property-max-distance"><span class="std std-ref">max_distance</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0.0</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-reflectionprobe-property-mesh-lod-threshold"><span class="std std-ref">mesh_lod_threshold</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">1.0</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a></p></td>
+<td><p><a class="reference internal" href="#class-reflectionprobe-property-origin-offset"><span class="std std-ref">origin_offset</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Vector3(0,</span> <span class="pre">0,</span> <span class="pre">0)</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-reflectionprobe-property-reflection-mask"><span class="std std-ref">reflection_mask</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">1048575</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a></p></td>
+<td><p><a class="reference internal" href="#class-reflectionprobe-property-size"><span class="std std-ref">size</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Vector3(20,</span> <span class="pre">20,</span> <span class="pre">20)</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#enum-reflectionprobe-updatemode"><span class="std std-ref">UpdateMode</span></a></p></td>
+<td><p><a class="reference internal" href="#class-reflectionprobe-property-update-mode"><span class="std std-ref">update_mode</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="enumerations">
+<h2>Enumerations<a class="headerlink" href="#enumerations" title="Link to this heading"></a></h2>
+<p class="classref-enumeration" id="enum-reflectionprobe-updatemode">enum <strong>UpdateMode</strong>: <a class="reference internal" href="#enum-reflectionprobe-updatemode"><span class="std std-ref">🔗</span></a></p>
+<p class="classref-enumeration-constant" id="class-reflectionprobe-constant-update-once"><a class="reference internal" href="#enum-reflectionprobe-updatemode"><span class="std std-ref">UpdateMode</span></a> <strong>UPDATE_ONCE</strong> = <code class="docutils literal notranslate"><span class="pre">0</span></code></p>
+<p>Update the probe once on the next frame (recommended for most objects). The corresponding radiance map will be generated over the following six frames. This takes more time to update than <a class="reference internal" href="#class-reflectionprobe-constant-update-always"><span class="std std-ref">UPDATE_ALWAYS</span></a>, but it has a lower performance cost and can result in higher-quality reflections. The ReflectionProbe is updated when its transform changes, but not when nearby geometry changes. You can force a <strong>ReflectionProbe</strong> update by moving the <strong>ReflectionProbe</strong> slightly in any direction.</p>
+<p class="classref-enumeration-constant" id="class-reflectionprobe-constant-update-always"><a class="reference internal" href="#enum-reflectionprobe-updatemode"><span class="std std-ref">UpdateMode</span></a> <strong>UPDATE_ALWAYS</strong> = <code class="docutils literal notranslate"><span class="pre">1</span></code></p>
+<p>Update the probe every frame. This provides better results for fast-moving dynamic objects (such as cars). However, it has a significant performance cost. Due to the cost, it’s recommended to only use one ReflectionProbe with <a class="reference internal" href="#class-reflectionprobe-constant-update-always"><span class="std std-ref">UPDATE_ALWAYS</span></a> at most per scene. For all other use cases, use <a class="reference internal" href="#class-reflectionprobe-constant-update-once"><span class="std std-ref">UPDATE_ONCE</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-enumeration" id="enum-reflectionprobe-ambientmode">enum <strong>AmbientMode</strong>: <a class="reference internal" href="#enum-reflectionprobe-ambientmode"><span class="std std-ref">🔗</span></a></p>
+<p class="classref-enumeration-constant" id="class-reflectionprobe-constant-ambient-disabled"><a class="reference internal" href="#enum-reflectionprobe-ambientmode"><span class="std std-ref">AmbientMode</span></a> <strong>AMBIENT_DISABLED</strong> = <code class="docutils literal notranslate"><span class="pre">0</span></code></p>
+<p>Do not apply any ambient lighting inside the <strong>ReflectionProbe</strong>’s box defined by its <a class="reference internal" href="#class-reflectionprobe-property-size"><span class="std std-ref">size</span></a>.</p>
+<p class="classref-enumeration-constant" id="class-reflectionprobe-constant-ambient-environment"><a class="reference internal" href="#enum-reflectionprobe-ambientmode"><span class="std std-ref">AmbientMode</span></a> <strong>AMBIENT_ENVIRONMENT</strong> = <code class="docutils literal notranslate"><span class="pre">1</span></code></p>
+<p>Apply automatically-sourced environment lighting inside the <strong>ReflectionProbe</strong>’s box defined by its <a class="reference internal" href="#class-reflectionprobe-property-size"><span class="std std-ref">size</span></a>.</p>
+<p class="classref-enumeration-constant" id="class-reflectionprobe-constant-ambient-color"><a class="reference internal" href="#enum-reflectionprobe-ambientmode"><span class="std std-ref">AmbientMode</span></a> <strong>AMBIENT_COLOR</strong> = <code class="docutils literal notranslate"><span class="pre">2</span></code></p>
+<p>Apply custom ambient lighting inside the <strong>ReflectionProbe</strong>’s box defined by its <a class="reference internal" href="#class-reflectionprobe-property-size"><span class="std std-ref">size</span></a>. See <a class="reference internal" href="#class-reflectionprobe-property-ambient-color"><span class="std std-ref">ambient_color</span></a> and <a class="reference internal" href="#class-reflectionprobe-property-ambient-color-energy"><span class="std std-ref">ambient_color_energy</span></a>.</p>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="property-descriptions">
+<h2>Property Descriptions<a class="headerlink" href="#property-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-property" id="class-reflectionprobe-property-ambient-color"><a class="reference internal" href="class_color.html#class-color"><span class="std std-ref">Color</span></a> <strong>ambient_color</strong> = <code class="docutils literal notranslate"><span class="pre">Color(0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">1)</span></code> <a class="reference internal" href="#class-reflectionprobe-property-ambient-color"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_ambient_color</strong>(value: <a class="reference internal" href="class_color.html#class-color"><span class="std std-ref">Color</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_color.html#class-color"><span class="std std-ref">Color</span></a> <strong>get_ambient_color</strong>()</p></li>
+</ul>
+<p>The custom ambient color to use within the <strong>ReflectionProbe</strong>’s box defined by its <a class="reference internal" href="#class-reflectionprobe-property-size"><span class="std std-ref">size</span></a>. Only effective if <a class="reference internal" href="#class-reflectionprobe-property-ambient-mode"><span class="std std-ref">ambient_mode</span></a> is <a class="reference internal" href="#class-reflectionprobe-constant-ambient-color"><span class="std std-ref">AMBIENT_COLOR</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-reflectionprobe-property-ambient-color-energy"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>ambient_color_energy</strong> = <code class="docutils literal notranslate"><span class="pre">1.0</span></code> <a class="reference internal" href="#class-reflectionprobe-property-ambient-color-energy"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_ambient_color_energy</strong>(value: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>get_ambient_color_energy</strong>()</p></li>
+</ul>
+<p>The custom ambient color energy to use within the <strong>ReflectionProbe</strong>’s box defined by its <a class="reference internal" href="#class-reflectionprobe-property-size"><span class="std std-ref">size</span></a>. Only effective if <a class="reference internal" href="#class-reflectionprobe-property-ambient-mode"><span class="std std-ref">ambient_mode</span></a> is <a class="reference internal" href="#class-reflectionprobe-constant-ambient-color"><span class="std std-ref">AMBIENT_COLOR</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-reflectionprobe-property-ambient-mode"><a class="reference internal" href="#enum-reflectionprobe-ambientmode"><span class="std std-ref">AmbientMode</span></a> <strong>ambient_mode</strong> = <code class="docutils literal notranslate"><span class="pre">1</span></code> <a class="reference internal" href="#class-reflectionprobe-property-ambient-mode"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_ambient_mode</strong>(value: <a class="reference internal" href="#enum-reflectionprobe-ambientmode"><span class="std std-ref">AmbientMode</span></a>)</p></li>
+<li><p><a class="reference internal" href="#enum-reflectionprobe-ambientmode"><span class="std std-ref">AmbientMode</span></a> <strong>get_ambient_mode</strong>()</p></li>
+</ul>
+<p>The ambient color to use within the <strong>ReflectionProbe</strong>’s box defined by its <a class="reference internal" href="#class-reflectionprobe-property-size"><span class="std std-ref">size</span></a>. The ambient color will smoothly blend with other <strong>ReflectionProbe</strong>s and the rest of the scene (outside the <strong>ReflectionProbe</strong>’s box defined by its <a class="reference internal" href="#class-reflectionprobe-property-size"><span class="std std-ref">size</span></a>).</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-reflectionprobe-property-blend-distance"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>blend_distance</strong> = <code class="docutils literal notranslate"><span class="pre">1.0</span></code> <a class="reference internal" href="#class-reflectionprobe-property-blend-distance"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_blend_distance</strong>(value: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>get_blend_distance</strong>()</p></li>
+</ul>
+<p>Defines the distance in meters over which a probe blends into the scene.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-reflectionprobe-property-box-projection"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>box_projection</strong> = <code class="docutils literal notranslate"><span class="pre">false</span></code> <a class="reference internal" href="#class-reflectionprobe-property-box-projection"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_enable_box_projection</strong>(value: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_box_projection_enabled</strong>()</p></li>
+</ul>
+<p>If <code class="docutils literal notranslate"><span class="pre">true</span></code>, enables box projection. This makes reflections look more correct in rectangle-shaped rooms by offsetting the reflection center depending on the camera’s location.</p>
+<p><strong>Note:</strong> To better fit rectangle-shaped rooms that are not aligned to the grid, you can rotate the <strong>ReflectionProbe</strong> node.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-reflectionprobe-property-cull-mask"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>cull_mask</strong> = <code class="docutils literal notranslate"><span class="pre">1048575</span></code> <a class="reference internal" href="#class-reflectionprobe-property-cull-mask"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_cull_mask</strong>(value: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>get_cull_mask</strong>()</p></li>
+</ul>
+<p>Sets the cull mask which determines what objects are drawn by this probe. Every <a class="reference internal" href="class_visualinstance3d.html#class-visualinstance3d"><span class="std std-ref">VisualInstance3D</span></a> with a layer included in this cull mask will be rendered by the probe. It is best to only include large objects which are likely to take up a lot of space in the reflection in order to save on rendering cost.</p>
+<p>This can also be used to prevent an object from reflecting upon itself (for instance, a <strong>ReflectionProbe</strong> centered on a vehicle).</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-reflectionprobe-property-enable-shadows"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>enable_shadows</strong> = <code class="docutils literal notranslate"><span class="pre">false</span></code> <a class="reference internal" href="#class-reflectionprobe-property-enable-shadows"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_enable_shadows</strong>(value: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>are_shadows_enabled</strong>()</p></li>
+</ul>
+<p>If <code class="docutils literal notranslate"><span class="pre">true</span></code>, computes shadows in the reflection probe. This makes the reflection probe slower to render; you may want to disable this if using the <a class="reference internal" href="#class-reflectionprobe-constant-update-always"><span class="std std-ref">UPDATE_ALWAYS</span></a> <a class="reference internal" href="#class-reflectionprobe-property-update-mode"><span class="std std-ref">update_mode</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-reflectionprobe-property-intensity"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>intensity</strong> = <code class="docutils literal notranslate"><span class="pre">1.0</span></code> <a class="reference internal" href="#class-reflectionprobe-property-intensity"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_intensity</strong>(value: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>get_intensity</strong>()</p></li>
+</ul>
+<p>Defines the reflection intensity. Intensity modulates the strength of the reflection.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-reflectionprobe-property-interior"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>interior</strong> = <code class="docutils literal notranslate"><span class="pre">false</span></code> <a class="reference internal" href="#class-reflectionprobe-property-interior"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_as_interior</strong>(value: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_set_as_interior</strong>()</p></li>
+</ul>
+<p>If <code class="docutils literal notranslate"><span class="pre">true</span></code>, reflections will ignore sky contribution.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-reflectionprobe-property-max-distance"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>max_distance</strong> = <code class="docutils literal notranslate"><span class="pre">0.0</span></code> <a class="reference internal" href="#class-reflectionprobe-property-max-distance"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_max_distance</strong>(value: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>get_max_distance</strong>()</p></li>
+</ul>
+<p>The maximum distance away from the <strong>ReflectionProbe</strong> an object can be before it is culled. Decrease this to improve performance, especially when using the <a class="reference internal" href="#class-reflectionprobe-constant-update-always"><span class="std std-ref">UPDATE_ALWAYS</span></a> <a class="reference internal" href="#class-reflectionprobe-property-update-mode"><span class="std std-ref">update_mode</span></a>.</p>
+<p><strong>Note:</strong> The maximum reflection distance is always at least equal to the probe’s extents. This means that decreasing <a class="reference internal" href="#class-reflectionprobe-property-max-distance"><span class="std std-ref">max_distance</span></a> will not always cull objects from reflections, especially if the reflection probe’s box defined by its <a class="reference internal" href="#class-reflectionprobe-property-size"><span class="std std-ref">size</span></a> is already large.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-reflectionprobe-property-mesh-lod-threshold"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>mesh_lod_threshold</strong> = <code class="docutils literal notranslate"><span class="pre">1.0</span></code> <a class="reference internal" href="#class-reflectionprobe-property-mesh-lod-threshold"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_mesh_lod_threshold</strong>(value: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>get_mesh_lod_threshold</strong>()</p></li>
+</ul>
+<p>The automatic LOD bias to use for meshes rendered within the <strong>ReflectionProbe</strong> (this is analog to <a class="reference internal" href="class_viewport.html#class-viewport-property-mesh-lod-threshold"><span class="std std-ref">Viewport.mesh_lod_threshold</span></a>). Higher values will use less detailed versions of meshes that have LOD variations generated. If set to <code class="docutils literal notranslate"><span class="pre">0.0</span></code>, automatic LOD is disabled. Increase <a class="reference internal" href="#class-reflectionprobe-property-mesh-lod-threshold"><span class="std std-ref">mesh_lod_threshold</span></a> to improve performance at the cost of geometry detail, especially when using the <a class="reference internal" href="#class-reflectionprobe-constant-update-always"><span class="std std-ref">UPDATE_ALWAYS</span></a> <a class="reference internal" href="#class-reflectionprobe-property-update-mode"><span class="std std-ref">update_mode</span></a>.</p>
+<p><strong>Note:</strong> <a class="reference internal" href="#class-reflectionprobe-property-mesh-lod-threshold"><span class="std std-ref">mesh_lod_threshold</span></a> does not affect <a class="reference internal" href="class_geometryinstance3d.html#class-geometryinstance3d"><span class="std std-ref">GeometryInstance3D</span></a> visibility ranges (also known as “manual” LOD or hierarchical LOD).</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-reflectionprobe-property-origin-offset"><a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a> <strong>origin_offset</strong> = <code class="docutils literal notranslate"><span class="pre">Vector3(0,</span> <span class="pre">0,</span> <span class="pre">0)</span></code> <a class="reference internal" href="#class-reflectionprobe-property-origin-offset"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_origin_offset</strong>(value: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a> <strong>get_origin_offset</strong>()</p></li>
+</ul>
+<p>Sets the origin offset to be used when this <strong>ReflectionProbe</strong> is in <a class="reference internal" href="#class-reflectionprobe-property-box-projection"><span class="std std-ref">box_projection</span></a> mode. This can be set to a non-zero value to ensure a reflection fits a rectangle-shaped room, while reducing the number of objects that “get in the way” of the reflection.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-reflectionprobe-property-reflection-mask"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>reflection_mask</strong> = <code class="docutils literal notranslate"><span class="pre">1048575</span></code> <a class="reference internal" href="#class-reflectionprobe-property-reflection-mask"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_reflection_mask</strong>(value: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>get_reflection_mask</strong>()</p></li>
+</ul>
+<p>Sets the reflection mask which determines what objects have reflections applied from this probe. Every <a class="reference internal" href="class_visualinstance3d.html#class-visualinstance3d"><span class="std std-ref">VisualInstance3D</span></a> with a layer included in this reflection mask will have reflections applied from this probe. See also <a class="reference internal" href="#class-reflectionprobe-property-cull-mask"><span class="std std-ref">cull_mask</span></a>, which can be used to exclude objects from appearing in the reflection while still making them affected by the <strong>ReflectionProbe</strong>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-reflectionprobe-property-size"><a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a> <strong>size</strong> = <code class="docutils literal notranslate"><span class="pre">Vector3(20,</span> <span class="pre">20,</span> <span class="pre">20)</span></code> <a class="reference internal" href="#class-reflectionprobe-property-size"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_size</strong>(value: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a> <strong>get_size</strong>()</p></li>
+</ul>
+<p>The size of the reflection probe. The larger the size, the more space covered by the probe, which will lower the perceived resolution. It is best to keep the size only as large as you need it.</p>
+<p><strong>Note:</strong> To better fit areas that are not aligned to the grid, you can rotate the <strong>ReflectionProbe</strong> node.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-reflectionprobe-property-update-mode"><a class="reference internal" href="#enum-reflectionprobe-updatemode"><span class="std std-ref">UpdateMode</span></a> <strong>update_mode</strong> = <code class="docutils literal notranslate"><span class="pre">0</span></code> <a class="reference internal" href="#class-reflectionprobe-property-update-mode"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_update_mode</strong>(value: <a class="reference internal" href="#enum-reflectionprobe-updatemode"><span class="std std-ref">UpdateMode</span></a>)</p></li>
+<li><p><a class="reference internal" href="#enum-reflectionprobe-updatemode"><span class="std std-ref">UpdateMode</span></a> <strong>get_update_mode</strong>()</p></li>
+</ul>
+<p>Sets how frequently the <strong>ReflectionProbe</strong> is updated. Can be <a class="reference internal" href="#class-reflectionprobe-constant-update-once"><span class="std std-ref">UPDATE_ONCE</span></a> or <a class="reference internal" href="#class-reflectionprobe-constant-update-always"><span class="std std-ref">UPDATE_ALWAYS</span></a>.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, MUmarShahbaz.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

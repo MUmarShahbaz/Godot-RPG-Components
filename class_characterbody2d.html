@@ -1,0 +1,458 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CharacterBody2D &mdash; RPG Components 2D 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=d45e8c67"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            RPG Components 2D
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">CharacterBody2D</a><ul>
+<li><a class="reference internal" href="#description">Description</a></li>
+<li><a class="reference internal" href="#tutorials">Tutorials</a></li>
+<li><a class="reference internal" href="#properties">Properties</a></li>
+<li><a class="reference internal" href="#methods">Methods</a></li>
+<li><a class="reference internal" href="#enumerations">Enumerations</a></li>
+<li><a class="reference internal" href="#property-descriptions">Property Descriptions</a></li>
+<li><a class="reference internal" href="#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">RPG Components 2D</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">CharacterBody2D</li>
+      <li class="wy-breadcrumbs-aside">
+              <!-- User defined GitHub URL -->
+              <a href="hide" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="characterbody2d">
+<span id="class-characterbody2d"></span><h1>CharacterBody2D<a class="headerlink" href="#characterbody2d" title="Link to this heading"></a></h1>
+<p><strong>Inherits:</strong> <a class="reference internal" href="class_physicsbody2d.html#class-physicsbody2d"><span class="std std-ref">PhysicsBody2D</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_collisionobject2d.html#class-collisionobject2d"><span class="std std-ref">CollisionObject2D</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_node2d.html#class-node2d"><span class="std std-ref">Node2D</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_canvasitem.html#class-canvasitem"><span class="std std-ref">CanvasItem</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_node.html#class-node"><span class="std std-ref">Node</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_object.html#class-object"><span class="std std-ref">Object</span></a></p>
+<p><strong>Inherited By:</strong> <a class="reference internal" href="class_entity.html#class-entity"><span class="std std-ref">Entity</span></a></p>
+<p>A 2D physics body specialized for characters moved by script.</p>
+<section class="classref-introduction-group" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
+<p><strong>CharacterBody2D</strong> is a specialized class for physics bodies that are meant to be user-controlled. They are not affected by physics at all, but they affect other physics bodies in their path. They are mainly used to provide high-level API to move objects with wall and slope detection (<a class="reference internal" href="#class-characterbody2d-method-move-and-slide"><span class="std std-ref">move_and_slide()</span></a> method) in addition to the general collision detection provided by <a class="reference internal" href="class_physicsbody2d.html#class-physicsbody2d-method-move-and-collide"><span class="std std-ref">PhysicsBody2D.move_and_collide()</span></a>. This makes it useful for highly configurable physics bodies that must move in specific ways and collide with the world, as is often the case with user-controlled characters.</p>
+<p>For game objects that don’t require complex movement or collision detection, such as moving platforms, <a class="reference internal" href="class_animatablebody2d.html#class-animatablebody2d"><span class="std std-ref">AnimatableBody2D</span></a> is simpler to configure.</p>
+</section>
+<section class="classref-introduction-group" id="tutorials">
+<h2>Tutorials<a class="headerlink" href="#tutorials" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><span class="xref std std-doc">Physics introduction</span></p></li>
+<li><p><span class="xref std std-doc">Troubleshooting physics issues</span></p></li>
+<li><p><span class="xref std std-doc">Kinematic character (2D)</span></p></li>
+<li><p><span class="xref std std-doc">Using CharacterBody2D</span></p></li>
+<li><p><a class="reference external" href="https://godotengine.org/asset-library/asset/2719">2D Kinematic Character Demo</a></p></li>
+<li><p><a class="reference external" href="https://godotengine.org/asset-library/asset/2727">2D Platformer Demo</a></p></li>
+</ul>
+</section>
+<section class="classref-reftable-group" id="properties">
+<h2>Properties<a class="headerlink" href="#properties" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-characterbody2d-property-floor-block-on-wall"><span class="std std-ref">floor_block_on_wall</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-characterbody2d-property-floor-constant-speed"><span class="std std-ref">floor_constant_speed</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-characterbody2d-property-floor-max-angle"><span class="std std-ref">floor_max_angle</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0.7853982</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-characterbody2d-property-floor-snap-length"><span class="std std-ref">floor_snap_length</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">1.0</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-characterbody2d-property-floor-stop-on-slope"><span class="std std-ref">floor_stop_on_slope</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-characterbody2d-property-max-slides"><span class="std std-ref">max_slides</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">4</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#enum-characterbody2d-motionmode"><span class="std std-ref">MotionMode</span></a></p></td>
+<td><p><a class="reference internal" href="#class-characterbody2d-property-motion-mode"><span class="std std-ref">motion_mode</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-characterbody2d-property-platform-floor-layers"><span class="std std-ref">platform_floor_layers</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">4294967295</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#enum-characterbody2d-platformonleave"><span class="std std-ref">PlatformOnLeave</span></a></p></td>
+<td><p><a class="reference internal" href="#class-characterbody2d-property-platform-on-leave"><span class="std std-ref">platform_on_leave</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-characterbody2d-property-platform-wall-layers"><span class="std std-ref">platform_wall_layers</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-characterbody2d-property-safe-margin"><span class="std std-ref">safe_margin</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0.08</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-characterbody2d-property-slide-on-ceiling"><span class="std std-ref">slide_on_ceiling</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a></p></td>
+<td><p><a class="reference internal" href="#class-characterbody2d-property-up-direction"><span class="std std-ref">up_direction</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Vector2(0,</span> <span class="pre">-1)</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a></p></td>
+<td><p><a class="reference internal" href="#class-characterbody2d-property-velocity"><span class="std std-ref">velocity</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Vector2(0,</span> <span class="pre">0)</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-characterbody2d-property-wall-min-slide-angle"><span class="std std-ref">wall_min_slide_angle</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0.2617994</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section class="classref-reftable-group" id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-characterbody2d-method-apply-floor-snap"><span class="std std-ref">apply_floor_snap</span></a>()</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-characterbody2d-method-get-floor-angle"><span class="std std-ref">get_floor_angle</span></a>(up_direction: <a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a> = Vector2(0, -1)) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a></p></td>
+<td><p><a class="reference internal" href="#class-characterbody2d-method-get-floor-normal"><span class="std std-ref">get_floor_normal</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a></p></td>
+<td><p><a class="reference internal" href="#class-characterbody2d-method-get-last-motion"><span class="std std-ref">get_last_motion</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_kinematiccollision2d.html#class-kinematiccollision2d"><span class="std std-ref">KinematicCollision2D</span></a></p></td>
+<td><p><a class="reference internal" href="#class-characterbody2d-method-get-last-slide-collision"><span class="std std-ref">get_last_slide_collision</span></a>()</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a></p></td>
+<td><p><a class="reference internal" href="#class-characterbody2d-method-get-platform-velocity"><span class="std std-ref">get_platform_velocity</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a></p></td>
+<td><p><a class="reference internal" href="#class-characterbody2d-method-get-position-delta"><span class="std std-ref">get_position_delta</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a></p></td>
+<td><p><a class="reference internal" href="#class-characterbody2d-method-get-real-velocity"><span class="std std-ref">get_real_velocity</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_kinematiccollision2d.html#class-kinematiccollision2d"><span class="std std-ref">KinematicCollision2D</span></a></p></td>
+<td><p><a class="reference internal" href="#class-characterbody2d-method-get-slide-collision"><span class="std std-ref">get_slide_collision</span></a>(slide_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-characterbody2d-method-get-slide-collision-count"><span class="std std-ref">get_slide_collision_count</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a></p></td>
+<td><p><a class="reference internal" href="#class-characterbody2d-method-get-wall-normal"><span class="std std-ref">get_wall_normal</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-characterbody2d-method-is-on-ceiling"><span class="std std-ref">is_on_ceiling</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-characterbody2d-method-is-on-ceiling-only"><span class="std std-ref">is_on_ceiling_only</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-characterbody2d-method-is-on-floor"><span class="std std-ref">is_on_floor</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-characterbody2d-method-is-on-floor-only"><span class="std std-ref">is_on_floor_only</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-characterbody2d-method-is-on-wall"><span class="std std-ref">is_on_wall</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-characterbody2d-method-is-on-wall-only"><span class="std std-ref">is_on_wall_only</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-characterbody2d-method-move-and-slide"><span class="std std-ref">move_and_slide</span></a>()</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="enumerations">
+<h2>Enumerations<a class="headerlink" href="#enumerations" title="Link to this heading"></a></h2>
+<p class="classref-enumeration" id="enum-characterbody2d-motionmode">enum <strong>MotionMode</strong>: <a class="reference internal" href="#enum-characterbody2d-motionmode"><span class="std std-ref">🔗</span></a></p>
+<p class="classref-enumeration-constant" id="class-characterbody2d-constant-motion-mode-grounded"><a class="reference internal" href="#enum-characterbody2d-motionmode"><span class="std std-ref">MotionMode</span></a> <strong>MOTION_MODE_GROUNDED</strong> = <code class="docutils literal notranslate"><span class="pre">0</span></code></p>
+<p>Apply when notions of walls, ceiling and floor are relevant. In this mode the body motion will react to slopes (acceleration/slowdown). This mode is suitable for sided games like platformers.</p>
+<p class="classref-enumeration-constant" id="class-characterbody2d-constant-motion-mode-floating"><a class="reference internal" href="#enum-characterbody2d-motionmode"><span class="std std-ref">MotionMode</span></a> <strong>MOTION_MODE_FLOATING</strong> = <code class="docutils literal notranslate"><span class="pre">1</span></code></p>
+<p>Apply when there is no notion of floor or ceiling. All collisions will be reported as <code class="docutils literal notranslate"><span class="pre">on_wall</span></code>. In this mode, when you slide, the speed will always be constant. This mode is suitable for top-down games.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-enumeration" id="enum-characterbody2d-platformonleave">enum <strong>PlatformOnLeave</strong>: <a class="reference internal" href="#enum-characterbody2d-platformonleave"><span class="std std-ref">🔗</span></a></p>
+<p class="classref-enumeration-constant" id="class-characterbody2d-constant-platform-on-leave-add-velocity"><a class="reference internal" href="#enum-characterbody2d-platformonleave"><span class="std std-ref">PlatformOnLeave</span></a> <strong>PLATFORM_ON_LEAVE_ADD_VELOCITY</strong> = <code class="docutils literal notranslate"><span class="pre">0</span></code></p>
+<p>Add the last platform velocity to the <a class="reference internal" href="#class-characterbody2d-property-velocity"><span class="std std-ref">velocity</span></a> when you leave a moving platform.</p>
+<p class="classref-enumeration-constant" id="class-characterbody2d-constant-platform-on-leave-add-upward-velocity"><a class="reference internal" href="#enum-characterbody2d-platformonleave"><span class="std std-ref">PlatformOnLeave</span></a> <strong>PLATFORM_ON_LEAVE_ADD_UPWARD_VELOCITY</strong> = <code class="docutils literal notranslate"><span class="pre">1</span></code></p>
+<p>Add the last platform velocity to the <a class="reference internal" href="#class-characterbody2d-property-velocity"><span class="std std-ref">velocity</span></a> when you leave a moving platform, but any downward motion is ignored. It’s useful to keep full jump height even when the platform is moving down.</p>
+<p class="classref-enumeration-constant" id="class-characterbody2d-constant-platform-on-leave-do-nothing"><a class="reference internal" href="#enum-characterbody2d-platformonleave"><span class="std std-ref">PlatformOnLeave</span></a> <strong>PLATFORM_ON_LEAVE_DO_NOTHING</strong> = <code class="docutils literal notranslate"><span class="pre">2</span></code></p>
+<p>Do nothing when leaving a platform.</p>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="property-descriptions">
+<h2>Property Descriptions<a class="headerlink" href="#property-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-property" id="class-characterbody2d-property-floor-block-on-wall"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>floor_block_on_wall</strong> = <code class="docutils literal notranslate"><span class="pre">true</span></code> <a class="reference internal" href="#class-characterbody2d-property-floor-block-on-wall"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_floor_block_on_wall_enabled</strong>(value: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_floor_block_on_wall_enabled</strong>()</p></li>
+</ul>
+<p>If <code class="docutils literal notranslate"><span class="pre">true</span></code>, the body will be able to move on the floor only. This option avoids to be able to walk on walls, it will however allow to slide down along them.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-characterbody2d-property-floor-constant-speed"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>floor_constant_speed</strong> = <code class="docutils literal notranslate"><span class="pre">false</span></code> <a class="reference internal" href="#class-characterbody2d-property-floor-constant-speed"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_floor_constant_speed_enabled</strong>(value: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_floor_constant_speed_enabled</strong>()</p></li>
+</ul>
+<p>If <code class="docutils literal notranslate"><span class="pre">false</span></code> (by default), the body will move faster on downward slopes and slower on upward slopes.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">true</span></code>, the body will always move at the same speed on the ground no matter the slope. Note that you need to use <a class="reference internal" href="#class-characterbody2d-property-floor-snap-length"><span class="std std-ref">floor_snap_length</span></a> to stick along a downward slope at constant speed.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-characterbody2d-property-floor-max-angle"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>floor_max_angle</strong> = <code class="docutils literal notranslate"><span class="pre">0.7853982</span></code> <a class="reference internal" href="#class-characterbody2d-property-floor-max-angle"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_floor_max_angle</strong>(value: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>get_floor_max_angle</strong>()</p></li>
+</ul>
+<p>Maximum angle (in radians) where a slope is still considered a floor (or a ceiling), rather than a wall, when calling <a class="reference internal" href="#class-characterbody2d-method-move-and-slide"><span class="std std-ref">move_and_slide()</span></a>. The default value equals 45 degrees.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-characterbody2d-property-floor-snap-length"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>floor_snap_length</strong> = <code class="docutils literal notranslate"><span class="pre">1.0</span></code> <a class="reference internal" href="#class-characterbody2d-property-floor-snap-length"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_floor_snap_length</strong>(value: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>get_floor_snap_length</strong>()</p></li>
+</ul>
+<p>Sets a snapping distance. When set to a value different from <code class="docutils literal notranslate"><span class="pre">0.0</span></code>, the body is kept attached to slopes when calling <a class="reference internal" href="#class-characterbody2d-method-move-and-slide"><span class="std std-ref">move_and_slide()</span></a>. The snapping vector is determined by the given distance along the opposite direction of the <a class="reference internal" href="#class-characterbody2d-property-up-direction"><span class="std std-ref">up_direction</span></a>.</p>
+<p>As long as the snapping vector is in contact with the ground and the body moves against <a class="reference internal" href="#class-characterbody2d-property-up-direction"><span class="std std-ref">up_direction</span></a>, the body will remain attached to the surface. Snapping is not applied if the body moves along <a class="reference internal" href="#class-characterbody2d-property-up-direction"><span class="std std-ref">up_direction</span></a>, meaning it contains vertical rising velocity, so it will be able to detach from the ground when jumping or when the body is pushed up by something. If you want to apply a snap without taking into account the velocity, use <a class="reference internal" href="#class-characterbody2d-method-apply-floor-snap"><span class="std std-ref">apply_floor_snap()</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-characterbody2d-property-floor-stop-on-slope"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>floor_stop_on_slope</strong> = <code class="docutils literal notranslate"><span class="pre">true</span></code> <a class="reference internal" href="#class-characterbody2d-property-floor-stop-on-slope"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_floor_stop_on_slope_enabled</strong>(value: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_floor_stop_on_slope_enabled</strong>()</p></li>
+</ul>
+<p>If <code class="docutils literal notranslate"><span class="pre">true</span></code>, the body will not slide on slopes when calling <a class="reference internal" href="#class-characterbody2d-method-move-and-slide"><span class="std std-ref">move_and_slide()</span></a> when the body is standing still.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">false</span></code>, the body will slide on floor’s slopes when <a class="reference internal" href="#class-characterbody2d-property-velocity"><span class="std std-ref">velocity</span></a> applies a downward force.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-characterbody2d-property-max-slides"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>max_slides</strong> = <code class="docutils literal notranslate"><span class="pre">4</span></code> <a class="reference internal" href="#class-characterbody2d-property-max-slides"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_max_slides</strong>(value: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>get_max_slides</strong>()</p></li>
+</ul>
+<p>Maximum number of times the body can change direction before it stops when calling <a class="reference internal" href="#class-characterbody2d-method-move-and-slide"><span class="std std-ref">move_and_slide()</span></a>. Must be greater than zero.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-characterbody2d-property-motion-mode"><a class="reference internal" href="#enum-characterbody2d-motionmode"><span class="std std-ref">MotionMode</span></a> <strong>motion_mode</strong> = <code class="docutils literal notranslate"><span class="pre">0</span></code> <a class="reference internal" href="#class-characterbody2d-property-motion-mode"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_motion_mode</strong>(value: <a class="reference internal" href="#enum-characterbody2d-motionmode"><span class="std std-ref">MotionMode</span></a>)</p></li>
+<li><p><a class="reference internal" href="#enum-characterbody2d-motionmode"><span class="std std-ref">MotionMode</span></a> <strong>get_motion_mode</strong>()</p></li>
+</ul>
+<p>Sets the motion mode which defines the behavior of <a class="reference internal" href="#class-characterbody2d-method-move-and-slide"><span class="std std-ref">move_and_slide()</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-characterbody2d-property-platform-floor-layers"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>platform_floor_layers</strong> = <code class="docutils literal notranslate"><span class="pre">4294967295</span></code> <a class="reference internal" href="#class-characterbody2d-property-platform-floor-layers"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_platform_floor_layers</strong>(value: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>get_platform_floor_layers</strong>()</p></li>
+</ul>
+<p>Collision layers that will be included for detecting floor bodies that will act as moving platforms to be followed by the <strong>CharacterBody2D</strong>. By default, all floor bodies are detected and propagate their velocity.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-characterbody2d-property-platform-on-leave"><a class="reference internal" href="#enum-characterbody2d-platformonleave"><span class="std std-ref">PlatformOnLeave</span></a> <strong>platform_on_leave</strong> = <code class="docutils literal notranslate"><span class="pre">0</span></code> <a class="reference internal" href="#class-characterbody2d-property-platform-on-leave"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_platform_on_leave</strong>(value: <a class="reference internal" href="#enum-characterbody2d-platformonleave"><span class="std std-ref">PlatformOnLeave</span></a>)</p></li>
+<li><p><a class="reference internal" href="#enum-characterbody2d-platformonleave"><span class="std std-ref">PlatformOnLeave</span></a> <strong>get_platform_on_leave</strong>()</p></li>
+</ul>
+<p>Sets the behavior to apply when you leave a moving platform. By default, to be physically accurate, when you leave the last platform velocity is applied.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-characterbody2d-property-platform-wall-layers"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>platform_wall_layers</strong> = <code class="docutils literal notranslate"><span class="pre">0</span></code> <a class="reference internal" href="#class-characterbody2d-property-platform-wall-layers"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_platform_wall_layers</strong>(value: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>get_platform_wall_layers</strong>()</p></li>
+</ul>
+<p>Collision layers that will be included for detecting wall bodies that will act as moving platforms to be followed by the <strong>CharacterBody2D</strong>. By default, all wall bodies are ignored.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-characterbody2d-property-safe-margin"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>safe_margin</strong> = <code class="docutils literal notranslate"><span class="pre">0.08</span></code> <a class="reference internal" href="#class-characterbody2d-property-safe-margin"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_safe_margin</strong>(value: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>get_safe_margin</strong>()</p></li>
+</ul>
+<p>Extra margin used for collision recovery when calling <a class="reference internal" href="#class-characterbody2d-method-move-and-slide"><span class="std std-ref">move_and_slide()</span></a>.</p>
+<p>If the body is at least this close to another body, it will consider them to be colliding and will be pushed away before performing the actual motion.</p>
+<p>A higher value means it’s more flexible for detecting collision, which helps with consistently detecting walls and floors.</p>
+<p>A lower value forces the collision algorithm to use more exact detection, so it can be used in cases that specifically require precision, e.g at very low scale to avoid visible jittering, or for stability with a stack of character bodies.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-characterbody2d-property-slide-on-ceiling"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>slide_on_ceiling</strong> = <code class="docutils literal notranslate"><span class="pre">true</span></code> <a class="reference internal" href="#class-characterbody2d-property-slide-on-ceiling"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_slide_on_ceiling_enabled</strong>(value: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_slide_on_ceiling_enabled</strong>()</p></li>
+</ul>
+<p>If <code class="docutils literal notranslate"><span class="pre">true</span></code>, during a jump against the ceiling, the body will slide, if <code class="docutils literal notranslate"><span class="pre">false</span></code> it will be stopped and will fall vertically.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-characterbody2d-property-up-direction"><a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a> <strong>up_direction</strong> = <code class="docutils literal notranslate"><span class="pre">Vector2(0,</span> <span class="pre">-1)</span></code> <a class="reference internal" href="#class-characterbody2d-property-up-direction"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_up_direction</strong>(value: <a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a> <strong>get_up_direction</strong>()</p></li>
+</ul>
+<p>Vector pointing upwards, used to determine what is a wall and what is a floor (or a ceiling) when calling <a class="reference internal" href="#class-characterbody2d-method-move-and-slide"><span class="std std-ref">move_and_slide()</span></a>. Defaults to <a class="reference internal" href="class_vector2.html#class-vector2-constant-up"><span class="std std-ref">Vector2.UP</span></a>. As the vector will be normalized it can’t be equal to <a class="reference internal" href="class_vector2.html#class-vector2-constant-zero"><span class="std std-ref">Vector2.ZERO</span></a>, if you want all collisions to be reported as walls, consider using <a class="reference internal" href="#class-characterbody2d-constant-motion-mode-floating"><span class="std std-ref">MOTION_MODE_FLOATING</span></a> as <a class="reference internal" href="#class-characterbody2d-property-motion-mode"><span class="std std-ref">motion_mode</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-characterbody2d-property-velocity"><a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a> <strong>velocity</strong> = <code class="docutils literal notranslate"><span class="pre">Vector2(0,</span> <span class="pre">0)</span></code> <a class="reference internal" href="#class-characterbody2d-property-velocity"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_velocity</strong>(value: <a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a> <strong>get_velocity</strong>()</p></li>
+</ul>
+<p>Current velocity vector in pixels per second, used and modified during calls to <a class="reference internal" href="#class-characterbody2d-method-move-and-slide"><span class="std std-ref">move_and_slide()</span></a>.</p>
+<p><strong>Note:</strong> A common mistake is setting this property to the desired velocity multiplied by <code class="docutils literal notranslate"><span class="pre">delta</span></code>, which produces a motion vector in pixels.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-characterbody2d-property-wall-min-slide-angle"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>wall_min_slide_angle</strong> = <code class="docutils literal notranslate"><span class="pre">0.2617994</span></code> <a class="reference internal" href="#class-characterbody2d-property-wall-min-slide-angle"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_wall_min_slide_angle</strong>(value: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>get_wall_min_slide_angle</strong>()</p></li>
+</ul>
+<p>Minimum angle (in radians) where the body is allowed to slide when it encounters a wall. The default value equals 15 degrees. This property only affects movement when <a class="reference internal" href="#class-characterbody2d-property-motion-mode"><span class="std std-ref">motion_mode</span></a> is <a class="reference internal" href="#class-characterbody2d-constant-motion-mode-floating"><span class="std std-ref">MOTION_MODE_FLOATING</span></a>.</p>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="method-descriptions">
+<h2>Method Descriptions<a class="headerlink" href="#method-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-method" id="class-characterbody2d-method-apply-floor-snap"><abbr title="No return value.">void</abbr> <strong>apply_floor_snap</strong>() <a class="reference internal" href="#class-characterbody2d-method-apply-floor-snap"><span class="std std-ref">🔗</span></a></p>
+<p>Allows to manually apply a snap to the floor regardless of the body’s velocity. This function does nothing when <a class="reference internal" href="#class-characterbody2d-method-is-on-floor"><span class="std std-ref">is_on_floor()</span></a> returns <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-characterbody2d-method-get-floor-angle"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>get_floor_angle</strong>(up_direction: <a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a> = Vector2(0, -1)) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-characterbody2d-method-get-floor-angle"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the floor’s collision angle at the last collision point according to <code class="docutils literal notranslate"><span class="pre">up_direction</span></code>, which is <a class="reference internal" href="class_vector2.html#class-vector2-constant-up"><span class="std std-ref">Vector2.UP</span></a> by default. This value is always positive and only valid after calling <a class="reference internal" href="#class-characterbody2d-method-move-and-slide"><span class="std std-ref">move_and_slide()</span></a> and when <a class="reference internal" href="#class-characterbody2d-method-is-on-floor"><span class="std std-ref">is_on_floor()</span></a> returns <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-characterbody2d-method-get-floor-normal"><a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a> <strong>get_floor_normal</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-characterbody2d-method-get-floor-normal"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the collision normal of the floor at the last collision point. Only valid after calling <a class="reference internal" href="#class-characterbody2d-method-move-and-slide"><span class="std std-ref">move_and_slide()</span></a> and when <a class="reference internal" href="#class-characterbody2d-method-is-on-floor"><span class="std std-ref">is_on_floor()</span></a> returns <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p>
+<p><strong>Warning:</strong> The collision normal is not always the same as the surface normal.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-characterbody2d-method-get-last-motion"><a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a> <strong>get_last_motion</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-characterbody2d-method-get-last-motion"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the last motion applied to the <strong>CharacterBody2D</strong> during the last call to <a class="reference internal" href="#class-characterbody2d-method-move-and-slide"><span class="std std-ref">move_and_slide()</span></a>. The movement can be split into multiple motions when sliding occurs, and this method return the last one, which is useful to retrieve the current direction of the movement.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-characterbody2d-method-get-last-slide-collision"><a class="reference internal" href="class_kinematiccollision2d.html#class-kinematiccollision2d"><span class="std std-ref">KinematicCollision2D</span></a> <strong>get_last_slide_collision</strong>() <a class="reference internal" href="#class-characterbody2d-method-get-last-slide-collision"><span class="std std-ref">🔗</span></a></p>
+<p>Returns a <a class="reference internal" href="class_kinematiccollision2d.html#class-kinematiccollision2d"><span class="std std-ref">KinematicCollision2D</span></a> if a collision occurred. The returned value contains information about the latest collision that occurred during the last call to <a class="reference internal" href="#class-characterbody2d-method-move-and-slide"><span class="std std-ref">move_and_slide()</span></a>. Returns <code class="docutils literal notranslate"><span class="pre">null</span></code> if no collision occurred. See also <a class="reference internal" href="#class-characterbody2d-method-get-slide-collision"><span class="std std-ref">get_slide_collision()</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-characterbody2d-method-get-platform-velocity"><a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a> <strong>get_platform_velocity</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-characterbody2d-method-get-platform-velocity"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the linear velocity of the platform at the last collision point. Only valid after calling <a class="reference internal" href="#class-characterbody2d-method-move-and-slide"><span class="std std-ref">move_and_slide()</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-characterbody2d-method-get-position-delta"><a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a> <strong>get_position_delta</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-characterbody2d-method-get-position-delta"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the travel (position delta) that occurred during the last call to <a class="reference internal" href="#class-characterbody2d-method-move-and-slide"><span class="std std-ref">move_and_slide()</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-characterbody2d-method-get-real-velocity"><a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a> <strong>get_real_velocity</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-characterbody2d-method-get-real-velocity"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the current real velocity since the last call to <a class="reference internal" href="#class-characterbody2d-method-move-and-slide"><span class="std std-ref">move_and_slide()</span></a>. For example, when you climb a slope, you will move diagonally even though the velocity is horizontal. This method returns the diagonal movement, as opposed to <a class="reference internal" href="#class-characterbody2d-property-velocity"><span class="std std-ref">velocity</span></a> which returns the requested velocity.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-characterbody2d-method-get-slide-collision"><a class="reference internal" href="class_kinematiccollision2d.html#class-kinematiccollision2d"><span class="std std-ref">KinematicCollision2D</span></a> <strong>get_slide_collision</strong>(slide_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <a class="reference internal" href="#class-characterbody2d-method-get-slide-collision"><span class="std std-ref">🔗</span></a></p>
+<p>Returns a <a class="reference internal" href="class_kinematiccollision2d.html#class-kinematiccollision2d"><span class="std std-ref">KinematicCollision2D</span></a>, which contains information about a collision that occurred during the last call to <a class="reference internal" href="#class-characterbody2d-method-move-and-slide"><span class="std std-ref">move_and_slide()</span></a>. Since the body can collide several times in a single call to <a class="reference internal" href="#class-characterbody2d-method-move-and-slide"><span class="std std-ref">move_and_slide()</span></a>, you must specify the index of the collision in the range 0 to (<a class="reference internal" href="#class-characterbody2d-method-get-slide-collision-count"><span class="std std-ref">get_slide_collision_count()</span></a> - 1). See also <a class="reference internal" href="#class-characterbody2d-method-get-last-slide-collision"><span class="std std-ref">get_last_slide_collision()</span></a>.</p>
+<p><strong>Example:</strong> Iterate through the collisions with a <code class="docutils literal notranslate"><span class="pre">for</span></code> loop:</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-characterbody2d-method-get-slide-collision-count"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>get_slide_collision_count</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-characterbody2d-method-get-slide-collision-count"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the number of times the body collided and changed direction during the last call to <a class="reference internal" href="#class-characterbody2d-method-move-and-slide"><span class="std std-ref">move_and_slide()</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-characterbody2d-method-get-wall-normal"><a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a> <strong>get_wall_normal</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-characterbody2d-method-get-wall-normal"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the collision normal of the wall at the last collision point. Only valid after calling <a class="reference internal" href="#class-characterbody2d-method-move-and-slide"><span class="std std-ref">move_and_slide()</span></a> and when <a class="reference internal" href="#class-characterbody2d-method-is-on-wall"><span class="std std-ref">is_on_wall()</span></a> returns <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p>
+<p><strong>Warning:</strong> The collision normal is not always the same as the surface normal.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-characterbody2d-method-is-on-ceiling"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_on_ceiling</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-characterbody2d-method-is-on-ceiling"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if the body collided with the ceiling on the last call of <a class="reference internal" href="#class-characterbody2d-method-move-and-slide"><span class="std std-ref">move_and_slide()</span></a>. Otherwise, returns <code class="docutils literal notranslate"><span class="pre">false</span></code>. The <a class="reference internal" href="#class-characterbody2d-property-up-direction"><span class="std std-ref">up_direction</span></a> and <a class="reference internal" href="#class-characterbody2d-property-floor-max-angle"><span class="std std-ref">floor_max_angle</span></a> are used to determine whether a surface is “ceiling” or not.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-characterbody2d-method-is-on-ceiling-only"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_on_ceiling_only</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-characterbody2d-method-is-on-ceiling-only"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if the body collided only with the ceiling on the last call of <a class="reference internal" href="#class-characterbody2d-method-move-and-slide"><span class="std std-ref">move_and_slide()</span></a>. Otherwise, returns <code class="docutils literal notranslate"><span class="pre">false</span></code>. The <a class="reference internal" href="#class-characterbody2d-property-up-direction"><span class="std std-ref">up_direction</span></a> and <a class="reference internal" href="#class-characterbody2d-property-floor-max-angle"><span class="std std-ref">floor_max_angle</span></a> are used to determine whether a surface is “ceiling” or not.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-characterbody2d-method-is-on-floor"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_on_floor</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-characterbody2d-method-is-on-floor"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if the body collided with the floor on the last call of <a class="reference internal" href="#class-characterbody2d-method-move-and-slide"><span class="std std-ref">move_and_slide()</span></a>. Otherwise, returns <code class="docutils literal notranslate"><span class="pre">false</span></code>. The <a class="reference internal" href="#class-characterbody2d-property-up-direction"><span class="std std-ref">up_direction</span></a> and <a class="reference internal" href="#class-characterbody2d-property-floor-max-angle"><span class="std std-ref">floor_max_angle</span></a> are used to determine whether a surface is “floor” or not.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-characterbody2d-method-is-on-floor-only"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_on_floor_only</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-characterbody2d-method-is-on-floor-only"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if the body collided only with the floor on the last call of <a class="reference internal" href="#class-characterbody2d-method-move-and-slide"><span class="std std-ref">move_and_slide()</span></a>. Otherwise, returns <code class="docutils literal notranslate"><span class="pre">false</span></code>. The <a class="reference internal" href="#class-characterbody2d-property-up-direction"><span class="std std-ref">up_direction</span></a> and <a class="reference internal" href="#class-characterbody2d-property-floor-max-angle"><span class="std std-ref">floor_max_angle</span></a> are used to determine whether a surface is “floor” or not.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-characterbody2d-method-is-on-wall"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_on_wall</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-characterbody2d-method-is-on-wall"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if the body collided with a wall on the last call of <a class="reference internal" href="#class-characterbody2d-method-move-and-slide"><span class="std std-ref">move_and_slide()</span></a>. Otherwise, returns <code class="docutils literal notranslate"><span class="pre">false</span></code>. The <a class="reference internal" href="#class-characterbody2d-property-up-direction"><span class="std std-ref">up_direction</span></a> and <a class="reference internal" href="#class-characterbody2d-property-floor-max-angle"><span class="std std-ref">floor_max_angle</span></a> are used to determine whether a surface is “wall” or not.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-characterbody2d-method-is-on-wall-only"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_on_wall_only</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-characterbody2d-method-is-on-wall-only"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if the body collided only with a wall on the last call of <a class="reference internal" href="#class-characterbody2d-method-move-and-slide"><span class="std std-ref">move_and_slide()</span></a>. Otherwise, returns <code class="docutils literal notranslate"><span class="pre">false</span></code>. The <a class="reference internal" href="#class-characterbody2d-property-up-direction"><span class="std std-ref">up_direction</span></a> and <a class="reference internal" href="#class-characterbody2d-property-floor-max-angle"><span class="std std-ref">floor_max_angle</span></a> are used to determine whether a surface is “wall” or not.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-characterbody2d-method-move-and-slide"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>move_and_slide</strong>() <a class="reference internal" href="#class-characterbody2d-method-move-and-slide"><span class="std std-ref">🔗</span></a></p>
+<p>Moves the body based on <a class="reference internal" href="#class-characterbody2d-property-velocity"><span class="std std-ref">velocity</span></a>. If the body collides with another, it will slide along the other body (by default only on floor) rather than stop immediately. If the other body is a <strong>CharacterBody2D</strong> or <a class="reference internal" href="class_rigidbody2d.html#class-rigidbody2d"><span class="std std-ref">RigidBody2D</span></a>, it will also be affected by the motion of the other body. You can use this to make moving and rotating platforms, or to make nodes push other nodes.</p>
+<p>This method should be used in <a class="reference internal" href="class_node.html#class-node-private-method-physics-process"><span class="std std-ref">Node._physics_process()</span></a> (or in a method called by <a class="reference internal" href="class_node.html#class-node-private-method-physics-process"><span class="std std-ref">Node._physics_process()</span></a>), as it uses the physics step’s <code class="docutils literal notranslate"><span class="pre">delta</span></code> value automatically in calculations. Otherwise, the simulation will run at an incorrect speed.</p>
+<p>Modifies <a class="reference internal" href="#class-characterbody2d-property-velocity"><span class="std std-ref">velocity</span></a> if a slide collision occurred. To get the latest collision call <a class="reference internal" href="#class-characterbody2d-method-get-last-slide-collision"><span class="std std-ref">get_last_slide_collision()</span></a>, for detailed information about collisions that occurred, use <a class="reference internal" href="#class-characterbody2d-method-get-slide-collision"><span class="std std-ref">get_slide_collision()</span></a>.</p>
+<p>When the body touches a moving platform, the platform’s velocity is automatically added to the body motion. If a collision occurs due to the platform’s motion, it will always be first in the slide collisions.</p>
+<p>The general behavior and available properties change according to the <a class="reference internal" href="#class-characterbody2d-property-motion-mode"><span class="std std-ref">motion_mode</span></a>.</p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if the body collided, otherwise, returns <code class="docutils literal notranslate"><span class="pre">false</span></code>.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, MUmarShahbaz.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

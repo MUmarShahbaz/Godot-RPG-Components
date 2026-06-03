@@ -1,0 +1,204 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AudioEffectCapture &mdash; RPG Components 2D 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=d45e8c67"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            RPG Components 2D
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">AudioEffectCapture</a><ul>
+<li><a class="reference internal" href="#description">Description</a></li>
+<li><a class="reference internal" href="#tutorials">Tutorials</a></li>
+<li><a class="reference internal" href="#properties">Properties</a></li>
+<li><a class="reference internal" href="#methods">Methods</a></li>
+<li><a class="reference internal" href="#property-descriptions">Property Descriptions</a></li>
+<li><a class="reference internal" href="#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">RPG Components 2D</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">AudioEffectCapture</li>
+      <li class="wy-breadcrumbs-aside">
+              <!-- User defined GitHub URL -->
+              <a href="hide" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="audioeffectcapture">
+<span id="class-audioeffectcapture"></span><h1>AudioEffectCapture<a class="headerlink" href="#audioeffectcapture" title="Link to this heading"></a></h1>
+<p><strong>Inherits:</strong> <a class="reference internal" href="class_audioeffect.html#class-audioeffect"><span class="std std-ref">AudioEffect</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_resource.html#class-resource"><span class="std std-ref">Resource</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_refcounted.html#class-refcounted"><span class="std std-ref">RefCounted</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_object.html#class-object"><span class="std std-ref">Object</span></a></p>
+<p>Exposes audio samples from an audio bus in real-time, such that it can be accessed as data.</p>
+<section class="classref-introduction-group" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
+<p>Copies all audio frames, also known as “samples” or “audio samples”, from the attached audio bus into its internal ring buffer. This effect does not alter the audio. Can be used for storing real-time audio data for playback, and for creating real-time audio visualizations, like an oscilloscope.</p>
+<p>Application code should consume these audio frames from this ring buffer using <a class="reference internal" href="#class-audioeffectcapture-method-get-buffer"><span class="std std-ref">get_buffer()</span></a> and process it as needed, for example to capture data from an <a class="reference internal" href="class_audiostreammicrophone.html#class-audiostreammicrophone"><span class="std std-ref">AudioStreamMicrophone</span></a>, implement application-defined effects, or to transmit audio over the network. When capturing audio data from a microphone, the format of the samples will be stereo 32-bit floating-point PCM.</p>
+<p>Unlike <a class="reference internal" href="class_audioeffectrecord.html#class-audioeffectrecord"><span class="std std-ref">AudioEffectRecord</span></a>, this effect only returns the raw audio samples instead of encoding them into an <a class="reference internal" href="class_audiostream.html#class-audiostream"><span class="std std-ref">AudioStream</span></a>.</p>
+</section>
+<section class="classref-introduction-group" id="tutorials">
+<h2>Tutorials<a class="headerlink" href="#tutorials" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><span class="xref std std-doc">Audio buses</span></p></li>
+</ul>
+</section>
+<section class="classref-reftable-group" id="properties">
+<h2>Properties<a class="headerlink" href="#properties" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-audioeffectcapture-property-buffer-length"><span class="std std-ref">buffer_length</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0.1</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section class="classref-reftable-group" id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-audioeffectcapture-method-can-get-buffer"><span class="std std-ref">can_get_buffer</span></a>(frames: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-audioeffectcapture-method-clear-buffer"><span class="std std-ref">clear_buffer</span></a>()</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_packedvector2array.html#class-packedvector2array"><span class="std std-ref">PackedVector2Array</span></a></p></td>
+<td><p><a class="reference internal" href="#class-audioeffectcapture-method-get-buffer"><span class="std std-ref">get_buffer</span></a>(frames: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-audioeffectcapture-method-get-buffer-length-frames"><span class="std std-ref">get_buffer_length_frames</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-audioeffectcapture-method-get-discarded-frames"><span class="std std-ref">get_discarded_frames</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-audioeffectcapture-method-get-frames-available"><span class="std std-ref">get_frames_available</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-audioeffectcapture-method-get-pushed-frames"><span class="std std-ref">get_pushed_frames</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="property-descriptions">
+<h2>Property Descriptions<a class="headerlink" href="#property-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-property" id="class-audioeffectcapture-property-buffer-length"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>buffer_length</strong> = <code class="docutils literal notranslate"><span class="pre">0.1</span></code> <a class="reference internal" href="#class-audioeffectcapture-property-buffer-length"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_buffer_length</strong>(value: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>get_buffer_length</strong>()</p></li>
+</ul>
+<p>Length of the internal ring buffer, in seconds. Higher values keep data around for longer, but require more memory. Value can range from 0.01 to 10.</p>
+<p><strong>Note:</strong> Setting the buffer length will have no effect if already initialized.</p>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="method-descriptions">
+<h2>Method Descriptions<a class="headerlink" href="#method-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-method" id="class-audioeffectcapture-method-can-get-buffer"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>can_get_buffer</strong>(frames: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-audioeffectcapture-method-can-get-buffer"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if at least <code class="docutils literal notranslate"><span class="pre">frames</span></code> samples are available to read in the internal ring buffer.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-audioeffectcapture-method-clear-buffer"><abbr title="No return value.">void</abbr> <strong>clear_buffer</strong>() <a class="reference internal" href="#class-audioeffectcapture-method-clear-buffer"><span class="std std-ref">🔗</span></a></p>
+<p>Clears the internal ring buffer.</p>
+<p><strong>Note:</strong> Calling this during a capture can cause the loss of samples which causes popping in the playback.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-audioeffectcapture-method-get-buffer"><a class="reference internal" href="class_packedvector2array.html#class-packedvector2array"><span class="std std-ref">PackedVector2Array</span></a> <strong>get_buffer</strong>(frames: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <a class="reference internal" href="#class-audioeffectcapture-method-get-buffer"><span class="std std-ref">🔗</span></a></p>
+<p>Gets the next <code class="docutils literal notranslate"><span class="pre">frames</span></code> samples from the internal ring buffer.</p>
+<p>Returns a <a class="reference internal" href="class_packedvector2array.html#class-packedvector2array"><span class="std std-ref">PackedVector2Array</span></a> containing exactly <code class="docutils literal notranslate"><span class="pre">frames</span></code> samples if available, or an empty <a class="reference internal" href="class_packedvector2array.html#class-packedvector2array"><span class="std std-ref">PackedVector2Array</span></a> if insufficient data was available.</p>
+<p>The samples are signed floating-point PCM between <code class="docutils literal notranslate"><span class="pre">-1</span></code> and <code class="docutils literal notranslate"><span class="pre">1</span></code>. You will have to scale them if you want to use them as 8 or 16-bit integer samples. (<code class="docutils literal notranslate"><span class="pre">v</span> <span class="pre">=</span> <span class="pre">0x7fff</span> <span class="pre">*</span> <span class="pre">samples[0].x</span></code>)</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-audioeffectcapture-method-get-buffer-length-frames"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>get_buffer_length_frames</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-audioeffectcapture-method-get-buffer-length-frames"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the total size of the internal ring buffer in number of samples.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-audioeffectcapture-method-get-discarded-frames"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>get_discarded_frames</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-audioeffectcapture-method-get-discarded-frames"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the number of samples discarded from the audio bus due to full buffer.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-audioeffectcapture-method-get-frames-available"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>get_frames_available</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-audioeffectcapture-method-get-frames-available"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the number of samples available to read using <a class="reference internal" href="#class-audioeffectcapture-method-get-buffer"><span class="std std-ref">get_buffer()</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-audioeffectcapture-method-get-pushed-frames"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>get_pushed_frames</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-audioeffectcapture-method-get-pushed-frames"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the number of samples inserted from the audio bus.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, MUmarShahbaz.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

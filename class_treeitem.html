@@ -1,0 +1,921 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TreeItem &mdash; RPG Components 2D 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=d45e8c67"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            RPG Components 2D
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">TreeItem</a><ul>
+<li><a class="reference internal" href="#description">Description</a></li>
+<li><a class="reference internal" href="#properties">Properties</a></li>
+<li><a class="reference internal" href="#methods">Methods</a></li>
+<li><a class="reference internal" href="#enumerations">Enumerations</a></li>
+<li><a class="reference internal" href="#property-descriptions">Property Descriptions</a></li>
+<li><a class="reference internal" href="#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">RPG Components 2D</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">TreeItem</li>
+      <li class="wy-breadcrumbs-aside">
+              <!-- User defined GitHub URL -->
+              <a href="hide" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="treeitem">
+<span id="class-treeitem"></span><h1>TreeItem<a class="headerlink" href="#treeitem" title="Link to this heading"></a></h1>
+<p><strong>Inherits:</strong> <a class="reference internal" href="class_object.html#class-object"><span class="std std-ref">Object</span></a></p>
+<p>An internal control for a single item inside <a class="reference internal" href="class_tree.html#class-tree"><span class="std std-ref">Tree</span></a>.</p>
+<section class="classref-introduction-group" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
+<p>A single item of a <a class="reference internal" href="class_tree.html#class-tree"><span class="std std-ref">Tree</span></a> control. It can contain other <strong>TreeItem</strong>s as children, which allows it to create a hierarchy. It can also contain text and buttons. <strong>TreeItem</strong> is not a <a class="reference internal" href="class_node.html#class-node"><span class="std std-ref">Node</span></a>, it is internal to the <a class="reference internal" href="class_tree.html#class-tree"><span class="std std-ref">Tree</span></a>.</p>
+<p>To create a <strong>TreeItem</strong>, use <a class="reference internal" href="class_tree.html#class-tree-method-create-item"><span class="std std-ref">Tree.create_item()</span></a> or <a class="reference internal" href="#class-treeitem-method-create-child"><span class="std std-ref">create_child()</span></a>. To remove a <strong>TreeItem</strong>, use <a class="reference internal" href="class_object.html#class-object-method-free"><span class="std std-ref">Object.free()</span></a>.</p>
+<p><strong>Note:</strong> The ID values used for buttons are 32-bit, unlike <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> which is always 64-bit. They go from <code class="docutils literal notranslate"><span class="pre">-2147483648</span></code> to <code class="docutils literal notranslate"><span class="pre">2147483647</span></code>.</p>
+</section>
+<section class="classref-reftable-group" id="properties">
+<h2>Properties<a class="headerlink" href="#properties" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-treeitem-property-collapsed"><span class="std std-ref">collapsed</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-treeitem-property-custom-minimum-height"><span class="std std-ref">custom_minimum_height</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-treeitem-property-disable-folding"><span class="std std-ref">disable_folding</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-treeitem-property-visible"><span class="std std-ref">visible</span></a></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section class="classref-reftable-group" id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-treeitem-method-add-button"><span class="std std-ref">add_button</span></a>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, button: <a class="reference internal" href="class_texture2d.html#class-texture2d"><span class="std std-ref">Texture2D</span></a>, id: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> = -1, disabled: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = false, tooltip_text: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a> = “”, description: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a> = “”)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-treeitem-method-add-child"><span class="std std-ref">add_child</span></a>(child: <a class="reference internal" href="#class-treeitem"><span class="std std-ref">TreeItem</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-treeitem-method-call-recursive"><span class="std std-ref">call_recursive</span></a>(method: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>, …) <abbr title="This method accepts any number of arguments after the ones described here.">vararg</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-treeitem-method-clear-buttons"><span class="std std-ref">clear_buttons</span></a>()</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-treeitem-method-clear-custom-bg-color"><span class="std std-ref">clear_custom_bg_color</span></a>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-treeitem-method-clear-custom-color"><span class="std std-ref">clear_custom_color</span></a>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#class-treeitem"><span class="std std-ref">TreeItem</span></a></p></td>
+<td><p><a class="reference internal" href="#class-treeitem-method-create-child"><span class="std std-ref">create_child</span></a>(index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> = -1)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-treeitem-method-deselect"><span class="std std-ref">deselect</span></a>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-treeitem-method-erase-button"><span class="std std-ref">erase_button</span></a>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, button_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_node.html#enum-node-autotranslatemode"><span class="std std-ref">AutoTranslateMode</span></a></p></td>
+<td><p><a class="reference internal" href="#class-treeitem-method-get-auto-translate-mode"><span class="std std-ref">get_auto_translate_mode</span></a>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_textserver.html#enum-textserver-autowrapmode"><span class="std std-ref">AutowrapMode</span></a></p></td>
+<td><p><a class="reference internal" href="#class-treeitem-method-get-autowrap-mode"><span class="std std-ref">get_autowrap_mode</span></a>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="This value is an integer composed as a bitmask of the following flags.">BitField</abbr>[<a class="reference internal" href="class_textserver.html#enum-textserver-linebreakflag"><span class="std std-ref">LineBreakFlag</span></a>]</p></td>
+<td><p><a class="reference internal" href="#class-treeitem-method-get-autowrap-trim-flags"><span class="std std-ref">get_autowrap_trim_flags</span></a>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_texture2d.html#class-texture2d"><span class="std std-ref">Texture2D</span></a></p></td>
+<td><p><a class="reference internal" href="#class-treeitem-method-get-button"><span class="std std-ref">get_button</span></a>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, button_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-treeitem-method-get-button-by-id"><span class="std std-ref">get_button_by_id</span></a>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, id: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_color.html#class-color"><span class="std std-ref">Color</span></a></p></td>
+<td><p><a class="reference internal" href="#class-treeitem-method-get-button-color"><span class="std std-ref">get_button_color</span></a>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, id: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-treeitem-method-get-button-count"><span class="std std-ref">get_button_count</span></a>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-treeitem-method-get-button-id"><span class="std std-ref">get_button_id</span></a>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, button_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a></p></td>
+<td><p><a class="reference internal" href="#class-treeitem-method-get-button-tooltip-text"><span class="std std-ref">get_button_tooltip_text</span></a>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, button_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#enum-treeitem-treecellmode"><span class="std std-ref">TreeCellMode</span></a></p></td>
+<td><p><a class="reference internal" href="#class-treeitem-method-get-cell-mode"><span class="std std-ref">get_cell_mode</span></a>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#class-treeitem"><span class="std std-ref">TreeItem</span></a></p></td>
+<td><p><a class="reference internal" href="#class-treeitem-method-get-child"><span class="std std-ref">get_child</span></a>(index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-treeitem-method-get-child-count"><span class="std std-ref">get_child_count</span></a>()</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_array.html#class-array"><span class="std std-ref">Array</span></a>[<a class="reference internal" href="#class-treeitem"><span class="std std-ref">TreeItem</span></a>]</p></td>
+<td><p><a class="reference internal" href="#class-treeitem-method-get-children"><span class="std std-ref">get_children</span></a>()</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_color.html#class-color"><span class="std std-ref">Color</span></a></p></td>
+<td><p><a class="reference internal" href="#class-treeitem-method-get-custom-bg-color"><span class="std std-ref">get_custom_bg_color</span></a>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_color.html#class-color"><span class="std std-ref">Color</span></a></p></td>
+<td><p><a class="reference internal" href="#class-treeitem-method-get-custom-color"><span class="std std-ref">get_custom_color</span></a>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_callable.html#class-callable"><span class="std std-ref">Callable</span></a></p></td>
+<td><p><a class="reference internal" href="#class-treeitem-method-get-custom-draw-callback"><span class="std std-ref">get_custom_draw_callback</span></a>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_font.html#class-font"><span class="std std-ref">Font</span></a></p></td>
+<td><p><a class="reference internal" href="#class-treeitem-method-get-custom-font"><span class="std std-ref">get_custom_font</span></a>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-treeitem-method-get-custom-font-size"><span class="std std-ref">get_custom_font_size</span></a>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_stylebox.html#class-stylebox"><span class="std std-ref">StyleBox</span></a></p></td>
+<td><p><a class="reference internal" href="#class-treeitem-method-get-custom-stylebox"><span class="std std-ref">get_custom_stylebox</span></a>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a></p></td>
+<td><p><a class="reference internal" href="#class-treeitem-method-get-description"><span class="std std-ref">get_description</span></a>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-treeitem-method-get-expand-right"><span class="std std-ref">get_expand_right</span></a>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#class-treeitem"><span class="std std-ref">TreeItem</span></a></p></td>
+<td><p><a class="reference internal" href="#class-treeitem-method-get-first-child"><span class="std std-ref">get_first_child</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_texture2d.html#class-texture2d"><span class="std std-ref">Texture2D</span></a></p></td>
+<td><p><a class="reference internal" href="#class-treeitem-method-get-icon"><span class="std std-ref">get_icon</span></a>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-treeitem-method-get-icon-max-width"><span class="std std-ref">get_icon_max_width</span></a>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_color.html#class-color"><span class="std std-ref">Color</span></a></p></td>
+<td><p><a class="reference internal" href="#class-treeitem-method-get-icon-modulate"><span class="std std-ref">get_icon_modulate</span></a>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_texture2d.html#class-texture2d"><span class="std std-ref">Texture2D</span></a></p></td>
+<td><p><a class="reference internal" href="#class-treeitem-method-get-icon-overlay"><span class="std std-ref">get_icon_overlay</span></a>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_rect2.html#class-rect2"><span class="std std-ref">Rect2</span></a></p></td>
+<td><p><a class="reference internal" href="#class-treeitem-method-get-icon-region"><span class="std std-ref">get_icon_region</span></a>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-treeitem-method-get-index"><span class="std std-ref">get_index</span></a>()</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a></p></td>
+<td><p><a class="reference internal" href="#class-treeitem-method-get-language"><span class="std std-ref">get_language</span></a>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a></p></td>
+<td><p><a class="reference internal" href="#class-treeitem-method-get-metadata"><span class="std std-ref">get_metadata</span></a>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#class-treeitem"><span class="std std-ref">TreeItem</span></a></p></td>
+<td><p><a class="reference internal" href="#class-treeitem-method-get-next"><span class="std std-ref">get_next</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#class-treeitem"><span class="std std-ref">TreeItem</span></a></p></td>
+<td><p><a class="reference internal" href="#class-treeitem-method-get-next-in-tree"><span class="std std-ref">get_next_in_tree</span></a>(wrap: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = false)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#class-treeitem"><span class="std std-ref">TreeItem</span></a></p></td>
+<td><p><a class="reference internal" href="#class-treeitem-method-get-next-visible"><span class="std std-ref">get_next_visible</span></a>(wrap: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = false)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#class-treeitem"><span class="std std-ref">TreeItem</span></a></p></td>
+<td><p><a class="reference internal" href="#class-treeitem-method-get-parent"><span class="std std-ref">get_parent</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#class-treeitem"><span class="std std-ref">TreeItem</span></a></p></td>
+<td><p><a class="reference internal" href="#class-treeitem-method-get-prev"><span class="std std-ref">get_prev</span></a>()</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#class-treeitem"><span class="std std-ref">TreeItem</span></a></p></td>
+<td><p><a class="reference internal" href="#class-treeitem-method-get-prev-in-tree"><span class="std std-ref">get_prev_in_tree</span></a>(wrap: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = false)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#class-treeitem"><span class="std std-ref">TreeItem</span></a></p></td>
+<td><p><a class="reference internal" href="#class-treeitem-method-get-prev-visible"><span class="std std-ref">get_prev_visible</span></a>(wrap: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = false)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-treeitem-method-get-range"><span class="std std-ref">get_range</span></a>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_dictionary.html#class-dictionary"><span class="std std-ref">Dictionary</span></a></p></td>
+<td><p><a class="reference internal" href="#class-treeitem-method-get-range-config"><span class="std std-ref">get_range_config</span></a>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_textserver.html#enum-textserver-structuredtextparser"><span class="std std-ref">StructuredTextParser</span></a></p></td>
+<td><p><a class="reference internal" href="#class-treeitem-method-get-structured-text-bidi-override"><span class="std std-ref">get_structured_text_bidi_override</span></a>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_array.html#class-array"><span class="std std-ref">Array</span></a></p></td>
+<td><p><a class="reference internal" href="#class-treeitem-method-get-structured-text-bidi-override-options"><span class="std std-ref">get_structured_text_bidi_override_options</span></a>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a></p></td>
+<td><p><a class="reference internal" href="#class-treeitem-method-get-suffix"><span class="std std-ref">get_suffix</span></a>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a></p></td>
+<td><p><a class="reference internal" href="#class-treeitem-method-get-text"><span class="std std-ref">get_text</span></a>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_%40globalscope.html#enum-globalscope-horizontalalignment"><span class="std std-ref">HorizontalAlignment</span></a></p></td>
+<td><p><a class="reference internal" href="#class-treeitem-method-get-text-alignment"><span class="std std-ref">get_text_alignment</span></a>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_control.html#enum-control-textdirection"><span class="std std-ref">TextDirection</span></a></p></td>
+<td><p><a class="reference internal" href="#class-treeitem-method-get-text-direction"><span class="std std-ref">get_text_direction</span></a>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_textserver.html#enum-textserver-overrunbehavior"><span class="std std-ref">OverrunBehavior</span></a></p></td>
+<td><p><a class="reference internal" href="#class-treeitem-method-get-text-overrun-behavior"><span class="std std-ref">get_text_overrun_behavior</span></a>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a></p></td>
+<td><p><a class="reference internal" href="#class-treeitem-method-get-tooltip-text"><span class="std std-ref">get_tooltip_text</span></a>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_tree.html#class-tree"><span class="std std-ref">Tree</span></a></p></td>
+<td><p><a class="reference internal" href="#class-treeitem-method-get-tree"><span class="std std-ref">get_tree</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-treeitem-method-is-accepting-children"><span class="std std-ref">is_accepting_children</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-treeitem-method-is-any-collapsed"><span class="std std-ref">is_any_collapsed</span></a>(only_visible: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = false)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-treeitem-method-is-button-disabled"><span class="std std-ref">is_button_disabled</span></a>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, button_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-treeitem-method-is-checked"><span class="std std-ref">is_checked</span></a>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-treeitem-method-is-custom-set-as-button"><span class="std std-ref">is_custom_set_as_button</span></a>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-treeitem-method-is-edit-multiline"><span class="std std-ref">is_edit_multiline</span></a>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-treeitem-method-is-editable"><span class="std std-ref">is_editable</span></a>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-treeitem-method-is-indeterminate"><span class="std std-ref">is_indeterminate</span></a>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-treeitem-method-is-selectable"><span class="std std-ref">is_selectable</span></a>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-treeitem-method-is-selected"><span class="std std-ref">is_selected</span></a>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-treeitem-method-is-visible-in-tree"><span class="std std-ref">is_visible_in_tree</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-treeitem-method-move-after"><span class="std std-ref">move_after</span></a>(item: <a class="reference internal" href="#class-treeitem"><span class="std std-ref">TreeItem</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-treeitem-method-move-before"><span class="std std-ref">move_before</span></a>(item: <a class="reference internal" href="#class-treeitem"><span class="std std-ref">TreeItem</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-treeitem-method-propagate-check"><span class="std std-ref">propagate_check</span></a>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, emit_signal: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = true)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-treeitem-method-remove-child"><span class="std std-ref">remove_child</span></a>(child: <a class="reference internal" href="#class-treeitem"><span class="std std-ref">TreeItem</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-treeitem-method-select"><span class="std std-ref">select</span></a>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, set_as_cursor: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = true)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-treeitem-method-set-accept-children"><span class="std std-ref">set_accept_children</span></a>(allowed: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-treeitem-method-set-auto-translate-mode"><span class="std std-ref">set_auto_translate_mode</span></a>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, mode: <a class="reference internal" href="class_node.html#enum-node-autotranslatemode"><span class="std std-ref">AutoTranslateMode</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-treeitem-method-set-autowrap-mode"><span class="std std-ref">set_autowrap_mode</span></a>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, autowrap_mode: <a class="reference internal" href="class_textserver.html#enum-textserver-autowrapmode"><span class="std std-ref">AutowrapMode</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-treeitem-method-set-autowrap-trim-flags"><span class="std std-ref">set_autowrap_trim_flags</span></a>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, flags: <abbr title="This value is an integer composed as a bitmask of the following flags.">BitField</abbr>[<a class="reference internal" href="class_textserver.html#enum-textserver-linebreakflag"><span class="std std-ref">LineBreakFlag</span></a>])</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-treeitem-method-set-button"><span class="std std-ref">set_button</span></a>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, button_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, button: <a class="reference internal" href="class_texture2d.html#class-texture2d"><span class="std std-ref">Texture2D</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-treeitem-method-set-button-color"><span class="std std-ref">set_button_color</span></a>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, button_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, color: <a class="reference internal" href="class_color.html#class-color"><span class="std std-ref">Color</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-treeitem-method-set-button-description"><span class="std std-ref">set_button_description</span></a>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, button_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, description: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-treeitem-method-set-button-disabled"><span class="std std-ref">set_button_disabled</span></a>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, button_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, disabled: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-treeitem-method-set-button-tooltip-text"><span class="std std-ref">set_button_tooltip_text</span></a>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, button_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, tooltip: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-treeitem-method-set-cell-mode"><span class="std std-ref">set_cell_mode</span></a>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, mode: <a class="reference internal" href="#enum-treeitem-treecellmode"><span class="std std-ref">TreeCellMode</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-treeitem-method-set-checked"><span class="std std-ref">set_checked</span></a>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, checked: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-treeitem-method-set-collapsed-recursive"><span class="std std-ref">set_collapsed_recursive</span></a>(enable: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-treeitem-method-set-custom-as-button"><span class="std std-ref">set_custom_as_button</span></a>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, enable: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-treeitem-method-set-custom-bg-color"><span class="std std-ref">set_custom_bg_color</span></a>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, color: <a class="reference internal" href="class_color.html#class-color"><span class="std std-ref">Color</span></a>, just_outline: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = false)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-treeitem-method-set-custom-color"><span class="std std-ref">set_custom_color</span></a>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, color: <a class="reference internal" href="class_color.html#class-color"><span class="std std-ref">Color</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-treeitem-method-set-custom-draw"><span class="std std-ref">set_custom_draw</span></a>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, object: <a class="reference internal" href="class_object.html#class-object"><span class="std std-ref">Object</span></a>, callback: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-treeitem-method-set-custom-draw-callback"><span class="std std-ref">set_custom_draw_callback</span></a>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, callback: <a class="reference internal" href="class_callable.html#class-callable"><span class="std std-ref">Callable</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-treeitem-method-set-custom-font"><span class="std std-ref">set_custom_font</span></a>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, font: <a class="reference internal" href="class_font.html#class-font"><span class="std std-ref">Font</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-treeitem-method-set-custom-font-size"><span class="std std-ref">set_custom_font_size</span></a>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, font_size: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-treeitem-method-set-custom-stylebox"><span class="std std-ref">set_custom_stylebox</span></a>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, stylebox: <a class="reference internal" href="class_stylebox.html#class-stylebox"><span class="std std-ref">StyleBox</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-treeitem-method-set-description"><span class="std std-ref">set_description</span></a>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, description: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-treeitem-method-set-edit-multiline"><span class="std std-ref">set_edit_multiline</span></a>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, multiline: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-treeitem-method-set-editable"><span class="std std-ref">set_editable</span></a>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, enabled: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-treeitem-method-set-expand-right"><span class="std std-ref">set_expand_right</span></a>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, enable: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-treeitem-method-set-icon"><span class="std std-ref">set_icon</span></a>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, texture: <a class="reference internal" href="class_texture2d.html#class-texture2d"><span class="std std-ref">Texture2D</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-treeitem-method-set-icon-max-width"><span class="std std-ref">set_icon_max_width</span></a>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, width: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-treeitem-method-set-icon-modulate"><span class="std std-ref">set_icon_modulate</span></a>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, modulate: <a class="reference internal" href="class_color.html#class-color"><span class="std std-ref">Color</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-treeitem-method-set-icon-overlay"><span class="std std-ref">set_icon_overlay</span></a>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, texture: <a class="reference internal" href="class_texture2d.html#class-texture2d"><span class="std std-ref">Texture2D</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-treeitem-method-set-icon-region"><span class="std std-ref">set_icon_region</span></a>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, region: <a class="reference internal" href="class_rect2.html#class-rect2"><span class="std std-ref">Rect2</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-treeitem-method-set-indeterminate"><span class="std std-ref">set_indeterminate</span></a>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, indeterminate: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-treeitem-method-set-language"><span class="std std-ref">set_language</span></a>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, language: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-treeitem-method-set-metadata"><span class="std std-ref">set_metadata</span></a>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, meta: <a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-treeitem-method-set-range"><span class="std std-ref">set_range</span></a>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, value: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-treeitem-method-set-range-config"><span class="std std-ref">set_range_config</span></a>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, min: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, max: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, step: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, expr: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = false)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-treeitem-method-set-selectable"><span class="std std-ref">set_selectable</span></a>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, selectable: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-treeitem-method-set-structured-text-bidi-override"><span class="std std-ref">set_structured_text_bidi_override</span></a>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, parser: <a class="reference internal" href="class_textserver.html#enum-textserver-structuredtextparser"><span class="std std-ref">StructuredTextParser</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-treeitem-method-set-structured-text-bidi-override-options"><span class="std std-ref">set_structured_text_bidi_override_options</span></a>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, args: <a class="reference internal" href="class_array.html#class-array"><span class="std std-ref">Array</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-treeitem-method-set-suffix"><span class="std std-ref">set_suffix</span></a>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, text: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-treeitem-method-set-text"><span class="std std-ref">set_text</span></a>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, text: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-treeitem-method-set-text-alignment"><span class="std std-ref">set_text_alignment</span></a>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, text_alignment: <a class="reference internal" href="class_%40globalscope.html#enum-globalscope-horizontalalignment"><span class="std std-ref">HorizontalAlignment</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-treeitem-method-set-text-direction"><span class="std std-ref">set_text_direction</span></a>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, direction: <a class="reference internal" href="class_control.html#enum-control-textdirection"><span class="std std-ref">TextDirection</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-treeitem-method-set-text-overrun-behavior"><span class="std std-ref">set_text_overrun_behavior</span></a>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, overrun_behavior: <a class="reference internal" href="class_textserver.html#enum-textserver-overrunbehavior"><span class="std std-ref">OverrunBehavior</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-treeitem-method-set-tooltip-text"><span class="std std-ref">set_tooltip_text</span></a>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, tooltip: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-treeitem-method-uncollapse-tree"><span class="std std-ref">uncollapse_tree</span></a>()</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="enumerations">
+<h2>Enumerations<a class="headerlink" href="#enumerations" title="Link to this heading"></a></h2>
+<p class="classref-enumeration" id="enum-treeitem-treecellmode">enum <strong>TreeCellMode</strong>: <a class="reference internal" href="#enum-treeitem-treecellmode"><span class="std std-ref">🔗</span></a></p>
+<p class="classref-enumeration-constant" id="class-treeitem-constant-cell-mode-string"><a class="reference internal" href="#enum-treeitem-treecellmode"><span class="std std-ref">TreeCellMode</span></a> <strong>CELL_MODE_STRING</strong> = <code class="docutils literal notranslate"><span class="pre">0</span></code></p>
+<p>Cell shows a string label, optionally with an icon. When editable, the text can be edited using a <a class="reference internal" href="class_lineedit.html#class-lineedit"><span class="std std-ref">LineEdit</span></a>, or a <a class="reference internal" href="class_textedit.html#class-textedit"><span class="std std-ref">TextEdit</span></a> popup if <a class="reference internal" href="#class-treeitem-method-set-edit-multiline"><span class="std std-ref">set_edit_multiline()</span></a> is used.</p>
+<p class="classref-enumeration-constant" id="class-treeitem-constant-cell-mode-check"><a class="reference internal" href="#enum-treeitem-treecellmode"><span class="std std-ref">TreeCellMode</span></a> <strong>CELL_MODE_CHECK</strong> = <code class="docutils literal notranslate"><span class="pre">1</span></code></p>
+<p>Cell shows a checkbox, optionally with text and an icon. The checkbox can be pressed, released, or indeterminate (via <a class="reference internal" href="#class-treeitem-method-set-indeterminate"><span class="std std-ref">set_indeterminate()</span></a>). The checkbox can’t be clicked unless the cell is editable.</p>
+<p class="classref-enumeration-constant" id="class-treeitem-constant-cell-mode-range"><a class="reference internal" href="#enum-treeitem-treecellmode"><span class="std std-ref">TreeCellMode</span></a> <strong>CELL_MODE_RANGE</strong> = <code class="docutils literal notranslate"><span class="pre">2</span></code></p>
+<p>Cell shows a numeric range. When editable, it can be edited using a range slider. Use <a class="reference internal" href="#class-treeitem-method-set-range"><span class="std std-ref">set_range()</span></a> to set the value and <a class="reference internal" href="#class-treeitem-method-set-range-config"><span class="std std-ref">set_range_config()</span></a> to configure the range.</p>
+<p>This cell can also be used in a text dropdown mode when you assign a text with <a class="reference internal" href="#class-treeitem-method-set-text"><span class="std std-ref">set_text()</span></a>. Separate options with a comma, e.g. <code class="docutils literal notranslate"><span class="pre">&quot;Option1,Option2,Option3&quot;</span></code>.</p>
+<p class="classref-enumeration-constant" id="class-treeitem-constant-cell-mode-icon"><a class="reference internal" href="#enum-treeitem-treecellmode"><span class="std std-ref">TreeCellMode</span></a> <strong>CELL_MODE_ICON</strong> = <code class="docutils literal notranslate"><span class="pre">3</span></code></p>
+<p>Cell shows an icon. It can’t be edited nor display text. The icon is always centered within the cell.</p>
+<p class="classref-enumeration-constant" id="class-treeitem-constant-cell-mode-custom"><a class="reference internal" href="#enum-treeitem-treecellmode"><span class="std std-ref">TreeCellMode</span></a> <strong>CELL_MODE_CUSTOM</strong> = <code class="docutils literal notranslate"><span class="pre">4</span></code></p>
+<p>Cell shows as a clickable button. It will display an arrow similar to <a class="reference internal" href="class_optionbutton.html#class-optionbutton"><span class="std std-ref">OptionButton</span></a>, but doesn’t feature a dropdown (for that you can use <a class="reference internal" href="#class-treeitem-constant-cell-mode-range"><span class="std std-ref">CELL_MODE_RANGE</span></a>). Clicking the button emits the <a class="reference internal" href="class_tree.html#class-tree-signal-item-edited"><span class="std std-ref">Tree.item_edited</span></a> signal. The button is flat by default, you can use <a class="reference internal" href="#class-treeitem-method-set-custom-as-button"><span class="std std-ref">set_custom_as_button()</span></a> to display it with a <a class="reference internal" href="class_stylebox.html#class-stylebox"><span class="std std-ref">StyleBox</span></a>.</p>
+<p>This mode also supports custom drawing using <a class="reference internal" href="#class-treeitem-method-set-custom-draw-callback"><span class="std std-ref">set_custom_draw_callback()</span></a>.</p>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="property-descriptions">
+<h2>Property Descriptions<a class="headerlink" href="#property-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-property" id="class-treeitem-property-collapsed"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>collapsed</strong> <a class="reference internal" href="#class-treeitem-property-collapsed"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_collapsed</strong>(value: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_collapsed</strong>()</p></li>
+</ul>
+<p>If <code class="docutils literal notranslate"><span class="pre">true</span></code>, the TreeItem is collapsed.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-treeitem-property-custom-minimum-height"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>custom_minimum_height</strong> <a class="reference internal" href="#class-treeitem-property-custom-minimum-height"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_custom_minimum_height</strong>(value: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>get_custom_minimum_height</strong>()</p></li>
+</ul>
+<p>The custom minimum height.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-treeitem-property-disable-folding"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>disable_folding</strong> <a class="reference internal" href="#class-treeitem-property-disable-folding"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_disable_folding</strong>(value: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_folding_disabled</strong>()</p></li>
+</ul>
+<p>If <code class="docutils literal notranslate"><span class="pre">true</span></code>, folding is disabled for this TreeItem.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-treeitem-property-visible"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>visible</strong> <a class="reference internal" href="#class-treeitem-property-visible"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_visible</strong>(value: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_visible</strong>()</p></li>
+</ul>
+<p>If <code class="docutils literal notranslate"><span class="pre">true</span></code>, the <strong>TreeItem</strong> is visible (default).</p>
+<p>Note that if a <strong>TreeItem</strong> is set to not be visible, none of its children will be visible either.</p>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="method-descriptions">
+<h2>Method Descriptions<a class="headerlink" href="#method-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-method" id="class-treeitem-method-add-button"><abbr title="No return value.">void</abbr> <strong>add_button</strong>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, button: <a class="reference internal" href="class_texture2d.html#class-texture2d"><span class="std std-ref">Texture2D</span></a>, id: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> = -1, disabled: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = false, tooltip_text: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a> = “”, description: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a> = “”) <a class="reference internal" href="#class-treeitem-method-add-button"><span class="std std-ref">🔗</span></a></p>
+<p>Adds a button with <a class="reference internal" href="class_texture2d.html#class-texture2d"><span class="std std-ref">Texture2D</span></a> <code class="docutils literal notranslate"><span class="pre">button</span></code> to the end of the cell at column <code class="docutils literal notranslate"><span class="pre">column</span></code>. The <code class="docutils literal notranslate"><span class="pre">id</span></code> is used to identify the button in the according <a class="reference internal" href="class_tree.html#class-tree-signal-button-clicked"><span class="std std-ref">Tree.button_clicked</span></a> signal and can be different from the buttons index. If not specified, the next available index is used, which may be retrieved by calling <a class="reference internal" href="#class-treeitem-method-get-button-count"><span class="std std-ref">get_button_count()</span></a> immediately before this method. Optionally, the button can be <code class="docutils literal notranslate"><span class="pre">disabled</span></code> and have a <code class="docutils literal notranslate"><span class="pre">tooltip_text</span></code>. <code class="docutils literal notranslate"><span class="pre">description</span></code> is used as the button description for assistive apps.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-treeitem-method-add-child"><abbr title="No return value.">void</abbr> <strong>add_child</strong>(child: <a class="reference internal" href="#class-treeitem"><span class="std std-ref">TreeItem</span></a>) <a class="reference internal" href="#class-treeitem-method-add-child"><span class="std std-ref">🔗</span></a></p>
+<p>Adds a previously unparented <strong>TreeItem</strong> as a direct child of this one. The <code class="docutils literal notranslate"><span class="pre">child</span></code> item must not be a part of any <a class="reference internal" href="class_tree.html#class-tree"><span class="std std-ref">Tree</span></a> or parented to any <strong>TreeItem</strong>. See also <a class="reference internal" href="#class-treeitem-method-remove-child"><span class="std std-ref">remove_child()</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-treeitem-method-call-recursive"><abbr title="No return value.">void</abbr> <strong>call_recursive</strong>(method: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>, …) <abbr title="This method accepts any number of arguments after the ones described here.">vararg</abbr> <a class="reference internal" href="#class-treeitem-method-call-recursive"><span class="std std-ref">🔗</span></a></p>
+<p>Calls the <code class="docutils literal notranslate"><span class="pre">method</span></code> on the actual TreeItem and its children recursively. Pass parameters as a comma separated list.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-treeitem-method-clear-buttons"><abbr title="No return value.">void</abbr> <strong>clear_buttons</strong>() <a class="reference internal" href="#class-treeitem-method-clear-buttons"><span class="std std-ref">🔗</span></a></p>
+<p>Removes all buttons from all columns of this item.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-treeitem-method-clear-custom-bg-color"><abbr title="No return value.">void</abbr> <strong>clear_custom_bg_color</strong>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <a class="reference internal" href="#class-treeitem-method-clear-custom-bg-color"><span class="std std-ref">🔗</span></a></p>
+<p>Resets the background color for the given column to default.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-treeitem-method-clear-custom-color"><abbr title="No return value.">void</abbr> <strong>clear_custom_color</strong>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <a class="reference internal" href="#class-treeitem-method-clear-custom-color"><span class="std std-ref">🔗</span></a></p>
+<p>Resets the color for the given column to default.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-treeitem-method-create-child"><a class="reference internal" href="#class-treeitem"><span class="std std-ref">TreeItem</span></a> <strong>create_child</strong>(index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> = -1) <a class="reference internal" href="#class-treeitem-method-create-child"><span class="std std-ref">🔗</span></a></p>
+<p>Creates an item and adds it as a child.</p>
+<p>The new item will be inserted as position <code class="docutils literal notranslate"><span class="pre">index</span></code> (the default value <code class="docutils literal notranslate"><span class="pre">-1</span></code> means the last position), or it will be the last child if <code class="docutils literal notranslate"><span class="pre">index</span></code> is higher than the child count.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-treeitem-method-deselect"><abbr title="No return value.">void</abbr> <strong>deselect</strong>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <a class="reference internal" href="#class-treeitem-method-deselect"><span class="std std-ref">🔗</span></a></p>
+<p>Deselects the given column.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-treeitem-method-erase-button"><abbr title="No return value.">void</abbr> <strong>erase_button</strong>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, button_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <a class="reference internal" href="#class-treeitem-method-erase-button"><span class="std std-ref">🔗</span></a></p>
+<p>Removes the button at index <code class="docutils literal notranslate"><span class="pre">button_index</span></code> in column <code class="docutils literal notranslate"><span class="pre">column</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-treeitem-method-get-auto-translate-mode"><a class="reference internal" href="class_node.html#enum-node-autotranslatemode"><span class="std std-ref">AutoTranslateMode</span></a> <strong>get_auto_translate_mode</strong>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-treeitem-method-get-auto-translate-mode"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the column’s auto translate mode.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-treeitem-method-get-autowrap-mode"><a class="reference internal" href="class_textserver.html#enum-textserver-autowrapmode"><span class="std std-ref">AutowrapMode</span></a> <strong>get_autowrap_mode</strong>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-treeitem-method-get-autowrap-mode"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the text autowrap mode in the given <code class="docutils literal notranslate"><span class="pre">column</span></code>. By default it is <a class="reference internal" href="class_textserver.html#class-textserver-constant-autowrap-off"><span class="std std-ref">TextServer.AUTOWRAP_OFF</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-treeitem-method-get-autowrap-trim-flags"><abbr title="This value is an integer composed as a bitmask of the following flags.">BitField</abbr>[<a class="reference internal" href="class_textserver.html#enum-textserver-linebreakflag"><span class="std std-ref">LineBreakFlag</span></a>] <strong>get_autowrap_trim_flags</strong>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-treeitem-method-get-autowrap-trim-flags"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the autowrap trim flags for the given <code class="docutils literal notranslate"><span class="pre">column</span></code>. By default, both <a class="reference internal" href="class_textserver.html#class-textserver-constant-break-trim-start-edge-spaces"><span class="std std-ref">TextServer.BREAK_TRIM_START_EDGE_SPACES</span></a> and <a class="reference internal" href="class_textserver.html#class-textserver-constant-break-trim-end-edge-spaces"><span class="std std-ref">TextServer.BREAK_TRIM_END_EDGE_SPACES</span></a> are enabled.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-treeitem-method-get-button"><a class="reference internal" href="class_texture2d.html#class-texture2d"><span class="std std-ref">Texture2D</span></a> <strong>get_button</strong>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, button_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-treeitem-method-get-button"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the <a class="reference internal" href="class_texture2d.html#class-texture2d"><span class="std std-ref">Texture2D</span></a> of the button at index <code class="docutils literal notranslate"><span class="pre">button_index</span></code> in column <code class="docutils literal notranslate"><span class="pre">column</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-treeitem-method-get-button-by-id"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>get_button_by_id</strong>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, id: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-treeitem-method-get-button-by-id"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the button index if there is a button with ID <code class="docutils literal notranslate"><span class="pre">id</span></code> in column <code class="docutils literal notranslate"><span class="pre">column</span></code>, otherwise returns -1.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-treeitem-method-get-button-color"><a class="reference internal" href="class_color.html#class-color"><span class="std std-ref">Color</span></a> <strong>get_button_color</strong>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, id: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-treeitem-method-get-button-color"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the color of the button with ID <code class="docutils literal notranslate"><span class="pre">id</span></code> in column <code class="docutils literal notranslate"><span class="pre">column</span></code>. If the specified button does not exist, returns <a class="reference internal" href="class_color.html#class-color-constant-black"><span class="std std-ref">Color.BLACK</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-treeitem-method-get-button-count"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>get_button_count</strong>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-treeitem-method-get-button-count"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the number of buttons in column <code class="docutils literal notranslate"><span class="pre">column</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-treeitem-method-get-button-id"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>get_button_id</strong>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, button_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-treeitem-method-get-button-id"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the ID for the button at index <code class="docutils literal notranslate"><span class="pre">button_index</span></code> in column <code class="docutils literal notranslate"><span class="pre">column</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-treeitem-method-get-button-tooltip-text"><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a> <strong>get_button_tooltip_text</strong>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, button_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-treeitem-method-get-button-tooltip-text"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the tooltip text for the button at index <code class="docutils literal notranslate"><span class="pre">button_index</span></code> in column <code class="docutils literal notranslate"><span class="pre">column</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-treeitem-method-get-cell-mode"><a class="reference internal" href="#enum-treeitem-treecellmode"><span class="std std-ref">TreeCellMode</span></a> <strong>get_cell_mode</strong>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-treeitem-method-get-cell-mode"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the column’s cell mode.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-treeitem-method-get-child"><a class="reference internal" href="#class-treeitem"><span class="std std-ref">TreeItem</span></a> <strong>get_child</strong>(index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <a class="reference internal" href="#class-treeitem-method-get-child"><span class="std std-ref">🔗</span></a></p>
+<p>Returns a child item by its <code class="docutils literal notranslate"><span class="pre">index</span></code> (see <a class="reference internal" href="#class-treeitem-method-get-child-count"><span class="std std-ref">get_child_count()</span></a>). This method is often used for iterating all children of an item.</p>
+<p>Negative indices access the children from the last one.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-treeitem-method-get-child-count"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>get_child_count</strong>() <a class="reference internal" href="#class-treeitem-method-get-child-count"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the number of child items.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-treeitem-method-get-children"><a class="reference internal" href="class_array.html#class-array"><span class="std std-ref">Array</span></a>[<a class="reference internal" href="#class-treeitem"><span class="std std-ref">TreeItem</span></a>] <strong>get_children</strong>() <a class="reference internal" href="#class-treeitem-method-get-children"><span class="std std-ref">🔗</span></a></p>
+<p>Returns an array of references to the item’s children.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-treeitem-method-get-custom-bg-color"><a class="reference internal" href="class_color.html#class-color"><span class="std std-ref">Color</span></a> <strong>get_custom_bg_color</strong>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-treeitem-method-get-custom-bg-color"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the custom background color of column <code class="docutils literal notranslate"><span class="pre">column</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-treeitem-method-get-custom-color"><a class="reference internal" href="class_color.html#class-color"><span class="std std-ref">Color</span></a> <strong>get_custom_color</strong>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-treeitem-method-get-custom-color"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the custom color of column <code class="docutils literal notranslate"><span class="pre">column</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-treeitem-method-get-custom-draw-callback"><a class="reference internal" href="class_callable.html#class-callable"><span class="std std-ref">Callable</span></a> <strong>get_custom_draw_callback</strong>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-treeitem-method-get-custom-draw-callback"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the custom callback of column <code class="docutils literal notranslate"><span class="pre">column</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-treeitem-method-get-custom-font"><a class="reference internal" href="class_font.html#class-font"><span class="std std-ref">Font</span></a> <strong>get_custom_font</strong>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-treeitem-method-get-custom-font"><span class="std std-ref">🔗</span></a></p>
+<p>Returns custom font used to draw text in the column <code class="docutils literal notranslate"><span class="pre">column</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-treeitem-method-get-custom-font-size"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>get_custom_font_size</strong>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-treeitem-method-get-custom-font-size"><span class="std std-ref">🔗</span></a></p>
+<p>Returns custom font size used to draw text in the column <code class="docutils literal notranslate"><span class="pre">column</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-treeitem-method-get-custom-stylebox"><a class="reference internal" href="class_stylebox.html#class-stylebox"><span class="std std-ref">StyleBox</span></a> <strong>get_custom_stylebox</strong>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-treeitem-method-get-custom-stylebox"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the given column’s custom <a class="reference internal" href="class_stylebox.html#class-stylebox"><span class="std std-ref">StyleBox</span></a> used to draw the background.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-treeitem-method-get-description"><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a> <strong>get_description</strong>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-treeitem-method-get-description"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the given column’s description for assistive apps.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-treeitem-method-get-expand-right"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>get_expand_right</strong>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-treeitem-method-get-expand-right"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if <code class="docutils literal notranslate"><span class="pre">expand_right</span></code> is set.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-treeitem-method-get-first-child"><a class="reference internal" href="#class-treeitem"><span class="std std-ref">TreeItem</span></a> <strong>get_first_child</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-treeitem-method-get-first-child"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the TreeItem’s first child.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-treeitem-method-get-icon"><a class="reference internal" href="class_texture2d.html#class-texture2d"><span class="std std-ref">Texture2D</span></a> <strong>get_icon</strong>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-treeitem-method-get-icon"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the given column’s icon <a class="reference internal" href="class_texture2d.html#class-texture2d"><span class="std std-ref">Texture2D</span></a>. Error if no icon is set.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-treeitem-method-get-icon-max-width"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>get_icon_max_width</strong>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-treeitem-method-get-icon-max-width"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the maximum allowed width of the icon in the given <code class="docutils literal notranslate"><span class="pre">column</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-treeitem-method-get-icon-modulate"><a class="reference internal" href="class_color.html#class-color"><span class="std std-ref">Color</span></a> <strong>get_icon_modulate</strong>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-treeitem-method-get-icon-modulate"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the <a class="reference internal" href="class_color.html#class-color"><span class="std std-ref">Color</span></a> modulating the column’s icon.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-treeitem-method-get-icon-overlay"><a class="reference internal" href="class_texture2d.html#class-texture2d"><span class="std std-ref">Texture2D</span></a> <strong>get_icon_overlay</strong>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-treeitem-method-get-icon-overlay"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the given column’s icon overlay <a class="reference internal" href="class_texture2d.html#class-texture2d"><span class="std std-ref">Texture2D</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-treeitem-method-get-icon-region"><a class="reference internal" href="class_rect2.html#class-rect2"><span class="std std-ref">Rect2</span></a> <strong>get_icon_region</strong>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-treeitem-method-get-icon-region"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the icon <a class="reference internal" href="class_texture2d.html#class-texture2d"><span class="std std-ref">Texture2D</span></a> region as <a class="reference internal" href="class_rect2.html#class-rect2"><span class="std std-ref">Rect2</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-treeitem-method-get-index"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>get_index</strong>() <a class="reference internal" href="#class-treeitem-method-get-index"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the node’s order in the tree. For example, if called on the first child item the position is <code class="docutils literal notranslate"><span class="pre">0</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-treeitem-method-get-language"><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a> <strong>get_language</strong>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-treeitem-method-get-language"><span class="std std-ref">🔗</span></a></p>
+<p>Returns item’s text language code.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-treeitem-method-get-metadata"><a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a> <strong>get_metadata</strong>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-treeitem-method-get-metadata"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the metadata value that was set for the given column using <a class="reference internal" href="#class-treeitem-method-set-metadata"><span class="std std-ref">set_metadata()</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-treeitem-method-get-next"><a class="reference internal" href="#class-treeitem"><span class="std std-ref">TreeItem</span></a> <strong>get_next</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-treeitem-method-get-next"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the next sibling TreeItem in the tree or a <code class="docutils literal notranslate"><span class="pre">null</span></code> object if there is none.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-treeitem-method-get-next-in-tree"><a class="reference internal" href="#class-treeitem"><span class="std std-ref">TreeItem</span></a> <strong>get_next_in_tree</strong>(wrap: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = false) <a class="reference internal" href="#class-treeitem-method-get-next-in-tree"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the next TreeItem in the tree (in the context of a depth-first search) or a <code class="docutils literal notranslate"><span class="pre">null</span></code> object if there is none.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">wrap</span></code> is enabled, the method will wrap around to the first element in the tree when called on the last element, otherwise it returns <code class="docutils literal notranslate"><span class="pre">null</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-treeitem-method-get-next-visible"><a class="reference internal" href="#class-treeitem"><span class="std std-ref">TreeItem</span></a> <strong>get_next_visible</strong>(wrap: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = false) <a class="reference internal" href="#class-treeitem-method-get-next-visible"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the next visible TreeItem in the tree (in the context of a depth-first search) or a <code class="docutils literal notranslate"><span class="pre">null</span></code> object if there is none.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">wrap</span></code> is enabled, the method will wrap around to the first visible element in the tree when called on the last visible element, otherwise it returns <code class="docutils literal notranslate"><span class="pre">null</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-treeitem-method-get-parent"><a class="reference internal" href="#class-treeitem"><span class="std std-ref">TreeItem</span></a> <strong>get_parent</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-treeitem-method-get-parent"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the parent TreeItem or a <code class="docutils literal notranslate"><span class="pre">null</span></code> object if there is none.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-treeitem-method-get-prev"><a class="reference internal" href="#class-treeitem"><span class="std std-ref">TreeItem</span></a> <strong>get_prev</strong>() <a class="reference internal" href="#class-treeitem-method-get-prev"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the previous sibling TreeItem in the tree or a <code class="docutils literal notranslate"><span class="pre">null</span></code> object if there is none.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-treeitem-method-get-prev-in-tree"><a class="reference internal" href="#class-treeitem"><span class="std std-ref">TreeItem</span></a> <strong>get_prev_in_tree</strong>(wrap: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = false) <a class="reference internal" href="#class-treeitem-method-get-prev-in-tree"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the previous TreeItem in the tree (in the context of a depth-first search) or a <code class="docutils literal notranslate"><span class="pre">null</span></code> object if there is none.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">wrap</span></code> is enabled, the method will wrap around to the last element in the tree when called on the first visible element, otherwise it returns <code class="docutils literal notranslate"><span class="pre">null</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-treeitem-method-get-prev-visible"><a class="reference internal" href="#class-treeitem"><span class="std std-ref">TreeItem</span></a> <strong>get_prev_visible</strong>(wrap: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = false) <a class="reference internal" href="#class-treeitem-method-get-prev-visible"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the previous visible sibling TreeItem in the tree (in the context of a depth-first search) or a <code class="docutils literal notranslate"><span class="pre">null</span></code> object if there is none.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">wrap</span></code> is enabled, the method will wrap around to the last visible element in the tree when called on the first visible element, otherwise it returns <code class="docutils literal notranslate"><span class="pre">null</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-treeitem-method-get-range"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>get_range</strong>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-treeitem-method-get-range"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the value of a <a class="reference internal" href="#class-treeitem-constant-cell-mode-range"><span class="std std-ref">CELL_MODE_RANGE</span></a> column.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-treeitem-method-get-range-config"><a class="reference internal" href="class_dictionary.html#class-dictionary"><span class="std std-ref">Dictionary</span></a> <strong>get_range_config</strong>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <a class="reference internal" href="#class-treeitem-method-get-range-config"><span class="std std-ref">🔗</span></a></p>
+<p>Returns a dictionary containing the range parameters for a given column. The keys are “min”, “max”, “step”, and “expr”.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-treeitem-method-get-structured-text-bidi-override"><a class="reference internal" href="class_textserver.html#enum-textserver-structuredtextparser"><span class="std std-ref">StructuredTextParser</span></a> <strong>get_structured_text_bidi_override</strong>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-treeitem-method-get-structured-text-bidi-override"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the BiDi algorithm override set for this cell.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-treeitem-method-get-structured-text-bidi-override-options"><a class="reference internal" href="class_array.html#class-array"><span class="std std-ref">Array</span></a> <strong>get_structured_text_bidi_override_options</strong>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-treeitem-method-get-structured-text-bidi-override-options"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the additional BiDi options set for this cell.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-treeitem-method-get-suffix"><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a> <strong>get_suffix</strong>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-treeitem-method-get-suffix"><span class="std std-ref">🔗</span></a></p>
+<p>Gets the suffix string shown after the column value.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-treeitem-method-get-text"><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a> <strong>get_text</strong>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-treeitem-method-get-text"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the given column’s text.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-treeitem-method-get-text-alignment"><a class="reference internal" href="class_%40globalscope.html#enum-globalscope-horizontalalignment"><span class="std std-ref">HorizontalAlignment</span></a> <strong>get_text_alignment</strong>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-treeitem-method-get-text-alignment"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the given column’s text alignment.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-treeitem-method-get-text-direction"><a class="reference internal" href="class_control.html#enum-control-textdirection"><span class="std std-ref">TextDirection</span></a> <strong>get_text_direction</strong>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-treeitem-method-get-text-direction"><span class="std std-ref">🔗</span></a></p>
+<p>Returns item’s text base writing direction.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-treeitem-method-get-text-overrun-behavior"><a class="reference internal" href="class_textserver.html#enum-textserver-overrunbehavior"><span class="std std-ref">OverrunBehavior</span></a> <strong>get_text_overrun_behavior</strong>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-treeitem-method-get-text-overrun-behavior"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the clipping behavior when the text exceeds the item’s bounding rectangle in the given <code class="docutils literal notranslate"><span class="pre">column</span></code>. By default it is <a class="reference internal" href="class_textserver.html#class-textserver-constant-overrun-trim-ellipsis"><span class="std std-ref">TextServer.OVERRUN_TRIM_ELLIPSIS</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-treeitem-method-get-tooltip-text"><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a> <strong>get_tooltip_text</strong>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-treeitem-method-get-tooltip-text"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the given column’s tooltip text.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-treeitem-method-get-tree"><a class="reference internal" href="class_tree.html#class-tree"><span class="std std-ref">Tree</span></a> <strong>get_tree</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-treeitem-method-get-tree"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the <a class="reference internal" href="class_tree.html#class-tree"><span class="std std-ref">Tree</span></a> that owns this TreeItem.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-treeitem-method-is-accepting-children"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_accepting_children</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-treeitem-method-is-accepting-children"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if this <strong>TreeItem</strong> is allowed to accept children.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-treeitem-method-is-any-collapsed"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_any_collapsed</strong>(only_visible: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = false) <a class="reference internal" href="#class-treeitem-method-is-any-collapsed"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if this <strong>TreeItem</strong>, or any of its descendants, is collapsed.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">only_visible</span></code> is <code class="docutils literal notranslate"><span class="pre">true</span></code> it ignores non-visible <strong>TreeItem</strong>s.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-treeitem-method-is-button-disabled"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_button_disabled</strong>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, button_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-treeitem-method-is-button-disabled"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if the button at index <code class="docutils literal notranslate"><span class="pre">button_index</span></code> for the given <code class="docutils literal notranslate"><span class="pre">column</span></code> is disabled.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-treeitem-method-is-checked"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_checked</strong>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-treeitem-method-is-checked"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if the given <code class="docutils literal notranslate"><span class="pre">column</span></code> is checked.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-treeitem-method-is-custom-set-as-button"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_custom_set_as_button</strong>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-treeitem-method-is-custom-set-as-button"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if the cell was made into a button with <a class="reference internal" href="#class-treeitem-method-set-custom-as-button"><span class="std std-ref">set_custom_as_button()</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-treeitem-method-is-edit-multiline"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_edit_multiline</strong>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-treeitem-method-is-edit-multiline"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if the given <code class="docutils literal notranslate"><span class="pre">column</span></code> is multiline editable.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-treeitem-method-is-editable"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_editable</strong>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <a class="reference internal" href="#class-treeitem-method-is-editable"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if the given <code class="docutils literal notranslate"><span class="pre">column</span></code> is editable.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-treeitem-method-is-indeterminate"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_indeterminate</strong>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-treeitem-method-is-indeterminate"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if the given <code class="docutils literal notranslate"><span class="pre">column</span></code> is indeterminate.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-treeitem-method-is-selectable"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_selectable</strong>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-treeitem-method-is-selectable"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if the given <code class="docutils literal notranslate"><span class="pre">column</span></code> is selectable.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-treeitem-method-is-selected"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_selected</strong>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <a class="reference internal" href="#class-treeitem-method-is-selected"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if the given <code class="docutils literal notranslate"><span class="pre">column</span></code> is selected.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-treeitem-method-is-visible-in-tree"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_visible_in_tree</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-treeitem-method-is-visible-in-tree"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if <a class="reference internal" href="#class-treeitem-property-visible"><span class="std std-ref">visible</span></a> is <code class="docutils literal notranslate"><span class="pre">true</span></code> and all its ancestors are also visible.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-treeitem-method-move-after"><abbr title="No return value.">void</abbr> <strong>move_after</strong>(item: <a class="reference internal" href="#class-treeitem"><span class="std std-ref">TreeItem</span></a>) <a class="reference internal" href="#class-treeitem-method-move-after"><span class="std std-ref">🔗</span></a></p>
+<p>Moves this TreeItem right after the given <code class="docutils literal notranslate"><span class="pre">item</span></code>.</p>
+<p><strong>Note:</strong> You can’t move to the root or move the root.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-treeitem-method-move-before"><abbr title="No return value.">void</abbr> <strong>move_before</strong>(item: <a class="reference internal" href="#class-treeitem"><span class="std std-ref">TreeItem</span></a>) <a class="reference internal" href="#class-treeitem-method-move-before"><span class="std std-ref">🔗</span></a></p>
+<p>Moves this TreeItem right before the given <code class="docutils literal notranslate"><span class="pre">item</span></code>.</p>
+<p><strong>Note:</strong> You can’t move to the root or move the root.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-treeitem-method-propagate-check"><abbr title="No return value.">void</abbr> <strong>propagate_check</strong>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, emit_signal: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = true) <a class="reference internal" href="#class-treeitem-method-propagate-check"><span class="std std-ref">🔗</span></a></p>
+<p>Propagates this item’s checked status to its children and parents for the given <code class="docutils literal notranslate"><span class="pre">column</span></code>. It is possible to process the items affected by this method call by connecting to <a class="reference internal" href="class_tree.html#class-tree-signal-check-propagated-to-item"><span class="std std-ref">Tree.check_propagated_to_item</span></a>. The order that the items affected will be processed is as follows: the item invoking this method, children of that item, and finally parents of that item. If <code class="docutils literal notranslate"><span class="pre">emit_signal</span></code> is <code class="docutils literal notranslate"><span class="pre">false</span></code>, then <a class="reference internal" href="class_tree.html#class-tree-signal-check-propagated-to-item"><span class="std std-ref">Tree.check_propagated_to_item</span></a> will not be emitted.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-treeitem-method-remove-child"><abbr title="No return value.">void</abbr> <strong>remove_child</strong>(child: <a class="reference internal" href="#class-treeitem"><span class="std std-ref">TreeItem</span></a>) <a class="reference internal" href="#class-treeitem-method-remove-child"><span class="std std-ref">🔗</span></a></p>
+<p>Removes the given child <strong>TreeItem</strong> and all its children from the <a class="reference internal" href="class_tree.html#class-tree"><span class="std std-ref">Tree</span></a>. Note that it doesn’t free the item from memory, so it can be reused later (see <a class="reference internal" href="#class-treeitem-method-add-child"><span class="std std-ref">add_child()</span></a>). To completely remove a <strong>TreeItem</strong> use <a class="reference internal" href="class_object.html#class-object-method-free"><span class="std std-ref">Object.free()</span></a>.</p>
+<p><strong>Note:</strong> If you want to move a child from one <a class="reference internal" href="class_tree.html#class-tree"><span class="std std-ref">Tree</span></a> to another, then instead of removing and adding it manually you can use <a class="reference internal" href="#class-treeitem-method-move-before"><span class="std std-ref">move_before()</span></a> or <a class="reference internal" href="#class-treeitem-method-move-after"><span class="std std-ref">move_after()</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-treeitem-method-select"><abbr title="No return value.">void</abbr> <strong>select</strong>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, set_as_cursor: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = true) <a class="reference internal" href="#class-treeitem-method-select"><span class="std std-ref">🔗</span></a></p>
+<p>Selects the given <code class="docutils literal notranslate"><span class="pre">column</span></code>. If <code class="docutils literal notranslate"><span class="pre">set_as_cursor</span></code> is <code class="docutils literal notranslate"><span class="pre">true</span></code>, the <a class="reference internal" href="class_tree.html#class-tree"><span class="std std-ref">Tree</span></a>’s cursor will be moved to this item (only matters if <a class="reference internal" href="class_tree.html#class-tree-property-select-mode"><span class="std std-ref">Tree.select_mode</span></a> is set to <a class="reference internal" href="class_tree.html#class-tree-constant-select-multi"><span class="std std-ref">Tree.SELECT_MULTI</span></a>).</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-treeitem-method-set-accept-children"><abbr title="No return value.">void</abbr> <strong>set_accept_children</strong>(allowed: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>) <a class="reference internal" href="#class-treeitem-method-set-accept-children"><span class="std std-ref">🔗</span></a></p>
+<p>Sets <strong>TreeItem</strong>’s ability to accept children.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-treeitem-method-set-auto-translate-mode"><abbr title="No return value.">void</abbr> <strong>set_auto_translate_mode</strong>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, mode: <a class="reference internal" href="class_node.html#enum-node-autotranslatemode"><span class="std std-ref">AutoTranslateMode</span></a>) <a class="reference internal" href="#class-treeitem-method-set-auto-translate-mode"><span class="std std-ref">🔗</span></a></p>
+<p>Sets the given column’s auto translate mode to <code class="docutils literal notranslate"><span class="pre">mode</span></code>.</p>
+<p>All columns use <a class="reference internal" href="class_node.html#class-node-constant-auto-translate-mode-inherit"><span class="std std-ref">Node.AUTO_TRANSLATE_MODE_INHERIT</span></a> by default, which uses the same auto translate mode as the <a class="reference internal" href="class_tree.html#class-tree"><span class="std std-ref">Tree</span></a> itself.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-treeitem-method-set-autowrap-mode"><abbr title="No return value.">void</abbr> <strong>set_autowrap_mode</strong>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, autowrap_mode: <a class="reference internal" href="class_textserver.html#enum-textserver-autowrapmode"><span class="std std-ref">AutowrapMode</span></a>) <a class="reference internal" href="#class-treeitem-method-set-autowrap-mode"><span class="std std-ref">🔗</span></a></p>
+<p>Sets the autowrap mode in the given <code class="docutils literal notranslate"><span class="pre">column</span></code>. If set to something other than <a class="reference internal" href="class_textserver.html#class-textserver-constant-autowrap-off"><span class="std std-ref">TextServer.AUTOWRAP_OFF</span></a>, the text gets wrapped inside the cell’s bounding rectangle.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-treeitem-method-set-autowrap-trim-flags"><abbr title="No return value.">void</abbr> <strong>set_autowrap_trim_flags</strong>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, flags: <abbr title="This value is an integer composed as a bitmask of the following flags.">BitField</abbr>[<a class="reference internal" href="class_textserver.html#enum-textserver-linebreakflag"><span class="std std-ref">LineBreakFlag</span></a>]) <a class="reference internal" href="#class-treeitem-method-set-autowrap-trim-flags"><span class="std std-ref">🔗</span></a></p>
+<p>Sets the autowrap trim flags for the given <code class="docutils literal notranslate"><span class="pre">column</span></code>. These flags control whether leading and trailing spaces are trimmed on wrapped lines. Set to <code class="docutils literal notranslate"><span class="pre">0</span></code> to disable all trimming.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-treeitem-method-set-button"><abbr title="No return value.">void</abbr> <strong>set_button</strong>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, button_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, button: <a class="reference internal" href="class_texture2d.html#class-texture2d"><span class="std std-ref">Texture2D</span></a>) <a class="reference internal" href="#class-treeitem-method-set-button"><span class="std std-ref">🔗</span></a></p>
+<p>Sets the given column’s button <a class="reference internal" href="class_texture2d.html#class-texture2d"><span class="std std-ref">Texture2D</span></a> at index <code class="docutils literal notranslate"><span class="pre">button_index</span></code> to <code class="docutils literal notranslate"><span class="pre">button</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-treeitem-method-set-button-color"><abbr title="No return value.">void</abbr> <strong>set_button_color</strong>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, button_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, color: <a class="reference internal" href="class_color.html#class-color"><span class="std std-ref">Color</span></a>) <a class="reference internal" href="#class-treeitem-method-set-button-color"><span class="std std-ref">🔗</span></a></p>
+<p>Sets the given column’s button color at index <code class="docutils literal notranslate"><span class="pre">button_index</span></code> to <code class="docutils literal notranslate"><span class="pre">color</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-treeitem-method-set-button-description"><abbr title="No return value.">void</abbr> <strong>set_button_description</strong>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, button_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, description: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <a class="reference internal" href="#class-treeitem-method-set-button-description"><span class="std std-ref">🔗</span></a></p>
+<p>Sets the given column’s button description at index <code class="docutils literal notranslate"><span class="pre">button_index</span></code> for assistive apps.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-treeitem-method-set-button-disabled"><abbr title="No return value.">void</abbr> <strong>set_button_disabled</strong>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, button_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, disabled: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>) <a class="reference internal" href="#class-treeitem-method-set-button-disabled"><span class="std std-ref">🔗</span></a></p>
+<p>If <code class="docutils literal notranslate"><span class="pre">true</span></code>, disables the button at index <code class="docutils literal notranslate"><span class="pre">button_index</span></code> in the given <code class="docutils literal notranslate"><span class="pre">column</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-treeitem-method-set-button-tooltip-text"><abbr title="No return value.">void</abbr> <strong>set_button_tooltip_text</strong>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, button_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, tooltip: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <a class="reference internal" href="#class-treeitem-method-set-button-tooltip-text"><span class="std std-ref">🔗</span></a></p>
+<p>Sets the tooltip text for the button at index <code class="docutils literal notranslate"><span class="pre">button_index</span></code> in the given <code class="docutils literal notranslate"><span class="pre">column</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-treeitem-method-set-cell-mode"><abbr title="No return value.">void</abbr> <strong>set_cell_mode</strong>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, mode: <a class="reference internal" href="#enum-treeitem-treecellmode"><span class="std std-ref">TreeCellMode</span></a>) <a class="reference internal" href="#class-treeitem-method-set-cell-mode"><span class="std std-ref">🔗</span></a></p>
+<p>Sets the given column’s cell mode to <code class="docutils literal notranslate"><span class="pre">mode</span></code>. This determines how the cell is displayed and edited.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-treeitem-method-set-checked"><abbr title="No return value.">void</abbr> <strong>set_checked</strong>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, checked: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>) <a class="reference internal" href="#class-treeitem-method-set-checked"><span class="std std-ref">🔗</span></a></p>
+<p>If <code class="docutils literal notranslate"><span class="pre">checked</span></code> is <code class="docutils literal notranslate"><span class="pre">true</span></code>, the given <code class="docutils literal notranslate"><span class="pre">column</span></code> is checked. Clears column’s indeterminate status.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-treeitem-method-set-collapsed-recursive"><abbr title="No return value.">void</abbr> <strong>set_collapsed_recursive</strong>(enable: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>) <a class="reference internal" href="#class-treeitem-method-set-collapsed-recursive"><span class="std std-ref">🔗</span></a></p>
+<p>Collapses or uncollapses this <strong>TreeItem</strong> and all the descendants of this item.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-treeitem-method-set-custom-as-button"><abbr title="No return value.">void</abbr> <strong>set_custom_as_button</strong>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, enable: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>) <a class="reference internal" href="#class-treeitem-method-set-custom-as-button"><span class="std std-ref">🔗</span></a></p>
+<p>Makes a cell with <a class="reference internal" href="#class-treeitem-constant-cell-mode-custom"><span class="std std-ref">CELL_MODE_CUSTOM</span></a> display as a non-flat button with a <a class="reference internal" href="class_stylebox.html#class-stylebox"><span class="std std-ref">StyleBox</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-treeitem-method-set-custom-bg-color"><abbr title="No return value.">void</abbr> <strong>set_custom_bg_color</strong>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, color: <a class="reference internal" href="class_color.html#class-color"><span class="std std-ref">Color</span></a>, just_outline: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = false) <a class="reference internal" href="#class-treeitem-method-set-custom-bg-color"><span class="std std-ref">🔗</span></a></p>
+<p>Sets the given column’s custom background color and whether to just use it as an outline.</p>
+<p><strong>Note:</strong> If a custom <a class="reference internal" href="class_stylebox.html#class-stylebox"><span class="std std-ref">StyleBox</span></a> is set, the background color will be drawn behind it.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-treeitem-method-set-custom-color"><abbr title="No return value.">void</abbr> <strong>set_custom_color</strong>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, color: <a class="reference internal" href="class_color.html#class-color"><span class="std std-ref">Color</span></a>) <a class="reference internal" href="#class-treeitem-method-set-custom-color"><span class="std std-ref">🔗</span></a></p>
+<p>Sets the given column’s custom color.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-treeitem-method-set-custom-draw"><abbr title="No return value.">void</abbr> <strong>set_custom_draw</strong>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, object: <a class="reference internal" href="class_object.html#class-object"><span class="std std-ref">Object</span></a>, callback: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>) <a class="reference internal" href="#class-treeitem-method-set-custom-draw"><span class="std std-ref">🔗</span></a></p>
+<p><strong>Deprecated:</strong> Use <a class="reference internal" href="#class-treeitem-method-set-custom-draw-callback"><span class="std std-ref">set_custom_draw_callback()</span></a> instead.</p>
+<p>Sets the given column’s custom draw callback to the <code class="docutils literal notranslate"><span class="pre">callback</span></code> method on <code class="docutils literal notranslate"><span class="pre">object</span></code>.</p>
+<p>The method named <code class="docutils literal notranslate"><span class="pre">callback</span></code> should accept two arguments: the <strong>TreeItem</strong> that is drawn and its position and size as a <a class="reference internal" href="class_rect2.html#class-rect2"><span class="std std-ref">Rect2</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-treeitem-method-set-custom-draw-callback"><abbr title="No return value.">void</abbr> <strong>set_custom_draw_callback</strong>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, callback: <a class="reference internal" href="class_callable.html#class-callable"><span class="std std-ref">Callable</span></a>) <a class="reference internal" href="#class-treeitem-method-set-custom-draw-callback"><span class="std std-ref">🔗</span></a></p>
+<p>Sets the given column’s custom draw callback. Use an empty <a class="reference internal" href="class_callable.html#class-callable"><span class="std std-ref">Callable</span></a> (<code class="docutils literal notranslate"><span class="pre">Callable()</span></code>) to clear the custom callback. The cell has to be in <a class="reference internal" href="#class-treeitem-constant-cell-mode-custom"><span class="std std-ref">CELL_MODE_CUSTOM</span></a> to use this feature.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">callback</span></code> should accept two arguments: the <strong>TreeItem</strong> that is drawn and its position and size as a <a class="reference internal" href="class_rect2.html#class-rect2"><span class="std std-ref">Rect2</span></a>.</p>
+<p>To draw custom content over the native style, please use <a class="reference internal" href="class_tree.html#class-tree-method-get-custom-drawing-canvas-item"><span class="std std-ref">Tree.get_custom_drawing_canvas_item()</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-treeitem-method-set-custom-font"><abbr title="No return value.">void</abbr> <strong>set_custom_font</strong>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, font: <a class="reference internal" href="class_font.html#class-font"><span class="std std-ref">Font</span></a>) <a class="reference internal" href="#class-treeitem-method-set-custom-font"><span class="std std-ref">🔗</span></a></p>
+<p>Sets custom font used to draw text in the given <code class="docutils literal notranslate"><span class="pre">column</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-treeitem-method-set-custom-font-size"><abbr title="No return value.">void</abbr> <strong>set_custom_font_size</strong>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, font_size: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <a class="reference internal" href="#class-treeitem-method-set-custom-font-size"><span class="std std-ref">🔗</span></a></p>
+<p>Sets custom font size used to draw text in the given <code class="docutils literal notranslate"><span class="pre">column</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-treeitem-method-set-custom-stylebox"><abbr title="No return value.">void</abbr> <strong>set_custom_stylebox</strong>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, stylebox: <a class="reference internal" href="class_stylebox.html#class-stylebox"><span class="std std-ref">StyleBox</span></a>) <a class="reference internal" href="#class-treeitem-method-set-custom-stylebox"><span class="std std-ref">🔗</span></a></p>
+<p>Sets the given column’s custom <a class="reference internal" href="class_stylebox.html#class-stylebox"><span class="std std-ref">StyleBox</span></a> used to draw the background.</p>
+<p><strong>Note:</strong> If a custom background color is set, the <a class="reference internal" href="class_stylebox.html#class-stylebox"><span class="std std-ref">StyleBox</span></a> will be drawn in front of it.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-treeitem-method-set-description"><abbr title="No return value.">void</abbr> <strong>set_description</strong>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, description: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <a class="reference internal" href="#class-treeitem-method-set-description"><span class="std std-ref">🔗</span></a></p>
+<p>Sets the given column’s description for assistive apps.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-treeitem-method-set-edit-multiline"><abbr title="No return value.">void</abbr> <strong>set_edit_multiline</strong>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, multiline: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>) <a class="reference internal" href="#class-treeitem-method-set-edit-multiline"><span class="std std-ref">🔗</span></a></p>
+<p>If <code class="docutils literal notranslate"><span class="pre">multiline</span></code> is <code class="docutils literal notranslate"><span class="pre">true</span></code>, the given <code class="docutils literal notranslate"><span class="pre">column</span></code> is multiline editable.</p>
+<p><strong>Note:</strong> This option only affects the type of control (<a class="reference internal" href="class_lineedit.html#class-lineedit"><span class="std std-ref">LineEdit</span></a> or <a class="reference internal" href="class_textedit.html#class-textedit"><span class="std std-ref">TextEdit</span></a>) that appears when editing the column. You can set multiline values with <a class="reference internal" href="#class-treeitem-method-set-text"><span class="std std-ref">set_text()</span></a> even if the column is not multiline editable.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-treeitem-method-set-editable"><abbr title="No return value.">void</abbr> <strong>set_editable</strong>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, enabled: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>) <a class="reference internal" href="#class-treeitem-method-set-editable"><span class="std std-ref">🔗</span></a></p>
+<p>If <code class="docutils literal notranslate"><span class="pre">enabled</span></code> is <code class="docutils literal notranslate"><span class="pre">true</span></code>, the given <code class="docutils literal notranslate"><span class="pre">column</span></code> is editable.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-treeitem-method-set-expand-right"><abbr title="No return value.">void</abbr> <strong>set_expand_right</strong>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, enable: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>) <a class="reference internal" href="#class-treeitem-method-set-expand-right"><span class="std std-ref">🔗</span></a></p>
+<p>If <code class="docutils literal notranslate"><span class="pre">enable</span></code> is <code class="docutils literal notranslate"><span class="pre">true</span></code>, the given <code class="docutils literal notranslate"><span class="pre">column</span></code> is expanded to the right.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-treeitem-method-set-icon"><abbr title="No return value.">void</abbr> <strong>set_icon</strong>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, texture: <a class="reference internal" href="class_texture2d.html#class-texture2d"><span class="std std-ref">Texture2D</span></a>) <a class="reference internal" href="#class-treeitem-method-set-icon"><span class="std std-ref">🔗</span></a></p>
+<p>Sets the given cell’s icon <a class="reference internal" href="class_texture2d.html#class-texture2d"><span class="std std-ref">Texture2D</span></a>. If the cell is in <a class="reference internal" href="#class-treeitem-constant-cell-mode-icon"><span class="std std-ref">CELL_MODE_ICON</span></a> mode, the icon is displayed in the center of the cell. Otherwise, the icon is displayed before the cell’s text. <a class="reference internal" href="#class-treeitem-constant-cell-mode-range"><span class="std std-ref">CELL_MODE_RANGE</span></a> does not display an icon.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-treeitem-method-set-icon-max-width"><abbr title="No return value.">void</abbr> <strong>set_icon_max_width</strong>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, width: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <a class="reference internal" href="#class-treeitem-method-set-icon-max-width"><span class="std std-ref">🔗</span></a></p>
+<p>Sets the maximum allowed width of the icon in the given <code class="docutils literal notranslate"><span class="pre">column</span></code>. This limit is applied on top of the default size of the icon and on top of <a class="reference internal" href="class_tree.html#class-tree-theme-constant-icon-max-width"><span class="std std-ref">Tree.icon_max_width</span></a>. The height is adjusted according to the icon’s ratio.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-treeitem-method-set-icon-modulate"><abbr title="No return value.">void</abbr> <strong>set_icon_modulate</strong>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, modulate: <a class="reference internal" href="class_color.html#class-color"><span class="std std-ref">Color</span></a>) <a class="reference internal" href="#class-treeitem-method-set-icon-modulate"><span class="std std-ref">🔗</span></a></p>
+<p>Modulates the given column’s icon with <code class="docutils literal notranslate"><span class="pre">modulate</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-treeitem-method-set-icon-overlay"><abbr title="No return value.">void</abbr> <strong>set_icon_overlay</strong>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, texture: <a class="reference internal" href="class_texture2d.html#class-texture2d"><span class="std std-ref">Texture2D</span></a>) <a class="reference internal" href="#class-treeitem-method-set-icon-overlay"><span class="std std-ref">🔗</span></a></p>
+<p>Sets the given cell’s icon overlay <a class="reference internal" href="class_texture2d.html#class-texture2d"><span class="std std-ref">Texture2D</span></a>. The cell has to be in <a class="reference internal" href="#class-treeitem-constant-cell-mode-icon"><span class="std std-ref">CELL_MODE_ICON</span></a> mode, and icon has to be set. Overlay is drawn on top of icon, in the bottom left corner.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-treeitem-method-set-icon-region"><abbr title="No return value.">void</abbr> <strong>set_icon_region</strong>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, region: <a class="reference internal" href="class_rect2.html#class-rect2"><span class="std std-ref">Rect2</span></a>) <a class="reference internal" href="#class-treeitem-method-set-icon-region"><span class="std std-ref">🔗</span></a></p>
+<p>Sets the given column’s icon’s texture region.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-treeitem-method-set-indeterminate"><abbr title="No return value.">void</abbr> <strong>set_indeterminate</strong>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, indeterminate: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>) <a class="reference internal" href="#class-treeitem-method-set-indeterminate"><span class="std std-ref">🔗</span></a></p>
+<p>If <code class="docutils literal notranslate"><span class="pre">indeterminate</span></code> is <code class="docutils literal notranslate"><span class="pre">true</span></code>, the given <code class="docutils literal notranslate"><span class="pre">column</span></code> is marked indeterminate.</p>
+<p><strong>Note:</strong> If set <code class="docutils literal notranslate"><span class="pre">true</span></code> from <code class="docutils literal notranslate"><span class="pre">false</span></code>, then column is cleared of checked status.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-treeitem-method-set-language"><abbr title="No return value.">void</abbr> <strong>set_language</strong>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, language: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <a class="reference internal" href="#class-treeitem-method-set-language"><span class="std std-ref">🔗</span></a></p>
+<p>Sets the language code of the given <code class="docutils literal notranslate"><span class="pre">column</span></code>’s text to <code class="docutils literal notranslate"><span class="pre">language</span></code>. This is used for line-breaking and text shaping algorithms. If <code class="docutils literal notranslate"><span class="pre">language</span></code> is empty, the current locale is used.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-treeitem-method-set-metadata"><abbr title="No return value.">void</abbr> <strong>set_metadata</strong>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, meta: <a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a>) <a class="reference internal" href="#class-treeitem-method-set-metadata"><span class="std std-ref">🔗</span></a></p>
+<p>Sets the metadata value for the given column, which can be retrieved later using <a class="reference internal" href="#class-treeitem-method-get-metadata"><span class="std std-ref">get_metadata()</span></a>. This can be used, for example, to store a reference to the original data.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-treeitem-method-set-range"><abbr title="No return value.">void</abbr> <strong>set_range</strong>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, value: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>) <a class="reference internal" href="#class-treeitem-method-set-range"><span class="std std-ref">🔗</span></a></p>
+<p>Sets the value of a <a class="reference internal" href="#class-treeitem-constant-cell-mode-range"><span class="std std-ref">CELL_MODE_RANGE</span></a> column.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-treeitem-method-set-range-config"><abbr title="No return value.">void</abbr> <strong>set_range_config</strong>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, min: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, max: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, step: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, expr: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = false) <a class="reference internal" href="#class-treeitem-method-set-range-config"><span class="std std-ref">🔗</span></a></p>
+<p>Sets the range of accepted values for a column. The column must be in the <a class="reference internal" href="#class-treeitem-constant-cell-mode-range"><span class="std std-ref">CELL_MODE_RANGE</span></a> mode.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">expr</span></code> is <code class="docutils literal notranslate"><span class="pre">true</span></code>, the edit mode slider will use an exponential scale as with <a class="reference internal" href="class_range.html#class-range-property-exp-edit"><span class="std std-ref">Range.exp_edit</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-treeitem-method-set-selectable"><abbr title="No return value.">void</abbr> <strong>set_selectable</strong>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, selectable: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>) <a class="reference internal" href="#class-treeitem-method-set-selectable"><span class="std std-ref">🔗</span></a></p>
+<p>If <code class="docutils literal notranslate"><span class="pre">selectable</span></code> is <code class="docutils literal notranslate"><span class="pre">true</span></code>, the given <code class="docutils literal notranslate"><span class="pre">column</span></code> is selectable.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-treeitem-method-set-structured-text-bidi-override"><abbr title="No return value.">void</abbr> <strong>set_structured_text_bidi_override</strong>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, parser: <a class="reference internal" href="class_textserver.html#enum-textserver-structuredtextparser"><span class="std std-ref">StructuredTextParser</span></a>) <a class="reference internal" href="#class-treeitem-method-set-structured-text-bidi-override"><span class="std std-ref">🔗</span></a></p>
+<p>Set BiDi algorithm override for the structured text. Has effect for cells that display text.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-treeitem-method-set-structured-text-bidi-override-options"><abbr title="No return value.">void</abbr> <strong>set_structured_text_bidi_override_options</strong>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, args: <a class="reference internal" href="class_array.html#class-array"><span class="std std-ref">Array</span></a>) <a class="reference internal" href="#class-treeitem-method-set-structured-text-bidi-override-options"><span class="std std-ref">🔗</span></a></p>
+<p>Set additional options for BiDi override. Has effect for cells that display text.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-treeitem-method-set-suffix"><abbr title="No return value.">void</abbr> <strong>set_suffix</strong>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, text: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <a class="reference internal" href="#class-treeitem-method-set-suffix"><span class="std std-ref">🔗</span></a></p>
+<p>Sets a string to be shown after a column’s value (for example, a unit abbreviation).</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-treeitem-method-set-text"><abbr title="No return value.">void</abbr> <strong>set_text</strong>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, text: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <a class="reference internal" href="#class-treeitem-method-set-text"><span class="std std-ref">🔗</span></a></p>
+<p>Sets the given column’s text value.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-treeitem-method-set-text-alignment"><abbr title="No return value.">void</abbr> <strong>set_text_alignment</strong>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, text_alignment: <a class="reference internal" href="class_%40globalscope.html#enum-globalscope-horizontalalignment"><span class="std std-ref">HorizontalAlignment</span></a>) <a class="reference internal" href="#class-treeitem-method-set-text-alignment"><span class="std std-ref">🔗</span></a></p>
+<p>Sets the given column’s text alignment to <code class="docutils literal notranslate"><span class="pre">text_alignment</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-treeitem-method-set-text-direction"><abbr title="No return value.">void</abbr> <strong>set_text_direction</strong>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, direction: <a class="reference internal" href="class_control.html#enum-control-textdirection"><span class="std std-ref">TextDirection</span></a>) <a class="reference internal" href="#class-treeitem-method-set-text-direction"><span class="std std-ref">🔗</span></a></p>
+<p>Sets item’s text base writing direction.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-treeitem-method-set-text-overrun-behavior"><abbr title="No return value.">void</abbr> <strong>set_text_overrun_behavior</strong>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, overrun_behavior: <a class="reference internal" href="class_textserver.html#enum-textserver-overrunbehavior"><span class="std std-ref">OverrunBehavior</span></a>) <a class="reference internal" href="#class-treeitem-method-set-text-overrun-behavior"><span class="std std-ref">🔗</span></a></p>
+<p>Sets the clipping behavior when the text exceeds the item’s bounding rectangle in the given <code class="docutils literal notranslate"><span class="pre">column</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-treeitem-method-set-tooltip-text"><abbr title="No return value.">void</abbr> <strong>set_tooltip_text</strong>(column: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, tooltip: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <a class="reference internal" href="#class-treeitem-method-set-tooltip-text"><span class="std std-ref">🔗</span></a></p>
+<p>Sets the given column’s tooltip text.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-treeitem-method-uncollapse-tree"><abbr title="No return value.">void</abbr> <strong>uncollapse_tree</strong>() <a class="reference internal" href="#class-treeitem-method-uncollapse-tree"><span class="std std-ref">🔗</span></a></p>
+<p>Uncollapses all <strong>TreeItem</strong>s necessary to reveal this <strong>TreeItem</strong>, i.e. all ancestor <strong>TreeItem</strong>s.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, MUmarShahbaz.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

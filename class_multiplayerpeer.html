@@ -1,0 +1,289 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta content="network" name="keywords" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MultiplayerPeer &mdash; RPG Components 2D 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=d45e8c67"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            RPG Components 2D
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">MultiplayerPeer</a><ul>
+<li><a class="reference internal" href="#description">Description</a></li>
+<li><a class="reference internal" href="#tutorials">Tutorials</a></li>
+<li><a class="reference internal" href="#properties">Properties</a></li>
+<li><a class="reference internal" href="#methods">Methods</a></li>
+<li><a class="reference internal" href="#signals">Signals</a></li>
+<li><a class="reference internal" href="#enumerations">Enumerations</a></li>
+<li><a class="reference internal" href="#constants">Constants</a></li>
+<li><a class="reference internal" href="#property-descriptions">Property Descriptions</a></li>
+<li><a class="reference internal" href="#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">RPG Components 2D</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">MultiplayerPeer</li>
+      <li class="wy-breadcrumbs-aside">
+              <!-- User defined GitHub URL -->
+              <a href="hide" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="multiplayerpeer">
+<span id="class-multiplayerpeer"></span><h1>MultiplayerPeer<a class="headerlink" href="#multiplayerpeer" title="Link to this heading"></a></h1>
+<p><strong>Inherits:</strong> <a class="reference internal" href="class_packetpeer.html#class-packetpeer"><span class="std std-ref">PacketPeer</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_refcounted.html#class-refcounted"><span class="std std-ref">RefCounted</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_object.html#class-object"><span class="std std-ref">Object</span></a></p>
+<p><strong>Inherited By:</strong> <a class="reference internal" href="class_multiplayerpeerextension.html#class-multiplayerpeerextension"><span class="std std-ref">MultiplayerPeerExtension</span></a></p>
+<p>Abstract class for specialized <a class="reference internal" href="class_packetpeer.html#class-packetpeer"><span class="std std-ref">PacketPeer</span></a>s used by the <a class="reference internal" href="class_multiplayerapi.html#class-multiplayerapi"><span class="std std-ref">MultiplayerAPI</span></a>.</p>
+<section class="classref-introduction-group" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
+<p>Manages the connection with one or more remote peers acting as server or client and assigning unique IDs to each of them. See also <a class="reference internal" href="class_multiplayerapi.html#class-multiplayerapi"><span class="std std-ref">MultiplayerAPI</span></a>.</p>
+<p><strong>Note:</strong> The <a class="reference internal" href="class_multiplayerapi.html#class-multiplayerapi"><span class="std std-ref">MultiplayerAPI</span></a> protocol is an implementation detail and isn’t meant to be used by non-Godot servers. It may change without notice.</p>
+<p><strong>Note:</strong> When exporting to Android, make sure to enable the <code class="docutils literal notranslate"><span class="pre">INTERNET</span></code> permission in the Android export preset before exporting the project or using one-click deploy. Otherwise, network communication of any kind will be blocked by Android.</p>
+</section>
+<section class="classref-introduction-group" id="tutorials">
+<h2>Tutorials<a class="headerlink" href="#tutorials" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><span class="xref std std-doc">High-level multiplayer</span></p></li>
+</ul>
+</section>
+<section class="classref-reftable-group" id="properties">
+<h2>Properties<a class="headerlink" href="#properties" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-multiplayerpeer-property-refuse-new-connections"><span class="std std-ref">refuse_new_connections</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-multiplayerpeer-property-transfer-channel"><span class="std std-ref">transfer_channel</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#enum-multiplayerpeer-transfermode"><span class="std std-ref">TransferMode</span></a></p></td>
+<td><p><a class="reference internal" href="#class-multiplayerpeer-property-transfer-mode"><span class="std std-ref">transfer_mode</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">2</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section class="classref-reftable-group" id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-multiplayerpeer-method-close"><span class="std std-ref">close</span></a>()</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-multiplayerpeer-method-disconnect-peer"><span class="std std-ref">disconnect_peer</span></a>(peer: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, force: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = false)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-multiplayerpeer-method-generate-unique-id"><span class="std std-ref">generate_unique_id</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#enum-multiplayerpeer-connectionstatus"><span class="std std-ref">ConnectionStatus</span></a></p></td>
+<td><p><a class="reference internal" href="#class-multiplayerpeer-method-get-connection-status"><span class="std std-ref">get_connection_status</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-multiplayerpeer-method-get-packet-channel"><span class="std std-ref">get_packet_channel</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#enum-multiplayerpeer-transfermode"><span class="std std-ref">TransferMode</span></a></p></td>
+<td><p><a class="reference internal" href="#class-multiplayerpeer-method-get-packet-mode"><span class="std std-ref">get_packet_mode</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-multiplayerpeer-method-get-packet-peer"><span class="std std-ref">get_packet_peer</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-multiplayerpeer-method-get-unique-id"><span class="std std-ref">get_unique_id</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-multiplayerpeer-method-is-server-relay-supported"><span class="std std-ref">is_server_relay_supported</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-multiplayerpeer-method-poll"><span class="std std-ref">poll</span></a>()</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-multiplayerpeer-method-set-target-peer"><span class="std std-ref">set_target_peer</span></a>(id: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="signals">
+<h2>Signals<a class="headerlink" href="#signals" title="Link to this heading"></a></h2>
+<p class="classref-signal" id="class-multiplayerpeer-signal-peer-connected"><strong>peer_connected</strong>(id: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <a class="reference internal" href="#class-multiplayerpeer-signal-peer-connected"><span class="std std-ref">🔗</span></a></p>
+<p>Emitted when a remote peer connects.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-signal" id="class-multiplayerpeer-signal-peer-disconnected"><strong>peer_disconnected</strong>(id: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <a class="reference internal" href="#class-multiplayerpeer-signal-peer-disconnected"><span class="std std-ref">🔗</span></a></p>
+<p>Emitted when a remote peer has disconnected.</p>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="enumerations">
+<h2>Enumerations<a class="headerlink" href="#enumerations" title="Link to this heading"></a></h2>
+<p class="classref-enumeration" id="enum-multiplayerpeer-connectionstatus">enum <strong>ConnectionStatus</strong>: <a class="reference internal" href="#enum-multiplayerpeer-connectionstatus"><span class="std std-ref">🔗</span></a></p>
+<p class="classref-enumeration-constant" id="class-multiplayerpeer-constant-connection-disconnected"><a class="reference internal" href="#enum-multiplayerpeer-connectionstatus"><span class="std std-ref">ConnectionStatus</span></a> <strong>CONNECTION_DISCONNECTED</strong> = <code class="docutils literal notranslate"><span class="pre">0</span></code></p>
+<p>The MultiplayerPeer is disconnected.</p>
+<p class="classref-enumeration-constant" id="class-multiplayerpeer-constant-connection-connecting"><a class="reference internal" href="#enum-multiplayerpeer-connectionstatus"><span class="std std-ref">ConnectionStatus</span></a> <strong>CONNECTION_CONNECTING</strong> = <code class="docutils literal notranslate"><span class="pre">1</span></code></p>
+<p>The MultiplayerPeer is currently connecting to a server.</p>
+<p class="classref-enumeration-constant" id="class-multiplayerpeer-constant-connection-connected"><a class="reference internal" href="#enum-multiplayerpeer-connectionstatus"><span class="std std-ref">ConnectionStatus</span></a> <strong>CONNECTION_CONNECTED</strong> = <code class="docutils literal notranslate"><span class="pre">2</span></code></p>
+<p>This MultiplayerPeer is connected.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-enumeration" id="enum-multiplayerpeer-transfermode">enum <strong>TransferMode</strong>: <a class="reference internal" href="#enum-multiplayerpeer-transfermode"><span class="std std-ref">🔗</span></a></p>
+<p class="classref-enumeration-constant" id="class-multiplayerpeer-constant-transfer-mode-unreliable"><a class="reference internal" href="#enum-multiplayerpeer-transfermode"><span class="std std-ref">TransferMode</span></a> <strong>TRANSFER_MODE_UNRELIABLE</strong> = <code class="docutils literal notranslate"><span class="pre">0</span></code></p>
+<p>Packets are not acknowledged, no resend attempts are made for lost packets. Packets may arrive in any order. Potentially faster than <a class="reference internal" href="#class-multiplayerpeer-constant-transfer-mode-unreliable-ordered"><span class="std std-ref">TRANSFER_MODE_UNRELIABLE_ORDERED</span></a>. Use for non-critical data, and always consider whether the order matters.</p>
+<p class="classref-enumeration-constant" id="class-multiplayerpeer-constant-transfer-mode-unreliable-ordered"><a class="reference internal" href="#enum-multiplayerpeer-transfermode"><span class="std std-ref">TransferMode</span></a> <strong>TRANSFER_MODE_UNRELIABLE_ORDERED</strong> = <code class="docutils literal notranslate"><span class="pre">1</span></code></p>
+<p>Packets are not acknowledged, no resend attempts are made for lost packets. Packets are received in the order they were sent in. Potentially faster than <a class="reference internal" href="#class-multiplayerpeer-constant-transfer-mode-reliable"><span class="std std-ref">TRANSFER_MODE_RELIABLE</span></a>. Use for non-critical data or data that would be outdated if received late due to resend attempt(s) anyway, for example movement and positional data.</p>
+<p class="classref-enumeration-constant" id="class-multiplayerpeer-constant-transfer-mode-reliable"><a class="reference internal" href="#enum-multiplayerpeer-transfermode"><span class="std std-ref">TransferMode</span></a> <strong>TRANSFER_MODE_RELIABLE</strong> = <code class="docutils literal notranslate"><span class="pre">2</span></code></p>
+<p>Packets must be received and resend attempts should be made until the packets are acknowledged. Packets must be received in the order they were sent in. Most reliable transfer mode, but potentially the slowest due to the overhead. Use for critical data that must be transmitted and arrive in order, for example an ability being triggered or a chat message. Consider carefully if the information really is critical, and use sparingly.</p>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="constants">
+<h2>Constants<a class="headerlink" href="#constants" title="Link to this heading"></a></h2>
+<p class="classref-constant" id="class-multiplayerpeer-constant-target-peer-broadcast"><strong>TARGET_PEER_BROADCAST</strong> = <code class="docutils literal notranslate"><span class="pre">0</span></code> <a class="reference internal" href="#class-multiplayerpeer-constant-target-peer-broadcast"><span class="std std-ref">🔗</span></a></p>
+<p>Packets are sent to all connected peers.</p>
+<p class="classref-constant" id="class-multiplayerpeer-constant-target-peer-server"><strong>TARGET_PEER_SERVER</strong> = <code class="docutils literal notranslate"><span class="pre">1</span></code> <a class="reference internal" href="#class-multiplayerpeer-constant-target-peer-server"><span class="std std-ref">🔗</span></a></p>
+<p>Packets are sent to the remote peer acting as server.</p>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="property-descriptions">
+<h2>Property Descriptions<a class="headerlink" href="#property-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-property" id="class-multiplayerpeer-property-refuse-new-connections"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>refuse_new_connections</strong> = <code class="docutils literal notranslate"><span class="pre">false</span></code> <a class="reference internal" href="#class-multiplayerpeer-property-refuse-new-connections"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_refuse_new_connections</strong>(value: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_refusing_new_connections</strong>()</p></li>
+</ul>
+<p>If <code class="docutils literal notranslate"><span class="pre">true</span></code>, this <strong>MultiplayerPeer</strong> refuses new connections.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-multiplayerpeer-property-transfer-channel"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>transfer_channel</strong> = <code class="docutils literal notranslate"><span class="pre">0</span></code> <a class="reference internal" href="#class-multiplayerpeer-property-transfer-channel"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_transfer_channel</strong>(value: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>get_transfer_channel</strong>()</p></li>
+</ul>
+<p>The channel to use to send packets. Many network APIs such as ENet and WebRTC allow the creation of multiple independent channels which behaves, in a way, like separate connections. This means that reliable data will only block delivery of other packets on that channel, and ordering will only be in respect to the channel the packet is being sent on. Using different channels to send <strong>different and independent</strong> state updates is a common way to optimize network usage and decrease latency in fast-paced games.</p>
+<p><strong>Note:</strong> The default channel (<code class="docutils literal notranslate"><span class="pre">0</span></code>) actually works as 3 separate channels (one for each <a class="reference internal" href="#enum-multiplayerpeer-transfermode"><span class="std std-ref">TransferMode</span></a>) so that <a class="reference internal" href="#class-multiplayerpeer-constant-transfer-mode-reliable"><span class="std std-ref">TRANSFER_MODE_RELIABLE</span></a> and <a class="reference internal" href="#class-multiplayerpeer-constant-transfer-mode-unreliable-ordered"><span class="std std-ref">TRANSFER_MODE_UNRELIABLE_ORDERED</span></a> does not interact with each other by default. Refer to the specific network API documentation (e.g. ENet or WebRTC) to learn how to set up channels correctly.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-multiplayerpeer-property-transfer-mode"><a class="reference internal" href="#enum-multiplayerpeer-transfermode"><span class="std std-ref">TransferMode</span></a> <strong>transfer_mode</strong> = <code class="docutils literal notranslate"><span class="pre">2</span></code> <a class="reference internal" href="#class-multiplayerpeer-property-transfer-mode"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_transfer_mode</strong>(value: <a class="reference internal" href="#enum-multiplayerpeer-transfermode"><span class="std std-ref">TransferMode</span></a>)</p></li>
+<li><p><a class="reference internal" href="#enum-multiplayerpeer-transfermode"><span class="std std-ref">TransferMode</span></a> <strong>get_transfer_mode</strong>()</p></li>
+</ul>
+<p>The manner in which to send packets to the target peer. See the <a class="reference internal" href="#class-multiplayerpeer-method-set-target-peer"><span class="std std-ref">set_target_peer()</span></a> method.</p>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="method-descriptions">
+<h2>Method Descriptions<a class="headerlink" href="#method-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-method" id="class-multiplayerpeer-method-close"><abbr title="No return value.">void</abbr> <strong>close</strong>() <a class="reference internal" href="#class-multiplayerpeer-method-close"><span class="std std-ref">🔗</span></a></p>
+<p>Immediately close the multiplayer peer returning to the state <a class="reference internal" href="#class-multiplayerpeer-constant-connection-disconnected"><span class="std std-ref">CONNECTION_DISCONNECTED</span></a>. Connected peers will be dropped without emitting <a class="reference internal" href="#class-multiplayerpeer-signal-peer-disconnected"><span class="std std-ref">peer_disconnected</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-multiplayerpeer-method-disconnect-peer"><abbr title="No return value.">void</abbr> <strong>disconnect_peer</strong>(peer: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, force: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = false) <a class="reference internal" href="#class-multiplayerpeer-method-disconnect-peer"><span class="std std-ref">🔗</span></a></p>
+<p>Disconnects the given <code class="docutils literal notranslate"><span class="pre">peer</span></code> from this host. If <code class="docutils literal notranslate"><span class="pre">force</span></code> is <code class="docutils literal notranslate"><span class="pre">true</span></code> the <a class="reference internal" href="#class-multiplayerpeer-signal-peer-disconnected"><span class="std std-ref">peer_disconnected</span></a> signal will not be emitted for this peer.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-multiplayerpeer-method-generate-unique-id"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>generate_unique_id</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-multiplayerpeer-method-generate-unique-id"><span class="std std-ref">🔗</span></a></p>
+<p>Returns a randomly generated integer that can be used as a network unique ID.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-multiplayerpeer-method-get-connection-status"><a class="reference internal" href="#enum-multiplayerpeer-connectionstatus"><span class="std std-ref">ConnectionStatus</span></a> <strong>get_connection_status</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-multiplayerpeer-method-get-connection-status"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the current state of the connection.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-multiplayerpeer-method-get-packet-channel"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>get_packet_channel</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-multiplayerpeer-method-get-packet-channel"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the channel over which the next available packet was received. See <a class="reference internal" href="class_packetpeer.html#class-packetpeer-method-get-available-packet-count"><span class="std std-ref">PacketPeer.get_available_packet_count()</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-multiplayerpeer-method-get-packet-mode"><a class="reference internal" href="#enum-multiplayerpeer-transfermode"><span class="std std-ref">TransferMode</span></a> <strong>get_packet_mode</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-multiplayerpeer-method-get-packet-mode"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the transfer mode the remote peer used to send the next available packet. See <a class="reference internal" href="class_packetpeer.html#class-packetpeer-method-get-available-packet-count"><span class="std std-ref">PacketPeer.get_available_packet_count()</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-multiplayerpeer-method-get-packet-peer"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>get_packet_peer</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-multiplayerpeer-method-get-packet-peer"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the ID of the <strong>MultiplayerPeer</strong> who sent the next available packet. See <a class="reference internal" href="class_packetpeer.html#class-packetpeer-method-get-available-packet-count"><span class="std std-ref">PacketPeer.get_available_packet_count()</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-multiplayerpeer-method-get-unique-id"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>get_unique_id</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-multiplayerpeer-method-get-unique-id"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the ID of this <strong>MultiplayerPeer</strong>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-multiplayerpeer-method-is-server-relay-supported"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_server_relay_supported</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-multiplayerpeer-method-is-server-relay-supported"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if the server can act as a relay in the current configuration. That is, if the higher level <a class="reference internal" href="class_multiplayerapi.html#class-multiplayerapi"><span class="std std-ref">MultiplayerAPI</span></a> should notify connected clients of other peers, and implement a relay protocol to allow communication between them.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-multiplayerpeer-method-poll"><abbr title="No return value.">void</abbr> <strong>poll</strong>() <a class="reference internal" href="#class-multiplayerpeer-method-poll"><span class="std std-ref">🔗</span></a></p>
+<p>Waits up to 1 second to receive a new network event.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-multiplayerpeer-method-set-target-peer"><abbr title="No return value.">void</abbr> <strong>set_target_peer</strong>(id: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <a class="reference internal" href="#class-multiplayerpeer-method-set-target-peer"><span class="std std-ref">🔗</span></a></p>
+<p>Sets the peer to which packets will be sent.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">id</span></code> can be one of: <a class="reference internal" href="#class-multiplayerpeer-constant-target-peer-broadcast"><span class="std std-ref">TARGET_PEER_BROADCAST</span></a> to send to all connected peers, <a class="reference internal" href="#class-multiplayerpeer-constant-target-peer-server"><span class="std std-ref">TARGET_PEER_SERVER</span></a> to send to the peer acting as server, a valid peer ID to send to that specific peer, a negative peer ID to send to all peers except that one. By default, the target peer is <a class="reference internal" href="#class-multiplayerpeer-constant-target-peer-broadcast"><span class="std std-ref">TARGET_PEER_BROADCAST</span></a>.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, MUmarShahbaz.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

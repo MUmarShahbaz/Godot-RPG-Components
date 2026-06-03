@@ -1,0 +1,162 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VisibleOnScreenEnabler3D &mdash; RPG Components 2D 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=d45e8c67"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            RPG Components 2D
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">VisibleOnScreenEnabler3D</a><ul>
+<li><a class="reference internal" href="#description">Description</a></li>
+<li><a class="reference internal" href="#properties">Properties</a></li>
+<li><a class="reference internal" href="#enumerations">Enumerations</a></li>
+<li><a class="reference internal" href="#property-descriptions">Property Descriptions</a></li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">RPG Components 2D</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">VisibleOnScreenEnabler3D</li>
+      <li class="wy-breadcrumbs-aside">
+              <!-- User defined GitHub URL -->
+              <a href="hide" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="visibleonscreenenabler3d">
+<span id="class-visibleonscreenenabler3d"></span><h1>VisibleOnScreenEnabler3D<a class="headerlink" href="#visibleonscreenenabler3d" title="Link to this heading"></a></h1>
+<p><strong>Inherits:</strong> <a class="reference internal" href="class_visibleonscreennotifier3d.html#class-visibleonscreennotifier3d"><span class="std std-ref">VisibleOnScreenNotifier3D</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_visualinstance3d.html#class-visualinstance3d"><span class="std std-ref">VisualInstance3D</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_node3d.html#class-node3d"><span class="std std-ref">Node3D</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_node.html#class-node"><span class="std std-ref">Node</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_object.html#class-object"><span class="std std-ref">Object</span></a></p>
+<p>A box-shaped region of 3D space that, when visible on screen, enables a target node.</p>
+<section class="classref-introduction-group" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
+<p><strong>VisibleOnScreenEnabler3D</strong> contains a box-shaped region of 3D space and a target node. The target node will be automatically enabled (via its <a class="reference internal" href="class_node.html#class-node-property-process-mode"><span class="std std-ref">Node.process_mode</span></a> property) when any part of this region becomes visible on the screen, and automatically disabled otherwise. This can for example be used to activate enemies only when the player approaches them.</p>
+<p>See <a class="reference internal" href="class_visibleonscreennotifier3d.html#class-visibleonscreennotifier3d"><span class="std std-ref">VisibleOnScreenNotifier3D</span></a> if you only want to be notified when the region is visible on screen.</p>
+<p><strong>Note:</strong> <strong>VisibleOnScreenEnabler3D</strong> uses an approximate heuristic that doesn’t take walls and other occlusion into account, unless occlusion culling is used. It also won’t function unless <a class="reference internal" href="class_node3d.html#class-node3d-property-visible"><span class="std std-ref">Node3D.visible</span></a> is set to <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p>
+</section>
+<section class="classref-reftable-group" id="properties">
+<h2>Properties<a class="headerlink" href="#properties" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#enum-visibleonscreenenabler3d-enablemode"><span class="std std-ref">EnableMode</span></a></p></td>
+<td><p><a class="reference internal" href="#class-visibleonscreenenabler3d-property-enable-mode"><span class="std std-ref">enable_mode</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_nodepath.html#class-nodepath"><span class="std std-ref">NodePath</span></a></p></td>
+<td><p><a class="reference internal" href="#class-visibleonscreenenabler3d-property-enable-node-path"><span class="std std-ref">enable_node_path</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">NodePath(&quot;..&quot;)</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="enumerations">
+<h2>Enumerations<a class="headerlink" href="#enumerations" title="Link to this heading"></a></h2>
+<p class="classref-enumeration" id="enum-visibleonscreenenabler3d-enablemode">enum <strong>EnableMode</strong>: <a class="reference internal" href="#enum-visibleonscreenenabler3d-enablemode"><span class="std std-ref">🔗</span></a></p>
+<p class="classref-enumeration-constant" id="class-visibleonscreenenabler3d-constant-enable-mode-inherit"><a class="reference internal" href="#enum-visibleonscreenenabler3d-enablemode"><span class="std std-ref">EnableMode</span></a> <strong>ENABLE_MODE_INHERIT</strong> = <code class="docutils literal notranslate"><span class="pre">0</span></code></p>
+<p>Corresponds to <a class="reference internal" href="class_node.html#class-node-constant-process-mode-inherit"><span class="std std-ref">Node.PROCESS_MODE_INHERIT</span></a>.</p>
+<p class="classref-enumeration-constant" id="class-visibleonscreenenabler3d-constant-enable-mode-always"><a class="reference internal" href="#enum-visibleonscreenenabler3d-enablemode"><span class="std std-ref">EnableMode</span></a> <strong>ENABLE_MODE_ALWAYS</strong> = <code class="docutils literal notranslate"><span class="pre">1</span></code></p>
+<p>Corresponds to <a class="reference internal" href="class_node.html#class-node-constant-process-mode-always"><span class="std std-ref">Node.PROCESS_MODE_ALWAYS</span></a>.</p>
+<p class="classref-enumeration-constant" id="class-visibleonscreenenabler3d-constant-enable-mode-when-paused"><a class="reference internal" href="#enum-visibleonscreenenabler3d-enablemode"><span class="std std-ref">EnableMode</span></a> <strong>ENABLE_MODE_WHEN_PAUSED</strong> = <code class="docutils literal notranslate"><span class="pre">2</span></code></p>
+<p>Corresponds to <a class="reference internal" href="class_node.html#class-node-constant-process-mode-when-paused"><span class="std std-ref">Node.PROCESS_MODE_WHEN_PAUSED</span></a>.</p>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="property-descriptions">
+<h2>Property Descriptions<a class="headerlink" href="#property-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-property" id="class-visibleonscreenenabler3d-property-enable-mode"><a class="reference internal" href="#enum-visibleonscreenenabler3d-enablemode"><span class="std std-ref">EnableMode</span></a> <strong>enable_mode</strong> = <code class="docutils literal notranslate"><span class="pre">0</span></code> <a class="reference internal" href="#class-visibleonscreenenabler3d-property-enable-mode"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_enable_mode</strong>(value: <a class="reference internal" href="#enum-visibleonscreenenabler3d-enablemode"><span class="std std-ref">EnableMode</span></a>)</p></li>
+<li><p><a class="reference internal" href="#enum-visibleonscreenenabler3d-enablemode"><span class="std std-ref">EnableMode</span></a> <strong>get_enable_mode</strong>()</p></li>
+</ul>
+<p>Determines how the target node is enabled. Corresponds to <a class="reference internal" href="class_node.html#enum-node-processmode"><span class="std std-ref">ProcessMode</span></a>. When the node is disabled, it always uses <a class="reference internal" href="class_node.html#class-node-constant-process-mode-disabled"><span class="std std-ref">Node.PROCESS_MODE_DISABLED</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-visibleonscreenenabler3d-property-enable-node-path"><a class="reference internal" href="class_nodepath.html#class-nodepath"><span class="std std-ref">NodePath</span></a> <strong>enable_node_path</strong> = <code class="docutils literal notranslate"><span class="pre">NodePath(&quot;..&quot;)</span></code> <a class="reference internal" href="#class-visibleonscreenenabler3d-property-enable-node-path"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_enable_node_path</strong>(value: <a class="reference internal" href="class_nodepath.html#class-nodepath"><span class="std std-ref">NodePath</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_nodepath.html#class-nodepath"><span class="std std-ref">NodePath</span></a> <strong>get_enable_node_path</strong>()</p></li>
+</ul>
+<p>The path to the target node, relative to the <strong>VisibleOnScreenEnabler3D</strong>. The target node is cached; it’s only assigned when setting this property (if the <strong>VisibleOnScreenEnabler3D</strong> is inside the scene tree) and every time the <strong>VisibleOnScreenEnabler3D</strong> enters the scene tree. If the path is empty, no node will be affected. If the path is invalid, an error is also generated.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, MUmarShahbaz.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

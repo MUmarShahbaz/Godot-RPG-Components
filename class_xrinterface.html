@@ -1,0 +1,426 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>XRInterface &mdash; RPG Components 2D 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=d45e8c67"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            RPG Components 2D
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">XRInterface</a><ul>
+<li><a class="reference internal" href="#description">Description</a></li>
+<li><a class="reference internal" href="#tutorials">Tutorials</a></li>
+<li><a class="reference internal" href="#properties">Properties</a></li>
+<li><a class="reference internal" href="#methods">Methods</a></li>
+<li><a class="reference internal" href="#signals">Signals</a></li>
+<li><a class="reference internal" href="#enumerations">Enumerations</a></li>
+<li><a class="reference internal" href="#property-descriptions">Property Descriptions</a></li>
+<li><a class="reference internal" href="#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">RPG Components 2D</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">XRInterface</li>
+      <li class="wy-breadcrumbs-aside">
+              <!-- User defined GitHub URL -->
+              <a href="hide" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="xrinterface">
+<span id="class-xrinterface"></span><h1>XRInterface<a class="headerlink" href="#xrinterface" title="Link to this heading"></a></h1>
+<p><strong>Inherits:</strong> <a class="reference internal" href="class_refcounted.html#class-refcounted"><span class="std std-ref">RefCounted</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_object.html#class-object"><span class="std std-ref">Object</span></a></p>
+<p><strong>Inherited By:</strong> <a class="reference internal" href="class_xrinterfaceextension.html#class-xrinterfaceextension"><span class="std std-ref">XRInterfaceExtension</span></a></p>
+<p>Base class for an XR interface implementation.</p>
+<section class="classref-introduction-group" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
+<p>This class needs to be implemented to make an AR or VR platform available to Godot and these should be implemented as C++ modules or GDExtension modules. Part of the interface is exposed to GDScript so you can detect, enable and configure an AR or VR platform.</p>
+<p>Interfaces should be written in such a way that simply enabling them will give us a working setup. You can query the available interfaces through <a class="reference internal" href="class_xrserver.html#class-xrserver"><span class="std std-ref">XRServer</span></a>.</p>
+</section>
+<section class="classref-introduction-group" id="tutorials">
+<h2>Tutorials<a class="headerlink" href="#tutorials" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><span class="xref std std-doc">XR documentation index</span></p></li>
+</ul>
+</section>
+<section class="classref-reftable-group" id="properties">
+<h2>Properties<a class="headerlink" href="#properties" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-xrinterface-property-ar-is-anchor-detection-enabled"><span class="std std-ref">ar_is_anchor_detection_enabled</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#enum-xrinterface-environmentblendmode"><span class="std std-ref">EnvironmentBlendMode</span></a></p></td>
+<td><p><a class="reference internal" href="#class-xrinterface-property-environment-blend-mode"><span class="std std-ref">environment_blend_mode</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-xrinterface-property-interface-is-primary"><span class="std std-ref">interface_is_primary</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#enum-xrinterface-playareamode"><span class="std std-ref">PlayAreaMode</span></a></p></td>
+<td><p><a class="reference internal" href="#class-xrinterface-property-xr-play-area-mode"><span class="std std-ref">xr_play_area_mode</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section class="classref-reftable-group" id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-xrinterface-method-get-camera-feed-id"><span class="std std-ref">get_camera_feed_id</span></a>()</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-xrinterface-method-get-capabilities"><span class="std std-ref">get_capabilities</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a></p></td>
+<td><p><a class="reference internal" href="#class-xrinterface-method-get-name"><span class="std std-ref">get_name</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_packedvector3array.html#class-packedvector3array"><span class="std std-ref">PackedVector3Array</span></a></p></td>
+<td><p><a class="reference internal" href="#class-xrinterface-method-get-play-area"><span class="std std-ref">get_play_area</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_projection.html#class-projection"><span class="std std-ref">Projection</span></a></p></td>
+<td><p><a class="reference internal" href="#class-xrinterface-method-get-projection-for-view"><span class="std std-ref">get_projection_for_view</span></a>(view: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, aspect: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, near: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, far: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a></p></td>
+<td><p><a class="reference internal" href="#class-xrinterface-method-get-render-target-size"><span class="std std-ref">get_render_target_size</span></a>()</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_array.html#class-array"><span class="std std-ref">Array</span></a></p></td>
+<td><p><a class="reference internal" href="#class-xrinterface-method-get-supported-environment-blend-modes"><span class="std std-ref">get_supported_environment_blend_modes</span></a>()</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_dictionary.html#class-dictionary"><span class="std std-ref">Dictionary</span></a></p></td>
+<td><p><a class="reference internal" href="#class-xrinterface-method-get-system-info"><span class="std std-ref">get_system_info</span></a>()</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#enum-xrinterface-trackingstatus"><span class="std std-ref">TrackingStatus</span></a></p></td>
+<td><p><a class="reference internal" href="#class-xrinterface-method-get-tracking-status"><span class="std std-ref">get_tracking_status</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_transform3d.html#class-transform3d"><span class="std std-ref">Transform3D</span></a></p></td>
+<td><p><a class="reference internal" href="#class-xrinterface-method-get-transform-for-view"><span class="std std-ref">get_transform_for_view</span></a>(view: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, cam_transform: <a class="reference internal" href="class_transform3d.html#class-transform3d"><span class="std std-ref">Transform3D</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-xrinterface-method-get-view-count"><span class="std std-ref">get_view_count</span></a>()</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-xrinterface-method-initialize"><span class="std std-ref">initialize</span></a>()</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-xrinterface-method-is-initialized"><span class="std std-ref">is_initialized</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-xrinterface-method-is-passthrough-enabled"><span class="std std-ref">is_passthrough_enabled</span></a>()</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-xrinterface-method-is-passthrough-supported"><span class="std std-ref">is_passthrough_supported</span></a>()</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-xrinterface-method-set-environment-blend-mode"><span class="std std-ref">set_environment_blend_mode</span></a>(mode: <a class="reference internal" href="#enum-xrinterface-environmentblendmode"><span class="std std-ref">EnvironmentBlendMode</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-xrinterface-method-set-play-area-mode"><span class="std std-ref">set_play_area_mode</span></a>(mode: <a class="reference internal" href="#enum-xrinterface-playareamode"><span class="std std-ref">PlayAreaMode</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-xrinterface-method-start-passthrough"><span class="std std-ref">start_passthrough</span></a>()</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-xrinterface-method-stop-passthrough"><span class="std std-ref">stop_passthrough</span></a>()</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-xrinterface-method-supports-play-area-mode"><span class="std std-ref">supports_play_area_mode</span></a>(mode: <a class="reference internal" href="#enum-xrinterface-playareamode"><span class="std std-ref">PlayAreaMode</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-xrinterface-method-trigger-haptic-pulse"><span class="std std-ref">trigger_haptic_pulse</span></a>(action_name: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, tracker_name: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>, frequency: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, amplitude: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, duration_sec: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, delay_sec: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-xrinterface-method-uninitialize"><span class="std std-ref">uninitialize</span></a>()</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="signals">
+<h2>Signals<a class="headerlink" href="#signals" title="Link to this heading"></a></h2>
+<p class="classref-signal" id="class-xrinterface-signal-play-area-changed"><strong>play_area_changed</strong>(mode: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <a class="reference internal" href="#class-xrinterface-signal-play-area-changed"><span class="std std-ref">🔗</span></a></p>
+<p>Emitted when the play area is changed. This can be a result of the player resetting the boundary or entering a new play area, the player changing the play area mode, the world scale changing or the player resetting their headset orientation.</p>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="enumerations">
+<h2>Enumerations<a class="headerlink" href="#enumerations" title="Link to this heading"></a></h2>
+<p class="classref-enumeration" id="enum-xrinterface-capabilities">enum <strong>Capabilities</strong>: <a class="reference internal" href="#enum-xrinterface-capabilities"><span class="std std-ref">🔗</span></a></p>
+<p class="classref-enumeration-constant" id="class-xrinterface-constant-xr-none"><a class="reference internal" href="#enum-xrinterface-capabilities"><span class="std std-ref">Capabilities</span></a> <strong>XR_NONE</strong> = <code class="docutils literal notranslate"><span class="pre">0</span></code></p>
+<p>No XR capabilities.</p>
+<p class="classref-enumeration-constant" id="class-xrinterface-constant-xr-mono"><a class="reference internal" href="#enum-xrinterface-capabilities"><span class="std std-ref">Capabilities</span></a> <strong>XR_MONO</strong> = <code class="docutils literal notranslate"><span class="pre">1</span></code></p>
+<p>This interface can work with normal rendering output (non-HMD based AR).</p>
+<p class="classref-enumeration-constant" id="class-xrinterface-constant-xr-stereo"><a class="reference internal" href="#enum-xrinterface-capabilities"><span class="std std-ref">Capabilities</span></a> <strong>XR_STEREO</strong> = <code class="docutils literal notranslate"><span class="pre">2</span></code></p>
+<p>This interface supports stereoscopic rendering.</p>
+<p class="classref-enumeration-constant" id="class-xrinterface-constant-xr-quad"><a class="reference internal" href="#enum-xrinterface-capabilities"><span class="std std-ref">Capabilities</span></a> <strong>XR_QUAD</strong> = <code class="docutils literal notranslate"><span class="pre">4</span></code></p>
+<p>This interface supports quad rendering (not yet supported by Godot).</p>
+<p class="classref-enumeration-constant" id="class-xrinterface-constant-xr-vr"><a class="reference internal" href="#enum-xrinterface-capabilities"><span class="std std-ref">Capabilities</span></a> <strong>XR_VR</strong> = <code class="docutils literal notranslate"><span class="pre">8</span></code></p>
+<p>This interface supports VR.</p>
+<p class="classref-enumeration-constant" id="class-xrinterface-constant-xr-ar"><a class="reference internal" href="#enum-xrinterface-capabilities"><span class="std std-ref">Capabilities</span></a> <strong>XR_AR</strong> = <code class="docutils literal notranslate"><span class="pre">16</span></code></p>
+<p>This interface supports AR (video background and real world tracking).</p>
+<p class="classref-enumeration-constant" id="class-xrinterface-constant-xr-external"><a class="reference internal" href="#enum-xrinterface-capabilities"><span class="std std-ref">Capabilities</span></a> <strong>XR_EXTERNAL</strong> = <code class="docutils literal notranslate"><span class="pre">32</span></code></p>
+<p>This interface outputs to an external device. If the main viewport is used, the on screen output is an unmodified buffer of either the left or right eye (stretched if the viewport size is not changed to the same aspect ratio of <a class="reference internal" href="#class-xrinterface-method-get-render-target-size"><span class="std std-ref">get_render_target_size()</span></a>). Using a separate viewport node frees up the main viewport for other purposes.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-enumeration" id="enum-xrinterface-trackingstatus">enum <strong>TrackingStatus</strong>: <a class="reference internal" href="#enum-xrinterface-trackingstatus"><span class="std std-ref">🔗</span></a></p>
+<p class="classref-enumeration-constant" id="class-xrinterface-constant-xr-normal-tracking"><a class="reference internal" href="#enum-xrinterface-trackingstatus"><span class="std std-ref">TrackingStatus</span></a> <strong>XR_NORMAL_TRACKING</strong> = <code class="docutils literal notranslate"><span class="pre">0</span></code></p>
+<p>Tracking is behaving as expected.</p>
+<p class="classref-enumeration-constant" id="class-xrinterface-constant-xr-excessive-motion"><a class="reference internal" href="#enum-xrinterface-trackingstatus"><span class="std std-ref">TrackingStatus</span></a> <strong>XR_EXCESSIVE_MOTION</strong> = <code class="docutils literal notranslate"><span class="pre">1</span></code></p>
+<p>Tracking is hindered by excessive motion (the player is moving faster than tracking can keep up).</p>
+<p class="classref-enumeration-constant" id="class-xrinterface-constant-xr-insufficient-features"><a class="reference internal" href="#enum-xrinterface-trackingstatus"><span class="std std-ref">TrackingStatus</span></a> <strong>XR_INSUFFICIENT_FEATURES</strong> = <code class="docutils literal notranslate"><span class="pre">2</span></code></p>
+<p>Tracking is hindered by insufficient features, it’s too dark (for camera-based tracking), player is blocked, etc.</p>
+<p class="classref-enumeration-constant" id="class-xrinterface-constant-xr-unknown-tracking"><a class="reference internal" href="#enum-xrinterface-trackingstatus"><span class="std std-ref">TrackingStatus</span></a> <strong>XR_UNKNOWN_TRACKING</strong> = <code class="docutils literal notranslate"><span class="pre">3</span></code></p>
+<p>We don’t know the status of the tracking or this interface does not provide feedback.</p>
+<p class="classref-enumeration-constant" id="class-xrinterface-constant-xr-not-tracking"><a class="reference internal" href="#enum-xrinterface-trackingstatus"><span class="std std-ref">TrackingStatus</span></a> <strong>XR_NOT_TRACKING</strong> = <code class="docutils literal notranslate"><span class="pre">4</span></code></p>
+<p>Tracking is not functional (camera not plugged in or obscured, lighthouses turned off, etc.).</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-enumeration" id="enum-xrinterface-playareamode">enum <strong>PlayAreaMode</strong>: <a class="reference internal" href="#enum-xrinterface-playareamode"><span class="std std-ref">🔗</span></a></p>
+<p class="classref-enumeration-constant" id="class-xrinterface-constant-xr-play-area-unknown"><a class="reference internal" href="#enum-xrinterface-playareamode"><span class="std std-ref">PlayAreaMode</span></a> <strong>XR_PLAY_AREA_UNKNOWN</strong> = <code class="docutils literal notranslate"><span class="pre">0</span></code></p>
+<p>Play area mode not set or not available.</p>
+<p class="classref-enumeration-constant" id="class-xrinterface-constant-xr-play-area-3dof"><a class="reference internal" href="#enum-xrinterface-playareamode"><span class="std std-ref">PlayAreaMode</span></a> <strong>XR_PLAY_AREA_3DOF</strong> = <code class="docutils literal notranslate"><span class="pre">1</span></code></p>
+<p>Play area only supports orientation tracking, no positional tracking, area will center around player.</p>
+<p class="classref-enumeration-constant" id="class-xrinterface-constant-xr-play-area-sitting"><a class="reference internal" href="#enum-xrinterface-playareamode"><span class="std std-ref">PlayAreaMode</span></a> <strong>XR_PLAY_AREA_SITTING</strong> = <code class="docutils literal notranslate"><span class="pre">2</span></code></p>
+<p>Player is in seated position, limited positional tracking, fixed guardian around player.</p>
+<p class="classref-enumeration-constant" id="class-xrinterface-constant-xr-play-area-roomscale"><a class="reference internal" href="#enum-xrinterface-playareamode"><span class="std std-ref">PlayAreaMode</span></a> <strong>XR_PLAY_AREA_ROOMSCALE</strong> = <code class="docutils literal notranslate"><span class="pre">3</span></code></p>
+<p>Player is free to move around, full positional tracking.</p>
+<p class="classref-enumeration-constant" id="class-xrinterface-constant-xr-play-area-stage"><a class="reference internal" href="#enum-xrinterface-playareamode"><span class="std std-ref">PlayAreaMode</span></a> <strong>XR_PLAY_AREA_STAGE</strong> = <code class="docutils literal notranslate"><span class="pre">4</span></code></p>
+<p>Same as <a class="reference internal" href="#class-xrinterface-constant-xr-play-area-roomscale"><span class="std std-ref">XR_PLAY_AREA_ROOMSCALE</span></a> but origin point is fixed to the center of the physical space. In this mode, system-level recentering may be disabled, requiring the use of <a class="reference internal" href="class_xrserver.html#class-xrserver-method-center-on-hmd"><span class="std std-ref">XRServer.center_on_hmd()</span></a>.</p>
+<p class="classref-enumeration-constant" id="class-xrinterface-constant-xr-play-area-custom"><a class="reference internal" href="#enum-xrinterface-playareamode"><span class="std std-ref">PlayAreaMode</span></a> <strong>XR_PLAY_AREA_CUSTOM</strong> = <code class="docutils literal notranslate"><span class="pre">2147483647</span></code></p>
+<p>Custom play area set by a GDExtension.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-enumeration" id="enum-xrinterface-environmentblendmode">enum <strong>EnvironmentBlendMode</strong>: <a class="reference internal" href="#enum-xrinterface-environmentblendmode"><span class="std std-ref">🔗</span></a></p>
+<p class="classref-enumeration-constant" id="class-xrinterface-constant-xr-env-blend-mode-opaque"><a class="reference internal" href="#enum-xrinterface-environmentblendmode"><span class="std std-ref">EnvironmentBlendMode</span></a> <strong>XR_ENV_BLEND_MODE_OPAQUE</strong> = <code class="docutils literal notranslate"><span class="pre">0</span></code></p>
+<p>Opaque blend mode. This is typically used for VR devices.</p>
+<p class="classref-enumeration-constant" id="class-xrinterface-constant-xr-env-blend-mode-additive"><a class="reference internal" href="#enum-xrinterface-environmentblendmode"><span class="std std-ref">EnvironmentBlendMode</span></a> <strong>XR_ENV_BLEND_MODE_ADDITIVE</strong> = <code class="docutils literal notranslate"><span class="pre">1</span></code></p>
+<p>Additive blend mode. This is typically used for AR devices or VR devices with passthrough.</p>
+<p class="classref-enumeration-constant" id="class-xrinterface-constant-xr-env-blend-mode-alpha-blend"><a class="reference internal" href="#enum-xrinterface-environmentblendmode"><span class="std std-ref">EnvironmentBlendMode</span></a> <strong>XR_ENV_BLEND_MODE_ALPHA_BLEND</strong> = <code class="docutils literal notranslate"><span class="pre">2</span></code></p>
+<p>Alpha blend mode. This is typically used for AR or VR devices with passthrough capabilities. The alpha channel controls how much of the passthrough is visible. Alpha of 0.0 means the passthrough is visible and this pixel works in ADDITIVE mode. Alpha of 1.0 means that the passthrough is not visible and this pixel works in OPAQUE mode.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-enumeration" id="enum-xrinterface-vrstextureformat">enum <strong>VRSTextureFormat</strong>: <a class="reference internal" href="#enum-xrinterface-vrstextureformat"><span class="std std-ref">🔗</span></a></p>
+<p class="classref-enumeration-constant" id="class-xrinterface-constant-xr-vrs-texture-format-unified"><a class="reference internal" href="#enum-xrinterface-vrstextureformat"><span class="std std-ref">VRSTextureFormat</span></a> <strong>XR_VRS_TEXTURE_FORMAT_UNIFIED</strong> = <code class="docutils literal notranslate"><span class="pre">0</span></code></p>
+<p>The texture format is the same as returned by <a class="reference internal" href="class_xrvrs.html#class-xrvrs-method-make-vrs-texture"><span class="std std-ref">XRVRS.make_vrs_texture()</span></a>.</p>
+<p class="classref-enumeration-constant" id="class-xrinterface-constant-xr-vrs-texture-format-fragment-shading-rate"><a class="reference internal" href="#enum-xrinterface-vrstextureformat"><span class="std std-ref">VRSTextureFormat</span></a> <strong>XR_VRS_TEXTURE_FORMAT_FRAGMENT_SHADING_RATE</strong> = <code class="docutils literal notranslate"><span class="pre">1</span></code></p>
+<p>The texture format is the same as expected by the Vulkan <code class="docutils literal notranslate"><span class="pre">VK_KHR_fragment_shading_rate</span></code> extension.</p>
+<p class="classref-enumeration-constant" id="class-xrinterface-constant-xr-vrs-texture-format-fragment-density-map"><a class="reference internal" href="#enum-xrinterface-vrstextureformat"><span class="std std-ref">VRSTextureFormat</span></a> <strong>XR_VRS_TEXTURE_FORMAT_FRAGMENT_DENSITY_MAP</strong> = <code class="docutils literal notranslate"><span class="pre">2</span></code></p>
+<p>The texture format is the same as expected by the Vulkan <code class="docutils literal notranslate"><span class="pre">VK_EXT_fragment_density_map</span></code> extension.</p>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="property-descriptions">
+<h2>Property Descriptions<a class="headerlink" href="#property-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-property" id="class-xrinterface-property-ar-is-anchor-detection-enabled"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>ar_is_anchor_detection_enabled</strong> = <code class="docutils literal notranslate"><span class="pre">false</span></code> <a class="reference internal" href="#class-xrinterface-property-ar-is-anchor-detection-enabled"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_anchor_detection_is_enabled</strong>(value: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>get_anchor_detection_is_enabled</strong>()</p></li>
+</ul>
+<p>On an AR interface, <code class="docutils literal notranslate"><span class="pre">true</span></code> if anchor detection is enabled.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-xrinterface-property-environment-blend-mode"><a class="reference internal" href="#enum-xrinterface-environmentblendmode"><span class="std std-ref">EnvironmentBlendMode</span></a> <strong>environment_blend_mode</strong> = <code class="docutils literal notranslate"><span class="pre">0</span></code> <a class="reference internal" href="#class-xrinterface-property-environment-blend-mode"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>set_environment_blend_mode</strong>(mode: <a class="reference internal" href="#enum-xrinterface-environmentblendmode"><span class="std std-ref">EnvironmentBlendMode</span></a>)</p></li>
+<li><p><a class="reference internal" href="#enum-xrinterface-environmentblendmode"><span class="std std-ref">EnvironmentBlendMode</span></a> <strong>get_environment_blend_mode</strong>()</p></li>
+</ul>
+<p>Specify how XR should blend in the environment. This is specific to certain AR and passthrough devices where camera images are blended in by the XR compositor.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-xrinterface-property-interface-is-primary"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>interface_is_primary</strong> = <code class="docutils literal notranslate"><span class="pre">false</span></code> <a class="reference internal" href="#class-xrinterface-property-interface-is-primary"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_primary</strong>(value: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_primary</strong>()</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">true</span></code> if this is the primary interface.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-xrinterface-property-xr-play-area-mode"><a class="reference internal" href="#enum-xrinterface-playareamode"><span class="std std-ref">PlayAreaMode</span></a> <strong>xr_play_area_mode</strong> = <code class="docutils literal notranslate"><span class="pre">0</span></code> <a class="reference internal" href="#class-xrinterface-property-xr-play-area-mode"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>set_play_area_mode</strong>(mode: <a class="reference internal" href="#enum-xrinterface-playareamode"><span class="std std-ref">PlayAreaMode</span></a>)</p></li>
+<li><p><a class="reference internal" href="#enum-xrinterface-playareamode"><span class="std std-ref">PlayAreaMode</span></a> <strong>get_play_area_mode</strong>()</p></li>
+</ul>
+<p>The play area mode for this interface.</p>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="method-descriptions">
+<h2>Method Descriptions<a class="headerlink" href="#method-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-method" id="class-xrinterface-method-get-camera-feed-id"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>get_camera_feed_id</strong>() <a class="reference internal" href="#class-xrinterface-method-get-camera-feed-id"><span class="std std-ref">🔗</span></a></p>
+<p>If this is an AR interface that requires displaying a camera feed as the background, this method returns the feed ID in the <a class="reference internal" href="class_cameraserver.html#class-cameraserver"><span class="std std-ref">CameraServer</span></a> for this interface.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-xrinterface-method-get-capabilities"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>get_capabilities</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-xrinterface-method-get-capabilities"><span class="std std-ref">🔗</span></a></p>
+<p>Returns a combination of <a class="reference internal" href="#enum-xrinterface-capabilities"><span class="std std-ref">Capabilities</span></a> flags providing information about the capabilities of this interface.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-xrinterface-method-get-name"><a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a> <strong>get_name</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-xrinterface-method-get-name"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the name of this interface (<code class="docutils literal notranslate"><span class="pre">&quot;OpenXR&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;OpenVR&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;OpenHMD&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;ARKit&quot;</span></code>, etc.).</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-xrinterface-method-get-play-area"><a class="reference internal" href="class_packedvector3array.html#class-packedvector3array"><span class="std std-ref">PackedVector3Array</span></a> <strong>get_play_area</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-xrinterface-method-get-play-area"><span class="std std-ref">🔗</span></a></p>
+<p>Returns an array of vectors that represent the physical play area mapped to the virtual space around the <a class="reference internal" href="class_xrorigin3d.html#class-xrorigin3d"><span class="std std-ref">XROrigin3D</span></a> point. The points form a convex polygon that can be used to react to or visualize the play area. This returns an empty array if this feature is not supported or if the information is not yet available.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-xrinterface-method-get-projection-for-view"><a class="reference internal" href="class_projection.html#class-projection"><span class="std std-ref">Projection</span></a> <strong>get_projection_for_view</strong>(view: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, aspect: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, near: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, far: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>) <a class="reference internal" href="#class-xrinterface-method-get-projection-for-view"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the projection matrix for a view/eye.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-xrinterface-method-get-render-target-size"><a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a> <strong>get_render_target_size</strong>() <a class="reference internal" href="#class-xrinterface-method-get-render-target-size"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the resolution at which we should render our intermediate results before things like lens distortion are applied by the VR platform.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-xrinterface-method-get-supported-environment-blend-modes"><a class="reference internal" href="class_array.html#class-array"><span class="std std-ref">Array</span></a> <strong>get_supported_environment_blend_modes</strong>() <a class="reference internal" href="#class-xrinterface-method-get-supported-environment-blend-modes"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the an array of supported environment blend modes, see <a class="reference internal" href="#enum-xrinterface-environmentblendmode"><span class="std std-ref">EnvironmentBlendMode</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-xrinterface-method-get-system-info"><a class="reference internal" href="class_dictionary.html#class-dictionary"><span class="std std-ref">Dictionary</span></a> <strong>get_system_info</strong>() <a class="reference internal" href="#class-xrinterface-method-get-system-info"><span class="std std-ref">🔗</span></a></p>
+<p>Returns a <a class="reference internal" href="class_dictionary.html#class-dictionary"><span class="std std-ref">Dictionary</span></a> with extra system info. Interfaces are expected to return <code class="docutils literal notranslate"><span class="pre">XRRuntimeName</span></code> and <code class="docutils literal notranslate"><span class="pre">XRRuntimeVersion</span></code> providing info about the used XR runtime. Additional entries may be provided specific to an interface.</p>
+<p><strong>Note:</strong>This information may only be available after <a class="reference internal" href="#class-xrinterface-method-initialize"><span class="std std-ref">initialize()</span></a> was successfully called.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-xrinterface-method-get-tracking-status"><a class="reference internal" href="#enum-xrinterface-trackingstatus"><span class="std std-ref">TrackingStatus</span></a> <strong>get_tracking_status</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-xrinterface-method-get-tracking-status"><span class="std std-ref">🔗</span></a></p>
+<p>If supported, returns the status of our tracking. This will allow you to provide feedback to the user whether there are issues with positional tracking.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-xrinterface-method-get-transform-for-view"><a class="reference internal" href="class_transform3d.html#class-transform3d"><span class="std std-ref">Transform3D</span></a> <strong>get_transform_for_view</strong>(view: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, cam_transform: <a class="reference internal" href="class_transform3d.html#class-transform3d"><span class="std std-ref">Transform3D</span></a>) <a class="reference internal" href="#class-xrinterface-method-get-transform-for-view"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the transform for a view/eye.</p>
+<p><code class="docutils literal notranslate"><span class="pre">view</span></code> is the view/eye index.</p>
+<p><code class="docutils literal notranslate"><span class="pre">cam_transform</span></code> is the transform that maps device coordinates to scene coordinates, typically the <a class="reference internal" href="class_node3d.html#class-node3d-property-global-transform"><span class="std std-ref">Node3D.global_transform</span></a> of the current XROrigin3D.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-xrinterface-method-get-view-count"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>get_view_count</strong>() <a class="reference internal" href="#class-xrinterface-method-get-view-count"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the number of views that need to be rendered for this device. 1 for Monoscopic, 2 for Stereoscopic.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-xrinterface-method-initialize"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>initialize</strong>() <a class="reference internal" href="#class-xrinterface-method-initialize"><span class="std std-ref">🔗</span></a></p>
+<p>Call this to initialize this interface. The first interface that is initialized is identified as the primary interface and it will be used for rendering output.</p>
+<p>After initializing the interface you want to use you then need to enable the AR/VR mode of a viewport and rendering should commence.</p>
+<p><strong>Note:</strong> You must enable the XR mode on the main viewport for any device that uses the main output of Godot, such as for mobile VR.</p>
+<p>If you do this for a platform that handles its own output (such as OpenVR) Godot will show just one eye without distortion on screen. Alternatively, you can add a separate viewport node to your scene and enable AR/VR on that viewport. It will be used to output to the HMD, leaving you free to do anything you like in the main window, such as using a separate camera as a spectator camera or rendering something completely different.</p>
+<p>While currently not used, you can activate additional interfaces. You may wish to do this if you want to track controllers from other platforms. However, at this point in time only one interface can render to an HMD.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-xrinterface-method-is-initialized"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_initialized</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-xrinterface-method-is-initialized"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if this interface has been initialized.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-xrinterface-method-is-passthrough-enabled"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_passthrough_enabled</strong>() <a class="reference internal" href="#class-xrinterface-method-is-passthrough-enabled"><span class="std std-ref">🔗</span></a></p>
+<p><strong>Deprecated:</strong> Check if <a class="reference internal" href="#class-xrinterface-property-environment-blend-mode"><span class="std std-ref">environment_blend_mode</span></a> is <a class="reference internal" href="#class-xrinterface-constant-xr-env-blend-mode-alpha-blend"><span class="std std-ref">XR_ENV_BLEND_MODE_ALPHA_BLEND</span></a>, instead.</p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if passthrough is enabled.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-xrinterface-method-is-passthrough-supported"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_passthrough_supported</strong>() <a class="reference internal" href="#class-xrinterface-method-is-passthrough-supported"><span class="std std-ref">🔗</span></a></p>
+<p><strong>Deprecated:</strong> Check that <a class="reference internal" href="#class-xrinterface-constant-xr-env-blend-mode-alpha-blend"><span class="std std-ref">XR_ENV_BLEND_MODE_ALPHA_BLEND</span></a> is supported using <a class="reference internal" href="#class-xrinterface-method-get-supported-environment-blend-modes"><span class="std std-ref">get_supported_environment_blend_modes()</span></a>, instead.</p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if this interface supports passthrough.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-xrinterface-method-set-environment-blend-mode"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>set_environment_blend_mode</strong>(mode: <a class="reference internal" href="#enum-xrinterface-environmentblendmode"><span class="std std-ref">EnvironmentBlendMode</span></a>) <a class="reference internal" href="#class-xrinterface-method-set-environment-blend-mode"><span class="std std-ref">🔗</span></a></p>
+<p>Sets the active environment blend mode.</p>
+<p><code class="docutils literal notranslate"><span class="pre">mode</span></code> is the environment blend mode starting with the next frame.</p>
+<p><strong>Note:</strong> Not all runtimes support all environment blend modes, so it is important to check this at startup. For example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">func</span> <span class="n">_ready</span><span class="p">():</span>
+    <span class="n">var</span> <span class="n">xr_interface</span> <span class="o">=</span> <span class="n">XRServer</span><span class="o">.</span><span class="n">find_interface</span><span class="p">(</span><span class="s2">&quot;OpenXR&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">xr_interface</span> <span class="ow">and</span> <span class="n">xr_interface</span><span class="o">.</span><span class="n">is_initialized</span><span class="p">():</span>
+        <span class="n">var</span> <span class="n">vp</span> <span class="o">=</span> <span class="n">get_viewport</span><span class="p">()</span>
+        <span class="n">vp</span><span class="o">.</span><span class="n">use_xr</span> <span class="o">=</span> <span class="n">true</span>
+        <span class="n">var</span> <span class="n">acceptable_modes</span> <span class="o">=</span> <span class="p">[</span><span class="n">XRInterface</span><span class="o">.</span><span class="n">XR_ENV_BLEND_MODE_OPAQUE</span><span class="p">,</span> <span class="n">XRInterface</span><span class="o">.</span><span class="n">XR_ENV_BLEND_MODE_ADDITIVE</span><span class="p">]</span>
+        <span class="n">var</span> <span class="n">modes</span> <span class="o">=</span> <span class="n">xr_interface</span><span class="o">.</span><span class="n">get_supported_environment_blend_modes</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">mode</span> <span class="ow">in</span> <span class="n">acceptable_modes</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">mode</span> <span class="ow">in</span> <span class="n">modes</span><span class="p">:</span>
+                <span class="n">xr_interface</span><span class="o">.</span><span class="n">set_environment_blend_mode</span><span class="p">(</span><span class="n">mode</span><span class="p">)</span>
+                <span class="k">break</span>
+</pre></div>
+</div>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-xrinterface-method-set-play-area-mode"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>set_play_area_mode</strong>(mode: <a class="reference internal" href="#enum-xrinterface-playareamode"><span class="std std-ref">PlayAreaMode</span></a>) <a class="reference internal" href="#class-xrinterface-method-set-play-area-mode"><span class="std std-ref">🔗</span></a></p>
+<p>Sets the active play area mode, will return <code class="docutils literal notranslate"><span class="pre">false</span></code> if the mode can’t be used with this interface.</p>
+<p><strong>Note:</strong> Changing this after the interface has already been initialized can be jarring for the player, so it’s recommended to recenter on the HMD with <a class="reference internal" href="class_xrserver.html#class-xrserver-method-center-on-hmd"><span class="std std-ref">XRServer.center_on_hmd()</span></a> (if switching to <a class="reference internal" href="#class-xrinterface-constant-xr-play-area-stage"><span class="std std-ref">XR_PLAY_AREA_STAGE</span></a>) or make the switch during a scene change.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-xrinterface-method-start-passthrough"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>start_passthrough</strong>() <a class="reference internal" href="#class-xrinterface-method-start-passthrough"><span class="std std-ref">🔗</span></a></p>
+<p><strong>Deprecated:</strong> Set the <a class="reference internal" href="#class-xrinterface-property-environment-blend-mode"><span class="std std-ref">environment_blend_mode</span></a> to <a class="reference internal" href="#class-xrinterface-constant-xr-env-blend-mode-alpha-blend"><span class="std std-ref">XR_ENV_BLEND_MODE_ALPHA_BLEND</span></a>, instead.</p>
+<p>Starts passthrough, will return <code class="docutils literal notranslate"><span class="pre">false</span></code> if passthrough couldn’t be started.</p>
+<p><strong>Note:</strong> The viewport used for XR must have a transparent background, otherwise passthrough may not properly render.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-xrinterface-method-stop-passthrough"><abbr title="No return value.">void</abbr> <strong>stop_passthrough</strong>() <a class="reference internal" href="#class-xrinterface-method-stop-passthrough"><span class="std std-ref">🔗</span></a></p>
+<p><strong>Deprecated:</strong> Set the <a class="reference internal" href="#class-xrinterface-property-environment-blend-mode"><span class="std std-ref">environment_blend_mode</span></a> to <a class="reference internal" href="#class-xrinterface-constant-xr-env-blend-mode-opaque"><span class="std std-ref">XR_ENV_BLEND_MODE_OPAQUE</span></a>, instead.</p>
+<p>Stops passthrough.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-xrinterface-method-supports-play-area-mode"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>supports_play_area_mode</strong>(mode: <a class="reference internal" href="#enum-xrinterface-playareamode"><span class="std std-ref">PlayAreaMode</span></a>) <a class="reference internal" href="#class-xrinterface-method-supports-play-area-mode"><span class="std std-ref">🔗</span></a></p>
+<p>Call this to find out if a given play area mode is supported by this interface.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-xrinterface-method-trigger-haptic-pulse"><abbr title="No return value.">void</abbr> <strong>trigger_haptic_pulse</strong>(action_name: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, tracker_name: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>, frequency: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, amplitude: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, duration_sec: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, delay_sec: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>) <a class="reference internal" href="#class-xrinterface-method-trigger-haptic-pulse"><span class="std std-ref">🔗</span></a></p>
+<p>Triggers a haptic pulse on a device associated with this interface.</p>
+<p><code class="docutils literal notranslate"><span class="pre">action_name</span></code> is the name of the action for this pulse.</p>
+<p><code class="docutils literal notranslate"><span class="pre">tracker_name</span></code> is optional and can be used to direct the pulse to a specific device provided that device is bound to this haptic.</p>
+<p><code class="docutils literal notranslate"><span class="pre">frequency</span></code> is the frequency of the pulse, set to <code class="docutils literal notranslate"><span class="pre">0.0</span></code> to have the system use a default frequency.</p>
+<p><code class="docutils literal notranslate"><span class="pre">amplitude</span></code> is the amplitude of the pulse between <code class="docutils literal notranslate"><span class="pre">0.0</span></code> and <code class="docutils literal notranslate"><span class="pre">1.0</span></code>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">duration_sec</span></code> is the duration of the pulse in seconds.</p>
+<p><code class="docutils literal notranslate"><span class="pre">delay_sec</span></code> is a delay in seconds before the pulse is given.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-xrinterface-method-uninitialize"><abbr title="No return value.">void</abbr> <strong>uninitialize</strong>() <a class="reference internal" href="#class-xrinterface-method-uninitialize"><span class="std std-ref">🔗</span></a></p>
+<p>Turns the interface off.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, MUmarShahbaz.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

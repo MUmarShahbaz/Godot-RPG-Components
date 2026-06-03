@@ -1,0 +1,391 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta content="ragdoll" name="keywords" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PhysicalBone3D &mdash; RPG Components 2D 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=d45e8c67"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            RPG Components 2D
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">PhysicalBone3D</a><ul>
+<li><a class="reference internal" href="#description">Description</a></li>
+<li><a class="reference internal" href="#tutorials">Tutorials</a></li>
+<li><a class="reference internal" href="#properties">Properties</a></li>
+<li><a class="reference internal" href="#methods">Methods</a></li>
+<li><a class="reference internal" href="#enumerations">Enumerations</a></li>
+<li><a class="reference internal" href="#property-descriptions">Property Descriptions</a></li>
+<li><a class="reference internal" href="#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">RPG Components 2D</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">PhysicalBone3D</li>
+      <li class="wy-breadcrumbs-aside">
+              <!-- User defined GitHub URL -->
+              <a href="hide" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="physicalbone3d">
+<span id="class-physicalbone3d"></span><h1>PhysicalBone3D<a class="headerlink" href="#physicalbone3d" title="Link to this heading"></a></h1>
+<p><strong>Inherits:</strong> <a class="reference internal" href="class_physicsbody3d.html#class-physicsbody3d"><span class="std std-ref">PhysicsBody3D</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_collisionobject3d.html#class-collisionobject3d"><span class="std std-ref">CollisionObject3D</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_node3d.html#class-node3d"><span class="std std-ref">Node3D</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_node.html#class-node"><span class="std std-ref">Node</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_object.html#class-object"><span class="std std-ref">Object</span></a></p>
+<p>A physics body used to make bones in a <a class="reference internal" href="class_skeleton3d.html#class-skeleton3d"><span class="std std-ref">Skeleton3D</span></a> react to physics.</p>
+<section class="classref-introduction-group" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
+<p>The <strong>PhysicalBone3D</strong> node is a physics body that can be used to make bones in a <a class="reference internal" href="class_skeleton3d.html#class-skeleton3d"><span class="std std-ref">Skeleton3D</span></a> react to physics.</p>
+<p><strong>Note:</strong> In order to detect physical bones with raycasts, the <a class="reference internal" href="class_skeletonmodifier3d.html#class-skeletonmodifier3d-property-active"><span class="std std-ref">SkeletonModifier3D.active</span></a> property of the parent <a class="reference internal" href="class_physicalbonesimulator3d.html#class-physicalbonesimulator3d"><span class="std std-ref">PhysicalBoneSimulator3D</span></a> must be <code class="docutils literal notranslate"><span class="pre">true</span></code> and the <a class="reference internal" href="class_skeleton3d.html#class-skeleton3d"><span class="std std-ref">Skeleton3D</span></a>’s bone must be assigned to <strong>PhysicalBone3D</strong> correctly; it means that <a class="reference internal" href="#class-physicalbone3d-method-get-bone-id"><span class="std std-ref">get_bone_id()</span></a> should return a valid id (<code class="docutils literal notranslate"><span class="pre">&gt;=</span> <span class="pre">0</span></code>).</p>
+</section>
+<section class="classref-introduction-group" id="tutorials">
+<h2>Tutorials<a class="headerlink" href="#tutorials" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><span class="xref std std-doc">Ragdoll System</span></p></li>
+</ul>
+</section>
+<section class="classref-reftable-group" id="properties">
+<h2>Properties<a class="headerlink" href="#properties" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-physicalbone3d-property-angular-damp"><span class="std std-ref">angular_damp</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0.0</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#enum-physicalbone3d-dampmode"><span class="std std-ref">DampMode</span></a></p></td>
+<td><p><a class="reference internal" href="#class-physicalbone3d-property-angular-damp-mode"><span class="std std-ref">angular_damp_mode</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a></p></td>
+<td><p><a class="reference internal" href="#class-physicalbone3d-property-angular-velocity"><span class="std std-ref">angular_velocity</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Vector3(0,</span> <span class="pre">0,</span> <span class="pre">0)</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_transform3d.html#class-transform3d"><span class="std std-ref">Transform3D</span></a></p></td>
+<td><p><a class="reference internal" href="#class-physicalbone3d-property-body-offset"><span class="std std-ref">body_offset</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Transform3D(1,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">1,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">1,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0)</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-physicalbone3d-property-bounce"><span class="std std-ref">bounce</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0.0</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-physicalbone3d-property-can-sleep"><span class="std std-ref">can_sleep</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-physicalbone3d-property-custom-integrator"><span class="std std-ref">custom_integrator</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-physicalbone3d-property-friction"><span class="std std-ref">friction</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">1.0</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-physicalbone3d-property-gravity-scale"><span class="std std-ref">gravity_scale</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">1.0</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_transform3d.html#class-transform3d"><span class="std std-ref">Transform3D</span></a></p></td>
+<td><p><a class="reference internal" href="#class-physicalbone3d-property-joint-offset"><span class="std std-ref">joint_offset</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Transform3D(1,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">1,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">1,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0)</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a></p></td>
+<td><p><a class="reference internal" href="#class-physicalbone3d-property-joint-rotation"><span class="std std-ref">joint_rotation</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Vector3(0,</span> <span class="pre">0,</span> <span class="pre">0)</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#enum-physicalbone3d-jointtype"><span class="std std-ref">JointType</span></a></p></td>
+<td><p><a class="reference internal" href="#class-physicalbone3d-property-joint-type"><span class="std std-ref">joint_type</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-physicalbone3d-property-linear-damp"><span class="std std-ref">linear_damp</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0.0</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#enum-physicalbone3d-dampmode"><span class="std std-ref">DampMode</span></a></p></td>
+<td><p><a class="reference internal" href="#class-physicalbone3d-property-linear-damp-mode"><span class="std std-ref">linear_damp_mode</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a></p></td>
+<td><p><a class="reference internal" href="#class-physicalbone3d-property-linear-velocity"><span class="std std-ref">linear_velocity</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Vector3(0,</span> <span class="pre">0,</span> <span class="pre">0)</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-physicalbone3d-property-mass"><span class="std std-ref">mass</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">1.0</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section class="classref-reftable-group" id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-physicalbone3d-private-method-integrate-forces"><span class="std std-ref">_integrate_forces</span></a>(state: <a class="reference internal" href="class_physicsdirectbodystate3d.html#class-physicsdirectbodystate3d"><span class="std std-ref">PhysicsDirectBodyState3D</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-physicalbone3d-method-apply-central-impulse"><span class="std std-ref">apply_central_impulse</span></a>(impulse: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-physicalbone3d-method-apply-impulse"><span class="std std-ref">apply_impulse</span></a>(impulse: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>, position: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a> = Vector3(0, 0, 0))</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-physicalbone3d-method-get-bone-id"><span class="std std-ref">get_bone_id</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-physicalbone3d-method-get-simulate-physics"><span class="std std-ref">get_simulate_physics</span></a>()</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-physicalbone3d-method-is-simulating-physics"><span class="std std-ref">is_simulating_physics</span></a>()</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="enumerations">
+<h2>Enumerations<a class="headerlink" href="#enumerations" title="Link to this heading"></a></h2>
+<p class="classref-enumeration" id="enum-physicalbone3d-dampmode">enum <strong>DampMode</strong>: <a class="reference internal" href="#enum-physicalbone3d-dampmode"><span class="std std-ref">🔗</span></a></p>
+<p class="classref-enumeration-constant" id="class-physicalbone3d-constant-damp-mode-combine"><a class="reference internal" href="#enum-physicalbone3d-dampmode"><span class="std std-ref">DampMode</span></a> <strong>DAMP_MODE_COMBINE</strong> = <code class="docutils literal notranslate"><span class="pre">0</span></code></p>
+<p>In this mode, the body’s damping value is added to any value set in areas or the default value.</p>
+<p class="classref-enumeration-constant" id="class-physicalbone3d-constant-damp-mode-replace"><a class="reference internal" href="#enum-physicalbone3d-dampmode"><span class="std std-ref">DampMode</span></a> <strong>DAMP_MODE_REPLACE</strong> = <code class="docutils literal notranslate"><span class="pre">1</span></code></p>
+<p>In this mode, the body’s damping value replaces any value set in areas or the default value.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-enumeration" id="enum-physicalbone3d-jointtype">enum <strong>JointType</strong>: <a class="reference internal" href="#enum-physicalbone3d-jointtype"><span class="std std-ref">🔗</span></a></p>
+<p class="classref-enumeration-constant" id="class-physicalbone3d-constant-joint-type-none"><a class="reference internal" href="#enum-physicalbone3d-jointtype"><span class="std std-ref">JointType</span></a> <strong>JOINT_TYPE_NONE</strong> = <code class="docutils literal notranslate"><span class="pre">0</span></code></p>
+<p>No joint is applied to the PhysicsBone3D.</p>
+<p class="classref-enumeration-constant" id="class-physicalbone3d-constant-joint-type-pin"><a class="reference internal" href="#enum-physicalbone3d-jointtype"><span class="std std-ref">JointType</span></a> <strong>JOINT_TYPE_PIN</strong> = <code class="docutils literal notranslate"><span class="pre">1</span></code></p>
+<p>A pin joint is applied to the PhysicsBone3D.</p>
+<p class="classref-enumeration-constant" id="class-physicalbone3d-constant-joint-type-cone"><a class="reference internal" href="#enum-physicalbone3d-jointtype"><span class="std std-ref">JointType</span></a> <strong>JOINT_TYPE_CONE</strong> = <code class="docutils literal notranslate"><span class="pre">2</span></code></p>
+<p>A cone joint is applied to the PhysicsBone3D.</p>
+<p class="classref-enumeration-constant" id="class-physicalbone3d-constant-joint-type-hinge"><a class="reference internal" href="#enum-physicalbone3d-jointtype"><span class="std std-ref">JointType</span></a> <strong>JOINT_TYPE_HINGE</strong> = <code class="docutils literal notranslate"><span class="pre">3</span></code></p>
+<p>A hinge joint is applied to the PhysicsBone3D.</p>
+<p class="classref-enumeration-constant" id="class-physicalbone3d-constant-joint-type-slider"><a class="reference internal" href="#enum-physicalbone3d-jointtype"><span class="std std-ref">JointType</span></a> <strong>JOINT_TYPE_SLIDER</strong> = <code class="docutils literal notranslate"><span class="pre">4</span></code></p>
+<p>A slider joint is applied to the PhysicsBone3D.</p>
+<p class="classref-enumeration-constant" id="class-physicalbone3d-constant-joint-type-6dof"><a class="reference internal" href="#enum-physicalbone3d-jointtype"><span class="std std-ref">JointType</span></a> <strong>JOINT_TYPE_6DOF</strong> = <code class="docutils literal notranslate"><span class="pre">5</span></code></p>
+<p>A 6 degrees of freedom joint is applied to the PhysicsBone3D.</p>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="property-descriptions">
+<h2>Property Descriptions<a class="headerlink" href="#property-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-property" id="class-physicalbone3d-property-angular-damp"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>angular_damp</strong> = <code class="docutils literal notranslate"><span class="pre">0.0</span></code> <a class="reference internal" href="#class-physicalbone3d-property-angular-damp"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_angular_damp</strong>(value: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>get_angular_damp</strong>()</p></li>
+</ul>
+<p>Damps the body’s rotation. By default, the body will use the <a class="reference internal" href="class_projectsettings.html#class-projectsettings-property-physics-3d-default-angular-damp"><span class="std std-ref">ProjectSettings.physics/3d/default_angular_damp</span></a> project setting or any value override set by an <a class="reference internal" href="class_area3d.html#class-area3d"><span class="std std-ref">Area3D</span></a> the body is in. Depending on <a class="reference internal" href="#class-physicalbone3d-property-angular-damp-mode"><span class="std std-ref">angular_damp_mode</span></a>, you can set <a class="reference internal" href="#class-physicalbone3d-property-angular-damp"><span class="std std-ref">angular_damp</span></a> to be added to or to replace the body’s damping value.</p>
+<p>See <a class="reference internal" href="class_projectsettings.html#class-projectsettings-property-physics-3d-default-angular-damp"><span class="std std-ref">ProjectSettings.physics/3d/default_angular_damp</span></a> for more details about damping.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-physicalbone3d-property-angular-damp-mode"><a class="reference internal" href="#enum-physicalbone3d-dampmode"><span class="std std-ref">DampMode</span></a> <strong>angular_damp_mode</strong> = <code class="docutils literal notranslate"><span class="pre">0</span></code> <a class="reference internal" href="#class-physicalbone3d-property-angular-damp-mode"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_angular_damp_mode</strong>(value: <a class="reference internal" href="#enum-physicalbone3d-dampmode"><span class="std std-ref">DampMode</span></a>)</p></li>
+<li><p><a class="reference internal" href="#enum-physicalbone3d-dampmode"><span class="std std-ref">DampMode</span></a> <strong>get_angular_damp_mode</strong>()</p></li>
+</ul>
+<p>Defines how <a class="reference internal" href="#class-physicalbone3d-property-angular-damp"><span class="std std-ref">angular_damp</span></a> is applied.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-physicalbone3d-property-angular-velocity"><a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a> <strong>angular_velocity</strong> = <code class="docutils literal notranslate"><span class="pre">Vector3(0,</span> <span class="pre">0,</span> <span class="pre">0)</span></code> <a class="reference internal" href="#class-physicalbone3d-property-angular-velocity"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_angular_velocity</strong>(value: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a> <strong>get_angular_velocity</strong>()</p></li>
+</ul>
+<p>The PhysicalBone3D’s rotational velocity in <em>radians</em> per second.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-physicalbone3d-property-body-offset"><a class="reference internal" href="class_transform3d.html#class-transform3d"><span class="std std-ref">Transform3D</span></a> <strong>body_offset</strong> = <code class="docutils literal notranslate"><span class="pre">Transform3D(1,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">1,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">1,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0)</span></code> <a class="reference internal" href="#class-physicalbone3d-property-body-offset"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_body_offset</strong>(value: <a class="reference internal" href="class_transform3d.html#class-transform3d"><span class="std std-ref">Transform3D</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_transform3d.html#class-transform3d"><span class="std std-ref">Transform3D</span></a> <strong>get_body_offset</strong>()</p></li>
+</ul>
+<p>Sets the body’s transform.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-physicalbone3d-property-bounce"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>bounce</strong> = <code class="docutils literal notranslate"><span class="pre">0.0</span></code> <a class="reference internal" href="#class-physicalbone3d-property-bounce"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_bounce</strong>(value: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>get_bounce</strong>()</p></li>
+</ul>
+<p>The body’s bounciness. Values range from <code class="docutils literal notranslate"><span class="pre">0</span></code> (no bounce) to <code class="docutils literal notranslate"><span class="pre">1</span></code> (full bounciness).</p>
+<p><strong>Note:</strong> Even with <a class="reference internal" href="#class-physicalbone3d-property-bounce"><span class="std std-ref">bounce</span></a> set to <code class="docutils literal notranslate"><span class="pre">1.0</span></code>, some energy will be lost over time due to linear and angular damping. To have a <strong>PhysicalBone3D</strong> that preserves all its energy over time, set <a class="reference internal" href="#class-physicalbone3d-property-bounce"><span class="std std-ref">bounce</span></a> to <code class="docutils literal notranslate"><span class="pre">1.0</span></code>, <a class="reference internal" href="#class-physicalbone3d-property-linear-damp-mode"><span class="std std-ref">linear_damp_mode</span></a> to <a class="reference internal" href="#class-physicalbone3d-constant-damp-mode-replace"><span class="std std-ref">DAMP_MODE_REPLACE</span></a>, <a class="reference internal" href="#class-physicalbone3d-property-linear-damp"><span class="std std-ref">linear_damp</span></a> to <code class="docutils literal notranslate"><span class="pre">0.0</span></code>, <a class="reference internal" href="#class-physicalbone3d-property-angular-damp-mode"><span class="std std-ref">angular_damp_mode</span></a> to <a class="reference internal" href="#class-physicalbone3d-constant-damp-mode-replace"><span class="std std-ref">DAMP_MODE_REPLACE</span></a>, and <a class="reference internal" href="#class-physicalbone3d-property-angular-damp"><span class="std std-ref">angular_damp</span></a> to <code class="docutils literal notranslate"><span class="pre">0.0</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-physicalbone3d-property-can-sleep"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>can_sleep</strong> = <code class="docutils literal notranslate"><span class="pre">true</span></code> <a class="reference internal" href="#class-physicalbone3d-property-can-sleep"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_can_sleep</strong>(value: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_able_to_sleep</strong>()</p></li>
+</ul>
+<p>If <code class="docutils literal notranslate"><span class="pre">true</span></code>, the body is deactivated when there is no movement, so it will not take part in the simulation until it is awakened by an external force.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-physicalbone3d-property-custom-integrator"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>custom_integrator</strong> = <code class="docutils literal notranslate"><span class="pre">false</span></code> <a class="reference internal" href="#class-physicalbone3d-property-custom-integrator"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_use_custom_integrator</strong>(value: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_using_custom_integrator</strong>()</p></li>
+</ul>
+<p>If <code class="docutils literal notranslate"><span class="pre">true</span></code>, the standard force integration (like gravity or damping) will be disabled for this body. Other than collision response, the body will only move as determined by the <a class="reference internal" href="#class-physicalbone3d-private-method-integrate-forces"><span class="std std-ref">_integrate_forces()</span></a> method, if that virtual method is overridden.</p>
+<p>Setting this property will call the method <a class="reference internal" href="class_physicsserver3d.html#class-physicsserver3d-method-body-set-omit-force-integration"><span class="std std-ref">PhysicsServer3D.body_set_omit_force_integration()</span></a> internally.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-physicalbone3d-property-friction"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>friction</strong> = <code class="docutils literal notranslate"><span class="pre">1.0</span></code> <a class="reference internal" href="#class-physicalbone3d-property-friction"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_friction</strong>(value: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>get_friction</strong>()</p></li>
+</ul>
+<p>The body’s friction, from <code class="docutils literal notranslate"><span class="pre">0</span></code> (frictionless) to <code class="docutils literal notranslate"><span class="pre">1</span></code> (max friction).</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-physicalbone3d-property-gravity-scale"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>gravity_scale</strong> = <code class="docutils literal notranslate"><span class="pre">1.0</span></code> <a class="reference internal" href="#class-physicalbone3d-property-gravity-scale"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_gravity_scale</strong>(value: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>get_gravity_scale</strong>()</p></li>
+</ul>
+<p>This is multiplied by <a class="reference internal" href="class_projectsettings.html#class-projectsettings-property-physics-3d-default-gravity"><span class="std std-ref">ProjectSettings.physics/3d/default_gravity</span></a> to produce this body’s gravity. For example, a value of <code class="docutils literal notranslate"><span class="pre">1.0</span></code> will apply normal gravity, <code class="docutils literal notranslate"><span class="pre">2.0</span></code> will apply double the gravity, and <code class="docutils literal notranslate"><span class="pre">0.5</span></code> will apply half the gravity to this body.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-physicalbone3d-property-joint-offset"><a class="reference internal" href="class_transform3d.html#class-transform3d"><span class="std std-ref">Transform3D</span></a> <strong>joint_offset</strong> = <code class="docutils literal notranslate"><span class="pre">Transform3D(1,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">1,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">1,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0)</span></code> <a class="reference internal" href="#class-physicalbone3d-property-joint-offset"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_joint_offset</strong>(value: <a class="reference internal" href="class_transform3d.html#class-transform3d"><span class="std std-ref">Transform3D</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_transform3d.html#class-transform3d"><span class="std std-ref">Transform3D</span></a> <strong>get_joint_offset</strong>()</p></li>
+</ul>
+<p>Sets the joint’s transform.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-physicalbone3d-property-joint-rotation"><a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a> <strong>joint_rotation</strong> = <code class="docutils literal notranslate"><span class="pre">Vector3(0,</span> <span class="pre">0,</span> <span class="pre">0)</span></code> <a class="reference internal" href="#class-physicalbone3d-property-joint-rotation"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_joint_rotation</strong>(value: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a> <strong>get_joint_rotation</strong>()</p></li>
+</ul>
+<p>Sets the joint’s rotation in radians.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-physicalbone3d-property-joint-type"><a class="reference internal" href="#enum-physicalbone3d-jointtype"><span class="std std-ref">JointType</span></a> <strong>joint_type</strong> = <code class="docutils literal notranslate"><span class="pre">0</span></code> <a class="reference internal" href="#class-physicalbone3d-property-joint-type"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_joint_type</strong>(value: <a class="reference internal" href="#enum-physicalbone3d-jointtype"><span class="std std-ref">JointType</span></a>)</p></li>
+<li><p><a class="reference internal" href="#enum-physicalbone3d-jointtype"><span class="std std-ref">JointType</span></a> <strong>get_joint_type</strong>()</p></li>
+</ul>
+<p>Sets the joint type.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-physicalbone3d-property-linear-damp"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>linear_damp</strong> = <code class="docutils literal notranslate"><span class="pre">0.0</span></code> <a class="reference internal" href="#class-physicalbone3d-property-linear-damp"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_linear_damp</strong>(value: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>get_linear_damp</strong>()</p></li>
+</ul>
+<p>Damps the body’s movement. By default, the body will use <a class="reference internal" href="class_projectsettings.html#class-projectsettings-property-physics-3d-default-linear-damp"><span class="std std-ref">ProjectSettings.physics/3d/default_linear_damp</span></a> or any value override set by an <a class="reference internal" href="class_area3d.html#class-area3d"><span class="std std-ref">Area3D</span></a> the body is in. Depending on <a class="reference internal" href="#class-physicalbone3d-property-linear-damp-mode"><span class="std std-ref">linear_damp_mode</span></a>, <a class="reference internal" href="#class-physicalbone3d-property-linear-damp"><span class="std std-ref">linear_damp</span></a> may be added to or replace the body’s damping value.</p>
+<p>See <a class="reference internal" href="class_projectsettings.html#class-projectsettings-property-physics-3d-default-linear-damp"><span class="std std-ref">ProjectSettings.physics/3d/default_linear_damp</span></a> for more details about damping.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-physicalbone3d-property-linear-damp-mode"><a class="reference internal" href="#enum-physicalbone3d-dampmode"><span class="std std-ref">DampMode</span></a> <strong>linear_damp_mode</strong> = <code class="docutils literal notranslate"><span class="pre">0</span></code> <a class="reference internal" href="#class-physicalbone3d-property-linear-damp-mode"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_linear_damp_mode</strong>(value: <a class="reference internal" href="#enum-physicalbone3d-dampmode"><span class="std std-ref">DampMode</span></a>)</p></li>
+<li><p><a class="reference internal" href="#enum-physicalbone3d-dampmode"><span class="std std-ref">DampMode</span></a> <strong>get_linear_damp_mode</strong>()</p></li>
+</ul>
+<p>Defines how <a class="reference internal" href="#class-physicalbone3d-property-linear-damp"><span class="std std-ref">linear_damp</span></a> is applied.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-physicalbone3d-property-linear-velocity"><a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a> <strong>linear_velocity</strong> = <code class="docutils literal notranslate"><span class="pre">Vector3(0,</span> <span class="pre">0,</span> <span class="pre">0)</span></code> <a class="reference internal" href="#class-physicalbone3d-property-linear-velocity"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_linear_velocity</strong>(value: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a> <strong>get_linear_velocity</strong>()</p></li>
+</ul>
+<p>The body’s linear velocity in units per second. Can be used sporadically, but <strong>don’t set this every frame</strong>, because physics may run in another thread and runs at a different granularity. Use <a class="reference internal" href="#class-physicalbone3d-private-method-integrate-forces"><span class="std std-ref">_integrate_forces()</span></a> as your process loop for precise control of the body state.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-physicalbone3d-property-mass"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>mass</strong> = <code class="docutils literal notranslate"><span class="pre">1.0</span></code> <a class="reference internal" href="#class-physicalbone3d-property-mass"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_mass</strong>(value: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>get_mass</strong>()</p></li>
+</ul>
+<p>The body’s mass.</p>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="method-descriptions">
+<h2>Method Descriptions<a class="headerlink" href="#method-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-method" id="class-physicalbone3d-private-method-integrate-forces"><abbr title="No return value.">void</abbr> <strong>_integrate_forces</strong>(state: <a class="reference internal" href="class_physicsdirectbodystate3d.html#class-physicsdirectbodystate3d"><span class="std std-ref">PhysicsDirectBodyState3D</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <a class="reference internal" href="#class-physicalbone3d-private-method-integrate-forces"><span class="std std-ref">🔗</span></a></p>
+<p>Called during physics processing, allowing you to read and safely modify the simulation state for the object. By default, it is called before the standard force integration, but the <a class="reference internal" href="#class-physicalbone3d-property-custom-integrator"><span class="std std-ref">custom_integrator</span></a> property allows you to disable the standard force integration and do fully custom force integration for a body.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-physicalbone3d-method-apply-central-impulse"><abbr title="No return value.">void</abbr> <strong>apply_central_impulse</strong>(impulse: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>) <a class="reference internal" href="#class-physicalbone3d-method-apply-central-impulse"><span class="std std-ref">🔗</span></a></p>
+<p>Applies a directional impulse without affecting rotation.</p>
+<p>An impulse is time-independent! Applying an impulse every frame would result in a framerate-dependent force. For this reason, it should only be used when simulating one-time impacts (use the “_integrate_forces” functions otherwise).</p>
+<p>This is equivalent to using <a class="reference internal" href="#class-physicalbone3d-method-apply-impulse"><span class="std std-ref">apply_impulse()</span></a> at the body’s center of mass.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-physicalbone3d-method-apply-impulse"><abbr title="No return value.">void</abbr> <strong>apply_impulse</strong>(impulse: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>, position: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a> = Vector3(0, 0, 0)) <a class="reference internal" href="#class-physicalbone3d-method-apply-impulse"><span class="std std-ref">🔗</span></a></p>
+<p>Applies a positioned impulse to the PhysicsBone3D.</p>
+<p>An impulse is time-independent! Applying an impulse every frame would result in a framerate-dependent force. For this reason, it should only be used when simulating one-time impacts (use the “_integrate_forces” functions otherwise).</p>
+<p><code class="docutils literal notranslate"><span class="pre">position</span></code> is the offset from the PhysicsBone3D origin in global coordinates.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-physicalbone3d-method-get-bone-id"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>get_bone_id</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-physicalbone3d-method-get-bone-id"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the unique identifier of the PhysicsBone3D.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-physicalbone3d-method-get-simulate-physics"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>get_simulate_physics</strong>() <a class="reference internal" href="#class-physicalbone3d-method-get-simulate-physics"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if the PhysicsBone3D is allowed to simulate physics.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-physicalbone3d-method-is-simulating-physics"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_simulating_physics</strong>() <a class="reference internal" href="#class-physicalbone3d-method-is-simulating-physics"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if the PhysicsBone3D is currently simulating physics.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, MUmarShahbaz.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

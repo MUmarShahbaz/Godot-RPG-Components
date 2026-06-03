@@ -1,0 +1,196 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JavaClassWrapper &mdash; RPG Components 2D 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=d45e8c67"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            RPG Components 2D
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">JavaClassWrapper</a><ul>
+<li><a class="reference internal" href="#description">Description</a></li>
+<li><a class="reference internal" href="#tutorials">Tutorials</a></li>
+<li><a class="reference internal" href="#methods">Methods</a></li>
+<li><a class="reference internal" href="#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">RPG Components 2D</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">JavaClassWrapper</li>
+      <li class="wy-breadcrumbs-aside">
+              <!-- User defined GitHub URL -->
+              <a href="hide" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="javaclasswrapper">
+<span id="class-javaclasswrapper"></span><h1>JavaClassWrapper<a class="headerlink" href="#javaclasswrapper" title="Link to this heading"></a></h1>
+<p><strong>Inherits:</strong> <a class="reference internal" href="class_object.html#class-object"><span class="std std-ref">Object</span></a></p>
+<p>Provides access to the Java Native Interface.</p>
+<section class="classref-introduction-group" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
+<p>The JavaClassWrapper singleton provides a way for the Godot application to send and receive data through the <a class="reference external" href="https://developer.android.com/training/articles/perf-jni">Java Native Interface</a> (JNI).</p>
+<p><strong>Note:</strong> This singleton is only available in Android builds.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">LocalDateTime</span> <span class="o">=</span> <span class="n">JavaClassWrapper</span><span class="o">.</span><span class="n">wrap</span><span class="p">(</span><span class="s2">&quot;java.time.LocalDateTime&quot;</span><span class="p">)</span>
+<span class="n">var</span> <span class="n">DateTimeFormatter</span> <span class="o">=</span> <span class="n">JavaClassWrapper</span><span class="o">.</span><span class="n">wrap</span><span class="p">(</span><span class="s2">&quot;java.time.format.DateTimeFormatter&quot;</span><span class="p">)</span>
+
+<span class="n">var</span> <span class="n">datetime</span> <span class="o">=</span> <span class="n">LocalDateTime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
+<span class="n">var</span> <span class="n">formatter</span> <span class="o">=</span> <span class="n">DateTimeFormatter</span><span class="o">.</span><span class="n">ofPattern</span><span class="p">(</span><span class="s2">&quot;dd-MM-yyyy HH:mm:ss&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">formatter</span><span class="p">))</span>
+</pre></div>
+</div>
+<p><strong>Warning:</strong> When calling Java methods, be sure to check <a class="reference internal" href="#class-javaclasswrapper-method-get-exception"><span class="std std-ref">get_exception()</span></a> to check if the method threw an exception.</p>
+</section>
+<section class="classref-introduction-group" id="tutorials">
+<h2>Tutorials<a class="headerlink" href="#tutorials" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><span class="xref std std-doc">Integrating with Android APIs</span></p></li>
+</ul>
+</section>
+<section class="classref-reftable-group" id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_javaobject.html#class-javaobject"><span class="std std-ref">JavaObject</span></a></p></td>
+<td><p><a class="reference internal" href="#class-javaclasswrapper-method-create-proxy"><span class="std std-ref">create_proxy</span></a>(object: <a class="reference internal" href="class_object.html#class-object"><span class="std std-ref">Object</span></a>, interfaces: <a class="reference internal" href="class_packedstringarray.html#class-packedstringarray"><span class="std std-ref">PackedStringArray</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_javaobject.html#class-javaobject"><span class="std std-ref">JavaObject</span></a></p></td>
+<td><p><a class="reference internal" href="#class-javaclasswrapper-method-create-sam-callback"><span class="std std-ref">create_sam_callback</span></a>(sam_interface: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, callable: <a class="reference internal" href="class_callable.html#class-callable"><span class="std std-ref">Callable</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_javaobject.html#class-javaobject"><span class="std std-ref">JavaObject</span></a></p></td>
+<td><p><a class="reference internal" href="#class-javaclasswrapper-method-get-exception"><span class="std std-ref">get_exception</span></a>()</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_javaclass.html#class-javaclass"><span class="std std-ref">JavaClass</span></a></p></td>
+<td><p><a class="reference internal" href="#class-javaclasswrapper-method-wrap"><span class="std std-ref">wrap</span></a>(name: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>)</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="method-descriptions">
+<h2>Method Descriptions<a class="headerlink" href="#method-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-method" id="class-javaclasswrapper-method-create-proxy"><a class="reference internal" href="class_javaobject.html#class-javaobject"><span class="std std-ref">JavaObject</span></a> <strong>create_proxy</strong>(object: <a class="reference internal" href="class_object.html#class-object"><span class="std std-ref">Object</span></a>, interfaces: <a class="reference internal" href="class_packedstringarray.html#class-packedstringarray"><span class="std std-ref">PackedStringArray</span></a>) <a class="reference internal" href="#class-javaclasswrapper-method-create-proxy"><span class="std std-ref">🔗</span></a></p>
+<p>Creates a <a class="reference internal" href="class_javaobject.html#class-javaobject"><span class="std std-ref">JavaObject</span></a> implementing the given Java interfaces using the given <a class="reference internal" href="class_object.html#class-object"><span class="std std-ref">Object</span></a> as the implementation.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">object</span></code> must contain methods signatures matching the methods signatures from the passed Java <code class="docutils literal notranslate"><span class="pre">interfaces</span></code>. Invoking methods from the Java <code class="docutils literal notranslate"><span class="pre">interfaces</span></code> will route to the matching <code class="docutils literal notranslate"><span class="pre">object</span></code> method.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">PrintProxy</span><span class="p">:</span>
+    <span class="n">func</span> <span class="n">println</span><span class="p">(</span><span class="n">content</span><span class="p">:</span> <span class="n">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">void</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">content</span><span class="p">)</span>
+
+<span class="n">var</span> <span class="n">print_proxy</span> <span class="o">=</span> <span class="n">PrintProxy</span><span class="o">.</span><span class="n">new</span><span class="p">()</span>
+<span class="n">var</span> <span class="n">printer_object</span> <span class="o">=</span> <span class="n">JavaClassWrapper</span><span class="o">.</span><span class="n">create_proxy</span><span class="p">(</span><span class="n">print_proxy</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;android.util.Printer&quot;</span><span class="p">])</span>
+<span class="n">printer_object</span><span class="o">.</span><span class="n">println</span><span class="p">(</span><span class="s2">&quot;Hello Godot World!&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Note:</strong> This method only works on Android. On every other platform, this method will always return <code class="docutils literal notranslate"><span class="pre">null</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-javaclasswrapper-method-create-sam-callback"><a class="reference internal" href="class_javaobject.html#class-javaobject"><span class="std std-ref">JavaObject</span></a> <strong>create_sam_callback</strong>(sam_interface: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, callable: <a class="reference internal" href="class_callable.html#class-callable"><span class="std std-ref">Callable</span></a>) <a class="reference internal" href="#class-javaclasswrapper-method-create-sam-callback"><span class="std std-ref">🔗</span></a></p>
+<p>Creates a <a class="reference internal" href="class_javaobject.html#class-javaobject"><span class="std std-ref">JavaObject</span></a> implementing the Java Single Abstract Method (SAM) interface using the Godot <a class="reference internal" href="class_callable.html#class-callable"><span class="std std-ref">Callable</span></a> as the implementation.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">sam_interface</span></code> <strong>must be</strong> a Java SAM interface, meaning it must only have a single abstract method to implement.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">callable</span></code> must be able to handle the same parameter types as the SAM interface method, and must provide the same return type. The <code class="docutils literal notranslate"><span class="pre">callable</span></code> will be invoked as a callback, passing the arguments from the Java SAM interface method.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">cb</span> <span class="o">=</span> <span class="n">func</span> <span class="p">(</span><span class="n">content</span><span class="p">:</span> <span class="n">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">void</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">content</span><span class="p">)</span>
+<span class="n">var</span> <span class="n">callback</span> <span class="o">=</span> <span class="n">JavaClassWrapper</span><span class="o">.</span><span class="n">create_sam_callback</span><span class="p">(</span><span class="s2">&quot;android.util.Printer&quot;</span><span class="p">,</span> <span class="n">cb</span><span class="p">)</span>
+<span class="n">callback</span><span class="o">.</span><span class="n">println</span><span class="p">(</span><span class="s2">&quot;Hello Godot World!&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Note:</strong> This method only works on Android. On every other platform, this method will always return <code class="docutils literal notranslate"><span class="pre">null</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-javaclasswrapper-method-get-exception"><a class="reference internal" href="class_javaobject.html#class-javaobject"><span class="std std-ref">JavaObject</span></a> <strong>get_exception</strong>() <a class="reference internal" href="#class-javaclasswrapper-method-get-exception"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the Java exception from the last call into a Java class. If there was no exception, it will return <code class="docutils literal notranslate"><span class="pre">null</span></code>.</p>
+<p><strong>Note:</strong> This method only works on Android. On every other platform, this method will always return <code class="docutils literal notranslate"><span class="pre">null</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-javaclasswrapper-method-wrap"><a class="reference internal" href="class_javaclass.html#class-javaclass"><span class="std std-ref">JavaClass</span></a> <strong>wrap</strong>(name: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <a class="reference internal" href="#class-javaclasswrapper-method-wrap"><span class="std std-ref">🔗</span></a></p>
+<p>Wraps a class defined in Java, and returns it as a <a class="reference internal" href="class_javaclass.html#class-javaclass"><span class="std std-ref">JavaClass</span></a> <a class="reference internal" href="class_object.html#class-object"><span class="std std-ref">Object</span></a> type that Godot can interact with.</p>
+<p>When wrapping inner (nested) classes, use <code class="docutils literal notranslate"><span class="pre">$</span></code> instead of <code class="docutils literal notranslate"><span class="pre">.</span></code> to separate them. For example, <code class="docutils literal notranslate"><span class="pre">JavaClassWrapper.wrap(&quot;android.view.WindowManager$LayoutParams&quot;)</span></code> wraps the <strong>WindowManager.LayoutParams</strong> class.</p>
+<p><strong>Note:</strong> To invoke a constructor, call a method with the same name as the class. For example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">Intent</span> <span class="o">=</span> <span class="n">JavaClassWrapper</span><span class="o">.</span><span class="n">wrap</span><span class="p">(</span><span class="s2">&quot;android.content.Intent&quot;</span><span class="p">)</span>
+<span class="n">var</span> <span class="n">intent</span> <span class="o">=</span> <span class="n">Intent</span><span class="o">.</span><span class="n">Intent</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><strong>Note:</strong> This method only works on Android. On every other platform, this method does nothing and returns an empty <a class="reference internal" href="class_javaclass.html#class-javaclass"><span class="std std-ref">JavaClass</span></a>.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, MUmarShahbaz.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

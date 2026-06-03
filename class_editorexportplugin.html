@@ -1,0 +1,489 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EditorExportPlugin &mdash; RPG Components 2D 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=d45e8c67"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            RPG Components 2D
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">EditorExportPlugin</a><ul>
+<li><a class="reference internal" href="#description">Description</a></li>
+<li><a class="reference internal" href="#tutorials">Tutorials</a></li>
+<li><a class="reference internal" href="#methods">Methods</a></li>
+<li><a class="reference internal" href="#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">RPG Components 2D</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">EditorExportPlugin</li>
+      <li class="wy-breadcrumbs-aside">
+              <!-- User defined GitHub URL -->
+              <a href="hide" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="editorexportplugin">
+<span id="class-editorexportplugin"></span><h1>EditorExportPlugin<a class="headerlink" href="#editorexportplugin" title="Link to this heading"></a></h1>
+<p><strong>Inherits:</strong> <a class="reference internal" href="class_refcounted.html#class-refcounted"><span class="std std-ref">RefCounted</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_object.html#class-object"><span class="std std-ref">Object</span></a></p>
+<p>A script that is executed when exporting the project.</p>
+<section class="classref-introduction-group" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
+<p><strong>EditorExportPlugin</strong>s are automatically invoked whenever the user exports the project. They can be used to modify scenes and resources during project export based on what <span class="xref std std-doc">Feature Tags</span> are set. For each plugin, <a class="reference internal" href="#class-editorexportplugin-private-method-export-begin"><span class="std std-ref">_export_begin()</span></a> is called at the beginning of the export process and then <a class="reference internal" href="#class-editorexportplugin-private-method-export-file"><span class="std std-ref">_export_file()</span></a> is called for each exported file.</p>
+<p>Register a <strong>EditorExportPlugin</strong> by creating a new <a class="reference internal" href="class_editorplugin.html#class-editorplugin"><span class="std std-ref">EditorPlugin</span></a> and calling its <a class="reference internal" href="class_editorplugin.html#class-editorplugin-method-add-export-plugin"><span class="std std-ref">EditorPlugin.add_export_plugin()</span></a> method.</p>
+</section>
+<section class="classref-introduction-group" id="tutorials">
+<h2>Tutorials<a class="headerlink" href="#tutorials" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><span class="xref std std-doc">Export Android plugins</span></p></li>
+</ul>
+</section>
+<section class="classref-reftable-group" id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-editorexportplugin-private-method-begin-customize-resources"><span class="std std-ref">_begin_customize_resources</span></a>(platform: <a class="reference internal" href="class_editorexportplatform.html#class-editorexportplatform"><span class="std std-ref">EditorExportPlatform</span></a>, features: <a class="reference internal" href="class_packedstringarray.html#class-packedstringarray"><span class="std std-ref">PackedStringArray</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-editorexportplugin-private-method-begin-customize-scenes"><span class="std std-ref">_begin_customize_scenes</span></a>(platform: <a class="reference internal" href="class_editorexportplatform.html#class-editorexportplatform"><span class="std std-ref">EditorExportPlatform</span></a>, features: <a class="reference internal" href="class_packedstringarray.html#class-packedstringarray"><span class="std std-ref">PackedStringArray</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_resource.html#class-resource"><span class="std std-ref">Resource</span></a></p></td>
+<td><p><a class="reference internal" href="#class-editorexportplugin-private-method-customize-resource"><span class="std std-ref">_customize_resource</span></a>(resource: <a class="reference internal" href="class_resource.html#class-resource"><span class="std std-ref">Resource</span></a>, path: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method is required to be overridden when extending its base class.">required</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_node.html#class-node"><span class="std std-ref">Node</span></a></p></td>
+<td><p><a class="reference internal" href="#class-editorexportplugin-private-method-customize-scene"><span class="std std-ref">_customize_scene</span></a>(scene: <a class="reference internal" href="class_node.html#class-node"><span class="std std-ref">Node</span></a>, path: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method is required to be overridden when extending its base class.">required</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-editorexportplugin-private-method-end-customize-resources"><span class="std std-ref">_end_customize_resources</span></a>() <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-editorexportplugin-private-method-end-customize-scenes"><span class="std std-ref">_end_customize_scenes</span></a>() <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-editorexportplugin-private-method-end-generate-apple-embedded-project"><span class="std std-ref">_end_generate_apple_embedded_project</span></a>(path: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, will_build_archive: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-editorexportplugin-private-method-export-begin"><span class="std std-ref">_export_begin</span></a>(features: <a class="reference internal" href="class_packedstringarray.html#class-packedstringarray"><span class="std std-ref">PackedStringArray</span></a>, is_debug: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>, path: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, flags: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-editorexportplugin-private-method-export-end"><span class="std std-ref">_export_end</span></a>() <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-editorexportplugin-private-method-export-file"><span class="std std-ref">_export_file</span></a>(path: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, type: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, features: <a class="reference internal" href="class_packedstringarray.html#class-packedstringarray"><span class="std std-ref">PackedStringArray</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_packedstringarray.html#class-packedstringarray"><span class="std std-ref">PackedStringArray</span></a></p></td>
+<td><p><a class="reference internal" href="#class-editorexportplugin-private-method-get-android-dependencies"><span class="std std-ref">_get_android_dependencies</span></a>(platform: <a class="reference internal" href="class_editorexportplatform.html#class-editorexportplatform"><span class="std std-ref">EditorExportPlatform</span></a>, debug: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_packedstringarray.html#class-packedstringarray"><span class="std std-ref">PackedStringArray</span></a></p></td>
+<td><p><a class="reference internal" href="#class-editorexportplugin-private-method-get-android-dependencies-maven-repos"><span class="std std-ref">_get_android_dependencies_maven_repos</span></a>(platform: <a class="reference internal" href="class_editorexportplatform.html#class-editorexportplatform"><span class="std std-ref">EditorExportPlatform</span></a>, debug: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_packedstringarray.html#class-packedstringarray"><span class="std std-ref">PackedStringArray</span></a></p></td>
+<td><p><a class="reference internal" href="#class-editorexportplugin-private-method-get-android-libraries"><span class="std std-ref">_get_android_libraries</span></a>(platform: <a class="reference internal" href="class_editorexportplatform.html#class-editorexportplatform"><span class="std std-ref">EditorExportPlatform</span></a>, debug: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a></p></td>
+<td><p><a class="reference internal" href="#class-editorexportplugin-private-method-get-android-manifest-activity-element-contents"><span class="std std-ref">_get_android_manifest_activity_element_contents</span></a>(platform: <a class="reference internal" href="class_editorexportplatform.html#class-editorexportplatform"><span class="std std-ref">EditorExportPlatform</span></a>, debug: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a></p></td>
+<td><p><a class="reference internal" href="#class-editorexportplugin-private-method-get-android-manifest-application-element-contents"><span class="std std-ref">_get_android_manifest_application_element_contents</span></a>(platform: <a class="reference internal" href="class_editorexportplatform.html#class-editorexportplatform"><span class="std std-ref">EditorExportPlatform</span></a>, debug: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a></p></td>
+<td><p><a class="reference internal" href="#class-editorexportplugin-private-method-get-android-manifest-element-contents"><span class="std std-ref">_get_android_manifest_element_contents</span></a>(platform: <a class="reference internal" href="class_editorexportplatform.html#class-editorexportplatform"><span class="std std-ref">EditorExportPlatform</span></a>, debug: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-editorexportplugin-private-method-get-customization-configuration-hash"><span class="std std-ref">_get_customization_configuration_hash</span></a>() <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method is required to be overridden when extending its base class.">required</abbr> <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_packedstringarray.html#class-packedstringarray"><span class="std std-ref">PackedStringArray</span></a></p></td>
+<td><p><a class="reference internal" href="#class-editorexportplugin-private-method-get-export-features"><span class="std std-ref">_get_export_features</span></a>(platform: <a class="reference internal" href="class_editorexportplatform.html#class-editorexportplatform"><span class="std std-ref">EditorExportPlatform</span></a>, debug: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-editorexportplugin-private-method-get-export-option-visibility"><span class="std std-ref">_get_export_option_visibility</span></a>(platform: <a class="reference internal" href="class_editorexportplatform.html#class-editorexportplatform"><span class="std std-ref">EditorExportPlatform</span></a>, option: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a></p></td>
+<td><p><a class="reference internal" href="#class-editorexportplugin-private-method-get-export-option-warning"><span class="std std-ref">_get_export_option_warning</span></a>(platform: <a class="reference internal" href="class_editorexportplatform.html#class-editorexportplatform"><span class="std std-ref">EditorExportPlatform</span></a>, option: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_array.html#class-array"><span class="std std-ref">Array</span></a>[<a class="reference internal" href="class_dictionary.html#class-dictionary"><span class="std std-ref">Dictionary</span></a>]</p></td>
+<td><p><a class="reference internal" href="#class-editorexportplugin-private-method-get-export-options"><span class="std std-ref">_get_export_options</span></a>(platform: <a class="reference internal" href="class_editorexportplatform.html#class-editorexportplatform"><span class="std std-ref">EditorExportPlatform</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_dictionary.html#class-dictionary"><span class="std std-ref">Dictionary</span></a></p></td>
+<td><p><a class="reference internal" href="#class-editorexportplugin-private-method-get-export-options-overrides"><span class="std std-ref">_get_export_options_overrides</span></a>(platform: <a class="reference internal" href="class_editorexportplatform.html#class-editorexportplatform"><span class="std std-ref">EditorExportPlatform</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a></p></td>
+<td><p><a class="reference internal" href="#class-editorexportplugin-private-method-get-name"><span class="std std-ref">_get_name</span></a>() <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method is required to be overridden when extending its base class.">required</abbr> <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-editorexportplugin-private-method-should-update-export-options"><span class="std std-ref">_should_update_export_options</span></a>(platform: <a class="reference internal" href="class_editorexportplatform.html#class-editorexportplatform"><span class="std std-ref">EditorExportPlatform</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-editorexportplugin-private-method-supports-platform"><span class="std std-ref">_supports_platform</span></a>(platform: <a class="reference internal" href="class_editorexportplatform.html#class-editorexportplatform"><span class="std std-ref">EditorExportPlatform</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_packedbytearray.html#class-packedbytearray"><span class="std std-ref">PackedByteArray</span></a></p></td>
+<td><p><a class="reference internal" href="#class-editorexportplugin-private-method-update-android-prebuilt-manifest"><span class="std std-ref">_update_android_prebuilt_manifest</span></a>(platform: <a class="reference internal" href="class_editorexportplatform.html#class-editorexportplatform"><span class="std std-ref">EditorExportPlatform</span></a>, manifest_data: <a class="reference internal" href="class_packedbytearray.html#class-packedbytearray"><span class="std std-ref">PackedByteArray</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-editorexportplugin-method-add-apple-embedded-platform-bundle-file"><span class="std std-ref">add_apple_embedded_platform_bundle_file</span></a>(path: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-editorexportplugin-method-add-apple-embedded-platform-cpp-code"><span class="std std-ref">add_apple_embedded_platform_cpp_code</span></a>(code: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-editorexportplugin-method-add-apple-embedded-platform-embedded-framework"><span class="std std-ref">add_apple_embedded_platform_embedded_framework</span></a>(path: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-editorexportplugin-method-add-apple-embedded-platform-framework"><span class="std std-ref">add_apple_embedded_platform_framework</span></a>(path: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-editorexportplugin-method-add-apple-embedded-platform-linker-flags"><span class="std std-ref">add_apple_embedded_platform_linker_flags</span></a>(flags: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-editorexportplugin-method-add-apple-embedded-platform-plist-content"><span class="std std-ref">add_apple_embedded_platform_plist_content</span></a>(plist_content: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-editorexportplugin-method-add-apple-embedded-platform-project-static-lib"><span class="std std-ref">add_apple_embedded_platform_project_static_lib</span></a>(path: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-editorexportplugin-method-add-file"><span class="std std-ref">add_file</span></a>(path: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, file: <a class="reference internal" href="class_packedbytearray.html#class-packedbytearray"><span class="std std-ref">PackedByteArray</span></a>, remap: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-editorexportplugin-method-add-ios-bundle-file"><span class="std std-ref">add_ios_bundle_file</span></a>(path: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-editorexportplugin-method-add-ios-cpp-code"><span class="std std-ref">add_ios_cpp_code</span></a>(code: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-editorexportplugin-method-add-ios-embedded-framework"><span class="std std-ref">add_ios_embedded_framework</span></a>(path: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-editorexportplugin-method-add-ios-framework"><span class="std std-ref">add_ios_framework</span></a>(path: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-editorexportplugin-method-add-ios-linker-flags"><span class="std std-ref">add_ios_linker_flags</span></a>(flags: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-editorexportplugin-method-add-ios-plist-content"><span class="std std-ref">add_ios_plist_content</span></a>(plist_content: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-editorexportplugin-method-add-ios-project-static-lib"><span class="std std-ref">add_ios_project_static_lib</span></a>(path: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-editorexportplugin-method-add-macos-plugin-file"><span class="std std-ref">add_macos_plugin_file</span></a>(path: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-editorexportplugin-method-add-shared-object"><span class="std std-ref">add_shared_object</span></a>(path: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, tags: <a class="reference internal" href="class_packedstringarray.html#class-packedstringarray"><span class="std std-ref">PackedStringArray</span></a>, target: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_editorexportplatform.html#class-editorexportplatform"><span class="std std-ref">EditorExportPlatform</span></a></p></td>
+<td><p><a class="reference internal" href="#class-editorexportplugin-method-get-export-platform"><span class="std std-ref">get_export_platform</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_editorexportpreset.html#class-editorexportpreset"><span class="std std-ref">EditorExportPreset</span></a></p></td>
+<td><p><a class="reference internal" href="#class-editorexportplugin-method-get-export-preset"><span class="std std-ref">get_export_preset</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a></p></td>
+<td><p><a class="reference internal" href="#class-editorexportplugin-method-get-option"><span class="std std-ref">get_option</span></a>(name: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-editorexportplugin-method-skip"><span class="std std-ref">skip</span></a>()</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="method-descriptions">
+<h2>Method Descriptions<a class="headerlink" href="#method-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-method" id="class-editorexportplugin-private-method-begin-customize-resources"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>_begin_customize_resources</strong>(platform: <a class="reference internal" href="class_editorexportplatform.html#class-editorexportplatform"><span class="std std-ref">EditorExportPlatform</span></a>, features: <a class="reference internal" href="class_packedstringarray.html#class-packedstringarray"><span class="std std-ref">PackedStringArray</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-editorexportplugin-private-method-begin-customize-resources"><span class="std std-ref">🔗</span></a></p>
+<p>Return <code class="docutils literal notranslate"><span class="pre">true</span></code> if this plugin will customize resources based on the platform and features used.</p>
+<p>When enabled, <a class="reference internal" href="#class-editorexportplugin-private-method-get-customization-configuration-hash"><span class="std std-ref">_get_customization_configuration_hash()</span></a> and <a class="reference internal" href="#class-editorexportplugin-private-method-customize-resource"><span class="std std-ref">_customize_resource()</span></a> will be called and must be implemented.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-editorexportplugin-private-method-begin-customize-scenes"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>_begin_customize_scenes</strong>(platform: <a class="reference internal" href="class_editorexportplatform.html#class-editorexportplatform"><span class="std std-ref">EditorExportPlatform</span></a>, features: <a class="reference internal" href="class_packedstringarray.html#class-packedstringarray"><span class="std std-ref">PackedStringArray</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-editorexportplugin-private-method-begin-customize-scenes"><span class="std std-ref">🔗</span></a></p>
+<p>Return <code class="docutils literal notranslate"><span class="pre">true</span></code> if this plugin will customize scenes based on the platform and features used.</p>
+<p>When enabled, <a class="reference internal" href="#class-editorexportplugin-private-method-get-customization-configuration-hash"><span class="std std-ref">_get_customization_configuration_hash()</span></a> and <a class="reference internal" href="#class-editorexportplugin-private-method-customize-scene"><span class="std std-ref">_customize_scene()</span></a> will be called and must be implemented.</p>
+<p><strong>Note:</strong> <a class="reference internal" href="#class-editorexportplugin-private-method-customize-scene"><span class="std std-ref">_customize_scene()</span></a> will only be called for scenes that have been modified since the last export.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-editorexportplugin-private-method-customize-resource"><a class="reference internal" href="class_resource.html#class-resource"><span class="std std-ref">Resource</span></a> <strong>_customize_resource</strong>(resource: <a class="reference internal" href="class_resource.html#class-resource"><span class="std std-ref">Resource</span></a>, path: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method is required to be overridden when extending its base class.">required</abbr> <a class="reference internal" href="#class-editorexportplugin-private-method-customize-resource"><span class="std std-ref">🔗</span></a></p>
+<p>Customize a resource. If changes are made to it, return the same or a new resource. Otherwise, return <code class="docutils literal notranslate"><span class="pre">null</span></code>. When a new resource is returned, <code class="docutils literal notranslate"><span class="pre">resource</span></code> will be replaced by a copy of the new resource.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">path</span></code> argument is only used when customizing an actual file, otherwise this means that this resource is part of another one and it will be empty.</p>
+<p>Implementing this method is required if <a class="reference internal" href="#class-editorexportplugin-private-method-begin-customize-resources"><span class="std std-ref">_begin_customize_resources()</span></a> returns <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p>
+<p><strong>Note:</strong> When customizing any of the following types and returning another resource, the other resource should not be skipped using <a class="reference internal" href="#class-editorexportplugin-method-skip"><span class="std std-ref">skip()</span></a> in <a class="reference internal" href="#class-editorexportplugin-private-method-export-file"><span class="std std-ref">_export_file()</span></a>:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="class_atlastexture.html#class-atlastexture"><span class="std std-ref">AtlasTexture</span></a></p></li>
+<li><p><a class="reference internal" href="class_compressedcubemap.html#class-compressedcubemap"><span class="std std-ref">CompressedCubemap</span></a></p></li>
+<li><p><a class="reference internal" href="class_compressedcubemaparray.html#class-compressedcubemaparray"><span class="std std-ref">CompressedCubemapArray</span></a></p></li>
+<li><p><a class="reference internal" href="class_compressedtexture2d.html#class-compressedtexture2d"><span class="std std-ref">CompressedTexture2D</span></a></p></li>
+<li><p><a class="reference internal" href="class_compressedtexture2darray.html#class-compressedtexture2darray"><span class="std std-ref">CompressedTexture2DArray</span></a></p></li>
+<li><p><a class="reference internal" href="class_compressedtexture3d.html#class-compressedtexture3d"><span class="std std-ref">CompressedTexture3D</span></a></p></li>
+</ul>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-editorexportplugin-private-method-customize-scene"><a class="reference internal" href="class_node.html#class-node"><span class="std std-ref">Node</span></a> <strong>_customize_scene</strong>(scene: <a class="reference internal" href="class_node.html#class-node"><span class="std std-ref">Node</span></a>, path: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method is required to be overridden when extending its base class.">required</abbr> <a class="reference internal" href="#class-editorexportplugin-private-method-customize-scene"><span class="std std-ref">🔗</span></a></p>
+<p>Customize a scene. If changes are made to it, return the same or a new scene. Otherwise, return <code class="docutils literal notranslate"><span class="pre">null</span></code>. If a new scene is returned, it is up to you to dispose of the old one.</p>
+<p>Implementing this method is required if <a class="reference internal" href="#class-editorexportplugin-private-method-begin-customize-scenes"><span class="std std-ref">_begin_customize_scenes()</span></a> returns <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p>
+<p><strong>Note:</strong> To change a variable in your scene, use the <code class="docutils literal notranslate"><span class="pre">&#64;export</span></code> annotation when declaring it.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-editorexportplugin-private-method-end-customize-resources"><abbr title="No return value.">void</abbr> <strong>_end_customize_resources</strong>() <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <a class="reference internal" href="#class-editorexportplugin-private-method-end-customize-resources"><span class="std std-ref">🔗</span></a></p>
+<p>This is called when the customization process for resources ends.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-editorexportplugin-private-method-end-customize-scenes"><abbr title="No return value.">void</abbr> <strong>_end_customize_scenes</strong>() <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <a class="reference internal" href="#class-editorexportplugin-private-method-end-customize-scenes"><span class="std std-ref">🔗</span></a></p>
+<p>This is called when the customization process for scenes ends.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-editorexportplugin-private-method-end-generate-apple-embedded-project"><abbr title="No return value.">void</abbr> <strong>_end_generate_apple_embedded_project</strong>(path: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, will_build_archive: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <a class="reference internal" href="#class-editorexportplugin-private-method-end-generate-apple-embedded-project"><span class="std std-ref">🔗</span></a></p>
+<p>This is called after Xcode project generation, but before it is built.</p>
+<p><strong>Note:</strong> Only supported on iOS and visionOS.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-editorexportplugin-private-method-export-begin"><abbr title="No return value.">void</abbr> <strong>_export_begin</strong>(features: <a class="reference internal" href="class_packedstringarray.html#class-packedstringarray"><span class="std std-ref">PackedStringArray</span></a>, is_debug: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>, path: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, flags: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <a class="reference internal" href="#class-editorexportplugin-private-method-export-begin"><span class="std std-ref">🔗</span></a></p>
+<p>Virtual method to be overridden by the user. It is called when the export starts and provides all information about the export. <code class="docutils literal notranslate"><span class="pre">features</span></code> is the list of features for the export, <code class="docutils literal notranslate"><span class="pre">is_debug</span></code> is <code class="docutils literal notranslate"><span class="pre">true</span></code> for debug builds, <code class="docutils literal notranslate"><span class="pre">path</span></code> is the target path for the exported project. <code class="docutils literal notranslate"><span class="pre">flags</span></code> is only used when running a runnable profile, e.g. when using native run on Android.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-editorexportplugin-private-method-export-end"><abbr title="No return value.">void</abbr> <strong>_export_end</strong>() <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <a class="reference internal" href="#class-editorexportplugin-private-method-export-end"><span class="std std-ref">🔗</span></a></p>
+<p>Virtual method to be overridden by the user. Called when the export is finished.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-editorexportplugin-private-method-export-file"><abbr title="No return value.">void</abbr> <strong>_export_file</strong>(path: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, type: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, features: <a class="reference internal" href="class_packedstringarray.html#class-packedstringarray"><span class="std std-ref">PackedStringArray</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <a class="reference internal" href="#class-editorexportplugin-private-method-export-file"><span class="std std-ref">🔗</span></a></p>
+<p>Virtual method to be overridden by the user. Called for each exported file before <a class="reference internal" href="#class-editorexportplugin-private-method-customize-resource"><span class="std std-ref">_customize_resource()</span></a> and <a class="reference internal" href="#class-editorexportplugin-private-method-customize-scene"><span class="std std-ref">_customize_scene()</span></a>. The arguments can be used to identify the file. <code class="docutils literal notranslate"><span class="pre">path</span></code> is the path of the file, <code class="docutils literal notranslate"><span class="pre">type</span></code> is the <a class="reference internal" href="class_resource.html#class-resource"><span class="std std-ref">Resource</span></a> represented by the file (e.g. <a class="reference internal" href="class_packedscene.html#class-packedscene"><span class="std std-ref">PackedScene</span></a>), and <code class="docutils literal notranslate"><span class="pre">features</span></code> is the list of features for the export.</p>
+<p>Calling <a class="reference internal" href="#class-editorexportplugin-method-skip"><span class="std std-ref">skip()</span></a> inside this callback will make the file not included in the export.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-editorexportplugin-private-method-get-android-dependencies"><a class="reference internal" href="class_packedstringarray.html#class-packedstringarray"><span class="std std-ref">PackedStringArray</span></a> <strong>_get_android_dependencies</strong>(platform: <a class="reference internal" href="class_editorexportplatform.html#class-editorexportplatform"><span class="std std-ref">EditorExportPlatform</span></a>, debug: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-editorexportplugin-private-method-get-android-dependencies"><span class="std std-ref">🔗</span></a></p>
+<p>Virtual method to be overridden by the user. This is called to retrieve the set of Android dependencies provided by this plugin. Each returned Android dependency should have the format of an Android remote binary dependency: <code class="docutils literal notranslate"><span class="pre">org.godot.example:my-plugin:0.0.0</span></code></p>
+<p>For more information see <a class="reference external" href="https://developer.android.com/build/dependencies?agpversion=4.1#dependency-types">Android documentation on dependencies</a>.</p>
+<p><strong>Note:</strong> Only supported on Android and requires <span class="xref std std-ref">EditorExportPlatformAndroid.gradle_build/use_gradle_build</span> to be enabled.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-editorexportplugin-private-method-get-android-dependencies-maven-repos"><a class="reference internal" href="class_packedstringarray.html#class-packedstringarray"><span class="std std-ref">PackedStringArray</span></a> <strong>_get_android_dependencies_maven_repos</strong>(platform: <a class="reference internal" href="class_editorexportplatform.html#class-editorexportplatform"><span class="std std-ref">EditorExportPlatform</span></a>, debug: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-editorexportplugin-private-method-get-android-dependencies-maven-repos"><span class="std std-ref">🔗</span></a></p>
+<p>Virtual method to be overridden by the user. This is called to retrieve the URLs of Maven repositories for the set of Android dependencies provided by this plugin.</p>
+<p>For more information see <a class="reference external" href="https://docs.gradle.org/current/userguide/dependency_management.html#sec:maven_repo">Gradle documentation on dependency management</a>.</p>
+<p><strong>Note:</strong> Google’s Maven repo and the Maven Central repo are already included by default.</p>
+<p><strong>Note:</strong> Only supported on Android and requires <span class="xref std std-ref">EditorExportPlatformAndroid.gradle_build/use_gradle_build</span> to be enabled.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-editorexportplugin-private-method-get-android-libraries"><a class="reference internal" href="class_packedstringarray.html#class-packedstringarray"><span class="std std-ref">PackedStringArray</span></a> <strong>_get_android_libraries</strong>(platform: <a class="reference internal" href="class_editorexportplatform.html#class-editorexportplatform"><span class="std std-ref">EditorExportPlatform</span></a>, debug: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-editorexportplugin-private-method-get-android-libraries"><span class="std std-ref">🔗</span></a></p>
+<p>Virtual method to be overridden by the user. This is called to retrieve the local paths of the Android libraries archive (AAR) files provided by this plugin.</p>
+<p><strong>Note:</strong> Relative paths <strong>must</strong> be relative to Godot’s <code class="docutils literal notranslate"><span class="pre">res://addons/</span></code> directory. For example, an AAR file located under <code class="docutils literal notranslate"><span class="pre">res://addons/hello_world_plugin/HelloWorld.release.aar</span></code> can be returned as an absolute path using <code class="docutils literal notranslate"><span class="pre">res://addons/hello_world_plugin/HelloWorld.release.aar</span></code> or a relative path using <code class="docutils literal notranslate"><span class="pre">hello_world_plugin/HelloWorld.release.aar</span></code>.</p>
+<p><strong>Note:</strong> Only supported on Android and requires <span class="xref std std-ref">EditorExportPlatformAndroid.gradle_build/use_gradle_build</span> to be enabled.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-editorexportplugin-private-method-get-android-manifest-activity-element-contents"><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a> <strong>_get_android_manifest_activity_element_contents</strong>(platform: <a class="reference internal" href="class_editorexportplatform.html#class-editorexportplatform"><span class="std std-ref">EditorExportPlatform</span></a>, debug: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-editorexportplugin-private-method-get-android-manifest-activity-element-contents"><span class="std std-ref">🔗</span></a></p>
+<p>Virtual method to be overridden by the user. This is used at export time to update the contents of the <code class="docutils literal notranslate"><span class="pre">activity</span></code> element in the generated Android manifest.</p>
+<p><strong>Note:</strong> Only supported on Android and requires <span class="xref std std-ref">EditorExportPlatformAndroid.gradle_build/use_gradle_build</span> to be enabled.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-editorexportplugin-private-method-get-android-manifest-application-element-contents"><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a> <strong>_get_android_manifest_application_element_contents</strong>(platform: <a class="reference internal" href="class_editorexportplatform.html#class-editorexportplatform"><span class="std std-ref">EditorExportPlatform</span></a>, debug: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-editorexportplugin-private-method-get-android-manifest-application-element-contents"><span class="std std-ref">🔗</span></a></p>
+<p>Virtual method to be overridden by the user. This is used at export time to update the contents of the <code class="docutils literal notranslate"><span class="pre">application</span></code> element in the generated Android manifest.</p>
+<p><strong>Note:</strong> Only supported on Android and requires <span class="xref std std-ref">EditorExportPlatformAndroid.gradle_build/use_gradle_build</span> to be enabled.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-editorexportplugin-private-method-get-android-manifest-element-contents"><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a> <strong>_get_android_manifest_element_contents</strong>(platform: <a class="reference internal" href="class_editorexportplatform.html#class-editorexportplatform"><span class="std std-ref">EditorExportPlatform</span></a>, debug: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-editorexportplugin-private-method-get-android-manifest-element-contents"><span class="std std-ref">🔗</span></a></p>
+<p>Virtual method to be overridden by the user. This is used at export time to update the contents of the <code class="docutils literal notranslate"><span class="pre">manifest</span></code> element in the generated Android manifest.</p>
+<p><strong>Note:</strong> Only supported on Android and requires <span class="xref std std-ref">EditorExportPlatformAndroid.gradle_build/use_gradle_build</span> to be enabled.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-editorexportplugin-private-method-get-customization-configuration-hash"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>_get_customization_configuration_hash</strong>() <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method is required to be overridden when extending its base class.">required</abbr> <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-editorexportplugin-private-method-get-customization-configuration-hash"><span class="std std-ref">🔗</span></a></p>
+<p>Return a hash based on the configuration passed (for both scenes and resources). This helps keep separate caches for separate export configurations.</p>
+<p>Implementing this method is required if <a class="reference internal" href="#class-editorexportplugin-private-method-begin-customize-resources"><span class="std std-ref">_begin_customize_resources()</span></a> returns <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p>
+<p><strong>Note:</strong> <a class="reference internal" href="#class-editorexportplugin-private-method-customize-resource"><span class="std std-ref">_customize_resource()</span></a> and <a class="reference internal" href="#class-editorexportplugin-private-method-customize-scene"><span class="std std-ref">_customize_scene()</span></a> will not be called when the <strong>EditorExportPlugin</strong> script is modified unless this hash changes too.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-editorexportplugin-private-method-get-export-features"><a class="reference internal" href="class_packedstringarray.html#class-packedstringarray"><span class="std std-ref">PackedStringArray</span></a> <strong>_get_export_features</strong>(platform: <a class="reference internal" href="class_editorexportplatform.html#class-editorexportplatform"><span class="std std-ref">EditorExportPlatform</span></a>, debug: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-editorexportplugin-private-method-get-export-features"><span class="std std-ref">🔗</span></a></p>
+<p>Return a <a class="reference internal" href="class_packedstringarray.html#class-packedstringarray"><span class="std std-ref">PackedStringArray</span></a> of additional features this preset, for the given <code class="docutils literal notranslate"><span class="pre">platform</span></code>, should have.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-editorexportplugin-private-method-get-export-option-visibility"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>_get_export_option_visibility</strong>(platform: <a class="reference internal" href="class_editorexportplatform.html#class-editorexportplatform"><span class="std std-ref">EditorExportPlatform</span></a>, option: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-editorexportplugin-private-method-get-export-option-visibility"><span class="std std-ref">🔗</span></a></p>
+<p>Validates <code class="docutils literal notranslate"><span class="pre">option</span></code> and returns the visibility for the specified <code class="docutils literal notranslate"><span class="pre">platform</span></code>. The default implementation returns <code class="docutils literal notranslate"><span class="pre">true</span></code> for all options.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-editorexportplugin-private-method-get-export-option-warning"><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a> <strong>_get_export_option_warning</strong>(platform: <a class="reference internal" href="class_editorexportplatform.html#class-editorexportplatform"><span class="std std-ref">EditorExportPlatform</span></a>, option: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-editorexportplugin-private-method-get-export-option-warning"><span class="std std-ref">🔗</span></a></p>
+<p>Check the requirements for the given <code class="docutils literal notranslate"><span class="pre">option</span></code> and return a non-empty warning string if they are not met.</p>
+<p><strong>Note:</strong> Use <a class="reference internal" href="#class-editorexportplugin-method-get-option"><span class="std std-ref">get_option()</span></a> to check the value of the export options.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-editorexportplugin-private-method-get-export-options"><a class="reference internal" href="class_array.html#class-array"><span class="std std-ref">Array</span></a>[<a class="reference internal" href="class_dictionary.html#class-dictionary"><span class="std std-ref">Dictionary</span></a>] <strong>_get_export_options</strong>(platform: <a class="reference internal" href="class_editorexportplatform.html#class-editorexportplatform"><span class="std std-ref">EditorExportPlatform</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-editorexportplugin-private-method-get-export-options"><span class="std std-ref">🔗</span></a></p>
+<p>Return a list of export options that can be configured for this export plugin.</p>
+<p>Each element in the return value is a <a class="reference internal" href="class_dictionary.html#class-dictionary"><span class="std std-ref">Dictionary</span></a> with the following keys:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">option</span></code>: A dictionary with the structure documented by <a class="reference internal" href="class_object.html#class-object-method-get-property-list"><span class="std std-ref">Object.get_property_list()</span></a>, but all keys are optional.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">default_value</span></code>: The default value for this option.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">update_visibility</span></code>: An optional boolean value. If set to <code class="docutils literal notranslate"><span class="pre">true</span></code>, the preset will emit <a class="reference internal" href="class_object.html#class-object-signal-property-list-changed"><span class="std std-ref">Object.property_list_changed</span></a> when the option is changed.</p></li>
+</ul>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-editorexportplugin-private-method-get-export-options-overrides"><a class="reference internal" href="class_dictionary.html#class-dictionary"><span class="std std-ref">Dictionary</span></a> <strong>_get_export_options_overrides</strong>(platform: <a class="reference internal" href="class_editorexportplatform.html#class-editorexportplatform"><span class="std std-ref">EditorExportPlatform</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-editorexportplugin-private-method-get-export-options-overrides"><span class="std std-ref">🔗</span></a></p>
+<p>Return a <a class="reference internal" href="class_dictionary.html#class-dictionary"><span class="std std-ref">Dictionary</span></a> of override values for export options, that will be used instead of user-provided values. Overridden options will be hidden from the user interface.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">MyExportPlugin</span> <span class="n">extends</span> <span class="n">EditorExportPlugin</span><span class="p">:</span>
+    <span class="n">func</span> <span class="n">_get_name</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">String</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;MyExportPlugin&quot;</span>
+
+    <span class="n">func</span> <span class="n">_supports_platform</span><span class="p">(</span><span class="n">platform</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">platform</span> <span class="ow">is</span> <span class="n">EditorExportPlatformPC</span><span class="p">:</span>
+            <span class="c1"># Run on all desktop platforms including Windows, MacOS and Linux.</span>
+            <span class="k">return</span> <span class="n">true</span>
+        <span class="k">return</span> <span class="n">false</span>
+
+    <span class="n">func</span> <span class="n">_get_export_options_overrides</span><span class="p">(</span><span class="n">platform</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dictionary</span><span class="p">:</span>
+        <span class="c1"># Override &quot;Embed PCK&quot; to always be enabled.</span>
+        <span class="k">return</span> <span class="p">{</span>
+            <span class="s2">&quot;binary_format/embed_pck&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+        <span class="p">}</span>
+</pre></div>
+</div>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-editorexportplugin-private-method-get-name"><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a> <strong>_get_name</strong>() <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method is required to be overridden when extending its base class.">required</abbr> <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-editorexportplugin-private-method-get-name"><span class="std std-ref">🔗</span></a></p>
+<p>Return the name identifier of this plugin (for future identification by the exporter). The plugins are sorted by name before exporting.</p>
+<p>Implementing this method is required.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-editorexportplugin-private-method-should-update-export-options"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>_should_update_export_options</strong>(platform: <a class="reference internal" href="class_editorexportplatform.html#class-editorexportplatform"><span class="std std-ref">EditorExportPlatform</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-editorexportplugin-private-method-should-update-export-options"><span class="std std-ref">🔗</span></a></p>
+<p>Return <code class="docutils literal notranslate"><span class="pre">true</span></code> if the result of <a class="reference internal" href="#class-editorexportplugin-private-method-get-export-options"><span class="std std-ref">_get_export_options()</span></a> has changed and the export options of the preset corresponding to <code class="docutils literal notranslate"><span class="pre">platform</span></code> should be updated.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-editorexportplugin-private-method-supports-platform"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>_supports_platform</strong>(platform: <a class="reference internal" href="class_editorexportplatform.html#class-editorexportplatform"><span class="std std-ref">EditorExportPlatform</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-editorexportplugin-private-method-supports-platform"><span class="std std-ref">🔗</span></a></p>
+<p>Return <code class="docutils literal notranslate"><span class="pre">true</span></code> if the plugin supports the given <code class="docutils literal notranslate"><span class="pre">platform</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-editorexportplugin-private-method-update-android-prebuilt-manifest"><a class="reference internal" href="class_packedbytearray.html#class-packedbytearray"><span class="std std-ref">PackedByteArray</span></a> <strong>_update_android_prebuilt_manifest</strong>(platform: <a class="reference internal" href="class_editorexportplatform.html#class-editorexportplatform"><span class="std std-ref">EditorExportPlatform</span></a>, manifest_data: <a class="reference internal" href="class_packedbytearray.html#class-packedbytearray"><span class="std std-ref">PackedByteArray</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-editorexportplugin-private-method-update-android-prebuilt-manifest"><span class="std std-ref">🔗</span></a></p>
+<p>Provide access to the Android prebuilt manifest and allows the plugin to modify it if needed.</p>
+<p>Implementers of this virtual method should take the binary manifest data from <code class="docutils literal notranslate"><span class="pre">manifest_data</span></code>, copy it, modify it, and then return it with the modifications.</p>
+<p>If no modifications are needed, then an empty <a class="reference internal" href="class_packedbytearray.html#class-packedbytearray"><span class="std std-ref">PackedByteArray</span></a> should be returned.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-editorexportplugin-method-add-apple-embedded-platform-bundle-file"><abbr title="No return value.">void</abbr> <strong>add_apple_embedded_platform_bundle_file</strong>(path: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <a class="reference internal" href="#class-editorexportplugin-method-add-apple-embedded-platform-bundle-file"><span class="std std-ref">🔗</span></a></p>
+<p>Adds an Apple embedded platform bundle file from the given <code class="docutils literal notranslate"><span class="pre">path</span></code> to the exported project.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-editorexportplugin-method-add-apple-embedded-platform-cpp-code"><abbr title="No return value.">void</abbr> <strong>add_apple_embedded_platform_cpp_code</strong>(code: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <a class="reference internal" href="#class-editorexportplugin-method-add-apple-embedded-platform-cpp-code"><span class="std std-ref">🔗</span></a></p>
+<p>Adds C++ code to the Apple embedded platform export. The final code is created from the code appended by each active export plugin.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-editorexportplugin-method-add-apple-embedded-platform-embedded-framework"><abbr title="No return value.">void</abbr> <strong>add_apple_embedded_platform_embedded_framework</strong>(path: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <a class="reference internal" href="#class-editorexportplugin-method-add-apple-embedded-platform-embedded-framework"><span class="std std-ref">🔗</span></a></p>
+<p>Adds a dynamic library (*.dylib, *.framework) to the Linking Phase in the Apple embedded platform’s Xcode project and embeds it into the resulting binary.</p>
+<p><strong>Note:</strong> For static libraries (*.a), this works in the same way as <a class="reference internal" href="#class-editorexportplugin-method-add-apple-embedded-platform-framework"><span class="std std-ref">add_apple_embedded_platform_framework()</span></a>.</p>
+<p><strong>Note:</strong> This method should not be used for System libraries as they are already present on the device.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-editorexportplugin-method-add-apple-embedded-platform-framework"><abbr title="No return value.">void</abbr> <strong>add_apple_embedded_platform_framework</strong>(path: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <a class="reference internal" href="#class-editorexportplugin-method-add-apple-embedded-platform-framework"><span class="std std-ref">🔗</span></a></p>
+<p>Adds a static library (*.a) or a dynamic library (*.dylib, *.framework) to the Linking Phase to the Apple embedded platform’s Xcode project.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-editorexportplugin-method-add-apple-embedded-platform-linker-flags"><abbr title="No return value.">void</abbr> <strong>add_apple_embedded_platform_linker_flags</strong>(flags: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <a class="reference internal" href="#class-editorexportplugin-method-add-apple-embedded-platform-linker-flags"><span class="std std-ref">🔗</span></a></p>
+<p>Adds linker flags for the Apple embedded platform export.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-editorexportplugin-method-add-apple-embedded-platform-plist-content"><abbr title="No return value.">void</abbr> <strong>add_apple_embedded_platform_plist_content</strong>(plist_content: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <a class="reference internal" href="#class-editorexportplugin-method-add-apple-embedded-platform-plist-content"><span class="std std-ref">🔗</span></a></p>
+<p>Adds additional fields to the Apple embedded platform’s project Info.plist file.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-editorexportplugin-method-add-apple-embedded-platform-project-static-lib"><abbr title="No return value.">void</abbr> <strong>add_apple_embedded_platform_project_static_lib</strong>(path: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <a class="reference internal" href="#class-editorexportplugin-method-add-apple-embedded-platform-project-static-lib"><span class="std std-ref">🔗</span></a></p>
+<p>Adds a static library from the given <code class="docutils literal notranslate"><span class="pre">path</span></code> to the Apple embedded platform project.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-editorexportplugin-method-add-file"><abbr title="No return value.">void</abbr> <strong>add_file</strong>(path: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, file: <a class="reference internal" href="class_packedbytearray.html#class-packedbytearray"><span class="std std-ref">PackedByteArray</span></a>, remap: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>) <a class="reference internal" href="#class-editorexportplugin-method-add-file"><span class="std std-ref">🔗</span></a></p>
+<p>Adds a custom file to be exported. <code class="docutils literal notranslate"><span class="pre">path</span></code> is the virtual path that can be used to load the file, <code class="docutils literal notranslate"><span class="pre">file</span></code> is the binary data of the file.</p>
+<p>When called inside <a class="reference internal" href="#class-editorexportplugin-private-method-export-file"><span class="std std-ref">_export_file()</span></a> and <code class="docutils literal notranslate"><span class="pre">remap</span></code> is <code class="docutils literal notranslate"><span class="pre">true</span></code>, the current file will not be exported, but instead remapped to this custom file. <code class="docutils literal notranslate"><span class="pre">remap</span></code> is ignored when called in other places.</p>
+<p><code class="docutils literal notranslate"><span class="pre">file</span></code> will not be imported, so consider using <a class="reference internal" href="#class-editorexportplugin-private-method-customize-resource"><span class="std std-ref">_customize_resource()</span></a> to remap imported resources.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-editorexportplugin-method-add-ios-bundle-file"><abbr title="No return value.">void</abbr> <strong>add_ios_bundle_file</strong>(path: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <a class="reference internal" href="#class-editorexportplugin-method-add-ios-bundle-file"><span class="std std-ref">🔗</span></a></p>
+<p><strong>Deprecated:</strong> Use <a class="reference internal" href="#class-editorexportplugin-method-add-apple-embedded-platform-bundle-file"><span class="std std-ref">add_apple_embedded_platform_bundle_file()</span></a> instead.</p>
+<p>Adds an iOS bundle file from the given <code class="docutils literal notranslate"><span class="pre">path</span></code> to the exported project.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-editorexportplugin-method-add-ios-cpp-code"><abbr title="No return value.">void</abbr> <strong>add_ios_cpp_code</strong>(code: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <a class="reference internal" href="#class-editorexportplugin-method-add-ios-cpp-code"><span class="std std-ref">🔗</span></a></p>
+<p><strong>Deprecated:</strong> Use <a class="reference internal" href="#class-editorexportplugin-method-add-apple-embedded-platform-cpp-code"><span class="std std-ref">add_apple_embedded_platform_cpp_code()</span></a> instead.</p>
+<p>Adds C++ code to the iOS export. The final code is created from the code appended by each active export plugin.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-editorexportplugin-method-add-ios-embedded-framework"><abbr title="No return value.">void</abbr> <strong>add_ios_embedded_framework</strong>(path: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <a class="reference internal" href="#class-editorexportplugin-method-add-ios-embedded-framework"><span class="std std-ref">🔗</span></a></p>
+<p><strong>Deprecated:</strong> Use <a class="reference internal" href="#class-editorexportplugin-method-add-apple-embedded-platform-embedded-framework"><span class="std std-ref">add_apple_embedded_platform_embedded_framework()</span></a> instead.</p>
+<p>Adds a dynamic library (*.dylib, *.framework) to Linking Phase in iOS’s Xcode project and embeds it into resulting binary.</p>
+<p><strong>Note:</strong> For static libraries (*.a), this works the in same way as <a class="reference internal" href="#class-editorexportplugin-method-add-apple-embedded-platform-framework"><span class="std std-ref">add_apple_embedded_platform_framework()</span></a>.</p>
+<p><strong>Note:</strong> This method should not be used for System libraries as they are already present on the device.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-editorexportplugin-method-add-ios-framework"><abbr title="No return value.">void</abbr> <strong>add_ios_framework</strong>(path: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <a class="reference internal" href="#class-editorexportplugin-method-add-ios-framework"><span class="std std-ref">🔗</span></a></p>
+<p><strong>Deprecated:</strong> Use <a class="reference internal" href="#class-editorexportplugin-method-add-apple-embedded-platform-framework"><span class="std std-ref">add_apple_embedded_platform_framework()</span></a> instead.</p>
+<p>Adds a static library (*.a) or a dynamic library (*.dylib, *.framework) to the Linking Phase to the iOS Xcode project.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-editorexportplugin-method-add-ios-linker-flags"><abbr title="No return value.">void</abbr> <strong>add_ios_linker_flags</strong>(flags: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <a class="reference internal" href="#class-editorexportplugin-method-add-ios-linker-flags"><span class="std std-ref">🔗</span></a></p>
+<p><strong>Deprecated:</strong> Use <a class="reference internal" href="#class-editorexportplugin-method-add-apple-embedded-platform-linker-flags"><span class="std std-ref">add_apple_embedded_platform_linker_flags()</span></a> instead.</p>
+<p>Adds linker flags for the iOS export.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-editorexportplugin-method-add-ios-plist-content"><abbr title="No return value.">void</abbr> <strong>add_ios_plist_content</strong>(plist_content: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <a class="reference internal" href="#class-editorexportplugin-method-add-ios-plist-content"><span class="std std-ref">🔗</span></a></p>
+<p><strong>Deprecated:</strong> Use <a class="reference internal" href="#class-editorexportplugin-method-add-apple-embedded-platform-plist-content"><span class="std std-ref">add_apple_embedded_platform_plist_content()</span></a> instead.</p>
+<p>Adds additional fields to the iOS project Info.plist file.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-editorexportplugin-method-add-ios-project-static-lib"><abbr title="No return value.">void</abbr> <strong>add_ios_project_static_lib</strong>(path: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <a class="reference internal" href="#class-editorexportplugin-method-add-ios-project-static-lib"><span class="std std-ref">🔗</span></a></p>
+<p><strong>Deprecated:</strong> Use <a class="reference internal" href="#class-editorexportplugin-method-add-apple-embedded-platform-project-static-lib"><span class="std std-ref">add_apple_embedded_platform_project_static_lib()</span></a> instead.</p>
+<p>Adds a static library from the given <code class="docutils literal notranslate"><span class="pre">path</span></code> to the iOS project.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-editorexportplugin-method-add-macos-plugin-file"><abbr title="No return value.">void</abbr> <strong>add_macos_plugin_file</strong>(path: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <a class="reference internal" href="#class-editorexportplugin-method-add-macos-plugin-file"><span class="std std-ref">🔗</span></a></p>
+<p>Adds file or directory matching <code class="docutils literal notranslate"><span class="pre">path</span></code> to <code class="docutils literal notranslate"><span class="pre">PlugIns</span></code> directory of macOS app bundle.</p>
+<p><strong>Note:</strong> This is useful only for macOS exports.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-editorexportplugin-method-add-shared-object"><abbr title="No return value.">void</abbr> <strong>add_shared_object</strong>(path: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, tags: <a class="reference internal" href="class_packedstringarray.html#class-packedstringarray"><span class="std std-ref">PackedStringArray</span></a>, target: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <a class="reference internal" href="#class-editorexportplugin-method-add-shared-object"><span class="std std-ref">🔗</span></a></p>
+<p>Adds a shared object or a directory containing only shared objects with the given <code class="docutils literal notranslate"><span class="pre">tags</span></code> and destination <code class="docutils literal notranslate"><span class="pre">path</span></code>.</p>
+<p><strong>Note:</strong> In case of macOS exports, those shared objects will be added to <code class="docutils literal notranslate"><span class="pre">Frameworks</span></code> directory of app bundle.</p>
+<p>In case of a directory code-sign will error if you place non code object in directory.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-editorexportplugin-method-get-export-platform"><a class="reference internal" href="class_editorexportplatform.html#class-editorexportplatform"><span class="std std-ref">EditorExportPlatform</span></a> <strong>get_export_platform</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-editorexportplugin-method-get-export-platform"><span class="std std-ref">🔗</span></a></p>
+<p>Returns currently used export platform.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-editorexportplugin-method-get-export-preset"><a class="reference internal" href="class_editorexportpreset.html#class-editorexportpreset"><span class="std std-ref">EditorExportPreset</span></a> <strong>get_export_preset</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-editorexportplugin-method-get-export-preset"><span class="std std-ref">🔗</span></a></p>
+<p>Returns currently used export preset.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-editorexportplugin-method-get-option"><a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a> <strong>get_option</strong>(name: <a class="reference internal" href="class_stringname.html#class-stringname"><span class="std std-ref">StringName</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-editorexportplugin-method-get-option"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the current value of an export option supplied by <a class="reference internal" href="#class-editorexportplugin-private-method-get-export-options"><span class="std std-ref">_get_export_options()</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-editorexportplugin-method-skip"><abbr title="No return value.">void</abbr> <strong>skip</strong>() <a class="reference internal" href="#class-editorexportplugin-method-skip"><span class="std std-ref">🔗</span></a></p>
+<p>To be called inside <a class="reference internal" href="#class-editorexportplugin-private-method-export-file"><span class="std std-ref">_export_file()</span></a>. Skips the current file, so it’s not included in the export.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, MUmarShahbaz.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

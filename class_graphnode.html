@@ -1,0 +1,516 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GraphNode &mdash; RPG Components 2D 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=d45e8c67"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            RPG Components 2D
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">GraphNode</a><ul>
+<li><a class="reference internal" href="#description">Description</a></li>
+<li><a class="reference internal" href="#properties">Properties</a></li>
+<li><a class="reference internal" href="#methods">Methods</a></li>
+<li><a class="reference internal" href="#theme-properties">Theme Properties</a></li>
+<li><a class="reference internal" href="#signals">Signals</a></li>
+<li><a class="reference internal" href="#property-descriptions">Property Descriptions</a></li>
+<li><a class="reference internal" href="#method-descriptions">Method Descriptions</a></li>
+<li><a class="reference internal" href="#theme-property-descriptions">Theme Property Descriptions</a></li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">RPG Components 2D</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">GraphNode</li>
+      <li class="wy-breadcrumbs-aside">
+              <!-- User defined GitHub URL -->
+              <a href="hide" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="graphnode">
+<span id="class-graphnode"></span><h1>GraphNode<a class="headerlink" href="#graphnode" title="Link to this heading"></a></h1>
+<p><strong>Inherits:</strong> <a class="reference internal" href="class_graphelement.html#class-graphelement"><span class="std std-ref">GraphElement</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_container.html#class-container"><span class="std std-ref">Container</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_control.html#class-control"><span class="std std-ref">Control</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_canvasitem.html#class-canvasitem"><span class="std std-ref">CanvasItem</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_node.html#class-node"><span class="std std-ref">Node</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_object.html#class-object"><span class="std std-ref">Object</span></a></p>
+<p>A container with connection ports, representing a node in a <a class="reference internal" href="class_graphedit.html#class-graphedit"><span class="std std-ref">GraphEdit</span></a>.</p>
+<section class="classref-introduction-group" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
+<p><strong>GraphNode</strong> allows to create nodes for a <a class="reference internal" href="class_graphedit.html#class-graphedit"><span class="std std-ref">GraphEdit</span></a> graph with customizable content based on its child controls. <strong>GraphNode</strong> is derived from <a class="reference internal" href="class_container.html#class-container"><span class="std std-ref">Container</span></a> and it is responsible for placing its children on screen. This works similar to <a class="reference internal" href="class_vboxcontainer.html#class-vboxcontainer"><span class="std std-ref">VBoxContainer</span></a>. Children, in turn, provide <strong>GraphNode</strong> with so-called slots, each of which can have a connection port on either side.</p>
+<p>Each <strong>GraphNode</strong> slot is defined by its index and can provide the node with up to two ports: one on the left, and one on the right. By convention the left port is also referred to as the <strong>input port</strong> and the right port is referred to as the <strong>output port</strong>. Each port can be enabled and configured individually, using different type and color. The type is an arbitrary value that you can define using your own considerations. The parent <a class="reference internal" href="class_graphedit.html#class-graphedit"><span class="std std-ref">GraphEdit</span></a> will receive this information on each connect and disconnect request.</p>
+<p>Slots can be configured in the Inspector dock once you add at least one child <a class="reference internal" href="class_control.html#class-control"><span class="std std-ref">Control</span></a>. The properties are grouped by each slot’s index in the “Slot” section.</p>
+<p><strong>Note:</strong> While GraphNode is set up using slots and slot indices, connections are made between the ports which are enabled. Because of that <a class="reference internal" href="class_graphedit.html#class-graphedit"><span class="std std-ref">GraphEdit</span></a> uses the port’s index and not the slot’s index. You can use <a class="reference internal" href="#class-graphnode-method-get-input-port-slot"><span class="std std-ref">get_input_port_slot()</span></a> and <a class="reference internal" href="#class-graphnode-method-get-output-port-slot"><span class="std std-ref">get_output_port_slot()</span></a> to get the slot index from the port index.</p>
+</section>
+<section class="classref-reftable-group" id="properties">
+<h2>Properties<a class="headerlink" href="#properties" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_control.html#enum-control-focusmode"><span class="std std-ref">FocusMode</span></a></p></td>
+<td><p>focus_mode</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">3</span></code> (overrides <a class="reference internal" href="class_control.html#class-control-property-focus-mode"><span class="std std-ref">Control</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-graphnode-property-ignore-invalid-connection-type"><span class="std std-ref">ignore_invalid_connection_type</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_control.html#enum-control-mousefilter"><span class="std std-ref">MouseFilter</span></a></p></td>
+<td><p>mouse_filter</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code> (overrides <a class="reference internal" href="class_control.html#class-control-property-mouse-filter"><span class="std std-ref">Control</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_control.html#enum-control-focusmode"><span class="std std-ref">FocusMode</span></a></p></td>
+<td><p><a class="reference internal" href="#class-graphnode-property-slots-focus-mode"><span class="std std-ref">slots_focus_mode</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">3</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a></p></td>
+<td><p><a class="reference internal" href="#class-graphnode-property-title"><span class="std std-ref">title</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&quot;&quot;</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section class="classref-reftable-group" id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-graphnode-private-method-draw-port"><span class="std std-ref">_draw_port</span></a>(slot_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, position: <a class="reference internal" href="class_vector2i.html#class-vector2i"><span class="std std-ref">Vector2i</span></a>, left: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>, color: <a class="reference internal" href="class_color.html#class-color"><span class="std std-ref">Color</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-graphnode-method-clear-all-slots"><span class="std std-ref">clear_all_slots</span></a>()</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-graphnode-method-clear-slot"><span class="std std-ref">clear_slot</span></a>(slot_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_color.html#class-color"><span class="std std-ref">Color</span></a></p></td>
+<td><p><a class="reference internal" href="#class-graphnode-method-get-input-port-color"><span class="std std-ref">get_input_port_color</span></a>(port_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-graphnode-method-get-input-port-count"><span class="std std-ref">get_input_port_count</span></a>()</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a></p></td>
+<td><p><a class="reference internal" href="#class-graphnode-method-get-input-port-position"><span class="std std-ref">get_input_port_position</span></a>(port_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-graphnode-method-get-input-port-slot"><span class="std std-ref">get_input_port_slot</span></a>(port_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-graphnode-method-get-input-port-type"><span class="std std-ref">get_input_port_type</span></a>(port_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_color.html#class-color"><span class="std std-ref">Color</span></a></p></td>
+<td><p><a class="reference internal" href="#class-graphnode-method-get-output-port-color"><span class="std std-ref">get_output_port_color</span></a>(port_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-graphnode-method-get-output-port-count"><span class="std std-ref">get_output_port_count</span></a>()</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a></p></td>
+<td><p><a class="reference internal" href="#class-graphnode-method-get-output-port-position"><span class="std std-ref">get_output_port_position</span></a>(port_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-graphnode-method-get-output-port-slot"><span class="std std-ref">get_output_port_slot</span></a>(port_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-graphnode-method-get-output-port-type"><span class="std std-ref">get_output_port_type</span></a>(port_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_color.html#class-color"><span class="std std-ref">Color</span></a></p></td>
+<td><p><a class="reference internal" href="#class-graphnode-method-get-slot-color-left"><span class="std std-ref">get_slot_color_left</span></a>(slot_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_color.html#class-color"><span class="std std-ref">Color</span></a></p></td>
+<td><p><a class="reference internal" href="#class-graphnode-method-get-slot-color-right"><span class="std std-ref">get_slot_color_right</span></a>(slot_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_texture2d.html#class-texture2d"><span class="std std-ref">Texture2D</span></a></p></td>
+<td><p><a class="reference internal" href="#class-graphnode-method-get-slot-custom-icon-left"><span class="std std-ref">get_slot_custom_icon_left</span></a>(slot_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_texture2d.html#class-texture2d"><span class="std std-ref">Texture2D</span></a></p></td>
+<td><p><a class="reference internal" href="#class-graphnode-method-get-slot-custom-icon-right"><span class="std std-ref">get_slot_custom_icon_right</span></a>(slot_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a></p></td>
+<td><p><a class="reference internal" href="#class-graphnode-method-get-slot-metadata-left"><span class="std std-ref">get_slot_metadata_left</span></a>(slot_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a></p></td>
+<td><p><a class="reference internal" href="#class-graphnode-method-get-slot-metadata-right"><span class="std std-ref">get_slot_metadata_right</span></a>(slot_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-graphnode-method-get-slot-type-left"><span class="std std-ref">get_slot_type_left</span></a>(slot_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-graphnode-method-get-slot-type-right"><span class="std std-ref">get_slot_type_right</span></a>(slot_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_hboxcontainer.html#class-hboxcontainer"><span class="std std-ref">HBoxContainer</span></a></p></td>
+<td><p><a class="reference internal" href="#class-graphnode-method-get-titlebar-hbox"><span class="std std-ref">get_titlebar_hbox</span></a>()</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-graphnode-method-is-slot-draw-stylebox"><span class="std std-ref">is_slot_draw_stylebox</span></a>(slot_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-graphnode-method-is-slot-enabled-left"><span class="std std-ref">is_slot_enabled_left</span></a>(slot_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-graphnode-method-is-slot-enabled-right"><span class="std std-ref">is_slot_enabled_right</span></a>(slot_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-graphnode-method-set-slot"><span class="std std-ref">set_slot</span></a>(slot_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, enable_left_port: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>, type_left: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, color_left: <a class="reference internal" href="class_color.html#class-color"><span class="std std-ref">Color</span></a>, enable_right_port: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>, type_right: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, color_right: <a class="reference internal" href="class_color.html#class-color"><span class="std std-ref">Color</span></a>, custom_icon_left: <a class="reference internal" href="class_texture2d.html#class-texture2d"><span class="std std-ref">Texture2D</span></a> = null, custom_icon_right: <a class="reference internal" href="class_texture2d.html#class-texture2d"><span class="std std-ref">Texture2D</span></a> = null, draw_stylebox: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = true)</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-graphnode-method-set-slot-color-left"><span class="std std-ref">set_slot_color_left</span></a>(slot_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, color: <a class="reference internal" href="class_color.html#class-color"><span class="std std-ref">Color</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-graphnode-method-set-slot-color-right"><span class="std std-ref">set_slot_color_right</span></a>(slot_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, color: <a class="reference internal" href="class_color.html#class-color"><span class="std std-ref">Color</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-graphnode-method-set-slot-custom-icon-left"><span class="std std-ref">set_slot_custom_icon_left</span></a>(slot_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, custom_icon: <a class="reference internal" href="class_texture2d.html#class-texture2d"><span class="std std-ref">Texture2D</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-graphnode-method-set-slot-custom-icon-right"><span class="std std-ref">set_slot_custom_icon_right</span></a>(slot_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, custom_icon: <a class="reference internal" href="class_texture2d.html#class-texture2d"><span class="std std-ref">Texture2D</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-graphnode-method-set-slot-draw-stylebox"><span class="std std-ref">set_slot_draw_stylebox</span></a>(slot_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, enable: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-graphnode-method-set-slot-enabled-left"><span class="std std-ref">set_slot_enabled_left</span></a>(slot_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, enable: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-graphnode-method-set-slot-enabled-right"><span class="std std-ref">set_slot_enabled_right</span></a>(slot_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, enable: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-graphnode-method-set-slot-metadata-left"><span class="std std-ref">set_slot_metadata_left</span></a>(slot_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, value: <a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-graphnode-method-set-slot-metadata-right"><span class="std std-ref">set_slot_metadata_right</span></a>(slot_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, value: <a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-graphnode-method-set-slot-type-left"><span class="std std-ref">set_slot_type_left</span></a>(slot_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, type: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-graphnode-method-set-slot-type-right"><span class="std std-ref">set_slot_type_right</span></a>(slot_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, type: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section class="classref-reftable-group" id="theme-properties">
+<h2>Theme Properties<a class="headerlink" href="#theme-properties" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_color.html#class-color"><span class="std std-ref">Color</span></a></p></td>
+<td><p><a class="reference internal" href="#class-graphnode-theme-color-resizer-color"><span class="std std-ref">resizer_color</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Color(0.875,</span> <span class="pre">0.875,</span> <span class="pre">0.875,</span> <span class="pre">1)</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-graphnode-theme-constant-port-h-offset"><span class="std std-ref">port_h_offset</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-graphnode-theme-constant-separation"><span class="std std-ref">separation</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">2</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_texture2d.html#class-texture2d"><span class="std std-ref">Texture2D</span></a></p></td>
+<td><p><a class="reference internal" href="#class-graphnode-theme-icon-port"><span class="std std-ref">port</span></a></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_stylebox.html#class-stylebox"><span class="std std-ref">StyleBox</span></a></p></td>
+<td><p><a class="reference internal" href="#class-graphnode-theme-style-panel"><span class="std std-ref">panel</span></a></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_stylebox.html#class-stylebox"><span class="std std-ref">StyleBox</span></a></p></td>
+<td><p><a class="reference internal" href="#class-graphnode-theme-style-panel-focus"><span class="std std-ref">panel_focus</span></a></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_stylebox.html#class-stylebox"><span class="std std-ref">StyleBox</span></a></p></td>
+<td><p><a class="reference internal" href="#class-graphnode-theme-style-panel-selected"><span class="std std-ref">panel_selected</span></a></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_stylebox.html#class-stylebox"><span class="std std-ref">StyleBox</span></a></p></td>
+<td><p><a class="reference internal" href="#class-graphnode-theme-style-slot"><span class="std std-ref">slot</span></a></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_stylebox.html#class-stylebox"><span class="std std-ref">StyleBox</span></a></p></td>
+<td><p><a class="reference internal" href="#class-graphnode-theme-style-slot-selected"><span class="std std-ref">slot_selected</span></a></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_stylebox.html#class-stylebox"><span class="std std-ref">StyleBox</span></a></p></td>
+<td><p><a class="reference internal" href="#class-graphnode-theme-style-titlebar"><span class="std std-ref">titlebar</span></a></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_stylebox.html#class-stylebox"><span class="std std-ref">StyleBox</span></a></p></td>
+<td><p><a class="reference internal" href="#class-graphnode-theme-style-titlebar-selected"><span class="std std-ref">titlebar_selected</span></a></p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="signals">
+<h2>Signals<a class="headerlink" href="#signals" title="Link to this heading"></a></h2>
+<p class="classref-signal" id="class-graphnode-signal-slot-sizes-changed"><strong>slot_sizes_changed</strong>() <a class="reference internal" href="#class-graphnode-signal-slot-sizes-changed"><span class="std std-ref">🔗</span></a></p>
+<p>Emitted when any slot’s size might have changed.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-signal" id="class-graphnode-signal-slot-updated"><strong>slot_updated</strong>(slot_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <a class="reference internal" href="#class-graphnode-signal-slot-updated"><span class="std std-ref">🔗</span></a></p>
+<p>Emitted when any GraphNode’s slot is updated.</p>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="property-descriptions">
+<h2>Property Descriptions<a class="headerlink" href="#property-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-property" id="class-graphnode-property-ignore-invalid-connection-type"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>ignore_invalid_connection_type</strong> = <code class="docutils literal notranslate"><span class="pre">false</span></code> <a class="reference internal" href="#class-graphnode-property-ignore-invalid-connection-type"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_ignore_invalid_connection_type</strong>(value: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_ignoring_valid_connection_type</strong>()</p></li>
+</ul>
+<p>If <code class="docutils literal notranslate"><span class="pre">true</span></code>, you can connect ports with different types, even if the connection was not explicitly allowed in the parent <a class="reference internal" href="class_graphedit.html#class-graphedit"><span class="std std-ref">GraphEdit</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-graphnode-property-slots-focus-mode"><a class="reference internal" href="class_control.html#enum-control-focusmode"><span class="std std-ref">FocusMode</span></a> <strong>slots_focus_mode</strong> = <code class="docutils literal notranslate"><span class="pre">3</span></code> <a class="reference internal" href="#class-graphnode-property-slots-focus-mode"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_slots_focus_mode</strong>(value: <a class="reference internal" href="class_control.html#enum-control-focusmode"><span class="std std-ref">FocusMode</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_control.html#enum-control-focusmode"><span class="std std-ref">FocusMode</span></a> <strong>get_slots_focus_mode</strong>()</p></li>
+</ul>
+<p>Determines how connection slots can be focused.</p>
+<ul class="simple">
+<li><p>If set to <a class="reference internal" href="class_control.html#class-control-constant-focus-click"><span class="std std-ref">Control.FOCUS_CLICK</span></a>, connections can only be made with the mouse.</p></li>
+<li><p>If set to <a class="reference internal" href="class_control.html#class-control-constant-focus-all"><span class="std std-ref">Control.FOCUS_ALL</span></a>, slots can also be focused using the <a class="reference internal" href="class_projectsettings.html#class-projectsettings-property-input-ui-up"><span class="std std-ref">ProjectSettings.input/ui_up</span></a> and <a class="reference internal" href="class_projectsettings.html#class-projectsettings-property-input-ui-down"><span class="std std-ref">ProjectSettings.input/ui_down</span></a> and connected using <a class="reference internal" href="class_projectsettings.html#class-projectsettings-property-input-ui-left"><span class="std std-ref">ProjectSettings.input/ui_left</span></a> and <a class="reference internal" href="class_projectsettings.html#class-projectsettings-property-input-ui-right"><span class="std std-ref">ProjectSettings.input/ui_right</span></a> input actions.</p></li>
+<li><p>If set to <a class="reference internal" href="class_control.html#class-control-constant-focus-accessibility"><span class="std std-ref">Control.FOCUS_ACCESSIBILITY</span></a>, slot input actions are only enabled when the screen reader is active.</p></li>
+</ul>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-graphnode-property-title"><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a> <strong>title</strong> = <code class="docutils literal notranslate"><span class="pre">&quot;&quot;</span></code> <a class="reference internal" href="#class-graphnode-property-title"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_title</strong>(value: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a> <strong>get_title</strong>()</p></li>
+</ul>
+<p>The text displayed in the GraphNode’s title bar.</p>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="method-descriptions">
+<h2>Method Descriptions<a class="headerlink" href="#method-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-method" id="class-graphnode-private-method-draw-port"><abbr title="No return value.">void</abbr> <strong>_draw_port</strong>(slot_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, position: <a class="reference internal" href="class_vector2i.html#class-vector2i"><span class="std std-ref">Vector2i</span></a>, left: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>, color: <a class="reference internal" href="class_color.html#class-color"><span class="std std-ref">Color</span></a>) <abbr title="This method should typically be overridden by the user to have any effect.">virtual</abbr> <a class="reference internal" href="#class-graphnode-private-method-draw-port"><span class="std std-ref">🔗</span></a></p>
+<div class="contribute docutils container">
+<p>There is currently no description for this method. Please help us by <a class="reference external" href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+</div>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-graphnode-method-clear-all-slots"><abbr title="No return value.">void</abbr> <strong>clear_all_slots</strong>() <a class="reference internal" href="#class-graphnode-method-clear-all-slots"><span class="std std-ref">🔗</span></a></p>
+<p>Disables all slots of the GraphNode. This will remove all input/output ports from the GraphNode.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-graphnode-method-clear-slot"><abbr title="No return value.">void</abbr> <strong>clear_slot</strong>(slot_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <a class="reference internal" href="#class-graphnode-method-clear-slot"><span class="std std-ref">🔗</span></a></p>
+<p>Disables the slot with the given <code class="docutils literal notranslate"><span class="pre">slot_index</span></code>. This will remove the corresponding input and output port from the GraphNode.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-graphnode-method-get-input-port-color"><a class="reference internal" href="class_color.html#class-color"><span class="std std-ref">Color</span></a> <strong>get_input_port_color</strong>(port_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <a class="reference internal" href="#class-graphnode-method-get-input-port-color"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the <a class="reference internal" href="class_color.html#class-color"><span class="std std-ref">Color</span></a> of the input port with the given <code class="docutils literal notranslate"><span class="pre">port_idx</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-graphnode-method-get-input-port-count"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>get_input_port_count</strong>() <a class="reference internal" href="#class-graphnode-method-get-input-port-count"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the number of slots with an enabled input port.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-graphnode-method-get-input-port-position"><a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a> <strong>get_input_port_position</strong>(port_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <a class="reference internal" href="#class-graphnode-method-get-input-port-position"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the position of the input port with the given <code class="docutils literal notranslate"><span class="pre">port_idx</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-graphnode-method-get-input-port-slot"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>get_input_port_slot</strong>(port_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <a class="reference internal" href="#class-graphnode-method-get-input-port-slot"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the corresponding slot index of the input port with the given <code class="docutils literal notranslate"><span class="pre">port_idx</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-graphnode-method-get-input-port-type"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>get_input_port_type</strong>(port_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <a class="reference internal" href="#class-graphnode-method-get-input-port-type"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the type of the input port with the given <code class="docutils literal notranslate"><span class="pre">port_idx</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-graphnode-method-get-output-port-color"><a class="reference internal" href="class_color.html#class-color"><span class="std std-ref">Color</span></a> <strong>get_output_port_color</strong>(port_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <a class="reference internal" href="#class-graphnode-method-get-output-port-color"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the <a class="reference internal" href="class_color.html#class-color"><span class="std std-ref">Color</span></a> of the output port with the given <code class="docutils literal notranslate"><span class="pre">port_idx</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-graphnode-method-get-output-port-count"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>get_output_port_count</strong>() <a class="reference internal" href="#class-graphnode-method-get-output-port-count"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the number of slots with an enabled output port.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-graphnode-method-get-output-port-position"><a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a> <strong>get_output_port_position</strong>(port_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <a class="reference internal" href="#class-graphnode-method-get-output-port-position"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the position of the output port with the given <code class="docutils literal notranslate"><span class="pre">port_idx</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-graphnode-method-get-output-port-slot"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>get_output_port_slot</strong>(port_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <a class="reference internal" href="#class-graphnode-method-get-output-port-slot"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the corresponding slot index of the output port with the given <code class="docutils literal notranslate"><span class="pre">port_idx</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-graphnode-method-get-output-port-type"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>get_output_port_type</strong>(port_idx: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <a class="reference internal" href="#class-graphnode-method-get-output-port-type"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the type of the output port with the given <code class="docutils literal notranslate"><span class="pre">port_idx</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-graphnode-method-get-slot-color-left"><a class="reference internal" href="class_color.html#class-color"><span class="std std-ref">Color</span></a> <strong>get_slot_color_left</strong>(slot_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-graphnode-method-get-slot-color-left"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the left (input) <a class="reference internal" href="class_color.html#class-color"><span class="std std-ref">Color</span></a> of the slot with the given <code class="docutils literal notranslate"><span class="pre">slot_index</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-graphnode-method-get-slot-color-right"><a class="reference internal" href="class_color.html#class-color"><span class="std std-ref">Color</span></a> <strong>get_slot_color_right</strong>(slot_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-graphnode-method-get-slot-color-right"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the right (output) <a class="reference internal" href="class_color.html#class-color"><span class="std std-ref">Color</span></a> of the slot with the given <code class="docutils literal notranslate"><span class="pre">slot_index</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-graphnode-method-get-slot-custom-icon-left"><a class="reference internal" href="class_texture2d.html#class-texture2d"><span class="std std-ref">Texture2D</span></a> <strong>get_slot_custom_icon_left</strong>(slot_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-graphnode-method-get-slot-custom-icon-left"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the left (input) custom <a class="reference internal" href="class_texture2d.html#class-texture2d"><span class="std std-ref">Texture2D</span></a> of the slot with the given <code class="docutils literal notranslate"><span class="pre">slot_index</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-graphnode-method-get-slot-custom-icon-right"><a class="reference internal" href="class_texture2d.html#class-texture2d"><span class="std std-ref">Texture2D</span></a> <strong>get_slot_custom_icon_right</strong>(slot_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-graphnode-method-get-slot-custom-icon-right"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the right (output) custom <a class="reference internal" href="class_texture2d.html#class-texture2d"><span class="std std-ref">Texture2D</span></a> of the slot with the given <code class="docutils literal notranslate"><span class="pre">slot_index</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-graphnode-method-get-slot-metadata-left"><a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a> <strong>get_slot_metadata_left</strong>(slot_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-graphnode-method-get-slot-metadata-left"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the left (input) metadata of the slot with the given <code class="docutils literal notranslate"><span class="pre">slot_index</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-graphnode-method-get-slot-metadata-right"><a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a> <strong>get_slot_metadata_right</strong>(slot_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-graphnode-method-get-slot-metadata-right"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the right (output) metadata of the slot with the given <code class="docutils literal notranslate"><span class="pre">slot_index</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-graphnode-method-get-slot-type-left"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>get_slot_type_left</strong>(slot_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-graphnode-method-get-slot-type-left"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the left (input) type of the slot with the given <code class="docutils literal notranslate"><span class="pre">slot_index</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-graphnode-method-get-slot-type-right"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>get_slot_type_right</strong>(slot_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-graphnode-method-get-slot-type-right"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the right (output) type of the slot with the given <code class="docutils literal notranslate"><span class="pre">slot_index</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-graphnode-method-get-titlebar-hbox"><a class="reference internal" href="class_hboxcontainer.html#class-hboxcontainer"><span class="std std-ref">HBoxContainer</span></a> <strong>get_titlebar_hbox</strong>() <a class="reference internal" href="#class-graphnode-method-get-titlebar-hbox"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the <a class="reference internal" href="class_hboxcontainer.html#class-hboxcontainer"><span class="std std-ref">HBoxContainer</span></a> used for the title bar, only containing a <a class="reference internal" href="class_label.html#class-label"><span class="std std-ref">Label</span></a> for displaying the title by default. This can be used to add custom controls to the title bar such as option or close buttons.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-graphnode-method-is-slot-draw-stylebox"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_slot_draw_stylebox</strong>(slot_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-graphnode-method-is-slot-draw-stylebox"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if the background <a class="reference internal" href="class_stylebox.html#class-stylebox"><span class="std std-ref">StyleBox</span></a> of the slot with the given <code class="docutils literal notranslate"><span class="pre">slot_index</span></code> is drawn.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-graphnode-method-is-slot-enabled-left"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_slot_enabled_left</strong>(slot_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-graphnode-method-is-slot-enabled-left"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if left (input) side of the slot with the given <code class="docutils literal notranslate"><span class="pre">slot_index</span></code> is enabled.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-graphnode-method-is-slot-enabled-right"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_slot_enabled_right</strong>(slot_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-graphnode-method-is-slot-enabled-right"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if right (output) side of the slot with the given <code class="docutils literal notranslate"><span class="pre">slot_index</span></code> is enabled.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-graphnode-method-set-slot"><abbr title="No return value.">void</abbr> <strong>set_slot</strong>(slot_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, enable_left_port: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>, type_left: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, color_left: <a class="reference internal" href="class_color.html#class-color"><span class="std std-ref">Color</span></a>, enable_right_port: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>, type_right: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, color_right: <a class="reference internal" href="class_color.html#class-color"><span class="std std-ref">Color</span></a>, custom_icon_left: <a class="reference internal" href="class_texture2d.html#class-texture2d"><span class="std std-ref">Texture2D</span></a> = null, custom_icon_right: <a class="reference internal" href="class_texture2d.html#class-texture2d"><span class="std std-ref">Texture2D</span></a> = null, draw_stylebox: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = true) <a class="reference internal" href="#class-graphnode-method-set-slot"><span class="std std-ref">🔗</span></a></p>
+<p>Sets properties of the slot with the given <code class="docutils literal notranslate"><span class="pre">slot_index</span></code>.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">enable_left_port</span></code>/<code class="docutils literal notranslate"><span class="pre">enable_right_port</span></code> is <code class="docutils literal notranslate"><span class="pre">true</span></code>, a port will appear and the slot will be able to be connected from this side.</p>
+<p>With <code class="docutils literal notranslate"><span class="pre">type_left</span></code>/<code class="docutils literal notranslate"><span class="pre">type_right</span></code> an arbitrary type can be assigned to each port. Two ports can be connected if they share the same type, or if the connection between their types is allowed in the parent <a class="reference internal" href="class_graphedit.html#class-graphedit"><span class="std std-ref">GraphEdit</span></a> (see <a class="reference internal" href="class_graphedit.html#class-graphedit-method-add-valid-connection-type"><span class="std std-ref">GraphEdit.add_valid_connection_type()</span></a>). Keep in mind that the <a class="reference internal" href="class_graphedit.html#class-graphedit"><span class="std std-ref">GraphEdit</span></a> has the final say in accepting the connection. Type compatibility simply allows the <a class="reference internal" href="class_graphedit.html#class-graphedit-signal-connection-request"><span class="std std-ref">GraphEdit.connection_request</span></a> signal to be emitted.</p>
+<p>Ports can be further customized using <code class="docutils literal notranslate"><span class="pre">color_left</span></code>/<code class="docutils literal notranslate"><span class="pre">color_right</span></code> and <code class="docutils literal notranslate"><span class="pre">custom_icon_left</span></code>/<code class="docutils literal notranslate"><span class="pre">custom_icon_right</span></code>. The color parameter adds a tint to the icon. The custom icon can be used to override the default port dot.</p>
+<p>Additionally, <code class="docutils literal notranslate"><span class="pre">draw_stylebox</span></code> can be used to enable or disable drawing of the background stylebox for each slot. See <a class="reference internal" href="#class-graphnode-theme-style-slot"><span class="std std-ref">slot</span></a>.</p>
+<p>Individual properties can also be set using one of the <code class="docutils literal notranslate"><span class="pre">set_slot_*</span></code> methods.</p>
+<p><strong>Note:</strong> This method only sets properties of the slot. To create the slot itself, add a <a class="reference internal" href="class_control.html#class-control"><span class="std std-ref">Control</span></a>-derived child to the GraphNode.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-graphnode-method-set-slot-color-left"><abbr title="No return value.">void</abbr> <strong>set_slot_color_left</strong>(slot_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, color: <a class="reference internal" href="class_color.html#class-color"><span class="std std-ref">Color</span></a>) <a class="reference internal" href="#class-graphnode-method-set-slot-color-left"><span class="std std-ref">🔗</span></a></p>
+<p>Sets the <a class="reference internal" href="class_color.html#class-color"><span class="std std-ref">Color</span></a> of the left (input) side of the slot with the given <code class="docutils literal notranslate"><span class="pre">slot_index</span></code> to <code class="docutils literal notranslate"><span class="pre">color</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-graphnode-method-set-slot-color-right"><abbr title="No return value.">void</abbr> <strong>set_slot_color_right</strong>(slot_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, color: <a class="reference internal" href="class_color.html#class-color"><span class="std std-ref">Color</span></a>) <a class="reference internal" href="#class-graphnode-method-set-slot-color-right"><span class="std std-ref">🔗</span></a></p>
+<p>Sets the <a class="reference internal" href="class_color.html#class-color"><span class="std std-ref">Color</span></a> of the right (output) side of the slot with the given <code class="docutils literal notranslate"><span class="pre">slot_index</span></code> to <code class="docutils literal notranslate"><span class="pre">color</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-graphnode-method-set-slot-custom-icon-left"><abbr title="No return value.">void</abbr> <strong>set_slot_custom_icon_left</strong>(slot_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, custom_icon: <a class="reference internal" href="class_texture2d.html#class-texture2d"><span class="std std-ref">Texture2D</span></a>) <a class="reference internal" href="#class-graphnode-method-set-slot-custom-icon-left"><span class="std std-ref">🔗</span></a></p>
+<p>Sets the custom <a class="reference internal" href="class_texture2d.html#class-texture2d"><span class="std std-ref">Texture2D</span></a> of the left (input) side of the slot with the given <code class="docutils literal notranslate"><span class="pre">slot_index</span></code> to <code class="docutils literal notranslate"><span class="pre">custom_icon</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-graphnode-method-set-slot-custom-icon-right"><abbr title="No return value.">void</abbr> <strong>set_slot_custom_icon_right</strong>(slot_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, custom_icon: <a class="reference internal" href="class_texture2d.html#class-texture2d"><span class="std std-ref">Texture2D</span></a>) <a class="reference internal" href="#class-graphnode-method-set-slot-custom-icon-right"><span class="std std-ref">🔗</span></a></p>
+<p>Sets the custom <a class="reference internal" href="class_texture2d.html#class-texture2d"><span class="std std-ref">Texture2D</span></a> of the right (output) side of the slot with the given <code class="docutils literal notranslate"><span class="pre">slot_index</span></code> to <code class="docutils literal notranslate"><span class="pre">custom_icon</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-graphnode-method-set-slot-draw-stylebox"><abbr title="No return value.">void</abbr> <strong>set_slot_draw_stylebox</strong>(slot_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, enable: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>) <a class="reference internal" href="#class-graphnode-method-set-slot-draw-stylebox"><span class="std std-ref">🔗</span></a></p>
+<p>Toggles the background <a class="reference internal" href="class_stylebox.html#class-stylebox"><span class="std std-ref">StyleBox</span></a> of the slot with the given <code class="docutils literal notranslate"><span class="pre">slot_index</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-graphnode-method-set-slot-enabled-left"><abbr title="No return value.">void</abbr> <strong>set_slot_enabled_left</strong>(slot_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, enable: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>) <a class="reference internal" href="#class-graphnode-method-set-slot-enabled-left"><span class="std std-ref">🔗</span></a></p>
+<p>Toggles the left (input) side of the slot with the given <code class="docutils literal notranslate"><span class="pre">slot_index</span></code>. If <code class="docutils literal notranslate"><span class="pre">enable</span></code> is <code class="docutils literal notranslate"><span class="pre">true</span></code>, a port will appear on the left side and the slot will be able to be connected from this side.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-graphnode-method-set-slot-enabled-right"><abbr title="No return value.">void</abbr> <strong>set_slot_enabled_right</strong>(slot_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, enable: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>) <a class="reference internal" href="#class-graphnode-method-set-slot-enabled-right"><span class="std std-ref">🔗</span></a></p>
+<p>Toggles the right (output) side of the slot with the given <code class="docutils literal notranslate"><span class="pre">slot_index</span></code>. If <code class="docutils literal notranslate"><span class="pre">enable</span></code> is <code class="docutils literal notranslate"><span class="pre">true</span></code>, a port will appear on the right side and the slot will be able to be connected from this side.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-graphnode-method-set-slot-metadata-left"><abbr title="No return value.">void</abbr> <strong>set_slot_metadata_left</strong>(slot_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, value: <a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a>) <a class="reference internal" href="#class-graphnode-method-set-slot-metadata-left"><span class="std std-ref">🔗</span></a></p>
+<p>Sets the custom metadata for the left (input) side of the slot with the given <code class="docutils literal notranslate"><span class="pre">slot_index</span></code> to <code class="docutils literal notranslate"><span class="pre">value</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-graphnode-method-set-slot-metadata-right"><abbr title="No return value.">void</abbr> <strong>set_slot_metadata_right</strong>(slot_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, value: <a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a>) <a class="reference internal" href="#class-graphnode-method-set-slot-metadata-right"><span class="std std-ref">🔗</span></a></p>
+<p>Sets the custom metadata for the right (output) side of the slot with the given <code class="docutils literal notranslate"><span class="pre">slot_index</span></code> to <code class="docutils literal notranslate"><span class="pre">value</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-graphnode-method-set-slot-type-left"><abbr title="No return value.">void</abbr> <strong>set_slot_type_left</strong>(slot_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, type: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <a class="reference internal" href="#class-graphnode-method-set-slot-type-left"><span class="std std-ref">🔗</span></a></p>
+<p>Sets the left (input) type of the slot with the given <code class="docutils literal notranslate"><span class="pre">slot_index</span></code> to <code class="docutils literal notranslate"><span class="pre">type</span></code>. If the value is negative, all connections will be disallowed to be created via user inputs.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-graphnode-method-set-slot-type-right"><abbr title="No return value.">void</abbr> <strong>set_slot_type_right</strong>(slot_index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, type: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <a class="reference internal" href="#class-graphnode-method-set-slot-type-right"><span class="std std-ref">🔗</span></a></p>
+<p>Sets the right (output) type of the slot with the given <code class="docutils literal notranslate"><span class="pre">slot_index</span></code> to <code class="docutils literal notranslate"><span class="pre">type</span></code>. If the value is negative, all connections will be disallowed to be created via user inputs.</p>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="theme-property-descriptions">
+<h2>Theme Property Descriptions<a class="headerlink" href="#theme-property-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-themeproperty" id="class-graphnode-theme-color-resizer-color"><a class="reference internal" href="class_color.html#class-color"><span class="std std-ref">Color</span></a> <strong>resizer_color</strong> = <code class="docutils literal notranslate"><span class="pre">Color(0.875,</span> <span class="pre">0.875,</span> <span class="pre">0.875,</span> <span class="pre">1)</span></code> <a class="reference internal" href="#class-graphnode-theme-color-resizer-color"><span class="std std-ref">🔗</span></a></p>
+<p>The color modulation applied to the resizer icon.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-themeproperty" id="class-graphnode-theme-constant-port-h-offset"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>port_h_offset</strong> = <code class="docutils literal notranslate"><span class="pre">0</span></code> <a class="reference internal" href="#class-graphnode-theme-constant-port-h-offset"><span class="std std-ref">🔗</span></a></p>
+<p>Horizontal offset for the ports.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-themeproperty" id="class-graphnode-theme-constant-separation"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>separation</strong> = <code class="docutils literal notranslate"><span class="pre">2</span></code> <a class="reference internal" href="#class-graphnode-theme-constant-separation"><span class="std std-ref">🔗</span></a></p>
+<p>The vertical distance between ports.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-themeproperty" id="class-graphnode-theme-icon-port"><a class="reference internal" href="class_texture2d.html#class-texture2d"><span class="std std-ref">Texture2D</span></a> <strong>port</strong> <a class="reference internal" href="#class-graphnode-theme-icon-port"><span class="std std-ref">🔗</span></a></p>
+<p>The icon used for representing ports.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-themeproperty" id="class-graphnode-theme-style-panel"><a class="reference internal" href="class_stylebox.html#class-stylebox"><span class="std std-ref">StyleBox</span></a> <strong>panel</strong> <a class="reference internal" href="#class-graphnode-theme-style-panel"><span class="std std-ref">🔗</span></a></p>
+<p>The default background for the slot area of the <strong>GraphNode</strong>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-themeproperty" id="class-graphnode-theme-style-panel-focus"><a class="reference internal" href="class_stylebox.html#class-stylebox"><span class="std std-ref">StyleBox</span></a> <strong>panel_focus</strong> <a class="reference internal" href="#class-graphnode-theme-style-panel-focus"><span class="std std-ref">🔗</span></a></p>
+<p><a class="reference internal" href="class_stylebox.html#class-stylebox"><span class="std std-ref">StyleBox</span></a> used when the <strong>GraphNode</strong> is focused (when used with assistive apps).</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-themeproperty" id="class-graphnode-theme-style-panel-selected"><a class="reference internal" href="class_stylebox.html#class-stylebox"><span class="std std-ref">StyleBox</span></a> <strong>panel_selected</strong> <a class="reference internal" href="#class-graphnode-theme-style-panel-selected"><span class="std std-ref">🔗</span></a></p>
+<p>The <a class="reference internal" href="class_stylebox.html#class-stylebox"><span class="std std-ref">StyleBox</span></a> used for the slot area when selected.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-themeproperty" id="class-graphnode-theme-style-slot"><a class="reference internal" href="class_stylebox.html#class-stylebox"><span class="std std-ref">StyleBox</span></a> <strong>slot</strong> <a class="reference internal" href="#class-graphnode-theme-style-slot"><span class="std std-ref">🔗</span></a></p>
+<p>The <a class="reference internal" href="class_stylebox.html#class-stylebox"><span class="std std-ref">StyleBox</span></a> used for each slot of the <strong>GraphNode</strong>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-themeproperty" id="class-graphnode-theme-style-slot-selected"><a class="reference internal" href="class_stylebox.html#class-stylebox"><span class="std std-ref">StyleBox</span></a> <strong>slot_selected</strong> <a class="reference internal" href="#class-graphnode-theme-style-slot-selected"><span class="std std-ref">🔗</span></a></p>
+<p><a class="reference internal" href="class_stylebox.html#class-stylebox"><span class="std std-ref">StyleBox</span></a> used when the slot is focused (when used with assistive apps).</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-themeproperty" id="class-graphnode-theme-style-titlebar"><a class="reference internal" href="class_stylebox.html#class-stylebox"><span class="std std-ref">StyleBox</span></a> <strong>titlebar</strong> <a class="reference internal" href="#class-graphnode-theme-style-titlebar"><span class="std std-ref">🔗</span></a></p>
+<p>The <a class="reference internal" href="class_stylebox.html#class-stylebox"><span class="std std-ref">StyleBox</span></a> used for the title bar of the <strong>GraphNode</strong>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-themeproperty" id="class-graphnode-theme-style-titlebar-selected"><a class="reference internal" href="class_stylebox.html#class-stylebox"><span class="std std-ref">StyleBox</span></a> <strong>titlebar_selected</strong> <a class="reference internal" href="#class-graphnode-theme-style-titlebar-selected"><span class="std std-ref">🔗</span></a></p>
+<p>The <a class="reference internal" href="class_stylebox.html#class-stylebox"><span class="std std-ref">StyleBox</span></a> used for the title bar of the <strong>GraphNode</strong> when it is selected.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, MUmarShahbaz.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

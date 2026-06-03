@@ -1,0 +1,222 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>InputEventMouseMotion &mdash; RPG Components 2D 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=d45e8c67"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            RPG Components 2D
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">InputEventMouseMotion</a><ul>
+<li><a class="reference internal" href="#description">Description</a></li>
+<li><a class="reference internal" href="#tutorials">Tutorials</a></li>
+<li><a class="reference internal" href="#properties">Properties</a></li>
+<li><a class="reference internal" href="#property-descriptions">Property Descriptions</a></li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">RPG Components 2D</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">InputEventMouseMotion</li>
+      <li class="wy-breadcrumbs-aside">
+              <!-- User defined GitHub URL -->
+              <a href="hide" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="inputeventmousemotion">
+<span id="class-inputeventmousemotion"></span><h1>InputEventMouseMotion<a class="headerlink" href="#inputeventmousemotion" title="Link to this heading"></a></h1>
+<p><strong>Inherits:</strong> <a class="reference internal" href="class_inputeventmouse.html#class-inputeventmouse"><span class="std std-ref">InputEventMouse</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_inputeventwithmodifiers.html#class-inputeventwithmodifiers"><span class="std std-ref">InputEventWithModifiers</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_inputeventfromwindow.html#class-inputeventfromwindow"><span class="std std-ref">InputEventFromWindow</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_inputevent.html#class-inputevent"><span class="std std-ref">InputEvent</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_resource.html#class-resource"><span class="std std-ref">Resource</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_refcounted.html#class-refcounted"><span class="std std-ref">RefCounted</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_object.html#class-object"><span class="std std-ref">Object</span></a></p>
+<p>Represents a mouse or a pen movement.</p>
+<section class="classref-introduction-group" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
+<p>Stores information about a mouse or a pen motion. This includes relative position, absolute position, and velocity. See <a class="reference internal" href="class_node.html#class-node-private-method-input"><span class="std std-ref">Node._input()</span></a>.</p>
+<p><strong>Note:</strong> By default, this event is only emitted once per frame rendered at most. If you need more precise input reporting, set <a class="reference internal" href="class_input.html#class-input-property-use-accumulated-input"><span class="std std-ref">Input.use_accumulated_input</span></a> to <code class="docutils literal notranslate"><span class="pre">false</span></code> to make events emitted as often as possible. If you use InputEventMouseMotion to draw lines, consider using <a class="reference internal" href="class_geometry2d.html#class-geometry2d-method-bresenham-line"><span class="std std-ref">Geometry2D.bresenham_line()</span></a> as well to avoid visible gaps in lines if the user is moving the mouse quickly.</p>
+<p><strong>Note:</strong> This event may be emitted even when the mouse hasn’t moved, either by the operating system or by Godot itself. If you really need to know if the mouse has moved (e.g. to suppress displaying a tooltip), you should check that <code class="docutils literal notranslate"><span class="pre">relative.is_zero_approx()</span></code> is <code class="docutils literal notranslate"><span class="pre">false</span></code>.</p>
+</section>
+<section class="classref-introduction-group" id="tutorials">
+<h2>Tutorials<a class="headerlink" href="#tutorials" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><span class="xref std std-doc">Using InputEvent</span></p></li>
+<li><p><span class="xref std std-doc">Mouse and input coordinates</span></p></li>
+<li><p><a class="reference external" href="https://godotengine.org/asset-library/asset/2755">3D Voxel Demo</a></p></li>
+</ul>
+</section>
+<section class="classref-reftable-group" id="properties">
+<h2>Properties<a class="headerlink" href="#properties" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-inputeventmousemotion-property-pen-inverted"><span class="std std-ref">pen_inverted</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-inputeventmousemotion-property-pressure"><span class="std std-ref">pressure</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0.0</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a></p></td>
+<td><p><a class="reference internal" href="#class-inputeventmousemotion-property-relative"><span class="std std-ref">relative</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Vector2(0,</span> <span class="pre">0)</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a></p></td>
+<td><p><a class="reference internal" href="#class-inputeventmousemotion-property-screen-relative"><span class="std std-ref">screen_relative</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Vector2(0,</span> <span class="pre">0)</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a></p></td>
+<td><p><a class="reference internal" href="#class-inputeventmousemotion-property-screen-velocity"><span class="std std-ref">screen_velocity</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Vector2(0,</span> <span class="pre">0)</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a></p></td>
+<td><p><a class="reference internal" href="#class-inputeventmousemotion-property-tilt"><span class="std std-ref">tilt</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Vector2(0,</span> <span class="pre">0)</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a></p></td>
+<td><p><a class="reference internal" href="#class-inputeventmousemotion-property-velocity"><span class="std std-ref">velocity</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Vector2(0,</span> <span class="pre">0)</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="property-descriptions">
+<h2>Property Descriptions<a class="headerlink" href="#property-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-property" id="class-inputeventmousemotion-property-pen-inverted"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>pen_inverted</strong> = <code class="docutils literal notranslate"><span class="pre">false</span></code> <a class="reference internal" href="#class-inputeventmousemotion-property-pen-inverted"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_pen_inverted</strong>(value: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>get_pen_inverted</strong>()</p></li>
+</ul>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> when using the eraser end of a stylus pen.</p>
+<p><strong>Note:</strong> This property is implemented on Linux, macOS and Windows.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-inputeventmousemotion-property-pressure"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>pressure</strong> = <code class="docutils literal notranslate"><span class="pre">0.0</span></code> <a class="reference internal" href="#class-inputeventmousemotion-property-pressure"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_pressure</strong>(value: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>get_pressure</strong>()</p></li>
+</ul>
+<p>Represents the pressure the user puts on the pen. Ranges from <code class="docutils literal notranslate"><span class="pre">0.0</span></code> to <code class="docutils literal notranslate"><span class="pre">1.0</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-inputeventmousemotion-property-relative"><a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a> <strong>relative</strong> = <code class="docutils literal notranslate"><span class="pre">Vector2(0,</span> <span class="pre">0)</span></code> <a class="reference internal" href="#class-inputeventmousemotion-property-relative"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_relative</strong>(value: <a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a> <strong>get_relative</strong>()</p></li>
+</ul>
+<p>The mouse position relative to the previous position (position at the last frame).</p>
+<p><strong>Note:</strong> Since <strong>InputEventMouseMotion</strong> may only be emitted when the mouse moves, it is not possible to reliably detect when the mouse has stopped moving by checking this property. A separate, short timer may be necessary.</p>
+<p><strong>Note:</strong> <a class="reference internal" href="#class-inputeventmousemotion-property-relative"><span class="std std-ref">relative</span></a> is automatically scaled according to the content scale factor, which is defined by the project’s stretch mode settings. This means mouse sensitivity will appear different depending on resolution when using <a class="reference internal" href="#class-inputeventmousemotion-property-relative"><span class="std std-ref">relative</span></a> in a script that handles mouse aiming with the <a class="reference internal" href="class_input.html#class-input-constant-mouse-mode-captured"><span class="std std-ref">Input.MOUSE_MODE_CAPTURED</span></a> mouse mode. To avoid this, use <a class="reference internal" href="#class-inputeventmousemotion-property-screen-relative"><span class="std std-ref">screen_relative</span></a> instead.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-inputeventmousemotion-property-screen-relative"><a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a> <strong>screen_relative</strong> = <code class="docutils literal notranslate"><span class="pre">Vector2(0,</span> <span class="pre">0)</span></code> <a class="reference internal" href="#class-inputeventmousemotion-property-screen-relative"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_screen_relative</strong>(value: <a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a> <strong>get_screen_relative</strong>()</p></li>
+</ul>
+<p>The unscaled mouse position relative to the previous position in the coordinate system of the screen (position at the last frame).</p>
+<p><strong>Note:</strong> Since <strong>InputEventMouseMotion</strong> may only be emitted when the mouse moves, it is not possible to reliably detect when the mouse has stopped moving by checking this property. A separate, short timer may be necessary.</p>
+<p><strong>Note:</strong> This coordinate is <em>not</em> scaled according to the content scale factor or calls to <a class="reference internal" href="class_inputevent.html#class-inputevent-method-xformed-by"><span class="std std-ref">InputEvent.xformed_by()</span></a>. This should be preferred over <a class="reference internal" href="#class-inputeventmousemotion-property-relative"><span class="std std-ref">relative</span></a> for mouse aiming when using the <a class="reference internal" href="class_input.html#class-input-constant-mouse-mode-captured"><span class="std std-ref">Input.MOUSE_MODE_CAPTURED</span></a> mouse mode, regardless of the project’s stretch mode.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-inputeventmousemotion-property-screen-velocity"><a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a> <strong>screen_velocity</strong> = <code class="docutils literal notranslate"><span class="pre">Vector2(0,</span> <span class="pre">0)</span></code> <a class="reference internal" href="#class-inputeventmousemotion-property-screen-velocity"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_screen_velocity</strong>(value: <a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a> <strong>get_screen_velocity</strong>()</p></li>
+</ul>
+<p>The unscaled mouse velocity in pixels per second in screen coordinates. This velocity is <em>not</em> scaled according to the content scale factor or calls to <a class="reference internal" href="class_inputevent.html#class-inputevent-method-xformed-by"><span class="std std-ref">InputEvent.xformed_by()</span></a>.</p>
+<p><strong>Note:</strong> In <a class="reference internal" href="class_input.html#class-input-constant-mouse-mode-captured"><span class="std std-ref">Input.MOUSE_MODE_CAPTURED</span></a> mode, <a class="reference internal" href="#class-inputeventmousemotion-property-screen-velocity"><span class="std std-ref">screen_velocity</span></a> returns <code class="docutils literal notranslate"><span class="pre">(0,</span> <span class="pre">0)</span></code> because the mouse cursor is hidden and locked. Use <a class="reference internal" href="#class-inputeventmousemotion-property-screen-relative"><span class="std std-ref">screen_relative</span></a> for mouse aiming using the <a class="reference internal" href="class_input.html#class-input-constant-mouse-mode-captured"><span class="std std-ref">Input.MOUSE_MODE_CAPTURED</span></a> mouse mode.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-inputeventmousemotion-property-tilt"><a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a> <strong>tilt</strong> = <code class="docutils literal notranslate"><span class="pre">Vector2(0,</span> <span class="pre">0)</span></code> <a class="reference internal" href="#class-inputeventmousemotion-property-tilt"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_tilt</strong>(value: <a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a> <strong>get_tilt</strong>()</p></li>
+</ul>
+<p>Represents the angles of tilt of the pen. Positive X-coordinate value indicates a tilt to the right. Positive Y-coordinate value indicates a tilt toward the user. Ranges from <code class="docutils literal notranslate"><span class="pre">-1.0</span></code> to <code class="docutils literal notranslate"><span class="pre">1.0</span></code> for both axes.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-inputeventmousemotion-property-velocity"><a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a> <strong>velocity</strong> = <code class="docutils literal notranslate"><span class="pre">Vector2(0,</span> <span class="pre">0)</span></code> <a class="reference internal" href="#class-inputeventmousemotion-property-velocity"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_velocity</strong>(value: <a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a> <strong>get_velocity</strong>()</p></li>
+</ul>
+<p>The mouse velocity in pixels per second.</p>
+<p><strong>Note:</strong> <a class="reference internal" href="#class-inputeventmousemotion-property-velocity"><span class="std std-ref">velocity</span></a> is automatically scaled according to the content scale factor, which is defined by the project’s stretch mode settings. That means mouse sensitivity may appear different depending on resolution.</p>
+<p><strong>Note:</strong> In <a class="reference internal" href="class_input.html#class-input-constant-mouse-mode-captured"><span class="std std-ref">Input.MOUSE_MODE_CAPTURED</span></a> mode, <a class="reference internal" href="#class-inputeventmousemotion-property-velocity"><span class="std std-ref">velocity</span></a> returns <code class="docutils literal notranslate"><span class="pre">(0,</span> <span class="pre">0)</span></code> because the mouse cursor is hidden and locked. Use <a class="reference internal" href="#class-inputeventmousemotion-property-screen-relative"><span class="std std-ref">screen_relative</span></a> for mouse aiming using the <a class="reference internal" href="class_input.html#class-input-constant-mouse-mode-captured"><span class="std std-ref">Input.MOUSE_MODE_CAPTURED</span></a> mouse mode.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, MUmarShahbaz.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

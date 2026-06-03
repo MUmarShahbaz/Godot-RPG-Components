@@ -1,0 +1,283 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NavigationRegion2D &mdash; RPG Components 2D 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=d45e8c67"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            RPG Components 2D
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">NavigationRegion2D</a><ul>
+<li><a class="reference internal" href="#description">Description</a></li>
+<li><a class="reference internal" href="#tutorials">Tutorials</a></li>
+<li><a class="reference internal" href="#properties">Properties</a></li>
+<li><a class="reference internal" href="#methods">Methods</a></li>
+<li><a class="reference internal" href="#signals">Signals</a></li>
+<li><a class="reference internal" href="#property-descriptions">Property Descriptions</a></li>
+<li><a class="reference internal" href="#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">RPG Components 2D</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">NavigationRegion2D</li>
+      <li class="wy-breadcrumbs-aside">
+              <!-- User defined GitHub URL -->
+              <a href="hide" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="navigationregion2d">
+<span id="class-navigationregion2d"></span><h1>NavigationRegion2D<a class="headerlink" href="#navigationregion2d" title="Link to this heading"></a></h1>
+<p><strong>Experimental:</strong> This class may be changed or removed in future versions.</p>
+<p><strong>Inherits:</strong> <a class="reference internal" href="class_node2d.html#class-node2d"><span class="std std-ref">Node2D</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_canvasitem.html#class-canvasitem"><span class="std std-ref">CanvasItem</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_node.html#class-node"><span class="std std-ref">Node</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_object.html#class-object"><span class="std std-ref">Object</span></a></p>
+<p>A traversable 2D region that <a class="reference internal" href="class_navigationagent2d.html#class-navigationagent2d"><span class="std std-ref">NavigationAgent2D</span></a>s can use for pathfinding.</p>
+<section class="classref-introduction-group" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
+<p>A traversable 2D region based on a <a class="reference internal" href="class_navigationpolygon.html#class-navigationpolygon"><span class="std std-ref">NavigationPolygon</span></a> that <a class="reference internal" href="class_navigationagent2d.html#class-navigationagent2d"><span class="std std-ref">NavigationAgent2D</span></a>s can use for pathfinding.</p>
+<p>Two regions can be connected to each other if they share a similar edge. You can set the minimum distance between two vertices required to connect two edges by using <a class="reference internal" href="class_navigationserver2d.html#class-navigationserver2d-method-map-set-edge-connection-margin"><span class="std std-ref">NavigationServer2D.map_set_edge_connection_margin()</span></a>.</p>
+<p><strong>Note:</strong> Overlapping two regions’ navigation polygons is not enough for connecting two regions. They must share a similar edge.</p>
+<p>The pathfinding cost of entering a region from another region can be controlled with the <a class="reference internal" href="#class-navigationregion2d-property-enter-cost"><span class="std std-ref">enter_cost</span></a> value.</p>
+<p><strong>Note:</strong> This value is not added to the path cost when the start position is already inside this region.</p>
+<p>The pathfinding cost of traveling distances inside this region can be controlled with the <a class="reference internal" href="#class-navigationregion2d-property-travel-cost"><span class="std std-ref">travel_cost</span></a> multiplier.</p>
+<p><strong>Note:</strong> This node caches changes to its properties, so if you make changes to the underlying region <a class="reference internal" href="class_rid.html#class-rid"><span class="std std-ref">RID</span></a> in <a class="reference internal" href="class_navigationserver2d.html#class-navigationserver2d"><span class="std std-ref">NavigationServer2D</span></a>, they will not be reflected in this node’s properties.</p>
+</section>
+<section class="classref-introduction-group" id="tutorials">
+<h2>Tutorials<a class="headerlink" href="#tutorials" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><span class="xref std std-doc">Using NavigationRegions</span></p></li>
+</ul>
+</section>
+<section class="classref-reftable-group" id="properties">
+<h2>Properties<a class="headerlink" href="#properties" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-navigationregion2d-property-enabled"><span class="std std-ref">enabled</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-navigationregion2d-property-enter-cost"><span class="std std-ref">enter_cost</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0.0</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-navigationregion2d-property-navigation-layers"><span class="std std-ref">navigation_layers</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">1</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_navigationpolygon.html#class-navigationpolygon"><span class="std std-ref">NavigationPolygon</span></a></p></td>
+<td><p><a class="reference internal" href="#class-navigationregion2d-property-navigation-polygon"><span class="std std-ref">navigation_polygon</span></a></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-navigationregion2d-property-travel-cost"><span class="std std-ref">travel_cost</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">1.0</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-navigationregion2d-property-use-edge-connections"><span class="std std-ref">use_edge_connections</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section class="classref-reftable-group" id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-navigationregion2d-method-bake-navigation-polygon"><span class="std std-ref">bake_navigation_polygon</span></a>(on_thread: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = true)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_rect2.html#class-rect2"><span class="std std-ref">Rect2</span></a></p></td>
+<td><p><a class="reference internal" href="#class-navigationregion2d-method-get-bounds"><span class="std std-ref">get_bounds</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-navigationregion2d-method-get-navigation-layer-value"><span class="std std-ref">get_navigation_layer_value</span></a>(layer_number: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_rid.html#class-rid"><span class="std std-ref">RID</span></a></p></td>
+<td><p><a class="reference internal" href="#class-navigationregion2d-method-get-navigation-map"><span class="std std-ref">get_navigation_map</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_rid.html#class-rid"><span class="std std-ref">RID</span></a></p></td>
+<td><p><a class="reference internal" href="#class-navigationregion2d-method-get-region-rid"><span class="std std-ref">get_region_rid</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_rid.html#class-rid"><span class="std std-ref">RID</span></a></p></td>
+<td><p><a class="reference internal" href="#class-navigationregion2d-method-get-rid"><span class="std std-ref">get_rid</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-navigationregion2d-method-is-baking"><span class="std std-ref">is_baking</span></a>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-navigationregion2d-method-set-navigation-layer-value"><span class="std std-ref">set_navigation_layer_value</span></a>(layer_number: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, value: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-navigationregion2d-method-set-navigation-map"><span class="std std-ref">set_navigation_map</span></a>(navigation_map: <a class="reference internal" href="class_rid.html#class-rid"><span class="std std-ref">RID</span></a>)</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="signals">
+<h2>Signals<a class="headerlink" href="#signals" title="Link to this heading"></a></h2>
+<p class="classref-signal" id="class-navigationregion2d-signal-bake-finished"><strong>bake_finished</strong>() <a class="reference internal" href="#class-navigationregion2d-signal-bake-finished"><span class="std std-ref">🔗</span></a></p>
+<p>Emitted when a navigation polygon bake operation is completed.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-signal" id="class-navigationregion2d-signal-navigation-polygon-changed"><strong>navigation_polygon_changed</strong>() <a class="reference internal" href="#class-navigationregion2d-signal-navigation-polygon-changed"><span class="std std-ref">🔗</span></a></p>
+<p>Emitted when the used navigation polygon is replaced or changes to the internals of the current navigation polygon are committed.</p>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="property-descriptions">
+<h2>Property Descriptions<a class="headerlink" href="#property-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-property" id="class-navigationregion2d-property-enabled"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>enabled</strong> = <code class="docutils literal notranslate"><span class="pre">true</span></code> <a class="reference internal" href="#class-navigationregion2d-property-enabled"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_enabled</strong>(value: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_enabled</strong>()</p></li>
+</ul>
+<p>Determines if the <strong>NavigationRegion2D</strong> is enabled or disabled.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-navigationregion2d-property-enter-cost"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>enter_cost</strong> = <code class="docutils literal notranslate"><span class="pre">0.0</span></code> <a class="reference internal" href="#class-navigationregion2d-property-enter-cost"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_enter_cost</strong>(value: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>get_enter_cost</strong>()</p></li>
+</ul>
+<p>When pathfinding enters this region’s navigation mesh from another regions navigation mesh the <a class="reference internal" href="#class-navigationregion2d-property-enter-cost"><span class="std std-ref">enter_cost</span></a> value is added to the path distance for determining the shortest path.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-navigationregion2d-property-navigation-layers"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>navigation_layers</strong> = <code class="docutils literal notranslate"><span class="pre">1</span></code> <a class="reference internal" href="#class-navigationregion2d-property-navigation-layers"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_navigation_layers</strong>(value: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>get_navigation_layers</strong>()</p></li>
+</ul>
+<p>A bitfield determining all navigation layers the region belongs to. These navigation layers can be checked upon when requesting a path with <a class="reference internal" href="class_navigationserver2d.html#class-navigationserver2d-method-map-get-path"><span class="std std-ref">NavigationServer2D.map_get_path()</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-navigationregion2d-property-navigation-polygon"><a class="reference internal" href="class_navigationpolygon.html#class-navigationpolygon"><span class="std std-ref">NavigationPolygon</span></a> <strong>navigation_polygon</strong> <a class="reference internal" href="#class-navigationregion2d-property-navigation-polygon"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_navigation_polygon</strong>(value: <a class="reference internal" href="class_navigationpolygon.html#class-navigationpolygon"><span class="std std-ref">NavigationPolygon</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_navigationpolygon.html#class-navigationpolygon"><span class="std std-ref">NavigationPolygon</span></a> <strong>get_navigation_polygon</strong>()</p></li>
+</ul>
+<p>The <a class="reference internal" href="class_navigationpolygon.html#class-navigationpolygon"><span class="std std-ref">NavigationPolygon</span></a> resource to use.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-navigationregion2d-property-travel-cost"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>travel_cost</strong> = <code class="docutils literal notranslate"><span class="pre">1.0</span></code> <a class="reference internal" href="#class-navigationregion2d-property-travel-cost"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_travel_cost</strong>(value: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>get_travel_cost</strong>()</p></li>
+</ul>
+<p>When pathfinding moves inside this region’s navigation mesh the traveled distances are multiplied with <a class="reference internal" href="#class-navigationregion2d-property-travel-cost"><span class="std std-ref">travel_cost</span></a> for determining the shortest path.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-navigationregion2d-property-use-edge-connections"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>use_edge_connections</strong> = <code class="docutils literal notranslate"><span class="pre">true</span></code> <a class="reference internal" href="#class-navigationregion2d-property-use-edge-connections"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_use_edge_connections</strong>(value: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>get_use_edge_connections</strong>()</p></li>
+</ul>
+<p>If enabled the navigation region will use edge connections to connect with other navigation regions within proximity of the navigation map edge connection margin.</p>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="method-descriptions">
+<h2>Method Descriptions<a class="headerlink" href="#method-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-method" id="class-navigationregion2d-method-bake-navigation-polygon"><abbr title="No return value.">void</abbr> <strong>bake_navigation_polygon</strong>(on_thread: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = true) <a class="reference internal" href="#class-navigationregion2d-method-bake-navigation-polygon"><span class="std std-ref">🔗</span></a></p>
+<p>Bakes the <a class="reference internal" href="class_navigationpolygon.html#class-navigationpolygon"><span class="std std-ref">NavigationPolygon</span></a>. If <code class="docutils literal notranslate"><span class="pre">on_thread</span></code> is set to <code class="docutils literal notranslate"><span class="pre">true</span></code> (default), the baking is done on a separate thread.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-navigationregion2d-method-get-bounds"><a class="reference internal" href="class_rect2.html#class-rect2"><span class="std std-ref">Rect2</span></a> <strong>get_bounds</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-navigationregion2d-method-get-bounds"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the axis-aligned rectangle for the region’s transformed navigation mesh.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-navigationregion2d-method-get-navigation-layer-value"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>get_navigation_layer_value</strong>(layer_number: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-navigationregion2d-method-get-navigation-layer-value"><span class="std std-ref">🔗</span></a></p>
+<p>Returns whether or not the specified layer of the <a class="reference internal" href="#class-navigationregion2d-property-navigation-layers"><span class="std std-ref">navigation_layers</span></a> bitmask is enabled, given a <code class="docutils literal notranslate"><span class="pre">layer_number</span></code> between 1 and 32.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-navigationregion2d-method-get-navigation-map"><a class="reference internal" href="class_rid.html#class-rid"><span class="std std-ref">RID</span></a> <strong>get_navigation_map</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-navigationregion2d-method-get-navigation-map"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the current navigation map <a class="reference internal" href="class_rid.html#class-rid"><span class="std std-ref">RID</span></a> used by this region.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-navigationregion2d-method-get-region-rid"><a class="reference internal" href="class_rid.html#class-rid"><span class="std std-ref">RID</span></a> <strong>get_region_rid</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-navigationregion2d-method-get-region-rid"><span class="std std-ref">🔗</span></a></p>
+<p><strong>Deprecated:</strong> Use <a class="reference internal" href="#class-navigationregion2d-method-get-rid"><span class="std std-ref">get_rid()</span></a> instead.</p>
+<p>Returns the <a class="reference internal" href="class_rid.html#class-rid"><span class="std std-ref">RID</span></a> of this region on the <a class="reference internal" href="class_navigationserver2d.html#class-navigationserver2d"><span class="std std-ref">NavigationServer2D</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-navigationregion2d-method-get-rid"><a class="reference internal" href="class_rid.html#class-rid"><span class="std std-ref">RID</span></a> <strong>get_rid</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-navigationregion2d-method-get-rid"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the <a class="reference internal" href="class_rid.html#class-rid"><span class="std std-ref">RID</span></a> of this region on the <a class="reference internal" href="class_navigationserver2d.html#class-navigationserver2d"><span class="std std-ref">NavigationServer2D</span></a>. Combined with <a class="reference internal" href="class_navigationserver2d.html#class-navigationserver2d-method-map-get-closest-point-owner"><span class="std std-ref">NavigationServer2D.map_get_closest_point_owner()</span></a> can be used to identify the <strong>NavigationRegion2D</strong> closest to a point on the merged navigation map.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-navigationregion2d-method-is-baking"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_baking</strong>() <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-navigationregion2d-method-is-baking"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> when the <a class="reference internal" href="class_navigationpolygon.html#class-navigationpolygon"><span class="std std-ref">NavigationPolygon</span></a> is being baked on a background thread.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-navigationregion2d-method-set-navigation-layer-value"><abbr title="No return value.">void</abbr> <strong>set_navigation_layer_value</strong>(layer_number: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, value: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>) <a class="reference internal" href="#class-navigationregion2d-method-set-navigation-layer-value"><span class="std std-ref">🔗</span></a></p>
+<p>Based on <code class="docutils literal notranslate"><span class="pre">value</span></code>, enables or disables the specified layer in the <a class="reference internal" href="#class-navigationregion2d-property-navigation-layers"><span class="std std-ref">navigation_layers</span></a> bitmask, given a <code class="docutils literal notranslate"><span class="pre">layer_number</span></code> between 1 and 32.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-navigationregion2d-method-set-navigation-map"><abbr title="No return value.">void</abbr> <strong>set_navigation_map</strong>(navigation_map: <a class="reference internal" href="class_rid.html#class-rid"><span class="std std-ref">RID</span></a>) <a class="reference internal" href="#class-navigationregion2d-method-set-navigation-map"><span class="std std-ref">🔗</span></a></p>
+<p>Sets the <a class="reference internal" href="class_rid.html#class-rid"><span class="std std-ref">RID</span></a> of the navigation map this region should use. By default the region will automatically join the <a class="reference internal" href="class_world2d.html#class-world2d"><span class="std std-ref">World2D</span></a> default navigation map so this function is only required to override the default map.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, MUmarShahbaz.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,297 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IterateIK3D &mdash; RPG Components 2D 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=d45e8c67"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            RPG Components 2D
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">IterateIK3D</a><ul>
+<li><a class="reference internal" href="#description">Description</a></li>
+<li><a class="reference internal" href="#properties">Properties</a></li>
+<li><a class="reference internal" href="#methods">Methods</a></li>
+<li><a class="reference internal" href="#property-descriptions">Property Descriptions</a></li>
+<li><a class="reference internal" href="#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">RPG Components 2D</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">IterateIK3D</li>
+      <li class="wy-breadcrumbs-aside">
+              <!-- User defined GitHub URL -->
+              <a href="hide" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="iterateik3d">
+<span id="class-iterateik3d"></span><h1>IterateIK3D<a class="headerlink" href="#iterateik3d" title="Link to this heading"></a></h1>
+<p><strong>Inherits:</strong> <a class="reference internal" href="class_chainik3d.html#class-chainik3d"><span class="std std-ref">ChainIK3D</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_ikmodifier3d.html#class-ikmodifier3d"><span class="std std-ref">IKModifier3D</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_skeletonmodifier3d.html#class-skeletonmodifier3d"><span class="std std-ref">SkeletonModifier3D</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_node3d.html#class-node3d"><span class="std std-ref">Node3D</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_node.html#class-node"><span class="std std-ref">Node</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_object.html#class-object"><span class="std std-ref">Object</span></a></p>
+<p><strong>Inherited By:</strong> <a class="reference internal" href="class_ccdik3d.html#class-ccdik3d"><span class="std std-ref">CCDIK3D</span></a>, <a class="reference internal" href="class_fabrik3d.html#class-fabrik3d"><span class="std std-ref">FABRIK3D</span></a>, <a class="reference internal" href="class_jacobianik3d.html#class-jacobianik3d"><span class="std std-ref">JacobianIK3D</span></a></p>
+<p>A <a class="reference internal" href="class_skeletonmodifier3d.html#class-skeletonmodifier3d"><span class="std std-ref">SkeletonModifier3D</span></a> to approach the goal by repeating small rotations.</p>
+<section class="classref-introduction-group" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
+<p>Base class of <a class="reference internal" href="class_skeletonmodifier3d.html#class-skeletonmodifier3d"><span class="std std-ref">SkeletonModifier3D</span></a> to approach the goal by repeating small rotations.</p>
+<p>Each bone chain (setting) has one effector, which is processed in order of the setting list. You can set some limitations for each joint.</p>
+<p><strong>Note:</strong> All the methods in this class take an <code class="docutils literal notranslate"><span class="pre">index</span></code> parameter. This parameter specifies which setting list entry to return if the IK has multiple entries (e.g. <code class="docutils literal notranslate"><span class="pre">settings/&lt;index&gt;/target_node</span></code>).</p>
+</section>
+<section class="classref-reftable-group" id="properties">
+<h2>Properties<a class="headerlink" href="#properties" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-iterateik3d-property-angular-delta-limit"><span class="std std-ref">angular_delta_limit</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0.034906585</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-iterateik3d-property-deterministic"><span class="std std-ref">deterministic</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-iterateik3d-property-max-iterations"><span class="std std-ref">max_iterations</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">4</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-iterateik3d-property-min-distance"><span class="std std-ref">min_distance</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0.001</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-iterateik3d-property-setting-count"><span class="std std-ref">setting_count</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section class="classref-reftable-group" id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_jointlimitation3d.html#class-jointlimitation3d"><span class="std std-ref">JointLimitation3D</span></a></p></td>
+<td><p><a class="reference internal" href="#class-iterateik3d-method-get-joint-limitation"><span class="std std-ref">get_joint_limitation</span></a>(index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, joint: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_skeletonmodifier3d.html#enum-skeletonmodifier3d-secondarydirection"><span class="std std-ref">SecondaryDirection</span></a></p></td>
+<td><p><a class="reference internal" href="#class-iterateik3d-method-get-joint-limitation-right-axis"><span class="std std-ref">get_joint_limitation_right_axis</span></a>(index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, joint: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a></p></td>
+<td><p><a class="reference internal" href="#class-iterateik3d-method-get-joint-limitation-right-axis-vector"><span class="std std-ref">get_joint_limitation_right_axis_vector</span></a>(index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, joint: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_quaternion.html#class-quaternion"><span class="std std-ref">Quaternion</span></a></p></td>
+<td><p><a class="reference internal" href="#class-iterateik3d-method-get-joint-limitation-rotation-offset"><span class="std std-ref">get_joint_limitation_rotation_offset</span></a>(index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, joint: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_skeletonmodifier3d.html#enum-skeletonmodifier3d-rotationaxis"><span class="std std-ref">RotationAxis</span></a></p></td>
+<td><p><a class="reference internal" href="#class-iterateik3d-method-get-joint-rotation-axis"><span class="std std-ref">get_joint_rotation_axis</span></a>(index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, joint: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a></p></td>
+<td><p><a class="reference internal" href="#class-iterateik3d-method-get-joint-rotation-axis-vector"><span class="std std-ref">get_joint_rotation_axis_vector</span></a>(index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, joint: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_nodepath.html#class-nodepath"><span class="std std-ref">NodePath</span></a></p></td>
+<td><p><a class="reference internal" href="#class-iterateik3d-method-get-target-node"><span class="std std-ref">get_target_node</span></a>(index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-iterateik3d-method-set-joint-limitation"><span class="std std-ref">set_joint_limitation</span></a>(index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, joint: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, limitation: <a class="reference internal" href="class_jointlimitation3d.html#class-jointlimitation3d"><span class="std std-ref">JointLimitation3D</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-iterateik3d-method-set-joint-limitation-right-axis"><span class="std std-ref">set_joint_limitation_right_axis</span></a>(index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, joint: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, direction: <a class="reference internal" href="class_skeletonmodifier3d.html#enum-skeletonmodifier3d-secondarydirection"><span class="std std-ref">SecondaryDirection</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-iterateik3d-method-set-joint-limitation-right-axis-vector"><span class="std std-ref">set_joint_limitation_right_axis_vector</span></a>(index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, joint: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, vector: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-iterateik3d-method-set-joint-limitation-rotation-offset"><span class="std std-ref">set_joint_limitation_rotation_offset</span></a>(index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, joint: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, offset: <a class="reference internal" href="class_quaternion.html#class-quaternion"><span class="std std-ref">Quaternion</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-iterateik3d-method-set-joint-rotation-axis"><span class="std std-ref">set_joint_rotation_axis</span></a>(index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, joint: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, axis: <a class="reference internal" href="class_skeletonmodifier3d.html#enum-skeletonmodifier3d-rotationaxis"><span class="std std-ref">RotationAxis</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-iterateik3d-method-set-joint-rotation-axis-vector"><span class="std std-ref">set_joint_rotation_axis_vector</span></a>(index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, joint: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, axis_vector: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-iterateik3d-method-set-target-node"><span class="std std-ref">set_target_node</span></a>(index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, target_node: <a class="reference internal" href="class_nodepath.html#class-nodepath"><span class="std std-ref">NodePath</span></a>)</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="property-descriptions">
+<h2>Property Descriptions<a class="headerlink" href="#property-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-property" id="class-iterateik3d-property-angular-delta-limit"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>angular_delta_limit</strong> = <code class="docutils literal notranslate"><span class="pre">0.034906585</span></code> <a class="reference internal" href="#class-iterateik3d-property-angular-delta-limit"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_angular_delta_limit</strong>(value: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>get_angular_delta_limit</strong>()</p></li>
+</ul>
+<p>The maximum amount each bone can rotate in a single iteration.</p>
+<p><strong>Note:</strong> This limitation is applied during each iteration. For example, if <a class="reference internal" href="#class-iterateik3d-property-max-iterations"><span class="std std-ref">max_iterations</span></a> is <code class="docutils literal notranslate"><span class="pre">4</span></code> and <a class="reference internal" href="#class-iterateik3d-property-angular-delta-limit"><span class="std std-ref">angular_delta_limit</span></a> is <code class="docutils literal notranslate"><span class="pre">5</span></code> degrees, the maximum rotation possible in a single frame is <code class="docutils literal notranslate"><span class="pre">20</span></code> degrees.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-iterateik3d-property-deterministic"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>deterministic</strong> = <code class="docutils literal notranslate"><span class="pre">false</span></code> <a class="reference internal" href="#class-iterateik3d-property-deterministic"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_deterministic</strong>(value: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>is_deterministic</strong>()</p></li>
+</ul>
+<p>If <code class="docutils literal notranslate"><span class="pre">false</span></code>, the result is calculated from the previous frame’s <strong>IterateIK3D</strong> result as the initial state.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">true</span></code>, the previous frame’s <strong>IterateIK3D</strong> result is discarded. At this point, the new result is calculated from the bone pose excluding the <strong>IterateIK3D</strong> as the initial state. This means the result will be always equal as long as the target position and the previous bone pose are the same. However, if <a class="reference internal" href="#class-iterateik3d-property-angular-delta-limit"><span class="std std-ref">angular_delta_limit</span></a> and <a class="reference internal" href="#class-iterateik3d-property-max-iterations"><span class="std std-ref">max_iterations</span></a> are set too small, the end bone of the chain will never reach the target.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-iterateik3d-property-max-iterations"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>max_iterations</strong> = <code class="docutils literal notranslate"><span class="pre">4</span></code> <a class="reference internal" href="#class-iterateik3d-property-max-iterations"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_max_iterations</strong>(value: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>get_max_iterations</strong>()</p></li>
+</ul>
+<p>The number of iteration loops used by the IK solver to produce more accurate results.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-iterateik3d-property-min-distance"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>min_distance</strong> = <code class="docutils literal notranslate"><span class="pre">0.001</span></code> <a class="reference internal" href="#class-iterateik3d-property-min-distance"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_min_distance</strong>(value: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>get_min_distance</strong>()</p></li>
+</ul>
+<p>The minimum distance between the end bone and the target. If the distance is below this value, the IK solver stops any further iterations.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-iterateik3d-property-setting-count"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>setting_count</strong> = <code class="docutils literal notranslate"><span class="pre">0</span></code> <a class="reference internal" href="#class-iterateik3d-property-setting-count"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_setting_count</strong>(value: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></li>
+<li><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>get_setting_count</strong>()</p></li>
+</ul>
+<p>The number of settings.</p>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="method-descriptions">
+<h2>Method Descriptions<a class="headerlink" href="#method-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-method" id="class-iterateik3d-method-get-joint-limitation"><a class="reference internal" href="class_jointlimitation3d.html#class-jointlimitation3d"><span class="std std-ref">JointLimitation3D</span></a> <strong>get_joint_limitation</strong>(index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, joint: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-iterateik3d-method-get-joint-limitation"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the joint limitation at <code class="docutils literal notranslate"><span class="pre">joint</span></code> in the bone chain’s joint list.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-iterateik3d-method-get-joint-limitation-right-axis"><a class="reference internal" href="class_skeletonmodifier3d.html#enum-skeletonmodifier3d-secondarydirection"><span class="std std-ref">SecondaryDirection</span></a> <strong>get_joint_limitation_right_axis</strong>(index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, joint: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-iterateik3d-method-get-joint-limitation-right-axis"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the joint limitation right axis at <code class="docutils literal notranslate"><span class="pre">joint</span></code> in the bone chain’s joint list.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-iterateik3d-method-get-joint-limitation-right-axis-vector"><a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a> <strong>get_joint_limitation_right_axis_vector</strong>(index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, joint: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-iterateik3d-method-get-joint-limitation-right-axis-vector"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the joint limitation right axis vector at <code class="docutils literal notranslate"><span class="pre">joint</span></code> in the bone chain’s joint list.</p>
+<p>If <a class="reference internal" href="#class-iterateik3d-method-get-joint-limitation-right-axis"><span class="std std-ref">get_joint_limitation_right_axis()</span></a> is <a class="reference internal" href="class_skeletonmodifier3d.html#class-skeletonmodifier3d-constant-secondary-direction-none"><span class="std std-ref">SkeletonModifier3D.SECONDARY_DIRECTION_NONE</span></a>, this method returns <code class="docutils literal notranslate"><span class="pre">Vector3(0,</span> <span class="pre">0,</span> <span class="pre">0)</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-iterateik3d-method-get-joint-limitation-rotation-offset"><a class="reference internal" href="class_quaternion.html#class-quaternion"><span class="std std-ref">Quaternion</span></a> <strong>get_joint_limitation_rotation_offset</strong>(index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, joint: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-iterateik3d-method-get-joint-limitation-rotation-offset"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the joint limitation rotation offset at <code class="docutils literal notranslate"><span class="pre">joint</span></code> in the bone chain’s joint list.</p>
+<p>Rotation is done in the local space which is constructed by the bone direction (in general parent to child) as the +Y axis and <a class="reference internal" href="#class-iterateik3d-method-get-joint-limitation-right-axis-vector"><span class="std std-ref">get_joint_limitation_right_axis_vector()</span></a> as the +X axis.</p>
+<p>If the +X and +Y axes are not orthogonal, the +X axis is implicitly modified to make it orthogonal.</p>
+<p>Also, if the length of <a class="reference internal" href="#class-iterateik3d-method-get-joint-limitation-right-axis-vector"><span class="std std-ref">get_joint_limitation_right_axis_vector()</span></a> is zero, the space is created by rotating the reference pose using the shortest arc that rotates the +Y axis of the reference pose to match the bone direction.</p>
+<p>In here, the reference pose is the bone pose immediately before processing IK.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-iterateik3d-method-get-joint-rotation-axis"><a class="reference internal" href="class_skeletonmodifier3d.html#enum-skeletonmodifier3d-rotationaxis"><span class="std std-ref">RotationAxis</span></a> <strong>get_joint_rotation_axis</strong>(index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, joint: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-iterateik3d-method-get-joint-rotation-axis"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the rotation axis at <code class="docutils literal notranslate"><span class="pre">joint</span></code> in the bone chain’s joint list.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-iterateik3d-method-get-joint-rotation-axis-vector"><a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a> <strong>get_joint_rotation_axis_vector</strong>(index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, joint: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-iterateik3d-method-get-joint-rotation-axis-vector"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the rotation axis vector for the specified joint in the bone chain. This vector represents the axis around which the joint can rotate. It is determined based on the rotation axis set for the joint.</p>
+<p>If <a class="reference internal" href="#class-iterateik3d-method-get-joint-rotation-axis"><span class="std std-ref">get_joint_rotation_axis()</span></a> is <a class="reference internal" href="class_skeletonmodifier3d.html#class-skeletonmodifier3d-constant-rotation-axis-all"><span class="std std-ref">SkeletonModifier3D.ROTATION_AXIS_ALL</span></a>, this method returns <code class="docutils literal notranslate"><span class="pre">Vector3(0,</span> <span class="pre">0,</span> <span class="pre">0)</span></code>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-iterateik3d-method-get-target-node"><a class="reference internal" href="class_nodepath.html#class-nodepath"><span class="std std-ref">NodePath</span></a> <strong>get_target_node</strong>(index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <abbr title="This method has no side effects. It doesn't modify any of the instance's member variables.">const</abbr> <a class="reference internal" href="#class-iterateik3d-method-get-target-node"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the target node that the end bone is trying to reach.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-iterateik3d-method-set-joint-limitation"><abbr title="No return value.">void</abbr> <strong>set_joint_limitation</strong>(index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, joint: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, limitation: <a class="reference internal" href="class_jointlimitation3d.html#class-jointlimitation3d"><span class="std std-ref">JointLimitation3D</span></a>) <a class="reference internal" href="#class-iterateik3d-method-set-joint-limitation"><span class="std std-ref">🔗</span></a></p>
+<p>Sets the joint limitation at <code class="docutils literal notranslate"><span class="pre">joint</span></code> in the bone chain’s joint list.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-iterateik3d-method-set-joint-limitation-right-axis"><abbr title="No return value.">void</abbr> <strong>set_joint_limitation_right_axis</strong>(index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, joint: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, direction: <a class="reference internal" href="class_skeletonmodifier3d.html#enum-skeletonmodifier3d-secondarydirection"><span class="std std-ref">SecondaryDirection</span></a>) <a class="reference internal" href="#class-iterateik3d-method-set-joint-limitation-right-axis"><span class="std std-ref">🔗</span></a></p>
+<p>Sets the joint limitation right axis at <code class="docutils literal notranslate"><span class="pre">joint</span></code> in the bone chain’s joint list.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-iterateik3d-method-set-joint-limitation-right-axis-vector"><abbr title="No return value.">void</abbr> <strong>set_joint_limitation_right_axis_vector</strong>(index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, joint: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, vector: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>) <a class="reference internal" href="#class-iterateik3d-method-set-joint-limitation-right-axis-vector"><span class="std std-ref">🔗</span></a></p>
+<p>Sets the optional joint limitation right axis vector at <code class="docutils literal notranslate"><span class="pre">joint</span></code> in the bone chain’s joint list.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-iterateik3d-method-set-joint-limitation-rotation-offset"><abbr title="No return value.">void</abbr> <strong>set_joint_limitation_rotation_offset</strong>(index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, joint: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, offset: <a class="reference internal" href="class_quaternion.html#class-quaternion"><span class="std std-ref">Quaternion</span></a>) <a class="reference internal" href="#class-iterateik3d-method-set-joint-limitation-rotation-offset"><span class="std std-ref">🔗</span></a></p>
+<p>Sets the joint limitation rotation offset at <code class="docutils literal notranslate"><span class="pre">joint</span></code> in the bone chain’s joint list.</p>
+<p>Rotation is done in the local space which is constructed by the bone direction (in general parent to child) as the +Y axis and <a class="reference internal" href="#class-iterateik3d-method-get-joint-limitation-right-axis-vector"><span class="std std-ref">get_joint_limitation_right_axis_vector()</span></a> as the +X axis.</p>
+<p>If the +X and +Y axes are not orthogonal, the +X axis is implicitly modified to make it orthogonal.</p>
+<p>Also, if the length of <a class="reference internal" href="#class-iterateik3d-method-get-joint-limitation-right-axis-vector"><span class="std std-ref">get_joint_limitation_right_axis_vector()</span></a> is zero, the space is created by rotating the reference pose using the shortest arc that rotates the +Y axis of the reference pose to match the bone direction.</p>
+<p>In here, the reference pose is the bone pose immediately before processing IK.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-iterateik3d-method-set-joint-rotation-axis"><abbr title="No return value.">void</abbr> <strong>set_joint_rotation_axis</strong>(index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, joint: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, axis: <a class="reference internal" href="class_skeletonmodifier3d.html#enum-skeletonmodifier3d-rotationaxis"><span class="std std-ref">RotationAxis</span></a>) <a class="reference internal" href="#class-iterateik3d-method-set-joint-rotation-axis"><span class="std std-ref">🔗</span></a></p>
+<p>Sets the rotation axis at <code class="docutils literal notranslate"><span class="pre">joint</span></code> in the bone chain’s joint list.</p>
+<p>The axes are based on the reference pose’s space, if <code class="docutils literal notranslate"><span class="pre">axis</span></code> is <a class="reference internal" href="class_skeletonmodifier3d.html#class-skeletonmodifier3d-constant-rotation-axis-custom"><span class="std std-ref">SkeletonModifier3D.ROTATION_AXIS_CUSTOM</span></a>, you can specify any axis.</p>
+<p>In here, the reference pose is the bone pose immediately before processing IK.</p>
+<p><strong>Note:</strong> The rotation axis and the forward vector shouldn’t be colinear to avoid unintended rotation since <a class="reference internal" href="class_chainik3d.html#class-chainik3d"><span class="std std-ref">ChainIK3D</span></a> does not factor in twisting forces.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-iterateik3d-method-set-joint-rotation-axis-vector"><abbr title="No return value.">void</abbr> <strong>set_joint_rotation_axis_vector</strong>(index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, joint: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, axis_vector: <a class="reference internal" href="class_vector3.html#class-vector3"><span class="std std-ref">Vector3</span></a>) <a class="reference internal" href="#class-iterateik3d-method-set-joint-rotation-axis-vector"><span class="std std-ref">🔗</span></a></p>
+<p>Sets the rotation axis vector for the specified joint in the bone chain.</p>
+<p>This vector is normalized by an internal process and represents the axis around which the bone chain can rotate.</p>
+<p>If the vector length is <code class="docutils literal notranslate"><span class="pre">0</span></code>, it is considered synonymous with <a class="reference internal" href="class_skeletonmodifier3d.html#class-skeletonmodifier3d-constant-rotation-axis-all"><span class="std std-ref">SkeletonModifier3D.ROTATION_AXIS_ALL</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-iterateik3d-method-set-target-node"><abbr title="No return value.">void</abbr> <strong>set_target_node</strong>(index: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, target_node: <a class="reference internal" href="class_nodepath.html#class-nodepath"><span class="std std-ref">NodePath</span></a>) <a class="reference internal" href="#class-iterateik3d-method-set-target-node"><span class="std std-ref">🔗</span></a></p>
+<p>Sets the target node that the end bone is trying to reach.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, MUmarShahbaz.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

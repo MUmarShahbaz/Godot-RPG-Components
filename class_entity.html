@@ -1,0 +1,534 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Entity &mdash; RPG Components 2D 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=d45e8c67"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            RPG Components 2D
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">Entity</a><ul>
+<li><a class="reference internal" href="#properties">Properties</a></li>
+<li><a class="reference internal" href="#methods">Methods</a></li>
+<li><a class="reference internal" href="#signals">Signals</a></li>
+<li><a class="reference internal" href="#enumerations">Enumerations</a></li>
+<li><a class="reference internal" href="#property-descriptions">Property Descriptions</a></li>
+<li><a class="reference internal" href="#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">RPG Components 2D</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Entity</li>
+      <li class="wy-breadcrumbs-aside">
+              <!-- User defined GitHub URL -->
+              <a href="hide" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="entity">
+<span id="class-entity"></span><h1>Entity<a class="headerlink" href="#entity" title="Link to this heading"></a></h1>
+<p><strong>Inherits:</strong> <a class="reference internal" href="class_characterbody2d.html#class-characterbody2d"><span class="std std-ref">CharacterBody2D</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_physicsbody2d.html#class-physicsbody2d"><span class="std std-ref">PhysicsBody2D</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_collisionobject2d.html#class-collisionobject2d"><span class="std std-ref">CollisionObject2D</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_node2d.html#class-node2d"><span class="std std-ref">Node2D</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_canvasitem.html#class-canvasitem"><span class="std std-ref">CanvasItem</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_node.html#class-node"><span class="std std-ref">Node</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_object.html#class-object"><span class="std std-ref">Object</span></a></p>
+<p><strong>Inherited By:</strong> <a class="reference internal" href="class_dynamicentity.html#class-dynamicentity"><span class="std std-ref">DynamicEntity</span></a></p>
+<p>Base Class for all 2D Entities. It contains character stats and meta data.</p>
+<p>Handles core logic including:</p>
+<ul class="simple">
+<li><p><em>Gravity</em></p></li>
+<li><p><em>Face Direction (and a fixed Container for RayCasts)</em></p></li>
+<li><p><em>Hitpoints</em></p></li>
+<li><p><em>Movement</em></p></li>
+<li><p><em>Animation Control</em></p></li>
+<li><p><em>Basic Audio</em></p></li>
+</ul>
+<section class="classref-reftable-group" id="properties">
+<h2>Properties<a class="headerlink" href="#properties" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_texture2d.html#class-texture2d"><span class="std std-ref">Texture2D</span></a></p></td>
+<td><p><a class="reference internal" href="#class-entity-property-avatar"><span class="std std-ref">avatar</span></a></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a></p></td>
+<td><p><a class="reference internal" href="#class-entity-property-title"><span class="std std-ref">title</span></a></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#enum-entity-character-type"><span class="std std-ref">character_type</span></a></p></td>
+<td><p><a class="reference internal" href="#class-entity-property-type"><span class="std std-ref">type</span></a></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#enum-entity-attack-type"><span class="std std-ref">attack_type</span></a></p></td>
+<td><p><a class="reference internal" href="#class-entity-property-attack"><span class="std std-ref">attack</span></a></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-entity-property-hit-points"><span class="std std-ref">Hit_Points</span></a></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-entity-property-walk-speed"><span class="std std-ref">Walk_Speed</span></a></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-entity-property-run-speed"><span class="std std-ref">Run_Speed</span></a></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-entity-property-jump-velocity"><span class="std std-ref">Jump_Velocity</span></a></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-entity-property-attack-range"><span class="std std-ref">Attack_Range</span></a></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-entity-property-gravity"><span class="std std-ref">gravity</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-entity-property-puppet"><span class="std std-ref">puppet</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_collisionshape2d.html#class-collisionshape2d"><span class="std std-ref">CollisionShape2D</span></a></p></td>
+<td><p><a class="reference internal" href="#class-entity-property-collider"><span class="std std-ref">collider</span></a></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a></p></td>
+<td><p><a class="reference internal" href="#class-entity-property-anm-n-walk"><span class="std std-ref">ANM_N_Walk</span></a></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a></p></td>
+<td><p><a class="reference internal" href="#class-entity-property-anm-n-run"><span class="std std-ref">ANM_N_Run</span></a></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a></p></td>
+<td><p><a class="reference internal" href="#class-entity-property-anm-n-jump"><span class="std std-ref">ANM_N_Jump</span></a></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a></p></td>
+<td><p><a class="reference internal" href="#class-entity-property-anm-n-hurt"><span class="std std-ref">ANM_N_Hurt</span></a></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a></p></td>
+<td><p><a class="reference internal" href="#class-entity-property-anm-n-die"><span class="std std-ref">ANM_N_Die</span></a></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_array.html#class-array"><span class="std std-ref">Array</span></a></p></td>
+<td><p><a class="reference internal" href="#class-entity-property-anm-n-auto-pause-movement"><span class="std std-ref">ANM_N_auto_pause_movement</span></a></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_animatedsprite2d.html#class-animatedsprite2d"><span class="std std-ref">AnimatedSprite2D</span></a></p></td>
+<td><p><a class="reference internal" href="#class-entity-property-anm-p-animated-sprite"><span class="std std-ref">ANM_P_Animated_Sprite</span></a></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_animationplayer.html#class-animationplayer"><span class="std std-ref">AnimationPlayer</span></a></p></td>
+<td><p><a class="reference internal" href="#class-entity-property-anm-p-animation-player"><span class="std std-ref">ANM_P_Animation_Player</span></a></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_animationtree.html#class-animationtree"><span class="std std-ref">AnimationTree</span></a></p></td>
+<td><p><a class="reference internal" href="#class-entity-property-anm-p-animation-tree"><span class="std std-ref">ANM_P_Animation_Tree</span></a></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_audiostreamplayer2d.html#class-audiostreamplayer2d"><span class="std std-ref">AudioStreamPlayer2D</span></a></p></td>
+<td><p><a class="reference internal" href="#class-entity-property-sfx-spawn"><span class="std std-ref">SFX_Spawn</span></a></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_audiostreamplayer2d.html#class-audiostreamplayer2d"><span class="std std-ref">AudioStreamPlayer2D</span></a></p></td>
+<td><p><a class="reference internal" href="#class-entity-property-sfx-walk"><span class="std std-ref">SFX_Walk</span></a></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_audiostreamplayer2d.html#class-audiostreamplayer2d"><span class="std std-ref">AudioStreamPlayer2D</span></a></p></td>
+<td><p><a class="reference internal" href="#class-entity-property-sfx-run"><span class="std std-ref">SFX_Run</span></a></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_audiostreamplayer2d.html#class-audiostreamplayer2d"><span class="std std-ref">AudioStreamPlayer2D</span></a></p></td>
+<td><p><a class="reference internal" href="#class-entity-property-sfx-jump"><span class="std std-ref">SFX_Jump</span></a></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_audiostreamplayer2d.html#class-audiostreamplayer2d"><span class="std std-ref">AudioStreamPlayer2D</span></a></p></td>
+<td><p><a class="reference internal" href="#class-entity-property-sfx-hurt"><span class="std std-ref">SFX_Hurt</span></a></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_audiostreamplayer2d.html#class-audiostreamplayer2d"><span class="std std-ref">AudioStreamPlayer2D</span></a></p></td>
+<td><p><a class="reference internal" href="#class-entity-property-sfx-die"><span class="std std-ref">SFX_Die</span></a></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-entity-property-show-warnings"><span class="std std-ref">show_warnings</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-entity-property-hp"><span class="std std-ref">hp</span></a></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_node2d.html#class-node2d"><span class="std std-ref">Node2D</span></a></p></td>
+<td><p><a class="reference internal" href="#class-entity-property-raybox"><span class="std std-ref">RayBox</span></a></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-entity-property-facing"><span class="std std-ref">facing</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">1</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-entity-property-force-pause"><span class="std std-ref">force_pause</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section class="classref-reftable-group" id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-entity-method-check-nodes"><span class="std std-ref">check_nodes</span></a>()</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-entity-private-method-ready"><span class="std std-ref">_ready</span></a>()</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-entity-private-method-physics-process"><span class="std std-ref">_physics_process</span></a>(delta: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-entity-method-flip"><span class="std std-ref">flip</span></a>()</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-entity-method-pause-movement"><span class="std std-ref">pause_movement</span></a>()</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-entity-method-quick-pause"><span class="std std-ref">quick_pause</span></a>(duration: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> = 0.3)</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-entity-method-move"><span class="std std-ref">move</span></a>(x_dir: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, run: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = false)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-entity-method-jump"><span class="std std-ref">jump</span></a>(force: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> = Jump_Velocity)</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-entity-method-kill"><span class="std std-ref">kill</span></a>()</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-entity-method-damage"><span class="std std-ref">damage</span></a>(amount: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-entity-private-method-die"><span class="std std-ref">_die</span></a>()</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-entity-method-anim-exists"><span class="std std-ref">anim_exists</span></a>(animation: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-entity-method-check-anim"><span class="std std-ref">check_anim</span></a>(animation: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-entity-method-check-frame"><span class="std std-ref">check_frame</span></a>(animation: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, frame: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-entity-method-check-anim-end"><span class="std std-ref">check_anim_end</span></a>(animation: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-entity-method-await-frame"><span class="std std-ref">await_frame</span></a>(animation: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, frame: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-entity-method-await-anim-end"><span class="std std-ref">await_anim_end</span></a>(animation: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-entity-method-start-anim"><span class="std std-ref">start_anim</span></a>(animation: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, force: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = false)</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-entity-method-force-anim"><span class="std std-ref">force_anim</span></a>(animation: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>)</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="signals">
+<h2>Signals<a class="headerlink" href="#signals" title="Link to this heading"></a></h2>
+<p class="classref-signal" id="class-entity-signal-spawned"><strong>spawned</strong>(Entity: <a class="reference internal" href="#class-entity"><span class="std std-ref">Entity</span></a>) <a class="reference internal" href="#class-entity-signal-spawned"><span class="std std-ref">🔗</span></a></p>
+<p>Emited when the character is spawned</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-signal" id="class-entity-signal-moved"><strong>moved</strong>(dir: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, run: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a>) <a class="reference internal" href="#class-entity-signal-moved"><span class="std std-ref">🔗</span></a></p>
+<p>Emited when the character walks or runs</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-signal" id="class-entity-signal-jumped"><strong>jumped</strong>() <a class="reference internal" href="#class-entity-signal-jumped"><span class="std std-ref">🔗</span></a></p>
+<p>Emitted when the character jumps</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-signal" id="class-entity-signal-hurt"><strong>hurt</strong>(amount: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>) <a class="reference internal" href="#class-entity-signal-hurt"><span class="std std-ref">🔗</span></a></p>
+<p>Emitted when the character is damaged</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-signal" id="class-entity-signal-died"><strong>died</strong>() <a class="reference internal" href="#class-entity-signal-died"><span class="std std-ref">🔗</span></a></p>
+<p>Emitted when the character dies</p>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="enumerations">
+<h2>Enumerations<a class="headerlink" href="#enumerations" title="Link to this heading"></a></h2>
+<p class="classref-enumeration" id="enum-entity-character-type">enum <strong>character_type</strong>: <a class="reference internal" href="#enum-entity-character-type"><span class="std std-ref">🔗</span></a></p>
+<p class="classref-enumeration-constant" id="class-entity-constant-hero"><a class="reference internal" href="#enum-entity-character-type"><span class="std std-ref">character_type</span></a> <strong>Hero</strong> = <code class="docutils literal notranslate"><span class="pre">0</span></code></p>
+<p>Hero Character</p>
+<p class="classref-enumeration-constant" id="class-entity-constant-ally"><a class="reference internal" href="#enum-entity-character-type"><span class="std std-ref">character_type</span></a> <strong>Ally</strong> = <code class="docutils literal notranslate"><span class="pre">1</span></code></p>
+<p>Ally of the Hero Character</p>
+<p class="classref-enumeration-constant" id="class-entity-constant-civillian"><a class="reference internal" href="#enum-entity-character-type"><span class="std std-ref">character_type</span></a> <strong>Civillian</strong> = <code class="docutils literal notranslate"><span class="pre">2</span></code></p>
+<p>Neutral Character</p>
+<p class="classref-enumeration-constant" id="class-entity-constant-enemy"><a class="reference internal" href="#enum-entity-character-type"><span class="std std-ref">character_type</span></a> <strong>Enemy</strong> = <code class="docutils literal notranslate"><span class="pre">3</span></code></p>
+<p>Minions of the Enemy Boss</p>
+<p class="classref-enumeration-constant" id="class-entity-constant-boss"><a class="reference internal" href="#enum-entity-character-type"><span class="std std-ref">character_type</span></a> <strong>Boss</strong> = <code class="docutils literal notranslate"><span class="pre">4</span></code></p>
+<p>Enemy Boss</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-enumeration" id="enum-entity-attack-type">enum <strong>attack_type</strong>: <a class="reference internal" href="#enum-entity-attack-type"><span class="std std-ref">🔗</span></a></p>
+<p class="classref-enumeration-constant" id="class-entity-constant-none"><a class="reference internal" href="#enum-entity-attack-type"><span class="std std-ref">attack_type</span></a> <strong>None</strong> = <code class="docutils literal notranslate"><span class="pre">0</span></code></p>
+<p>Cannot Attack</p>
+<p class="classref-enumeration-constant" id="class-entity-constant-melee"><a class="reference internal" href="#enum-entity-attack-type"><span class="std std-ref">attack_type</span></a> <strong>Melee</strong> = <code class="docutils literal notranslate"><span class="pre">1</span></code></p>
+<p>Uses Melee attacks mainly</p>
+<p class="classref-enumeration-constant" id="class-entity-constant-projectile"><a class="reference internal" href="#enum-entity-attack-type"><span class="std std-ref">attack_type</span></a> <strong>Projectile</strong> = <code class="docutils literal notranslate"><span class="pre">2</span></code></p>
+<p>Uses Projectile attacks mainly</p>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="property-descriptions">
+<h2>Property Descriptions<a class="headerlink" href="#property-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-property" id="class-entity-property-avatar"><a class="reference internal" href="class_texture2d.html#class-texture2d"><span class="std std-ref">Texture2D</span></a> <strong>avatar</strong> <a class="reference internal" href="#class-entity-property-avatar"><span class="std std-ref">🔗</span></a></p>
+<p>A Picture of the Character</p>
+<p>Useful for creating character cards and HUD icons</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-entity-property-title"><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a> <strong>title</strong> <a class="reference internal" href="#class-entity-property-title"><span class="std std-ref">🔗</span></a></p>
+<p>Name of the Character</p>
+<p>Useful for creating character cards, HUD and character selector</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-entity-property-type"><a class="reference internal" href="#enum-entity-character-type"><span class="std std-ref">character_type</span></a> <strong>type</strong> <a class="reference internal" href="#class-entity-property-type"><span class="std std-ref">🔗</span></a></p>
+<p>Type of Entity the character is</p>
+<p>Useful for creating character cards</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-entity-property-attack"><a class="reference internal" href="#enum-entity-attack-type"><span class="std std-ref">attack_type</span></a> <strong>attack</strong> <a class="reference internal" href="#class-entity-property-attack"><span class="std std-ref">🔗</span></a></p>
+<p>Type of Attack the character mainly uses</p>
+<p>Useful for creating character cards</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-entity-property-hit-points"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>Hit_Points</strong> <a class="reference internal" href="#class-entity-property-hit-points"><span class="std std-ref">🔗</span></a></p>
+<p>Max HP that the character will have</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-entity-property-walk-speed"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>Walk_Speed</strong> <a class="reference internal" href="#class-entity-property-walk-speed"><span class="std std-ref">🔗</span></a></p>
+<p>The walking speed of the character</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-entity-property-run-speed"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>Run_Speed</strong> <a class="reference internal" href="#class-entity-property-run-speed"><span class="std std-ref">🔗</span></a></p>
+<p>The running speed of the character</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-entity-property-jump-velocity"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>Jump_Velocity</strong> <a class="reference internal" href="#class-entity-property-jump-velocity"><span class="std std-ref">🔗</span></a></p>
+<p>The upwards velocity at which the character jumps</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-entity-property-attack-range"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>Attack_Range</strong> <a class="reference internal" href="#class-entity-property-attack-range"><span class="std std-ref">🔗</span></a></p>
+<p>The attack range of the character</p>
+<p>Useful for creating character cards</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-entity-property-gravity"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>gravity</strong> = <code class="docutils literal notranslate"><span class="pre">true</span></code> <a class="reference internal" href="#class-entity-property-gravity"><span class="std std-ref">🔗</span></a></p>
+<p>A Bool to disable gravity for this character</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-entity-property-puppet"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>puppet</strong> = <code class="docutils literal notranslate"><span class="pre">false</span></code> <a class="reference internal" href="#class-entity-property-puppet"><span class="std std-ref">🔗</span></a></p>
+<p>A Bool to disable character’s built-in AI</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-entity-property-collider"><a class="reference internal" href="class_collisionshape2d.html#class-collisionshape2d"><span class="std std-ref">CollisionShape2D</span></a> <strong>collider</strong> <a class="reference internal" href="#class-entity-property-collider"><span class="std std-ref">🔗</span></a></p>
+<p>A Reference to the <a class="reference internal" href="class_collisionshape2d.html#class-collisionshape2d"><span class="std std-ref">CollisionShape2D</span></a> of the character</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-entity-property-anm-n-walk"><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a> <strong>ANM_N_Walk</strong> <a class="reference internal" href="#class-entity-property-anm-n-walk"><span class="std std-ref">🔗</span></a></p>
+<p>Animation Name for Walking</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-entity-property-anm-n-run"><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a> <strong>ANM_N_Run</strong> <a class="reference internal" href="#class-entity-property-anm-n-run"><span class="std std-ref">🔗</span></a></p>
+<p>Anmiation Name for Running</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-entity-property-anm-n-jump"><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a> <strong>ANM_N_Jump</strong> <a class="reference internal" href="#class-entity-property-anm-n-jump"><span class="std std-ref">🔗</span></a></p>
+<p>Animation Name for Jumping</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-entity-property-anm-n-hurt"><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a> <strong>ANM_N_Hurt</strong> <a class="reference internal" href="#class-entity-property-anm-n-hurt"><span class="std std-ref">🔗</span></a></p>
+<p>Animation Name for Hurting</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-entity-property-anm-n-die"><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a> <strong>ANM_N_Die</strong> <a class="reference internal" href="#class-entity-property-anm-n-die"><span class="std std-ref">🔗</span></a></p>
+<p>Animation Name for Dying</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-entity-property-anm-n-auto-pause-movement"><a class="reference internal" href="class_array.html#class-array"><span class="std std-ref">Array</span></a> <strong>ANM_N_auto_pause_movement</strong> <a class="reference internal" href="#class-entity-property-anm-n-auto-pause-movement"><span class="std std-ref">🔗</span></a></p>
+<p>A list of names of all animations that will automatically pause the characters movement</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-entity-property-anm-p-animated-sprite"><a class="reference internal" href="class_animatedsprite2d.html#class-animatedsprite2d"><span class="std std-ref">AnimatedSprite2D</span></a> <strong>ANM_P_Animated_Sprite</strong> <a class="reference internal" href="#class-entity-property-anm-p-animated-sprite"><span class="std std-ref">🔗</span></a></p>
+<p>A Reference to the <a class="reference internal" href="class_animatedsprite2d.html#class-animatedsprite2d"><span class="std std-ref">AnimatedSprite2D</span></a> of the character</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-entity-property-anm-p-animation-player"><a class="reference internal" href="class_animationplayer.html#class-animationplayer"><span class="std std-ref">AnimationPlayer</span></a> <strong>ANM_P_Animation_Player</strong> <a class="reference internal" href="#class-entity-property-anm-p-animation-player"><span class="std std-ref">🔗</span></a></p>
+<p>A Reference to the <a class="reference internal" href="class_animationplayer.html#class-animationplayer"><span class="std std-ref">AnimationPlayer</span></a> of the character</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-entity-property-anm-p-animation-tree"><a class="reference internal" href="class_animationtree.html#class-animationtree"><span class="std std-ref">AnimationTree</span></a> <strong>ANM_P_Animation_Tree</strong> <a class="reference internal" href="#class-entity-property-anm-p-animation-tree"><span class="std std-ref">🔗</span></a></p>
+<p>A Reference to the <a class="reference internal" href="class_animationtree.html#class-animationtree"><span class="std std-ref">AnimationTree</span></a> of the character</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-entity-property-sfx-spawn"><a class="reference internal" href="class_audiostreamplayer2d.html#class-audiostreamplayer2d"><span class="std std-ref">AudioStreamPlayer2D</span></a> <strong>SFX_Spawn</strong> <a class="reference internal" href="#class-entity-property-sfx-spawn"><span class="std std-ref">🔗</span></a></p>
+<p>A Reference to the <a class="reference internal" href="class_audiostreamplayer2d.html#class-audiostreamplayer2d"><span class="std std-ref">AudioStreamPlayer2D</span></a> to play when the character spawns</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-entity-property-sfx-walk"><a class="reference internal" href="class_audiostreamplayer2d.html#class-audiostreamplayer2d"><span class="std std-ref">AudioStreamPlayer2D</span></a> <strong>SFX_Walk</strong> <a class="reference internal" href="#class-entity-property-sfx-walk"><span class="std std-ref">🔗</span></a></p>
+<p>A Reference to the <a class="reference internal" href="class_audiostreamplayer2d.html#class-audiostreamplayer2d"><span class="std std-ref">AudioStreamPlayer2D</span></a> to play when the character walks</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-entity-property-sfx-run"><a class="reference internal" href="class_audiostreamplayer2d.html#class-audiostreamplayer2d"><span class="std std-ref">AudioStreamPlayer2D</span></a> <strong>SFX_Run</strong> <a class="reference internal" href="#class-entity-property-sfx-run"><span class="std std-ref">🔗</span></a></p>
+<p>A Reference to the <a class="reference internal" href="class_audiostreamplayer2d.html#class-audiostreamplayer2d"><span class="std std-ref">AudioStreamPlayer2D</span></a> to play when the character runs</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-entity-property-sfx-jump"><a class="reference internal" href="class_audiostreamplayer2d.html#class-audiostreamplayer2d"><span class="std std-ref">AudioStreamPlayer2D</span></a> <strong>SFX_Jump</strong> <a class="reference internal" href="#class-entity-property-sfx-jump"><span class="std std-ref">🔗</span></a></p>
+<p>A Reference to the <a class="reference internal" href="class_audiostreamplayer2d.html#class-audiostreamplayer2d"><span class="std std-ref">AudioStreamPlayer2D</span></a> to play when the character jumps</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-entity-property-sfx-hurt"><a class="reference internal" href="class_audiostreamplayer2d.html#class-audiostreamplayer2d"><span class="std std-ref">AudioStreamPlayer2D</span></a> <strong>SFX_Hurt</strong> <a class="reference internal" href="#class-entity-property-sfx-hurt"><span class="std std-ref">🔗</span></a></p>
+<p>A Reference to the <a class="reference internal" href="class_audiostreamplayer2d.html#class-audiostreamplayer2d"><span class="std std-ref">AudioStreamPlayer2D</span></a> to play when the character is hurt</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-entity-property-sfx-die"><a class="reference internal" href="class_audiostreamplayer2d.html#class-audiostreamplayer2d"><span class="std std-ref">AudioStreamPlayer2D</span></a> <strong>SFX_Die</strong> <a class="reference internal" href="#class-entity-property-sfx-die"><span class="std std-ref">🔗</span></a></p>
+<p>A Reference to the <a class="reference internal" href="class_audiostreamplayer2d.html#class-audiostreamplayer2d"><span class="std std-ref">AudioStreamPlayer2D</span></a> to play when the character dies</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-entity-property-show-warnings"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>show_warnings</strong> = <code class="docutils literal notranslate"><span class="pre">true</span></code> <a class="reference internal" href="#class-entity-property-show-warnings"><span class="std std-ref">🔗</span></a></p>
+<p>Enable/Disable Warnings for missing Nodes</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-entity-property-hp"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>hp</strong> <a class="reference internal" href="#class-entity-property-hp"><span class="std std-ref">🔗</span></a></p>
+<p>Current HP of the character</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-entity-property-raybox"><a class="reference internal" href="class_node2d.html#class-node2d"><span class="std std-ref">Node2D</span></a> <strong>RayBox</strong> <a class="reference internal" href="#class-entity-property-raybox"><span class="std std-ref">🔗</span></a></p>
+<p>A <a class="reference internal" href="class_node2d.html#class-node2d"><span class="std std-ref">Node2D</span></a> which always faces right regardless of the character’s position or rotation</p>
+<p>This is intended to be used as a container for RayCasts which need to be independant</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-entity-property-facing"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>facing</strong> = <code class="docutils literal notranslate"><span class="pre">1</span></code> <a class="reference internal" href="#class-entity-property-facing"><span class="std std-ref">🔗</span></a></p>
+<p>The direction the character is facing</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-entity-property-force-pause"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>force_pause</strong> = <code class="docutils literal notranslate"><span class="pre">false</span></code> <a class="reference internal" href="#class-entity-property-force-pause"><span class="std std-ref">🔗</span></a></p>
+<p>A Boolean to forcefully pause character movement</p>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="method-descriptions">
+<h2>Method Descriptions<a class="headerlink" href="#method-descriptions" title="Link to this heading"></a></h2>
+<p class="classref-method" id="class-entity-method-check-nodes"><abbr title="No return value.">void</abbr> <strong>check_nodes</strong>() <a class="reference internal" href="#class-entity-method-check-nodes"><span class="std std-ref">🔗</span></a></p>
+<p>Checks for missing node references/paths</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-entity-private-method-ready"><abbr title="No return value.">void</abbr> <strong>_ready</strong>() <a class="reference internal" href="#class-entity-private-method-ready"><span class="std std-ref">🔗</span></a></p>
+<div class="contribute docutils container">
+<p>There is currently no description for this method. Please help us by <a class="reference external" href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+</div>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-entity-private-method-physics-process"><abbr title="No return value.">void</abbr> <strong>_physics_process</strong>(delta: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>) <a class="reference internal" href="#class-entity-private-method-physics-process"><span class="std std-ref">🔗</span></a></p>
+<div class="contribute docutils container">
+<p>There is currently no description for this method. Please help us by <a class="reference external" href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+</div>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-entity-method-flip"><abbr title="No return value.">void</abbr> <strong>flip</strong>() <a class="reference internal" href="#class-entity-method-flip"><span class="std std-ref">🔗</span></a></p>
+<p>Changes the direction the character is currently facing</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-entity-method-pause-movement"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>pause_movement</strong>() <a class="reference internal" href="#class-entity-method-pause-movement"><span class="std std-ref">🔗</span></a></p>
+<p>Checks whether or not movement should be paused at the current moment</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-entity-method-quick-pause"><abbr title="No return value.">void</abbr> <strong>quick_pause</strong>(duration: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> = 0.3) <a class="reference internal" href="#class-entity-method-quick-pause"><span class="std std-ref">🔗</span></a></p>
+<p>Temporarily forces a pause on character movement</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-entity-method-move"><abbr title="No return value.">void</abbr> <strong>move</strong>(x_dir: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>, run: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = false) <a class="reference internal" href="#class-entity-method-move"><span class="std std-ref">🔗</span></a></p>
+<p>Used to move the character by making it walk/run</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-entity-method-jump"><abbr title="No return value.">void</abbr> <strong>jump</strong>(force: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> = Jump_Velocity) <a class="reference internal" href="#class-entity-method-jump"><span class="std std-ref">🔗</span></a></p>
+<p>Makes the character jump</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-entity-method-kill"><abbr title="No return value.">void</abbr> <strong>kill</strong>() <a class="reference internal" href="#class-entity-method-kill"><span class="std std-ref">🔗</span></a></p>
+<p>Instantly kills the characters</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-entity-method-damage"><abbr title="No return value.">void</abbr> <strong>damage</strong>(amount: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>) <a class="reference internal" href="#class-entity-method-damage"><span class="std std-ref">🔗</span></a></p>
+<p>Applies damage to the character</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-entity-private-method-die"><abbr title="No return value.">void</abbr> <strong>_die</strong>() <a class="reference internal" href="#class-entity-private-method-die"><span class="std std-ref">🔗</span></a></p>
+<p>Procedure for when the character dies</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-entity-method-anim-exists"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>anim_exists</strong>(animation: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <a class="reference internal" href="#class-entity-method-anim-exists"><span class="std std-ref">🔗</span></a></p>
+<p>Checks if an animation is available</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-entity-method-check-anim"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>check_anim</strong>(animation: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <a class="reference internal" href="#class-entity-method-check-anim"><span class="std std-ref">🔗</span></a></p>
+<p>Checks if an animation is currently playing</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-entity-method-check-frame"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>check_frame</strong>(animation: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, frame: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <a class="reference internal" href="#class-entity-method-check-frame"><span class="std std-ref">🔗</span></a></p>
+<p>Checks if a certain frame is currently playing</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-entity-method-check-anim-end"><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> <strong>check_anim_end</strong>(animation: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <a class="reference internal" href="#class-entity-method-check-anim-end"><span class="std std-ref">🔗</span></a></p>
+<p>Checks if an animation is currently at it’s last frame</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-entity-method-await-frame"><abbr title="No return value.">void</abbr> <strong>await_frame</strong>(animation: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, frame: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <a class="reference internal" href="#class-entity-method-await-frame"><span class="std std-ref">🔗</span></a></p>
+<p>Waits until a certain frame starts playing</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-entity-method-await-anim-end"><abbr title="No return value.">void</abbr> <strong>await_anim_end</strong>(animation: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <a class="reference internal" href="#class-entity-method-await-anim-end"><span class="std std-ref">🔗</span></a></p>
+<p>Waits until a certain animation ends</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-entity-method-start-anim"><abbr title="No return value.">void</abbr> <strong>start_anim</strong>(animation: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>, force: <a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a> = false) <a class="reference internal" href="#class-entity-method-start-anim"><span class="std std-ref">🔗</span></a></p>
+<p>Triggers a travel to an animation or forcefully jumps to it</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-entity-method-force-anim"><abbr title="No return value.">void</abbr> <strong>force_anim</strong>(animation: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <a class="reference internal" href="#class-entity-method-force-anim"><span class="std std-ref">🔗</span></a></p>
+<p>Forcefully starts an animation and waits till the end</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, MUmarShahbaz.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
