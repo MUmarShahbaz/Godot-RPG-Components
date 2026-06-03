@@ -1,11 +1,9 @@
 name: Deploy Sphinx Docs
 
 on:
-    workflow_dispatch:
     push:
-        branches:
-            - main
-            - docs
+        tags:
+          - v*.*.*
 
 jobs:
     xml:
@@ -49,15 +47,25 @@ jobs:
                 name: xml-export
                 path: xml
 
+            - name: Parse version
+              id: version
+              run: |
+                VERSION="${GITHUB_REF_NAME#v}"
+                IFS='.' read -r MAJOR MINOR PATCH <<< "$VERSION"
+
+                echo "major=$MAJOR" >> "$GITHUB_OUTPUT"
+                echo "minor=$MINOR" >> "$GITHUB_OUTPUT"
+                echo "patch=$PATCH" >> "$GITHUB_OUTPUT"
+
             - name: Create RST
               id: make_rst
               uses: MUmarShahbaz/Godot-XML-to-RST@main
               with:
                 short_name: rpg_components_2d
                 name: RPG Components 2D
-                major: 0
-                minor: 0
-                patch: 1
+                major: ${{ steps.version.outputs.major }}
+                minor: ${{ steps.version.outputs.minor }}
+                patch: ${{ steps.version.outputs.patch }}
                 status: beta
                 built-in: true
                 website: https://mumarshahbaz.github.io/RPG-Components
@@ -86,7 +94,7 @@ jobs:
             python-version: 3.14
 
         - name: Install Dependencies
-          run: pip install sphinx sphinx_rtd_theme
+          run: pip install sphinx sphinx_rtd_theme sphinxcontrib-mermaid
         
         - name: Download RST
           uses: actions/download-artifact@v4
