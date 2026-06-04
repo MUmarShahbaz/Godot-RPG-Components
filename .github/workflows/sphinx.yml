@@ -65,6 +65,12 @@ jobs:
         needs: xml
 
         steps:
+            - name: Checkout to Docs
+              if: github.ref_type != 'tag'
+              uses: actions/checkout@v4
+              with:
+                ref: docs
+
             - name: Download XML
               uses: actions/download-artifact@v4
               with:
@@ -74,7 +80,21 @@ jobs:
             - name: Parse version
               id: version
               run: |
-                VERSION="${GITHUB_REF_NAME}"
+                if [ "${{ github.ref_type }}" != "tag" ]; then
+                  echo "Not a tag. Extracting last version from conf.py..."
+                  VERSION=$(sed -n "s/^release\s*=\s*['\"]\(.*\)['\"]/\1/p" conf.py)
+                  
+                  if [ -z "$VERSION" ]; then
+                    echo "Error: Could not find previous release version in conf.py"
+                    exit 1
+                  fi
+                else
+                  echo "Triggered by a tag. Extracting version from tag name..."
+                  VERSION="${GITHUB_REF_NAME}"
+                fi
+
+                echo "Version detected: $VERSION"
+
                 IFS='.' read -r MAJOR MINOR PATCH <<< "$VERSION"
 
                 echo "major=$MAJOR" >> "$GITHUB_OUTPUT"
