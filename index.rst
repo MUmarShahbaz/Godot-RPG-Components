@@ -6,18 +6,23 @@
 RPG Components 2D
 ===========
 
+Welcome to **RPG Components 2D**!!!
+
+**RPG Components 2D** is a collection of reusable components for building 2D RPGs in Godot. The library was designed with the principal of **Overwriting via Polymorphism** in mind. This means that extending the nodes with your own custom code is intended. This will allow greater customization and gives you the oppurtunity to fine-tune them (if needed).
+
 Guides
-------
+======
 
 .. toctree::
     :maxdepth: 1
-    :caption: Guides
-    :name: toc-guides
+    :caption: Getting Started
+    :name: toc-getting-started
 
-    quickstart
+    installation
+    object_oriented_programming
 
 Class Reference
----------------
+===============
 
 .. toctree::
     :maxdepth: 1
