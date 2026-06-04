@@ -1,12 +1,10 @@
-Getting Started
-===============
+Installing RPG Components 2D
+============================
 
-Welcome to **RPG Components 2D**! This guide will help you install the library.
+This guide describe how to install the latest release of **RPG Components 2D**.
 
-What is RPG Components 2D?
---------------------------
-
-RPG Components 2D is a collection of reusable components for building 2D RPGs in Godot. The library was designed with the principal of **Overwriting via Polymorphism** in mind. This means that extending the nodes with your own custom code is intended. This will allow greater customization and gives you the oppurtunity to fine-tune them (if needed).
+.. contents:: Table of Contents
+   :depth: 2
 
 Requirements
 ------------
@@ -51,6 +49,9 @@ Enabling the Addon
 #. Enable the plugin.
 
 Once enabled, the library's tools and resources will become available.
+
+.. tip::
+    Make sure to read :doc:`object_oriented_programming` to learn about Object-Oriented-Programming. This will allow you to use this addon more effectively.
 
 Troubleshooting
 ---------------
