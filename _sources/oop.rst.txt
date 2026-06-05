@@ -20,7 +20,7 @@ An object combines **data** (attributes) and **behavior** (methods) together —
 
 **Four Main Pillars of OOP:**
 
-#. :ref:`encapsulation` (bundling data and methods)
+#. :ref:`encapsulation` (hiding/securing data and methods)
 #. :ref:`containment` (Has-a relationship)
 #. :ref:`inheritance` (Is-a relationship)
 #. :ref:`polymorphism` (Many forms)
@@ -335,10 +335,9 @@ Summary
 -------
 
 - **OOP** → Organize code using classes and objects
+- **Encapsulation** → Prevents certain attributes and methods to be used externally (outside the class's own methods)
 - **Containment** → "Has-a" relationship (one object owns another)
 - **Inheritance** → "Is-a" relationship (code reuse through hierarchy)
 - **Polymorphism** → Same method, different behavior
 
 These four concepts together make your programs more powerful, flexible, and easier to maintain.
-
-Happy coding!
