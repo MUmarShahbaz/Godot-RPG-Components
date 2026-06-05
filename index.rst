@@ -21,7 +21,7 @@ Welcome to **RPG Components 2D**!!!
 
     index_character
     index_brain
-    index_attacks
+    index_ability
     index_objects
     index_visuals_and_audio
     index_singletons
