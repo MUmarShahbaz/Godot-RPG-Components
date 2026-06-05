@@ -12,9 +12,7 @@ RPG_2D_CONTROLLERS
 
 **Inherits:** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-.. container:: contribute
-
-	There is currently no description for this class. Please help us by `contributing one <https://contributing.godotengine.org/en/latest/documentation/class_reference.html>`__!
+This Singleton automatically creates a list off all connected controllers and automatically changes the light color of any newly connected controllers
 
 .. rst-class:: classref-reftable-group
 
@@ -61,9 +59,23 @@ Property Descriptions
 
 :ref:`Array<class_Array>`\[:ref:`Dictionary<class_Dictionary>`\] **Controllers** = ``[...]`` :ref:`🔗<class_RPG_2D_CONTROLLERS_property_Controllers>`
 
-.. container:: contribute
+List of connected controllers.
 
-	There is currently no description for this property. Please help us by `contributing one <https://contributing.godotengine.org/en/latest/documentation/class_reference.html>`__!
+\ **Note**: ``Controller[0]`` is the default device (eg. KeyBoard/Mouse) and all others are gamepads.
+
+
+
+The dicionary contains:
+
+- ``id``: Device number (``-1`` means default device)
+
+- ``name``: Device name as a string
+
+- ``has_light``: Boolean for whether or not the controller has a light
+
+- ``light``: The color of the light (``0`` means there is no light, otherwise the value is of type :ref:`Color<class_Color>`\ 
+
+
 
 .. rst-class:: classref-section-separator
 
@@ -108,9 +120,7 @@ Method Descriptions
 
 |void| **change_light**\ (\ device\: :ref:`int<class_int>`, color\: :ref:`Color<class_Color>`\ ) :ref:`🔗<class_RPG_2D_CONTROLLERS_method_change_light>`
 
-.. container:: contribute
-
-	There is currently no description for this method. Please help us by `contributing one <https://contributing.godotengine.org/en/latest/documentation/class_reference.html>`__!
+Change a controller's light through here so that the ``Controllers`` array stays updated.
 
 .. rst-class:: classref-item-separator
 

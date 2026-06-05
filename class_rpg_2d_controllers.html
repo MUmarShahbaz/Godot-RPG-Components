@@ -50,6 +50,7 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="index_character.html">Character</a></li>
 <li class="toctree-l1"><a class="reference internal" href="index_brain.html">Brain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index_ability.html">Ability</a></li>
 <li class="toctree-l1"><a class="reference internal" href="index_objects.html">Objects</a></li>
 <li class="toctree-l1"><a class="reference internal" href="index_visuals_and_audio.html">Visuals &amp; Audio</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index_singletons.html">Singletons</a><ul class="current">
@@ -93,9 +94,7 @@
   <section id="rpg-2d-controllers">
 <span id="class-rpg-2d-controllers"></span><h1>RPG_2D_CONTROLLERS<a class="headerlink" href="#rpg-2d-controllers" title="Link to this heading"></a></h1>
 <p><strong>Inherits:</strong> <a class="reference internal" href="class_node.html#class-node"><span class="std std-ref">Node</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_object.html#class-object"><span class="std std-ref">Object</span></a></p>
-<div class="contribute docutils container">
-<p>There is currently no description for this class. Please help us by <a class="reference external" href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
-</div>
+<p>This Singleton automatically creates a list off all connected controllers and automatically changes the light color of any newly connected controllers</p>
 <section class="classref-reftable-group" id="properties">
 <h2>Properties<a class="headerlink" href="#properties" title="Link to this heading"></a></h2>
 <table class="docutils align-default">
@@ -130,9 +129,15 @@
 <section class="classref-descriptions-group" id="property-descriptions">
 <h2>Property Descriptions<a class="headerlink" href="#property-descriptions" title="Link to this heading"></a></h2>
 <p class="classref-property" id="class-rpg-2d-controllers-property-controllers"><a class="reference internal" href="class_array.html#class-array"><span class="std std-ref">Array</span></a>[<a class="reference internal" href="class_dictionary.html#class-dictionary"><span class="std std-ref">Dictionary</span></a>] <strong>Controllers</strong> = <code class="docutils literal notranslate"><span class="pre">[...]</span></code> <a class="reference internal" href="#class-rpg-2d-controllers-property-controllers"><span class="std std-ref">🔗</span></a></p>
-<div class="contribute docutils container">
-<p>There is currently no description for this property. Please help us by <a class="reference external" href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
-</div>
+<p>List of connected controllers.</p>
+<p><strong>Note</strong>: <code class="docutils literal notranslate"><span class="pre">Controller[0]</span></code> is the default device (eg. KeyBoard/Mouse) and all others are gamepads.</p>
+<p>The dicionary contains:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">id</span></code>: Device number (<code class="docutils literal notranslate"><span class="pre">-1</span></code> means default device)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">name</span></code>: Device name as a string</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">has_light</span></code>: Boolean for whether or not the controller has a light</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">light</span></code>: The color of the light (<code class="docutils literal notranslate"><span class="pre">0</span></code> means there is no light, otherwise the value is of type <a class="reference internal" href="class_color.html#class-color"><span class="std std-ref">Color</span></a></p></li>
+</ul>
 </section>
 <hr class="classref-section-separator docutils" />
 <section class="classref-descriptions-group" id="method-descriptions">
@@ -148,9 +153,7 @@
 </div>
 <hr class="classref-item-separator docutils" />
 <p class="classref-method" id="class-rpg-2d-controllers-method-change-light"><abbr title="No return value.">void</abbr> <strong>change_light</strong>(device: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, color: <a class="reference internal" href="class_color.html#class-color"><span class="std std-ref">Color</span></a>) <a class="reference internal" href="#class-rpg-2d-controllers-method-change-light"><span class="std std-ref">🔗</span></a></p>
-<div class="contribute docutils container">
-<p>There is currently no description for this method. Please help us by <a class="reference external" href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
-</div>
+<p>Change a controller’s light through here so that the <code class="docutils literal notranslate"><span class="pre">Controllers</span></code> array stays updated.</p>
 <hr class="classref-item-separator docutils" />
 <p class="classref-method" id="class-rpg-2d-controllers-private-method-player-color"><a class="reference internal" href="class_color.html#class-color"><span class="std std-ref">Color</span></a> <strong>_player_color</strong>(player_num: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <a class="reference internal" href="#class-rpg-2d-controllers-private-method-player-color"><span class="std std-ref">🔗</span></a></p>
 <div class="contribute docutils container">

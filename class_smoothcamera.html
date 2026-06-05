@@ -51,6 +51,7 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="index_character.html">Character</a></li>
 <li class="toctree-l1"><a class="reference internal" href="index_brain.html">Brain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index_ability.html">Ability</a></li>
 <li class="toctree-l1"><a class="reference internal" href="index_objects.html">Objects</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index_visuals_and_audio.html">Visuals &amp; Audio</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">SmoothCamera</a><ul>
@@ -95,20 +96,20 @@
 <span id="class-smoothcamera"></span><h1>SmoothCamera<a class="headerlink" href="#smoothcamera" title="Link to this heading"></a></h1>
 <p><strong>Inherits:</strong> <a class="reference internal" href="class_camera2d.html#class-camera2d"><span class="std std-ref">Camera2D</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_node2d.html#class-node2d"><span class="std std-ref">Node2D</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_canvasitem.html#class-canvasitem"><span class="std std-ref">CanvasItem</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_node.html#class-node"><span class="std std-ref">Node</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_object.html#class-object"><span class="std std-ref">Object</span></a></p>
 <p>A Camera which moves smoothly with the target.</p>
-<p><code class="docutils literal notranslate"><span class="pre">color=red</span></code>Warning[/color]: The Camera may appear buggy on high refresh rate displays due to a mismatch between physics and process frames.</p>
+<p><strong>Warning</strong>: The Camera may appear buggy on high refresh rate displays due to a mismatch between physics and process frames.</p>
 <p>Process Frames run at your display frequency but Physics Frame (by default) run at a fixed 60Hz</p>
 <p>Consider turning <em>Physics Interpolation</em> ON in the project settings or try manually alligning the two.</p>
 <section class="classref-reftable-group" id="properties">
 <h2>Properties<a class="headerlink" href="#properties" title="Link to this heading"></a></h2>
 <table class="docutils align-default">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="class_characterbody2d.html#class-characterbody2d"><span class="std std-ref">CharacterBody2D</span></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_node2d.html#class-node2d"><span class="std std-ref">Node2D</span></a></p></td>
 <td><p><a class="reference internal" href="#class-smoothcamera-property-target"><span class="std std-ref">target</span></a></p></td>
 <td></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a></p></td>
 <td><p><a class="reference internal" href="#class-smoothcamera-property-smoothing"><span class="std std-ref">smoothing</span></a></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">0.5</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0.05</span></code></p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a></p></td>
 <td><p><a class="reference internal" href="#class-smoothcamera-property-offset-unit"><span class="std std-ref">offset_unit</span></a></p></td>
@@ -140,25 +141,19 @@
 <hr class="classref-section-separator docutils" />
 <section class="classref-descriptions-group" id="property-descriptions">
 <h2>Property Descriptions<a class="headerlink" href="#property-descriptions" title="Link to this heading"></a></h2>
-<p class="classref-property" id="class-smoothcamera-property-target"><a class="reference internal" href="class_characterbody2d.html#class-characterbody2d"><span class="std std-ref">CharacterBody2D</span></a> <strong>target</strong> <a class="reference internal" href="#class-smoothcamera-property-target"><span class="std std-ref">🔗</span></a></p>
-<div class="contribute docutils container">
-<p>There is currently no description for this property. Please help us by <a class="reference external" href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
-</div>
+<p class="classref-property" id="class-smoothcamera-property-target"><a class="reference internal" href="class_node2d.html#class-node2d"><span class="std std-ref">Node2D</span></a> <strong>target</strong> <a class="reference internal" href="#class-smoothcamera-property-target"><span class="std std-ref">🔗</span></a></p>
+<p>The target which the camera will follow.</p>
 <hr class="classref-item-separator docutils" />
-<p class="classref-property" id="class-smoothcamera-property-smoothing"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>smoothing</strong> = <code class="docutils literal notranslate"><span class="pre">0.5</span></code> <a class="reference internal" href="#class-smoothcamera-property-smoothing"><span class="std std-ref">🔗</span></a></p>
-<div class="contribute docutils container">
-<p>There is currently no description for this property. Please help us by <a class="reference external" href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
-</div>
+<p class="classref-property" id="class-smoothcamera-property-smoothing"><a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> <strong>smoothing</strong> = <code class="docutils literal notranslate"><span class="pre">0.05</span></code> <a class="reference internal" href="#class-smoothcamera-property-smoothing"><span class="std std-ref">🔗</span></a></p>
+<p>Weightage for <code class="docutils literal notranslate"><span class="pre">lerp()</span></code>.</p>
+<p><strong>Note</strong>: The most significant smoothing happens when this value is less than 0.1</p>
 <hr class="classref-item-separator docutils" />
 <p class="classref-property" id="class-smoothcamera-property-offset-unit"><a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a> <strong>offset_unit</strong> <a class="reference internal" href="#class-smoothcamera-property-offset-unit"><span class="std std-ref">🔗</span></a></p>
-<div class="contribute docutils container">
-<p>There is currently no description for this property. Please help us by <a class="reference external" href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
-</div>
+<p>The distance between the camera center and the target in pixels when the <code class="docutils literal notranslate"><span class="pre">offset_value</span></code> is <code class="docutils literal notranslate"><span class="pre">Vector2(1,</span> <span class="pre">1)</span></code></p>
 <hr class="classref-item-separator docutils" />
 <p class="classref-property" id="class-smoothcamera-property-offset-value"><a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a> <strong>offset_value</strong> = <code class="docutils literal notranslate"><span class="pre">Vector2(0,</span> <span class="pre">0)</span></code> <a class="reference internal" href="#class-smoothcamera-property-offset-value"><span class="std std-ref">🔗</span></a></p>
-<div class="contribute docutils container">
-<p>There is currently no description for this property. Please help us by <a class="reference external" href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
-</div>
+<p>The value of offset. This is expected to be normalized but the code will still work if it is not. You can also use bigger vectors to offset the camera more than the <code class="docutils literal notranslate"><span class="pre">offset_unit</span></code>.</p>
+<p>Final offset is calculated by `` offset = offset_unit * offset_value ``</p>
 </section>
 <hr class="classref-section-separator docutils" />
 <section class="classref-descriptions-group" id="method-descriptions">
@@ -174,9 +169,7 @@
 </div>
 <hr class="classref-item-separator docutils" />
 <p class="classref-method" id="class-smoothcamera-method-set-target-offset"><abbr title="No return value.">void</abbr> <strong>set_target_offset</strong>(new_offset: <a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a>) <a class="reference internal" href="#class-smoothcamera-method-set-target-offset"><span class="std std-ref">🔗</span></a></p>
-<div class="contribute docutils container">
-<p>There is currently no description for this method. Please help us by <a class="reference external" href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
-</div>
+<p>Set value for the parameter <code class="docutils literal notranslate"><span class="pre">offset_value</span></code></p>
 </section>
 </section>
 
