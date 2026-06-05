@@ -10,4 +10,4 @@ All nodes in this category are intended to be used as to define a certain behavi
     :maxdepth: 1
     :name: toc-class-ref-brain
 
-    class_charactercontroller
+    /class_charactercontroller

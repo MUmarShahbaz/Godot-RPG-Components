@@ -10,4 +10,4 @@ All nodes in this category are intended to be used for your game's visuals and a
     :maxdepth: 1
     :name: toc-class-ref-visuals-and-audio
 
-    class_smoothcamera
+    /class_smoothcamera

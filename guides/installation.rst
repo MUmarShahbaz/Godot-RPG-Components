@@ -51,7 +51,7 @@ Enabling the Addon
 Once enabled, the library's tools and resources will become available.
 
 .. tip::
-    Make sure to read :doc:`object_oriented_programming` to learn about Object-Oriented-Programming. This will allow you to use this addon more effectively.
+    Make sure to read :doc:`oop` to learn about Object-Oriented-Programming. This will allow you to use this addon more effectively.
 
 Troubleshooting
 ---------------
