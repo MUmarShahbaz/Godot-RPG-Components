@@ -10,4 +10,4 @@ All nodes in this category are globally available.
     :maxdepth: 1
     :name: toc-class-ref-singletons
 
-    class_rpg_2d_controllers
+    /class_rpg_2d_controllers

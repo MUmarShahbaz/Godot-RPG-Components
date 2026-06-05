@@ -10,5 +10,5 @@ All nodes in this category are intended to enable a character to perform a certa
     :maxdepth: 1
     :name: toc-class-ref-ability
 
-    class_meleeattack
-    class_projectileattack
+    /class_meleeattack
+    /class_projectileattack

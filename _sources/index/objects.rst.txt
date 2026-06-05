@@ -10,5 +10,5 @@ All nodes in this category are intended to be used as literal objects.
     :maxdepth: 1
     :name: toc-class-ref-objects
 
-    class_explosive
-    class_projectile
+    /class_explosive
+    /class_projectile

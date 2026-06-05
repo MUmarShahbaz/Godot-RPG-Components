@@ -11,17 +11,18 @@ Welcome to **RPG Components 2D**!!!
     :caption: Guides
     :name: toc-getting-started
 
-    installation
-    oop
+    guides/installation
+    guides/oop
+    guides/godot-oop
 
 .. toctree::
     :maxdepth: 2
     :caption: Class Reference
     :name: toc-class-ref
 
-    index_character
-    index_brain
-    index_ability
-    index_objects
-    index_visuals_and_audio
-    index_singletons
+    index/character
+    index/brain
+    index/ability
+    index/objects
+    index/visuals_and_audio
+    index/singletons

@@ -10,5 +10,5 @@ All nodes in this category are intended to be used as the base class of any Char
     :maxdepth: 1
     :name: toc-class-ref-character
 
-    class_entity
-    class_dynamicentity
+    /class_entity
+    /class_dynamicentity
