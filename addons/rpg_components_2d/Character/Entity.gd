@@ -263,46 +263,44 @@ func _die():
 #region ANM
 ## Checks if an animation is available
 func anim_exists(animation : String) -> bool:
-	return ANM_P_Animated_Sprite.sprite_frames.has_animation(animation)
+	return ANM_P_Animated_Sprite and ANM_P_Animated_Sprite.sprite_frames.has_animation(animation)
 
 ## Checks if an animation is currently playing
 func check_anim(animation : String) -> bool:
-	if not ANM_P_Animated_Sprite: return false
-	return ANM_P_Animated_Sprite.animation == animation
+	return ANM_P_Animated_Sprite and ANM_P_Animated_Sprite.animation == animation
 
 ## Checks if a certain frame is currently playing
 func check_frame(animation : String, frame : int) -> bool:
-	if not ANM_P_Animated_Sprite: return false
-	return ANM_P_Animated_Sprite.animation == animation and ANM_P_Animated_Sprite.frame == frame
+	return ANM_P_Animated_Sprite and ANM_P_Animated_Sprite.animation == animation and ANM_P_Animated_Sprite.frame == frame
 
 ## Checks if an animation is currently at it's last frame
 func check_anim_end(animation : String) -> bool:
-	if not ANM_P_Animated_Sprite: return false
-	return ANM_P_Animated_Sprite.animation == animation and ANM_P_Animated_Sprite.frame == ANM_P_Animated_Sprite.sprite_frames.get_frame_count(animation) - 1
+	return ANM_P_Animated_Sprite and ANM_P_Animated_Sprite.animation == animation and ANM_P_Animated_Sprite.frame == ANM_P_Animated_Sprite.sprite_frames.get_frame_count(animation) - 1
 
 ## Waits until a certain frame starts playing
 func await_frame(animation: String, frame : int) -> void:
-	while !check_frame(animation, frame):
+	while ANM_P_Animated_Sprite and !check_frame(animation, frame):
 		if not get_tree(): break
 		await get_tree().process_frame
 	return
 
 ## Waits until a certain animation ends
 func await_anim_end(animation: String) -> void:
-	while not check_anim_end(animation):
+	while ANM_P_Animated_Sprite and !check_anim_end(animation):
 		if not get_tree(): break
 		await get_tree().process_frame
 	return
 
 ## Triggers a travel to an animation or forcefully jumps to it
 func start_anim(animation : String, force : bool = false) -> void:
-	if not ANM_P_Animation_Tree: return
-	if force: ANM_P_Animation_Tree.get("parameters/playback").start(animation)
-	else: ANM_P_Animation_Tree.get("parameters/playback").travel(animation)
+	if ANM_P_Animation_Tree:
+		if force: ANM_P_Animation_Tree.get("parameters/playback").start(animation)
+		else: ANM_P_Animation_Tree.get("parameters/playback").travel(animation)
+	elif ANM_P_Animated_Sprite: ANM_P_Animated_Sprite.play(animation)
 
 ## Forcefully starts an animation and waits till the end
 func force_anim(animation : String) -> void:
-	while not check_anim_end(animation):
+	while ANM_P_Animated_Sprite and !check_anim_end(animation):
 		if not check_anim(animation): start_anim(animation, true)
 		if not get_tree(): break
 		await get_tree().process_frame
