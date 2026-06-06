@@ -17,3 +17,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - New Node: `Projectile`
 - New Node: `SmoothCamera`
 - New Singleton: `RPG_2D_Controllers`
+
+## [1.0.1] - 2026-06-08
+
+### Chnaged
+- Movement of `Entity` is now separate from velocity (`Entity` **accelerates** towards output of `move()`)
+- Addon Icon
+
+### Fixed
+- Explosive can safely explode even with only one of `Impulse` or `Damage`
+- Animation Helpers on `Entity`
+- `MeleeAttack` from harming the user
+- Direction handling on `Projectile` and `ProjectileAttack`
