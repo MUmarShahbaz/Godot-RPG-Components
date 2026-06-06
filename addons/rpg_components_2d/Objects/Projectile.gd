@@ -46,7 +46,7 @@ func self_destruct(mute: bool = false):
 
 ## A function to launch the projectile.[br]
 ## Can be overwritten.
-func launch(force : Vector2) -> void: apply_impulse(force)
+func launch(force : Vector2) -> void: apply_impulse(Vector2(force.x * dir, force.y))
 
 ## A function that is called when an [Entity] is hit.
 func hit(entity : Entity):

@@ -14,9 +14,9 @@ signal hit(entity : Entity, damage_amount : float)
 ## The offset of the [Projectile]'s center from the parent/shooter's center when the projectile is spawned while the character is facing right.[br]
 ## This will automatically be horizontally flipped if [param PR_Direction] is [code]-1[/code].
 @export var PR_Offset : Vector2
-## The direction in which to shoot the projectile.[br]
+## The direction in which to shoot the projectile relative to the parent.[br]
 ## Intended value is [code]1[/code] or [code]-1[/code]. Only the sign of the value will be considered.
-@export var PR_Direction : int
+@export var PR_Direction : int = 1
 ## The Force with which to shoot the [Projectile] if the character is facing right.[br]
 ## This will automatically be horizontally flipped by the [Projectile] itself if [param PR_Direction] is [code]-1[/code].
 @export var PR_Force : Vector2
@@ -72,14 +72,23 @@ var new_projectile : Projectile
 
 ## Spawn sequence for the [Projectile]
 func spawn(damage : float = Damage):
-	if new_projectile: await new_projectile.queue_free()
+	if new_projectile:
+		new_projectile.queue_free()
+		new_projectile = null
+	var new_dir = signi(PR_Direction*(parent.facing if parent is Entity else 1))
 	new_projectile = PR_Projectile_Scene.instantiate()
-	new_projectile.global_position = parent.global_position + Vector2(PR_Offset.x * signi(PR_Direction), PR_Offset.y)
-	new_projectile.dir = signi(PR_Direction)
+	new_projectile.global_position = parent.global_position + Vector2(PR_Offset.x * new_dir, PR_Offset.y)
+	new_projectile.dir = new_dir
 	new_projectile.Damage = new_projectile.Damage*Multiplier if is_nan(damage) else damage*Multiplier
 	new_projectile.collision_mask = obstruction_layers
 	get_tree().get_current_scene().add_child(new_projectile)
+	return
 
 ## Launch sequence for the [Projectile].[br]
 ## Force direction is automatically fixed by the [Projectile].
 func launch(force : Vector2 = PR_Force): if new_projectile: new_projectile.launch(force)
+
+
+func quick_shot(damage: float = Damage, force : Vector2 = PR_Force):
+	await spawn(damage)
+	launch(force)
