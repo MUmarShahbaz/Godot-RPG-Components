@@ -5,8 +5,10 @@ extends Area2D
 ## - Self-destructs at the end.
 class_name Explosive
 
-## A [CollisionShape2D] with a shape of [CircleShape2D].
-@export var Collider: CollisionShape2D
+## A [CollisionShape2D] to use for calculating radius. This [b]MUST[/b] have a [CircleShape2D] selected.
+@onready var Collider: CollisionShape2D = get_children().filter(func (x):return x is CollisionShape2D)[0]
+## The [Node] to [code]queuefree()[/code] after exploding
+@export var RootNode : Node = self
 ## The default mass to be assumed for [CharacterBody2D]s since they have no mass (excluding [DynamicEntity]).
 @export var DefaultMass: float = 1.0
 @export_group("Damage")
@@ -27,9 +29,9 @@ func explode():
 	for body in bodies:
 		var disp : Vector2 = body.global_position - Collider.global_position
 		var curve_x : float = clamp(disp.length() / shape.radius, 0, 1)
-		var new_impulse : Vector2 = disp.normalized() * Impulse * Impulse_Curve.sample(curve_x)
-		var new_damage : float = Damage * Damage_Curve.sample(curve_x)
-		if body is Entity: body.damage(new_damage)
-		if body is RigidBody2D or body is DynamicEntity: body.apply_central_impulse(new_impulse)
-		else: body.velocity += new_impulse / DefaultMass
-	queue_free()
+		if Damage and body is Entity: body.damage(Damage * Damage_Curve.sample(curve_x))
+		if Impulse:
+			var new_impulse : Vector2 = disp.normalized() * Impulse * Impulse_Curve.sample(curve_x)
+			if body is RigidBody2D or body is DynamicEntity: body.apply_central_impulse(new_impulse)
+			else: body.velocity += new_impulse / DefaultMass
+	RootNode.queue_free()

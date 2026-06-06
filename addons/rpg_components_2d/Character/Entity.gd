@@ -60,6 +60,8 @@ enum attack_type {
 ## The attack range of the character[br][br]
 ## Useful for creating character cards
 @export var Attack_Range : float
+## Rate of change of Velocity
+@export var Acceleration : float = 1000
 #endregion
 
 #region Meta
@@ -161,7 +163,7 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	if not is_on_floor() and gravity: velocity += get_gravity() * delta
-	if velocity.x != 0: velocity.x = move_toward(velocity.x, 0, delta*10)
+	velocity.x = move_toward(velocity.x, move_x, delta*Acceleration)
 	move_and_slide()
 
 ## Changes the direction the character is currently facing
@@ -174,6 +176,8 @@ func flip() -> void:
 #region Movement
 ## A Boolean to forcefully pause character movement
 var force_pause : bool = false
+## A [float] to store the velocity applied due to [code]move()[/code]
+var move_x : float = 0
 
 ## Checks whether or not movement should be paused at the current moment
 func pause_movement() -> bool:
@@ -196,21 +200,21 @@ func move(x_dir : float, run : bool = false) -> void:
 	var delta = get_physics_process_delta_time()
 	if x_dir != 0:
 		if run:
-			velocity.x = x_dir * Run_Speed * delta * 60
+			move_x = x_dir * Run_Speed * delta * 60
 			if is_on_floor():
 				start_anim(ANM_N_Run)
 				moved.emit(x_dir, true)
 				if SFX_Run: SFX_Run.play()
 				if SFX_Walk: SFX_Walk.stop()
 		else:
-			velocity.x = x_dir * Walk_Speed * delta * 50
+			move_x = x_dir * Walk_Speed * delta * 50
 			if is_on_floor():
 				start_anim(ANM_N_Walk)
 				moved.emit(x_dir, false)
 				if SFX_Run: SFX_Run.stop()
 				if SFX_Walk: SFX_Walk.play()
 	else:
-		velocity.x = 0
+		move_x = 0
 		if SFX_Run: SFX_Run.stop()
 		if SFX_Walk: SFX_Walk.stop()
 
