@@ -51,6 +51,7 @@ var attacking : bool = false
 
 #region Core
 func _ready() -> void:
+	await parent.ready
 	ray.enabled = false
 	ray.collision_mask = obstruction_layers
 	parent.RayBox.add_child.call_deferred(ray)
@@ -88,7 +89,7 @@ func damage(amount : float = Damage*Multiplier):
 func damage_first(amount : float = Damage*Multiplier):
 	ray.enabled = true
 	for body in get_overlapping_bodies():
-		if body is not Entity or obstruction_check(body): continue
+		if body is not Entity or obstruction_check(body) or body == parent: continue
 		body.damage(amount)
 		hit.emit(body, amount)
 		break
@@ -99,7 +100,7 @@ func damage_closest(amount : float = Damage*Multiplier):
 	ray.enabled = true
 	var closest : Entity = null
 	for body in get_overlapping_bodies():
-		if body is not Entity or obstruction_check(body): continue
+		if body is not Entity or obstruction_check(body) or body == parent: continue
 		if closest == null: closest = body
 		else:
 			if to_local(closest.global_position).length() > to_local(body.global_position).length():
@@ -112,7 +113,7 @@ func damage_closest(amount : float = Damage*Multiplier):
 func damage_all(amount : float = Damage*Multiplier):
 	ray.enabled = true
 	for body in get_overlapping_bodies():
-		if body is not Entity or obstruction_check(body): continue
+		if body is not Entity or obstruction_check(body) or body == parent: continue
 		body.damage(amount)
 		hit.emit(body, amount)
 	ray.enabled = false
@@ -123,7 +124,7 @@ func damage_distributed(amount : float = Damage*Multiplier):
 	ray.enabled = true
 	var victims : Array = []
 	for body in get_overlapping_bodies():
-		if body is not Entity or obstruction_check(body): continue
+		if body is not Entity or obstruction_check(body) or body == parent: continue
 		victims.append(body)
 	ray.enabled = false
 	for this_victim in victims:
