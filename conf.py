@@ -9,7 +9,7 @@
 project = 'RPG Components 2D'
 copyright = '2026, MUmarShahbaz'
 author = 'MUmarShahbaz'
-release = '1.0.0'
+release = '1.0.1'
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
