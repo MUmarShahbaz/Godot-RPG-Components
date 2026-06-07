@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ProjectileAttack &mdash; RPG Components 2D 1.0.0 documentation</title>
+  <title>ProjectileAttack &mdash; RPG Components 2D 1.0.1 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="_static/overwrite.css?v=a0fc712e" />
@@ -14,7 +14,7 @@
   
       <script src="_static/jquery.js?v=5d32c60e"></script>
       <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="_static/documentation_options.js?v=8d563738"></script>
+      <script src="_static/documentation_options.js?v=292eb321"></script>
       <script src="_static/doctools.js?v=fd6eb6e6"></script>
       <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="_static/js/theme.js"></script>
@@ -115,7 +115,7 @@
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a></p></td>
 <td><p><a class="reference internal" href="#class-projectileattack-property-pr-direction"><span class="std std-ref">PR_Direction</span></a></p></td>
-<td></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">1</span></code></p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a></p></td>
 <td><p><a class="reference internal" href="#class-projectileattack-property-pr-force"><span class="std std-ref">PR_Force</span></a></p></td>
@@ -183,11 +183,14 @@
 <tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
 <td><p><a class="reference internal" href="#class-projectileattack-private-method-process"><span class="std std-ref">_process</span></a>(delta: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a>)</p></td>
 </tr>
-<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a></p></td>
 <td><p><a class="reference internal" href="#class-projectileattack-method-spawn"><span class="std std-ref">spawn</span></a>(damage: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> = Damage)</p></td>
 </tr>
 <tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
 <td><p><a class="reference internal" href="#class-projectileattack-method-launch"><span class="std std-ref">launch</span></a>(force: <a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a> = PR_Force)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-projectileattack-method-quick-shot"><span class="std std-ref">quick_shot</span></a>(damage: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> = Damage, force: <a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a> = PR_Force)</p></td>
 </tr>
 </tbody>
 </table>
@@ -211,8 +214,8 @@
 <p>The offset of the <a class="reference internal" href="class_projectile.html#class-projectile"><span class="std std-ref">Projectile</span></a>’s center from the parent/shooter’s center when the projectile is spawned while the character is facing right.</p>
 <p>This will automatically be horizontally flipped if <code class="docutils literal notranslate"><span class="pre">PR_Direction</span></code> is <code class="docutils literal notranslate"><span class="pre">-1</span></code>.</p>
 <hr class="classref-item-separator docutils" />
-<p class="classref-property" id="class-projectileattack-property-pr-direction"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>PR_Direction</strong> <a class="reference internal" href="#class-projectileattack-property-pr-direction"><span class="std std-ref">🔗</span></a></p>
-<p>The direction in which to shoot the projectile.</p>
+<p class="classref-property" id="class-projectileattack-property-pr-direction"><a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a> <strong>PR_Direction</strong> = <code class="docutils literal notranslate"><span class="pre">1</span></code> <a class="reference internal" href="#class-projectileattack-property-pr-direction"><span class="std std-ref">🔗</span></a></p>
+<p>The direction in which to shoot the projectile relative to the parent.</p>
 <p>Intended value is <code class="docutils literal notranslate"><span class="pre">1</span></code> or <code class="docutils literal notranslate"><span class="pre">-1</span></code>. Only the sign of the value will be considered.</p>
 <hr class="classref-item-separator docutils" />
 <p class="classref-property" id="class-projectileattack-property-pr-force"><a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a> <strong>PR_Force</strong> <a class="reference internal" href="#class-projectileattack-property-pr-force"><span class="std std-ref">🔗</span></a></p>
@@ -268,12 +271,17 @@
 <p>There is currently no description for this method. Please help us by <a class="reference external" href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
 </div>
 <hr class="classref-item-separator docutils" />
-<p class="classref-method" id="class-projectileattack-method-spawn"><abbr title="No return value.">void</abbr> <strong>spawn</strong>(damage: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> = Damage) <a class="reference internal" href="#class-projectileattack-method-spawn"><span class="std std-ref">🔗</span></a></p>
+<p class="classref-method" id="class-projectileattack-method-spawn"><a class="reference internal" href="class_variant.html#class-variant"><span class="std std-ref">Variant</span></a> <strong>spawn</strong>(damage: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> = Damage) <a class="reference internal" href="#class-projectileattack-method-spawn"><span class="std std-ref">🔗</span></a></p>
 <p>Spawn sequence for the <a class="reference internal" href="class_projectile.html#class-projectile"><span class="std std-ref">Projectile</span></a></p>
 <hr class="classref-item-separator docutils" />
 <p class="classref-method" id="class-projectileattack-method-launch"><abbr title="No return value.">void</abbr> <strong>launch</strong>(force: <a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a> = PR_Force) <a class="reference internal" href="#class-projectileattack-method-launch"><span class="std std-ref">🔗</span></a></p>
 <p>Launch sequence for the <a class="reference internal" href="class_projectile.html#class-projectile"><span class="std std-ref">Projectile</span></a>.</p>
 <p>Force direction is automatically fixed by the <a class="reference internal" href="class_projectile.html#class-projectile"><span class="std std-ref">Projectile</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-projectileattack-method-quick-shot"><abbr title="No return value.">void</abbr> <strong>quick_shot</strong>(damage: <a class="reference internal" href="class_float.html#class-float"><span class="std std-ref">float</span></a> = Damage, force: <a class="reference internal" href="class_vector2.html#class-vector2"><span class="std std-ref">Vector2</span></a> = PR_Force) <a class="reference internal" href="#class-projectileattack-method-quick-shot"><span class="std std-ref">🔗</span></a></p>
+<div class="contribute docutils container">
+<p>There is currently no description for this method. Please help us by <a class="reference external" href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+</div>
 </section>
 </section>
 

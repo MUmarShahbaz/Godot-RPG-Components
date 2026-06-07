@@ -29,7 +29,7 @@ Properties
    +-------------------------------------------------------+---------------------------------------------------------------------------------------+------------------+
    | :ref:`Vector2<class_Vector2>`                         | :ref:`PR_Offset<class_ProjectileAttack_property_PR_Offset>`                           |                  |
    +-------------------------------------------------------+---------------------------------------------------------------------------------------+------------------+
-   | :ref:`int<class_int>`                                 | :ref:`PR_Direction<class_ProjectileAttack_property_PR_Direction>`                     |                  |
+   | :ref:`int<class_int>`                                 | :ref:`PR_Direction<class_ProjectileAttack_property_PR_Direction>`                     | ``1``            |
    +-------------------------------------------------------+---------------------------------------------------------------------------------------+------------------+
    | :ref:`Vector2<class_Vector2>`                         | :ref:`PR_Force<class_ProjectileAttack_property_PR_Force>`                             |                  |
    +-------------------------------------------------------+---------------------------------------------------------------------------------------+------------------+
@@ -68,13 +68,15 @@ Methods
 .. table::
    :widths: auto
 
-   +--------+-------------------------------------------------------------------------------------------------------------+
-   | |void| | :ref:`_process<class_ProjectileAttack_private_method__process>`\ (\ delta\: :ref:`float<class_float>`\ )    |
-   +--------+-------------------------------------------------------------------------------------------------------------+
-   | |void| | :ref:`spawn<class_ProjectileAttack_method_spawn>`\ (\ damage\: :ref:`float<class_float>` = Damage\ )        |
-   +--------+-------------------------------------------------------------------------------------------------------------+
-   | |void| | :ref:`launch<class_ProjectileAttack_method_launch>`\ (\ force\: :ref:`Vector2<class_Vector2>` = PR_Force\ ) |
-   +--------+-------------------------------------------------------------------------------------------------------------+
+   +-------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                        | :ref:`_process<class_ProjectileAttack_private_method__process>`\ (\ delta\: :ref:`float<class_float>`\ )                                                         |
+   +-------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Variant<class_Variant>` | :ref:`spawn<class_ProjectileAttack_method_spawn>`\ (\ damage\: :ref:`float<class_float>` = Damage\ )                                                             |
+   +-------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                        | :ref:`launch<class_ProjectileAttack_method_launch>`\ (\ force\: :ref:`Vector2<class_Vector2>` = PR_Force\ )                                                      |
+   +-------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                        | :ref:`quick_shot<class_ProjectileAttack_method_quick_shot>`\ (\ damage\: :ref:`float<class_float>` = Damage, force\: :ref:`Vector2<class_Vector2>` = PR_Force\ ) |
+   +-------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 .. rst-class:: classref-section-separator
 
@@ -144,9 +146,9 @@ This will automatically be horizontally flipped if ``PR_Direction`` is ``-1``.
 
 .. rst-class:: classref-property
 
-:ref:`int<class_int>` **PR_Direction** :ref:`🔗<class_ProjectileAttack_property_PR_Direction>`
+:ref:`int<class_int>` **PR_Direction** = ``1`` :ref:`🔗<class_ProjectileAttack_property_PR_Direction>`
 
-The direction in which to shoot the projectile.
+The direction in which to shoot the projectile relative to the parent.
 
 Intended value is ``1`` or ``-1``. Only the sign of the value will be considered.
 
@@ -351,7 +353,7 @@ Method Descriptions
 
 .. rst-class:: classref-method
 
-|void| **spawn**\ (\ damage\: :ref:`float<class_float>` = Damage\ ) :ref:`🔗<class_ProjectileAttack_method_spawn>`
+:ref:`Variant<class_Variant>` **spawn**\ (\ damage\: :ref:`float<class_float>` = Damage\ ) :ref:`🔗<class_ProjectileAttack_method_spawn>`
 
 Spawn sequence for the :ref:`Projectile<class_Projectile>`
 
@@ -368,6 +370,20 @@ Spawn sequence for the :ref:`Projectile<class_Projectile>`
 Launch sequence for the :ref:`Projectile<class_Projectile>`.
 
 Force direction is automatically fixed by the :ref:`Projectile<class_Projectile>`.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_ProjectileAttack_method_quick_shot:
+
+.. rst-class:: classref-method
+
+|void| **quick_shot**\ (\ damage\: :ref:`float<class_float>` = Damage, force\: :ref:`Vector2<class_Vector2>` = PR_Force\ ) :ref:`🔗<class_ProjectileAttack_method_quick_shot>`
+
+.. container:: contribute
+
+	There is currently no description for this method. Please help us by `contributing one <https://contributing.godotengine.org/en/latest/documentation/class_reference.html>`__!
 
 .. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
 .. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
