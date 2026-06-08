@@ -1,9 +1,4 @@
-<div align="center">
-
-<img src="https://raw.githubusercontent.com/MUmarShahbaz/RPG-Components/main/images/icon.png" width=350>
-
-# RPG Components 2D
-</div>
+# RPG Components
 
 A collection of extended Godot nodes and reusable components designed to accelerate RPG development.
 
