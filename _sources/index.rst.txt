@@ -1,5 +1,13 @@
+.. raw:: html
+
+    <div align="center" style="margin-bottom: 30px;">
+        <img src="_static/icon.png" width="350" alt="RPG Components 2D Icon">
+        <p style="font-size: 2em; margin-top: 20px;">RPG Components 2D</p>
+    </div>
+
+
 RPG Components 2D
-===========
+=================
 
 Welcome to **RPG Components 2D**!!!
 
