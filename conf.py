@@ -10,18 +10,24 @@ project = 'RPG Components 2D'
 copyright = '2026, MUmarShahbaz'
 author = 'MUmarShahbaz'
 release = '1.0.1'
+html_favicon = '_static/favicon.png'
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
 extensions = [
-    'sphinxcontrib.mermaid'
+    'sphinxcontrib.mermaid',
+    'sphinxext.opengraph'
 ]
 
 templates_path = ['_templates']
 exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 
-
+ogp_image = '_static/og.png'
+ogp_description_length = 200
+ogp_type = 'website'
+ogp_site_url = 'https://mumarshahbaz.github.io/RPG-Components/'
+ogp_site_name = 'RPG Components 2D'
 
 # -- Options for HTML output -------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
