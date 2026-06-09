@@ -3,6 +3,8 @@
     <div align="center" style="margin-bottom: 30px;">
         <img src="_static/icon.png" width="350" alt="RPG Components 2D Icon">
         <p style="font-size: 2em; margin-top: 20px;">RPG Components 2D</p>
+        <a href="https://github.com/MUmarShahbaz/RPG-Components" target="blank"><img width=150px height=auto style="border: 2px solid black; border-radius: 5px; margin: 5px" src="https://img.shields.io/badge/GitHub-white?style=for-the-badge&logo=github&logoColor=white&logoSize=auto&labelColor=black"></a>
+        <a href="https://godotengine.org/asset-library/asset/5184" target="blank"><img width=150px height=auto style="border: 2px solid #478cbf; border-radius: 5px; margin: 5px" src="https://img.shields.io/badge/Godot-white?style=for-the-badge&logo=godotengine&logoColor=white&logoSize=auto&labelColor=478cbf"></a>
     </div>
 
 
@@ -32,5 +34,6 @@ Welcome to **RPG Components 2D**!!!
     index/brain
     index/ability
     index/objects
+    index/miscellaneous
     index/visuals_and_audio
     index/singletons
