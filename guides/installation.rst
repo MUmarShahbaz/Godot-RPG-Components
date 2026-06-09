@@ -24,7 +24,10 @@ Installation
 Install from Asset Library
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-#.  The library hasn't been added to the Asset Library just yet, but it will be soon.
+- Just search **RPG Components 2D** and download the addon by **MUmarShahbaz**
+- It'll have the same logo as on the :doc:`home page </index>`.
+- Make sure to enable ``Ignore Project Root`` to ensure proper download.
+- :ref:`enable_addon`
 
 Manual Installation
 ~~~~~~~~~~~~~~~~~~~
@@ -32,6 +35,7 @@ Manual Installation
 #. Download the latest release.
 #. Extract the contents.
 #. Copy the ``rpg_components_2d`` folder into your project's ``addons/`` directory.
+#. :ref:`enable_addon`
 
 Example project structure:
 
@@ -40,6 +44,9 @@ Example project structure:
    project/
    └── addons/
        └── rpg_components_2d/
+
+
+.. _enable_addon:
 
 Enabling the Addon
 ------------------
