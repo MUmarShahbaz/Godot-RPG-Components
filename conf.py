@@ -16,9 +16,12 @@ html_favicon = '_static/favicon.png'
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
 extensions = [
+    "sphinx_sitemap",
     'sphinxcontrib.mermaid',
     'sphinxext.opengraph'
 ]
+
+html_baseurl = "https://godotrpgcomponents.xyz/"
 
 templates_path = ['_templates']
 exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
@@ -26,7 +29,7 @@ exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 ogp_image = '_static/og.png'
 ogp_description_length = 200
 ogp_type = 'website'
-ogp_site_url = 'https://mumarshahbaz.github.io/Godot-RPG-Components/'
+ogp_site_url = 'https://godotrpgcomponents.xyz/'
 ogp_site_name = 'RPG Components 2D'
 
 # -- Options for HTML output -------------------------------------------------
