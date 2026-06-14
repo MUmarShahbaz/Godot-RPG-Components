@@ -26,7 +26,7 @@ exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 ogp_image = '_static/og.png'
 ogp_description_length = 200
 ogp_type = 'website'
-ogp_site_url = 'https://mumarshahbaz.github.io/RPG-Components/'
+ogp_site_url = 'https://mumarshahbaz.github.io/Godot-RPG-Components/'
 ogp_site_name = 'RPG Components 2D'
 
 # -- Options for HTML output -------------------------------------------------
