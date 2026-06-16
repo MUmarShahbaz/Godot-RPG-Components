@@ -9,7 +9,7 @@
 project = 'RPG Components 2D'
 copyright = '2026, MUmarShahbaz'
 author = 'MUmarShahbaz'
-release = '1.1.0'
+release = '1.1.1'
 html_favicon = '_static/favicon.png'
 
 # -- General configuration ---------------------------------------------------
