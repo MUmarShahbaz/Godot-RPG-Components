@@ -14,7 +14,7 @@
 <meta name="description" content="Welcome to RPG Components 2D!!! RPG Components 2D is a collection of reusable components for building 2D RPGs in Godot. The library was designed with the principal of Overwriting via Polymorphism i..." />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>RPG Components 2D &mdash; RPG Components 2D 1.1.0 documentation</title>
+  <title>RPG Components 2D &mdash; RPG Components 2D 1.1.1 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="_static/overwrite.css?v=0e728cc8" />
@@ -24,7 +24,7 @@
     <link rel="canonical" href="https://godotrpgcomponents.xyz/index.html" />
       <script src="_static/jquery.js?v=5d32c60e"></script>
       <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="_static/documentation_options.js?v=fc837d61"></script>
+      <script src="_static/documentation_options.js?v=58fbf978"></script>
       <script src="_static/doctools.js?v=fd6eb6e6"></script>
       <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="_static/js/theme.js"></script>
@@ -103,78 +103,160 @@
 <p>Welcome to <strong>RPG Components 2D</strong>!!!</p>
 <p><strong>RPG Components 2D</strong> is a collection of reusable components for building 2D RPGs in Godot. The library was designed with the principal of <strong>Overwriting via Polymorphism</strong> in mind. This means that extending the nodes with your own custom code is intended. This will allow greater customization and gives you the oppurtunity to fine-tune them (if needed).</p>
 <style>
-    .feature-row {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 30px;
-        align-items: center;
+    .magic {
+        text-align: center;
+        font-size: 2em;
+        font-weight: 800;
         margin: 40px 0;
     }
 
-    .feature-text {
-        font-size: 1.1em;
+    .magic .pixelify {
+        font-size: 3em;
     }
 
-    .feature-text b {
+    .feature-left, .feature-right {
+        display: flex;
+        font-size: 1.1em;
+        justify-content: space-between;
+        margin: 50px 0;
+    }
+
+    .feature-left div, .feature-right div {
+        display: flex;
+        align-items: center;
+    }
+
+    .feature-left p, .feature-right p {
+        margin: 0;
+    }
+
+    .feature-left b, .feature-right b {
         font-size: 1.2em;
     }
 
-    .feature-image img {
-        width: 100%;
+    .feature-left img, .feature-right img {
+        max-width: 45%;
+        min-width: 350px;
         border-radius: 8px;
     }
 
+    .feature-left {
+        flex-direction: row;
+    }
+
+    .feature-right {
+        flex-direction: row-reverse;
+    }
+
+    .feature-left img {
+        margin-right: 5%;
+    }
+
+    .feature-right img {
+        margin-left: 5%;
+    }
+
+    .feature-end {
+        text-align: center;
+        line-height: unset;
+        font-size: 6em;
+        margin: 150px 0;
+    }
+
+    @media (max-width: 1050px) {
+        .feature-left, .feature-right {
+            flex-direction: column;
+        }
+
+        .feature-left img, .feature-right img {
+            max-width: 100%;
+            margin: 5% 0;
+        }
+
+        .feature-end {
+            margin: 100px 0;
+            font-size: 5em;
+        }
+    }
+
     @media (max-width: 800px) {
-        .feature-row {
-            grid-template-columns: 1fr;
+        .magic {
+            font-size: 1.5em;
+        }
+
+        .magic .pixelify {
+            font-size: 2em;
+        }
+
+        .feature-left img, .feature-right img {
+            min-width: 200px;
+        }
+
+        .feature-end {
+            font-size: 3em;
         }
     }
 </style>
 
-<div style="text-align:center; font-size:2em; font-weight:800; margin:40px 0;">
-    SKIP THE BORING STUFF<br><span style="font-size:3em;" class="pixelify neon" data-content="FOCUS ON THE MAGIC">FOCUS ON THE MAGIC</span>
+<hr>
+
+<div class="magic">
+    SKIP THE BORING STUFF<br><span class="pixelify">FOCUS ON THE MAGIC</span>
 </div>
 
-<div class="feature-row">
-    <div class="feature-text">
-        <b>Entities come with Movement and HP pre-baked</b><br><br>
-        Drop-ready entity system with movement, health, and core gameplay logic already implemented.
-    </div>
-    <div class="feature-image">
-        <img src="https://raw.githubusercontent.com/MUmarShahbaz/Godot-RPG-Components/main/images/Entity.gif">
+<div class="feature-right">
+    <img src="https://raw.githubusercontent.com/MUmarShahbaz/Godot-RPG-Components/main/images/Entity.gif">
+    <div>
+    <p>
+        <b>Entities come with Movement and HP baked-in!</b><br><br>
+        Drop-ready entity system with movement, health, and animation control already implemented.
+    </p>
     </div>
 </div>
 
-<div class="feature-row">
-    <div class="feature-image">
-        <img src="https://raw.githubusercontent.com/MUmarShahbaz/Godot-RPG-Components/main/images/Projectile_Melee.gif">
-    </div>
-    <div class="feature-text">
+<div class="feature-left">
+    <img src="https://raw.githubusercontent.com/MUmarShahbaz/Godot-RPG-Components/main/images/Projectile_Melee.gif">
+    <div>
+    <p>
         <b>Frame-synced Projectile & Melee Attacks</b><br><br>
         Combat system with minimal configuration and consistent frame-accurate execution.
+    </p>
     </div>
 </div>
 
-<div class="feature-row">
-    <div class="feature-text">
-        <b>Explosions with Custom Force & Radius</b><br><br>
+<div class="feature-right">
+    <img src="https://raw.githubusercontent.com/MUmarShahbaz/Godot-RPG-Components/main/images/Explosion.gif">
+    <div>
+    <p>
+        <b>Explosions with Custom Force & Blast-Radius</b><br><br>
         Create impactful effects like knockback, blast radius, and physics-driven reactions.
-    </div>
-    <div class="feature-image">
-        <img src="https://raw.githubusercontent.com/MUmarShahbaz/Godot-RPG-Components/main/images/Explosion.gif">
+    </p>
     </div>
 </div>
 
-<div class="feature-row">
-    <div class="feature-image">
-        <img src="https://raw.githubusercontent.com/MUmarShahbaz/Godot-RPG-Components/main/images/Spawner.gif">
-    </div>
-    <div class="feature-text">
+<div class="feature-left">
+    <img src="https://raw.githubusercontent.com/MUmarShahbaz/Godot-RPG-Components/main/images/Spawner.gif">
+    <div>
+    <p>
         <b>Automatic Area & Point Spawners</b><br><br>
         Drop-in spawning system for enemies, items, and environmental objects.
+    </p>
     </div>
 </div>
-<p style="text-align: center; font-size: 6em; margin: 150px 0;">AND MUCH MORE!!</p>
+
+<p class="feature-end">AND MUCH MORE!!</p>
+
+<hr>
+
+<div class="magic">
+    Show your Support!! <br> Star the Repo!! ⭐
+</div>
+
+<p> Starring the repository is completely free and it allows my project to gain more traction. This really helps me stay motivated and know that my project is appreciated. If you really took a liking to my project, please remember to open it on <a href="https://github.com/MUmarShahbaz/Godot-RPG-Components">GitHub</a> and click the <b>Star</b> button</p>
+
+<a style="display: flex; width: 100%; justify-content: center;" href="https://www.star-history.com/?repos=MUmarShahbaz%2FGodot-RPG-Components&type=date&legend=top-left">
+    <img alt="Star History Chart" src="https://api.star-history.com/chart?repos=MUmarShahbaz/Godot-RPG-Components&type=date&legend=bottom-right" />
+</a>
 <hr></section>
 <section id="useful-links">
 <h1>Useful Links<a class="headerlink" href="#useful-links" title="Link to this heading"></a></h1>
