@@ -222,8 +222,7 @@ func move(x_dir : float, run : bool = false) -> void:
 func jump(force := Jump_Velocity) -> void:
 	if pause_movement() or not is_on_floor() or check_anim(ANM_N_Jump): return
 	velocity.y -= force
-	quick_pause(0.01)
-	start_anim(ANM_N_Jump)
+	start_anim(ANM_N_Jump, true)
 	if SFX_Jump: SFX_Jump.play()
 	jumped.emit()
 #endregion

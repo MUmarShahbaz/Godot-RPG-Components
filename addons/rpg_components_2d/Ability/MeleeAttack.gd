@@ -48,6 +48,8 @@ signal hit(entity : Entity, damage_amount : float)
 @onready var ray := RayCast2D.new()
 ## A boolean to tell whether the attack is currently in progress or not.
 var attacking : bool = false
+## A boolean to tell whether or not damage was applied during the hit frame. Becomes true only after the hitframe has passed.
+var hitting: bool = false
 
 #region Core
 func _ready() -> void:
@@ -62,8 +64,11 @@ func _process(delta: float) -> void:
 		if not attacking:
 			attacking = true
 			if AUX_On_Animation_Start: AUX_On_Animation_Start.play()
-	else: attacking = false
-	if parent.check_frame(FS_Animation, FS_Hit_Frame):
+	else:
+		attacking = false
+		hitting = false
+	if parent.check_frame(FS_Animation, FS_Hit_Frame) and not hitting:
+		hitting = true
 		attacked.emit()
 		if AUX_On_Hit_Frame: AUX_On_Hit_Frame.play()
 		damage()
