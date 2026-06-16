@@ -112,7 +112,7 @@ jobs:
                 patch: ${{ steps.version.outputs.patch }}
                 status: stable
                 built-in: true
-                website: https://mumarshahbaz.github.io/RPG-Components
+                website: https://godotrpgcomponents.xyz
                 xml: xml
 
             - name: Upload generated RST
@@ -163,7 +163,7 @@ jobs:
             python-version: 3.14
 
         - name: Install Dependencies
-          run: pip install sphinx sphinx_rtd_theme sphinxcontrib-mermaid sphinxext-opengraph sphinxext-opengraph[social_cards]
+          run: pip install sphinx sphinx_rtd_theme sphinxcontrib-mermaid sphinxext-opengraph sphinxext-opengraph[social_cards] sphinx-sitemap
         
         - name: Download RST
           uses: actions/download-artifact@v4
@@ -206,6 +206,7 @@ jobs:
         - name: Commit and push
           run: |
             echo "" > .nojekyll
+            echo "godotrpgcomponents.xyz" > CNAME
             git config user.name "github-actions[bot]"
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
