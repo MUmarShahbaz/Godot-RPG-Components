@@ -77,7 +77,15 @@ You should be able to view the documentation to check for API References of any 
 
 ## Show your Support! STAR THE REPO!!
 
-**Staring the repository helps it spread!!**
+Starring the repository is completely free and it allows my project to gain more traction. This really helps me stay motivated and know that my project is appreciated. If you really took a liking to my project, please remember to click the **Star** button!!
+
+<a href="https://github.com/MUmarShahbaz/Godot-RPG-Components/stargazers">
+ <picture>
+   <source media="(prefers-color-scheme: dark)" srcset="https://bytecrank.com/nastyox/reporoster/php/stargazersSVG.php?theme=dark&user=MUmarShahbaz&repo=Godot-RPG-Components" />
+   <source media="(prefers-color-scheme: light)" srcset="https://bytecrank.com/nastyox/reporoster/php/stargazersSVG.php?user=MUmarShahbaz&repo=Godot-RPG-Components" />
+   <img alt="Stargazers" src="https://bytecrank.com/nastyox/reporoster/php/stargazersSVG.php?user=MUmarShahbaz&repo=Godot-RPG-Components" />
+ </picture>
+</a>
 
 <a href="https://www.star-history.com/?repos=MUmarShahbaz%2FGodot-RPG-Components&type=date&legend=top-left">
  <picture>
