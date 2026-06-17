@@ -163,7 +163,7 @@ jobs:
             python-version: 3.14
 
         - name: Install Dependencies
-          run: pip install sphinx sphinx_rtd_theme sphinxcontrib-mermaid sphinxext-opengraph sphinxext-opengraph[social_cards] sphinx-sitemap
+          run: pip install sphinx sphinx_rtd_theme sphinxcontrib-mermaid sphinxext-opengraph sphinxext-opengraph[social_cards]
         
         - name: Download RST
           uses: actions/download-artifact@v4
@@ -176,7 +176,7 @@ jobs:
             rm converted.zip
         
         - name: Generate Documentation with Sphinx
-          run: make html
+          run: make html && python meta_generator.py
         
         - name: Upload generated HTML
           uses: actions/upload-artifact@v4
