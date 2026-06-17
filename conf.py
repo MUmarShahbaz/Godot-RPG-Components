@@ -1,27 +1,23 @@
-# Configuration file for the Sphinx documentation builder.
-#
-# For the full list of built-in configuration values, see the documentation:
-# https://www.sphinx-doc.org/en/master/usage/configuration.html
-
-# -- Project information -----------------------------------------------------
-# https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
-
 project = 'RPG Components 2D'
-copyright = '2026, MUmarShahbaz'
+short_name = 'RPG 2D'
+description = 'A Framework for Godot 4 to help with Fast RPG Creation.'
 author = 'MUmarShahbaz'
+categories = ['godot', 'rpg', 'rpg-framework', 'rpg-tool', 'newbie', 'tutorial', 'game development', 'addon', 'plugin', 'components', 'library']
+
+copyright = '%Y, MUmarShahbaz'
+
 release = '1.1.1'
 html_favicon = '_static/favicon.png'
+html_baseurl = 'https://godotrpgcomponents.xyz/'
 
-# -- General configuration ---------------------------------------------------
-# https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
+html_theme = 'sphinx_rtd_theme'
+html_static_path = ['_static']
+html_css_files = ['overwrite.css']
 
 extensions = [
-    "sphinx_sitemap",
     'sphinxcontrib.mermaid',
     'sphinxext.opengraph'
 ]
-
-html_baseurl = "https://godotrpgcomponents.xyz/"
 
 templates_path = ['_templates']
 exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
@@ -31,12 +27,3 @@ ogp_description_length = 200
 ogp_type = 'website'
 ogp_site_url = 'https://godotrpgcomponents.xyz/'
 ogp_site_name = 'RPG Components 2D'
-
-# -- Options for HTML output -------------------------------------------------
-# https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
-
-html_theme = 'sphinx_rtd_theme'
-html_static_path = ['_static']
-html_css_files = [
-    "overwrite.css",
-]
