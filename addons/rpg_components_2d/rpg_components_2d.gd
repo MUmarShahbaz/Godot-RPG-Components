@@ -1,9 +1,7 @@
 @tool
 extends EditorPlugin
 
-var Singletons = [
-	"CONTROLLERS"
-]
+var Singletons = []
 
 func _enable_plugin() -> void:
 	for singleton in Singletons: _handle_singleton(singleton, true)
